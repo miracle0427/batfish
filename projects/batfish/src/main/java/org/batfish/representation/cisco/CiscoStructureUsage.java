@@ -21,6 +21,7 @@ public enum CiscoStructureUsage implements StructureUsage {
    BGP_OUTBOUND_ROUTE6_MAP("bgp outbound ipv6 route-map"),
    BGP_REDISTRIBUTE_CONNECTED_MAP("bgp redistribute connected route-map"),
    BGP_REDISTRIBUTE_STATIC_MAP("bgp redistribute static route-map"),
+   BGP_REDISTRIBUTE_OSPF_MAP("bgp redistribute ospf route-map"),
    BGP_ROUTE_MAP_OTHER("bgp otherwise in/outbound route-map"),
    BGP_UPDATE_SOURCE_INTERFACE("update-source interface"),
    BGP_VRF_AGGREGATE_ROUTE_MAP("bgp vrf aggregate-address route-map"),
