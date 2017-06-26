@@ -149,6 +149,7 @@ logging_null
       | LOGFILE
       | MESSAGE_COUNTER
       | MONITOR
+      | ORIGIN_ID
       | PERMIT_HOSTDOWN
       | QUEUE_LIMIT
       | RATE_LIMIT
