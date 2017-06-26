@@ -616,6 +616,10 @@ null_single
       | DIALER_LIST
       | DNS
       | DNS_GUARD
+      |
+      (
+      	DOMAIN LOOKUP
+      )
       | DOWNLINK
       | DSP
       | DSS
