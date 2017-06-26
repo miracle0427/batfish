@@ -5766,6 +5766,11 @@ ORIGIN
    'origin'
 ;
 
+ORIGIN_ID
+:
+	'origin-id'
+;
+
 ORIGINATE
 :
    'originate'
