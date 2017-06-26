@@ -135,6 +135,7 @@ logging_null
       | ASDM
       | ASDM_BUFFER_SIZE
       | BUFFER_SIZE
+      | COUNT
       | DEBUG_TRACE
       | DISCRIMINATOR
       | ESM
@@ -156,6 +157,7 @@ logging_null
       | SNMP_AUTHFAIL
       | SYNCHRONOUS
       | TIMESTAMP
+      | USERINFO
    ) ~NEWLINE* NEWLINE
 ;
 

@@ -8983,6 +8983,11 @@ USER_IDENTITY
    'user-identity'
 ;
 
+USERINFO
+:
+	'userinfo'
+;
+
 USER_MESSAGE
 :
    'user-message' -> pushMode ( M_Description )
