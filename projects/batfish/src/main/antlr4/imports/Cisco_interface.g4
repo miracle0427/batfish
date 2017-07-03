@@ -407,6 +407,7 @@ if_null_block
             )
             | FLOW
             | HELPER_ADDRESS
+            | IGMP
             | IP_ADDRESS
             | IRDP
             | LOAD_SHARING
