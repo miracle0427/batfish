@@ -3904,7 +3904,8 @@ public class CiscoControlPlaneExtractor extends CiscoParserBaseListener
             : (int) toIp(ctx.area_ip).asLong();
       boolean noSummary = ctx.NO_SUMMARY() != null;
       boolean defaultOriginate = ctx.DEFAULT_INFORMATION_ORIGINATE() != null;
-      if (defaultOriginate) {
+      boolean noRedstribution = ctx.NO_REDISTRIBUTION() != null;
+      if (defaultOriginate || noRedstribution) {
          todo(ctx, F_OSPF_AREA_NSSA);
       }
       proc.getNssas().put(area, noSummary);

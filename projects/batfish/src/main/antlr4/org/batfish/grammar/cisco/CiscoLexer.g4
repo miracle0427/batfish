@@ -1970,6 +1970,11 @@ DEFAULT_ACTION
    'default-action'
 ;
 
+DEFAULT_COST
+:
+   'default-cost'
+;
+
 DEFAULT_DOMAIN
 :
    'default-domain'
