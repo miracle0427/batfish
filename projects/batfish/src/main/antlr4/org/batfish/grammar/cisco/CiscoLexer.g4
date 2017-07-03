@@ -5293,7 +5293,7 @@ NAMESERVER
 
 NAT
 :
-   'nat'
+   'nat'|'NAT'
 ;
 
 NAT_CONTROL
