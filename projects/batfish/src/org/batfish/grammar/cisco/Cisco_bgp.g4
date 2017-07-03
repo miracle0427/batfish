@@ -707,6 +707,10 @@ redistribute_ospf_bgp_tail
       (
          MATCH ospf_route_type*
       )
+      |
+      (
+         VRF vrf = variable
+      )
    )* NEWLINE
 ;
 
