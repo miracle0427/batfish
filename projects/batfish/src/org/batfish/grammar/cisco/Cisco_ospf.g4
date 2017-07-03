@@ -19,8 +19,20 @@ ro_area_nssa
       | area_ip = IP_ADDRESS
    ) NSSA
    (
-      NO_SUMMARY
-      | DEFAULT_INFORMATION_ORIGINATE
+      (
+         DEFAULT_INFORMATION_ORIGINATE
+         (
+            (
+               METRIC metric = DEC
+            )
+            |
+            (
+               METRIC_TYPE metric_type = DEC
+            )
+         )*
+      )
+      | NO_REDISTRIBUTION
+      | NO_SUMMARY
    )* NEWLINE
 ;
 
@@ -47,7 +59,10 @@ ro_area
    (
       area_int = DEC
       | area_ip = IP_ADDRESS
-   ) NEWLINE
+   )
+   (
+      DEFAULT_COST cost = DEC
+   )? NEWLINE
    (
       ro_common
       | roa_cost
