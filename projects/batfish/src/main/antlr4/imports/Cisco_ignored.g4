@@ -265,6 +265,7 @@ null_block
       | VLAN_POLICY
       | VLT
       | VOICE
+      | VRRP
       | VXLAN
       | VTY_POOL
       | WISM
@@ -499,6 +500,7 @@ null_inner
          | SERVICE_TYPE
          | SESSION
          | SEVERITY
+         | SHUTDOWN
          | SIGNING
          | SINGLE_CONNECTION
          | SINGLE_ROUTER_MODE
@@ -536,6 +538,7 @@ null_inner
          | VERSION
          | VIRTUAL
          | VIRTUAL_ROUTER
+         | VLAN
          | VM_CPU
          | VM_MEMORY
          | VPN_FILTER
