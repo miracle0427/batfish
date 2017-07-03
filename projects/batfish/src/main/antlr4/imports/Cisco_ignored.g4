@@ -422,6 +422,7 @@ null_inner
          | LOG
          | LPTS
          | MAC_ADDRESS
+         | MAXIMUM
          | MEDIA
          | MEMBER
          | MESH_GROUP
