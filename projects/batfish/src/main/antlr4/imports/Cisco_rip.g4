@@ -11,6 +11,11 @@ rr_default_metric
    DEFAULT_METRIC metric = DEC NEWLINE
 ;
 
+rr_default_information
+:
+   DEFAULT_INFORMATION ORIGINATE NEWLINE
+;
+
 distance_rr_stanza
 :
    DISTANCE distance = DEC NEWLINE
@@ -44,7 +49,7 @@ router_rip_stanza
 rr_null
 :
 	NO?
-	( 
+	(
 		AUTO_SUMMARY
 		| TIMERS
 		| VERSION
@@ -59,6 +64,7 @@ rr_stanza
    | passive_interface_rr_stanza
    | redistribute_rr_stanza
    | rr_default_metric
+   | rr_default_information
    | rr_null
    | unrecognized_line
 ;
