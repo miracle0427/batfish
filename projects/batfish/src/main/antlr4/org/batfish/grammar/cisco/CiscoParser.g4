@@ -14,16 +14,16 @@ package org.batfish.grammar.cisco;
 
 @members {
    private boolean _multilineBgpNeighbors;
-   
+
    public void setMultilineBgpNeighbors(boolean multilineBgpNeighbors) {
       _multilineBgpNeighbors = multilineBgpNeighbors;
    }
-   
+
    @Override
    public String getStateInfo() {
       return "_multilineBgpNeighbors: " + _multilineBgpNeighbors + "\n";
    }
-   
+
 }
 
 address_aiimgp_stanza
@@ -1852,6 +1852,12 @@ s_tunnel_group
 s_vlan
 :
    NO? VLAN
+   (
+        ~(
+            ACCESS_MAP
+            | DEC
+        )
+   )?
    (
       ACCESS_MAP
       | DEC
