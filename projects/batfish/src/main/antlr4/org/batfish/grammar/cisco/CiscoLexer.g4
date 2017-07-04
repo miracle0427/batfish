@@ -9055,7 +9055,7 @@ V6
 
 VACANT_MESSAGE
 :
-   'vacant-message'
+   'vacant-message' -> pushMode ( M_VacantMessageText )
 ;
 
 VACL
@@ -11017,4 +11017,30 @@ M_SHA1_HEX_PART
 M_SHA1_WS
 :
    F_Whitespace+ -> channel ( HIDDEN )
+;
+
+mode M_VacantMessageText;
+
+M_VacantMessage_WS
+:
+   F_Whitespace+ -> channel ( HIDDEN )
+;
+
+M_VacantMessage_ESCAPE_C
+:
+   (
+      '^C'
+      | '^'
+      | '\u0003'
+   ) -> type ( ESCAPE_C ) , mode ( M_MOTD_C )
+;
+
+M_VacantMessage_HASH
+:
+   '#' -> type ( POUND ) , mode ( M_MOTD_HASH )
+;
+
+M_VacantMessage_NEWLINE
+:
+   F_Newline+ -> type ( NEWLINE ) , mode ( M_MOTD_EOF )
 ;
