@@ -38,7 +38,22 @@ ro_area_nssa
 
 ro_area_range
 :
-   AREA area = IP_ADDRESS RANGE area_range = IP_PREFIX NEWLINE
+   AREA 
+   (
+      area_int = DEC
+      | area_ip = IP_ADDRESS
+   ) 
+   RANGE
+   ( 
+   	  (
+         area_ip = IP_ADDRESS area_subnet = IP_ADDRESS
+      )
+      | area_prefix = IP_PREFIX
+   )
+   (
+      ADVERTISE
+      | NOT_ADVERTISE
+   ) NEWLINE
 ;
 
 ro_area_stub
