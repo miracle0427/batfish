@@ -33,7 +33,7 @@ banner
          )
          |
          (
-            NEWLINE ~EOF_LITERAL* EOF_LITERAL
+            NEWLINE ~EOF_LITERAL* EOF
          )
       )
    ) NEWLINE?
