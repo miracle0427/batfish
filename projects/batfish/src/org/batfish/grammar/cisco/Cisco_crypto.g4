@@ -270,6 +270,7 @@ cis_null
       | KEEPALIVE
       | KEY
       | NAT_TRAVERSAL
+      | NAT
    ) ~NEWLINE* NEWLINE
 ;
 
