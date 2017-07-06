@@ -95,6 +95,7 @@ controller_null
       | CHANNEL_GROUP
       | CLOCK
       | DESCRIPTION
+      | FDL
       | FRAMING
       | G709
       | LINECODE

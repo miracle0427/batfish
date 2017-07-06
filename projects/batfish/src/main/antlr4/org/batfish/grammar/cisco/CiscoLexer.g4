@@ -3077,6 +3077,11 @@ FCOE
    'fcoe'
 ;
 
+FDL
+:
+	'fdl'
+;
+
 FEATURE
 :
    'feature'
