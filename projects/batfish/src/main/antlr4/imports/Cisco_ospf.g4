@@ -38,13 +38,13 @@ ro_area_nssa
 
 ro_area_range
 :
-   AREA 
+   AREA
    (
       area_int = DEC
       | area_ip = IP_ADDRESS
-   ) 
+   )
    RANGE
-   ( 
+   (
    	  (
          area_ip = IP_ADDRESS area_subnet = IP_ADDRESS
       )
@@ -184,6 +184,7 @@ ro_null
       )
       | AUTO_COST
       | BFD
+      | CAPABILITY
       | DEAD_INTERVAL
       | DISCARD_ROUTE
       | DISTRIBUTE_LIST
@@ -564,4 +565,3 @@ s_router_ospfv3
       | rov3_common
    )*
 ;
-
