@@ -72,6 +72,7 @@ null_block
       | GLOBAL_PORT_SECURITY
       | GROUP_POLICY
       | HASH_ALGORITHM
+      | HOLD_QUEUE
       | HPM
       | HSRP
       | HW_SWITCH
