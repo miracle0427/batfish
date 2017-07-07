@@ -77,7 +77,14 @@ ro_area
    )
    (
       DEFAULT_COST cost = DEC
-   )? NEWLINE
+   )?
+   (
+      FILTER_LIST PREFIX prefix_list_name=VARIABLE
+      (
+        IN
+        | OUT
+      )
+   )?  NEWLINE
    (
       ro_common
       | roa_cost
