@@ -6,6 +6,20 @@ options {
    tokenVocab = CiscoLexer;
 }
 
+if_channel_group
+:
+	CHANNEL_GROUP num = DEC 
+	(
+		MODE 
+		(
+			ON
+			| ACTIVE
+			| PASSIVE
+		)
+	)? NEWLINE
+;
+	
+
 if_default_gw
 :
    DEFAULT_GW IP_ADDRESS NEWLINE
@@ -325,7 +339,6 @@ if_null_block
       | CARRIER_DELAY
       | CDP
       | CHANNEL
-      | CHANNEL_GROUP
       | CHANNEL_PROTOCOL
       | CLASS
       | CLNS
@@ -847,7 +860,8 @@ s_interface
       | POINT_TO_POINT
    )? NEWLINE
    (
-      if_default_gw
+   	  if_channel_group
+      | if_default_gw
       | if_description
       | if_hsrp
       | if_ip_proxy_arp
