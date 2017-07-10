@@ -11,6 +11,19 @@ if_autostate
    NO? AUTOSTATE NEWLINE
 ;
 
+if_channel_group
+:
+	CHANNEL_GROUP num = DEC 
+	(
+		MODE 
+		(
+			ON
+			| ACTIVE
+			| PASSIVE
+		)
+	)? NEWLINE
+;
+
 if_default_gw
 :
    DEFAULT_GW IP_ADDRESS NEWLINE
@@ -324,7 +337,6 @@ if_null_block
       | CARRIER_DELAY
       | CDP
       | CHANNEL
-      | CHANNEL_GROUP
       | CHANNEL_PROTOCOL
       | CLASS
       | CLNS
@@ -884,6 +896,7 @@ s_interface
    )? NEWLINE
    (
       if_autostate
+   	  | if_channel_group
       | if_default_gw
       | if_description
       | if_hsrp
