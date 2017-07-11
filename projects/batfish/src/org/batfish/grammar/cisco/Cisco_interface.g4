@@ -8,17 +8,18 @@ options {
 
 if_channel_group
 :
-	CHANNEL_GROUP num = DEC 
+	CHANNEL_GROUP num = DEC
 	(
-		MODE 
+		MODE
 		(
 			ON
 			| ACTIVE
 			| PASSIVE
+            | DESIRABLE
 		)
 	)? NEWLINE
 ;
-	
+
 
 if_default_gw
 :
