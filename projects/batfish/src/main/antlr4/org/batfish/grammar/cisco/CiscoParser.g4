@@ -592,6 +592,7 @@ ip_ssh_null
    (
       AUTHENTICATION_RETRIES
       | CLIENT
+      | LOGGING
       | PORT
       | SOURCE_INTERFACE
       | TIME_OUT
