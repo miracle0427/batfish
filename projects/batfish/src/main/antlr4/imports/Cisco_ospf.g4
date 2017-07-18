@@ -223,6 +223,7 @@ ro_null
       | MTU_IGNORE
       | NSF
       | NSR
+      | PRIORITY
       | RFC1583COMPATIBILITY
       | SNMP
       | TIMERS
