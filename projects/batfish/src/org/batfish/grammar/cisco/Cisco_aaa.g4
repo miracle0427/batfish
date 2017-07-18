@@ -208,7 +208,7 @@ aaa_accounting_system
 
 aaa_accounting_update
 :
-   UPDATE NEWINFO NEWLINE
+   UPDATE NEWINFO ~NEWLINE* NEWLINE
 ;
 
 aaa_authentication
