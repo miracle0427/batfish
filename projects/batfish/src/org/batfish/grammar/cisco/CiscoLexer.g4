@@ -2065,6 +2065,11 @@ DEMAND_CIRCUIT
    'demand-circuit'
 ;
 
+DENSE_MODE
+:
+   'dense-mode'
+;
+
 DENY
 :
    'deny'
@@ -2143,6 +2148,11 @@ DEVICE
 DEVICE_SENSOR
 :
    'device-sensor'
+;
+
+DISABLE_CONNECTED_CHECK
+:
+   'disable-connected-check'
 ;
 
 DISABLE_PEER_AS_CHECK
