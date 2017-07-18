@@ -458,6 +458,7 @@ if_null_block
                   BORDER
                   | BORDER_ROUTER
                   | BSR_BORDER
+                  | DENSE_MODE
                   | DR_PRIORITY
                   | PASSIVE
                   | QUERY_INTERVAL
@@ -473,6 +474,7 @@ if_null_block
             | RIP
             | ROUTE_CACHE
             | RSVP
+            | SAP
             | SDR
             | TCP
             | UNNUMBERED
