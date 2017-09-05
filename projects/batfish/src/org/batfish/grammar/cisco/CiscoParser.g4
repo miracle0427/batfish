@@ -2089,6 +2089,7 @@ stanza
    | rsvp_stanza
    | s_aaa
    | s_archive
+   | s_arp_access_list_extended
    | s_authentication
    | s_call_home
    | s_callhome
