@@ -32,6 +32,8 @@ public class RouteFilterList extends ComparableStructure<String> {
    public RouteFilterList(@JsonProperty(NAME_VAR) String name) {
       super(name);
       _lines = new ArrayList<>();
+      _deniedCache = Collections.newSetFromMap(new ConcurrentHashMap<>());
+      _permittedCache = Collections.newSetFromMap(new ConcurrentHashMap<>());
    }
 
    public void addLine(RouteFilterLine r) {
