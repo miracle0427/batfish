@@ -209,6 +209,7 @@ cip_null
    (
       DF_BIT
       | IKEV1
+      | NAT_TRANSPARENCY
       | SECURITY_ASSOCIATION
    ) ~NEWLINE* NEWLINE
 ;

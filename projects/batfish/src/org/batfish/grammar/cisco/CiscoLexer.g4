@@ -5276,6 +5276,11 @@ NAT_CONTROL
    'nat-control'
 ;
 
+NAT_TRANSPARENCY
+:
+   'nat-transparency'
+;
+
 NAT_TRAVERSAL
 :
    'nat-traversal'
