@@ -79,13 +79,15 @@ ss_host
       ss_host_use_vrf
       |
       (
-         ss_host_informs
-         | ss_host_traps
-         | ss_host_version
-      )* comm_or_username = variable_snmp_host
-      (
-         traps += variable_snmp_host
-      )*
+         ss_host_vrf?
+         (
+            ss_host_informs
+            | ss_host_traps
+         )? ss_host_version? comm_or_username = variable_snmp_host
+         (
+            traps += variable_snmp_host
+         )* 
+      )
    ) NEWLINE
 ;
 
@@ -113,6 +115,12 @@ ss_host_version
       | PRIV
    )?
 ;
+
+ss_host_vrf
+:
+   VRF vrf = variable
+;
+
 
 ss_null
 :
