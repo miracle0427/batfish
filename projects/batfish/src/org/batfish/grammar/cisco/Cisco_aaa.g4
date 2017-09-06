@@ -618,6 +618,9 @@ aaa_group_server_private
    )
    (
       PORT DEC
+   )?
+   (
+      KEY keytype = DEC key = variable
    )? NEWLINE
 ;
 
