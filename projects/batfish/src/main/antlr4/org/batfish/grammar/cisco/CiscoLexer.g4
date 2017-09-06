@@ -3364,6 +3364,11 @@ GLBP
    'glbp'
 ;
 
+GLOBAL
+:
+   'global'
+;
+
 GLOBALENFORCEPRIV
 :
    'globalEnforcePriv'
