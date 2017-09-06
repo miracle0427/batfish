@@ -522,7 +522,8 @@ ip_route_tail
       | prefix = IP_PREFIX
    )
    (
-      nexthopip = IP_ADDRESS
+      global = GLOBAL
+      | nexthopip = IP_ADDRESS
       | nexthopprefix = IP_PREFIX
       | nexthopint = interface_name
    )*
