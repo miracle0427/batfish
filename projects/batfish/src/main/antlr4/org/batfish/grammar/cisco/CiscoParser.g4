@@ -583,6 +583,7 @@ ip_sla_null
       | REQUEST_DATA_SIZE
       | SAMPLES_OF_HISTORY_KEPT
       | TAG
+      | TIMEOUT
       | TOS
       | UDP_JITTER
    ) ~NEWLINE* NEWLINE
