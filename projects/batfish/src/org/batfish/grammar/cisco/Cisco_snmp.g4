@@ -141,6 +141,7 @@ ss_null
       | MANAGER
       | MAX_IFINDEX_PER_MODULE
       | OVERLOAD_CONTROL
+      | PACKETSIZE
       | PRIORITY
       | PROTOCOL
       | QUEUE_LENGTH

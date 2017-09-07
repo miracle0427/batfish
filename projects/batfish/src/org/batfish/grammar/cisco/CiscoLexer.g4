@@ -5871,6 +5871,11 @@ PACKET
    'packet'
 ;
 
+PACKETSIZE
+:
+   'packetsize'
+;
+
 PACKET_TOO_BIG
 :
    'packet-too-big'
