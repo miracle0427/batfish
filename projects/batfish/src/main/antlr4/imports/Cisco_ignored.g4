@@ -872,6 +872,7 @@ null_single
       | SYSOPT
       | TAG_SWITCHING
       | TELNET
+      | TFTP_SERVER
       | THREAT_DETECTION
       | THU
       | TRANSLATE
