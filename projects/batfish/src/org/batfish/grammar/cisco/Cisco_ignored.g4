@@ -873,6 +873,7 @@ null_single
       | SYSTEM
       | TAG_SWITCHING
       | TELNET
+      | TFTP_SERVER
       | THREAT_DETECTION
       | THU
       | TRANSLATE
