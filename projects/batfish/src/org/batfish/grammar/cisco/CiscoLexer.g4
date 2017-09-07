@@ -8688,6 +8688,11 @@ TRAP_SOURCE
    'trap-source' -> pushMode ( M_Interface )
 ;
 
+TRAP_TIMEOUT
+:
+   'trap-timeout'
+;
+
 TRAPS
 :
    'traps'

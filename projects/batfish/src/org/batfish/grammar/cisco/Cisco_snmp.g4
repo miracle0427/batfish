@@ -148,6 +148,7 @@ ss_null
       | SOURCE_INTERFACE
       | TCP_SESSION
       | TRAP
+      | TRAP_TIMEOUT
       | TRAPS
       | USER
       | VIEW
