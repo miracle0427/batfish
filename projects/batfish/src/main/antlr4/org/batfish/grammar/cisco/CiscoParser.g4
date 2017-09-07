@@ -1184,7 +1184,24 @@ role_null
    NO?
    (
       DESCRIPTION
+      |
+      (
+         PERMIT
+         (
+            INTERFACE
+            | VLAN
+            | VRF
+         )
+      )
       | RULE
+      |
+      (
+         (
+            INTERFACE
+            | VLAN
+            | VRF
+         ) POLICY DENY
+      )
    ) ~NEWLINE* NEWLINE
 ;
 
