@@ -148,6 +148,7 @@ ss_null
       | QUEUE_LENGTH
       | TCP_SESSION
       | TRAP
+      | TRAP_TIMEOUT
       | TRAPS
       | USER
       | VIEW
