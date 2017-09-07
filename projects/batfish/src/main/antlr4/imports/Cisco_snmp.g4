@@ -35,7 +35,7 @@ s_snmp_server
 
 ss_community
 :
-   COMMUNITY name = variable
+   COMMUNITY DOLLAR? name = variable DOLLAR?
    (
       ssc_group
       | ssc_use_ipv4_acl
