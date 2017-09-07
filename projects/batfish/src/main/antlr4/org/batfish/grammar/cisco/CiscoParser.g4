@@ -81,7 +81,7 @@ cisco_configuration
    NEWLINE?
    (
       sl += stanza
-   )+ COLON? NEWLINE? EOF
+   )+ END? COLON? NEWLINE? EOF
 ;
 
 controller_null

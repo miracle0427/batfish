@@ -59,7 +59,6 @@ null_block
       | ENABLE
       | ENABLE_ACL_COUNTER
       | ENABLE_QOS_STATISTICS
-      | END
       | ETHERNET
       | EXCEPTION_SLAVE
       | EXIT
