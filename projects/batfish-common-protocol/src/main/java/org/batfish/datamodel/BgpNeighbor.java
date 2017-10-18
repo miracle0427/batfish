@@ -244,6 +244,8 @@ public final class BgpNeighbor extends ComparableStructure<Prefix> {
   /** The ip address of the containing router as reported to this peer */
   private Ip _localIp;
 
+  private MultipathEquivalentAsPathMatchMode _multipathEquivalentAsPathMatchMode;
+
   private Configuration _owner;
 
   /** The autonomous system number that the containing BGP process considers this peer to have. */
@@ -499,6 +501,10 @@ public final class BgpNeighbor extends ComparableStructure<Prefix> {
     return _localIp;
   }
 
+  public MultipathEquivalentAsPathMatchMode getMultipathEquivalentAsPathMatchMode() {
+    return _multipathEquivalentAsPathMatchMode;
+  }
+
   @JsonIgnore
   public Configuration getOwner() {
     return _owner;
@@ -645,6 +651,11 @@ public final class BgpNeighbor extends ComparableStructure<Prefix> {
   @JsonProperty(PROP_LOCAL_IP)
   public void setLocalIp(Ip localIp) {
     _localIp = localIp;
+  }
+
+  public void setMultipathEquivalentAsPathMatchMode(
+      MultipathEquivalentAsPathMatchMode multipathEquivalentAsPathMatchMode) {
+    _multipathEquivalentAsPathMatchMode = multipathEquivalentAsPathMatchMode;
   }
 
   @JsonProperty(PROP_OWNER)
