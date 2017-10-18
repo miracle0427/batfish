@@ -1954,6 +1954,11 @@
             "1" : "MISCELLANEOUS: Could not determine update source for BGP neighbor: '10.0.0.0'"
           }
         },
+        "nxos_bgp" : {
+          "Red flags" : {
+            "1" : "MISCELLANEOUS: Could not determine update source for BGP neighbor: '2.2.2.2'"
+          }
+        },
         "peer_template" : {
           "Red flags" : {
             "1" : "MISCELLANEOUS: Could not determine update source for BGP neighbor: '100.93.100.16'",

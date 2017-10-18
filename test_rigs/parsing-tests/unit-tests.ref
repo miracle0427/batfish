@@ -13035,7 +13035,7 @@
             "            BGP:'bgp'  <== mode:DEFAULT_MODE",
             "            BESTPATH:'bestpath'  <== mode:DEFAULT_MODE",
             "            AS_PATH:'as-path'  <== mode:DEFAULT_MODE",
-            "            VARIABLE:'confed'  <== mode:M_AsPath",
+            "            CONFED:'confed'  <== mode:M_AsPath",
             "            NEWLINE:'\\n'  <== mode:DEFAULT_MODE)))",
             "      (router_bgp_stanza_tail",
             "        (bgp_confederation_rb_stanza",
@@ -41921,10 +41921,25 @@
             "      DEC:'1'  <== mode:DEFAULT_MODE",
             "      NEWLINE:'\\n'  <== mode:DEFAULT_MODE",
             "      (router_bgp_stanza_tail",
+            "        (as_path_multipath_relax_rb_stanza",
+            "          BESTPATH:'bestpath'  <== mode:DEFAULT_MODE",
+            "          AS_PATH:'as-path'  <== mode:DEFAULT_MODE",
+            "          MULTIPATH_RELAX:'multipath-relax'  <== mode:M_AsPath",
+            "          NEWLINE:'\\n'  <== mode:DEFAULT_MODE))",
+            "      (router_bgp_stanza_tail",
             "        (compare_routerid_rb_stanza",
             "          BESTPATH:'bestpath'  <== mode:DEFAULT_MODE",
             "          COMPARE_ROUTERID:'compare-routerid'  <== mode:DEFAULT_MODE",
-            "          NEWLINE:'\\n'  <== mode:DEFAULT_MODE))))",
+            "          NEWLINE:'\\n'  <== mode:DEFAULT_MODE))",
+            "      (router_bgp_stanza_tail",
+            "        (neighbor_block_rb_stanza",
+            "          NEIGHBOR:'neighbor'  <== mode:DEFAULT_MODE",
+            "          IP_ADDRESS:'2.2.2.2'  <== mode:M_NEIGHBOR",
+            "          NEWLINE:'\\n'  <== mode:DEFAULT_MODE",
+            "          (remote_as_bgp_tail",
+            "            REMOTE_AS:'remote-as'  <== mode:DEFAULT_MODE",
+            "            DEC:'2'  <== mode:DEFAULT_MODE",
+            "            NEWLINE:'\\n'  <== mode:DEFAULT_MODE)))))",
             "  EOF:<EOF>  <== mode:DEFAULT_MODE)"
           ]
         },
@@ -47479,6 +47494,11 @@
         "non_nexus_neighbor_af" : {
           "Red flags" : {
             "1" : "MISCELLANEOUS: Could not determine update source for BGP neighbor: '10.0.0.0'"
+          }
+        },
+        "nxos_bgp" : {
+          "Red flags" : {
+            "1" : "MISCELLANEOUS: Could not determine update source for BGP neighbor: '2.2.2.2'"
           }
         },
         "peer_template" : {
