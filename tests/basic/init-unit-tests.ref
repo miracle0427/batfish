@@ -1909,9 +1909,7 @@
         },
         "juniper_bgp" : {
           "Red flags" : {
-            "1" : "MISCELLANEOUS: BGP BROKEN FOR THIS ROUTER: Cannot determine local autonomous system",
-            "2" : "MISCELLANEOUS: Missing local-as for neighbor: 1.2.3.5",
-            "3" : "MISCELLANEOUS: Missing local-as for neighbor: 3.4.5.6"
+            "1" : "MISCELLANEOUS: Could not determine local ip for bgp peering with neighbor ip: 3.4.5.6"
           }
         },
         "juniper_bgp_authentication" : {

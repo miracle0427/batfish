@@ -35673,6 +35673,27 @@
             "                GROUP:'group'  <== mode:DEFAULT_MODE",
             "                (variable",
             "                  VARIABLE:'someinternalipv4group'  <== mode:M_VarOrWildcard)",
+            "                (b_neighbor",
+            "                  NEIGHBOR:'neighbor'  <== mode:DEFAULT_MODE",
+            "                  IP_ADDRESS:'1.2.3.5'  <== mode:DEFAULT_MODE",
+            "                  (b_common",
+            "                    (b_multipath",
+            "                      MULTIPATH:'multipath'  <== mode:DEFAULT_MODE",
+            "                      MULTIPLE_AS:'multiple-as'  <== mode:DEFAULT_MODE)))))))))",
+            "    NEWLINE:'\\n'  <== mode:DEFAULT_MODE)",
+            "  (set_line",
+            "    SET:'set'  <== mode:DEFAULT_MODE",
+            "    (set_line_tail",
+            "      (statement",
+            "        (s_common",
+            "          (s_protocols",
+            "            PROTOCOLS:'protocols'  <== mode:DEFAULT_MODE",
+            "            (p_bgp",
+            "              BGP:'bgp'  <== mode:DEFAULT_MODE",
+            "              (b_group",
+            "                GROUP:'group'  <== mode:DEFAULT_MODE",
+            "                (variable",
+            "                  VARIABLE:'someinternalipv4group'  <== mode:M_VarOrWildcard)",
             "                (b_common",
             "                  (b_peer_as",
             "                    PEER_AS:'peer-as'  <== mode:DEFAULT_MODE",
@@ -35881,6 +35902,18 @@
             "                  PATH_SELECTION:'path-selection'  <== mode:DEFAULT_MODE",
             "                  (bps_external_router_id",
             "                    EXTERNAL_ROUTER_ID:'external-router-id'  <== mode:DEFAULT_MODE))))))))",
+            "    NEWLINE:'\\n'  <== mode:DEFAULT_MODE)",
+            "  (set_line",
+            "    SET:'set'  <== mode:DEFAULT_MODE",
+            "    (set_line_tail",
+            "      (statement",
+            "        (s_common",
+            "          (s_routing_options",
+            "            ROUTING_OPTIONS:'routing-options'  <== mode:DEFAULT_MODE",
+            "            (ro_autonomous_system",
+            "              AUTONOMOUS_SYSTEM:'autonomous-system'  <== mode:DEFAULT_MODE",
+            "              DEC:'54321'  <== mode:DEFAULT_MODE",
+            "              (apply))))))",
             "    NEWLINE:'\\n'  <== mode:DEFAULT_MODE)",
             "  EOF:<EOF>  <== mode:DEFAULT_MODE)"
           ]
@@ -47451,9 +47484,7 @@
         },
         "juniper_bgp" : {
           "Red flags" : {
-            "1" : "MISCELLANEOUS: BGP BROKEN FOR THIS ROUTER: Cannot determine local autonomous system",
-            "2" : "MISCELLANEOUS: Missing local-as for neighbor: 1.2.3.5",
-            "3" : "MISCELLANEOUS: Missing local-as for neighbor: 3.4.5.6"
+            "1" : "MISCELLANEOUS: Could not determine local ip for bgp peering with neighbor ip: 3.4.5.6"
           }
         },
         "juniper_bgp_authentication" : {

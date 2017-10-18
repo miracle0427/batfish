@@ -10309,8 +10309,65 @@
             "default" : {
               "name" : "default",
               "bgpProcess" : {
-                "multipathEbgp" : false,
-                "multipathIbgp" : false,
+                "multipathEbgp" : true,
+                "multipathIbgp" : true,
+                "neighbors" : {
+                  "1.2.3.5/32" : {
+                    "name" : "1.2.3.5/32",
+                    "additionalPathsReceive" : false,
+                    "additionalPathsSelectAll" : false,
+                    "additionalPathsSend" : false,
+                    "address" : "1.2.3.5",
+                    "advertiseExternal" : false,
+                    "advertiseInactive" : false,
+                    "allowLocalAsIn" : false,
+                    "allowRemoteAsOut" : false,
+                    "authenticationSettings" : {
+                      "authenticationAlgorithm" : "HMAC_SHA_1_96"
+                    },
+                    "defaultMetric" : 0,
+                    "dynamic" : false,
+                    "ebgpMultihop" : false,
+                    "exportPolicy" : "~PEER_EXPORT_POLICY:1.2.3.5~",
+                    "group" : "someinternalipv4group",
+                    "importPolicy" : "~PEER_IMPORT_POLICY:1.2.3.5~",
+                    "localAs" : 54321,
+                    "localIp" : "1.2.3.4",
+                    "multipathEquivalentAsPathMatchMode" : "PATH_LENGTH",
+                    "remoteAs" : 54321,
+                    "remotePrefix" : "1.2.3.5/32",
+                    "routeReflectorClient" : false,
+                    "sendCommunity" : true,
+                    "vrf" : "default"
+                  },
+                  "3.4.5.6/32" : {
+                    "name" : "3.4.5.6/32",
+                    "additionalPathsReceive" : false,
+                    "additionalPathsSelectAll" : false,
+                    "additionalPathsSend" : false,
+                    "address" : "3.4.5.6",
+                    "advertiseExternal" : false,
+                    "advertiseInactive" : true,
+                    "allowLocalAsIn" : false,
+                    "allowRemoteAsOut" : false,
+                    "authenticationSettings" : {
+                      "authenticationAlgorithm" : "HMAC_SHA_1_96"
+                    },
+                    "defaultMetric" : 0,
+                    "dynamic" : false,
+                    "ebgpMultihop" : false,
+                    "exportPolicy" : "~PEER_EXPORT_POLICY:3.4.5.6~",
+                    "group" : "someipv4bgpgroup",
+                    "importPolicy" : "~PEER_IMPORT_POLICY:3.4.5.6~",
+                    "localAs" : 54321,
+                    "multipathEquivalentAsPathMatchMode" : "FIRST_AS",
+                    "remoteAs" : 12345,
+                    "remotePrefix" : "3.4.5.6/32",
+                    "routeReflectorClient" : false,
+                    "sendCommunity" : true,
+                    "vrf" : "default"
+                  }
+                },
                 "routerId" : "0.0.0.0",
                 "tieBreaker" : "ARRIVAL_ORDER"
               }
