@@ -1,0 +1,28 @@
+! This node receives 1.0.0.0/32 from r3a and forwards it to r7
+hostname r6a
+!
+interface Loopback0
+ ip address 6.0.0.1/32
+!
+interface Ethernet3/1
+ ip address 10.36.11.6/24
+ no shutdown
+!
+interface Ethernet7
+ ip address 10.67.1.6/24
+ no shutdown
+!
+route-map deny-all deny 100
+!
+router bgp 6
+ router-id 6.0.0.1
+ !
+ neighbor 10.36.11.3 remote-as 3
+ neighbor 10.36.11.3 route-map deny-all out
+ neighbor 10.36.11.3 activate
+ !
+ neighbor 10.67.1.7 remote-as 7
+ neighbor 10.67.1.7 route-map deny-all in
+ neighbor 10.67.1.7 activate
+!
+!

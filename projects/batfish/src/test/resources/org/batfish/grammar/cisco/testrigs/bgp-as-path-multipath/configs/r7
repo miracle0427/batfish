@@ -1,0 +1,48 @@
+! This node receives 1.0.0.0/32 from r5 [5,2,1], r6a [6,3,1], r6b {[6,3,1],[6,4,1]}
+! - With Cisco default, either 1 from AS5; or 1-2 from AS6.
+! - With Juniper default, either 1 from AS5; or 3 from AS6.
+! - With relax, 1 from AS5 AND 3 from AS6.
+hostname r7
+!
+interface Loopback0
+ ip address 7.0.0.0/32
+!
+interface Ethernet5
+ ip address 10.57.0.7/24
+ no shutdown
+!
+interface Ethernet6/1
+ ip address 10.67.1.7/24
+ no shutdown
+!
+interface Ethernet6/2
+ ip address 10.67.2.7/24
+ no shutdown
+!
+interface Ethernet6/3
+ ip address 10.67.3.7/24
+ no shutdown
+!
+route-map deny-all deny 100
+!
+router bgp 7
+ router-id 7.0.0.0
+ maximum-paths 100
+ !
+ neighbor 10.57.0.5 remote-as 5
+ neighbor 10.57.0.2 route-map deny-all out
+ neighbor 10.57.0.2 activate
+ !
+ neighbor 10.67.1.6 remote-as 6
+ neighbor 10.67.1.6 route-map deny-all out
+ neighbor 10.67.1.6 activate
+ !
+ neighbor 10.67.2.6 remote-as 6
+ neighbor 10.67.2.6 route-map deny-all out
+ neighbor 10.67.2.6 activate
+ !
+ neighbor 10.67.3.6 remote-as 6
+ neighbor 10.67.3.6 route-map deny-all out
+ neighbor 10.67.3.6 activate
+!
+!

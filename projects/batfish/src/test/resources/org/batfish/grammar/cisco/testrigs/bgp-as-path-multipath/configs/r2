@@ -1,0 +1,28 @@
+! This node receives 1.0.0.0/32 from r1 and forwards it to r5
+hostname r2
+!
+interface Loopback0
+ ip address 2.0.0.0/32
+!
+interface Ethernet1
+ ip address 10.12.0.2/24
+ no shutdown
+!
+interface Ethernet5
+ ip address 10.25.0.2/24
+ no shutdown
+!
+route-map deny-all deny 100
+!
+router bgp 2
+ router-id 2.0.0.0
+ !
+ neighbor 10.12.0.1 remote-as 1
+ neighbor 10.12.0.1 route-map deny-all out
+ neighbor 10.12.0.1 activate
+ !
+ neighbor 10.25.0.5 remote-as 5
+ neighbor 10.25.0.5 route-map deny-all in
+ neighbor 10.25.0.5 activate
+!
+!

@@ -14,6 +14,8 @@ import static org.junit.Assert.assertTrue;
 import com.google.common.collect.Lists;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -22,11 +24,13 @@ import java.util.Set;
 import java.util.SortedMap;
 import java.util.SortedSet;
 import java.util.TreeMap;
+import java.util.TreeSet;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import org.batfish.common.BatfishException;
 import org.batfish.common.BdpOscillationException;
 import org.batfish.datamodel.AbstractRoute;
+import org.batfish.datamodel.BgpNeighbor;
 import org.batfish.datamodel.BgpProcess;
 import org.batfish.datamodel.BgpRoute;
 import org.batfish.datamodel.Configuration;
@@ -36,6 +40,7 @@ import org.batfish.datamodel.Ip;
 import org.batfish.datamodel.IpAccessList;
 import org.batfish.datamodel.IpAccessListLine;
 import org.batfish.datamodel.LineAction;
+import org.batfish.datamodel.MultipathEquivalentAsPathMatchMode;
 import org.batfish.datamodel.OriginType;
 import org.batfish.datamodel.Prefix;
 import org.batfish.datamodel.Route;
@@ -161,6 +166,111 @@ public class BdpDataPlanePluginTest {
     _thrown.expect(BatfishException.class);
     _thrown.expectMessage("missing NAT address or pool");
     BdpDataPlanePlugin.applySourceNat(flow, singletonList(nat));
+  }
+
+  long numRoutesFromFirstAs(Collection<AbstractRoute> routes, int firstAs) {
+    return routes
+        .stream()
+        .filter(BgpRoute.class::isInstance)
+        .filter(
+            r ->
+                ((BgpRoute) r)
+                    .getAsPath()
+                    .getAsSets()
+                    .get(0)
+                    .equals(Collections.singleton(firstAs)))
+        .count();
+  }
+
+  public SortedSet<AbstractRoute> testBgpAsPathMultipath_helper(
+      MultipathEquivalentAsPathMatchMode multipathEquivalentAsPathMatchMode) throws IOException {
+
+    String testrigName = "bgp-as-path-multipath";
+    String[] configurationNames =
+        new String[] {"r1", "r2", "r3a", "r3b", "r4", "r5", "r6a", "r6b", "r6c", "r7"};
+    Batfish batfish =
+        BatfishTestUtils.getBatfishFromTestrigResource(
+            TESTRIGS_PREFIX + testrigName, configurationNames, null, null, null, null, _folder);
+    SortedMap<String, Configuration> configurations = batfish.loadConfigurations();
+    Configuration r7 = configurations.get("r7");
+    BgpProcess proc = r7.getDefaultVrf().getBgpProcess();
+    for (BgpNeighbor neighbor : proc.getNeighbors().values()) {
+      neighbor.setMultipathEquivalentAsPathMatchMode(multipathEquivalentAsPathMatchMode);
+    }
+    BdpDataPlanePlugin dataPlanePlugin = new BdpDataPlanePlugin();
+    dataPlanePlugin.initialize(batfish);
+    dataPlanePlugin.computeDataPlane(false);
+    SortedMap<String, SortedMap<String, SortedSet<AbstractRoute>>> routes =
+        dataPlanePlugin.getRoutes();
+    Prefix bgpPrefix = new Prefix("1.0.0.0/32");
+    SortedSet<AbstractRoute> r7Routes =
+        new TreeSet<>(
+            routes
+                .get("r7")
+                .get(Configuration.DEFAULT_VRF_NAME)
+                .stream()
+                .filter(r -> r.getNetwork().equals(bgpPrefix))
+                .collect(Collectors.toSet()));
+    return r7Routes;
+  }
+
+  @Test
+  public void testBgpAsPathMultipathExactPath() throws IOException {
+    SortedSet<AbstractRoute> r7Routes =
+        testBgpAsPathMultipath_helper(MultipathEquivalentAsPathMatchMode.EXACT_PATH);
+
+    long numRoutesFromAs5 = numRoutesFromFirstAs(r7Routes, 5);
+    long numRoutesFromAs6 = numRoutesFromFirstAs(r7Routes, 5);
+    boolean zeroRoutesFromAs5 = (numRoutesFromAs5 == 0L);
+    boolean zeroRoutesFromAs6 = (numRoutesFromAs6 == 0L);
+    boolean oneRouteFromAs5 = (numRoutesFromAs5 == 1L);
+    boolean oneRouteFromAs6 = (numRoutesFromAs6 == 1L);
+    boolean twoRoutesFromAs6 = (numRoutesFromAs6 == 2L);
+
+    /*
+     * Expect either:
+     * - 1 route from AS5 (if AS5 is best);
+     * OR
+     * - 1 route from AS6 (if path through r6c/r4 is best)
+     * OR
+     * - 2 routes from AS6 (if paths through r6a/r3a and r6b/r3b are best)
+     */
+    assertTrue(
+        (oneRouteFromAs5 && zeroRoutesFromAs6)
+            || (zeroRoutesFromAs5 && (oneRouteFromAs6 || twoRoutesFromAs6)));
+  }
+
+  @Test
+  public void testBgpAsPathMultipathFirstAs() throws IOException {
+    SortedSet<AbstractRoute> r7Routes =
+        testBgpAsPathMultipath_helper(MultipathEquivalentAsPathMatchMode.FIRST_AS);
+
+    long numRoutesFromAs5 = numRoutesFromFirstAs(r7Routes, 5);
+    long numRoutesFromAs6 = numRoutesFromFirstAs(r7Routes, 5);
+    boolean zeroRoutesFromAs5 = (numRoutesFromAs5 == 0L);
+    boolean zeroRoutesFromAs6 = (numRoutesFromAs6 == 0L);
+    boolean oneRouteFromAs5 = (numRoutesFromAs5 == 1L);
+    boolean threeRoutesFromAs6 = (numRoutesFromAs6 == 3L);
+
+    /*
+     * Expect either one route from AS5 (if AS5 is best), or three routes from AS6 (if AS6 is best)
+     */
+    assertTrue((oneRouteFromAs5 && zeroRoutesFromAs6) || (zeroRoutesFromAs5 && threeRoutesFromAs6));
+  }
+
+  @Test
+  public void testBgpAsPathMultipathPathLength() throws IOException {
+    SortedSet<AbstractRoute> r7Routes =
+        testBgpAsPathMultipath_helper(MultipathEquivalentAsPathMatchMode.PATH_LENGTH);
+
+    /*
+     * Expect 4 routes:
+     * - 1 route through r5
+     * - 1 route through r6a/r3a
+     * - 1 route through r6b/r3b
+     * - 1 route through r6c/r4
+     */
+    assertThat(r7Routes.size(), equalTo(4));
   }
 
   @Test
