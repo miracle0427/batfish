@@ -46,6 +46,7 @@ import org.batfish.datamodel.IpProtocol;
 import org.batfish.datamodel.IpWildcard;
 import org.batfish.datamodel.IsisInterfaceMode;
 import org.batfish.datamodel.LineAction;
+import org.batfish.datamodel.MultipathEquivalentAsPathMatchMode;
 import org.batfish.datamodel.OriginType;
 import org.batfish.datamodel.OspfArea;
 import org.batfish.datamodel.OspfMetricType;
@@ -1794,6 +1795,11 @@ public final class CiscoConfiguration extends VendorConfiguration {
     preFilterConditions.getDisjuncts().add(isIbgp);
 
     for (LeafBgpPeerGroup lpg : leafGroups) {
+      Boolean asPathMultipathRelax = lpg.getAsPathMultipathRelax();
+      MultipathEquivalentAsPathMatchMode multipathEquivalentAsPathMatchMode =
+          (asPathMultipathRelax != null && asPathMultipathRelax)
+              ? MultipathEquivalentAsPathMatchMode.PATH_LENGTH
+              : MultipathEquivalentAsPathMatchMode.EXACT_PATH;
       // update source
       String updateSourceInterface = lpg.getUpdateSource();
       boolean ipv4 = lpg.getNeighborPrefix() != null;
@@ -2069,6 +2075,7 @@ public final class CiscoConfiguration extends VendorConfiguration {
         }
         newNeighbor.setLocalAs(localAs);
         newNeighbor.setLocalIp(updateSource);
+        newNeighbor.setMultipathEquivalentAsPathMatchMode(multipathEquivalentAsPathMatchMode);
         newNeighbor.setExportPolicy(peerExportPolicyName);
         newNeighbor.setRemoteAs(lpg.getRemoteAs());
         newNeighbor.setSendCommunity(sendCommunity);

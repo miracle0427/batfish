@@ -36,6 +36,7 @@ import org.batfish.datamodel.IsisInterfaceMode;
 import org.batfish.datamodel.IsisProcess;
 import org.batfish.datamodel.IsoAddress;
 import org.batfish.datamodel.LineAction;
+import org.batfish.datamodel.MultipathEquivalentAsPathMatchMode;
 import org.batfish.datamodel.OriginType;
 import org.batfish.datamodel.OspfMetricType;
 import org.batfish.datamodel.OspfProcess;
@@ -291,6 +292,12 @@ public final class JuniperConfiguration extends VendorConfiguration {
       IpBgpGroup ig = e.getValue();
       BgpNeighbor neighbor = new BgpNeighbor(ip, _c);
       neighbor.setVrf(vrfName);
+      Boolean multipathMultipleAs = ig.getMultipathMultipleAs();
+      MultipathEquivalentAsPathMatchMode multipathEquivalentAsPathMatchMode =
+          (multipathMultipleAs != null && multipathMultipleAs)
+              ? MultipathEquivalentAsPathMatchMode.PATH_LENGTH
+              : MultipathEquivalentAsPathMatchMode.FIRST_AS;
+      neighbor.setMultipathEquivalentAsPathMatchMode(multipathEquivalentAsPathMatchMode);
       String authenticationKeyChainName = ig.getAuthenticationKeyChainName();
       if (ig.getAuthenticationKeyChainName() != null) {
         if (!_c.getAuthenticationKeyChains().containsKey(authenticationKeyChainName)) {

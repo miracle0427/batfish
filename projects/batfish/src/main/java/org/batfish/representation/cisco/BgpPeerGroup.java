@@ -23,6 +23,8 @@ public abstract class BgpPeerGroup implements Serializable {
 
   protected Boolean _allowAsIn;
 
+  private Boolean _asPathMultipathRelax;
+
   protected Ip _clusterId;
 
   protected Integer _defaultMetric;
@@ -131,6 +133,10 @@ public abstract class BgpPeerGroup implements Serializable {
 
   public Boolean getAllowAsIn() {
     return _allowAsIn;
+  }
+
+  public Boolean getAsPathMultipathRelax() {
+    return _asPathMultipathRelax;
   }
 
   public Ip getClusterId() {
@@ -351,6 +357,9 @@ public abstract class BgpPeerGroup implements Serializable {
     if (_allowAsIn == null) {
       _allowAsIn = pg.getAllowAsIn();
     }
+    if (_asPathMultipathRelax == null) {
+      _asPathMultipathRelax = pg.getAsPathMultipathRelax();
+    }
     if (_clusterId == null) {
       _clusterId = pg.getClusterId();
     }
@@ -471,6 +480,10 @@ public abstract class BgpPeerGroup implements Serializable {
 
   public void setAllowAsIn(boolean allowAsIn) {
     _allowAsIn = allowAsIn;
+  }
+
+  public void setAsPathMultipathRelax(Boolean asPathMultipathRelax) {
+    _asPathMultipathRelax = asPathMultipathRelax;
   }
 
   public void setClusterId(Ip ip) {
