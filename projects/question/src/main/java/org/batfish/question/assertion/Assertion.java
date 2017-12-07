@@ -1,61 +1,58 @@
 package org.batfish.question.assertion;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import org.batfish.common.BatfishException;
 import org.batfish.common.util.BatfishObjectMapper;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-
 public class Assertion {
 
-   private boolean _asPathList;
+  private boolean _asPathList;
 
-   private String _assertion;
+  private String _assertion;
 
-   private String _description;
+  private String _description;
 
-   private boolean _summary;
+  private boolean _summary;
 
-   public boolean getAsPathList() {
-      return _asPathList;
-   }
+  public boolean getAsPathList() {
+    return _asPathList;
+  }
 
-   public String getAssertion() {
-      return _assertion;
-   }
+  public String getAssertion() {
+    return _assertion;
+  }
 
-   public String getDescription() {
-      return _description;
-   }
+  public String getDescription() {
+    return _description;
+  }
 
-   public boolean getSummary() {
-      return _summary;
-   }
+  public boolean getSummary() {
+    return _summary;
+  }
 
-   public void setAsPathList(boolean asPathList) {
-      _asPathList = asPathList;
-   }
+  public void setAsPathList(boolean asPathList) {
+    _asPathList = asPathList;
+  }
 
-   public void setAssertion(String assertion) {
-      _assertion = assertion;
-   }
+  public void setAssertion(String assertion) {
+    _assertion = assertion;
+  }
 
-   public void setDescription(String description) {
-      _description = description;
-   }
+  public void setDescription(String description) {
+    _description = description;
+  }
 
-   public void setSummary(boolean summary) {
-      _summary = summary;
-   }
+  public void setSummary(boolean summary) {
+    _summary = summary;
+  }
 
-   @Override
-   public String toString() {
-      BatfishObjectMapper mapper = new BatfishObjectMapper(false);
-      try {
-         return mapper.writeValueAsString(this);
-      }
-      catch (JsonProcessingException e) {
-         throw new BatfishException("Could not map to JSON string", e);
-      }
-   }
-
+  @Override
+  public String toString() {
+    BatfishObjectMapper mapper = new BatfishObjectMapper(false);
+    try {
+      return mapper.writeValueAsString(this);
+    } catch (JsonProcessingException e) {
+      throw new BatfishException("Could not map to JSON string", e);
+    }
+  }
 }

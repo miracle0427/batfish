@@ -1,23 +1,20 @@
 package org.batfish.z3;
 
+import com.microsoft.z3.Context;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.microsoft.z3.Context;
+public abstract class SatQuerySynthesizer<KeyT> extends BaseQuerySynthesizer {
 
-public abstract class SatQuerySynthesizer<Key> extends BaseQuerySynthesizer {
+  protected final List<KeyT> _keys;
 
-   protected final List<Key> _keys;
+  public SatQuerySynthesizer() {
+    _keys = new ArrayList<>();
+  }
 
-   public SatQuerySynthesizer() {
-      _keys = new ArrayList<>();
-   }
+  public List<KeyT> getKeys() {
+    return _keys;
+  }
 
-   public List<Key> getKeys() {
-      return _keys;
-   }
-
-   public abstract NodProgram synthesizeBaseProgram(Synthesizer synthesizer,
-         Context ctx);
-
+  public abstract NodProgram synthesizeBaseProgram(Synthesizer synthesizer, Context ctx);
 }

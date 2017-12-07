@@ -3,207 +3,220 @@ package org.batfish.representation.juniper;
 import java.io.Serializable;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.SortedMap;
 import java.util.TreeMap;
-
 import org.batfish.datamodel.Ip;
 import org.batfish.datamodel.SnmpServer;
 
 public class RoutingInstance implements Serializable {
 
-   private static final double DEFAULT_OSPF_REFERENCE_BANDWIDTH = 1E9;
+  private static final double DEFAULT_OSPF_REFERENCE_BANDWIDTH = 1E9;
 
-   private static final String MASTER_INTERFACE_NAME = "MASTER_INTERFACE";
+  private static final String MASTER_INTERFACE_NAME = "MASTER_INTERFACE";
 
-   /**
-    *
-    */
-   private static final long serialVersionUID = 1L;
+  /** */
+  private static final long serialVersionUID = 1L;
 
-   private Integer _as;
+  private Integer _as;
 
-   private String _domainName;
+  private final SortedMap<String, DhcpRelayGroup> _dhcpRelayGroups;
 
-   private String _forwardingTableExportPolicy;
+  private final SortedMap<String, DhcpRelayServerGroup> _dhcpRelayServerGroups;
 
-   private int _forwardingTableExportPolicyLine;
+  private String _domainName;
 
-   private final Interface _globalMasterInterface;
+  private String _forwardingTableExportPolicy;
 
-   private String _hostname;
+  private int _forwardingTableExportPolicyLine;
 
-   private final Map<String, Interface> _interfaces;
+  private final Interface _globalMasterInterface;
 
-   private Map<Ip, IpBgpGroup> _ipBgpGroups;
+  private String _hostname;
 
-   private final IsisSettings _isisSettings;
+  private final Map<String, Interface> _interfaces;
 
-   private BgpGroup _masterBgpGroup;
+  private Map<Ip, IpBgpGroup> _ipBgpGroups;
 
-   private String _name;
+  private final IsisSettings _isisSettings;
 
-   private Map<String, NamedBgpGroup> _namedBgpGroups;
+  private BgpGroup _masterBgpGroup;
 
-   private final Map<String, NodeDevice> _nodeDevices;
+  private String _name;
 
-   private Map<Ip, OspfArea> _ospfAreas;
+  private Map<String, NamedBgpGroup> _namedBgpGroups;
 
-   private Map<String, Integer> _ospfExportPolicies;
+  private final Map<String, NodeDevice> _nodeDevices;
 
-   private double _ospfReferenceBandwidth;
+  private Map<Ip, OspfArea> _ospfAreas;
 
-   private final Map<String, RoutingInformationBase> _ribs;
+  private Map<String, Integer> _ospfExportPolicies;
 
-   private Ip _routerId;
+  private double _ospfReferenceBandwidth;
 
-   private SnmpServer _snmpServer;
+  private final Map<String, RoutingInformationBase> _ribs;
 
-   private final JuniperSystem _system;
+  private Ip _routerId;
 
-   public RoutingInstance(String name) {
-      _isisSettings = new IsisSettings();
-      _interfaces = new TreeMap<>();
-      _ipBgpGroups = new TreeMap<>();
-      _masterBgpGroup = new BgpGroup();
-      _masterBgpGroup.setMultipath(false);
-      _globalMasterInterface = new Interface(MASTER_INTERFACE_NAME, -1);
-      _globalMasterInterface.setRoutingInstance(name);
-      _name = name;
-      _namedBgpGroups = new TreeMap<>();
-      _nodeDevices = new TreeMap<>();
-      _ospfAreas = new TreeMap<>();
-      _ospfExportPolicies = new LinkedHashMap<>();
-      _ospfReferenceBandwidth = DEFAULT_OSPF_REFERENCE_BANDWIDTH;
-      _ribs = new TreeMap<>();
-      _ribs.put(RoutingInformationBase.RIB_IPV4_UNICAST,
-            new RoutingInformationBase(
-                  RoutingInformationBase.RIB_IPV4_UNICAST));
-      _ribs.put(RoutingInformationBase.RIB_IPV4_MULTICAST,
-            new RoutingInformationBase(
-                  RoutingInformationBase.RIB_IPV4_MULTICAST));
-      _ribs.put(RoutingInformationBase.RIB_IPV4_MPLS,
-            new RoutingInformationBase(RoutingInformationBase.RIB_IPV4_MPLS));
-      _ribs.put(RoutingInformationBase.RIB_IPV6_UNICAST,
-            new RoutingInformationBase(
-                  RoutingInformationBase.RIB_IPV6_UNICAST));
-      _ribs.put(RoutingInformationBase.RIB_MPLS,
-            new RoutingInformationBase(RoutingInformationBase.RIB_MPLS));
-      _ribs.put(RoutingInformationBase.RIB_ISIS,
-            new RoutingInformationBase(RoutingInformationBase.RIB_ISIS));
-      _system = new JuniperSystem();
-   }
+  private SnmpServer _snmpServer;
 
-   public Integer getAs() {
-      return _as;
-   }
+  private final JuniperSystem _system;
 
-   public String getDomainName() {
-      return _domainName;
-   }
+  public RoutingInstance(String name) {
+    _dhcpRelayGroups = new TreeMap<>();
+    _dhcpRelayServerGroups = new TreeMap<>();
+    _isisSettings = new IsisSettings();
+    _interfaces = new TreeMap<>();
+    _ipBgpGroups = new TreeMap<>();
+    _masterBgpGroup = new BgpGroup();
+    _masterBgpGroup.setMultipath(false);
+    _masterBgpGroup.setMultipathMultipleAs(false);
+    _globalMasterInterface = new Interface(MASTER_INTERFACE_NAME, -1);
+    _globalMasterInterface.setRoutingInstance(name);
+    _name = name;
+    _namedBgpGroups = new TreeMap<>();
+    _nodeDevices = new TreeMap<>();
+    _ospfAreas = new TreeMap<>();
+    _ospfExportPolicies = new LinkedHashMap<>();
+    _ospfReferenceBandwidth = DEFAULT_OSPF_REFERENCE_BANDWIDTH;
+    _ribs = new TreeMap<>();
+    _ribs.put(
+        RoutingInformationBase.RIB_IPV4_UNICAST,
+        new RoutingInformationBase(RoutingInformationBase.RIB_IPV4_UNICAST));
+    _ribs.put(
+        RoutingInformationBase.RIB_IPV4_MULTICAST,
+        new RoutingInformationBase(RoutingInformationBase.RIB_IPV4_MULTICAST));
+    _ribs.put(
+        RoutingInformationBase.RIB_IPV4_MPLS,
+        new RoutingInformationBase(RoutingInformationBase.RIB_IPV4_MPLS));
+    _ribs.put(
+        RoutingInformationBase.RIB_IPV6_UNICAST,
+        new RoutingInformationBase(RoutingInformationBase.RIB_IPV6_UNICAST));
+    _ribs.put(
+        RoutingInformationBase.RIB_MPLS,
+        new RoutingInformationBase(RoutingInformationBase.RIB_MPLS));
+    _ribs.put(
+        RoutingInformationBase.RIB_ISIS,
+        new RoutingInformationBase(RoutingInformationBase.RIB_ISIS));
+    _system = new JuniperSystem();
+  }
 
-   public String getForwardingTableExportPolicy() {
-      return _forwardingTableExportPolicy;
-   }
+  public Integer getAs() {
+    return _as;
+  }
 
-   public int getForwardingTableExportPolicyLine() {
-      return _forwardingTableExportPolicyLine;
-   }
+  public SortedMap<String, DhcpRelayGroup> getDhcpRelayGroups() {
+    return _dhcpRelayGroups;
+  }
 
-   public Interface getGlobalMasterInterface() {
-      return _globalMasterInterface;
-   }
+  public SortedMap<String, DhcpRelayServerGroup> getDhcpRelayServerGroups() {
+    return _dhcpRelayServerGroups;
+  }
 
-   public String getHostname() {
-      return _hostname;
-   }
+  public String getDomainName() {
+    return _domainName;
+  }
 
-   public Map<String, Interface> getInterfaces() {
-      return _interfaces;
-   }
+  public String getForwardingTableExportPolicy() {
+    return _forwardingTableExportPolicy;
+  }
 
-   public Map<Ip, IpBgpGroup> getIpBgpGroups() {
-      return _ipBgpGroups;
-   }
+  public int getForwardingTableExportPolicyLine() {
+    return _forwardingTableExportPolicyLine;
+  }
 
-   public IsisSettings getIsisSettings() {
-      return _isisSettings;
-   }
+  public Interface getGlobalMasterInterface() {
+    return _globalMasterInterface;
+  }
 
-   public BgpGroup getMasterBgpGroup() {
-      return _masterBgpGroup;
-   }
+  public String getHostname() {
+    return _hostname;
+  }
 
-   public String getName() {
-      return _name;
-   }
+  public Map<String, Interface> getInterfaces() {
+    return _interfaces;
+  }
 
-   public Map<String, NamedBgpGroup> getNamedBgpGroups() {
-      return _namedBgpGroups;
-   }
+  public Map<Ip, IpBgpGroup> getIpBgpGroups() {
+    return _ipBgpGroups;
+  }
 
-   public Map<String, NodeDevice> getNodeDevices() {
-      return _nodeDevices;
-   }
+  public IsisSettings getIsisSettings() {
+    return _isisSettings;
+  }
 
-   public Map<Ip, OspfArea> getOspfAreas() {
-      return _ospfAreas;
-   }
+  public BgpGroup getMasterBgpGroup() {
+    return _masterBgpGroup;
+  }
 
-   public Map<String, Integer> getOspfExportPolicies() {
-      return _ospfExportPolicies;
-   }
+  public String getName() {
+    return _name;
+  }
 
-   public double getOspfReferenceBandwidth() {
-      return _ospfReferenceBandwidth;
-   }
+  public Map<String, NamedBgpGroup> getNamedBgpGroups() {
+    return _namedBgpGroups;
+  }
 
-   public Map<String, RoutingInformationBase> getRibs() {
-      return _ribs;
-   }
+  public Map<String, NodeDevice> getNodeDevices() {
+    return _nodeDevices;
+  }
 
-   public Ip getRouterId() {
-      return _routerId;
-   }
+  public Map<Ip, OspfArea> getOspfAreas() {
+    return _ospfAreas;
+  }
 
-   public SnmpServer getSnmpServer() {
-      return _snmpServer;
-   }
+  public Map<String, Integer> getOspfExportPolicies() {
+    return _ospfExportPolicies;
+  }
 
-   public JuniperSystem getSystem() {
-      return _system;
-   }
+  public double getOspfReferenceBandwidth() {
+    return _ospfReferenceBandwidth;
+  }
 
-   public void setAs(int as) {
-      _as = as;
-   }
+  public Map<String, RoutingInformationBase> getRibs() {
+    return _ribs;
+  }
 
-   public void setDomainName(String domainName) {
-      _domainName = domainName;
-   }
+  public Ip getRouterId() {
+    return _routerId;
+  }
 
-   public void setForwardingTableExportPolicy(
-         String forwardingTableExportPolicy) {
-      _forwardingTableExportPolicy = forwardingTableExportPolicy;
-   }
+  public SnmpServer getSnmpServer() {
+    return _snmpServer;
+  }
 
-   public void setForwardingTableExportPolicyLine(
-         int forwardingTableExportPolicyLine) {
-      _forwardingTableExportPolicyLine = forwardingTableExportPolicyLine;
-   }
+  public JuniperSystem getSystem() {
+    return _system;
+  }
 
-   public void setHostname(String hostname) {
-      _hostname = hostname;
-   }
+  public void setAs(int as) {
+    _as = as;
+  }
 
-   public void setOspfReferenceBandwidth(double ospfReferenceBandwidth) {
-      _ospfReferenceBandwidth = ospfReferenceBandwidth;
-   }
+  public void setDomainName(String domainName) {
+    _domainName = domainName;
+  }
 
-   public void setRouterId(Ip routerId) {
-      _routerId = routerId;
-   }
+  public void setForwardingTableExportPolicy(String forwardingTableExportPolicy) {
+    _forwardingTableExportPolicy = forwardingTableExportPolicy;
+  }
 
-   public void setSnmpServer(SnmpServer snmpServer) {
-      _snmpServer = snmpServer;
-   }
+  public void setForwardingTableExportPolicyLine(int forwardingTableExportPolicyLine) {
+    _forwardingTableExportPolicyLine = forwardingTableExportPolicyLine;
+  }
 
+  public void setHostname(String hostname) {
+    _hostname = hostname;
+  }
+
+  public void setOspfReferenceBandwidth(double ospfReferenceBandwidth) {
+    _ospfReferenceBandwidth = ospfReferenceBandwidth;
+  }
+
+  public void setRouterId(Ip routerId) {
+    _routerId = routerId;
+  }
+
+  public void setSnmpServer(SnmpServer snmpServer) {
+    _snmpServer = snmpServer;
+  }
 }

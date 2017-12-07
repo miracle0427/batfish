@@ -4,10 +4,6 @@ options {
    superClass = 'org.batfish.grammar.BatfishLexer';
 }
 
-@header {
-package org.batfish.grammar.flatjuniper;
-}
-
 @members {
 boolean enableIPV6_ADDRESS = true;
 boolean enableIP_ADDRESS = true;
@@ -70,6 +66,11 @@ ACCOUNTING
 ACTIVE
 :
    'active'
+;
+
+ACTIVE_SERVER_GROUP
+:
+   'active-server-group'
 ;
 
 ADD
@@ -147,6 +148,11 @@ AES_128_CBC
    'aes-128-cbc'
 ;
 
+AES_128_CMAC_96
+:
+   'aes-128-cmac-96'
+;
+
 AES_192_CBC
 :
    'aes-192-cbc'
@@ -165,6 +171,11 @@ AH
 ALG
 :
    'alg'
+;
+
+ALGORITHM
+:
+   'algorithm'
 ;
 
 ALIAS
@@ -332,6 +343,16 @@ AUTHENTICATION_KEY
    'authentication-key'
 ;
 
+AUTHENTICATION_KEY_CHAIN
+:
+   'authentication-key-chain'
+;
+
+AUTHENTICATION_KEY_CHAINS
+:
+   'authentication-key-chains'
+;
+
 AUTHENTICATION_METHOD
 :
    'authentication-method'
@@ -415,6 +436,11 @@ BMP
 BOOT_SERVER
 :
    'boot-server'
+;
+
+BOOTP
+:
+   'bootp'
 ;
 
 BOOTPC
@@ -726,6 +752,11 @@ DHCP
    'dhcp'
 ;
 
+DHCP_RELAY
+:
+   'dhcp-relay'
+;
+
 DIRECT
 :
    'direct'
@@ -841,9 +872,19 @@ ENCAPSULATION
    'encapsulation'
 ;
 
+ENCRYPTED_PASSWORD
+:
+   'encrypted-password'
+;
+
 ENCRYPTION_ALGORITHM
 :
    'encryption-algorithm'
+;
+
+ENHANCED_HASH_KEY
+:
+   'enhanced-hash-key'
 ;
 
 ESP
@@ -1021,6 +1062,11 @@ FOREVER
    'forever'
 ;
 
+FORWARD_SNOOPED_CLIENTS
+:
+    'forward-snooped-clients'
+;
+
 FORWARDING
 :
    'forwarding'
@@ -1156,6 +1202,11 @@ GROUPS
    'groups'
 ;
 
+HASH_KEY
+:
+   'hash-key'
+;
+
 HELLO_AUTHENTICATION_KEY
 :
    'hello-authentication-key'
@@ -1176,6 +1227,11 @@ HELLO_PADDING
    'hello-padding'
 ;
 
+HELPERS
+:
+   'helpers'
+;
+
 HIGH
 :
    'high'
@@ -1186,9 +1242,19 @@ HMAC_MD5_96
    'hmac-md5-96'
 ;
 
+HMAC_SHA1
+:
+   'hmac-sha-1'
+;
+
 HMAC_SHA1_96
 :
    'hmac-sha1-96'
+;
+
+HMAC_SHA_1_96
+:
+   'hmac-sha-1-96'
 ;
 
 HOLD_TIME
@@ -1574,6 +1640,11 @@ IS_FRAGMENT
 ISIS
 :
    'isis'
+;
+
+ISIS_ENHANCED
+:
+   'isis-enhanced'
 ;
 
 ISO
@@ -2556,9 +2627,19 @@ KERNEL
    'kernel'
 ;
 
+KEY
+:
+   'key'
+;
+
 KEYS
 :
    'keys'
+;
+
+KEY_CHAIN
+:
+   'key-chain'
 ;
 
 KLOGIN
@@ -3346,6 +3427,11 @@ OVERRIDE_METRIC
    'override-metric'
 ;
 
+OVERRIDES
+:
+   'overrides'
+;
+
 P2P
 :
    'p2p'
@@ -3519,6 +3605,11 @@ PORTS
 PORT_MIRROR
 :
    'port-mirror'
+;
+
+PORT_MIRRORING
+:
+   'port-mirroring'
 ;
 
 PORT_MODE
@@ -3806,6 +3897,11 @@ REJECT
    'reject'
 ;
 
+RELAY_AGENT_OPTION
+:
+   'relay-agent-option'
+;
+
 REMOTE
 :
    'remote'
@@ -4066,6 +4162,11 @@ SERVER
    'server'
 ;
 
+SERVER_GROUP
+:
+   'server-group'
+;
+
 SERVICE
 :
    'service'
@@ -4159,6 +4260,11 @@ SRLG_COST
 SRLG_VALUE
 :
    'srlg-value'
+;
+
+START_TIME
+:
+   'start-time'
 ;
 
 SMTP
@@ -4279,6 +4385,11 @@ STATION_ADDRESS
 STATION_PORT
 :
    'station-port'
+;
+
+STORM_CONTROL_PROFILES
+:
+   'storm-control-profiles'
 ;
 
 STP
@@ -4481,6 +4592,10 @@ TO
    'to'
 ;
 
+TOLERANCE
+:
+   'tolerance'
+;
 TO_ZONE
 :
    'to-zone'

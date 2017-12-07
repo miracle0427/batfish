@@ -1,9 +1,11 @@
 package org.batfish.representation.host;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
 import java.util.Set;
 import java.util.TreeSet;
-
 import org.batfish.common.Warnings;
 import org.batfish.datamodel.Configuration;
 import org.batfish.datamodel.Interface;
@@ -11,109 +13,115 @@ import org.batfish.datamodel.Ip;
 import org.batfish.datamodel.Prefix;
 import org.batfish.datamodel.Vrf;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 public class HostInterface implements Serializable {
 
-   private static final String BANDWIDTH_VAR = "bandwidth";
+  private static final String PROP_BANDWIDTH = "bandwidth";
 
-   private static final String GATEWAY_VAR = "gateway";
+  private static final String PROP_GATEWAY = "gateway";
 
-   private static final String NAME_VAR = "name";
+  private static final String PROP_NAME = "name";
 
-   private static final String OTHER_PREFIXES_VAR = "otherPrefixes";
+  private static final String PROP_OTHER_PREFIXES = "otherPrefixes";
 
-   private static final String PREFIX_VAR = "prefix";
+  private static final String PROP_PREFIX = "prefix";
 
-   /**
-    *
-    */
-   private static final long serialVersionUID = 1L;
+  private static final String PROP_VRF = "vrf";
 
-   private static final String VRF_VAR = "vrf";
+  /** */
+  private static final long serialVersionUID = 1L;
 
-   private Double _bandwidth = 1000 * 1000 * 1000.0; // default is 1 Gbps
+  private Double _bandwidth = 1000 * 1000 * 1000.0; // default is 1 Gbps
 
-   private Ip _gateway;
+  private transient String _canonicalName;
 
-   private String _name;
+  private Ip _gateway;
 
-   private Set<Prefix> _otherPrefixes;
+  private String _name;
 
-   private Prefix _prefix;
+  private Set<Prefix> _otherPrefixes;
 
-   private Vrf _vrf;
+  private Prefix _prefix;
 
-   @JsonCreator
-   public HostInterface(@JsonProperty(NAME_VAR) String name) {
-      _name = name;
-      _otherPrefixes = new TreeSet<>();
-   }
+  private Vrf _vrf;
 
-   @JsonProperty(BANDWIDTH_VAR)
-   public Double getBandwidth() {
-      return _bandwidth;
-   }
+  @JsonCreator
+  public HostInterface(@JsonProperty(PROP_NAME) String name) {
+    _name = name;
+    _otherPrefixes = new TreeSet<>();
+  }
 
-   @JsonProperty(GATEWAY_VAR)
-   public Ip getGateway() {
-      return _gateway;
-   }
+  @JsonProperty(PROP_BANDWIDTH)
+  public Double getBandwidth() {
+    return _bandwidth;
+  }
 
-   @JsonProperty(NAME_VAR)
-   public String getName() {
-      return _name;
-   }
+  @JsonIgnore
+  public String getCanonicalName() {
+    return _canonicalName;
+  }
 
-   @JsonProperty(OTHER_PREFIXES_VAR)
-   public Set<Prefix> getOtherPrefixes() {
-      return _otherPrefixes;
-   }
+  @JsonProperty(PROP_GATEWAY)
+  public Ip getGateway() {
+    return _gateway;
+  }
 
-   @JsonProperty(PREFIX_VAR)
-   public Prefix getPrefix() {
-      return _prefix;
-   }
+  @JsonProperty(PROP_NAME)
+  public String getName() {
+    return _name;
+  }
 
-   @JsonProperty(VRF_VAR)
-   public Vrf getVrf() {
-      return _vrf;
-   }
+  @JsonProperty(PROP_OTHER_PREFIXES)
+  public Set<Prefix> getOtherPrefixes() {
+    return _otherPrefixes;
+  }
 
-   @JsonProperty(BANDWIDTH_VAR)
-   public void setBandwidth(Double bandwidth) {
-      _bandwidth = bandwidth;
-   }
+  @JsonProperty(PROP_PREFIX)
+  public Prefix getPrefix() {
+    return _prefix;
+  }
 
-   @JsonProperty(GATEWAY_VAR)
-   public void setGateway(Ip gateway) {
-      _gateway = gateway;
-   }
+  @JsonProperty(PROP_VRF)
+  public Vrf getVrf() {
+    return _vrf;
+  }
 
-   @JsonProperty(OTHER_PREFIXES_VAR)
-   public void setOtherPrefixes(Set<Prefix> otherPrefixes) {
-      _otherPrefixes = otherPrefixes;
-   }
+  @JsonProperty(PROP_BANDWIDTH)
+  public void setBandwidth(Double bandwidth) {
+    _bandwidth = bandwidth;
+  }
 
-   @JsonProperty(PREFIX_VAR)
-   public void setPrefix(Prefix prefix) {
-      _prefix = prefix;
-   }
+  @JsonIgnore
+  public void setCanonicalName(String canonicalName) {
+    _canonicalName = canonicalName;
+  }
 
-   @JsonProperty(VRF_VAR)
-   public void setVrf(Vrf vrf) {
-      _vrf = vrf;
-   }
+  @JsonProperty(PROP_GATEWAY)
+  public void setGateway(Ip gateway) {
+    _gateway = gateway;
+  }
 
-   public Interface toInterface(Configuration configuration,
-         Warnings warnings) {
-      Interface iface = new Interface(_name, configuration);
-      iface.setBandwidth(_bandwidth);
-      iface.setPrefix(_prefix);
-      iface.getAllPrefixes().add(_prefix);
-      iface.getAllPrefixes().addAll(_otherPrefixes);
-      iface.setVrf(configuration.getDefaultVrf());
-      return iface;
-   }
+  @JsonProperty(PROP_OTHER_PREFIXES)
+  public void setOtherPrefixes(Set<Prefix> otherPrefixes) {
+    _otherPrefixes = otherPrefixes;
+  }
+
+  @JsonProperty(PROP_PREFIX)
+  public void setPrefix(Prefix prefix) {
+    _prefix = prefix;
+  }
+
+  @JsonProperty(PROP_VRF)
+  public void setVrf(Vrf vrf) {
+    _vrf = vrf;
+  }
+
+  public Interface toInterface(Configuration configuration, Warnings warnings) {
+    Interface iface = new Interface(_canonicalName, configuration);
+    iface.setBandwidth(_bandwidth);
+    iface.setPrefix(_prefix);
+    iface.getAllPrefixes().add(_prefix);
+    iface.getAllPrefixes().addAll(_otherPrefixes);
+    iface.setVrf(configuration.getDefaultVrf());
+    return iface;
+  }
 }

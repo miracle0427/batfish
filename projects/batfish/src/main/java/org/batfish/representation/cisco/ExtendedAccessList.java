@@ -2,51 +2,43 @@ package org.batfish.representation.cisco;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.batfish.common.util.DefinedStructure;
 
-import org.batfish.common.util.ComparableStructure;
+public class ExtendedAccessList extends DefinedStructure<String> {
 
-public class ExtendedAccessList extends ComparableStructure<String> {
+  private static final long serialVersionUID = 1L;
 
-   private static final long serialVersionUID = 1L;
+  private List<ExtendedAccessListLine> _lines;
 
-   private final int _definitionLine;
+  private StandardAccessList _parent;
 
-   private List<ExtendedAccessListLine> _lines;
+  public ExtendedAccessList(String id, int definitionLine) {
+    super(id, definitionLine);
+    _lines = new ArrayList<>();
+  }
 
-   private StandardAccessList _parent;
+  public void addLine(ExtendedAccessListLine all) {
+    _lines.add(all);
+  }
 
-   public ExtendedAccessList(String id, int definitionLine) {
-      super(id);
-      _definitionLine = definitionLine;
-      _lines = new ArrayList<>();
-   }
+  public List<ExtendedAccessListLine> getLines() {
+    return _lines;
+  }
 
-   public void addLine(ExtendedAccessListLine all) {
-      _lines.add(all);
-   }
+  public StandardAccessList getParent() {
+    return _parent;
+  }
 
-   public int getDefinitionLine() {
-      return _definitionLine;
-   }
+  public void setParent(StandardAccessList parent) {
+    _parent = parent;
+  }
 
-   public List<ExtendedAccessListLine> getLines() {
-      return _lines;
-   }
-
-   public StandardAccessList getParent() {
-      return _parent;
-   }
-
-   public void setParent(StandardAccessList parent) {
-      _parent = parent;
-   }
-
-   @Override
-   public String toString() {
-      String output = super.toString() + "\n" + "Identifier: " + _key;
-      for (ExtendedAccessListLine line : _lines) {
-         output += "\n" + line;
-      }
-      return output;
-   }
+  @Override
+  public String toString() {
+    String output = super.toString() + "\n" + "Identifier: " + _key;
+    for (ExtendedAccessListLine line : _lines) {
+      output += "\n" + line;
+    }
+    return output;
+  }
 }

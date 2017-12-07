@@ -1,90 +1,81 @@
 package org.batfish.question;
 
+import com.google.auto.service.AutoService;
 import java.util.SortedMap;
-
 import org.batfish.common.Answerer;
 import org.batfish.common.plugin.IBatfish;
+import org.batfish.common.plugin.Plugin;
 import org.batfish.datamodel.answers.AnswerElement;
 import org.batfish.datamodel.answers.ParseVendorConfigurationAnswerElement;
 import org.batfish.datamodel.questions.Question;
 
+@AutoService(Plugin.class)
 public class FileMapQuestionPlugin extends QuestionPlugin {
 
-   public static class FileMapAnswerElement implements AnswerElement {
+  public static class FileMapAnswerElement implements AnswerElement {
 
-      SortedMap<String, String> _fileMap;
+    SortedMap<String, String> _fileMap;
 
-      public SortedMap<String, String> getFileMap() {
-         return _fileMap;
-      }
+    public SortedMap<String, String> getFileMap() {
+      return _fileMap;
+    }
 
-      public void setFileMap(SortedMap<String, String> fileMap) {
-         _fileMap = fileMap;
-      }
+    public void setFileMap(SortedMap<String, String> fileMap) {
+      _fileMap = fileMap;
+    }
+  }
 
-   }
+  public static class FileMapAnswerer extends Answerer {
 
-   public static class FileMapAnswerer extends Answerer {
+    public FileMapAnswerer(Question question, IBatfish batfish) {
+      super(question, batfish);
+    }
 
-      public FileMapAnswerer(Question question, IBatfish batfish) {
-         super(question, batfish);
-      }
+    @Override
+    public FileMapAnswerElement answer() {
+      ParseVendorConfigurationAnswerElement pvcae =
+          _batfish.loadParseVendorConfigurationAnswerElement();
+      FileMapAnswerElement ae = new FileMapAnswerElement();
+      ae.setFileMap(pvcae.getFileMap());
+      return ae;
+    }
+  }
 
-      @Override
-      public FileMapAnswerElement answer() {
-         ParseVendorConfigurationAnswerElement pvcae = _batfish
-               .loadParseVendorConfigurationAnswerElement();
-         FileMapAnswerElement ae = new FileMapAnswerElement();
-         ae.setFileMap(pvcae.getFileMap());
-         return ae;
-      }
-   }
+  // <question_page_comment>
 
-   // <question_page_comment>
-   /**
-    * Outputs mapping of hostnames to filenames
-    *
-    * @type FileMap multifile
-    *
-    * @example bf_answer("filemap")
-    *
-    */
-   public static class FileMapQuestion extends Question {
+  /**
+   * Outputs mapping of hostnames to filenames
+   *
+   * @type FileMap multifile
+   * @example bf_answer("filemap")
+   */
+  public static class FileMapQuestion extends Question {
 
-      public FileMapQuestion() {
-      }
+    public FileMapQuestion() {}
 
-      @Override
-      public boolean getDataPlane() {
-         return false;
-      }
+    @Override
+    public boolean getDataPlane() {
+      return false;
+    }
 
-      @Override
-      public String getName() {
-         return "filemap";
-      }
+    @Override
+    public String getName() {
+      return "filemap";
+    }
 
-      @Override
-      public boolean getTraffic() {
-         return false;
-      }
+    @Override
+    public String prettyPrint() {
+      return getName();
+    }
+  }
 
-      @Override
-      public String prettyPrint() {
-         return getName();
-      }
+  @Override
+  protected FileMapAnswerer createAnswerer(Question question, IBatfish batfish) {
+    return new FileMapAnswerer(question, batfish);
+  }
 
-   }
-
-   @Override
-   protected FileMapAnswerer createAnswerer(Question question,
-         IBatfish batfish) {
-      return new FileMapAnswerer(question, batfish);
-   }
-
-   @Override
-   protected FileMapQuestion createQuestion() {
-      return new FileMapQuestion();
-   }
-
+  @Override
+  protected FileMapQuestion createQuestion() {
+    return new FileMapQuestion();
+  }
 }

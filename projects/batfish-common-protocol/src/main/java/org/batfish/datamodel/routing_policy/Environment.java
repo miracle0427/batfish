@@ -1,5 +1,7 @@
 package org.batfish.datamodel.routing_policy;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import org.batfish.datamodel.AbstractRoute;
 import org.batfish.datamodel.AbstractRoute6;
 import org.batfish.datamodel.AbstractRouteBuilder;
@@ -11,163 +13,178 @@ import org.batfish.datamodel.Vrf;
 
 public class Environment {
 
-   private boolean _buffered;
+  public enum Direction {
+    IN,
+    OUT
+  }
 
-   private boolean _callExprContext;
+  private boolean _buffered;
 
-   private boolean _callStatementContext;
+  private boolean _callExprContext;
 
-   private final Configuration _configuration;
+  private boolean _callStatementContext;
 
-   private boolean _defaultAction;
+  private final Configuration _configuration;
 
-   private String _defaultPolicy;
+  private boolean _defaultAction;
 
-   private boolean _error;
+  private String _defaultPolicy;
 
-   private BgpRoute.Builder _intermediateBgpAttributes;
+  private final Direction _direction;
 
-   private boolean _localDefaultAction;
+  private boolean _error;
 
-   private final AbstractRoute _originalRoute;
+  private BgpRoute.Builder _intermediateBgpAttributes;
 
-   private AbstractRoute6 _originalRoute6;
+  private boolean _localDefaultAction;
 
-   private final AbstractRouteBuilder<?> _outputRoute;
+  private final AbstractRoute _originalRoute;
 
-   private final Ip _peerAddress;
+  private AbstractRoute6 _originalRoute6;
 
-   private boolean _readFromIntermediateBgpAttributes;
+  private final AbstractRouteBuilder<?, ?> _outputRoute;
 
-   private final boolean _useOutputAttributes;
+  private final Ip _peerAddress;
 
-   private Vrf _vrf;
+  private boolean _readFromIntermediateBgpAttributes;
 
-   private boolean _writeToIntermediateBgpAttributes;
+  private final boolean _useOutputAttributes;
 
-   public Environment(Configuration configuration, String vrf,
-         AbstractRoute originalRoute, AbstractRoute6 originalRoute6,
-         AbstractRouteBuilder<?> outputRoute, Ip peerAddress) {
-      _configuration = configuration;
-      _vrf = configuration.getVrfs().get(vrf);
-      _originalRoute = originalRoute;
-      _outputRoute = outputRoute;
-      _peerAddress = peerAddress;
-      ConfigurationFormat format = _configuration.getConfigurationFormat();
-      _useOutputAttributes = format == ConfigurationFormat.JUNIPER
+  private Vrf _vrf;
+
+  private boolean _writeToIntermediateBgpAttributes;
+
+  public Environment(
+      @Nonnull Configuration configuration,
+      String vrf,
+      AbstractRoute originalRoute,
+      @Nullable AbstractRoute6 originalRoute6,
+      AbstractRouteBuilder<?, ?> outputRoute,
+      Ip peerAddress,
+      Direction direction) {
+    _configuration = configuration;
+    _direction = direction;
+    _vrf = configuration.getVrfs().get(vrf);
+    _originalRoute = originalRoute;
+    _originalRoute6 = originalRoute6;
+    _outputRoute = outputRoute;
+    _peerAddress = peerAddress;
+    ConfigurationFormat format = _configuration.getConfigurationFormat();
+    _useOutputAttributes =
+        format == ConfigurationFormat.JUNIPER
             || format == ConfigurationFormat.JUNIPER_SWITCH
             || format == ConfigurationFormat.FLAT_JUNIPER;
-   }
+  }
 
-   public boolean getBuffered() {
-      return _buffered;
-   }
+  public boolean getBuffered() {
+    return _buffered;
+  }
 
-   public boolean getCallExprContext() {
-      return _callExprContext;
-   }
+  public boolean getCallExprContext() {
+    return _callExprContext;
+  }
 
-   public boolean getCallStatementContext() {
-      return _callStatementContext;
-   }
+  public boolean getCallStatementContext() {
+    return _callStatementContext;
+  }
 
-   public Configuration getConfiguration() {
-      return _configuration;
-   }
+  public Configuration getConfiguration() {
+    return _configuration;
+  }
 
-   public boolean getDefaultAction() {
-      return _defaultAction;
-   }
+  public boolean getDefaultAction() {
+    return _defaultAction;
+  }
 
-   public String getDefaultPolicy() {
-      return _defaultPolicy;
-   }
+  public String getDefaultPolicy() {
+    return _defaultPolicy;
+  }
 
-   public boolean getError() {
-      return _error;
-   }
+  public Direction getDirection() {
+    return _direction;
+  }
 
-   public BgpRoute.Builder getIntermediateBgpAttributes() {
-      return _intermediateBgpAttributes;
-   }
+  public boolean getError() {
+    return _error;
+  }
 
-   public boolean getLocalDefaultAction() {
-      return _localDefaultAction;
-   }
+  public BgpRoute.Builder getIntermediateBgpAttributes() {
+    return _intermediateBgpAttributes;
+  }
 
-   public AbstractRoute getOriginalRoute() {
-      return _originalRoute;
-   }
+  public boolean getLocalDefaultAction() {
+    return _localDefaultAction;
+  }
 
-   public AbstractRoute6 getOriginalRoute6() {
-      return _originalRoute6;
-   }
+  public AbstractRoute getOriginalRoute() {
+    return _originalRoute;
+  }
 
-   public AbstractRouteBuilder<?> getOutputRoute() {
-      return _outputRoute;
-   }
+  public AbstractRoute6 getOriginalRoute6() {
+    return _originalRoute6;
+  }
 
-   public Ip getPeerAddress() {
-      return _peerAddress;
-   }
+  public AbstractRouteBuilder<?, ?> getOutputRoute() {
+    return _outputRoute;
+  }
 
-   public boolean getReadFromIntermediateBgpAttributes() {
-      return _readFromIntermediateBgpAttributes;
-   }
+  public Ip getPeerAddress() {
+    return _peerAddress;
+  }
 
-   public boolean getUseOutputAttributes() {
-      return _useOutputAttributes;
-   }
+  public boolean getReadFromIntermediateBgpAttributes() {
+    return _readFromIntermediateBgpAttributes;
+  }
 
-   public Vrf getVrf() {
-      return _vrf;
-   }
+  public boolean getUseOutputAttributes() {
+    return _useOutputAttributes;
+  }
 
-   public boolean getWriteToIntermediateBgpAttributes() {
-      return _writeToIntermediateBgpAttributes;
-   }
+  public Vrf getVrf() {
+    return _vrf;
+  }
 
-   public void setBuffered(boolean buffered) {
-      _buffered = buffered;
-   }
+  public boolean getWriteToIntermediateBgpAttributes() {
+    return _writeToIntermediateBgpAttributes;
+  }
 
-   public void setCallExprContext(boolean callExprContext) {
-      _callExprContext = callExprContext;
-   }
+  public void setBuffered(boolean buffered) {
+    _buffered = buffered;
+  }
 
-   public void setCallStatementContext(boolean callStatementContext) {
-      _callStatementContext = callStatementContext;
-   }
+  public void setCallExprContext(boolean callExprContext) {
+    _callExprContext = callExprContext;
+  }
 
-   public void setDefaultAction(boolean defaultAction) {
-      _defaultAction = defaultAction;
-   }
+  public void setCallStatementContext(boolean callStatementContext) {
+    _callStatementContext = callStatementContext;
+  }
 
-   public void setDefaultPolicy(String defaultPolicy) {
-      _defaultPolicy = defaultPolicy;
-   }
+  public void setDefaultAction(boolean defaultAction) {
+    _defaultAction = defaultAction;
+  }
 
-   public void setError(boolean error) {
-      _error = error;
-   }
+  public void setDefaultPolicy(String defaultPolicy) {
+    _defaultPolicy = defaultPolicy;
+  }
 
-   public void setIntermediateBgpAttributes(
-         BgpRoute.Builder intermediateBgpAttributes) {
-      _intermediateBgpAttributes = intermediateBgpAttributes;
-   }
+  public void setError(boolean error) {
+    _error = error;
+  }
 
-   public void setLocalDefaultAction(boolean localDefaultAction) {
-      _localDefaultAction = localDefaultAction;
-   }
+  public void setIntermediateBgpAttributes(BgpRoute.Builder intermediateBgpAttributes) {
+    _intermediateBgpAttributes = intermediateBgpAttributes;
+  }
 
-   public void setReadFromIntermediateBgpAttributes(
-         boolean readFromIntermediateBgpAttributes) {
-      _readFromIntermediateBgpAttributes = readFromIntermediateBgpAttributes;
-   }
+  public void setLocalDefaultAction(boolean localDefaultAction) {
+    _localDefaultAction = localDefaultAction;
+  }
 
-   public void setWriteToIntermediateBgpAttributes(
-         boolean writeToIntermediateBgpAttributes) {
-      _writeToIntermediateBgpAttributes = writeToIntermediateBgpAttributes;
-   }
+  public void setReadFromIntermediateBgpAttributes(boolean readFromIntermediateBgpAttributes) {
+    _readFromIntermediateBgpAttributes = readFromIntermediateBgpAttributes;
+  }
 
+  public void setWriteToIntermediateBgpAttributes(boolean writeToIntermediateBgpAttributes) {
+    _writeToIntermediateBgpAttributes = writeToIntermediateBgpAttributes;
+  }
 }

@@ -1,14 +1,28 @@
 package org.batfish.common.plugin;
 
-public abstract class Plugin {
+public abstract class Plugin implements Comparable<Plugin> {
 
-   protected PluginConsumer _pluginConsumer;
+  protected PluginConsumer _pluginConsumer;
 
-   public final void initialize(PluginConsumer pluginConsumer) {
-      _pluginConsumer = pluginConsumer;
-      pluginInitialize();
-   }
+  @Override
+  public final int compareTo(Plugin o) {
+    return getClass().getCanonicalName().compareTo(o.getClass().getCanonicalName());
+  }
 
-   protected abstract void pluginInitialize();
+  @Override
+  public final boolean equals(Object obj) {
+    return obj != null && getClass().equals(obj.getClass());
+  }
 
+  @Override
+  public final int hashCode() {
+    return getClass().hashCode();
+  }
+
+  public final void initialize(PluginConsumer pluginConsumer) {
+    _pluginConsumer = pluginConsumer;
+    pluginInitialize();
+  }
+
+  protected abstract void pluginInitialize();
 }

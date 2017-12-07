@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 
-export BATFISH_ROOT="$($GNU_READLINK -f "$BATFISH_TOOLS_PATH/..")"
-export BATFISH_PATH="$BATFISH_ROOT/projects/batfish"
+export BATFISH_ROOT="$(dirname "$BATFISH_TOOLS_PATH")"
+export PROJECTS_PATH="$BATFISH_ROOT/projects"
+
+# Use Maven to print the current Batfish java version
+export BATFISH_VERSION="$(grep -1 batfish-parent "${PROJECTS_PATH}/pom.xml" | grep version | sed 's/[<>]/|/g' | cut -f3 -d\|)"
+
+export BATFISH_PATH="$PROJECTS_PATH/batfish"
 export BATFISH_TEST_RIG_PATH="$BATFISH_ROOT/test_rigs"
 export BATFISH="$BATFISH_PATH/batfish"
-export BATFISH_Z3=z3
-export BATFISH_Z3_DATALOG="$BATFISH_Z3 fixedpoint.engine=datalog fixedpoint.datalog.default_relation=doc fixedpoint.print_answer=true"
-export BATFISH_NLS=nls
-export BATFISH_PARALLEL='parallel --tag -v --eta --halt 2'
-export BATFISH_NESTED_PARALLEL='parallel --tag -v --halt 2 -j1'
 
-export BATFISH_CLIENT_PATH="$BATFISH_ROOT/projects/batfish-client"
+export BATFISH_CLIENT_PATH="$PROJECTS_PATH/batfish-client"
 export BATFISH_CLIENT="$BATFISH_CLIENT_PATH/batfish-client"
 
 export BATFISH_DOCS_ROOT="$BATFISH_ROOT/docs"
@@ -26,22 +26,22 @@ if [ -d "$BATFISH_ROOT/../pybatfish" ]; then
    export BATFISH_QUESTIONS_PAGE_SCRIPT="${PYBATFISH_ROOT}/questions_page.py"
 fi
 
-export COORDINATOR_PATH="$BATFISH_ROOT/projects/coordinator"
+export COORDINATOR_PATH="$PROJECTS_PATH/coordinator"
 export COORDINATOR="$COORDINATOR_PATH/coordinator"
 
-export ALLINONE_PATH="$BATFISH_ROOT/projects/allinone"
+export ALLINONE_PATH="$PROJECTS_PATH/allinone"
 export ALLINONE="$ALLINONE_PATH/allinone"
 
-export COMMON_PATH="$BATFISH_ROOT/projects/batfish-common-protocol"
-export COMMON_JAR="$COMMON_PATH/out/batfish-common-protocol.jar"
+export COMMON_PATH="$PROJECTS_PATH/batfish-common-protocol"
+export COMMON_JAR="$COMMON_PATH/target/batfish-common-protocol-${BATFISH_VERSION}.jar"
 
-export QUESTION_PATH="$BATFISH_ROOT/projects/question"
-export BATFISH_QUESTION_PLUGIN_DIR="$BATFISH_ROOT/projects/question/out"
+export QUESTION_PATH="$PROJECTS_PATH/question"
+export BATFISH_QUESTION_PLUGIN_DIR="$PROJECTS_PATH/question/target/"
 
-export ALLINONE_COMPLETION_FILE=$BATFISH_TOOLS_PATH/completion-allinone.tmp
-export BATFISH_COMPLETION_FILE=$BATFISH_TOOLS_PATH/completion-batfish.tmp
-export BATFISH_CLIENT_COMPLETION_FILE=$BATFISH_TOOLS_PATH/completion-batfish-client.tmp
-export COORDINATOR_COMPLETION_FILE=$BATFISH_TOOLS_PATH/completion-coordinator.tmp
+export ALLINONE_COMPLETION_FILE="$BATFISH_TOOLS_PATH/completion-allinone.tmp"
+export BATFISH_COMPLETION_FILE="$BATFISH_TOOLS_PATH/completion-batfish.tmp"
+export BATFISH_CLIENT_COMPLETION_FILE="$BATFISH_TOOLS_PATH/completion-batfish-client.tmp"
+export COORDINATOR_COMPLETION_FILE="$BATFISH_TOOLS_PATH/completion-coordinator.tmp"
 
 batfish() {
    # if cygwin, shift and replace each parameter
@@ -50,15 +50,7 @@ batfish() {
       local IGNORE_CURRENT_ARG=no;
       for i in $(seq 1 $NUMARGS); do
          local CURRENT_ARG=$1
-         if [ "$IGNORE_CURRENT_ARG" = "yes" ]; then
-            local NEW_ARG="$CURRENT_ARG"
-            local IGNORE_CURRENT_ARG=no
-         else
-            local NEW_ARG="$(cygpath -w -- $CURRENT_ARG)"
-         fi
-         if [ "$CURRENT_ARG" = "-logicdir" -o "$CURRENT_ARG" = "-workspace" ]; then
-            local IGNORE_CURRENT_ARG=yes
-         fi
+         local NEW_ARG="$(cygpath -w -- $CURRENT_ARG)"
          set -- "$@" "$NEW_ARG"
          shift
       done
@@ -70,61 +62,42 @@ batfish() {
 }
 export -f batfish
 
-batfish_answer_example_cp() {
-   batfish_date
-   echo ": START: Answer provided example question"
-   batfish_expect_args 3 $# || return 1
-   local BASE=$1
-   local ENVIRONMENT=$2
-   local QUESTIONNAME=$3
-   local QUESTION_SRC=$BATFISH_ROOT/example_questions/${QUESTIONNAME}.q
-   local QUESTION_DST_DIR=$BASE/questions/$QUESTIONNAME
-   local QUESTION_DST=$QUESTION_DST_DIR/question
-   mkdir -p $QUESTION_DST_DIR
-   cp $QUESTION_SRC $QUESTION_DST
-   batfish -autobasedir $BASE -env $ENVIRONMENT -answer -questionname $QUESTIONNAME -loglevel output
-   batfish_date
-   echo ": END: Answer provided example question"
-}
-export -f batfish_answer_example_cp
-
 batfish_build() {
    bash -c '_batfish_build "$@"' _batfish_build "$@" || return 1
-   if [ "$BATFISH_COMPLETION_FILE" -ot "$BATFISH_PATH/out/batfish.jar" -a -e "$BATFISH_PATH/out/batfish.jar" ]; then
+}
+export -f batfish_build
+
+_batfish_build() {
+   _pre_build || return 1
+   mvn install -pl batfish -am || return 1
+   if [ "$BATFISH_COMPLETION_FILE" -ot "$BATFISH_PATH/target/batfish-${BATFISH_VERSION}.jar" -a -e "$BATFISH_PATH/target/batfish-${BATFISH_VERSION}.jar" ]; then
       echo -n "Generating bash completion file (after batfish_build) ..."
       BATFISH_PRINT_CMDLINE=no batfish -help | grep -o '^ *-[a-zA-Z0-9]*' | tr -d ' ' | tr '\n' ' ' > "$BATFISH_COMPLETION_FILE"
       . "${BATFISH_TOOLS_PATH}/completion-batfish.sh"
       echo "OK"
    fi
 }
-export -f batfish_build
-
-_batfish_build() {
-   common_build || return 1
-   cd "$BATFISH_PATH"
-   ant "$@" || return 1
-}
 export -f _batfish_build
 
 batfish_build_all() {
    bash -c '_batfish_build_all "$@"' _batfish_build_all "$@" || return 1
-   if [ "$ALLINONE_COMPLETION_FILE" -ot "$ALLINONE_PATH/out/allinone.jar" -a -e "$ALLINONE_PATH/out/allinone.jar" ]; then
+   if [ "$ALLINONE_COMPLETION_FILE" -ot "$ALLINONE_PATH/target/allinone-${BATFISH_VERSION}.jar" -a -e "$ALLINONE_PATH/target/allinone-${BATFISH_VERSION}.jar" ]; then
       echo -n "Generating bash completion file for allinone (via batfish_build_all) ..."
       BATFISH_PRINT_CMDLINE=no allinone -help | grep -o '^ *-[a-zA-Z0-9]*' | tr -d ' ' | tr '\n' ' ' > "$ALLINONE_COMPLETION_FILE"
       . "${BATFISH_TOOLS_PATH}/completion-allinone.sh"
       echo "OK"
    fi
-   if [ "$BATFISH_COMPLETION_FILE" -ot "$BATFISH_PATH/out/batfish.jar" -a -e "$BATFISH_PATH/out/batfish.jar" ]; then
+   if [ "$BATFISH_COMPLETION_FILE" -ot "$BATFISH_PATH/target/batfish-${BATFISH_VERSION}.jar" -a -e "$BATFISH_PATH/target/batfish-${BATFISH_VERSION}.jar" ]; then
       echo -n "Generating bash completion file for batfish (via batfish_build_all) ..."
       BATFISH_PRINT_CMDLINE=no batfish -help | grep -o '^ *-[a-zA-Z0-9]*' | tr -d ' ' | tr '\n' ' ' > "$BATFISH_COMPLETION_FILE"
       echo "OK"
    fi
-   if [ "$BATFISH_CLIENT_COMPLETION_FILE" -ot "$BATFISH_CLIENT_PATH/out/batfish-client.jar" -a -e "$BATFISH_CLIENT_PATH/out/batfish-client.jar" ]; then
+   if [ "$BATFISH_CLIENT_COMPLETION_FILE" -ot "$BATFISH_CLIENT_PATH/target/batfish-client-${BATFISH_VERSION}.jar" -a -e "$BATFISH_CLIENT_PATH/target/batfish-client-${BATFISH_VERSION}.jar" ]; then
       echo -n "Generating bash completion file for batfish-client (via batfish_build_all) ..."
       BATFISH_PRINT_CMDLINE=no batfish_client -help | grep -o '^ *-[a-zA-Z0-9]*' | tr -d ' ' | tr '\n' ' ' > "$BATFISH_CLIENT_COMPLETION_FILE"
       echo "OK"
    fi
-   if [ "$COORDINATOR_COMPLETION_FILE" -ot "$COORDINATOR_PATH/out/coordinator.jar" -a -e "$COORDINATOR_PATH/out/coordinator.jar" ]; then
+   if [ "$COORDINATOR_COMPLETION_FILE" -ot "$COORDINATOR_PATH/target/coordinator-${BATFISH_VERSION}.jar" -a -e "$COORDINATOR_PATH/target/coordinator-${BATFISH_VERSION}.jar" ]; then
       echo -n "Generating bash completion file for coordinator (via batfish_build_all) ..."
       BATFISH_PRINT_CMDLINE=no coordinator -help | grep -o '^ *-[a-zA-Z0-9]*' | tr -d ' ' | tr '\n' ' ' > "$COORDINATOR_COMPLETION_FILE"
       echo "OK"
@@ -133,57 +106,35 @@ batfish_build_all() {
 export -f batfish_build_all
 
 _batfish_build_all() {
-   common_build "$@" || return 1
-   cd "$BATFISH_PATH"
-   ant "$@" || return 1
-   cd "$COORDINATOR_PATH"
-   ant "$@" || return 1
-   cd "$BATFISH_CLIENT_PATH"
-   ant "$@" || return 1
-   cd "$QUESTION_PATH"
-   ant "$@" || return 1  
-   cd "$ALLINONE_PATH"
-   ant "$@" || return 1  
+   _pre_build || return 1
+   cd "${PROJECTS_PATH}"
+   mvn install || return 1
 }
 export -f _batfish_build_all
 
-batfish_clone_environment() {
-   batfish_date
-   echo ": START: Clone environment"
-   batfish_expect_args 3 $# || return 1
-   local BASE=$1
-   local ENV_SRC=$2
-   local ENV_DST=$3
-   cp -a $BASE/environments/$ENV_SRC $BASE/environments/$ENV_DST
-   batfish_date
-   echo ": END: Clone environment"
+batfish_rebuild_all() {
+   bash -c '_batfish_rebuild_all "$@"' _batfish_rebuild_all "$@" || return 1
 }
-export -f batfish_clone_environment
+export -f batfish_rebuild_all
 
-batfish_compile() {
-   batfish_date
-   echo ": START: Compute the fixed point of the control plane"
-   batfish_expect_args 2 $# || return 1
-   local BASE=$1
-   local ENV=$2
-   batfish -autobasedir $BASE -env $ENV -cpfacts  -nlsdp || return 1
-   batfish_date
-   echo ": END: Compute the fixed point of the control plane"
+_batfish_rebuild_all() {
+   _pre_build || return 1
+   cd "${PROJECTS_PATH}"
+   mvn -DskipTests clean install || return 1
 }
-export -f batfish_compile
+export -f _batfish_rebuild_all
 
-batfish_compile_diff() {
-   batfish_date
-   echo ": START: Compute the fixed point of the control plane (differential)"
-   batfish_expect_args 3 $# || return 1
-   local BASE=$1
-   local ENV=$2
-   local DIFF_ENV=$3
-   batfish -autobasedir $BASE -env $ENV -diffenv $DIFF_ENV -cpfacts -nlsdp -diffactive || return 1
-   batfish_date
-   echo ": END: Compute the fixed point of the control plane (differential)"
+batfish_test_all() {
+   bash -c '_batfish_test_all "$@"' _batfish_test_all "$@" || return 1
 }
-export -f batfish_compile_diff
+export -f batfish_test_all
+
+_batfish_test_all() {
+   _pre_build || return 1
+   cd "${PROJECTS_PATH}"
+   mvn clean install -P '!fast' || return 1
+}
+export -f _batfish_test_all
 
 batfish_confirm() {
    # call with a prompt string or use a default
@@ -209,18 +160,6 @@ batfish_date() {
 }
 export -f batfish_date
 
-batfish_delete_workspace() {
-   batfish_date
-   echo ": START: Delete LogicBlox workspace"
-   batfish_expect_args 2 $# || return 1
-   local BASE=$1
-   local ENV=$2
-   batfish -autobasedir $BASE -env $ENV -deleteworkspace || return 1
-   batfish_date
-   echo ": END: Delete LogicBlox workspace"
-}
-export -f batfish_delete_workspace
-
 batfish_expect_args() {
    local EXPECTED_NUMARGS=$1
    local ACTUAL_NUMARGS=$2
@@ -241,22 +180,6 @@ batfish_expect_min_args() {
 }
 export -f batfish_expect_min_args
 
-batfish_format_flows() {
-   batfish_expect_args 1 $# || return 1
-   local DUMP_DIR=$1
-   tail -n+2 $DUMP_DIR/SetFlowOriginate | while read line;
-   do
-      local NODE=$(echo $line | cut -d'|' -f 1 )
-      local SRCIP=$(int_to_ip $(echo $line | cut -d'|' -f 2 ) )
-      local DSTIP=$(int_to_ip $(echo $line | cut -d'|' -f 3 ) )
-      local SRCPORT=$(echo $line | cut -d'|' -f 4)
-      local DSTPORT=$(echo $line | cut -d'|' -f 5)
-      local PROT=$(echo $line | cut -d'|' -f 6)
-      echo "Node=$NODE, SrcIp=$SRCIP, DstIp=$DSTIP, SrcPort=$SRCPORT, DstPort=$DSTPORT, IpProtocol=$PROT"
-   done > $DUMP_DIR/SetFlowOriginate.formatted
-}
-export -f batfish_format_flows
-
 batfish_javadocs() {
    echo "Generating batfish project javadocs"
    batfish_build_all doc
@@ -264,130 +187,9 @@ batfish_javadocs() {
    cp -r $BATFISH_PATH/doc $BATFISH_ROOT/doc/batfish/
    cp -r $BATFISH_CLIENT_PATH/doc $BATFISH_ROOT/doc/batfish-client/
    cp -r $COORDINATOR_PATH/doc $BATFISH_ROOT/doc/coordinator/
-   cp -r $ALLINONE_PATH/doc $BATFISH_ROOT/doc/coordinator/
+   cp -r $ALLINONE_PATH/doc $BATFISH_ROOT/doc/allinone/
 }
 export -f batfish_javadocs
-
-batfish_get_history() {
-   batfish_date
-   echo ": START: Get flow histories"
-   batfish_expect_args 4 $# || return 1
-   local BASE=$1
-   local ENV=$2
-   local QUESTIONNAME=$3
-   local RESULT=$4
-   batfish -autobasedir $BASE -env $ENV -questionname $QUESTIONNAME -history -logtee -loglevel output -logfile $RESULT || return 1
-   batfish_date
-   echo ": END: Get flow histories"
-}
-export -f batfish_get_history
-
-batfish_get_history_diff() {
-   batfish_date
-   echo ": START: Get flow"
-   batfish_expect_args 6 $# || return 1
-   local BASE=$1
-   local ENV=$2
-   local DIFF_ENV=$3
-   local QUESTIONNAME=$4
-   local RESULT=$5
-   local RESULT_JSON=$6
-   batfish -autobasedir $BASE -env $ENV -diffquestion -diffenv $DIFF_ENV -questionname $QUESTIONNAME -history -logtee -loglevel output -logfile $RESULT -answerjsonpath $RESULT_JSON || return 1
-   batfish_date
-   echo ": END: Get flow histories"
-}
-export -f batfish_get_history_diff
-
-batfish_get_history_diff_active() {
-   batfish_date
-   echo ": START: Get flow"
-   batfish_expect_args 6 $# || return 1
-   local BASE=$1
-   local ENV=$2
-   local DIFF_ENV=$3
-   local QUESTIONNAME=$4
-   local RESULT=$5
-   local RESULT_JSON=$6
-   batfish -autobasedir $BASE -env $ENV -diffactive -diffenv $DIFF_ENV -questionname $QUESTIONNAME -history -logtee -loglevel output -logfile $RESULT -answerjsonpath $RESULT_JSON || return 1
-   batfish_date
-   echo ": END: Get flow histories"
-}
-export -f batfish_get_history_diff_active
-
-batfish_get_topology_interfaces() {
-   batfish_date
-   echo ": START: Get topology interfaces"
-   batfish_expect_args 5 $# || return 1
-   local BASE=$1
-   local ENV=$2
-   local DIFF_ENV=$3
-   local QUESTIONNAME=$4
-   local RESULT=$5
-   batfish -autobasedir $BASE -env $ENV -diffenv $DIFF_ENV -questionname $QUESTIONNAME -getdiffhistory -logtee -loglevel output -logfile $RESULT || return 1
-   batfish_date
-   echo ": END: Get topology interfaces"
-}
-export -f batfish_get_topology_interfaces
-
-batfish_output_topology() {
-   batfish_expect_args 1 $# || return 1
-   local BASE=$1
-   batfish -autobasedir $BASE -synthesizetopology -loglevel output
-}
-export -f batfish_output_topology
-
-batfish_post_flows() {
-   batfish_date
-   echo ": START: Inject discovered packets into network model"
-   batfish_expect_args 3 $# || return 1
-   local BASE=$1
-   local ENV=$2
-   local QUESTIONNAME=$3
-   batfish -autobasedir $BASE -env $ENV -questionname $QUESTIONNAME -nlstraffic || return 1
-   batfish_date
-   echo ": END: Inject discovered packets into network model"
-}
-export -f batfish_post_flows
-
-batfish_post_flows_diff() {
-   batfish_date
-   echo ": START: Inject discovered packets into network model (differential)"
-   batfish_expect_args 4 $# || return 1
-   local BASE=$1
-   local ENV=$2
-   local DIFF_ENV=$3
-   local QUESTIONNAME=$4
-   batfish -autobasedir $BASE -env $ENV -diffenv $DIFF_ENV -diffquestion -questionname $QUESTIONNAME -nlstraffic || return 1
-   batfish_date
-   echo ": END: Inject discovered packets into network model (differential)"
-}
-export -f batfish_post_flows_diff
-
-batfish_post_flows_diff_active() {
-   batfish_date
-   echo ": START: Inject discovered packets into network model (use delta environment)"
-   batfish_expect_args 4 $# || return 1
-   local BASE=$1
-   local ENV=$2
-   local DIFF_ENV=$3
-   local QUESTIONNAME=$4
-   batfish -autobasedir $BASE -env $ENV -diffenv $DIFF_ENV -diffactive -questionname $QUESTIONNAME -nlstraffic || return 1
-   batfish_date
-   echo ": END: Inject discovered packets into network model (use delta environment)"
-}
-export -f batfish_post_flows_diff_active
-
-batfish_prepare_default_environment() {
-   batfish_date
-   echo ": START: Prepare default environment"
-   batfish_expect_args 2 $# || return 1
-   local BASE=$1
-   local ENV=$2
-   mkdir -p $BASE/environments/$ENV/env || return 1
-   batfish_date
-   echo ": END: Prepare default environment"
-}
-export -f batfish_prepare_default_environment
 
 batfish_prepare_test_rig() {
    batfish_date
@@ -396,252 +198,18 @@ batfish_prepare_test_rig() {
    local TEST_RIG=$1
    local BASE=$2
    local NAME=$3
-   mkdir -p $BASE/$NAME/testrig || return 1
-   mkdir -p $BASE/$NAME/environments/default/env_default
-   cp -r $TEST_RIG/. $BASE/$NAME/testrig/.
+   mkdir -p $BASE/testrigs/$NAME/testrig || return 1
+   mkdir -p $BASE/testrigs/$NAME/environments/default/env_default
+   cp -r $TEST_RIG/. $BASE/testrigs/$NAME/testrig/.
    batfish_date
    echo ": END: Prepare test-rig"
 }
 export -f batfish_prepare_test_rig
 
-batfish_print_symmetric_edges() {
-   batfish_expect_args 1 $# || return 1
-   local BASE=$1
-   batfish -autobasedir $BASE -printsymmetricedges -loglevel output
-}
-export -f batfish_print_symmetric_edges
-
-batfish_query_data_plane() {
-   batfish_date
-   echo ": START: Query data plane predicates"
-   batfish_expect_args 2 $# || return 1
-   local BASE=$1
-   local ENV=$2
-   batfish -autobasedir $BASE -env $ENV -dp || return 1
-   batfish_date
-   echo ": END: Query data plane predicates"
-}
-export -f batfish_query_data_plane
-
-batfish_query_data_plane_diff() {
-   batfish_date
-   echo ": START: Query data plane predicates (differential)"
-   batfish_expect_args 3 $# || return 1
-   local BASE=$1
-   local ENV=$2
-   local DIFF_ENV=$3
-   batfish -autobasedir $BASE -env $ENV -diffenv $DIFF_ENV -diffactive -dp || return 1
-   batfish_date
-   echo ": END: Query data plane predicates (differential)"
-}
-export -f batfish_query_data_plane_diff
-
-batfish_query_flows() {
-   batfish_date
-   echo ": START: Query flow results from LogicBlox"
-   batfish_expect_args 2 $# || return 1
-   local FLOW_RESULTS=$1
-   local WORKSPACE=$2
-   batfish -loglevel output -workspace $WORKSPACE -query -predicates \
-      Flow \
-      FlowAccepted \
-      FlowAllowedIn \
-      FlowAllowedOut \
-      FlowDeniedIn \
-      FlowDeniedOut \
-      FlowDropped \
-      FlowLoop \
-      FlowLost \
-      FlowMatchRoute \
-      FlowMultipathInconsistent \
-      FlowNeighborUnreachable \
-      FlowNoRoute \
-      FlowNullRouted \
-      FlowPathAcceptedEdge \
-      FlowPathDeniedInEdge \
-      FlowPathDeniedOutEdge \
-      FlowPathHistory \
-      FlowPathIntermediateEdge \
-      FlowPathNeighborUnreachableEdge \
-      FlowPathNoRouteEdge \
-      FlowPathNullRoutedEdge \
-      FlowPolicyDenied \
-      FlowReach \
-      FlowReachPolicyRoute \
-      FlowReachPostIn \
-      FlowReachPostInInterface \
-      FlowReachPostOutInterface \
-      FlowReachPreInInterface \
-      FlowReachPreOut \
-      FlowReachPreOutEdge \
-      FlowReachPreOutEdgeOrigin \
-      FlowReachPreOutEdgePolicyRoute \
-      FlowReachPreOutEdgeStandard \
-      FlowReachPreOutInterface \
-      FlowReachStep \
-      FlowRoleAccepted \
-      FlowRoleInconsistent \
-      FlowRoleTransitInconsistent \
-      FlowRoleTransitNode \
-      FlowSameHeaderRoleTransitNode \
-      FlowUnknown \
-      LanAdjacent \
-      > $FLOW_RESULTS || return 1
-   batfish_date
-   echo ": END: Query flow results from LogicBlox"
-}
-export -f batfish_query_flows
-
-batfish_query_ospf() {
-   batfish_date
-   echo ": START: Query ospf (informational only)"
-   batfish_expect_args 2 $# || return 1
-   local OSPF=$1
-   local WORKSPACE=$2
-   batfish -loglevel output -workspace $WORKSPACE -query -predicates \
-      BestOspfE1Route \
-      BestOspfE2Route \
-      BestOspfIARoute \
-      BestOspfRoute \
-      OspfE1Route \
-      OspfE2Route \
-      OspfExport \
-      OspfGeneratedRoute \
-      OspfIARoute \
-      OspfRoute \
-      SetOspfGeneratedRoute \
-      &> $OSPF
-   batfish_date
-   echo ": END: Query ospf (informational only)"
-}
-export -f batfish_query_ospf
-
-batfish_query_policy() {
-   batfish_date
-   echo ": START: Query policy (informational only)"
-   batfish_expect_args 2 $# || return 1
-   local POLICY=$1
-   local WORKSPACE=$2
-   batfish -loglevel output -workspace $WORKSPACE -query -predicates \
-      AsPathDenyAdvert \
-      AsPathLineMatchAs \
-      AsPathLineMatchAsAtBeginning \
-      AsPathLineMatchAsPair \
-      AsPathLineMatchAsPairAtBeginning \
-      AsPathLineMatchEmpty \
-      AsPathPermitAdvert \
-      PolicyMapDenyAdvert \
-      PolicyMapDenyRoute \
-      PolicyMapPermitAdvert \
-      PolicyMapPermitRoute \
-      &> $POLICY
-   batfish_date
-   echo ": END: Query policy (informational only)"
-}
-export -f batfish_query_policy
-
-batfish_query_predicate() {
-   [ "$#" -gt 2 ] || return 1
-   local BASE=$1
-   shift
-   local ENV=$1
-   shift
-   local PREDICATES="$@"
-   batfish -loglevel output -autobasedir $BASE -env $ENV -query -predicates $PREDICATES
-}
-export -f batfish_query_predicate
-
-batfish_query_routes() {
-   batfish_date
-   echo ": START: Query routes (informational only)"
-   batfish_expect_args 2 $# || return 1
-   local ROUTES=$1
-   local WORKSPACE=$2
-   batfish -loglevel output -workspace $WORKSPACE -query -predicates \
-      ActiveGeneratedRoute \
-      InstalledRoute \
-      &> $ROUTES
-   batfish_date
-   echo ": END: Query routes (informational only)"
-}
-export -f batfish_query_routes
-
 batfish_reload() {
    . $BATFISH_SOURCED_SCRIPT
 }
 export -f batfish_reload
-
-batfish_replace_symlinks() {
-   if batfish_cygwin; then
-      bash -c _batfish_replace_symlinks || return 1
-   fi
-}
-export -f batfish_replace_symlinks
-
-_batfish_replace_symlinks() {
-   if [[ "$CYGWIN" =~ .*winsymlinks:native.* ]]; then
-      return
-   fi
-   cd "$BATFISH_ROOT"
-   if [ -d ".git" ]; then
-      echo "(Cygwin workaround) Updating git index to ignore changes to symlinks"
-      git update-index --assume-unchanged $($GNU_FIND projects -type l) || return 1
-   fi
-   echo "(Cygwin workaround) Replacing symlinks"
-   $GNU_FIND projects -type l | parallel _batfish_replace_symlink "{}" \;
-   if [ "${PIPESTATUS[0]}" -ne 0 -o "${PIPESTATUS[1]}" -ne 0 ]; then
-      return 1
-   fi
-}
-export -f _batfish_replace_symlinks
-
-_batfish_replace_symlink() {
-   SYMLINK=$1
-   echo "SYMLINK=$SYMLINK"
-   TARGET="$($GNU_READLINK $SYMLINK)"
-   echo "TARGET=$TARGET"
-   ABSOLUTE_TARGET="$($GNU_READLINK -f $SYMLINK)"
-   echo "ABSOLUTE_TARGET=$ABSOLUTE_TARGET"
-   rm "$SYMLINK" || return 1
-   cp -a "$ABSOLUTE_TARGET" "$SYMLINK" || return 1
-}
-export -f _batfish_replace_symlink
-
-batfish_serialize_independent() {
-   batfish_date
-   echo ": START: Parse vendor structures and serialize vendor-independent structures"
-   batfish_expect_args 1 $# || return 1
-   local BASE=$1
-   batfish -autobasedir $BASE -si || return 1
-   batfish_date
-   echo ": END: Parse vendor structures and serialize vendor-independent structures"
-}
-export -f batfish_serialize_independent
-
-batfish_serialize_vendor() {
-   batfish_date
-   echo ": START: Parse vendor configuration files and serialize vendor structures"
-   batfish_expect_args 1 $# || return 1
-   local BASE=$1
-   batfish -autobasedir $BASE -sv -ee -throwparser -throwlexer -unimplementedsuppress || return 1
-   batfish_date
-   echo ": END: Parse vendor configuration files and serialize vendor structures"
-}
-export -f batfish_serialize_vendor
-
-batfish_serialize_vendor_with_roles() {
-   batfish_date
-   echo ": START: Parse vendor configuration files and serialize vendor structures"
-   batfish_expect_args 3 $# || return 1
-   local TEST_RIG=$1
-   local VENDOR_SERIAL_DIR=$2
-   local NODE_ROLES_PATH=$3
-   mkdir -p $VENDOR_SERIAL_DIR
-   batfish -testrig $TEST_RIG -sv -svpath $VENDOR_SERIAL_DIR -ee -nrpath $NODE_ROLES_PATH -throwparser -throwlexer || return 1
-   batfish_date
-   echo ": END: Parse vendor configuration files and serialize vendor structures"
-}
-export -f batfish_serialize_vendor_with_roles
 
 batfish_unit_tests_parser() {
    local UNIT_TEST_NAME=unit-tests
@@ -722,6 +290,11 @@ coordinator() {
 }
 export -f coordinator
 
+_pre_build() {
+  cd ${PROJECTS_PATH} || return 1
+}
+export -f _pre_build
+
 batfish_client() {
    # if cygwin, shift and replace each parameter
    if batfish_cygwin; then
@@ -746,10 +319,9 @@ client_build() {
 export -f client_build
 
 _client_build() {
-   common_build || return 1
-   cd "$BATFISH_CLIENT_PATH"
-   ant "$@" || return 1
-   if [ "$BATFISH_CLIENT_COMPLETION_FILE" -ot "$BATFISH_CLIENT_PATH/out/batfish-client.jar" -a -e "$BATFISH_CLIENT_PATH/out/batfish-client.jar" ]; then
+   _pre_build || return 1
+   mvn install -DskipTests -pl batfish-client -am || return 1
+   if [ "$BATFISH_CLIENT_COMPLETION_FILE" -ot "$BATFISH_CLIENT_PATH/target/batfish-client-${BATFISH_VERSION}.jar" -a -e "$BATFISH_CLIENT_PATH/target/batfish-client-${BATFISH_VERSION}.jar" ]; then
       echo -n "Generating bash completion file for batfish-client (via client_build) ..."
       BATFISH_PRINT_CMDLINE=no batfish_client -help | grep -o '^ *-[a-zA-Z0-9]*' | tr -d ' ' | tr '\n' ' ' > "$BATFISH_CLIENT_COMPLETION_FILE"
       echo "OK"
@@ -780,16 +352,9 @@ allinone_build() {
 }
 
 _allinone_build() {
-   common_build || return 1
-   cd "$BATFISH_PATH"
-   ant "$@" || return 1
-   cd "$COORDINATOR_PATH"
-   ant "$@" || return 1
-   cd "$BATFISH_CLIENT_PATH"
-   ant "$@" || return 1
-   cd "$ALLINONE_PATH"
-   ant "$@" || return 1
-   if [ "$ALLINONE_COMPLETION_FILE" -ot "$ALLINONE_PATH/out/allinone.jar" -a -e "$ALLINONE_PATH/out/allinone.jar" ]; then
+   _pre_build || return 1
+   mvn install -pl allinone -am || return 1
+   if [ "$ALLINONE_COMPLETION_FILE" -ot "$ALLINONE_PATH/target/allinone-${BATFISH_VERSION}.jar" -a -e "$ALLINONE_PATH/target/allinone-${BATFISH_VERSION}.jar" ]; then
       echo -n "Generating bash completion file for allinone (via allinone_build) ..."
       BATFISH_PRINT_CMDLINE=no allinone -help | grep -o '^ *-[a-zA-Z0-9]*' | tr -d ' ' | tr '\n' ' ' > "$ALLINONE_COMPLETION_FILE"
       . "${BATFISH_TOOLS_PATH}/completion-allinone.sh"
@@ -804,10 +369,9 @@ coordinator_build() {
 export -f coordinator_build
 
 _coordinator_build() {
-   common_build || return 1
-   cd "$COORDINATOR_PATH"
-   ant "$@" || return 1
-   if [ "$COORDINATOR_COMPLETION_FILE" -ot "$COORDINATOR_PATH/out/coordinator.jar" -a -e "$COORDINATOR_PATH/out/coordinator.jar" ]; then
+   _pre_build || return 1
+   mvn install -pl coordinator -am || return 1
+   if [ "$COORDINATOR_COMPLETION_FILE" -ot "$COORDINATOR_PATH/target/coordinator-${BATFISH_VERSION}.jar" -a -e "$COORDINATOR_PATH/target/coordinator-${BATFISH_VERSION}.jar" ]; then
       echo -n "Generating bash completion file for coordinator (via coordinator_build) ..."
       BATFISH_PRINT_CMDLINE=no coordinator -help | grep -o '^ *-[a-zA-Z0-9]*' | tr -d ' ' | tr '\n' ' ' > "$COORDINATOR_COMPLETION_FILE"
       echo "OK"
@@ -821,31 +385,8 @@ common_build() {
 export -f common_build
 
 _common_build() {
-   batfish_replace_symlinks || return 1
-   cd "$COMMON_PATH"
-   ant "$@" || return 1
+   _pre_build || return 1
+   mvn install -pl batfish-common-protocol -am || return 1
 }
 export -f _common_build
 
-batfish_tests_update() {
-   bash -c '_batfish_tests_update' _batfish_tests_update || return 1
-}
-export -f batfish_tests_update
-
-_batfish_tests_update() {
-   cd "$BATFISH_ROOT"
-   find -name '*.testout' | while read f; do mv $f "$(dirname "$f")/$(basename "$f" .testout)"; done
-}
-export -f _batfish_tests_update
-
-if batfish_cygwin; then
-   export ANT_BATFISH_PATH="$(cygpath -w "${BATFISH_PATH}")"
-   export ANT_BATFISH_CLIENT_PATH="$(cygpath -w "${BATFISH_CLIENT_PATH}")"
-   export ANT_COMMON_PATH="$(cygpath -w "${COMMON_PATH}")"
-   export BATFISH_JAVA_QUESTION_PLUGIN_DIR="$(cygpath -w "${BATFISH_QUESTION_PLUGIN_DIR}")"
-else
-   export ANT_BATFISH_PATH="${BATFISH_PATH}"
-   export ANT_BATFISH_CLIENT_PATH="${BATFISH_CLIENT_PATH}"
-   export ANT_COMMON_PATH="${COMMON_PATH}"
-   export BATFISH_JAVA_QUESTION_PLUGIN_DIR="${BATFISH_QUESTION_PLUGIN_DIR}"
-fi

@@ -3,151 +3,211 @@ package org.batfish.datamodel.vendor_family.cisco;
 import java.io.Serializable;
 import java.util.SortedMap;
 import java.util.TreeMap;
-
 import org.batfish.datamodel.SwitchportMode;
 
 public class CiscoFamily implements Serializable {
 
-   /**
-    *
-    */
-   private static final long serialVersionUID = 1L;
+  /** */
+  private static final long serialVersionUID = 1L;
 
-   private Aaa _aaa;
+  private Aaa _aaa;
 
-   private SortedMap<String, String> _banners;
+  private SortedMap<String, String> _banners;
 
-   private SwitchportMode _defaultSwitchportMode;
+  private Cable _cable;
 
-   private SortedMap<String, Boolean> _features;
+  private SwitchportMode _defaultSwitchportMode;
 
-   private String _hostname;
+  private SortedMap<String, DepiClass> _depiClasses;
 
-   private SortedMap<String, Line> _lines;
+  private SortedMap<String, DepiTunnel> _depiTunnels;
 
-   private Logging _logging;
+  private String _enableSecret;
 
-   private Ntp _ntp;
+  private SortedMap<String, Boolean> _features;
 
-   private Boolean _proxyArp;
+  private String _hostname;
 
-   private SortedMap<String, Service> _services;
+  private SortedMap<String, L2tpClass> _l2tpClasses;
 
-   private Sntp _sntp;
+  private SortedMap<String, Line> _lines;
 
-   private Boolean _sourceRoute;
+  private Logging _logging;
 
-   private SshSettings _ssh;
+  private Ntp _ntp;
 
-   public CiscoFamily() {
-      _banners = new TreeMap<>();
-      _features = new TreeMap<>();
-      _lines = new TreeMap<>();
-      _services = new TreeMap<>();
-   }
+  private Boolean _proxyArp;
 
-   public Aaa getAaa() {
-      return _aaa;
-   }
+  private SortedMap<String, Service> _services;
 
-   public SortedMap<String, String> getBanners() {
-      return _banners;
-   }
+  private Sntp _sntp;
 
-   public SwitchportMode getDefaultSwitchportMode() {
-      return _defaultSwitchportMode;
-   }
+  private Boolean _sourceRoute;
 
-   public SortedMap<String, Boolean> getFeatures() {
-      return _features;
-   }
+  private SshSettings _ssh;
 
-   public String getHostname() {
-      return _hostname;
-   }
+  private SortedMap<String, User> _users;
 
-   public SortedMap<String, Line> getLines() {
-      return _lines;
-   }
+  public CiscoFamily() {
+    _banners = new TreeMap<>();
+    _depiClasses = new TreeMap<>();
+    _depiTunnels = new TreeMap<>();
+    _features = new TreeMap<>();
+    _l2tpClasses = new TreeMap<>();
+    _lines = new TreeMap<>();
+    _services = new TreeMap<>();
+    _users = new TreeMap<>();
+  }
 
-   public Logging getLogging() {
-      return _logging;
-   }
+  public Aaa getAaa() {
+    return _aaa;
+  }
 
-   public Ntp getNtp() {
-      return _ntp;
-   }
+  public SortedMap<String, String> getBanners() {
+    return _banners;
+  }
 
-   public Boolean getProxyArp() {
-      return _proxyArp;
-   }
+  public Cable getCable() {
+    return _cable;
+  }
 
-   public SortedMap<String, Service> getServices() {
-      return _services;
-   }
+  public SwitchportMode getDefaultSwitchportMode() {
+    return _defaultSwitchportMode;
+  }
 
-   public Sntp getSntp() {
-      return _sntp;
-   }
+  public SortedMap<String, DepiClass> getDepiClasses() {
+    return _depiClasses;
+  }
 
-   public Boolean getSourceRoute() {
-      return _sourceRoute;
-   }
+  public SortedMap<String, DepiTunnel> getDepiTunnels() {
+    return _depiTunnels;
+  }
 
-   public SshSettings getSsh() {
-      return _ssh;
-   }
+  public String getEnableSecret() {
+    return _enableSecret;
+  }
 
-   public void setAaa(Aaa aaa) {
-      _aaa = aaa;
-   }
+  public SortedMap<String, Boolean> getFeatures() {
+    return _features;
+  }
 
-   public void setBanners(SortedMap<String, String> banners) {
-      _banners = banners;
-   }
+  public String getHostname() {
+    return _hostname;
+  }
 
-   public void setDefaultSwitchportMode(SwitchportMode defaultSwitchportMode) {
-      _defaultSwitchportMode = defaultSwitchportMode;
-   }
+  public SortedMap<String, L2tpClass> getL2tpClasses() {
+    return _l2tpClasses;
+  }
 
-   public void setFeatures(SortedMap<String, Boolean> features) {
-      _features = features;
-   }
+  public SortedMap<String, Line> getLines() {
+    return _lines;
+  }
 
-   public void setHostname(String hostname) {
-      _hostname = hostname;
-   }
+  public Logging getLogging() {
+    return _logging;
+  }
 
-   public void setLines(SortedMap<String, Line> lines) {
-      _lines = lines;
-   }
+  public Ntp getNtp() {
+    return _ntp;
+  }
 
-   public void setLogging(Logging logging) {
-      _logging = logging;
-   }
+  public Boolean getProxyArp() {
+    return _proxyArp;
+  }
 
-   public void setNtp(Ntp ntp) {
-      _ntp = ntp;
-   }
+  public SortedMap<String, Service> getServices() {
+    return _services;
+  }
 
-   public void setProxyArp(Boolean proxyArp) {
-      _proxyArp = proxyArp;
-   }
+  public Sntp getSntp() {
+    return _sntp;
+  }
 
-   public void setServices(SortedMap<String, Service> services) {
-      _services = services;
-   }
+  public Boolean getSourceRoute() {
+    return _sourceRoute;
+  }
 
-   public void setSntp(Sntp sntp) {
-      _sntp = sntp;
-   }
+  public SshSettings getSsh() {
+    return _ssh;
+  }
 
-   public void setSourceRoute(Boolean sourceRoute) {
-      _sourceRoute = sourceRoute;
-   }
+  public SortedMap<String, User> getUsers() {
+    return _users;
+  }
 
-   public void setSsh(SshSettings ssh) {
-      _ssh = ssh;
-   }
+  public void setAaa(Aaa aaa) {
+    _aaa = aaa;
+  }
 
+  public void setBanners(SortedMap<String, String> banners) {
+    _banners = banners;
+  }
+
+  public void setCable(Cable cable) {
+    _cable = cable;
+  }
+
+  public void setDefaultSwitchportMode(SwitchportMode defaultSwitchportMode) {
+    _defaultSwitchportMode = defaultSwitchportMode;
+  }
+
+  public void setDepiClasses(SortedMap<String, DepiClass> depiClasses) {
+    _depiClasses = depiClasses;
+  }
+
+  public void setDepiTunnels(SortedMap<String, DepiTunnel> depiTunnels) {
+    _depiTunnels = depiTunnels;
+  }
+
+  public void setEnableSecret(String enableSecret) {
+    _enableSecret = enableSecret;
+  }
+
+  public void setFeatures(SortedMap<String, Boolean> features) {
+    _features = features;
+  }
+
+  public void setHostname(String hostname) {
+    _hostname = hostname;
+  }
+
+  public void setL2tpClasses(SortedMap<String, L2tpClass> l2tpClasses) {
+    _l2tpClasses = l2tpClasses;
+  }
+
+  public void setLines(SortedMap<String, Line> lines) {
+    _lines = lines;
+  }
+
+  public void setLogging(Logging logging) {
+    _logging = logging;
+  }
+
+  public void setNtp(Ntp ntp) {
+    _ntp = ntp;
+  }
+
+  public void setProxyArp(Boolean proxyArp) {
+    _proxyArp = proxyArp;
+  }
+
+  public void setServices(SortedMap<String, Service> services) {
+    _services = services;
+  }
+
+  public void setSntp(Sntp sntp) {
+    _sntp = sntp;
+  }
+
+  public void setSourceRoute(Boolean sourceRoute) {
+    _sourceRoute = sourceRoute;
+  }
+
+  public void setSsh(SshSettings ssh) {
+    _ssh = ssh;
+  }
+
+  public void setUsers(SortedMap<String, User> users) {
+    _users = users;
+  }
 }

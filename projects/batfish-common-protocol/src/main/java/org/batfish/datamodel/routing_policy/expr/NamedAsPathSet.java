@@ -1,98 +1,84 @@
 package org.batfish.datamodel.routing_policy.expr;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import java.util.Objects;
 import org.batfish.datamodel.AsPath;
 import org.batfish.datamodel.AsPathAccessList;
 import org.batfish.datamodel.BgpRoute;
 import org.batfish.datamodel.routing_policy.Environment;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
+public final class NamedAsPathSet extends AsPathSetExpr {
+  /** */
+  private static final long serialVersionUID = 1L;
 
-public class NamedAsPathSet extends AsPathSetExpr {
+  private static final String PROP_NAME = "name";
 
-   /**
-    *
-    */
-   private static final long serialVersionUID = 1L;
+  private String _name;
 
-   private String _name;
+  @JsonCreator
+  public NamedAsPathSet(@JsonProperty(PROP_NAME) String name) {
+    _name = name;
+  }
 
-   @JsonCreator
-   private NamedAsPathSet() {
-   }
-
-   public NamedAsPathSet(String name) {
-      _name = name;
-   }
-
-   @Override
-   public boolean equals(Object obj) {
-      if (this == obj) {
-         return true;
-      }
-      if (obj == null) {
-         return false;
-      }
-      if (getClass() != obj.getClass()) {
-         return false;
-      }
-      NamedAsPathSet other = (NamedAsPathSet) obj;
-      if (_name == null) {
-         if (other._name != null) {
-            return false;
-         }
-      }
-      else if (!_name.equals(other._name)) {
-         return false;
-      }
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) {
       return true;
-   }
+    }
+    if (!(obj instanceof NamedAsPathSet)) {
+      return false;
+    }
+    NamedAsPathSet other = (NamedAsPathSet) obj;
+    return Objects.equals(_name, other._name);
+  }
 
-   public String getName() {
-      return _name;
-   }
+  @JsonProperty(PROP_NAME)
+  public String getName() {
+    return _name;
+  }
 
-   @Override
-   public int hashCode() {
-      final int prime = 31;
-      int result = 1;
-      result = prime * result + ((_name == null) ? 0 : _name.hashCode());
-      return result;
-   }
+  @Override
+  public int hashCode() {
+    final int prime = 31;
+    int result = 1;
+    result = prime * result + ((_name == null) ? 0 : _name.hashCode());
+    return result;
+  }
 
-   @Override
-   public boolean matches(Environment environment) {
-      AsPathAccessList list = environment.getConfiguration()
-            .getAsPathAccessLists().get(_name);
-      if (list != null) {
-         boolean match = false;
-         AsPath inputAsPath = null;
-         if (environment.getUseOutputAttributes()
-               && environment.getOutputRoute() instanceof BgpRoute.Builder) {
-            BgpRoute.Builder bgpRouteBuilder = (BgpRoute.Builder) environment
-                  .getOutputRoute();
-            inputAsPath = new AsPath(bgpRouteBuilder.getAsPath());
-         }
-         else if (environment.getReadFromIntermediateBgpAttributes()) {
-            inputAsPath = new AsPath(
-                  environment.getIntermediateBgpAttributes().getAsPath());
-         }
-         else if (environment.getOriginalRoute() instanceof BgpRoute) {
-            BgpRoute bgpRoute = (BgpRoute) environment.getOriginalRoute();
-            inputAsPath = bgpRoute.getAsPath();
-         }
-         if (inputAsPath != null) {
-            match = list.permits(inputAsPath);
-         }
-         return match;
+  @Override
+  public boolean matches(Environment environment) {
+    AsPathAccessList list = environment.getConfiguration().getAsPathAccessLists().get(_name);
+    if (list != null) {
+      boolean match = false;
+      AsPath inputAsPath = null;
+      if (environment.getUseOutputAttributes()
+          && environment.getOutputRoute() instanceof BgpRoute.Builder) {
+        BgpRoute.Builder bgpRouteBuilder = (BgpRoute.Builder) environment.getOutputRoute();
+        inputAsPath = new AsPath(bgpRouteBuilder.getAsPath());
+      } else if (environment.getReadFromIntermediateBgpAttributes()) {
+        inputAsPath = new AsPath(environment.getIntermediateBgpAttributes().getAsPath());
+      } else if (environment.getOriginalRoute() instanceof BgpRoute) {
+        BgpRoute bgpRoute = (BgpRoute) environment.getOriginalRoute();
+        inputAsPath = bgpRoute.getAsPath();
       }
-      else {
-         environment.setError(true);
-         return false;
+      if (inputAsPath != null) {
+        match = list.permits(inputAsPath);
       }
-   }
+      return match;
+    } else {
+      environment.setError(true);
+      return false;
+    }
+  }
 
-   public void setName(String name) {
-      _name = name;
-   }
+  @JsonProperty(PROP_NAME)
+  public void setName(String name) {
+    _name = name;
+  }
 
+  @Override
+  public String toString() {
+    return toStringHelper().add("name", _name).toString();
+  }
 }

@@ -3,235 +3,285 @@ package org.batfish.representation.juniper;
 import java.io.Serializable;
 import java.util.LinkedHashMap;
 import java.util.Map;
-
+import org.batfish.datamodel.BgpAuthenticationAlgorithm;
 import org.batfish.datamodel.Ip;
 
 public class BgpGroup implements Serializable {
 
-   public enum BgpGroupType {
-      EXTERNAL,
-      INTERNAL
-   }
+  public enum BgpGroupType {
+    EXTERNAL,
+    INTERNAL
+  }
 
-   /**
-    *
-    */
-   private static final long serialVersionUID = 1L;
+  /** */
+  private static final long serialVersionUID = 1L;
 
-   private Boolean _advertiseExternal;
+  private Boolean _advertiseExternal;
 
-   private Boolean _advertiseInactive;
+  private Boolean _advertiseInactive;
 
-   private Boolean _advertisePeerAs;
+  private Boolean _advertisePeerAs;
 
-   private String _description;
+  private String _authenticationKey;
 
-   private Boolean _ebgpMultihop;
+  private BgpAuthenticationAlgorithm _authenticationAlgorithm;
 
-   private final Map<String, Integer> _exportPolicies;
+  private String _authenticationKeyChainName;
 
-   protected String _groupName;
+  private String _description;
 
-   private final Map<String, Integer> _importPolicies;
+  private Boolean _ebgpMultihop;
 
-   protected transient boolean _inherited;
+  private final Map<String, Integer> _exportPolicies;
 
-   private boolean _ipv6;
+  protected String _groupName;
 
-   private Ip _localAddress;
+  private final Map<String, Integer> _importPolicies;
 
-   private Integer _localAs;
+  protected transient boolean _inherited;
 
-   private Integer _loops;
+  private boolean _ipv6;
 
-   private Boolean _multipath;
+  private Ip _localAddress;
 
-   private BgpGroup _parent;
+  private Integer _localAs;
 
-   private Integer _peerAs;
+  private Integer _loops;
 
-   private Boolean _removePrivate;
+  private Boolean _multipath;
 
-   private BgpGroupType _type;
+  private Boolean _multipathMultipleAs;
 
-   public BgpGroup() {
-      _exportPolicies = new LinkedHashMap<>();
-      _importPolicies = new LinkedHashMap<>();
-   }
+  private BgpGroup _parent;
 
-   public final void cascadeInheritance() {
-      if (_inherited) {
-         return;
+  private Integer _peerAs;
+
+  private Boolean _removePrivate;
+
+  private BgpGroupType _type;
+
+  public BgpGroup() {
+    _exportPolicies = new LinkedHashMap<>();
+    _importPolicies = new LinkedHashMap<>();
+  }
+
+  public final void cascadeInheritance() {
+    if (_inherited) {
+      return;
+    }
+    _inherited = true;
+    if (_parent != null) {
+      _parent.cascadeInheritance();
+      if (_advertiseExternal == null) {
+        _advertiseExternal = _parent._advertiseExternal;
       }
-      _inherited = true;
-      if (_parent != null) {
-         _parent.cascadeInheritance();
-         if (_advertiseExternal == null) {
-            _advertiseExternal = _parent._advertiseExternal;
-         }
-         if (_advertiseInactive == null) {
-            _advertiseInactive = _parent._advertiseInactive;
-         }
-         if (_advertisePeerAs == null) {
-            _advertisePeerAs = _parent._advertisePeerAs;
-         }
-         if (_description == null) {
-            _description = _parent._description;
-         }
-         if (_ebgpMultihop == null) {
-            _ebgpMultihop = _parent._ebgpMultihop;
-         }
-         if (_exportPolicies.size() == 0) {
-            _exportPolicies.putAll(_parent._exportPolicies);
-         }
-         if (_groupName == null) {
-            _groupName = _parent._groupName;
-         }
-         if (_importPolicies.size() == 0) {
-            _importPolicies.putAll(_parent._importPolicies);
-         }
-         if (_localAs == null) {
-            _localAs = _parent._localAs;
-         }
-         if (_loops == null) {
-            _loops = _parent._loops;
-         }
-         if (_localAddress == null) {
-            _localAddress = _parent._localAddress;
-         }
-         if (_multipath == null) {
-            _multipath = _parent._multipath;
-         }
-         if (_peerAs == null) {
-            _peerAs = _parent._peerAs;
-         }
-         if (_type == null) {
-            _type = _parent._type;
-         }
+      if (_advertiseInactive == null) {
+        _advertiseInactive = _parent._advertiseInactive;
       }
-   }
+      if (_advertisePeerAs == null) {
+        _advertisePeerAs = _parent._advertisePeerAs;
+      }
+      if (_authenticationAlgorithm == null) {
+        _authenticationAlgorithm = _parent._authenticationAlgorithm;
+      }
+      if (_authenticationKey == null) {
+        _authenticationKey = _parent._authenticationKey;
+      }
+      if (_authenticationKeyChainName == null) {
+        _authenticationKeyChainName = _parent._authenticationKeyChainName;
+      }
+      if (_description == null) {
+        _description = _parent._description;
+      }
+      if (_ebgpMultihop == null) {
+        _ebgpMultihop = _parent._ebgpMultihop;
+      }
+      if (_exportPolicies.size() == 0) {
+        _exportPolicies.putAll(_parent._exportPolicies);
+      }
+      if (_groupName == null) {
+        _groupName = _parent._groupName;
+      }
+      if (_importPolicies.size() == 0) {
+        _importPolicies.putAll(_parent._importPolicies);
+      }
+      if (_localAs == null) {
+        _localAs = _parent._localAs;
+      }
+      if (_loops == null) {
+        _loops = _parent._loops;
+      }
+      if (_localAddress == null) {
+        _localAddress = _parent._localAddress;
+      }
+      if (_multipath == null) {
+        _multipath = _parent._multipath;
+      }
+      if (_multipathMultipleAs == null) {
+        _multipathMultipleAs = _parent._multipathMultipleAs;
+      }
+      if (_peerAs == null) {
+        _peerAs = _parent._peerAs;
+      }
+      if (_type == null) {
+        _type = _parent._type;
+      }
+    }
+  }
 
-   public Boolean getAdvertiseExternal() {
-      return _advertiseExternal;
-   }
+  public Boolean getAdvertiseExternal() {
+    return _advertiseExternal;
+  }
 
-   public Boolean getAdvertiseInactive() {
-      return _advertiseInactive;
-   }
+  public Boolean getAdvertiseInactive() {
+    return _advertiseInactive;
+  }
 
-   public Boolean getAdvertisePeerAs() {
-      return _advertisePeerAs;
-   }
+  public Boolean getAdvertisePeerAs() {
+    return _advertisePeerAs;
+  }
 
-   public final String getDescription() {
-      return _description;
-   }
+  public BgpAuthenticationAlgorithm getAuthenticationAlgorithm() {
+    return _authenticationAlgorithm;
+  }
 
-   public Boolean getEbgpMultihop() {
-      return _ebgpMultihop;
-   }
+  public String getAuthenticationKey() {
+    return _authenticationKey;
+  }
 
-   public final Map<String, Integer> getExportPolicies() {
-      return _exportPolicies;
-   }
+  public String getAuthenticationKeyChainName() {
+    return _authenticationKeyChainName;
+  }
 
-   public String getGroupName() {
-      return _groupName;
-   }
+  public final String getDescription() {
+    return _description;
+  }
 
-   public final Map<String, Integer> getImportPolicies() {
-      return _importPolicies;
-   }
+  public Boolean getEbgpMultihop() {
+    return _ebgpMultihop;
+  }
 
-   public boolean getIpv6() {
-      return _ipv6;
-   }
+  public final Map<String, Integer> getExportPolicies() {
+    return _exportPolicies;
+  }
 
-   public final Ip getLocalAddress() {
-      return _localAddress;
-   }
+  public String getGroupName() {
+    return _groupName;
+  }
 
-   public final Integer getLocalAs() {
-      return _localAs;
-   }
+  public final Map<String, Integer> getImportPolicies() {
+    return _importPolicies;
+  }
 
-   public Integer getLoops() {
-      return _loops;
-   }
+  public boolean getIpv6() {
+    return _ipv6;
+  }
 
-   public Boolean getMultipath() {
-      return _multipath;
-   }
+  public final Ip getLocalAddress() {
+    return _localAddress;
+  }
 
-   public final BgpGroup getParent() {
-      return _parent;
-   }
+  public final Integer getLocalAs() {
+    return _localAs;
+  }
 
-   public Integer getPeerAs() {
-      return _peerAs;
-   }
+  public Integer getLoops() {
+    return _loops;
+  }
 
-   public Boolean getRemovePrivate() {
-      return _removePrivate;
-   }
+  public Boolean getMultipath() {
+    return _multipath;
+  }
 
-   public final BgpGroupType getType() {
-      return _type;
-   }
+  public Boolean getMultipathMultipleAs() {
+    return _multipathMultipleAs;
+  }
 
-   public void setAdvertiseExternal(boolean advertiseExternal) {
-      _advertiseExternal = advertiseExternal;
-   }
+  public final BgpGroup getParent() {
+    return _parent;
+  }
 
-   public void setAdvertiseInactive(boolean advertiseInactive) {
-      _advertiseInactive = advertiseInactive;
-   }
+  public Integer getPeerAs() {
+    return _peerAs;
+  }
 
-   public void setAdvertisePeerAs(boolean advertisePeerAs) {
-      _advertisePeerAs = advertisePeerAs;
-   }
+  public Boolean getRemovePrivate() {
+    return _removePrivate;
+  }
 
-   public final void setDescription(String description) {
-      _description = description;
-   }
+  public final BgpGroupType getType() {
+    return _type;
+  }
 
-   public void setEbgpMultihop(boolean ebgpMultihop) {
-      _ebgpMultihop = ebgpMultihop;
-   }
+  public void setAdvertiseExternal(boolean advertiseExternal) {
+    _advertiseExternal = advertiseExternal;
+  }
 
-   public void setIpv6(boolean ipv6) {
-      _ipv6 = ipv6;
-   }
+  public void setAdvertiseInactive(boolean advertiseInactive) {
+    _advertiseInactive = advertiseInactive;
+  }
 
-   public final void setLocalAddress(Ip localAddress) {
-      _localAddress = localAddress;
-   }
+  public void setAdvertisePeerAs(boolean advertisePeerAs) {
+    _advertisePeerAs = advertisePeerAs;
+  }
 
-   public final void setLocalAs(int localAs) {
-      _localAs = localAs;
-   }
+  public void setAuthenticationAlgorithm(BgpAuthenticationAlgorithm authenticationAlgorithm) {
+    _authenticationAlgorithm = authenticationAlgorithm;
+  }
 
-   public void setLoops(int loops) {
-      _loops = loops;
-   }
+  public void setAuthenticationKey(String authenticationKey) {
+    _authenticationKey = authenticationKey;
+  }
 
-   public void setMultipath(Boolean multipath) {
-      _multipath = multipath;
-   }
+  public void setAuthenticationKeyChainName(String authenticationKeyChainName) {
+    _authenticationKeyChainName = authenticationKeyChainName;
+  }
 
-   public final void setParent(BgpGroup parent) {
-      _parent = parent;
-   }
+  public final void setDescription(String description) {
+    _description = description;
+  }
 
-   public void setPeerAs(int peerAs) {
-      _peerAs = peerAs;
-   }
+  public void setEbgpMultihop(boolean ebgpMultihop) {
+    _ebgpMultihop = ebgpMultihop;
+  }
 
-   public void setRemovePrivate(boolean removePrivate) {
-      _removePrivate = removePrivate;
-   }
+  public void setIpv6(boolean ipv6) {
+    _ipv6 = ipv6;
+  }
 
-   public final void setType(BgpGroupType type) {
-      _type = type;
-   }
+  public final void setLocalAddress(Ip localAddress) {
+    _localAddress = localAddress;
+  }
+
+  public final void setLocalAs(int localAs) {
+    _localAs = localAs;
+  }
+
+  public void setLoops(int loops) {
+    _loops = loops;
+  }
+
+  public void setMultipath(Boolean multipath) {
+    _multipath = multipath;
+  }
+
+  public void setMultipathMultipleAs(Boolean multipathMultipleAs) {
+    _multipathMultipleAs = multipathMultipleAs;
+  }
+
+  public final void setParent(BgpGroup parent) {
+    _parent = parent;
+  }
+
+  public void setPeerAs(int peerAs) {
+    _peerAs = peerAs;
+  }
+
+  public void setRemovePrivate(boolean removePrivate) {
+    _removePrivate = removePrivate;
+  }
+
+  public final void setType(BgpGroupType type) {
+    _type = type;
+  }
 }

@@ -2,51 +2,43 @@ package org.batfish.representation.cisco;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.batfish.common.util.DefinedStructure;
 
-import org.batfish.common.util.ComparableStructure;
+public class ExtendedIpv6AccessList extends DefinedStructure<String> {
 
-public class ExtendedIpv6AccessList extends ComparableStructure<String> {
+  private static final long serialVersionUID = 1L;
 
-   private static final long serialVersionUID = 1L;
+  private List<ExtendedIpv6AccessListLine> _lines;
 
-   private final int _definitionLine;
+  private StandardIpv6AccessList _parent;
 
-   private List<ExtendedIpv6AccessListLine> _lines;
+  public ExtendedIpv6AccessList(String id, int definitionLine) {
+    super(id, definitionLine);
+    _lines = new ArrayList<>();
+  }
 
-   private StandardIpv6AccessList _parent;
+  public void addLine(ExtendedIpv6AccessListLine all) {
+    _lines.add(all);
+  }
 
-   public ExtendedIpv6AccessList(String id, int definitionLine) {
-      super(id);
-      _definitionLine = definitionLine;
-      _lines = new ArrayList<>();
-   }
+  public List<ExtendedIpv6AccessListLine> getLines() {
+    return _lines;
+  }
 
-   public void addLine(ExtendedIpv6AccessListLine all) {
-      _lines.add(all);
-   }
+  public StandardIpv6AccessList getParent() {
+    return _parent;
+  }
 
-   public int getDefinitionLine() {
-      return _definitionLine;
-   }
+  public void setParent(StandardIpv6AccessList parent) {
+    _parent = parent;
+  }
 
-   public List<ExtendedIpv6AccessListLine> getLines() {
-      return _lines;
-   }
-
-   public StandardIpv6AccessList getParent() {
-      return _parent;
-   }
-
-   public void setParent(StandardIpv6AccessList parent) {
-      _parent = parent;
-   }
-
-   @Override
-   public String toString() {
-      String output = super.toString() + "\n" + "Identifier: " + _key;
-      for (ExtendedIpv6AccessListLine line : _lines) {
-         output += "\n" + line;
-      }
-      return output;
-   }
+  @Override
+  public String toString() {
+    String output = super.toString() + "\n" + "Identifier: " + _key;
+    for (ExtendedIpv6AccessListLine line : _lines) {
+      output += "\n" + line;
+    }
+    return output;
+  }
 }

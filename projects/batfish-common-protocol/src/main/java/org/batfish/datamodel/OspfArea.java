@@ -1,98 +1,128 @@
 package org.batfish.datamodel;
 
-import java.io.Serializable;
-import java.util.SortedMap;
-import java.util.SortedSet;
-import java.util.TreeMap;
-import java.util.TreeSet;
-import java.util.stream.Collectors;
-
-import org.batfish.common.util.ComparableStructure;
-
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyDescription;
+import com.google.common.collect.ImmutableSortedMap;
+import com.google.common.collect.ImmutableSortedSet;
+import java.io.Serializable;
+import java.util.SortedMap;
+import java.util.SortedSet;
+import java.util.TreeMap;
+import org.batfish.common.util.ComparableStructure;
+import org.batfish.datamodel.NetworkFactory.NetworkFactoryBuilder;
 
-public class OspfArea extends ComparableStructure<Long>
-      implements Serializable {
+public class OspfArea extends ComparableStructure<Long> implements Serializable {
 
-   private static final String INTERFACES_VAR = "interfaces";
+  public static class Builder extends NetworkFactoryBuilder<OspfArea> {
 
-   private static final long serialVersionUID = 1L;
+    private Long _number;
 
-   private static final String SUMMARIES_VAR = "summaries";
+    private OspfProcess _ospfProcess;
 
-   private static final String SUMMARY_FILTER_VAR = "summaryFilter";
+    Builder(NetworkFactory networkFactory) {
+      super(networkFactory, OspfArea.class);
+    }
 
-   private transient SortedSet<String> _interfaceNames;
-
-   private SortedSet<Interface> _interfaces;
-
-   private SortedMap<Prefix, Boolean> _summaries;
-
-   private String summaryFilter;
-
-   @JsonCreator
-   public OspfArea(@JsonProperty(NAME_VAR) Long number) {
-      super(number);
-      _interfaces = new TreeSet<>();
-      _summaries = new TreeMap<>();
-   }
-
-   @JsonProperty(INTERFACES_VAR)
-   @JsonPropertyDescription("The interfaces assigned to this OSPF area")
-   public SortedSet<String> getInterfaceNames() {
-      if (_interfaces != null && !_interfaces.isEmpty()) {
-         return new TreeSet<>(_interfaces.stream().map(i -> i.getName())
-               .collect(Collectors.toSet()));
+    @Override
+    public OspfArea build() {
+      long number = _number != null ? _number : generateLong();
+      OspfArea ospfArea = new OspfArea(number);
+      if (_ospfProcess != null) {
+        _ospfProcess.getAreas().put(number, ospfArea);
       }
-      else {
-         return _interfaceNames;
-      }
-   }
+      return ospfArea;
+    }
 
-   @JsonIgnore
-   public SortedSet<Interface> getInterfaces() {
-      return _interfaces;
-   }
+    public Builder setNumber(Long number) {
+      _number = number;
+      return this;
+    }
 
-   @JsonProperty(SUMMARIES_VAR)
-   public SortedMap<Prefix, Boolean> getSummaries() {
-      return _summaries;
-   }
+    public Builder setOspfProcess(OspfProcess ospfProcess) {
+      _ospfProcess = ospfProcess;
+      return this;
+    }
+  }
 
-   @JsonProperty(SUMMARY_FILTER_VAR)
-   public String getSummaryFilter() {
-      return summaryFilter;
-   }
+  private static final String PROP_INTERFACES = "interfaces";
 
-   public void resolveReferences(final Configuration owner) {
-      if (_interfaceNames != null) {
-         _interfaces = new TreeSet<>(_interfaceNames.stream()
-               .map(ifaceName -> owner.getInterfaces().get(ifaceName))
-               .collect(Collectors.toSet()));
-      }
-   }
+  private static final String PROP_SUMMARIES = "summaries";
 
-   @JsonProperty(INTERFACES_VAR)
-   public void setInterfaceNames(SortedSet<String> interfaceNames) {
-      _interfaceNames = interfaceNames;
-   }
+  private static final String PROP_SUMMARY_FILTER = "summaryFilter";
 
-   @JsonIgnore
-   public void setInterfaces(SortedSet<Interface> interfaces) {
-      _interfaces = interfaces;
-   }
+  private static final long serialVersionUID = 1L;
 
-   @JsonProperty(SUMMARIES_VAR)
-   public void setSummaries(SortedMap<Prefix, Boolean> summaries) {
-      _summaries = summaries;
-   }
+  private transient SortedSet<String> _interfaceNames;
 
-   @JsonProperty(SUMMARY_FILTER_VAR)
-   public void setSummaryFilter(String summaryFilterName) {
-      this.summaryFilter = summaryFilterName;
-   }
+  private SortedMap<String, Interface> _interfaces;
 
+  private SortedMap<Prefix, Boolean> _summaries;
+
+  private String _summaryFilter;
+
+  @JsonCreator
+  public OspfArea(@JsonProperty(PROP_NAME) Long number) {
+    super(number);
+    _interfaces = new TreeMap<>();
+    _summaries = new TreeMap<>();
+  }
+
+  @JsonProperty(PROP_INTERFACES)
+  @JsonPropertyDescription("The interfaces assigned to this OSPF area")
+  public SortedSet<String> getInterfaceNames() {
+    if (_interfaces != null && !_interfaces.isEmpty()) {
+      return ImmutableSortedSet.copyOf(_interfaces.keySet());
+    } else {
+      return _interfaceNames;
+    }
+  }
+
+  @JsonIgnore
+  public SortedMap<String, Interface> getInterfaces() {
+    return _interfaces;
+  }
+
+  @JsonProperty(PROP_SUMMARIES)
+  public SortedMap<Prefix, Boolean> getSummaries() {
+    return _summaries;
+  }
+
+  @JsonProperty(PROP_SUMMARY_FILTER)
+  public String getSummaryFilter() {
+    return _summaryFilter;
+  }
+
+  public void resolveReferences(final Configuration owner) {
+    if (_interfaceNames != null) {
+      ImmutableSortedMap.Builder<String, Interface> builder =
+          new ImmutableSortedMap.Builder<>(String::compareTo);
+      _interfaceNames
+          .stream()
+          .map(ifaceName -> owner.getInterfaces().get(ifaceName))
+          .forEach(i -> builder.put(i.getName(), i));
+      _interfaces = builder.build();
+    }
+  }
+
+  @JsonProperty(PROP_INTERFACES)
+  public void setInterfaceNames(SortedSet<String> interfaceNames) {
+    _interfaceNames = interfaceNames;
+  }
+
+  @JsonIgnore
+  public void setInterfaces(SortedMap<String, Interface> interfaces) {
+    _interfaces = interfaces;
+  }
+
+  @JsonProperty(PROP_SUMMARIES)
+  public void setSummaries(SortedMap<Prefix, Boolean> summaries) {
+    _summaries = summaries;
+  }
+
+  @JsonProperty(PROP_SUMMARY_FILTER)
+  public void setSummaryFilter(String summaryFilterName) {
+    this._summaryFilter = summaryFilterName;
+  }
 }

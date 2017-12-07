@@ -1,14 +1,12 @@
 package org.batfish.datamodel.answers;
 
-import java.io.Serializable;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
+import java.io.Serializable;
 
 public interface DataPlaneAnswerElement extends AnswerElement, Serializable {
 
-   String VERSION_VAR = "version";
+  String PROP_VERSION = "version";
 
-   @JsonProperty(VERSION_VAR)
-   String getVersion();
-
+  @JsonProperty(PROP_VERSION)
+  String getVersion();
 }

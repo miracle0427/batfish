@@ -2,55 +2,61 @@ package org.batfish.representation.cisco;
 
 import java.util.HashSet;
 import java.util.Set;
-
 import org.batfish.common.util.ComparableStructure;
 
 public final class Vrf extends ComparableStructure<String> {
 
-   /**
-    *
-    */
-   private static final long serialVersionUID = 1L;
+  /** */
+  private static final long serialVersionUID = 1L;
 
-   private BgpProcess _bgpProcess;
+  private BgpProcess _bgpProcess;
 
-   private IsisProcess _isisProcess;
+  private IsisProcess _isisProcess;
 
-   private OspfProcess _ospfProcess;
+  private OspfProcess _ospfProcess;
 
-   private final Set<StaticRoute> _staticRoutes;
+  private RipProcess _ripProcess;
 
-   public Vrf(String name) {
-      super(name);
-      _staticRoutes = new HashSet<>();
-   }
+  private final Set<StaticRoute> _staticRoutes;
 
-   public BgpProcess getBgpProcess() {
-      return _bgpProcess;
-   }
+  public Vrf(String name) {
+    super(name);
+    _staticRoutes = new HashSet<>();
+  }
 
-   public IsisProcess getIsisProcess() {
-      return _isisProcess;
-   }
+  public BgpProcess getBgpProcess() {
+    return _bgpProcess;
+  }
 
-   public OspfProcess getOspfProcess() {
-      return _ospfProcess;
-   }
+  public IsisProcess getIsisProcess() {
+    return _isisProcess;
+  }
 
-   public Set<StaticRoute> getStaticRoutes() {
-      return _staticRoutes;
-   }
+  public OspfProcess getOspfProcess() {
+    return _ospfProcess;
+  }
 
-   public void setBgpProcess(BgpProcess bgpProcess) {
-      _bgpProcess = bgpProcess;
-   }
+  public RipProcess getRipProcess() {
+    return _ripProcess;
+  }
 
-   public void setIsisProcess(IsisProcess isisProcess) {
-      _isisProcess = isisProcess;
-   }
+  public Set<StaticRoute> getStaticRoutes() {
+    return _staticRoutes;
+  }
 
-   public void setOspfProcess(OspfProcess proc) {
-      _ospfProcess = proc;
-   }
+  public void setBgpProcess(BgpProcess bgpProcess) {
+    _bgpProcess = bgpProcess;
+  }
 
+  public void setIsisProcess(IsisProcess isisProcess) {
+    _isisProcess = isisProcess;
+  }
+
+  public void setOspfProcess(OspfProcess proc) {
+    _ospfProcess = proc;
+  }
+
+  public void setRipProcess(RipProcess ripProcess) {
+    _ripProcess = ripProcess;
+  }
 }

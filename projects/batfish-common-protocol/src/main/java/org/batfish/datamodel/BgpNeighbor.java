@@ -1,732 +1,838 @@
 package org.batfish.datamodel;
 
-import java.util.LinkedHashSet;
-import java.util.Set;
-
-import org.batfish.common.util.CommonUtil;
-import org.batfish.common.util.ComparableStructure;
-
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyDescription;
 import com.kjetland.jackson.jsonSchema.annotations.JsonSchemaDescription;
+import java.util.LinkedHashSet;
+import java.util.Objects;
+import java.util.Set;
+import java.util.SortedSet;
+import java.util.TreeSet;
+import javax.annotation.Nullable;
+import org.batfish.common.util.ComparableStructure;
+import org.batfish.datamodel.NetworkFactory.NetworkFactoryBuilder;
 
 /**
- * Represents a peering with a single router (by ip address) acting as a bgp
- * peer to the router whose configuration's BGP process contains this object
+ * Represents a peering with a single router (by ip address) acting as a bgp peer to the router
+ * whose configuration's BGP process contains this object
  */
 @JsonSchemaDescription("A configured e/iBGP peering relationship")
 public final class BgpNeighbor extends ComparableStructure<Prefix> {
 
-   public static final class BgpNeighborSummary
-         extends ComparableStructure<String> {
+  public static class Builder extends NetworkFactoryBuilder<BgpNeighbor> {
+    private Configuration _owner;
+    private Ip _localIp;
+    private Ip _peerIpAddress;
+    private Integer _localAs;
+    private Integer _remoteAs;
+    private BgpProcess _bgpProcess;
+    private String _exportPolicy;
+    private Boolean _advertiseExternal;
+    private Boolean _additionalPathSend;
+    private Boolean _additionalPathSelectAll;
+    private Boolean _advertiseInactive;
 
-      private static final String DESCRIPTION_VAR = "description";
+    Builder(NetworkFactory networkFactory) {
+      super(networkFactory, BgpNeighbor.class);
+    }
 
-      private static final String GROUP_VAR = "group";
-
-      private static final String LOCAL_AS_VAR = "localAs";
-
-      private static final String LOCAL_IP_VAR = "localIp";
-
-      private static final String REMOTE_AS_VAR = "remoteAs";
-
-      private static final String REMOTE_IP_VAR = "remoteIp";
-
-      private static final String REMOTE_PREFIX_VAR = "dynamicRemotePrefix";
-
-      /**
-       *
-       */
-      private static final long serialVersionUID = 1L;
-
-      private static final String VRF_VAR = "vrf";
-
-      private final String _description;
-
-      private final String _group;
-
-      private final int _localAs;
-
-      private final Ip _localIp;
-
-      private final int _remoteAs;
-
-      private final Ip _remoteIp;
-
-      private final Prefix _remotePrefix;
-
-      private final String _vrf;
-
-      public BgpNeighborSummary(BgpNeighbor bgpNeighbor) {
-         super(bgpNeighbor.getOwner().getName() + ":"
-               + (bgpNeighbor.getDynamic() ? bgpNeighbor.getPrefix().toString()
-                     : bgpNeighbor.getAddress().toString()));
-         _description = bgpNeighbor._description;
-         _group = bgpNeighbor._group;
-         _localAs = bgpNeighbor._localAs;
-         _localIp = bgpNeighbor._localIp;
-         _remoteAs = bgpNeighbor._remoteAs;
-         _remoteIp = bgpNeighbor.getAddress();
-         _remotePrefix = bgpNeighbor._key;
-         _vrf = bgpNeighbor._vrf;
+    @Override
+    public BgpNeighbor build() {
+      BgpNeighbor bgpNeighbor;
+      if (_owner != null && _peerIpAddress != null) {
+        bgpNeighbor = new BgpNeighbor(_peerIpAddress, _owner);
+      } else {
+        bgpNeighbor = new BgpNeighbor();
       }
-
-      @JsonCreator
-      public BgpNeighborSummary(@JsonProperty(NAME_VAR) String name,
-            @JsonProperty(DESCRIPTION_VAR) String description,
-            @JsonProperty(GROUP_VAR) String group,
-            @JsonProperty(LOCAL_AS_VAR) int localAs,
-            @JsonProperty(LOCAL_IP_VAR) Ip localIp,
-            @JsonProperty(REMOTE_AS_VAR) int remoteAs,
-            @JsonProperty(REMOTE_IP_VAR) Ip remoteIp,
-            @JsonProperty(REMOTE_PREFIX_VAR) Prefix remotePrefix,
-            @JsonProperty(VRF_VAR) String vrf) {
-         super(name);
-         _description = description;
-         _group = group;
-         _localAs = localAs;
-         _localIp = localIp;
-         _remoteAs = remoteAs;
-         _remoteIp = remoteIp;
-         _remotePrefix = remotePrefix;
-         _vrf = vrf;
+      if (_localIp != null) {
+        bgpNeighbor.setLocalIp(_localIp);
       }
-
-      @JsonProperty(DESCRIPTION_VAR)
-      public String getDescription() {
-         return _description;
+      if (_localAs != null) {
+        bgpNeighbor.setLocalAs(_localAs);
       }
-
-      @JsonProperty(GROUP_VAR)
-      public String getGroup() {
-         return _group;
+      if (_remoteAs != null) {
+        bgpNeighbor.setRemoteAs(_remoteAs);
       }
-
-      @JsonProperty(LOCAL_AS_VAR)
-      public int getLocalAs() {
-         return _localAs;
+      if (_bgpProcess != null) {
+        _bgpProcess.getNeighbors().put(bgpNeighbor.getPrefix(), bgpNeighbor);
       }
-
-      @JsonProperty(LOCAL_IP_VAR)
-      public Ip getLocalIp() {
-         return _localIp;
+      if (_exportPolicy != null) {
+        bgpNeighbor.setExportPolicy(_exportPolicy);
       }
-
-      @JsonIgnore
-      public Prefix getPrefix() {
-         if (_remotePrefix == null) {
-            return new Prefix(_remoteIp, 32);
-         }
-         else {
-            return _remotePrefix;
-         }
+      if (_advertiseInactive != null) {
+        bgpNeighbor.setAdvertiseInactive(_advertiseInactive);
       }
-
-      @JsonProperty(REMOTE_AS_VAR)
-      public int getRemoteAs() {
-         return _remoteAs;
+      if (_advertiseExternal != null) {
+        bgpNeighbor.setAdvertiseExternal(_advertiseExternal);
       }
-
-      @JsonProperty(REMOTE_IP_VAR)
-      public Ip getRemoteIp() {
-         return _remoteIp;
+      if (_additionalPathSend != null) {
+        bgpNeighbor.setAdditionalPathsSend(_additionalPathSend);
       }
-
-      @JsonProperty(REMOTE_PREFIX_VAR)
-      public Prefix getRemotePrefix() {
-         return _remotePrefix;
+      if (_additionalPathSelectAll != null) {
+        bgpNeighbor.setAdditionalPathsSelectAll(_additionalPathSelectAll);
       }
+      return bgpNeighbor;
+    }
 
-      @JsonProperty(VRF_VAR)
-      public String getVrf() {
-         return _vrf;
-      }
-
-   }
-
-   private static final String ADDITIONAL_PATHS_RECEIVE_VAR = "additionalPathsReceive";
-
-   private static final String ADDITIONAL_PATHS_SELECT_ALL_VAR = "additionalPathsSelectAll";
-
-   private static final String ADDITIONAL_PATHS_SEND_VAR = "additionalPathsSend";
-
-   private static final String ADDRESS_VAR = "address";
-
-   private static final String ADVERTISE_EXTERNAL_VAR = "advertiseExternal";
-
-   private static final String ADVERTISE_INACTIVE_VAR = "advertiseInactive";
-
-   private static final String ALLOW_LOCAL_AS_IN_VAR = "allowLocalAsIn";
-
-   private static final String ALLOW_REMOTE_AS_OUT_VAR = "allowRemoteAsOut";
-
-   private static final String CLUSTER_ID_VAR = "clusterId";
-
-   private static final String DEFAULT_METRIC_VAR = "defaultMetric";
-
-   private static final String DESCRIPTION_VAR = "description";
-
-   private static final String DYNAMIC_VAR = "dynamic";
-
-   private static final String EBGP_MULTIHOP_VAR = "ebgpMultihop";
-
-   private static final String GENERATED_ROUTES_VAR = "generatedRoutes";
-
-   private static final String GROUP_VAR = "group";
-
-   private static final String LOCAL_AS_VAR = "localAs";
-
-   private static final String LOCAL_IP_VAR = "localIp";
-
-   private static final String NAME_VAR = "name";
-
-   private static final String OWNER_VAR = "owner";
-
-   private static final String REMOTE_AS_VAR = "remoteAs";
-
-   private static final String REMOTE_PREFIX_VAR = "remotePrefix";
-
-   private static final String SEND_COMMUNITY_VAR = "sendCommunity";
-
-   /**
-    *
-    */
-   private static final long serialVersionUID = 1L;
-
-   private boolean _additionalPathsReceive;
-
-   private boolean _additionalPathsSelectAll;
-
-   private boolean _additionalPathsSend;
-
-   private boolean _advertiseExternal;
-
-   private boolean _advertiseInactive;
-
-   private boolean _allowLocalAsIn;
-
-   private boolean _allowRemoteAsOut;
-
-   private transient Set<BgpNeighbor> _candidateRemoteBgpNeighbors;
-
-   /**
-    * The cluster id associated with this peer to be used in route reflection
-    */
-   private Long _clusterId;
-
-   /**
-    * The default metric associated with routes sent to this peer
-    */
-   private int _defaultMetric;
-
-   private String _description;
-
-   private boolean _ebgpMultihop;
-
-   private String _exportPolicy;
-
-   /**
-    * The set of generated and/or aggregate routes to be potentially sent to
-    * this peer before outbound policies are taken into account
-    */
-   private Set<GeneratedRoute> _generatedRoutes;
-
-   /**
-    * The group name associated with this peer in the vendor-specific
-    * configuration from which the containing configuration is derived. This
-    * field is OPTIONAL and should not impact the subsequent data plane
-    * computation.
-    */
-   private String _group;
-
-   private String _importPolicy;
-
-   /**
-    * The autonomous system number of the containing BGP process as reported to
-    * this peer
-    */
-   private Integer _localAs;
-
-   /**
-    * The ip address of the containing router as reported to this peer
-    */
-   private Ip _localIp;
-
-   private Configuration _owner;
-
-   /**
-    * The autonomous system number that the containing BGP process considers
-    * this peer to have.
-    */
-   private Integer _remoteAs;
-
-   private transient BgpNeighbor _remoteBgpNeighbor;
-
-   private boolean _routeReflectorClient;
-
-   /**
-    * Flag governing whether to include community numbers in outgoing route
-    * advertisements to this peer
-    */
-   private boolean _sendCommunity;
-
-   private String _vrf;
-
-   @SuppressWarnings("unused")
-   private BgpNeighbor() {
-      this(null);
-   }
-
-   /**
-    * Constructs a BgpNeighbor with the given peer ip address for
-    * {@link #_address}
-    *
-    * @param address
-    */
-   public BgpNeighbor(Ip address, Configuration owner) {
-      this(new Prefix(address, 32), owner);
-   }
-
-   @JsonCreator
-   public BgpNeighbor(@JsonProperty(NAME_VAR) Prefix prefix) {
-      super(prefix);
-      _generatedRoutes = new LinkedHashSet<>();
-   }
-
-   /**
-    * Constructs a BgpNeighbor with the given peer dynamic ip range for
-    * {@link #_network}
-    *
-    * @param prefix
-    */
-   public BgpNeighbor(Prefix prefix, Configuration owner) {
-      this(prefix);
+    public Builder setOwner(Configuration owner) {
       _owner = owner;
-   }
+      return this;
+    }
 
-   @Override
-   public boolean equals(Object o) {
-      if (this == o) {
-         return true;
-      }
-      BgpNeighbor other = (BgpNeighbor) o;
-      if (this._advertiseExternal != other._advertiseExternal) {
-         return false;
-      }
-      if (this._advertiseInactive != other._advertiseInactive) {
-         return false;
-      }
-      if (this._allowLocalAsIn != other._allowLocalAsIn) {
-         return false;
-      }
-      if (this._allowRemoteAsOut != other._allowRemoteAsOut) {
-         return false;
-      }
-      if (_clusterId == null) {
-         if (other._clusterId != null) {
-            return false;
-         }
-      }
-      else if (!this._clusterId.equals(other._clusterId)) {
-         return false;
-      }
-      if (this._defaultMetric != other._defaultMetric) {
-         return false;
-      }
-      // we will skip description
-      if (this._ebgpMultihop != other._ebgpMultihop) {
-         return false;
-      }
-      if (!this._exportPolicy.equals(other._exportPolicy)) {
-         return false;
-      }
-      // we will skip generated routes.
-      if (!CommonUtil.bothNullOrEqual(this._group, other._group)) {
-         return false;
-      }
-      if (!CommonUtil.bothNullOrEqual(this._importPolicy,
-            other._importPolicy)) {
-         return false;
-      }
-      if (!this._localAs.equals(other._localAs)) {
-         return false;
-      }
-      if (!CommonUtil.bothNullOrEqual(this._localIp, other._localIp)) {
-         return false;
-      }
-      // we will skip owner.
-      if (!this._remoteAs.equals(other._remoteAs)) {
-         return false;
-      }
-      if (this._routeReflectorClient != other._routeReflectorClient) {
-         return false;
-      }
-      if (this._sendCommunity != other._sendCommunity) {
-         return false;
-      }
-      return true;
-   }
+    public Builder setBgpProcess(BgpProcess bgpProcess) {
+      _bgpProcess = bgpProcess;
+      return this;
+    }
 
-   @JsonProperty(ADDITIONAL_PATHS_RECEIVE_VAR)
-   public boolean getAdditionalPathsReceive() {
-      return _additionalPathsReceive;
-   }
-
-   @JsonProperty(ADDITIONAL_PATHS_SELECT_ALL_VAR)
-   public boolean getAdditionalPathsSelectAll() {
-      return _additionalPathsSelectAll;
-   }
-
-   @JsonProperty(ADDITIONAL_PATHS_SEND_VAR)
-   public boolean getAdditionalPathsSend() {
-      return _additionalPathsSend;
-   }
-
-   /**
-    * @return {@link #_address}
-    */
-   @JsonProperty(ADDRESS_VAR)
-   @JsonPropertyDescription("The IPV4 address of the remote peer if not dynamic (passive)")
-   public Ip getAddress() {
-      if (_key != null && _key.getPrefixLength() == 32) {
-         return _key.getAddress();
-      }
-      else {
-         return null;
-      }
-   }
-
-   @JsonProperty(ADVERTISE_EXTERNAL_VAR)
-   @JsonPropertyDescription("Whether to advertise the best eBGP route for each network independently of whether it is the best BGP route for that network")
-   public boolean getAdvertiseExternal() {
-      return _advertiseExternal;
-   }
-
-   @JsonProperty(ADVERTISE_INACTIVE_VAR)
-   @JsonPropertyDescription("Whether to advertise the best BGP route for each network independently of whether it is the best overall route for that network")
-   public boolean getAdvertiseInactive() {
-      return _advertiseInactive;
-   }
-
-   @JsonProperty(ALLOW_LOCAL_AS_IN_VAR)
-   @JsonPropertyDescription("Whether to allow reception of advertisements containing the local AS number in the AS-path")
-   public boolean getAllowLocalAsIn() {
-      return _allowLocalAsIn;
-   }
-
-   @JsonProperty(ALLOW_REMOTE_AS_OUT_VAR)
-   @JsonPropertyDescription("Whether to allow sending of advertisements containing the remote AS number in the AS-path")
-   public boolean getAllowRemoteAsOut() {
-      return _allowRemoteAsOut;
-   }
-
-   @JsonIgnore
-   public Set<BgpNeighbor> getCandidateRemoteBgpNeighbors() {
-      return _candidateRemoteBgpNeighbors;
-   }
-
-   /**
-    * @return {@link #_clusterId}
-    */
-   @JsonProperty(CLUSTER_ID_VAR)
-   @JsonPropertyDescription("Route-reflection cluster-id for this peer")
-   public Long getClusterId() {
-      return _clusterId;
-   }
-
-   /**
-    * @return {@link #_defaultMetric}
-    */
-   @JsonProperty(DEFAULT_METRIC_VAR)
-   @JsonPropertyDescription("Default MED for routes sent to this neighbor")
-   public int getDefaultMetric() {
-      return _defaultMetric;
-   }
-
-   @JsonProperty(DESCRIPTION_VAR)
-   @JsonPropertyDescription("Description of this peer")
-   public String getDescription() {
-      return _description;
-   }
-
-   @JsonProperty(DYNAMIC_VAR)
-   @JsonPropertyDescription("Whether this represents a connection to a specific peer (false) or a passive connection to a network of peers (true)")
-   public boolean getDynamic() {
-      return _key != null && _key.getPrefixLength() < 32;
-   }
-
-   @JsonProperty(EBGP_MULTIHOP_VAR)
-   @JsonPropertyDescription("Whether to allow establishment of a multihop eBGP connection with this peer")
-   public boolean getEbgpMultihop() {
-      return _ebgpMultihop;
-   }
-
-   @JsonPropertyDescription("The policy governing all advertisements sent to this peer")
-   public String getExportPolicy() {
-      return _exportPolicy;
-   }
-
-   /**
-    * @return {@link #_generatedRoutes}
-    */
-   @JsonProperty(GENERATED_ROUTES_VAR)
-   @JsonPropertyDescription("Generated routes specific to this peer not otherwise imported into any of this node's RIBs")
-   public Set<GeneratedRoute> getGeneratedRoutes() {
-      return _generatedRoutes;
-   }
-
-   /**
-    * @return {@link #_group}
-    */
-   @JsonProperty(GROUP_VAR)
-   @JsonPropertyDescription("Name of a group in the original vendor-specific configuration to which this peer is assigned")
-   public String getGroup() {
-      return _group;
-   }
-
-   @JsonPropertyDescription("Routing policy governing all advertisements received from this peer")
-   public String getImportPolicy() {
-      return _importPolicy;
-   }
-
-   /**
-    * @return {@link #_localAs}
-    */
-   @JsonProperty(LOCAL_AS_VAR)
-   @JsonPropertyDescription("The local autonomous sysem of this peering")
-   public Integer getLocalAs() {
-      return _localAs;
-   }
-
-   /**
-    * @return {@link #_localIp}
-    */
-   @JsonProperty(LOCAL_IP_VAR)
-   @JsonPropertyDescription("The local (source) IPV4 address of this peering")
-   public Ip getLocalIp() {
-      return _localIp;
-   }
-
-   @JsonIgnore
-   public Configuration getOwner() {
-      return _owner;
-   }
-
-   /**
-    * @return {@link #_network}
-    */
-   @JsonProperty(REMOTE_PREFIX_VAR)
-   @JsonPropertyDescription("The remote (destination) IPV4 address of this peering (when prefix-length is 32), or the network of peers allowed to connect on this peering (otherwise)")
-   public Prefix getPrefix() {
-      return _key;
-   }
-
-   /**
-    * @return {@link #_remoteAs}
-    */
-   @JsonProperty(REMOTE_AS_VAR)
-   @JsonPropertyDescription("The remote autonomous sysem of this peering")
-   public Integer getRemoteAs() {
-      return _remoteAs;
-   }
-
-   @JsonIgnore
-   public BgpNeighbor getRemoteBgpNeighbor() {
-      return _remoteBgpNeighbor;
-   }
-
-   @JsonPropertyDescription("Whether or not this peer is a route-reflector client")
-   public boolean getRouteReflectorClient() {
-      return _routeReflectorClient;
-   }
-
-   /**
-    * @return {@link #_sendCommunity}
-    */
-   @JsonProperty(SEND_COMMUNITY_VAR)
-   @JsonPropertyDescription("Whether or not to propagate the community attribute(s) of advertisements to this peer")
-   public boolean getSendCommunity() {
-      return _sendCommunity;
-   }
-
-   @JsonPropertyDescription("The name of the VRF containing the BGP process containing this peering")
-   public String getVrf() {
-      return _vrf;
-   }
-
-   public void initCandidateRemoteBgpNeighbors() {
-      _candidateRemoteBgpNeighbors = new LinkedHashSet<>();
-   }
-
-   public void resolveReferences(Configuration owner) {
-      _owner = owner;
-   }
-
-   @JsonProperty(ADDITIONAL_PATHS_RECEIVE_VAR)
-   public void setAdditionalPathsReceive(boolean additionalPathsReceive) {
-      _additionalPathsReceive = additionalPathsReceive;
-   }
-
-   @JsonProperty(ADDITIONAL_PATHS_SELECT_ALL_VAR)
-   public void setAdditionalPathsSelectAll(boolean additionalPathsSelectAll) {
-      _additionalPathsSelectAll = additionalPathsSelectAll;
-   }
-
-   @JsonProperty(ADDITIONAL_PATHS_SEND_VAR)
-   public void setAdditionalPathsSend(boolean additionalPathsSend) {
-      _additionalPathsSend = additionalPathsSend;
-   }
-
-   @JsonProperty(ADDRESS_VAR)
-   public void setAddress(Ip address) {
-      // Intentionally empty
-   }
-
-   @JsonProperty(ADVERTISE_EXTERNAL_VAR)
-   public void setAdvertiseExternal(boolean advertiseExternal) {
-      _advertiseExternal = advertiseExternal;
-   }
-
-   @JsonProperty(ADVERTISE_INACTIVE_VAR)
-   public void setAdvertiseInactive(boolean advertiseInactive) {
-      _advertiseInactive = advertiseInactive;
-   }
-
-   @JsonProperty(ALLOW_LOCAL_AS_IN_VAR)
-   public void setAllowLocalAsIn(boolean allowLocalAsIn) {
-      _allowLocalAsIn = allowLocalAsIn;
-   }
-
-   @JsonProperty(ALLOW_REMOTE_AS_OUT_VAR)
-   public void setAllowRemoteAsOut(boolean allowRemoteAsOut) {
-      _allowRemoteAsOut = allowRemoteAsOut;
-   }
-
-   /**
-    * Sets {@link #_clusterId}
-    *
-    * @param clusterId
-    */
-   @JsonProperty(CLUSTER_ID_VAR)
-   public void setClusterId(Long clusterId) {
-      _clusterId = clusterId;
-   }
-
-   /**
-    * Sets {@link #_defaultMetric}
-    *
-    * @param defaultMetric
-    */
-   @JsonProperty(DEFAULT_METRIC_VAR)
-   public void setDefaultMetric(int defaultMetric) {
-      _defaultMetric = defaultMetric;
-   }
-
-   @JsonProperty(DESCRIPTION_VAR)
-   public void setDescription(String description) {
-      _description = description;
-   }
-
-   @JsonProperty(DYNAMIC_VAR)
-   public void setDynamic(boolean dynamic) {
-      // Intentionally empty
-   }
-
-   @JsonProperty(EBGP_MULTIHOP_VAR)
-   public void setEbgpMultihop(boolean ebgpMultihop) {
-      _ebgpMultihop = ebgpMultihop;
-   }
-
-   public void setExportPolicy(String originationPolicyName) {
-      _exportPolicy = originationPolicyName;
-   }
-
-   @JsonProperty(GENERATED_ROUTES_VAR)
-   public void setGeneratedRoutes(Set<GeneratedRoute> generatedRoutes) {
-      _generatedRoutes = generatedRoutes;
-   }
-
-   /**
-    * Sets {@link #_group}
-    *
-    * @param name
-    */
-   @JsonProperty(GROUP_VAR)
-   public void setGroup(String name) {
-      _group = name;
-   }
-
-   public void setImportPolicy(String importPolicy) {
-      _importPolicy = importPolicy;
-   }
-
-   /**
-    * Sets {@link #_localAs}
-    *
-    * @param localAs
-    */
-   @JsonProperty(LOCAL_AS_VAR)
-   public void setLocalAs(Integer localAs) {
-      _localAs = localAs;
-   }
-
-   /**
-    * Sets {@link #_localIp}
-    *
-    * @param localIp
-    */
-   @JsonProperty(LOCAL_IP_VAR)
-   public void setLocalIp(Ip localIp) {
+    public Builder setLocalIp(Ip localIp) {
       _localIp = localIp;
-   }
+      return this;
+    }
 
-   @JsonProperty(OWNER_VAR)
-   public void setOwner(Configuration owner) {
-      _owner = owner;
-   }
+    public Builder setPeerAddress(Ip peerIpAddress) {
+      _peerIpAddress = peerIpAddress;
+      return this;
+    }
 
-   /**
-    * Sets {@link #_remoteAs}
-    *
-    * @param remoteAs
-    */
-   @JsonProperty(REMOTE_AS_VAR)
-   public void setRemoteAs(Integer remoteAs) {
+    public Builder setLocalAs(Integer localAs) {
+      _localAs = localAs;
+      return this;
+    }
+
+    public Builder setRemoteAs(Integer remoteAs) {
       _remoteAs = remoteAs;
-   }
+      return this;
+    }
 
-   public void setRemoteBgpNeighbor(BgpNeighbor remoteBgpNeighbor) {
-      _remoteBgpNeighbor = remoteBgpNeighbor;
-   }
+    public Builder setExportPolicy(String exportPolicy) {
+      _exportPolicy = exportPolicy;
+      return this;
+    }
 
-   @JsonProperty(REMOTE_PREFIX_VAR)
-   public void setRemotePrefix(Prefix remotePrefix) {
-      // Intentionally empty
-   }
+    public Builder setAdvertiseExternal(Boolean advertiseExternal) {
+      _advertiseExternal = advertiseExternal;
+      return this;
+    }
 
-   public void setRouteReflectorClient(boolean routeReflectorClient) {
-      _routeReflectorClient = routeReflectorClient;
-   }
+    public Builder setAdditionalPathSend(Boolean additionalPathSend) {
+      _additionalPathSend = additionalPathSend;
+      return this;
+    }
 
-   /**
-    * Sets {@link #_sendCommunity}
-    *
-    * @param sendCommunity
-    */
-   @JsonProperty(SEND_COMMUNITY_VAR)
-   public void setSendCommunity(boolean sendCommunity) {
-      _sendCommunity = sendCommunity;
-   }
+    public Builder setAdditionalPathSelectAll(Boolean additionalPathSelectAll) {
+      _additionalPathSelectAll = additionalPathSelectAll;
+      return this;
+    }
 
-   public void setVrf(String vrf) {
+    public Builder setAdvertiseInactive(Boolean advertiseInactive) {
+      _advertiseInactive = advertiseInactive;
+      return this;
+    }
+  }
+
+  public static final class BgpNeighborSummary extends ComparableStructure<String> {
+
+    private static final String PROP_DESCRIPTION = "description";
+
+    private static final String PROP_GROUP = "group";
+
+    private static final String PROP_LOCAL_AS = "localAs";
+
+    private static final String PROP_LOCAL_IP = "localIp";
+
+    private static final String PROP_REMOTE_AS = "remoteAs";
+
+    private static final String PROP_REMOTE_IP = "remoteIp";
+
+    private static final String PROP_REMOTE_PREFIX = "dynamicRemotePrefix";
+
+    private static final String PROP_VRF = "vrf";
+
+    /** */
+    private static final long serialVersionUID = 1L;
+
+    private final String _description;
+
+    private final String _group;
+
+    private final int _localAs;
+
+    private final Ip _localIp;
+
+    private final int _remoteAs;
+
+    private final Ip _remoteIp;
+
+    private final Prefix _remotePrefix;
+
+    private final String _vrf;
+
+    public BgpNeighborSummary(BgpNeighbor bgpNeighbor) {
+      super(
+          bgpNeighbor.getOwner().getName()
+              + ":"
+              + (bgpNeighbor.getDynamic()
+                  ? bgpNeighbor.getPrefix().toString()
+                  : bgpNeighbor.getAddress().toString()));
+      _description = bgpNeighbor._description;
+      _group = bgpNeighbor._group;
+      _localAs = bgpNeighbor._localAs;
+      _localIp = bgpNeighbor._localIp;
+      _remoteAs = bgpNeighbor._remoteAs;
+      _remoteIp = bgpNeighbor.getAddress();
+      _remotePrefix = bgpNeighbor._key;
+      _vrf = bgpNeighbor._vrf;
+    }
+
+    @JsonCreator
+    public BgpNeighborSummary(
+        @JsonProperty(PROP_NAME) String name,
+        @JsonProperty(PROP_DESCRIPTION) String description,
+        @JsonProperty(PROP_GROUP) String group,
+        @JsonProperty(PROP_LOCAL_AS) int localAs,
+        @JsonProperty(PROP_LOCAL_IP) Ip localIp,
+        @JsonProperty(PROP_REMOTE_AS) int remoteAs,
+        @JsonProperty(PROP_REMOTE_IP) Ip remoteIp,
+        @JsonProperty(PROP_REMOTE_PREFIX) Prefix remotePrefix,
+        @JsonProperty(PROP_VRF) String vrf) {
+      super(name);
+      _description = description;
+      _group = group;
+      _localAs = localAs;
+      _localIp = localIp;
+      _remoteAs = remoteAs;
+      _remoteIp = remoteIp;
+      _remotePrefix = remotePrefix;
       _vrf = vrf;
-   }
+    }
 
-   @Override
-   public String toString() {
-      return "BgpNeighbor<Prefix:" + _key + ", AS:" + _remoteAs + ">";
-   }
+    @JsonProperty(PROP_DESCRIPTION)
+    public String getDescription() {
+      return _description;
+    }
 
+    @JsonProperty(PROP_GROUP)
+    public String getGroup() {
+      return _group;
+    }
+
+    @JsonProperty(PROP_LOCAL_AS)
+    public int getLocalAs() {
+      return _localAs;
+    }
+
+    @JsonProperty(PROP_LOCAL_IP)
+    public Ip getLocalIp() {
+      return _localIp;
+    }
+
+    @JsonIgnore
+    public Prefix getPrefix() {
+      if (_remotePrefix == null) {
+        return new Prefix(_remoteIp, 32);
+      } else {
+        return _remotePrefix;
+      }
+    }
+
+    @JsonProperty(PROP_REMOTE_AS)
+    public int getRemoteAs() {
+      return _remoteAs;
+    }
+
+    @JsonProperty(PROP_REMOTE_IP)
+    public Ip getRemoteIp() {
+      return _remoteIp;
+    }
+
+    @JsonProperty(PROP_REMOTE_PREFIX)
+    public Prefix getRemotePrefix() {
+      return _remotePrefix;
+    }
+
+    @JsonProperty(PROP_VRF)
+    public String getVrf() {
+      return _vrf;
+    }
+  }
+
+  private static final String PROP_ADDITIONAL_PATHS_RECEIVE = "additionalPathsReceive";
+
+  private static final String PROP_ADDITIONAL_PATHS_SELECT_ALL = "additionalPathsSelectAll";
+
+  private static final String PROP_ADDITIONAL_PATHS_SEND = "additionalPathsSend";
+
+  private static final String PROP_ADDRESS = "address";
+
+  private static final String PROP_ADVERTISE_EXTERNAL = "advertiseExternal";
+
+  private static final String PROP_ADVERTISE_INACTIVE = "advertiseInactive";
+
+  private static final String PROP_ALLOW_LOCAL_AS_IN = "allowLocalAsIn";
+
+  private static final String PROP_ALLOW_REMOTE_AS_OUT = "allowRemoteAsOut";
+
+  private static final String PROP_AUTHENTICATION_SETTINGS = "authenticationSettings";
+
+  private static final String PROP_CLUSTER_ID = "clusterId";
+
+  private static final String PROP_DEFAULT_METRIC = "defaultMetric";
+
+  private static final String PROP_DESCRIPTION = "description";
+
+  private static final String PROP_DYNAMIC = "dynamic";
+
+  private static final String PROP_EBGP_MULTIHOP = "ebgpMultihop";
+
+  private static final String PROP_EXPORT_POLICY = "exportPolicy";
+
+  private static final String PROP_EXPORT_POLICY_SOURCES = "exportPolicySources";
+
+  private static final String PROP_GENERATED_ROUTES = "generatedRoutes";
+
+  private static final String PROP_GROUP = "group";
+
+  private static final String PROP_IMPORT_POLICY = "importPolicy";
+
+  private static final String PROP_IMPORT_POLICY_SOURCES = "importPolicySources";
+
+  private static final String PROP_LOCAL_AS = "localAs";
+
+  private static final String PROP_LOCAL_IP = "localIp";
+
+  private static final String PROP_NAME = "name";
+
+  private static final String PROP_OWNER = "owner";
+
+  private static final String PROP_REMOTE_AS = "remoteAs";
+
+  private static final String PROP_REMOTE_PREFIX = "remotePrefix";
+
+  private static final String PROP_SEND_COMMUNITY = "sendCommunity";
+
+  /** */
+  private static final long serialVersionUID = 1L;
+
+  private boolean _additionalPathsReceive;
+
+  private boolean _additionalPathsSelectAll;
+
+  private boolean _additionalPathsSend;
+
+  private boolean _advertiseExternal;
+
+  private boolean _advertiseInactive;
+
+  private boolean _allowLocalAsIn;
+
+  private boolean _allowRemoteAsOut;
+
+  private BgpAuthenticationSettings _authenticationSettings;
+
+  private transient Set<BgpNeighbor> _candidateRemoteBgpNeighbors;
+
+  /** The cluster id associated with this peer to be used in route reflection */
+  private Long _clusterId;
+
+  /** The default metric associated with routes sent to this peer */
+  private int _defaultMetric;
+
+  private String _description;
+
+  private boolean _ebgpMultihop;
+
+  private String _exportPolicy;
+
+  private SortedSet<String> _exportPolicySources;
+
+  /**
+   * The set of generated and/or aggregate routes to be potentially sent to this peer before
+   * outbound policies are taken into account
+   */
+  private Set<GeneratedRoute> _generatedRoutes;
+
+  /**
+   * The group name associated with this peer in the vendor-specific configuration from which the
+   * containing configuration is derived. This field is OPTIONAL and should not impact the
+   * subsequent data plane computation.
+   */
+  private String _group;
+
+  private String _importPolicy;
+
+  private SortedSet<String> _importPolicySources;
+
+  /** The autonomous system number of the containing BGP process as reported to this peer */
+  private Integer _localAs;
+
+  /** The ip address of the containing router as reported to this peer */
+  private Ip _localIp;
+
+  private Configuration _owner;
+
+  /** The autonomous system number that the containing BGP process considers this peer to have. */
+  private Integer _remoteAs;
+
+  private transient BgpNeighbor _remoteBgpNeighbor;
+
+  private boolean _routeReflectorClient;
+
+  /**
+   * Flag governing whether to include community numbers in outgoing route advertisements to this
+   * peer
+   */
+  private boolean _sendCommunity;
+
+  private String _vrf;
+
+  @SuppressWarnings("unused")
+  private BgpNeighbor() {
+    this(null);
+  }
+
+  /**
+   * Constructs a BgpNeighbor with the given peer ip address for {@link #_address} and owner for
+   * {@link #_owner}
+   *
+   * @param address The address of this neighbor
+   * @param owner The owner of this neighbor
+   */
+  public BgpNeighbor(Ip address, Configuration owner) {
+    this(new Prefix(address, 32), owner);
+  }
+
+  @JsonCreator
+  public BgpNeighbor(@JsonProperty(PROP_NAME) Prefix prefix) {
+    super(prefix);
+    _exportPolicySources = new TreeSet<>();
+    _generatedRoutes = new LinkedHashSet<>();
+    _importPolicySources = new TreeSet<>();
+  }
+
+  /**
+   * Constructs a BgpNeighbor with the given peer dynamic ip range for {@link #_network} and owner
+   * for {@link #_owner}
+   *
+   * @param prefix The dynamic ip range of this neighbor
+   * @param owner The owner of this neighbor
+   */
+  public BgpNeighbor(Prefix prefix, Configuration owner) {
+    this(prefix);
+    _owner = owner;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (o == this) {
+      return true;
+    } else if (!(o instanceof BgpNeighbor)) {
+      return false;
+    }
+    BgpNeighbor other = (BgpNeighbor) o;
+    if (this._advertiseExternal != other._advertiseExternal) {
+      return false;
+    }
+    if (this._advertiseInactive != other._advertiseInactive) {
+      return false;
+    }
+    if (this._allowLocalAsIn != other._allowLocalAsIn) {
+      return false;
+    }
+    if (this._allowRemoteAsOut != other._allowRemoteAsOut) {
+      return false;
+    }
+    if (Objects.equals(this._authenticationSettings, other._authenticationSettings)) {
+      return false;
+    }
+    if (_clusterId == null) {
+      if (other._clusterId != null) {
+        return false;
+      }
+    } else if (!this._clusterId.equals(other._clusterId)) {
+      return false;
+    }
+    if (this._defaultMetric != other._defaultMetric) {
+      return false;
+    }
+    // we will skip description
+    if (this._ebgpMultihop != other._ebgpMultihop) {
+      return false;
+    }
+    if (!this._exportPolicy.equals(other._exportPolicy)) {
+      return false;
+    }
+    // we will skip generated routes.
+    if (!Objects.equals(this._group, other._group)) {
+      return false;
+    }
+    if (!Objects.equals(this._importPolicy, other._importPolicy)) {
+      return false;
+    }
+    if (!this._localAs.equals(other._localAs)) {
+      return false;
+    }
+    if (!Objects.equals(this._localIp, other._localIp)) {
+      return false;
+    }
+    // we will skip owner.
+    if (!this._remoteAs.equals(other._remoteAs)) {
+      return false;
+    }
+    if (this._routeReflectorClient != other._routeReflectorClient) {
+      return false;
+    }
+    if (this._sendCommunity != other._sendCommunity) {
+      return false;
+    }
+    return true;
+  }
+
+  @JsonProperty(PROP_ADDITIONAL_PATHS_RECEIVE)
+  public boolean getAdditionalPathsReceive() {
+    return _additionalPathsReceive;
+  }
+
+  @JsonProperty(PROP_ADDITIONAL_PATHS_SELECT_ALL)
+  public boolean getAdditionalPathsSelectAll() {
+    return _additionalPathsSelectAll;
+  }
+
+  @JsonProperty(PROP_ADDITIONAL_PATHS_SEND)
+  public boolean getAdditionalPathsSend() {
+    return _additionalPathsSend;
+  }
+
+  @Nullable
+  @JsonProperty(PROP_ADDRESS)
+  @JsonPropertyDescription("The IPV4 address of the remote peer if not dynamic (passive)")
+  public Ip getAddress() {
+    if (_key != null && _key.getPrefixLength() == 32) {
+      return _key.getAddress();
+    } else {
+      return null;
+    }
+  }
+
+  @JsonProperty(PROP_ADVERTISE_EXTERNAL)
+  @JsonPropertyDescription(
+      "Whether to advertise the best eBGP route for each network independently of whether it is "
+          + "the best BGP route for that network")
+  public boolean getAdvertiseExternal() {
+    return _advertiseExternal;
+  }
+
+  @JsonProperty(PROP_ADVERTISE_INACTIVE)
+  @JsonPropertyDescription(
+      "Whether to advertise the best BGP route for each network independently of whether it is "
+          + "the best overall route for that network")
+  public boolean getAdvertiseInactive() {
+    return _advertiseInactive;
+  }
+
+  @JsonProperty(PROP_ALLOW_LOCAL_AS_IN)
+  @JsonPropertyDescription(
+      "Whether to allow reception of advertisements containing the local AS number in the AS-path")
+  public boolean getAllowLocalAsIn() {
+    return _allowLocalAsIn;
+  }
+
+  @JsonProperty(PROP_ALLOW_REMOTE_AS_OUT)
+  @JsonPropertyDescription(
+      "Whether to allow sending of advertisements containing the remote AS number in the AS-path")
+  public boolean getAllowRemoteAsOut() {
+    return _allowRemoteAsOut;
+  }
+
+  @Nullable
+  @JsonProperty(PROP_AUTHENTICATION_SETTINGS)
+  @JsonPropertyDescription("The authentication setting to be used for this neighbor")
+  public BgpAuthenticationSettings getAuthenticationSettings() {
+    return _authenticationSettings;
+  }
+
+  @JsonIgnore
+  public Set<BgpNeighbor> getCandidateRemoteBgpNeighbors() {
+    return _candidateRemoteBgpNeighbors;
+  }
+
+  @JsonProperty(PROP_CLUSTER_ID)
+  @JsonPropertyDescription("Route-reflection cluster-id for this peer")
+  public Long getClusterId() {
+    return _clusterId;
+  }
+
+  @JsonProperty(PROP_DEFAULT_METRIC)
+  @JsonPropertyDescription("Default MED for routes sent to this neighbor")
+  public int getDefaultMetric() {
+    return _defaultMetric;
+  }
+
+  @JsonProperty(PROP_DESCRIPTION)
+  @JsonPropertyDescription("Description of this peer")
+  public String getDescription() {
+    return _description;
+  }
+
+  @JsonProperty(PROP_DYNAMIC)
+  @JsonPropertyDescription(
+      "Whether this represents a connection to a specific peer (false) or a passive connection to "
+          + "a network of peers (true)")
+  public boolean getDynamic() {
+    return _key != null && _key.getPrefixLength() < 32;
+  }
+
+  @JsonProperty(PROP_EBGP_MULTIHOP)
+  @JsonPropertyDescription(
+      "Whether to allow establishment of a multihop eBGP connection with this peer")
+  public boolean getEbgpMultihop() {
+    return _ebgpMultihop;
+  }
+
+  @JsonProperty(PROP_EXPORT_POLICY)
+  @JsonPropertyDescription("The policy governing all advertisements sent to this peer")
+  public String getExportPolicy() {
+    return _exportPolicy;
+  }
+
+  @JsonProperty(PROP_EXPORT_POLICY_SOURCES)
+  public SortedSet<String> getExportPolicySources() {
+    return _exportPolicySources;
+  }
+
+  @JsonProperty(PROP_GENERATED_ROUTES)
+  @JsonPropertyDescription(
+      "Generated routes specific to this peer not otherwise imported into any of this node's RIBs")
+  public Set<GeneratedRoute> getGeneratedRoutes() {
+    return _generatedRoutes;
+  }
+
+  @JsonProperty(PROP_GROUP)
+  @JsonPropertyDescription(
+      "Name of a group in the original vendor-specific configuration to which this peer is "
+          + "assigned")
+  public String getGroup() {
+    return _group;
+  }
+
+  @JsonProperty(PROP_IMPORT_POLICY)
+  @JsonPropertyDescription("Routing policy governing all advertisements received from this peer")
+  public String getImportPolicy() {
+    return _importPolicy;
+  }
+
+  @JsonProperty(PROP_IMPORT_POLICY_SOURCES)
+  public SortedSet<String> getImportPolicySources() {
+    return _importPolicySources;
+  }
+
+  @JsonProperty(PROP_LOCAL_AS)
+  @JsonPropertyDescription("The local autonomous sysem of this peering")
+  public Integer getLocalAs() {
+    return _localAs;
+  }
+
+  @JsonProperty(PROP_LOCAL_IP)
+  @JsonPropertyDescription("The local (source) IPV4 address of this peering")
+  public Ip getLocalIp() {
+    return _localIp;
+  }
+
+  @JsonIgnore
+  public Configuration getOwner() {
+    return _owner;
+  }
+
+  @JsonProperty(PROP_REMOTE_PREFIX)
+  @JsonPropertyDescription(
+      "The remote (destination) IPV4 address of this peering (when prefix-length is 32), or the "
+          + "network of peers allowed to connect on this peering (otherwise)")
+  public Prefix getPrefix() {
+    return _key;
+  }
+
+  @JsonProperty(PROP_REMOTE_AS)
+  @JsonPropertyDescription("The remote autonomous sysem of this peering")
+  public Integer getRemoteAs() {
+    return _remoteAs;
+  }
+
+  @JsonIgnore
+  public BgpNeighbor getRemoteBgpNeighbor() {
+    return _remoteBgpNeighbor;
+  }
+
+  @JsonPropertyDescription("Whether or not this peer is a route-reflector client")
+  public boolean getRouteReflectorClient() {
+    return _routeReflectorClient;
+  }
+
+  @JsonProperty(PROP_SEND_COMMUNITY)
+  @JsonPropertyDescription(
+      "Whether or not to propagate the community attribute(s) of advertisements to this peer")
+  public boolean getSendCommunity() {
+    return _sendCommunity;
+  }
+
+  @JsonPropertyDescription(
+      "The name of the VRF containing the BGP process containing this " + "peering")
+  public String getVrf() {
+    return _vrf;
+  }
+
+  public void initCandidateRemoteBgpNeighbors() {
+    _candidateRemoteBgpNeighbors = new LinkedHashSet<>();
+  }
+
+  public void resolveReferences(Configuration owner) {
+    _owner = owner;
+  }
+
+  @JsonProperty(PROP_ADDITIONAL_PATHS_RECEIVE)
+  public void setAdditionalPathsReceive(boolean additionalPathsReceive) {
+    _additionalPathsReceive = additionalPathsReceive;
+  }
+
+  @JsonProperty(PROP_ADDITIONAL_PATHS_SELECT_ALL)
+  public void setAdditionalPathsSelectAll(boolean additionalPathsSelectAll) {
+    _additionalPathsSelectAll = additionalPathsSelectAll;
+  }
+
+  @JsonProperty(PROP_ADDITIONAL_PATHS_SEND)
+  public void setAdditionalPathsSend(boolean additionalPathsSend) {
+    _additionalPathsSend = additionalPathsSend;
+  }
+
+  @JsonProperty(PROP_ADDRESS)
+  public void setAddress(Ip address) {
+    // Intentionally empty
+  }
+
+  @JsonProperty(PROP_ADVERTISE_EXTERNAL)
+  public void setAdvertiseExternal(boolean advertiseExternal) {
+    _advertiseExternal = advertiseExternal;
+  }
+
+  @JsonProperty(PROP_ADVERTISE_INACTIVE)
+  public void setAdvertiseInactive(boolean advertiseInactive) {
+    _advertiseInactive = advertiseInactive;
+  }
+
+  @JsonProperty(PROP_ALLOW_LOCAL_AS_IN)
+  public void setAllowLocalAsIn(boolean allowLocalAsIn) {
+    _allowLocalAsIn = allowLocalAsIn;
+  }
+
+  @JsonProperty(PROP_ALLOW_REMOTE_AS_OUT)
+  public void setAllowRemoteAsOut(boolean allowRemoteAsOut) {
+    _allowRemoteAsOut = allowRemoteAsOut;
+  }
+
+  @JsonProperty(PROP_AUTHENTICATION_SETTINGS)
+  public void setAuthenticationSettings(BgpAuthenticationSettings authenticationSettings) {
+    _authenticationSettings = authenticationSettings;
+  }
+
+  @JsonProperty(PROP_CLUSTER_ID)
+  public void setClusterId(Long clusterId) {
+    _clusterId = clusterId;
+  }
+
+  @JsonProperty(PROP_DEFAULT_METRIC)
+  public void setDefaultMetric(int defaultMetric) {
+    _defaultMetric = defaultMetric;
+  }
+
+  @JsonProperty(PROP_DESCRIPTION)
+  public void setDescription(String description) {
+    _description = description;
+  }
+
+  @JsonProperty(PROP_DYNAMIC)
+  public void setDynamic(boolean dynamic) {
+    // Intentionally empty
+  }
+
+  @JsonProperty(PROP_EBGP_MULTIHOP)
+  public void setEbgpMultihop(boolean ebgpMultihop) {
+    _ebgpMultihop = ebgpMultihop;
+  }
+
+  @JsonProperty(PROP_EXPORT_POLICY)
+  public void setExportPolicy(String originationPolicyName) {
+    _exportPolicy = originationPolicyName;
+  }
+
+  @JsonProperty(PROP_EXPORT_POLICY_SOURCES)
+  public void setExportPolicySources(SortedSet<String> exportPolicySources) {
+    _exportPolicySources = exportPolicySources;
+  }
+
+  @JsonProperty(PROP_GENERATED_ROUTES)
+  public void setGeneratedRoutes(Set<GeneratedRoute> generatedRoutes) {
+    _generatedRoutes = generatedRoutes;
+  }
+
+  @JsonProperty(PROP_GROUP)
+  public void setGroup(String name) {
+    _group = name;
+  }
+
+  @JsonProperty(PROP_IMPORT_POLICY)
+  public void setImportPolicy(String importPolicy) {
+    _importPolicy = importPolicy;
+  }
+
+  @JsonProperty(PROP_IMPORT_POLICY_SOURCES)
+  public void setImportPolicySources(SortedSet<String> importPolicySources) {
+    _importPolicySources = importPolicySources;
+  }
+
+  @JsonProperty(PROP_LOCAL_AS)
+  public void setLocalAs(Integer localAs) {
+    _localAs = localAs;
+  }
+
+  @JsonProperty(PROP_LOCAL_IP)
+  public void setLocalIp(Ip localIp) {
+    _localIp = localIp;
+  }
+
+  @JsonProperty(PROP_OWNER)
+  public void setOwner(Configuration owner) {
+    _owner = owner;
+  }
+
+  @JsonProperty(PROP_REMOTE_AS)
+  public void setRemoteAs(Integer remoteAs) {
+    _remoteAs = remoteAs;
+  }
+
+  public void setRemoteBgpNeighbor(@Nullable BgpNeighbor remoteBgpNeighbor) {
+    _remoteBgpNeighbor = remoteBgpNeighbor;
+  }
+
+  @JsonProperty(PROP_REMOTE_PREFIX)
+  public void setRemotePrefix(Prefix remotePrefix) {
+    // Intentionally empty
+  }
+
+  public void setRouteReflectorClient(boolean routeReflectorClient) {
+    _routeReflectorClient = routeReflectorClient;
+  }
+
+  @JsonProperty(PROP_SEND_COMMUNITY)
+  public void setSendCommunity(boolean sendCommunity) {
+    _sendCommunity = sendCommunity;
+  }
+
+  public void setVrf(String vrf) {
+    _vrf = vrf;
+  }
+
+  @Override
+  public String toString() {
+    return "BgpNeighbor<Prefix:" + _key + ", AS:" + _remoteAs + ">";
+  }
 }

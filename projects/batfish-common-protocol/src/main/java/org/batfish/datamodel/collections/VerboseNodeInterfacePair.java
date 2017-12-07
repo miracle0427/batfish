@@ -1,41 +1,37 @@
 package org.batfish.datamodel.collections;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.batfish.common.Pair;
 import org.batfish.datamodel.Configuration;
 import org.batfish.datamodel.Interface;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
+public final class VerboseNodeInterfacePair extends Pair<Configuration, Interface> {
 
-public class VerboseNodeInterfacePair extends Pair<Configuration, Interface> {
+  private static final String PROP_HOST = "host";
 
-   private static final String HOST_VAR = "host";
+  private static final String PROP_INTERFACE = "interface";
+  /** */
+  private static final long serialVersionUID = 1L;
 
-   private static final String INTERFACE_VAR = "interface";
-   /**
-    *
-    */
-   private static final long serialVersionUID = 1L;
+  @JsonCreator
+  public VerboseNodeInterfacePair(
+      @JsonProperty(PROP_HOST) Configuration node, @JsonProperty(PROP_INTERFACE) Interface iface) {
+    super(node, iface);
+  }
 
-   @JsonCreator
-   public VerboseNodeInterfacePair(@JsonProperty(HOST_VAR) Configuration node,
-         @JsonProperty(INTERFACE_VAR) Interface iface) {
-      super(node, iface);
-   }
+  @JsonProperty(PROP_HOST)
+  public Configuration getHost() {
+    return _first;
+  }
 
-   @JsonProperty(HOST_VAR)
-   public Configuration getHost() {
-      return _first;
-   }
+  @JsonProperty(PROP_INTERFACE)
+  public Interface getInterface() {
+    return _second;
+  }
 
-   @JsonProperty(INTERFACE_VAR)
-   public Interface getInterface() {
-      return _second;
-   }
-
-   @Override
-   public String toString() {
-      return _first + ":" + _second;
-   }
-
+  @Override
+  public String toString() {
+    return _first + ":" + _second;
+  }
 }

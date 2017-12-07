@@ -1,25 +1,20 @@
 package org.batfish.datamodel.routing_policy.expr;
 
-import java.io.Serializable;
-
-import org.batfish.datamodel.routing_policy.Environment;
-
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import java.io.Serializable;
+import org.batfish.datamodel.routing_policy.Environment;
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS, include = JsonTypeInfo.As.PROPERTY, property = "class")
 public abstract class RouteTypeExpr implements Serializable {
 
-   /**
-    *
-    */
-   private static final long serialVersionUID = 1L;
+  /** */
+  private static final long serialVersionUID = 1L;
 
-   @Override
-   public abstract boolean equals(Object obj);
+  @Override
+  public abstract boolean equals(Object obj);
 
-   public abstract RouteType evaluate(Environment environment);
+  public abstract RouteType evaluate(Environment environment);
 
-   @Override
-   public abstract int hashCode();
-
+  @Override
+  public abstract int hashCode();
 }

@@ -1,262 +1,212 @@
 package org.batfish.common.plugin;
 
+import com.google.common.collect.Lists;
+import com.google.common.io.ByteStreams;
+import com.google.common.io.Closer;
+import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.io.xml.DomDriver;
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.FileInputStream;
+import java.io.FilterOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.OutputStream;
+import java.io.PushbackInputStream;
 import java.io.Serializable;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Modifier;
-import java.net.URL;
-import java.net.URLClassLoader;
-import java.nio.file.FileVisitResult;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.SimpleFileVisitor;
-import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Enumeration;
 import java.util.List;
-import java.util.jar.JarEntry;
-import java.util.jar.JarFile;
+import java.util.ServiceConfigurationError;
+import java.util.ServiceLoader;
+import java.util.SortedSet;
+import java.util.TreeSet;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
-
 import org.apache.commons.io.IOUtils;
 import org.batfish.common.BatfishException;
-import org.batfish.common.BfConsts;
+import org.batfish.common.CompositeBatfishException;
 import org.batfish.common.util.BatfishObjectInputStream;
-
-import com.thoughtworks.xstream.XStream;
-import com.thoughtworks.xstream.io.xml.DomDriver;
 
 public abstract class PluginConsumer implements IPluginConsumer {
 
-   private static final String CLASS_EXTENSION = ".class";
+  /**
+   * A byte-array containing the first 4 bytes of the header for a file that is the output of java
+   * serialization
+   */
+  private static final byte[] JAVA_SERIALIZED_OBJECT_HEADER = {
+    (byte) 0xac, (byte) 0xed, (byte) 0x00, (byte) 0x05
+  };
 
-   /**
-    * A byte-array containing the first 4 bytes of the header for a file that is
-    * the output of java serialization
-    */
-   private static final byte[] JAVA_SERIALIZED_OBJECT_HEADER = { (byte) 0xac,
-         (byte) 0xed, (byte) 0x00, (byte) 0x05 };
+  private ClassLoader _currentClassLoader;
 
-   private ClassLoader _currentClassLoader;
+  private final boolean _serializeToText;
 
-   private final List<Path> _pluginDirs;
+  public PluginConsumer(boolean serializeToText) {
+    _currentClassLoader = Thread.currentThread().getContextClassLoader();
+    _serializeToText = serializeToText;
+  }
 
-   private final boolean _serializeToText;
+  protected <S extends Serializable> S deserializeObject(byte[] data, Class<S> outputClass) {
+    ByteArrayInputStream stream = new ByteArrayInputStream(data);
+    return deserializeObject(stream, outputClass);
+  }
 
-   public PluginConsumer(boolean serializeToText, List<Path> pluginDirs) {
-      // _currentClassLoader = getClass().getClassLoader();
-      _currentClassLoader = Thread.currentThread().getContextClassLoader();
-      _serializeToText = serializeToText;
-      _pluginDirs = new ArrayList<>(pluginDirs);
-      String questionPluginDirStr = System
-            .getProperty(BfConsts.PROP_QUESTION_PLUGIN_DIR);
-      // try to place question plugin first if system property is defined
-      if (questionPluginDirStr != null) {
-         Path questionPluginDir = Paths.get(questionPluginDirStr);
-         if (_pluginDirs.isEmpty()
-               || !_pluginDirs.get(0).equals(questionPluginDir)) {
-            _pluginDirs.add(0, questionPluginDir);
-         }
+  protected <S extends Serializable> S deserializeObject(InputStream stream, Class<S> outputClass) {
+    try {
+      // Allows us to peek at the beginning of the stream and then push the bytes back in for
+      // downstream consumers to read.
+      PushbackInputStream pbstream =
+          new PushbackInputStream(stream, JAVA_SERIALIZED_OBJECT_HEADER.length);
+      boolean isJavaSerializationData = isJavaSerializationData(pbstream);
+      ObjectInputStream ois;
+      if (!isJavaSerializationData) {
+        XStream xstream = new XStream(new DomDriver("UTF-8"));
+        xstream.setClassLoader(_currentClassLoader);
+        ois = xstream.createObjectInputStream(pbstream);
+      } else {
+        ois = new BatfishObjectInputStream(pbstream, _currentClassLoader);
       }
-      return;
+      Object o = ois.readObject();
+      return outputClass.cast(o);
+    } catch (IOException | ClassNotFoundException | ClassCastException e) {
+      throw new BatfishException(
+          "Failed to deserialize object of type '" + outputClass.getCanonicalName() + "' from data",
+          e);
+    }
+  }
 
-   }
+  protected <S extends Serializable> S deserializeObject(Path inputFile, Class<S> outputClass) {
+    try {
+      // Awkward nested try blocks required because we refuse to throw IOExceptions.
+      try (Closer closer = Closer.create()) {
+        FileInputStream fis = closer.register(new FileInputStream(inputFile.toFile()));
+        BufferedInputStream bis = closer.register(new BufferedInputStream(fis));
+        GZIPInputStream gis = closer.register(new GZIPInputStream(bis));
+        return deserializeObject(gis, outputClass);
+      }
+    } catch (IOException e) {
+      throw new BatfishException(
+          String.format(
+              "Failed to deserialize object of type %s from file %s",
+              outputClass.getCanonicalName(), inputFile),
+          e);
+    }
+  }
 
-   protected <S extends Serializable> S deserializeObject(byte[] data,
-         Class<S> outputClass) {
+  protected byte[] fromGzipFile(Path inputFile) {
+    try {
+      // Awkward nested try blocks required because we refuse to throw IOExceptions.
+      try (Closer closer = Closer.create()) {
+        FileInputStream fis = closer.register(new FileInputStream(inputFile.toFile()));
+        GZIPInputStream gis = closer.register(new GZIPInputStream(fis));
+        return IOUtils.toByteArray(gis);
+      }
+    } catch (IOException e) {
+      throw new BatfishException("Failed to gunzip file: " + inputFile, e);
+    }
+  }
+
+  public ClassLoader getCurrentClassLoader() {
+    return _currentClassLoader;
+  }
+
+  public abstract PluginClientType getType();
+
+  /**
+   * Determines whether the data in the stream is Java serialized bytes. Requires a {@link
+   * PushbackInputStream} so that the inspected bytes can be put back into the stream after reading.
+   */
+  private boolean isJavaSerializationData(PushbackInputStream stream) throws IOException {
+    byte[] header = new byte[JAVA_SERIALIZED_OBJECT_HEADER.length];
+    ByteStreams.readFully(stream, header);
+    boolean ret = Arrays.equals(header, JAVA_SERIALIZED_OBJECT_HEADER);
+    stream.unread(header);
+    return ret;
+  }
+
+  protected final void loadPlugins() {
+    SortedSet<Plugin> plugins;
+    try {
+      plugins =
+          new TreeSet<>(Lists.newArrayList(ServiceLoader.load(Plugin.class, _currentClassLoader)));
+    } catch (ServiceConfigurationError e) {
+      throw new BatfishException("Failed to locate and/or instantiate plugins", e);
+    }
+    List<BatfishException> initializationExceptions = new ArrayList<>();
+    for (Plugin plugin : plugins) {
       try {
-         boolean isJavaSerializationData = isJavaSerializationData(data);
-         ByteArrayInputStream bais = new ByteArrayInputStream(data);
-         ObjectInputStream ois;
-         if (!isJavaSerializationData) {
-            XStream xstream = new XStream(new DomDriver("UTF-8"));
-            xstream.setClassLoader(_currentClassLoader);
-            ois = xstream.createObjectInputStream(bais);
-         }
-         else {
-            ois = new BatfishObjectInputStream(bais, _currentClassLoader);
-         }
-         Object o = ois.readObject();
-         ois.close();
-         return outputClass.cast(o);
+        plugin.initialize(this);
+      } catch (Exception e) {
+        initializationExceptions.add(
+            new BatfishException(
+                "Failed to initialize plugin: " + plugin.getClass().getCanonicalName(), e));
       }
-      catch (IOException | ClassNotFoundException | ClassCastException e) {
-         throw new BatfishException("Failed to deserialize object of type '"
-               + outputClass.getCanonicalName() + "' from data", e);
+    }
+    if (!initializationExceptions.isEmpty()) {
+      throw new CompositeBatfishException(
+          new BatfishException("Failed to initialize one or more plugins"),
+          initializationExceptions);
+    }
+  }
+
+  /** Serializes the given object to a file with the given output name, using GZIP compression. */
+  public void serializeObject(Serializable object, Path outputFile) {
+    try {
+      try (Closer closer = Closer.create()) {
+        OutputStream out = closer.register(Files.newOutputStream(outputFile));
+        BufferedOutputStream bout = closer.register(new BufferedOutputStream(out));
+        serializeToGzipData(object, bout);
       }
-   }
+    } catch (IOException e) {
+      throw new BatfishException(
+          "Failed to serialize object to gzip output file: " + outputFile, e);
+    }
+  }
 
-   public <S extends Serializable> S deserializeObject(Path inputFile,
-         Class<S> outputClass) {
-      byte[] data = fromGzipFile(inputFile);
-      return deserializeObject(data, outputClass);
-   }
+  /** Serializes the given object to a GZIP-compressed byte[]. */
+  protected byte[] toGzipData(Serializable object) {
+    ByteArrayOutputStream baos = new ByteArrayOutputStream();
+    serializeToGzipData(object, baos);
+    return baos.toByteArray();
+  }
 
-   protected byte[] fromGzipFile(Path inputFile) {
-      try {
-         FileInputStream fis = new FileInputStream(inputFile.toFile());
-         GZIPInputStream gis = new GZIPInputStream(fis);
-         byte[] data = IOUtils.toByteArray(gis);
-         return data;
+  private static class CloseIgnoringOutputStream extends FilterOutputStream {
+
+    protected CloseIgnoringOutputStream(OutputStream out) {
+      super(out);
+    }
+
+    /** Does nothing, deliberately. */
+    @Override
+    public void close() {}
+  }
+
+  /** Serializes the given object to the given stream, using GZIP compression. */
+  private void serializeToGzipData(Serializable object, OutputStream out) {
+    // This is a hack:
+    //   XStream requires that its streams be closed to properly finish serialization,
+    //   but we do not actually want to close the passed-in output stream.
+    out = new CloseIgnoringOutputStream(out);
+
+    try (Closer closer = Closer.create()) {
+      GZIPOutputStream gos = closer.register(new GZIPOutputStream(out));
+      ObjectOutputStream oos;
+      if (_serializeToText) {
+        XStream xstream = new XStream(new DomDriver("UTF-8"));
+        oos = closer.register(xstream.createObjectOutputStream(gos));
+      } else {
+        oos = closer.register(new ObjectOutputStream(gos));
       }
-      catch (IOException e) {
-         throw new BatfishException(
-               "Failed to gunzip file: " + inputFile.toString(), e);
-      }
-   }
-
-   public ClassLoader getCurrentClassLoader() {
-      return _currentClassLoader;
-   }
-
-   public abstract PluginClientType getType();
-
-   private boolean isJavaSerializationData(byte[] fileBytes) {
-      int headerLength = JAVA_SERIALIZED_OBJECT_HEADER.length;
-      byte[] headerBytes = new byte[headerLength];
-      for (int i = 0; i < headerLength; i++) {
-         headerBytes[i] = fileBytes[i];
-      }
-      return Arrays.equals(headerBytes, JAVA_SERIALIZED_OBJECT_HEADER);
-   }
-
-   private void loadPluginJar(Path path) {
-      /*
-       * Adapted from
-       * http://stackoverflow.com/questions/11016092/how-to-load-classes-at-
-       * runtime-from-a-folder-or-jar Retrieved: 2016-08-31 Original Authors:
-       * Kevin Crain http://stackoverflow.com/users/2688755/kevin-crain
-       * Apfelsaft http://stackoverflow.com/users/1447641/apfelsaft License:
-       * https://creativecommons.org/licenses/by-sa/3.0/
-       */
-      String pathString = path.toString();
-      if (pathString.endsWith(".jar")) {
-         try {
-            URL[] urls = { new URL("jar:file:" + pathString + "!/") };
-            URLClassLoader cl = URLClassLoader.newInstance(urls,
-                  _currentClassLoader);
-            _currentClassLoader = cl;
-            Thread.currentThread().setContextClassLoader(cl);
-            JarFile jar = new JarFile(path.toFile());
-            Enumeration<JarEntry> entries = jar.entries();
-            while (entries.hasMoreElements()) {
-               JarEntry element = entries.nextElement();
-               String name = element.getName();
-               if (element.isDirectory() || !name.endsWith(CLASS_EXTENSION)) {
-                  continue;
-               }
-               String className = name
-                     .substring(0, name.length() - CLASS_EXTENSION.length())
-                     .replace("/", ".");
-               try {
-                  cl.loadClass(className);
-                  Class<?> pluginClass = Class.forName(className, true, cl);
-                  if (!Plugin.class.isAssignableFrom(pluginClass)
-                        || Modifier.isAbstract(pluginClass.getModifiers())) {
-                     continue;
-                  }
-                  Constructor<?> pluginConstructor;
-                  try {
-                     pluginConstructor = pluginClass.getConstructor();
-                  }
-                  catch (NoSuchMethodException | SecurityException e) {
-                     throw new BatfishException(
-                           "Could not find default constructor in plugin: '"
-                                 + className + "'",
-                           e);
-                  }
-                  Object pluginObj;
-                  try {
-                     pluginObj = pluginConstructor.newInstance();
-                  }
-                  catch (InstantiationException | IllegalAccessException
-                        | IllegalArgumentException
-                        | InvocationTargetException e) {
-                     throw new BatfishException("Could not instantiate plugin '"
-                           + className + "' from constructor", e);
-                  }
-                  Plugin plugin = (Plugin) pluginObj;
-                  plugin.initialize(this);
-
-               }
-               catch (ClassNotFoundException e) {
-                  jar.close();
-                  throw new BatfishException(
-                        "Unexpected error loading classes from jar", e);
-               }
-            }
-            jar.close();
-         }
-         catch (IOException e) {
-            throw new BatfishException(
-                  "Error loading plugin jar: '" + path.toString() + "'", e);
-         }
-      }
-   }
-
-   protected final void loadPlugins() {
-      for (Path pluginDir : _pluginDirs) {
-         if (Files.exists(pluginDir)) {
-            try {
-               Files.walkFileTree(pluginDir, new SimpleFileVisitor<Path>() {
-                  @Override
-                  public FileVisitResult visitFile(Path path,
-                        BasicFileAttributes attrs) throws IOException {
-                     loadPluginJar(path);
-                     return FileVisitResult.CONTINUE;
-                  }
-               });
-            }
-            catch (IOException e) {
-               throw new BatfishException("Error walking through plugin dir: '"
-                     + pluginDir.toString() + "'", e);
-            }
-         }
-      }
-   }
-
-   public void serializeObject(Serializable object, Path outputFile) {
-      try {
-         byte[] data = toGzipData(object);
-         Files.write(outputFile, data);
-      }
-      catch (IOException e) {
-         throw new BatfishException(
-               "Failed to serialize object to gzip output file: "
-                     + outputFile.toString(),
-               e);
-      }
-   }
-
-   protected byte[] toGzipData(Serializable object) {
-      try {
-         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-         GZIPOutputStream gos = new GZIPOutputStream(baos);
-         ObjectOutputStream oos;
-         if (_serializeToText) {
-            XStream xstream = new XStream(new DomDriver("UTF-8"));
-            oos = xstream.createObjectOutputStream(gos);
-         }
-         else {
-            oos = new ObjectOutputStream(gos);
-         }
-         oos.writeObject(object);
-         oos.close();
-         byte[] data = baos.toByteArray();
-         return data;
-      }
-      catch (IOException e) {
-         throw new BatfishException("Failed to convert object to gzip data", e);
-      }
-   }
-
+      oos.writeObject(object);
+    } catch (IOException e) {
+      throw new BatfishException("Failed to convert object to gzip data", e);
+    }
+  }
 }

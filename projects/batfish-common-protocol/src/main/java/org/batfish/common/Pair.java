@@ -1,84 +1,67 @@
 package org.batfish.common;
 
-import java.io.Serializable;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.io.Serializable;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
 public class Pair<T1 extends Comparable<? super T1>, T2 extends Comparable<? super T2>>
-      implements Serializable, Comparable<Pair<T1, T2>> {
+    implements Serializable, Comparable<Pair<T1, T2>> {
 
-   private static final long serialVersionUID = 1L;
+  private static final long serialVersionUID = 1L;
 
-   protected final T1 _first;
+  protected final T1 _first;
 
-   protected final T2 _second;
+  protected final T2 _second;
 
-   public Pair(T1 t1, T2 t2) {
-      _first = t1;
-      _second = t2;
-   }
+  public Pair(T1 t1, @Nullable T2 t2) {
+    _first = t1;
+    _second = t2;
+  }
 
-   @Override
-   public int compareTo(Pair<T1, T2> rhs) {
-      int first = _first.compareTo(rhs._first);
-      if (first == 0) {
-         return _second.compareTo(rhs._second);
-      }
-      else {
-         return first;
-      }
-   }
+  @Override
+  public int compareTo(Pair<T1, T2> rhs) {
+    int first = _first.compareTo(rhs._first);
+    if (first == 0) {
+      return _second.compareTo(rhs._second);
+    } else {
+      return first;
+    }
+  }
 
-   @Override
-   public boolean equals(Object obj) {
-      if (this == obj) {
-         return true;
-      }
-      if (obj == null) {
-         return false;
-      }
-      Pair<?, ?> other = (Pair<?, ?>) obj;
-      if (_first == null) {
-         if (other._first != null) {
-            return false;
-         }
-      }
-      else if (!_first.equals(other._first)) {
-         return false;
-      }
-      if (_second == null) {
-         if (other._second != null) {
-            return false;
-         }
-      }
-      else if (!_second.equals(other._second)) {
-         return false;
-      }
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) {
       return true;
-   }
+    } else if (!(obj instanceof Pair)) {
+      return false;
+    }
 
-   @JsonIgnore
-   public final T1 getFirst() {
-      return _first;
-   }
+    Pair<?, ?> other = (Pair<?, ?>) obj;
+    return Objects.equals(_first, other._first) && Objects.equals(_second, other._second);
+  }
 
-   @JsonIgnore
-   public final T2 getSecond() {
-      return _second;
-   }
+  @JsonIgnore
+  public final T1 getFirst() {
+    return _first;
+  }
 
-   @Override
-   public int hashCode() {
-      final int prime = 31;
-      int result = 1;
-      result = prime * result + ((_first == null) ? 0 : _first.hashCode());
-      result = prime * result + ((_second == null) ? 0 : _second.hashCode());
-      return result;
-   }
+  @JsonIgnore
+  public final T2 getSecond() {
+    return _second;
+  }
 
-   @Override
-   public String toString() {
-      return "<" + _first.toString() + ":" + _second.toString() + ">";
-   }
+  @Override
+  public int hashCode() {
+    final int prime = 31;
+    int result = 1;
+    result = prime * result + ((_first == null) ? 0 : _first.hashCode());
+    result = prime * result + ((_second == null) ? 0 : _second.hashCode());
+    return result;
+  }
 
+  @Override
+  public String toString() {
+    return "<" + _first + ":" + _second + ">";
+  }
 }

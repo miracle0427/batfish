@@ -1,62 +1,60 @@
 package org.batfish.datamodel.collections;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.batfish.common.Pair;
 import org.batfish.datamodel.Configuration;
 import org.batfish.datamodel.OspfNeighbor;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
+public final class VerboseOspfEdge extends Pair<NodeOspfSessionPair, NodeOspfSessionPair> {
 
-public class VerboseOspfEdge
-      extends Pair<NodeOspfSessionPair, NodeOspfSessionPair> {
+  private static final String PROP_EDGE_SUMMARY = "edgeSummary";
 
-   private static final String EDGE_SUMMARY_VAR = "edgeSummary";
+  private static final String PROP_NODE1_SESSION = "node1Session";
 
-   private static final String NODE1_SESSION_VAR = "node1Session";
+  private static final String PROP_NODE1 = "node1";
 
-   private static final String NODE1_VAR = "node1";
+  private static final String PROP_NODE2_SESSION = "node2Session";
 
-   private static final String NODE2_SESSION_VAR = "node2Session";
+  private static final String PROP_NODE2 = "node2";
 
-   private static final String NODE2_VAR = "node2";
+  private static final long serialVersionUID = 1L;
 
-   private static final long serialVersionUID = 1L;
+  private final IpEdge _edgeSummary;
 
-   protected final IpEdge edge;
+  @JsonCreator
+  public VerboseOspfEdge(
+      @JsonProperty(PROP_NODE1) Configuration node1,
+      @JsonProperty(PROP_NODE1_SESSION) OspfNeighbor s1,
+      @JsonProperty(PROP_NODE2) Configuration node2,
+      @JsonProperty(PROP_NODE2_SESSION) OspfNeighbor s2,
+      @JsonProperty(PROP_EDGE_SUMMARY) IpEdge e) {
+    super(new NodeOspfSessionPair(node1, s1), new NodeOspfSessionPair(node2, s2));
+    this._edgeSummary = e;
+  }
 
-   @JsonCreator
-   public VerboseOspfEdge(@JsonProperty(NODE1_VAR) Configuration node1,
-         @JsonProperty(NODE1_SESSION_VAR) OspfNeighbor s1,
-         @JsonProperty(NODE2_VAR) Configuration node2,
-         @JsonProperty(NODE2_SESSION_VAR) OspfNeighbor s2,
-         @JsonProperty(EDGE_SUMMARY_VAR) IpEdge e) {
-      super(new NodeOspfSessionPair(node1, s1),
-            new NodeOspfSessionPair(node2, s2));
-      this.edge = e;
-   }
+  @JsonProperty(PROP_EDGE_SUMMARY)
+  public IpEdge getEdgeSummary() {
+    return _edgeSummary;
+  }
 
-   @JsonProperty(EDGE_SUMMARY_VAR)
-   public IpEdge getEdgeSummary() {
-      return edge;
-   }
+  @JsonProperty(PROP_NODE1)
+  public Configuration getNode1() {
+    return _first.getHost();
+  }
 
-   @JsonProperty(NODE1_VAR)
-   public Configuration getNode1() {
-      return _first.getHost();
-   }
+  @JsonProperty(PROP_NODE2)
+  public Configuration getNode2() {
+    return _second.getHost();
+  }
 
-   @JsonProperty(NODE2_VAR)
-   public Configuration getNode2() {
-      return _second.getHost();
-   }
+  @JsonProperty(PROP_NODE1_SESSION)
+  public OspfNeighbor getSession1() {
+    return _first.getSession();
+  }
 
-   @JsonProperty(NODE1_SESSION_VAR)
-   public OspfNeighbor getSession1() {
-      return _first.getSession();
-   }
-
-   @JsonProperty(NODE2_SESSION_VAR)
-   public OspfNeighbor getSession2() {
-      return _second.getSession();
-   }
+  @JsonProperty(PROP_NODE2_SESSION)
+  public OspfNeighbor getSession2() {
+    return _second.getSession();
+  }
 }

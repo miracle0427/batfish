@@ -2,37 +2,28 @@ package org.batfish.representation.cisco;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.batfish.common.util.DefinedStructure;
 
-import org.batfish.common.util.ComparableStructure;
+public class PrefixList extends DefinedStructure<String> {
 
-public class PrefixList extends ComparableStructure<String> {
+  private static final long serialVersionUID = 1L;
 
-   private static final long serialVersionUID = 1L;
+  private List<PrefixListLine> _lines;
 
-   private final int _definitionLine;
+  public PrefixList(String name, int definitionLine) {
+    super(name, definitionLine);
+    _lines = new ArrayList<>();
+  }
 
-   private List<PrefixListLine> _lines;
+  public void addLine(PrefixListLine r) {
+    _lines.add(r);
+  }
 
-   public PrefixList(String name, int definitionLine) {
-      super(name);
-      _definitionLine = definitionLine;
-      _lines = new ArrayList<>();
-   }
+  public void addLines(List<PrefixListLine> r) {
+    _lines.addAll(r);
+  }
 
-   public void addLine(PrefixListLine r) {
-      _lines.add(r);
-   }
-
-   public void addLines(List<PrefixListLine> r) {
-      _lines.addAll(r);
-   }
-
-   public int getDefinitionLine() {
-      return _definitionLine;
-   }
-
-   public List<PrefixListLine> getLines() {
-      return _lines;
-   }
-
+  public List<PrefixListLine> getLines() {
+    return _lines;
+  }
 }

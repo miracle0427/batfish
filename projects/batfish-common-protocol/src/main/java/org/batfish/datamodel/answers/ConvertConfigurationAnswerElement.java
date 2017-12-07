@@ -6,118 +6,143 @@ import java.util.SortedMap;
 import java.util.SortedSet;
 import java.util.TreeMap;
 import java.util.TreeSet;
-
+import org.batfish.common.BatfishException;
 import org.batfish.common.Warning;
 import org.batfish.common.Warnings;
 
-public class ConvertConfigurationAnswerElement
-      implements AnswerElement, Serializable {
+public class ConvertConfigurationAnswerElement implements InitStepAnswerElement, Serializable {
 
-   /**
-    *
-    */
-   private static final long serialVersionUID = 1L;
+  /** */
+  private static final long serialVersionUID = 1L;
 
-   private Set<String> _failed;
+  private SortedMap<String, BatfishException.BatfishStackTrace> _errors;
 
-   private SortedMap<String, SortedMap<String, SortedMap<String, SortedMap<String, SortedSet<Integer>>>>> _undefinedReferences;
+  private Set<String> _failed;
 
-   private SortedMap<String, SortedMap<String, SortedMap<String, SortedSet<Integer>>>> _unusedStructures;
+  private SortedMap<
+          String, SortedMap<String, SortedMap<String, SortedMap<String, SortedSet<Integer>>>>>
+      _undefinedReferences;
 
-   private String _version;
+  private SortedMap<String, SortedMap<String, SortedMap<String, SortedSet<Integer>>>>
+      _unusedStructures;
 
-   private SortedMap<String, Warnings> _warnings;
+  private String _version;
 
-   public ConvertConfigurationAnswerElement() {
-      _failed = new TreeSet<>();
-      _warnings = new TreeMap<>();
-      _undefinedReferences = new TreeMap<>();
-      _unusedStructures = new TreeMap<>();
-   }
+  private SortedMap<String, Warnings> _warnings;
 
-   public Set<String> getFailed() {
-      return _failed;
-   }
+  public ConvertConfigurationAnswerElement() {
+    _failed = new TreeSet<>();
+    _warnings = new TreeMap<>();
+    _undefinedReferences = new TreeMap<>();
+    _unusedStructures = new TreeMap<>();
+    _errors = new TreeMap<>();
+  }
 
-   public SortedMap<String, SortedMap<String, SortedMap<String, SortedMap<String, SortedSet<Integer>>>>> getUndefinedReferences() {
-      return _undefinedReferences;
-   }
+  public SortedMap<String, BatfishException.BatfishStackTrace> getErrors() {
+    return _errors;
+  }
 
-   public SortedMap<String, SortedMap<String, SortedMap<String, SortedSet<Integer>>>> getUnusedStructures() {
-      return _unusedStructures;
-   }
+  public Set<String> getFailed() {
+    return _failed;
+  }
 
-   public String getVersion() {
-      return _version;
-   }
+  public SortedMap<
+          String, SortedMap<String, SortedMap<String, SortedMap<String, SortedSet<Integer>>>>>
+      getUndefinedReferences() {
+    return _undefinedReferences;
+  }
 
-   public SortedMap<String, Warnings> getWarnings() {
-      return _warnings;
-   }
+  public SortedMap<String, SortedMap<String, SortedMap<String, SortedSet<Integer>>>>
+      getUnusedStructures() {
+    return _unusedStructures;
+  }
 
-   @Override
-   public String prettyPrint() {
-      StringBuilder sb = new StringBuilder(
-            "Results from converting vendor configurations\n");
-      _warnings.forEach((name, warnings) -> {
-         sb.append("\n  " + name + "[Conversion warnings]\n");
-         for (Warning warning : warnings.getRedFlagWarnings()) {
-            sb.append("    RedFlag " + warning.getTag() + " : "
-                  + warning.getText() + "\n");
-         }
-         for (Warning warning : warnings.getUnimplementedWarnings()) {
-            sb.append("    Unimplemented " + warning.getTag() + " : "
-                  + warning.getText() + "\n");
-         }
-         for (Warning warning : warnings.getPedanticWarnings()) {
-            sb.append("    Pedantic " + warning.getTag() + " : "
-                  + warning.getText() + "\n");
-         }
-      });
-      _undefinedReferences.forEach((hostname, byType) -> {
-         sb.append("\n  " + hostname + "[Undefined references]\n");
-         byType.forEach((type, byName) -> {
-            sb.append("  " + type + ":\n");
-            byName.forEach((name, byUsage) -> {
-               sb.append("    " + name + ":\n");
-               byUsage.forEach((usage, lines) -> {
-                  sb.append("      " + usage + ": lines " + lines.toString()
-                        + "\n");
-               });
-            });
-         });
-      });
-      _unusedStructures.forEach((hostname, byType) -> {
-         sb.append("\n  " + hostname + "[Unused structures]\n");
-         byType.forEach((structureType, byName) -> {
-            byName.forEach((name, lines) -> {
-               sb.append("    " + structureType + ": " + name + ":"
-                     + lines.toString() + "\n");
-            });
-         });
-      });
-      return sb.toString();
-   }
+  public String getVersion() {
+    return _version;
+  }
 
-   public void setFailed(Set<String> failed) {
-      _failed = failed;
-   }
+  public SortedMap<String, Warnings> getWarnings() {
+    return _warnings;
+  }
 
-   public void setUndefinedReferences(
-         SortedMap<String, SortedMap<String, SortedMap<String, SortedMap<String, SortedSet<Integer>>>>> undefinedReferences) {
-      _undefinedReferences = undefinedReferences;
-   }
+  @Override
+  public String prettyPrint() {
+    StringBuilder sb = new StringBuilder("Results from converting vendor configurations\n");
+    _warnings.forEach(
+        (name, warnings) -> {
+          sb.append("\n  " + name + "[Conversion warnings]\n");
+          for (Warning warning : warnings.getRedFlagWarnings()) {
+            sb.append("    RedFlag " + warning.getTag() + " : " + warning.getText() + "\n");
+          }
+          for (Warning warning : warnings.getUnimplementedWarnings()) {
+            sb.append("    Unimplemented " + warning.getTag() + " : " + warning.getText() + "\n");
+          }
+          for (Warning warning : warnings.getPedanticWarnings()) {
+            sb.append("    Pedantic " + warning.getTag() + " : " + warning.getText() + "\n");
+          }
+        });
+    _errors.forEach(
+        (name, errors) -> {
+          sb.append("\n  " + name + "[Conversion errors]\n");
+          for (String line : errors.getLineMap()) {
+            sb.append("    " + line + "\n");
+          }
+        });
+    _undefinedReferences.forEach(
+        (hostname, byType) -> {
+          sb.append("\n  " + hostname + "[Undefined references]\n");
+          byType.forEach(
+              (type, byName) -> {
+                sb.append("  " + type + ":\n");
+                byName.forEach(
+                    (name, byUsage) -> {
+                      sb.append("    " + name + ":\n");
+                      byUsage.forEach(
+                          (usage, lines) -> {
+                            sb.append("      " + usage + ": lines " + lines + "\n");
+                          });
+                    });
+              });
+        });
+    _unusedStructures.forEach(
+        (hostname, byType) -> {
+          sb.append("\n  " + hostname + "[Unused structures]\n");
+          byType.forEach(
+              (structureType, byName) -> {
+                byName.forEach(
+                    (name, lines) -> {
+                      sb.append("    " + structureType + ": " + name + ":" + lines + "\n");
+                    });
+              });
+        });
+    return sb.toString();
+  }
 
-   public void setUnusedStructures(
-         SortedMap<String, SortedMap<String, SortedMap<String, SortedSet<Integer>>>> unusedStructures) {
-      _unusedStructures = unusedStructures;
-   }
+  public void setErrors(SortedMap<String, BatfishException.BatfishStackTrace> errors) {
+    _errors = errors;
+  }
 
-   public void setVersion(String version) {
-      _version = version;
-   }
+  public void setFailed(Set<String> failed) {
+    _failed = failed;
+  }
 
-   public void setWarnings(SortedMap<String, Warnings> warnings) {
-      _warnings = warnings;
-   }
+  public void setUndefinedReferences(
+      SortedMap<String, SortedMap<String, SortedMap<String, SortedMap<String, SortedSet<Integer>>>>>
+          undefinedReferences) {
+    _undefinedReferences = undefinedReferences;
+  }
+
+  public void setUnusedStructures(
+      SortedMap<String, SortedMap<String, SortedMap<String, SortedSet<Integer>>>>
+          unusedStructures) {
+    _unusedStructures = unusedStructures;
+  }
+
+  public void setVersion(String version) {
+    _version = version;
+  }
+
+  public void setWarnings(SortedMap<String, Warnings> warnings) {
+    _warnings = warnings;
+  }
 }

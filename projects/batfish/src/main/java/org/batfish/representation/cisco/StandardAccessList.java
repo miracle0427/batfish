@@ -2,43 +2,34 @@ package org.batfish.representation.cisco;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.batfish.common.util.DefinedStructure;
 
-import org.batfish.common.util.ComparableStructure;
+public class StandardAccessList extends DefinedStructure<String> {
 
-public class StandardAccessList extends ComparableStructure<String> {
+  private static final long serialVersionUID = 1L;
 
-   private static final long serialVersionUID = 1L;
+  private List<StandardAccessListLine> _lines;
 
-   private final int _definitionLine;
+  public StandardAccessList(String id, int definitionLine) {
+    super(id, definitionLine);
+    _lines = new ArrayList<>();
+  }
 
-   private List<StandardAccessListLine> _lines;
+  public void addLine(StandardAccessListLine all) {
+    _lines.add(all);
+  }
 
-   public StandardAccessList(String id, int definitionLine) {
-      super(id);
-      _definitionLine = definitionLine;
-      _lines = new ArrayList<>();
-   }
+  public List<StandardAccessListLine> getLines() {
+    return _lines;
+  }
 
-   public void addLine(StandardAccessListLine all) {
-      _lines.add(all);
-   }
-
-   public int getDefinitionLine() {
-      return _definitionLine;
-   }
-
-   public List<StandardAccessListLine> getLines() {
-      return _lines;
-   }
-
-   public ExtendedAccessList toExtendedAccessList() {
-      ExtendedAccessList eal = new ExtendedAccessList(_key, _definitionLine);
-      eal.setParent(this);
-      eal.getLines().clear();
-      for (StandardAccessListLine sall : _lines) {
-         eal.addLine(sall.toExtendedAccessListLine());
-      }
-      return eal;
-   }
-
+  public ExtendedAccessList toExtendedAccessList() {
+    ExtendedAccessList eal = new ExtendedAccessList(_key, getDefinitionLine());
+    eal.setParent(this);
+    eal.getLines().clear();
+    for (StandardAccessListLine sall : _lines) {
+      eal.addLine(sall.toExtendedAccessListLine());
+    }
+    return eal;
+  }
 }
