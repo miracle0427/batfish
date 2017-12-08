@@ -763,7 +763,7 @@ public class Encoder {
       //BufferedWriter writer = new BufferedWriter(new FileWriter("SMT.smt"));
       //writer.write(_solver.toString());
       //writer.close();
-      writer = new BufferedWriter(new FileWriter("MAXSMT.smt"));
+      BufferedWriter writer = new BufferedWriter(new FileWriter("MAXSMT.smt"));
       writer.write(_optsolve.toString());
       writer.close();
     } catch (IOException e) {
