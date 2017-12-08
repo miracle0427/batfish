@@ -325,6 +325,7 @@ class PropertyAdder {
     Context ctx = _encoderSlice.getCtx();
     Solver solver = _encoderSlice.getSolver();
     String sliceName = _encoderSlice.getSliceName();
+    Optimize opt = _encoderSlice.getOptimize(); 
 
     // Initialize path length variables
     Graph graph = _encoderSlice.getGraph();
@@ -407,6 +408,7 @@ class PropertyAdder {
     Context ctx = _encoderSlice.getCtx();
     Solver solver = _encoderSlice.getSolver();
     String sliceName = _encoderSlice.getSliceName();
+    Optimize opt = _encoderSlice.getOptimize(); 
 
     Map<String, ArithExpr> loadVars = new HashMap<>();
     Graph graph = _encoderSlice.getGraph();
@@ -480,6 +482,7 @@ class PropertyAdder {
     Context ctx = _encoderSlice.getCtx();
     Solver solver = _encoderSlice.getSolver();
     String sliceName = _encoderSlice.getSliceName();
+    Optimize opt = _encoderSlice.getOptimize(); 
 
     // Add on-loop variables to track a loop
     Map<String, BoolExpr> onLoop = new HashMap<>();
