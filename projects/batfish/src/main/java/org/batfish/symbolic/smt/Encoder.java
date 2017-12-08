@@ -6,9 +6,13 @@ import com.microsoft.z3.BoolExpr;
 import com.microsoft.z3.Context;
 import com.microsoft.z3.Expr;
 import com.microsoft.z3.Model;
+import com.microsoft.z3.Optimize;
 import com.microsoft.z3.Solver;
 import com.microsoft.z3.Status;
 import com.microsoft.z3.Tactic;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -60,6 +64,7 @@ public class Encoder {
   private static final boolean ENABLE_UNSAT_CORE = false;
   private static final Boolean ENABLE_BENCHMARKING = false;
   private int _encodingId;
+  public String _encId;
 
   private boolean _modelIgp;
 
@@ -83,6 +88,7 @@ public class Encoder {
 
   private UnsatCore _unsatCore;
 
+  private Optimize _optsolve;
   /**
    * Create an encoder object that will consider all packets in the provided headerspace.
    *
@@ -139,6 +145,7 @@ public class Encoder {
     _previousEncoder = enc;
     _modelIgp = true;
     _encodingId = id;
+    _encId = "_enc_" + Integer.toString(id);
     _question = q;
     _slices = new HashMap<>();
     _sliceReachability = new HashMap<>();
@@ -152,6 +159,8 @@ public class Encoder {
     }
 
     _ctx = (ctx == null ? new Context(cfg) : ctx);
+
+    _optsolve = _ctx.mkOptimize(); 
 
     if (solver == null) {
       if (ENABLE_UNSAT_CORE) {
@@ -199,7 +208,7 @@ public class Encoder {
           String name = getId() + "_FAILED-EDGE_" + ge.getRouter() + "_" + i.getName();
           ArithExpr var = getCtx().mkIntConst(name);
           _symbolicFailures.getFailedEdgeLinks().put(ge, var);
-          _allVariables.put(var.toString(), var);
+          _allVariables.put(var.toString() + getStringId(), var);
         }
       }
     }
@@ -213,7 +222,7 @@ public class Encoder {
         String name = getId() + "_FAILED-EDGE_" + pair;
         ArithExpr var = _ctx.mkIntConst(name);
         _symbolicFailures.getFailedInternalLinks().put(router, peer, var);
-        _allVariables.put(var.toString(), var);
+        _allVariables.put(var.toString() + getStringId(), var);
       }
     }
   }
@@ -395,7 +404,13 @@ public class Encoder {
   // Add a boolean variable to the model
   void add(BoolExpr e) {
     _unsatCore.track(_solver, _ctx, e);
+    _optsolve.Add(e);
   }
+
+  // Add soft constraint to the model 
+  void addSoft(BoolExpr e, int weight, String name) { 
+    _optsolve.AssertSoft(e, weight, name);
+  }  
 
   /*
    * Adds the constraint that at most k links have failed.
@@ -721,7 +736,7 @@ public class Encoder {
     }
 
     long start = System.currentTimeMillis();
-    Status status = _solver.check();
+    Status status = _optsolve.Check();
     long time = System.currentTimeMillis() - start;
 
     if (ENABLE_BENCHMARKING) {
@@ -730,7 +745,17 @@ public class Encoder {
       System.out.println("Constraints: " + stats.getNumConstraints());
       System.out.println("Variables: " + stats.getNumVariables());
       System.out.println("Z3 Time: " + stats.getTime());
-      System.out.println("Stats: \n" + _solver.getStatistics());
+      System.out.println("Stats: \n" + _optsolve.getStatistics());
+    }
+    try {
+      //BufferedWriter writer = new BufferedWriter(new FileWriter("SMT.smt"));
+      //writer.write(_solver.toString());
+      //writer.close();
+      writer = new BufferedWriter(new FileWriter("MAXSMT.smt"));
+      writer.write(_optsolve.toString());
+      writer.close();
+    } catch (IOException e) {
+      System.out.println("IO error");
     }
 
     if (status == Status.UNSATISFIABLE) {
@@ -743,7 +768,7 @@ public class Encoder {
 
       Model m;
       while (true) {
-        m = _solver.getModel();
+        m = _optsolve.getModel();
         SortedMap<String, String> model = new TreeMap<>();
         SortedMap<String, String> packetModel = new TreeMap<>();
         SortedSet<String> fwdModel = new TreeSet<>();
@@ -764,7 +789,7 @@ public class Encoder {
         BoolExpr blocking = environmentBlockingClause(m);
         add(blocking);
 
-        Status s = _solver.check();
+        Status s = _optsolve.Check();
         if (s == Status.UNSATISFIABLE) {
           break;
         }
@@ -818,12 +843,20 @@ public class Encoder {
     return _solver;
   }
 
+  Optimize getOptimize() {
+    return _optsolve;
+  }
+
   Map<String, Expr> getAllVariables() {
     return _allVariables;
   }
 
   int getId() {
     return _encodingId;
+  }
+
+  public String getStringId() {
+    return _encId;
   }
 
   boolean getModelIgp() {
