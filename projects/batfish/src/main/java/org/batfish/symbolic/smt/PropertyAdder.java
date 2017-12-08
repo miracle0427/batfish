@@ -5,6 +5,7 @@ import com.microsoft.z3.BitVecExpr;
 import com.microsoft.z3.BoolExpr;
 import com.microsoft.z3.Context;
 import com.microsoft.z3.Expr;
+import com.microsoft.z3.Optimize;
 import com.microsoft.z3.Solver;
 import java.util.HashMap;
 import java.util.List;
@@ -54,6 +55,7 @@ class PropertyAdder {
 
     String sliceName = slice.getSliceName();
     ArithExpr zero = ctx.mkInt(0);
+    Optimize opt = slice.getOptimize();
     for (String r : _encoderSlice.getGraph().getRouters()) {
       int id = _encoderSlice.getEncoder().getId();
       String s1 = id + "_" + sliceName + "_reachable-id_" + r;
@@ -66,6 +68,8 @@ class PropertyAdder {
       _encoderSlice.getAllVariables().put(var.toString(), var);
       solver.add(ctx.mkEq(var, ctx.mkGt(idVar, zero)));
       solver.add(ctx.mkGe(idVar, zero));
+      opt.Add(ctx.mkEq(var, ctx.mkGt(idVar, zero)));
+      opt.Add(ctx.mkGe(idVar, zero)); 
     }
   }
 
@@ -117,6 +121,7 @@ class PropertyAdder {
     Map<String, ArithExpr> idVars = new HashMap<>();
     initializeReachabilityVars(slice, ctx, solver, reachableVars, idVars);
     Graph g = _encoderSlice.getGraph();
+    Optimize opt = slice.getOptimize();
 
     for (Entry<String, List<GraphEdge>> entry : g.getEdgeMap().entrySet()) {
       String router = entry.getKey();
@@ -154,6 +159,7 @@ class PropertyAdder {
       BoolExpr guard = ctx.mkOr(hasDirectRoute, isAbsorbed);
       BoolExpr cond = slice.mkIf(guard, ctx.mkEq(id, ctx.mkInt(1)), recursive);
       solver.add(cond);
+      opt.Add(cond);
     }
 
     return reachableVars;
@@ -169,6 +175,7 @@ class PropertyAdder {
     Map<String, BoolExpr> reachableVars = new HashMap<>();
     Map<String, ArithExpr> idVars = new HashMap<>();
     initializeReachabilityVars(_encoderSlice, ctx, solver, reachableVars, idVars);
+    Optimize opt = _encoderSlice.getOptimize(); 
 
     ArithExpr baseId = idVars.get(router);
     _encoderSlice.add(ctx.mkEq(baseId, ctx.mkInt(1)));
@@ -181,6 +188,7 @@ class PropertyAdder {
         ArithExpr id = idVars.get(r);
         BoolExpr cond = recursiveReachability(ctx, _encoderSlice, edges, idVars, r, id);
         solver.add(cond);
+        opt.Add(cond);
       }
     }
 
@@ -334,6 +342,7 @@ class PropertyAdder {
 
     // Lower bound for all lengths
     lenVars.forEach((name, var) -> solver.add(ctx.mkGe(var, minusOne)));
+    lenVars.forEach((name, var) -> opt.Add(ctx.mkGe(var, minusOne)));
     for (Entry<String, List<GraphEdge>> entry : graph.getEdgeMap().entrySet()) {
       String router = entry.getKey();
       List<GraphEdge> edges = entry.getValue();
@@ -381,6 +390,7 @@ class PropertyAdder {
       BoolExpr cond1 = _encoderSlice.mkIf(accNone, ctx.mkEq(length, minusOne), accSome);
       BoolExpr cond2 = _encoderSlice.mkIf(guard, ctx.mkEq(length, zero), cond1);
       solver.add(cond2);
+      opt.Add(cond2);
     }
 
     return lenVars;
@@ -406,6 +416,7 @@ class PropertyAdder {
     }
 
     loadVars.forEach((name, var) -> solver.add(ctx.mkGe(var, ctx.mkInt(0))));
+    loadVars.forEach((name, var) -> opt.Add(ctx.mkGe(var, ctx.mkInt(0))));
     ArithExpr zero = ctx.mkInt(0);
     ArithExpr one = ctx.mkInt(1);
 
@@ -449,10 +460,11 @@ class PropertyAdder {
         }
       }
       solver.add(ctx.mkEq(load, acc));
-
+      opt.Add(ctx.mkEq(load, acc));
       BoolExpr guard = _encoderSlice.mkOr(hasDirectRoute, isAbsorbed);
       BoolExpr cond = _encoderSlice.mkIf(guard, ctx.mkEq(load, one), ctx.mkEq(load, acc));
       solver.add(cond);
+      opt.Add(cond);
     }
 
     return loadVars;
@@ -501,6 +513,7 @@ class PropertyAdder {
         }
       }
       solver.add(ctx.mkEq(var, acc));
+      opt.Add(ctx.mkEq(var, acc));
     }
 
     return onLoop.get(router);

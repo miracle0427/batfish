@@ -180,6 +180,8 @@ public interface IBatfish extends IPluginConsumer {
 
   AnswerElement smtLocalConsistency(Pattern routerRegex, boolean strict, boolean fullModel);
 
+  AnswerElement smtMul(HeaderLocationQuestion q);
+
   AnswerElement smtMultipathConsistency(HeaderLocationQuestion q);
 
   AnswerElement smtReachability(HeaderLocationQuestion q);

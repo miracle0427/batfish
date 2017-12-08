@@ -6,6 +6,10 @@ import com.microsoft.z3.BoolExpr;
 import com.microsoft.z3.Context;
 import com.microsoft.z3.Expr;
 import com.microsoft.z3.Model;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -16,6 +20,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Optional;
+import java.util.Scanner;
 import java.util.Set;
 import java.util.SortedMap;
 import java.util.SortedSet;
@@ -53,6 +58,7 @@ import org.batfish.symbolic.abstraction.DestinationClasses;
 import org.batfish.symbolic.abstraction.NetworkSlice;
 import org.batfish.symbolic.answers.SmtDeterminismAnswerElement;
 import org.batfish.symbolic.answers.SmtManyAnswerElement;
+import org.batfish.symbolic.answers.SmtMulAnswerElement;
 import org.batfish.symbolic.answers.SmtOneAnswerElement;
 import org.batfish.symbolic.answers.SmtReachabilityAnswerElement;
 import org.batfish.symbolic.collections.Table2;
@@ -470,26 +476,247 @@ public class PropertyChecker {
                   }
                   enc.add(enc.mkNot(allProp));
                 }
+              }
+              addFailureConstraints(enc, destPorts, failOptions);
 
-                addFailureConstraints(enc, destPorts, failOptions);
+              try {
+                System.out.println("Encoding written in enc.smt");
+                BufferedWriter writer = new BufferedWriter(new FileWriter("enc.smt"));
+                writer.write(enc.getSolver().toString());
+                writer.close();
+              } catch (IOException e) {
+                System.out.println("IO error");
+              }
 
-                Tuple<VerificationResult, Model> tup = enc.verify();
-                VerificationResult res = tup.getFirst();
-                Model model = tup.getSecond();
 
-                if (q.getBenchmark()) {
-                  VerificationStats stats = res.getStats();
-                  stats.setAvgComputeEcTime(timeEc);
-                  stats.setMaxComputeEcTime(timeEc);
-                  stats.setMinComputeEcTime(timeEc);
-                  stats.setAvgEncodingTime(timeEncoding);
-                  stats.setMaxEncodingTime(timeEncoding);
-                  stats.setMinEncodingTime(timeEncoding);
-                  stats.setTimeCreateBdds((double) timeAbstraction);
+              long startVerify = System.currentTimeMillis();
+              Tuple<VerificationResult, Model> tup = enc.verify();
+              //if (question.getBenchmark()) {
+              System.out.println("  z3 time: " + (System.currentTimeMillis() - startVerify));
+              //}
 
-                  synchronized (_lock) {
-                    ecStats.add(stats);
-                  }
+              VerificationResult res = tup.getFirst();
+              Model model = tup.getSecond();
+
+              if (!res.isVerified()) {
+
+                try {
+                  System.out.println("Model printed in model.smt");
+                  BufferedWriter writer = new BufferedWriter(new FileWriter("model.smt"));
+                  writer.write(model.toString());
+                  writer.close();
+                } catch (IOException e) {
+                  System.out.println("IO error");
+                }
+
+
+                VerifyParam vp = new VerifyParam(res, model, srcRouters, enc, enc2, prop, prop2);
+                synchronized (o) {
+                  answerElement[0] = answer.apply(vp);
+                }
+                return true;
+              }
+
+              synchronized (o) {
+                result[0] = res;
+              }
+              return false;
+            });
+
+    //if (q.getBenchmark()) {
+    System.out.println("Total time: " + (System.currentTimeMillis() - l));
+    //}
+    if (hasCounterExample) {
+      return answerElement[0];
+    }
+    VerifyParam vp = new VerifyParam(result[0], null, null, null, null, null, null);
+    return answer.apply(vp);
+  }
+
+
+
+  /*
+   * @Archie : this will be used to check multiple properties
+   */
+  private AnswerElement checkAllProperty(
+      HeaderLocationQuestion q,
+      TriFunction<Encoder, Set<String>, Set<GraphEdge>, Map<String, BoolExpr>> reachability,/*
+      TriFunction<Encoder, Set<String>, Set<GraphEdge>, Map<String, BoolExpr>> boundedLength,
+      TriFunction<Encoder, Set<String>, Set<GraphEdge>, Map<String, BoolExpr>> equalLength,
+      TriFunction<Encoder, Set<String>, Set<GraphEdge>, Map<String, BoolExpr>> loadBalancing,*/
+      Function<VerifyParam, AnswerElement> answer) {
+    long l = System.currentTimeMillis();
+    PathRegexes p = new PathRegexes(q);
+    Graph graph = new Graph(_batfish);
+    HeaderSpace h = new HeaderSpace();
+    SortedSet<IpWildcard> srcIps = new TreeSet<IpWildcard>();
+    SortedSet<IpWildcard> dstIps = new TreeSet<IpWildcard>();
+
+    IpWildcard s1;
+
+    for (int i = 0; i < 12; i++) {
+      s1 = new IpWildcard("20.2.1." + String.valueOf(i));
+      srcIps.add(s1);
+      s1 = new IpWildcard("20.1.1." + String.valueOf(i));
+      dstIps.add(s1);
+    }
+
+    h.setDstIps(dstIps);
+    h.setSrcIps(srcIps);
+
+    q.setHeaderSpace(h);
+
+    Set<GraphEdge> destPorts = findFinalInterfaces(graph, p);
+    List<String> sourceRouters = PatternUtils.findMatchingSourceNodes(graph, p);
+    
+
+    if (destPorts.isEmpty()) {
+      throw new BatfishException("Set of valid destination interfaces is empty");
+    }
+    if (sourceRouters.isEmpty()) {
+      throw new BatfishException("Set of valid ingress nodes is empty");
+    }
+
+    inferDestinationHeaderSpace(graph, destPorts, q);
+    Set<GraphEdge> failOptions = failLinkSet(graph, q);
+    Stream<Supplier<EquivalenceClass>> stream = findAllEquivalenceClasses(q, graph, true);
+
+    AnswerElement[] answerElement = new AnswerElement[1];
+    VerificationResult[] result = new VerificationResult[1];
+    answerElement[0] = null;
+    result[0] = null;
+    Object o = new Object();
+    Encoder enc2 = null;
+    Map<String, BoolExpr> prop2 = null;
+
+
+    // Checks ECs in parallel, but short circuits when a counterexample is found
+    boolean hasCounterExample =
+        stream.anyMatch(
+            lazyEc -> {
+              long ecTime = System.currentTimeMillis();
+              Scanner scanner;
+              int trafficclasses = 0;
+              try {
+                scanner = new Scanner(new File("tclass.txt"));
+                while (scanner.hasNextInt()) {
+                  trafficclasses = scanner.nextInt();
+                }
+              } catch (Exception e) {
+                System.out.println("Traffic class file not there");
+              }
+
+              EquivalenceClass ec = lazyEc.get();
+              if (q.getBenchmark()) {
+                System.out.println("  Compute EC: " + (System.currentTimeMillis() - ecTime));
+              }
+              IpWildcard s;
+              for (int i = 0; i < trafficclasses; i++) {
+                s = new IpWildcard("20.2.1." + String.valueOf(i));
+                srcIps.add(s);
+                s = new IpWildcard("20.1.1." + String.valueOf(i));
+                dstIps.add(s);
+              }
+
+              h.setDstIps(dstIps);
+              h.setSrcIps(srcIps);
+
+              q.setHeaderSpace(h);
+
+              // Make sure the headerspace is correct
+              HeaderLocationQuestion question = new HeaderLocationQuestion(q);
+              //question.setHeaderSpace(ec.getHeaderSpace());
+              question.setHeaderSpace(h);
+
+              // Get the EC graph and mapping
+              Graph g = ec.getGraph();
+
+              PathRegexes p1 = new PathRegexes(q);
+              Set<GraphEdge> destPorts1 = findFinalInterfaces(graph, p1);
+              List<String> sourceRouters1 = PatternUtils.findMatchingSourceNodes(graph, p1);
+
+
+              Set<String> srcRouters = mapConcreteToAbstract(ec, sourceRouters1);
+
+              long l1 = System.currentTimeMillis();
+              Encoder enc = new Encoder(g, question);
+              enc.computeEncoding();
+              if (question.getBenchmark()) {
+                System.out.println("  Base Encoding: " + (System.currentTimeMillis() - l1));
+              }
+
+              // Add environment constraints for base case
+              addEnvironmentConstraints(enc, question.getBaseEnvironmentType());
+
+              Map<String, BoolExpr> prop = reachability.apply(enc, srcRouters, destPorts1);
+
+              BoolExpr allProp = enc.mkTrue();
+              
+              for (String router : srcRouters) {
+                BoolExpr r = prop.get(router);
+                allProp = enc.mkAnd(allProp, r);
+              
+              }
+              
+              enc.add(allProp);
+
+              addFailureConstraints(enc, destPorts1, failOptions);
+
+              for (int i = 1; i < trafficclasses; i++) {
+                s = new IpWildcard("20.2.1." + String.valueOf(i));
+                srcIps.add(s);
+                s = new IpWildcard("20.1.1." + String.valueOf(i));
+                dstIps.add(s);
+                p1 = new PathRegexes(q);
+                destPorts1 = findFinalInterfaces(graph, p1);
+                sourceRouters1 = PatternUtils.findMatchingSourceNodes(graph, p1);
+
+                srcRouters = mapConcreteToAbstract(ec, sourceRouters1);
+
+                Encoder newenc = new Encoder(enc, g);
+                newenc.computeEncoding();
+
+                prop = reachability.apply(newenc, srcRouters, destPorts1);
+
+                allProp = newenc.mkTrue();
+                for (String router : srcRouters) {
+                  BoolExpr r = prop.get(router);
+                  allProp = newenc.mkAnd(allProp, r);
+                }
+
+                newenc.add(allProp);
+                addFailureConstraints(newenc, destPorts1, failOptions);
+                enc = newenc;
+              }
+  
+              try {
+                BufferedWriter writer = new BufferedWriter(new FileWriter("enc.smt"));
+                writer.write(enc.getSolver().toString());
+                writer.close();
+              } catch (IOException e) {
+                System.out.println("IO error");
+              }
+
+              long startVerify = System.currentTimeMillis();
+              Tuple<VerificationResult, Model> tup = enc.verify();
+              if (true/*question.getBenchmark()*/) {
+                System.out.println("  z3 time: " + (System.currentTimeMillis() - startVerify));
+              }
+
+              if (!res.isVerified()) {
+
+                try {
+                  System.out.println("Model printed in model");
+                  BufferedWriter writer = new BufferedWriter(new FileWriter("model"));
+                  writer.write(model.toString());
+                  writer.close();
+                } catch (IOException e) {
+                  System.out.println("IO error");
+                }
+
+                VerifyParam vp = new VerifyParam(res, model, srcRouters, enc, enc2, prop, prop2);
+                synchronized (o) {
+                  answerElement[0] = answer.apply(vp);
                 }
 
                 if (!res.isVerified()) {
@@ -509,23 +736,20 @@ public class PropertyChecker {
               }
             });
 
-    totalTime = (System.currentTimeMillis() - totalTime);
-    VerificationResult res;
-    AnswerElement ae;
+    //if (q.getBenchmark()) {
+    System.out.println("Total time: " + (System.currentTimeMillis() - l));
+    //}
     if (hasCounterExample) {
-      res = result[0];
-      ae = answerElement[0];
-    } else {
-      res = result[1];
-      VerifyParam vp = new VerifyParam(res, null, null, null, null, null, null);
-      ae = answer.apply(vp);
+      return answerElement[0];
     }
-    if (q.getBenchmark()) {
-      VerificationStats stats = VerificationStats.combineAll(ecStats, totalTime);
-      res.setStats(stats);
-    }
-    return ae;
+    VerifyParam vp = new VerifyParam(result[0], null, null, null, null, null, null);
+    return answer.apply(vp);
+
   }
+
+
+
+
 
   /*
    * Check if a collection of routers will be reachable to
@@ -569,6 +793,57 @@ public class PropertyChecker {
           }
         });
   }
+
+
+  /*
+   * Check if a collection of routers will be reachable to
+   * one or more destinations.
+   */
+  public AnswerElement checkMul(HeaderLocationQuestion q) {
+    System.out.println("\ncheckMul\n");
+    SmtMulAnswerElement mul;
+    return checkAllProperty(
+      q,
+      (enc, srcRouters, destPorts) -> { // check reachability
+        PropertyAdder pa = new PropertyAdder(enc.getMainSlice());
+        return pa.instrumentReachability(destPorts);
+      },/*
+      (enc, srcRouters, destPorts) -> { // check boundedLength
+        ArithExpr bound = enc.mkInt(k);
+        PropertyAdder pa = new PropertyAdder(enc.getMainSlice());
+        Map<String, ArithExpr> lenVars = pa.instrumentPathLength(destPorts);
+        Map<String, BoolExpr> boundVars = new HashMap<>();
+        lenVars.forEach((n, ae) -> boundVars.put(n, enc.mkLe(ae, bound)));
+        return boundVars;
+      },
+      (enc, srcRouters, destPorts) -> { // check EqualLength
+        PropertyAdder pa = new PropertyAdder(enc.getMainSlice());
+        Map<String, ArithExpr> lenVars = pa.instrumentPathLength(destPorts);
+        Map<String, BoolExpr> eqVars = new HashMap<>();
+        List<Expr> lens = new ArrayList<>();
+        for (String router : srcRouters) {
+          lens.add(lenVars.get(router));
+        }
+        BoolExpr allEqual = PropertyAdder.allEqual(enc.getCtx(), lens);
+        enc.add(enc.mkNot(allEqual));
+        for (Entry<String, ArithExpr> entry : lenVars.entrySet()) {
+          String name = entry.getKey();
+          BoolExpr b = srcRouters.contains(name) ? allEqual : enc.mkTrue();
+          eqVars.put(name, b);
+        }
+        return eqVars;
+      },
+      (enc, srcRouters, destPorts) -> { // check LoadBalancing
+        PropertyAdder pa = new PropertyAdder(enc.getMainSlice());
+        Map<String, ArithExpr> loads = pa.instrumentLoad(destPorts);
+        Map<String, BoolExpr> prop = new HashMap<>();
+        loads.forEach((name, ae) -> prop.put(name, enc.mkTrue()));
+        return prop;
+      },*/
+      (vp) -> new SmtMulAnswerElement(vp.getResult())); 
+
+  }
+
 
   /*
    * Compute whether the path length will always be bounded by a constant k

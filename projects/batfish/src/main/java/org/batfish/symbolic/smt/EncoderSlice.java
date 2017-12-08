@@ -7,7 +7,11 @@ import com.microsoft.z3.BitVecExpr;
 import com.microsoft.z3.BoolExpr;
 import com.microsoft.z3.Context;
 import com.microsoft.z3.Expr;
+import com.microsoft.z3.Optimize;
 import com.microsoft.z3.Solver;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException; 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -80,6 +84,7 @@ class EncoderSlice {
 
   private Table2<String, Protocol, Set<Prefix>> _originatedNetworks;
 
+  private Table2<String, Protocol, Set<Prefix>> _allOriginatedNetworks;
   /**
    * Create a new encoding slice
    *
@@ -98,24 +103,38 @@ class EncoderSlice {
     _symbolicDecisions = new SymbolicDecisions();
     _symbolicPacket = new SymbolicPacket(enc.getCtx(), enc.getId(), _sliceName);
 
-    enc.getAllVariables().put(_symbolicPacket.getDstIp().toString(), _symbolicPacket.getDstIp());
-    enc.getAllVariables().put(_symbolicPacket.getSrcIp().toString(), _symbolicPacket.getSrcIp());
+    enc.getAllVariables().put(_symbolicPacket.getDstIp().toString() + _encoder.getStringId(),
+     _symbolicPacket.getDstIp());
+    enc.getAllVariables().put(_symbolicPacket.getSrcIp().toString() + _encoder.getStringId(),
+     _symbolicPacket.getSrcIp());
     enc.getAllVariables()
-        .put(_symbolicPacket.getDstPort().toString(), _symbolicPacket.getDstPort());
+        .put(_symbolicPacket.getDstPort().toString() + _encoder.getStringId(),
+         _symbolicPacket.getDstPort());
     enc.getAllVariables()
-        .put(_symbolicPacket.getSrcPort().toString(), _symbolicPacket.getSrcPort());
+        .put(_symbolicPacket.getSrcPort().toString() + _encoder.getStringId(),
+         _symbolicPacket.getSrcPort());
     enc.getAllVariables()
-        .put(_symbolicPacket.getIcmpCode().toString(), _symbolicPacket.getIcmpCode());
+        .put(_symbolicPacket.getIcmpCode().toString() + _encoder.getStringId(),
+         _symbolicPacket.getIcmpCode());
     enc.getAllVariables()
-        .put(_symbolicPacket.getIcmpType().toString(), _symbolicPacket.getIcmpType());
-    enc.getAllVariables().put(_symbolicPacket.getTcpAck().toString(), _symbolicPacket.getTcpAck());
-    enc.getAllVariables().put(_symbolicPacket.getTcpCwr().toString(), _symbolicPacket.getTcpCwr());
-    enc.getAllVariables().put(_symbolicPacket.getTcpEce().toString(), _symbolicPacket.getTcpEce());
-    enc.getAllVariables().put(_symbolicPacket.getTcpFin().toString(), _symbolicPacket.getTcpFin());
-    enc.getAllVariables().put(_symbolicPacket.getTcpPsh().toString(), _symbolicPacket.getTcpPsh());
-    enc.getAllVariables().put(_symbolicPacket.getTcpRst().toString(), _symbolicPacket.getTcpRst());
-    enc.getAllVariables().put(_symbolicPacket.getTcpSyn().toString(), _symbolicPacket.getTcpSyn());
-    enc.getAllVariables().put(_symbolicPacket.getTcpUrg().toString(), _symbolicPacket.getTcpUrg());
+        .put(_symbolicPacket.getIcmpType().toString() + _encoder.getStringId(),
+         _symbolicPacket.getIcmpType());
+    enc.getAllVariables().put(_symbolicPacket.getTcpAck().toString() + _encoder.getStringId(),
+     _symbolicPacket.getTcpAck());
+    enc.getAllVariables().put(_symbolicPacket.getTcpCwr().toString() + _encoder.getStringId(),
+     _symbolicPacket.getTcpCwr());
+    enc.getAllVariables().put(_symbolicPacket.getTcpEce().toString() + _encoder.getStringId(),
+     _symbolicPacket.getTcpEce());
+    enc.getAllVariables().put(_symbolicPacket.getTcpFin().toString() + _encoder.getStringId(),
+     _symbolicPacket.getTcpFin());
+    enc.getAllVariables().put(_symbolicPacket.getTcpPsh().toString() + _encoder.getStringId(),
+     _symbolicPacket.getTcpPsh());
+    enc.getAllVariables().put(_symbolicPacket.getTcpRst().toString() + _encoder.getStringId(),
+     _symbolicPacket.getTcpRst());
+    enc.getAllVariables().put(_symbolicPacket.getTcpSyn().toString() + _encoder.getStringId(),
+     _symbolicPacket.getTcpSyn());
+    enc.getAllVariables().put(_symbolicPacket.getTcpUrg().toString() + _encoder.getStringId(),
+     _symbolicPacket.getTcpUrg());
     enc.getAllVariables()
         .put(_symbolicPacket.getIpProtocol().toString(), _symbolicPacket.getIpProtocol());
 
@@ -124,6 +143,7 @@ class EncoderSlice {
     _forwardsAcross = new Table2<>();
     _ospfRedistributed = new HashMap<>();
     _originatedNetworks = new Table2<>();
+    _allOriginatedNetworks = new Table2<>(); 
 
     initOptimizations();
     initOriginatedPrefixes();
@@ -136,6 +156,11 @@ class EncoderSlice {
   // Add a variable to the encoding
   void add(BoolExpr e) {
     _encoder.add(e);
+  }
+
+  // @archie Add soft constraint to the encoding
+  void addSoft(BoolExpr e, int weight, String name) {
+    _encoder.addSoft(e, weight, name);
   }
 
   // Symbolic mkFalse value
@@ -488,7 +513,8 @@ class EncoderSlice {
         for (LogicalEdge e : collectAllImportLogicalEdges(router, conf, proto)) {
           String chName = e.getSymbolicRecord().getName() + "_choice";
           BoolExpr choiceVar = getCtx().mkBoolConst(chName);
-          getAllVariables().put(choiceVar.toString(), choiceVar);
+          getAllVariables().put(choiceVar.toString() + _encoder.getStringId(),
+           choiceVar);
           edgeMap.put(e, choiceVar);
         }
       }
@@ -508,7 +534,8 @@ class EncoderSlice {
         String cName =
             _encoder.getId() + "_" + _sliceName + "CONTROL-FORWARDING_" + router + "_" + iface;
         BoolExpr cForward = getCtx().mkBoolConst(cName);
-        getAllVariables().put(cForward.toString(), cForward);
+        getAllVariables().put(cForward.toString() + _encoder.getStringId(),
+         cForward);
         _symbolicDecisions.getControlForwarding().put(router, edge, cForward);
 
         // Don't add data forwarding variable for abstract edge
@@ -516,7 +543,8 @@ class EncoderSlice {
           String dName =
               _encoder.getId() + "_" + _sliceName + "DATA-FORWARDING_" + router + "_" + iface;
           BoolExpr dForward = getCtx().mkBoolConst(dName);
-          getAllVariables().put(dForward.toString(), dForward);
+          getAllVariables().put(dForward.toString() + _encoder.getStringId(),
+           dForward);
           _symbolicDecisions.getDataForwarding().put(router, edge, dForward);
         }
       }
@@ -2323,6 +2351,10 @@ class EncoderSlice {
     return _encoder.getSolver();
   }
 
+  Optimize getOptimize() {
+    return _encoder.getOptimize();
+  }
+
   Map<String, Expr> getAllVariables() {
     return _encoder.getAllVariables();
   }
@@ -2377,5 +2409,9 @@ class EncoderSlice {
 
   Table2<String, Protocol, Set<Prefix>> getOriginatedNetworks() {
     return _originatedNetworks;
+  }
+
+  Table2<String, Protocol, Set<Prefix>> getAllOriginatedNetworks() {
+    return _allOriginatedNetworks;
   }
 }

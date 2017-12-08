@@ -4394,6 +4394,12 @@ public class Batfish extends PluginConsumer implements IBatfish {
   }
 
   @Override
+  public AnswerElement smtMul(HeaderLocationQuestion q) {
+    PropertyChecker p = new PropertyChecker(this);
+    return p.checkMul(q);
+  }
+
+  @Override
   public AnswerElement smtMultipathConsistency(HeaderLocationQuestion q) {
     PropertyChecker p = new PropertyChecker(this, _settings);
     return p.checkMultipathConsistency(q);
