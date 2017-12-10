@@ -847,9 +847,18 @@ class EncoderSlice {
     for (Entry<String, Configuration> entry : getGraph().getConfigurations().entrySet()) {
       String router = entry.getKey();
       Configuration conf = entry.getValue();
+
+      Set<Prefix> allprefixes = new HashSet<Prefix>();
+      // @archie allprefixes has all prefixes orignating at theis router
+      for (Protocol proto : _optimizations.getProtocols().get(router)) {
+        Set<Prefix> tempprefixes = Graph.getOriginatedNetworks(conf, proto);
+        allprefixes.addAll(tempprefixes);
+      }
+
       for (Protocol proto : _optimizations.getProtocols().get(router)) {
         Set<Prefix> prefixes = Graph.getOriginatedNetworks(conf, proto);
         _originatedNetworks.put(router, proto, prefixes);
+        _allOriginatedNetworks.put(router, proto, allprefixes);
       }
     }
   }
@@ -1992,7 +2001,8 @@ class EncoderSlice {
       GraphEdge ge,
       String router,
       boolean usedExport,
-      Set<Prefix> originations) {
+      Set<Prefix> originations,
+      Set<Prefix> allOriginations) {
 
     SymbolicRoute vars = e.getSymbolicRecord();
 
@@ -2050,7 +2060,9 @@ class EncoderSlice {
           }
         }
 
-        BoolExpr acc;
+        BoolExpr acc; // this is export constraints with originations prefixes
+        BoolExpr allacc; // this is export constraints with allOriginations prefixes
+        // @archie allacc is soft constraint which represents new prefixes being exported
         RoutingPolicy pol = getGraph().findExportRoutingPolicy(router, proto, e.getEdge());
 
         if (Encoder.ENABLE_DEBUGGING && pol != null) {
@@ -2105,6 +2117,9 @@ class EncoderSlice {
           acc = mkIf(usable, acc, val);
         }
 
+        allacc = acc;
+        // from now allacc will be different from acc as they deal with different prefixes
+
         for (Prefix p : originations) {
           // For OSPF, we need to explicitly initiate a route
           if (proto.isOspf()) {
@@ -2147,7 +2162,53 @@ class EncoderSlice {
           }
         }
 
-        add(acc);
+        // @archie duplicated but with allOriginations prefix set
+        for (Prefix p : allOriginations) {
+          // For OSPF, we need to explicitly initiate a route
+          if (proto.isOspf()) {
+
+            BoolExpr ifaceUp = interfaceActive(iface, proto);
+            BoolExpr relevantPrefix = isRelevantFor(p, _symbolicPacket.getDstIp());
+            BoolExpr relevant = mkAnd(ifaceUp, relevantPrefix);
+
+            int adminDistance = defaultAdminDistance(conf, proto);
+            int prefixLength = p.getPrefixLength();
+
+            BoolExpr per = vars.getPermitted();
+            BoolExpr lp = safeEq(vars.getLocalPref(), mkInt(0));
+            BoolExpr ad = safeEq(vars.getAdminDist(), mkInt(adminDistance));
+            BoolExpr met = safeEq(vars.getMetric(), mkInt(cost));
+            BoolExpr med = safeEq(vars.getMed(), mkInt(100));
+            BoolExpr len = safeEq(vars.getPrefixLength(), mkInt(prefixLength));
+            BoolExpr type = safeEqEnum(vars.getOspfType(), OspfType.O);
+            BoolExpr area = safeEqEnum(vars.getOspfArea(), iface.getOspfAreaName());
+            BoolExpr internal = safeEq(vars.getBgpInternal(), mkFalse());
+            BoolExpr igpMet = safeEq(vars.getIgpMetric(), mkInt(0));
+            BoolExpr comms = mkTrue();
+            for (Map.Entry<CommunityVar, BoolExpr> entry : vars.getCommunities().entrySet()) {
+              comms = mkAnd(comms, mkNot(entry.getValue()));
+            }
+            BoolExpr values =
+                mkAnd(per, lp, ad, met, med, len, type, area, internal, igpMet, comms);
+
+            // Don't originate OSPF route when there is a better redistributed route
+            if (ospfRedistribVars != null) {
+              BoolExpr betterLen = mkGt(ospfRedistribVars.getPrefixLength(), mkInt(prefixLength));
+              BoolExpr equalLen = mkEq(ospfRedistribVars.getPrefixLength(), mkInt(prefixLength));
+              BoolExpr betterAd = mkLt(ospfRedistribVars.getAdminDist(), mkInt(110));
+              BoolExpr better = mkOr(betterLen, mkAnd(equalLen, betterAd));
+              BoolExpr betterRedistributed = mkAnd(ospfRedistribVars.getPermitted(), better);
+              relevant = mkAnd(relevant, mkNot(betterRedistributed));
+            }
+
+            allacc = mkIf(relevant, values, allacc);
+          }
+        }
+
+        add(mkOr(acc,allacc));
+        addSoft(mkOr(acc, mkNot(allacc)), 1, "exportIPSoft");
+
+        //add(acc);
 
         if (Encoder.ENABLE_DEBUGGING) {
           System.out.println("EXPORT: " + router + " " + varsOther.getName() + " " + ge);
@@ -2207,6 +2268,8 @@ class EncoderSlice {
                   varsOther = _symbolicDecisions.getBestNeighbor().get(router);
                 }
                 Set<Prefix> originations = _originatedNetworks.get(router, proto);
+                Set<Prefix> allOriginations = _allOriginatedNetworks.get(router, proto);
+
                 assert varsOther != null;
                 assert originations != null;
 
@@ -2220,7 +2283,8 @@ class EncoderSlice {
                     ge,
                     router,
                     usedExport,
-                    originations);
+                    originations,
+                    allOriginations);
 
                 usedExport = true;
                 break;
