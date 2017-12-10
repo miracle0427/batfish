@@ -88,7 +88,12 @@ public class Encoder {
 
   private UnsatCore _unsatCore;
 
+  /**
+   * @archie created this variable. optsolve will use same constraints as solver, but can support soft
+   * constraints
+   */
   private Optimize _optsolve;
+
   /**
    * Create an encoder object that will consider all packets in the provided headerspace.
    *
@@ -404,6 +409,7 @@ public class Encoder {
   // Add a boolean variable to the model
   void add(BoolExpr e) {
     _unsatCore.track(_solver, _ctx, e);
+    // @archie added the optsolve add code to add things to optimiser in addition to solver
     _optsolve.Add(e);
   }
 
@@ -724,7 +730,7 @@ public class Encoder {
    * @return A VerificationResult indicating the status of the check.
    */
   public Tuple<VerificationResult, Model> verify() {
-
+    // @archie modified to use _optsolve
     EncoderSlice mainSlice = _slices.get(MAIN_SLICE_NAME);
 
     int numVariables = _allVariables.size();
@@ -748,10 +754,10 @@ public class Encoder {
       System.out.println("Stats: \n" + _optsolve.getStatistics());
     }
     try {
-      //BufferedWriter writer = new BufferedWriter(new FileWriter("SMT.smt"));
-      //writer.write(_solver.toString());
-      //writer.close();
-      BufferedWriter writer = new BufferedWriter(new FileWriter("MAXSMT.smt"));
+      BufferedWriter writer = new BufferedWriter(new FileWriter("SMT.smt"));
+      writer.write(_solver.toString());
+      writer.close();
+      writer = new BufferedWriter(new FileWriter("MAXSMT.smt"));
       writer.write(_optsolve.toString());
       writer.close();
     } catch (IOException e) {

@@ -307,12 +307,13 @@ class EncoderSlice {
     for (Entry<String, List<GraphEdge>> entry : getGraph().getEdgeMap().entrySet()) {
       String router = entry.getKey();
       List<GraphEdge> edges = entry.getValue();
-
+      System.out.println("Router " + router);
       for (GraphEdge ge : edges) {
         Interface i = ge.getStart();
-
+        System.out.println(ge.toString() + " *");
         IpAccessList outbound = i.getOutgoingFilter();
         if (outbound != null) {
+          System.out.println("Outbound ACL " + outbound.toString());
           String outName =
               String.format(
                   "%d_%s_%s_%s_%s_%s",
@@ -327,10 +328,24 @@ class EncoderSlice {
           BoolExpr outAclFunc = computeACL(outbound);
           add(mkEq(outAcl, outAclFunc));
           _outboundAcls.put(ge, outAcl);
+        } else {
+          String outName =
+              String.format(
+                  "%d_%s_%s_%s_%s_%s",
+                  _encoder.getId(),
+                  _sliceName,
+                  router,
+                  i.getName(),
+                  "OUTBOUND",
+                  "SOFT");
+          BoolExpr outAcl = getCtx().mkBoolConst(outName);
+          addSoft(outAcl, -1, "SoftOutAcl");
+          _outboundAcls.put(ge, outAcl);
         }
 
         IpAccessList inbound = i.getIncomingFilter();
         if (inbound != null) {
+          System.out.println("Inbound ACL " + inbound.toString());
           String inName =
               String.format(
                   "%d_%s_%s_%s_%s_%s",
@@ -339,6 +354,14 @@ class EncoderSlice {
           BoolExpr inAcl = getCtx().mkBoolConst(inName);
           BoolExpr inAclFunc = computeACL(inbound);
           add(mkEq(inAcl, inAclFunc));
+          _inboundAcls.put(ge, inAcl);
+        } else {
+          String inName =
+              String.format(
+                  "%d_%s_%s_%s_%s_%s",
+                  _encoder.getId(), _sliceName, router, i.getName(), "INBOUND", "SOFT");
+          BoolExpr inAcl = getCtx().mkBoolConst(inName);
+          addSoft(inAcl, -1, "SoftOutAcl");
           _inboundAcls.put(ge, inAcl);
         }
       }

@@ -423,12 +423,16 @@ public class PropertyChecker {
               } else {
                 BoolExpr allProp = enc.mkTrue();
                 for (String router : srcRouters) {
-                  BoolExpr r = prop.get(router);
+                  if (router.equals("C")) {
+                    continue;
+                  }
+                  System.out.println(router + "$$");
+                  BoolExpr r = enc.mkNot(prop.get(router));
                   allProp = enc.mkAnd(allProp, r);
                 }
-                enc.add(enc.mkNot(allProp));
-                // instead of not(property). It's now property
-                //enc.add(allProp);
+                //enc.add(enc.mkNot(allProp));
+                //@archie instead of not(property). It's now property
+                enc.add(allProp);
               }
 
               addFailureConstraints(enc, destPorts, failOptions);

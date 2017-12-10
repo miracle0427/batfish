@@ -375,11 +375,13 @@ class CounterExample {
           hops.add(buildFlowTraceHop(ge, route));
           Interface i = ge.getStart();
           IpAccessList acl = i.getOutgoingFilter();
-          FilterResult fr = acl.filter(f);
-          IpAccessListLine line = acl.getLines().get(fr.getMatchLine());
-          String note = String.format("DENIED_OUT{%s}{%s}", acl.getName(), line.getName());
-          FlowTrace ft = new FlowTrace(FlowDisposition.DENIED_OUT, hops, note);
-          return new Tuple<>(f, ft);
+          if (acl != null) {
+            FilterResult fr = acl.filter(f);
+            IpAccessListLine line = acl.getLines().get(fr.getMatchLine());
+            String note = String.format("DENIED_OUT{%s}{%s}", acl.getName(), line.getName());
+            FlowTrace ft = new FlowTrace(FlowDisposition.DENIED_OUT, hops, note);
+            return new Tuple<>(f, ft);
+          }
         }
       }
       if (!found) {
