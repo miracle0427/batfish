@@ -423,11 +423,7 @@ public class PropertyChecker {
               } else {
                 BoolExpr allProp = enc.mkTrue();
                 for (String router : srcRouters) {
-                  if (router.equals("C")) {
-                    continue;
-                  }
-                  System.out.println(router + "$$");
-                  BoolExpr r = enc.mkNot(prop.get(router));
+                  BoolExpr r = prop.get(router);
                   allProp = enc.mkAnd(allProp, r);
                 }
                 //enc.add(enc.mkNot(allProp));
@@ -697,9 +693,6 @@ public class PropertyChecker {
     VerifyParam vp = new VerifyParam(result[0], null, null, null, null, null, null);
     return answer.apply(vp);
   }
-
-
-
 
 
   /*
