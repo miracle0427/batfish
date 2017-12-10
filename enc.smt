@@ -1,3 +1,5 @@
+(declare-fun |0_src-ip| () (_ BitVec 32))
+(declare-fun |0__C_GigabitEthernet0/1_INBOUND_1| () Bool)
 (declare-fun |0_FAILED-EDGE_A_B| () Int)
 (declare-fun |0_FAILED-EDGE_A_GigabitEthernet0/3| () Int)
 (declare-fun |0_FAILED-EDGE_B_C| () Int)
@@ -59,28 +61,38 @@
 (declare-fun |0_CONTROL-FORWARDING_C_GigabitEthernet0/1| () Bool)
 (declare-fun |0_CONTROL-FORWARDING_C_GigabitEthernet0/3| () Bool)
 (declare-fun |0_DATA-FORWARDING_A_GigabitEthernet0/3| () Bool)
-(declare-fun |0__A_GigabitEthernet0/3_OUTBOUND_SOFT| () Bool)
+(declare-fun |0__A_GigabitEthernet0/3_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_A_GigabitEthernet0/1| () Bool)
-(declare-fun |0__A_GigabitEthernet0/1_OUTBOUND_SOFT| () Bool)
+(declare-fun |0__A_GigabitEthernet0/1_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_B_GigabitEthernet0/1| () Bool)
-(declare-fun |0__B_GigabitEthernet0/1_OUTBOUND_SOFT| () Bool)
+(declare-fun |0__B_GigabitEthernet0/1_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_B_GigabitEthernet0/2| () Bool)
-(declare-fun |0__B_GigabitEthernet0/2_OUTBOUND_SOFT| () Bool)
+(declare-fun |0__B_GigabitEthernet0/2_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_C_GigabitEthernet0/3| () Bool)
-(declare-fun |0__C_GigabitEthernet0/3_OUTBOUND_SOFT| () Bool)
+(declare-fun |0__C_GigabitEthernet0/3_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_C_GigabitEthernet0/1| () Bool)
-(declare-fun |0__C_GigabitEthernet0/1_OUTBOUND_SOFT| () Bool)
-(declare-fun |0_src-ip| () (_ BitVec 32))
+(declare-fun |0__C_GigabitEthernet0/1_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0__reachable-id_A| () Int)
 (declare-fun |0__reachable_A| () Bool)
 (declare-fun |0__reachable-id_B| () Int)
 (declare-fun |0__reachable_B| () Bool)
 (declare-fun |0__reachable-id_C| () Int)
 (declare-fun |0__reachable_C| () Bool)
-(declare-fun |0__B_GigabitEthernet0/1_INBOUND_SOFT| () Bool)
-(declare-fun |0__C_GigabitEthernet0/1_INBOUND_SOFT| () Bool)
-(declare-fun |0__A_GigabitEthernet0/1_INBOUND_SOFT| () Bool)
-(declare-fun |0__B_GigabitEthernet0/2_INBOUND_SOFT| () Bool)
+(declare-fun |0__B_GigabitEthernet0/1_INBOUND_SOFTAdd| () Bool)
+(declare-fun |0__C_GigabitEthernet0/1_INBOUND_1Remove| () Bool)
+(declare-fun |0__A_GigabitEthernet0/1_INBOUND_SOFTAdd| () Bool)
+(declare-fun |0__B_GigabitEthernet0/2_INBOUND_SOFTAdd| () Bool)
+(assert (let ((a!1 (ite (and true
+                     (= ((_ extract 31 24) |0_src-ip|) #x68)
+                     true
+                     true
+                     true
+                     true
+                     true
+                     true)
+                false
+                (ite (and true true true true true true true true) true false))))
+  (= |0__C_GigabitEthernet0/1_INBOUND_1| a!1)))
 (assert (>= |0_FAILED-EDGE_A_B| 0))
 (assert (<= |0_FAILED-EDGE_A_B| 1))
 (assert (>= |0_FAILED-EDGE_A_GigabitEthernet0/3| 0))
@@ -913,22 +925,22 @@
                      true))))
   (=> a!1 (not |0_CONTROL-FORWARDING_C_GigabitEthernet0/3|))))
 (assert (= (and (or false |0_CONTROL-FORWARDING_A_GigabitEthernet0/3|)
-        |0__A_GigabitEthernet0/3_OUTBOUND_SOFT|)
+        |0__A_GigabitEthernet0/3_OUTBOUND_SOFTAdd|)
    |0_DATA-FORWARDING_A_GigabitEthernet0/3|))
 (assert (= (and (or false |0_CONTROL-FORWARDING_A_GigabitEthernet0/1|)
-        |0__A_GigabitEthernet0/1_OUTBOUND_SOFT|)
+        |0__A_GigabitEthernet0/1_OUTBOUND_SOFTAdd|)
    |0_DATA-FORWARDING_A_GigabitEthernet0/1|))
 (assert (= (and (or false |0_CONTROL-FORWARDING_B_GigabitEthernet0/1|)
-        |0__B_GigabitEthernet0/1_OUTBOUND_SOFT|)
+        |0__B_GigabitEthernet0/1_OUTBOUND_SOFTAdd|)
    |0_DATA-FORWARDING_B_GigabitEthernet0/1|))
 (assert (= (and (or false |0_CONTROL-FORWARDING_B_GigabitEthernet0/2|)
-        |0__B_GigabitEthernet0/2_OUTBOUND_SOFT|)
+        |0__B_GigabitEthernet0/2_OUTBOUND_SOFTAdd|)
    |0_DATA-FORWARDING_B_GigabitEthernet0/2|))
 (assert (= (and (or false |0_CONTROL-FORWARDING_C_GigabitEthernet0/3|)
-        |0__C_GigabitEthernet0/3_OUTBOUND_SOFT|)
+        |0__C_GigabitEthernet0/3_OUTBOUND_SOFTAdd|)
    |0_DATA-FORWARDING_C_GigabitEthernet0/3|))
 (assert (= (and (or false |0_CONTROL-FORWARDING_C_GigabitEthernet0/1|)
-        |0__C_GigabitEthernet0/1_OUTBOUND_SOFT|)
+        |0__C_GigabitEthernet0/1_OUTBOUND_SOFTAdd|)
    |0_DATA-FORWARDING_C_GigabitEthernet0/1|))
 (assert (=> (not |0_A_OVERALL_BEST_None_permitted|)
     (= |0_A_OVERALL_BEST_None_prefixLength| 0)))
@@ -993,12 +1005,12 @@
 (assert (>= |0__reachable-id_C| 0))
 (assert (let ((a!1 (and true
                 (=> (and |0_DATA-FORWARDING_A_GigabitEthernet0/1|
-                         |0__B_GigabitEthernet0/1_INBOUND_SOFT|
+                         |0__B_GigabitEthernet0/1_INBOUND_SOFTAdd|
                          (> |0__reachable-id_B| 0))
                     (> |0__reachable-id_A| |0__reachable-id_B|)))))
 (let ((a!2 (ite (or false
                     (and |0_DATA-FORWARDING_A_GigabitEthernet0/1|
-                         |0__B_GigabitEthernet0/1_INBOUND_SOFT|
+                         |0__B_GigabitEthernet0/1_INBOUND_SOFTAdd|
                          (> |0__reachable-id_B| 0)))
                 a!1
                 (= |0__reachable-id_A| 0))))
@@ -1011,19 +1023,21 @@
        a!2))))
 (assert (let ((a!1 (and true
                 (=> (and |0_DATA-FORWARDING_B_GigabitEthernet0/1|
-                         |0__A_GigabitEthernet0/1_INBOUND_SOFT|
+                         |0__A_GigabitEthernet0/1_INBOUND_SOFTAdd|
                          (> |0__reachable-id_A| 0))
                     (> |0__reachable-id_B| |0__reachable-id_A|))
                 (=> (and |0_DATA-FORWARDING_B_GigabitEthernet0/2|
-                         |0__C_GigabitEthernet0/1_INBOUND_SOFT|
+                         (or |0__C_GigabitEthernet0/1_INBOUND_1|
+                             |0__C_GigabitEthernet0/1_INBOUND_1Remove|)
                          (> |0__reachable-id_C| 0))
                     (> |0__reachable-id_B| |0__reachable-id_C|)))))
 (let ((a!2 (ite (or false
                     (and |0_DATA-FORWARDING_B_GigabitEthernet0/1|
-                         |0__A_GigabitEthernet0/1_INBOUND_SOFT|
+                         |0__A_GigabitEthernet0/1_INBOUND_SOFTAdd|
                          (> |0__reachable-id_A| 0))
                     (and |0_DATA-FORWARDING_B_GigabitEthernet0/2|
-                         |0__C_GigabitEthernet0/1_INBOUND_SOFT|
+                         (or |0__C_GigabitEthernet0/1_INBOUND_1|
+                             |0__C_GigabitEthernet0/1_INBOUND_1Remove|)
                          (> |0__reachable-id_C| 0)))
                 a!1
                 (= |0__reachable-id_B| 0))))
@@ -1035,12 +1049,12 @@
        a!2))))
 (assert (let ((a!1 (and true
                 (=> (and |0_DATA-FORWARDING_C_GigabitEthernet0/1|
-                         |0__B_GigabitEthernet0/2_INBOUND_SOFT|
+                         |0__B_GigabitEthernet0/2_INBOUND_SOFTAdd|
                          (> |0__reachable-id_B| 0))
                     (> |0__reachable-id_C| |0__reachable-id_B|)))))
 (let ((a!2 (ite (or false
                     (and |0_DATA-FORWARDING_C_GigabitEthernet0/1|
-                         |0__B_GigabitEthernet0/2_INBOUND_SOFT|
+                         |0__B_GigabitEthernet0/2_INBOUND_SOFTAdd|
                          (> |0__reachable-id_B| 0)))
                 a!1
                 (= |0__reachable-id_C| 0))))
@@ -1051,7 +1065,7 @@
            (and |0_C_CONNECTED_BEST_None_permitted| (= |0_dst-ip| #x02000301)))
        (= |0__reachable-id_C| 1)
        a!2))))
-(assert (and true (not |0__reachable_A|) (not |0__reachable_B|)))
+(assert (and true |0__reachable_A| |0__reachable_B| |0__reachable_C|))
 (assert (= |0_FAILED-EDGE_A_GigabitEthernet0/3| 0))
 (assert (=> (= (bvand |0_dst-ip| #xffff0000) (bvand #x01000000 #xffff0000))
     (= |0_FAILED-EDGE_A_B| 0)))

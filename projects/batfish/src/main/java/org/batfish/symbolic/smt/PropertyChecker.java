@@ -748,9 +748,6 @@ public class PropertyChecker {
   }
 
 
-
-
-
   /*
    * Check if a collection of routers will be reachable to
    * one or more destinations.

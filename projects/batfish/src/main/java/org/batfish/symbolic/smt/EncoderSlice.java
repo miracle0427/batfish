@@ -303,8 +303,14 @@ class EncoderSlice {
 
           BoolExpr outAcl = getCtx().mkBoolConst(outName);
           BoolExpr outAclFunc = computeACL(outbound);
+
+          BoolExpr outAclRemove = getCtx().mkBoolConst(outName + "Remove");
+          addSoft(mkNot(outAclRemove), 1, "SoftOutAclRemove");
+
           add(mkEq(outAcl, outAclFunc));
-          _outboundAcls.put(ge, outAcl);
+          //_outboundAcls.put(ge, outAcl);
+          _outboundAcls.put(ge, mkOr(outAcl,outAclRemove));
+
         } else {
           String outName =
               String.format(
@@ -315,8 +321,8 @@ class EncoderSlice {
                   i.getName(),
                   "OUTBOUND",
                   "SOFT");
-          BoolExpr outAcl = getCtx().mkBoolConst(outName);
-          addSoft(outAcl, -1, "SoftOutAcl");
+          BoolExpr outAcl = getCtx().mkBoolConst(outName + "Add");
+          addSoft(outAcl, 1, "SoftOutAclAdd");
           _outboundAcls.put(ge, outAcl);
         }
 
@@ -330,15 +336,21 @@ class EncoderSlice {
 
           BoolExpr inAcl = getCtx().mkBoolConst(inName);
           BoolExpr inAclFunc = computeACL(inbound);
+          
+          BoolExpr inAclRemove = getCtx().mkBoolConst(inName + "Remove");
+          addSoft(mkNot(inAclRemove), 1, "SoftInAclRemove");
+          
           add(mkEq(inAcl, inAclFunc));
-          _inboundAcls.put(ge, inAcl);
+          //_inboundAcls.put(ge, inAcl);
+          _inboundAcls.put(ge, mkOr(inAcl,inAclRemove));
+
         } else {
           String inName =
               String.format(
                   "%d_%s_%s_%s_%s_%s",
                   _encoder.getId(), _sliceName, router, i.getName(), "INBOUND", "SOFT");
-          BoolExpr inAcl = getCtx().mkBoolConst(inName);
-          addSoft(inAcl, -1, "SoftOutAcl");
+          BoolExpr inAcl = getCtx().mkBoolConst(inName + "Add");
+          addSoft(inAcl, 1, "SoftInAclAdd");
           _inboundAcls.put(ge, inAcl);
         }
       }
