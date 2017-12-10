@@ -306,7 +306,7 @@ class EncoderSlice {
 
           BoolExpr outAclRemove = getCtx().mkBoolConst(outName + "Remove");
           addSoft(mkNot(outAclRemove), 1, "SoftOutAclRemove");
-
+          // @archie outAclRemove is soft constraint to do out ACL remove
           add(mkEq(outAcl, outAclFunc));
           //_outboundAcls.put(ge, outAcl);
           _outboundAcls.put(ge, mkOr(outAcl,outAclRemove));
@@ -322,6 +322,7 @@ class EncoderSlice {
                   "OUTBOUND",
                   "SOFT");
           BoolExpr outAcl = getCtx().mkBoolConst(outName + "Add");
+          // @archie outAcl is soft constraint to do out ACL add
           addSoft(outAcl, 1, "SoftOutAclAdd");
           _outboundAcls.put(ge, outAcl);
         }
@@ -339,7 +340,7 @@ class EncoderSlice {
           
           BoolExpr inAclRemove = getCtx().mkBoolConst(inName + "Remove");
           addSoft(mkNot(inAclRemove), 1, "SoftInAclRemove");
-          
+          // @archie inAclRemove is soft constraint to do in ACL remove
           add(mkEq(inAcl, inAclFunc));
           //_inboundAcls.put(ge, inAcl);
           _inboundAcls.put(ge, mkOr(inAcl,inAclRemove));
@@ -350,6 +351,7 @@ class EncoderSlice {
                   "%d_%s_%s_%s_%s_%s",
                   _encoder.getId(), _sliceName, router, i.getName(), "INBOUND", "SOFT");
           BoolExpr inAcl = getCtx().mkBoolConst(inName + "Add");
+          // @archie inAcl is soft constraint to do out ACL add
           addSoft(inAcl, 1, "SoftInAclAdd");
           _inboundAcls.put(ge, inAcl);
         }
