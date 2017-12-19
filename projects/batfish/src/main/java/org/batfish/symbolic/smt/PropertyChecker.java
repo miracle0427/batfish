@@ -432,7 +432,7 @@ public class PropertyChecker {
               }
 
               addFailureConstraints(enc, destPorts, failOptions);
-
+              /*
               try {
                 System.out.println("Encoding written in enc.smt");
                 BufferedWriter writer = new BufferedWriter(new FileWriter("enc.smt"));
@@ -441,7 +441,7 @@ public class PropertyChecker {
               } catch (IOException e) {
                 System.out.println("IO error");
               }
-
+              */
 
               long startVerify = System.currentTimeMillis();
               Tuple<VerificationResult, Model> tup = enc.verify();
