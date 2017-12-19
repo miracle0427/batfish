@@ -379,6 +379,7 @@ class EncoderSlice {
                 }
               }
               _forwardsAcross.put(router, edge, mkAnd(var, inAcl));
+              System.out.println(" Var " + var + "\n InACL " + inAcl);
             });
   }
 
@@ -1960,23 +1961,20 @@ class EncoderSlice {
             statements = Collections.singletonList(s);
           } else {
             statements = pol.getStatements();
+            System.out.println("$$ STMT: " + statements);
           }
 
           // OSPF cost calculated based on incoming interface
           Integer cost = proto.isOspf() ? addedCost(proto, ge) : 0;
-
           TransferSSA f =
               new TransferSSA(this, conf, varsOther, vars, proto, statements, cost, ge, false);
           importFunction = f.compute();
-
           BoolExpr acc = mkIf(usable, importFunction, val);
-
           if (Encoder.ENABLE_DEBUGGING) {
             System.out.println("IMPORT FUNCTION: " + router + " " + varsOther.getName());
             System.out.println(importFunction.simplify());
             System.out.println("\n\n");
           }
-
           add(acc);
 
         } else {
@@ -2209,12 +2207,12 @@ class EncoderSlice {
         addSoft(mkOr(acc, mkNot(allacc)), 1, "exportIPSoft");
 
         //add(acc);
-
         if (Encoder.ENABLE_DEBUGGING) {
           System.out.println("EXPORT: " + router + " " + varsOther.getName() + " " + ge);
           System.out.println(acc.simplify());
           System.out.println("\n\n");
         }
+
       }
     }
   }
