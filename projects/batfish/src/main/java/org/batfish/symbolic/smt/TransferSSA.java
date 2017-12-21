@@ -215,7 +215,9 @@ class TransferSSA {
       PrefixRange range = new PrefixRange(p, r);
       BoolExpr matches = _enc.isRelevantFor(other.getPrefixLength(), range);
       BoolExpr action = _enc.mkBool(line.getAction() == LineAction.ACCEPT);
+      System.out.println("Before MK if");
       acc = _enc.mkIf(matches, action, acc);
+      System.out.println(" && " + acc);
     }
     return acc;
   }
@@ -225,7 +227,6 @@ class TransferSSA {
    */
   private TransferResult<BoolExpr, BoolExpr> matchPrefixSet(
       Configuration conf, PrefixSetExpr e, SymbolicRoute other) {
-
     ArithExpr otherLen = other.getPrefixLength();
 
     TransferResult<BoolExpr, BoolExpr> result = new TransferResult<>();
@@ -289,6 +290,7 @@ class TransferSSA {
       NamedPrefixSet x = (NamedPrefixSet) e;
       String name = x.getName();
       RouteFilterList fl = conf.getRouteFilterLists().get(name);
+      System.out.println("\nROUTE FILTER\n");
       return result.setReturnValue(matchFilterList(fl, other));
 
     } else {
@@ -1056,6 +1058,7 @@ class TransferSSA {
         result = result.addChangedVariables(r);
         BoolExpr guard = (BoolExpr) r.getReturnValue().simplify();
         String str = guard.toString();
+        System.out.println("%%% \nIf statement created: " + i.getGuard() + " \n$$ " +str + "\n");
 
         // If there are updates in the guard, add them to the parameter p before entering branches
         for (Pair<String, Expr> changed : r.getChangedVariables()) {
