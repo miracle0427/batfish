@@ -379,7 +379,6 @@ class EncoderSlice {
                 }
               }
               _forwardsAcross.put(router, edge, mkAnd(var, inAcl));
-              System.out.println(" Var " + var + "\n InACL " + inAcl);
             });
   }
 

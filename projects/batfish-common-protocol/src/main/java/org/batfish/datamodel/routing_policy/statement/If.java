@@ -129,6 +129,7 @@ public class If extends Statement {
 
   public void setGuard(BooleanExpr guard) {
     _guard = guard;
+    System.out.println(" GUARD SET " + guard);
   }
 
   public void setTrueStatements(List<Statement> trueStatements) {

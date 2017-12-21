@@ -1,0 +1,2 @@
+init-testrig test_rigs/smt-examples/ENV3
+get smt-reachability dstIps=["43.43.43.1"], srcIps=["42.42.42.1"]
