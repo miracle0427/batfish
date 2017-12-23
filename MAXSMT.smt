@@ -24,9 +24,10 @@
 (declare-fun |0_R2_BGP_IMPORT_Serial0_prefixLength| () Int)
 (declare-fun |0_R1_BGP_SINGLE-EXPORT__metric| () Int)
 (declare-fun |0_R1_BGP_SINGLE-EXPORT__prefixLength| () Int)
-(declare-fun |0_R1_CONNECTED_IMPORT_Loopback0_prefixLength| () Int)
+(declare-fun |0_R1_CONNECTED_IMPORT_Loopback1_prefixLength| () Int)
 (declare-fun |0_R2_BGP_IMPORT_Serial0_permitted| () Bool)
 (declare-fun |0_R1_BGP_SINGLE-EXPORT__permitted| () Bool)
+(declare-fun |\|0_R1_BGP_SINGLE-EXPORT__prefixLength\|BGPAddFilter| () Bool)
 (declare-fun |\|0_R1_BGP_SINGLE-EXPORT__prefixLength\|BGPRemoveFilter| () Bool)
 (declare-fun |0_dst-ip| () (_ BitVec 32))
 (declare-fun |0_CONTROL-FORWARDING_R1_Serial0| () Bool)
@@ -34,16 +35,16 @@
 (declare-fun |0_R2_OVERALL_BEST_None_permitted| () Bool)
 (declare-fun |0_R1_OVERALL_BEST_None_history| () (_ BitVec 1))
 (declare-fun |0_R1_OVERALL_BEST_None_permitted| () Bool)
-(declare-fun |0_R1_CONNECTED_IMPORT_Loopback0_permitted| () Bool)
+(declare-fun |0_R1_CONNECTED_IMPORT_Loopback1_permitted| () Bool)
 (declare-fun |0_R1_BGP_BEST_None_permitted| () Bool)
 (declare-fun |0_R1_CONNECTED_BEST_None_permitted| () Bool)
 (declare-fun |0_R2_BGP_IMPORT_Serial0_choice| () Bool)
 (declare-fun |0_R1_BGP_IMPORT_Serial0_choice| () Bool)
-(declare-fun |0_R1_CONNECTED_IMPORT_Loopback0_choice| () Bool)
+(declare-fun |0_R1_CONNECTED_IMPORT_Loopback1_choice| () Bool)
 (declare-fun |0_CONTROL-FORWARDING_R2_Serial0| () Bool)
 (declare-fun |0_CONTROL-FORWARDING_R2_Loopback0| () Bool)
-(declare-fun |0_CONTROL-FORWARDING_R1_Loopback0| () Bool)
 (declare-fun |0_CONTROL-FORWARDING_R1_Loopback1| () Bool)
+(declare-fun |0_CONTROL-FORWARDING_R1_Loopback0| () Bool)
 (declare-fun |0_DATA-FORWARDING_R2_Loopback0| () Bool)
 (declare-fun |0__R2_Loopback0_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_R2_Serial0| () Bool)
@@ -117,15 +118,17 @@
 (assert (< |0_R1_BGP_SINGLE-EXPORT__metric| 65536))
 (assert (>= |0_R1_BGP_SINGLE-EXPORT__prefixLength| 0))
 (assert (<= |0_R1_BGP_SINGLE-EXPORT__prefixLength| 32))
-(assert (>= |0_R1_CONNECTED_IMPORT_Loopback0_prefixLength| 0))
-(assert (<= |0_R1_CONNECTED_IMPORT_Loopback0_prefixLength| 32))
-(assert (let ((a!1 (not (and (>= |0_R1_BGP_SINGLE-EXPORT__prefixLength| 24)
-                     (<= |0_R1_BGP_SINGLE-EXPORT__prefixLength| 26)
-                     (= ((_ extract 31 8) |0_dst-ip|) #x2a2a2a)
-                     |\|0_R1_BGP_SINGLE-EXPORT__prefixLength\|BGPRemoveFilter|))))
-(let ((a!2 (ite (and a!1
-                     (>= |0_R1_BGP_SINGLE-EXPORT__prefixLength| 0)
-                     (<= |0_R1_BGP_SINGLE-EXPORT__prefixLength| 32))
+(assert (>= |0_R1_CONNECTED_IMPORT_Loopback1_prefixLength| 0))
+(assert (<= |0_R1_CONNECTED_IMPORT_Loopback1_prefixLength| 32))
+(assert (let ((a!1 (or (and (= ((_ extract 31 8) |0_dst-ip|) #x2a2a2a)
+                    |\|0_R1_BGP_SINGLE-EXPORT__prefixLength\|BGPRemoveFilter|)
+               |\|0_R1_BGP_SINGLE-EXPORT__prefixLength\|BGPAddFilter|)))
+(let ((a!2 (and (not (and (>= |0_R1_BGP_SINGLE-EXPORT__prefixLength| 24)
+                          (<= |0_R1_BGP_SINGLE-EXPORT__prefixLength| 26)
+                          a!1))
+                (>= |0_R1_BGP_SINGLE-EXPORT__prefixLength| 0)
+                (<= |0_R1_BGP_SINGLE-EXPORT__prefixLength| 32))))
+(let ((a!3 (ite a!2
                 (ite (<= |0_R1_BGP_SINGLE-EXPORT__metric| 255)
                      (and (= |0_R2_BGP_IMPORT_Serial0_permitted|
                              |0_R1_BGP_SINGLE-EXPORT__permitted|)
@@ -150,8 +153,8 @@
             true
             |0_R1_BGP_SINGLE-EXPORT__permitted|
             (= |0_FAILED-EDGE_R1_R2| 0))
-       a!2
-       (not |0_R2_BGP_IMPORT_Serial0_permitted|)))))
+       a!3
+       (not |0_R2_BGP_IMPORT_Serial0_permitted|))))))
 (assert (let ((a!1 (ite (and (= |0_R2_OVERALL_BEST_None_prefixLength| 24)
                      (= (bvand |0_dst-ip| #xffffff00)
                         (bvand #x45454500 #xffffff00)))
@@ -225,14 +228,14 @@
                 (not |0_R1_BGP_SINGLE-EXPORT__permitted|))))
   (or a!5 a!5))))))
 (assert (ite (and true
-          (= (bvand |0_dst-ip| #xffffff00) (bvand #x2a2a2a00 #xffffff00))
-          (= |0_FAILED-EDGE_R1_Loopback0| 0))
-     (and |0_R1_CONNECTED_IMPORT_Loopback0_permitted|
-          (= |0_R1_CONNECTED_IMPORT_Loopback0_prefixLength| 24)
+          (= (bvand |0_dst-ip| #xffffff00) (bvand #x16161600 #xffffff00))
+          (= |0_FAILED-EDGE_R1_Loopback1| 0))
+     (and |0_R1_CONNECTED_IMPORT_Loopback1_permitted|
+          (= |0_R1_CONNECTED_IMPORT_Loopback1_prefixLength| 24)
           true
           true
           true)
-     (not |0_R1_CONNECTED_IMPORT_Loopback0_permitted|)))
+     (not |0_R1_CONNECTED_IMPORT_Loopback1_permitted|)))
 (assert (=> |0_R2_OVERALL_BEST_None_permitted| true))
 (assert (let ((a!1 (and true
                 (or false
@@ -306,17 +309,17 @@
 (let ((a!2 (or false (and true (or false (and true a!1))))))
 (let ((a!3 (or false (and true (or false (and true a!2))))))
 (let ((a!4 (or (> |0_R1_CONNECTED_BEST_None_prefixLength|
-                  |0_R1_CONNECTED_IMPORT_Loopback0_prefixLength|)
+                  |0_R1_CONNECTED_IMPORT_Loopback1_prefixLength|)
                (and (= |0_R1_CONNECTED_BEST_None_prefixLength|
-                       |0_R1_CONNECTED_IMPORT_Loopback0_prefixLength|)
+                       |0_R1_CONNECTED_IMPORT_Loopback1_prefixLength|)
                     (or false (and true a!3))))))
-  (=> |0_R1_CONNECTED_IMPORT_Loopback0_permitted| a!4))))))
-(assert (= |0_R1_CONNECTED_IMPORT_Loopback0_permitted|
+  (=> |0_R1_CONNECTED_IMPORT_Loopback1_permitted| a!4))))))
+(assert (= |0_R1_CONNECTED_IMPORT_Loopback1_permitted|
    |0_R1_CONNECTED_BEST_None_permitted|))
-(assert (=> |0_R1_CONNECTED_IMPORT_Loopback0_permitted|
-    (and |0_R1_CONNECTED_IMPORT_Loopback0_permitted|
+(assert (=> |0_R1_CONNECTED_IMPORT_Loopback1_permitted|
+    (and |0_R1_CONNECTED_IMPORT_Loopback1_permitted|
          (= |0_R1_CONNECTED_BEST_None_prefixLength|
-            |0_R1_CONNECTED_IMPORT_Loopback0_prefixLength|)
+            |0_R1_CONNECTED_IMPORT_Loopback1_prefixLength|)
          true
          true
          true
@@ -361,10 +364,10 @@
         true
         true
         true)))
-(assert (= |0_R1_CONNECTED_IMPORT_Loopback0_choice|
-   (and |0_R1_CONNECTED_IMPORT_Loopback0_permitted|
+(assert (= |0_R1_CONNECTED_IMPORT_Loopback1_choice|
+   (and |0_R1_CONNECTED_IMPORT_Loopback1_permitted|
         (= |0_R1_CONNECTED_BEST_None_prefixLength|
-           |0_R1_CONNECTED_IMPORT_Loopback0_prefixLength|)
+           |0_R1_CONNECTED_IMPORT_Loopback1_prefixLength|)
         true
         true
         true
@@ -499,10 +502,10 @@
          true
          true)
     |0_CONTROL-FORWARDING_R1_Serial0|))
-(assert (=> (and (not (= |0_dst-ip| #x2a2a2a01))
-         |0_R1_CONNECTED_IMPORT_Loopback0_choice|
+(assert (=> (and (not (= |0_dst-ip| #x16161601))
+         |0_R1_CONNECTED_IMPORT_Loopback1_choice|
          (= |0_R1_OVERALL_BEST_None_prefixLength|
-            |0_R1_CONNECTED_IMPORT_Loopback0_prefixLength|)
+            |0_R1_CONNECTED_IMPORT_Loopback1_prefixLength|)
          (= |0_R1_OVERALL_BEST_None_adminDist| 0)
          true
          (= |0_R1_OVERALL_BEST_None_metric| 0)
@@ -515,8 +518,8 @@
          true
          true
          true)
-    |0_CONTROL-FORWARDING_R1_Loopback0|))
-(assert (not |0_CONTROL-FORWARDING_R1_Loopback1|))
+    |0_CONTROL-FORWARDING_R1_Loopback1|))
+(assert (not |0_CONTROL-FORWARDING_R1_Loopback0|))
 (assert (=> (not (and true
               |0_R1_BGP_IMPORT_Serial0_choice|
               (= |0_R1_OVERALL_BEST_None_prefixLength|
@@ -535,10 +538,10 @@
               true
               true))
     (not |0_CONTROL-FORWARDING_R1_Serial0|)))
-(assert (let ((a!1 (not (and (not (= |0_dst-ip| #x2a2a2a01))
-                     |0_R1_CONNECTED_IMPORT_Loopback0_choice|
+(assert (let ((a!1 (not (and (not (= |0_dst-ip| #x16161601))
+                     |0_R1_CONNECTED_IMPORT_Loopback1_choice|
                      (= |0_R1_OVERALL_BEST_None_prefixLength|
-                        |0_R1_CONNECTED_IMPORT_Loopback0_prefixLength|)
+                        |0_R1_CONNECTED_IMPORT_Loopback1_prefixLength|)
                      (= |0_R1_OVERALL_BEST_None_adminDist| 0)
                      true
                      (= |0_R1_OVERALL_BEST_None_metric| 0)
@@ -551,7 +554,7 @@
                      true
                      true
                      true))))
-  (=> a!1 (not |0_CONTROL-FORWARDING_R1_Loopback0|))))
+  (=> a!1 (not |0_CONTROL-FORWARDING_R1_Loopback1|))))
 (assert (= (and (or false |0_CONTROL-FORWARDING_R2_Loopback0|)
         |0__R2_Loopback0_OUTBOUND_SOFTAdd|)
    |0_DATA-FORWARDING_R2_Loopback0|))
@@ -602,9 +605,9 @@
     (= |0_R1_BGP_SINGLE-EXPORT__prefixLength| 0)))
 (assert (=> (not |0_R1_BGP_SINGLE-EXPORT__permitted|)
     (= |0_R1_BGP_SINGLE-EXPORT__metric| 0)))
-(assert (=> (not |0_R1_CONNECTED_IMPORT_Loopback0_permitted|)
-    (= |0_R1_CONNECTED_IMPORT_Loopback0_prefixLength| 0)))
-(assert (or false (= (bvand |0_dst-ip| #xffffffff) (bvand #x2a2a2a01 #xffffffff))))
+(assert (=> (not |0_R1_CONNECTED_IMPORT_Loopback1_permitted|)
+    (= |0_R1_CONNECTED_IMPORT_Loopback1_prefixLength| 0)))
+(assert (or false (= (bvand |0_dst-ip| #xffffffff) (bvand #x16161601 #xffffffff))))
 (assert (or false (= (bvand |0_src-ip| #xffffffff) (bvand #x45454501 #xffffffff))))
 (assert (= |0__reachable_R2| (> |0__reachable-id_R2| 0)))
 (assert (>= |0__reachable-id_R2| 0))
@@ -648,7 +651,7 @@
            (and |0_R1_CONNECTED_BEST_None_permitted| (= |0_dst-ip| #x2a2a2a01)))
        (= |0__reachable-id_R1| 1)
        a!2))))
-(assert (and true |0__reachable_R2| |0__reachable_R1|))
+(assert (not (and true |0__reachable_R2| |0__reachable_R1|)))
 (assert (= |0_FAILED-EDGE_R2_Loopback0| 0))
 (assert (=> (= (bvand |0_dst-ip| #xffffff00) (bvand #xc0a82a00 #xffffff00))
     (= |0_FAILED-EDGE_R1_R2| 0)))
@@ -667,6 +670,7 @@
 (assert-soft |0__R1_Loopback1_INBOUND_SOFTAdd| :weight 1 :id SoftInAclAdd)
 (assert-soft |0__R1_Loopback0_INBOUND_SOFTAdd| :weight 1 :id SoftInAclAdd)
 (assert-soft |\|0_R1_BGP_SINGLE-EXPORT__prefixLength\|BGPRemoveFilter| :weight 1 :id BGPRemoveFilter)
+(assert-soft (not |\|0_R1_BGP_SINGLE-EXPORT__prefixLength\|BGPAddFilter|) :weight 1 :id BGPAddFilter)
 (assert-soft (let ((a!1 (ite (and (= |0_R2_OVERALL_BEST_None_prefixLength| 24)
                      (= (bvand |0_dst-ip| #xffffff00)
                         (bvand #x45454500 #xffffff00)))

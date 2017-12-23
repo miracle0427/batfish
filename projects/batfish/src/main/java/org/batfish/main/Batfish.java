@@ -4355,6 +4355,12 @@ public class Batfish extends PluginConsumer implements IBatfish {
   }
 
   @Override
+  public AnswerElement smtBlock(HeaderLocationQuestion q) {
+    PropertyChecker p = new PropertyChecker(this);
+    return p.checkBlock(q);
+  }
+
+  @Override
   public AnswerElement smtBoundedLength(HeaderLocationQuestion q, Integer bound) {
     if (bound == null) {
       throw new BatfishException("Missing parameter length bound: (e.g., bound=3)");
