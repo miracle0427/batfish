@@ -51,6 +51,7 @@ import org.batfish.symbolic.GraphEdge;
 import org.batfish.symbolic.Protocol;
 import org.batfish.symbolic.abstraction.Abstraction;
 import org.batfish.symbolic.abstraction.EquivalenceClass;
+import org.batfish.symbolic.answers.SmtBlockAnswerElement;
 import org.batfish.symbolic.answers.SmtDeterminismAnswerElement;
 import org.batfish.symbolic.answers.SmtManyAnswerElement;
 import org.batfish.symbolic.answers.SmtMulAnswerElement;
@@ -488,6 +489,201 @@ public class PropertyChecker {
   }
 
 
+  /*
+   * General purpose logic for checking a block property 
+   */
+  private AnswerElement checkBlockProperty(
+      HeaderLocationQuestion q,
+      TriFunction<Encoder, Set<String>, Set<GraphEdge>, Map<String, BoolExpr>> instrument,
+      Function<VerifyParam, AnswerElement> answer) {
+
+    long l = System.currentTimeMillis();
+    PathRegexes p = new PathRegexes(q);
+    Graph graph = new Graph(_batfish);
+    Set<GraphEdge> destPorts = findFinalInterfaces(graph, p);
+    List<String> sourceRouters = PatternUtils.findMatchingSourceNodes(graph, p);
+
+    if (destPorts.isEmpty()) {
+      throw new BatfishException("Set of valid destination interfaces is empty");
+    }
+    if (sourceRouters.isEmpty()) {
+      throw new BatfishException("Set of valid ingress nodes is empty");
+    }
+
+    inferDestinationHeaderSpace(graph, destPorts, q);
+    Set<GraphEdge> failOptions = failLinkSet(graph, q);
+    Stream<Supplier<EquivalenceClass>> stream = findAllEquivalenceClasses(q, graph, true);
+
+    AnswerElement[] answerElement = new AnswerElement[1];
+    VerificationResult[] result = new VerificationResult[1];
+    answerElement[0] = null;
+    result[0] = null;
+    Object o = new Object();
+
+    // Checks ECs in parallel, but short circuits when a counterexample is found
+    boolean hasCounterExample =
+        stream.anyMatch(
+            lazyEc -> {
+              long ecTime = System.currentTimeMillis();
+              EquivalenceClass ec = lazyEc.get();
+              if (q.getBenchmark()) {
+                System.out.println("  Compute EC: " + (System.currentTimeMillis() - ecTime));
+              }
+
+              // Make sure the headerspace is correct
+              HeaderLocationQuestion question = new HeaderLocationQuestion(q);
+              question.setHeaderSpace(ec.getHeaderSpace());
+
+              // Get the EC graph and mapping
+              Graph g = ec.getGraph();
+              Set<String> srcRouters = mapConcreteToAbstract(ec, sourceRouters);
+
+              long l1 = System.currentTimeMillis();
+              Encoder enc = new Encoder(g, question);
+              enc.computeEncoding();
+              if (question.getBenchmark()) {
+                System.out.println("  Base Encoding: " + (System.currentTimeMillis() - l1));
+              }
+
+              // Add environment constraints for base case
+              if (question.getDiffType() != null) {
+                if (question.getEnvDiff()) {
+                  addEnvironmentConstraints(enc, question.getDeltaEnvironmentType());
+                }
+              } else {
+                addEnvironmentConstraints(enc, question.getBaseEnvironmentType());
+              }
+
+              Map<String, BoolExpr> prop = instrument.apply(enc, srcRouters, destPorts);
+
+              // If this is a equivalence query, we create a second copy of the network
+              Encoder enc2 = null;
+              Map<String, BoolExpr> prop2 = null;
+
+              if (question.getDiffType() != null) {
+                HeaderLocationQuestion q2 = new HeaderLocationQuestion(question);
+                q2.setFailures(0);
+                long l2 = System.currentTimeMillis();
+                enc2 = new Encoder(enc, g, q2);
+                enc2.computeEncoding();
+                if (question.getBenchmark()) {
+                  System.out.println("  Diff Encoding: " + (System.currentTimeMillis() - l2));
+                }
+              }
+
+              if (question.getDiffType() != null) {
+                assert (enc2 != null);
+                // create a map for enc2 to lookup a related environment variable from enc
+                Table2<GraphEdge, EdgeType, SymbolicRoute> relatedEnv = new Table2<>();
+                enc2.getMainSlice()
+                    .getLogicalGraph()
+                    .getEnvironmentVars()
+                    .forEach((lge, r) -> relatedEnv.put(lge.getEdge(), lge.getEdgeType(), r));
+
+                BoolExpr related = enc.mkTrue();
+                addEnvironmentConstraints(enc2, question.getBaseEnvironmentType());
+
+                if (!question.getEnvDiff()) {
+                  related = relateEnvironments(enc, enc2);
+                }
+
+                prop2 = instrument.apply(enc2, srcRouters, destPorts);
+
+                // Add diff constraints
+                BoolExpr required = enc.mkTrue();
+                for (String source : srcRouters) {
+                  BoolExpr sourceProp1 = prop.get(source);
+                  BoolExpr sourceProp2 = prop2.get(source);
+                  BoolExpr val;
+                  switch (q.getDiffType()) {
+                    case INCREASED:
+                      val = enc.mkImplies(sourceProp1, sourceProp2);
+                      break;
+                    case REDUCED:
+                      val = enc.mkImplies(sourceProp2, sourceProp1);
+                      break;
+                    case ANY:
+                      val = enc.mkEq(sourceProp1, sourceProp2);
+                      break;
+                    default:
+                      throw new BatfishException("Missing case: " + q.getDiffType());
+                  }
+                  required = enc.mkAnd(required, val);
+                }
+
+                related = enc.mkAnd(related, relatePackets(enc, enc2));
+                enc.add(related);
+                enc.add(enc.mkNot(required));
+
+              } else {
+                BoolExpr allProp = enc.mkTrue();
+                for (String router : srcRouters) {
+                  BoolExpr r = prop.get(router);
+                  allProp = enc.mkAnd(allProp, r);
+                }
+                enc.add(enc.mkNot(allProp));
+                //@archie instead of not(property). It's now property
+                //enc.add(allProp);
+              }
+
+              addFailureConstraints(enc, destPorts, failOptions);
+              /*
+              try {
+                System.out.println("Encoding written in enc.smt");
+                BufferedWriter writer = new BufferedWriter(new FileWriter("enc.smt"));
+                writer.write(enc.getSolver().toString());
+                writer.close();
+              } catch (IOException e) {
+                System.out.println("IO error");
+              }
+              */
+
+              long startVerify = System.currentTimeMillis();
+              Tuple<VerificationResult, Model> tup = enc.verify();
+              //if (question.getBenchmark()) {
+              System.out.println("  z3 time: " + (System.currentTimeMillis() - startVerify));
+              //}
+
+              VerificationResult res = tup.getFirst();
+              Model model = tup.getSecond();
+
+              if (!res.isVerified()) {
+
+                try {
+                  System.out.println("\n\nModel printed in model.smt\n\n");
+                  BufferedWriter writer = new BufferedWriter(new FileWriter("model.smt"));
+                  writer.write(model.toString());
+                  writer.close();
+                } catch (IOException e) {
+                  System.out.println("IO error");
+                }
+
+
+                VerifyParam vp = new VerifyParam(res, model, srcRouters, enc, enc2, prop, prop2);
+                synchronized (o) {
+                  answerElement[0] = answer.apply(vp);
+                }
+                return true;
+              }
+
+              synchronized (o) {
+                result[0] = res;
+              }
+              return false;
+            });
+
+    //if (q.getBenchmark()) {
+    System.out.println("Total time: " + (System.currentTimeMillis() - l));
+    //}
+    if (hasCounterExample) {
+      return answerElement[0];
+    }
+    VerifyParam vp = new VerifyParam(result[0], null, null, null, null, null, null);
+    return answer.apply(vp);
+  }
+
+
+
 
   /*
    * @Archie : this will be used to check multiple properties
@@ -694,6 +890,41 @@ public class PropertyChecker {
     return answer.apply(vp);
   }
 
+
+  /*
+   * Check if a collection of routers will be blocked to
+   * one or more destinations.
+   */
+  public AnswerElement checkBlock(HeaderLocationQuestion q) {
+    return checkBlockProperty(
+        q,
+        (enc, srcRouters, destPorts) -> {
+          PropertyAdder pa = new PropertyAdder(enc.getMainSlice());
+          return pa.instrumentReachability(destPorts);
+        },
+        (vp) -> {
+          if (vp.getResult().isVerified()) {
+            return new SmtBlockAnswerElement(vp.getResult(), new FlowHistory());
+          } else {
+            FlowHistory fh;
+            CounterExample ce = new CounterExample(vp.getModel());
+            String testrigName = _batfish.getTestrigName();
+            if (q.getDiffType() != null) {
+              fh =
+                  ce.buildFlowHistoryDiff(
+                      testrigName,
+                      vp.getSrcRouters(),
+                      vp.getEnc(),
+                      vp.getEncDiff(),
+                      vp.getProp(),
+                      vp.getPropDiff());
+            } else {
+              fh = ce.buildFlowHistory(testrigName, vp.getSrcRouters(), vp.getEnc(), vp.getProp());
+            }
+            return new SmtBlockAnswerElement(vp.getResult(), fh);
+          }
+        });
+  }
 
   /*
    * Check if a collection of routers will be reachable to

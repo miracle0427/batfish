@@ -150,6 +150,8 @@ public interface IBatfish extends IPluginConsumer {
 
   AnswerElement smtBlackhole(HeaderQuestion q);
 
+  AnswerElement smtBlock(HeaderLocationQuestion q);
+
   AnswerElement smtBoundedLength(HeaderLocationQuestion q, Integer bound);
 
   AnswerElement smtDeterminism(HeaderQuestion q);

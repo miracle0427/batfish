@@ -548,7 +548,9 @@ class EncoderSlice {
         //System.out.println("Lower bits match: " + lowerBitsMatch);
         BoolExpr shouldRemove = getCtx().mkBoolConst(prefixLen + "BGPRemoveFilter");
         addSoft(shouldRemove, 1, "BGPRemoveFilter");
-        BoolExpr softconst = mkAnd(lowerBitsMatch, shouldRemove);
+        BoolExpr shouldAdd = getCtx().mkBoolConst(prefixLen + "BGPAddFilter");
+        addSoft(mkNot(shouldAdd), 1, "BGPAddFilter");
+        BoolExpr softconst = mkOr(mkAnd(lowerBitsMatch, shouldRemove), shouldAdd);
         return mkAnd(lengthLowerBound, lengthUpperBound, softconst);
       } else {
         return mkAnd(lengthLowerBound, lengthUpperBound, lowerBitsMatch);
