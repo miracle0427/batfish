@@ -1991,7 +1991,6 @@ class EncoderSlice {
             statements = Collections.singletonList(s);
           } else {
             statements = pol.getStatements();
-            System.out.println("$$ STMT: " + statements);
           }
 
           // OSPF cost calculated based on incoming interface
