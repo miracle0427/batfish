@@ -307,10 +307,9 @@ class EncoderSlice {
     for (Entry<String, List<GraphEdge>> entry : getGraph().getEdgeMap().entrySet()) {
       String router = entry.getKey();
       List<GraphEdge> edges = entry.getValue();
-      System.out.println("Router " + router);
       for (GraphEdge ge : edges) {
         Interface i = ge.getStart();
-        System.out.println(ge.toString() + " *");
+        //System.out.println(ge.toString() + " *");
         IpAccessList outbound = i.getOutgoingFilter();
         if (outbound != null) {
           System.out.println("Outbound ACL " + outbound.toString());
@@ -522,6 +521,38 @@ class EncoderSlice {
       BoolExpr lengthLowerBound = mkGe(prefixLen, mkInt(lower));
       BoolExpr lengthUpperBound = mkLe(prefixLen, mkInt(upper));
       return mkAnd(lengthLowerBound, lengthUpperBound, lowerBitsMatch);
+    }
+  }
+
+ /*
+   * Check if a prefix range match is applicable for the packet destination
+   * Ip address, given the prefix length variable.
+   */
+  BoolExpr isRelevantForSoft(ArithExpr prefixLen, PrefixRange range) {
+    Prefix p = range.getPrefix();
+    SubRange r = range.getLengthRange();
+    long pfx = p.getNetworkAddress().asLong();
+    int len = p.getPrefixLength();
+    int lower = r.getStart();
+    int upper = r.getEnd();
+    // well formed prefix
+    assert (p.getPrefixLength() < lower && lower <= upper);
+    BoolExpr lowerBitsMatch = firstBitsEqual(_symbolicPacket.getDstIp(), pfx, len);
+    if (lower == upper) {
+      BoolExpr equalLen = mkEq(prefixLen, mkInt(lower));
+      return mkAnd(equalLen, lowerBitsMatch);
+    } else {
+      BoolExpr lengthLowerBound = mkGe(prefixLen, mkInt(lower));
+      BoolExpr lengthUpperBound = mkLe(prefixLen, mkInt(upper));
+      if (!(lowerBitsMatch.toString().equals("true") || lowerBitsMatch.toString().equals("false"))) {
+        //System.out.println("Lower bits match: " + lowerBitsMatch);
+        BoolExpr shouldRemove = getCtx().mkBoolConst(prefixLen + "BGPRemoveFilter");
+        addSoft(shouldRemove, 1, "BGPRemoveFilter");
+        BoolExpr softconst = mkAnd(lowerBitsMatch, shouldRemove);
+        return mkAnd(lengthLowerBound, lengthUpperBound, softconst);
+      } else {
+        return mkAnd(lengthLowerBound, lengthUpperBound, lowerBitsMatch);
+      }
     }
   }
 

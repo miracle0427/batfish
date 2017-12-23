@@ -455,7 +455,7 @@ public class PropertyChecker {
               if (!res.isVerified()) {
 
                 try {
-                  System.out.println("Model printed in model.smt");
+                  System.out.println("\n\nModel printed in model.smt\n\n");
                   BufferedWriter writer = new BufferedWriter(new FileWriter("model.smt"));
                   writer.write(model.toString());
                   writer.close();

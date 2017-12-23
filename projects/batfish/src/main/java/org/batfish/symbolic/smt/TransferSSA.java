@@ -213,11 +213,9 @@ class TransferSSA {
       Prefix p = line.getPrefix();
       SubRange r = line.getLengthRange();
       PrefixRange range = new PrefixRange(p, r);
-      BoolExpr matches = _enc.isRelevantFor(other.getPrefixLength(), range);
+      BoolExpr matches = _enc.isRelevantForSoft(other.getPrefixLength(), range);
       BoolExpr action = _enc.mkBool(line.getAction() == LineAction.ACCEPT);
-      System.out.println("Before MK if");
       acc = _enc.mkIf(matches, action, acc);
-      System.out.println(" && " + acc);
     }
     return acc;
   }
@@ -283,7 +281,6 @@ class TransferSSA {
       for (PrefixRange range : ranges) {
         acc = _enc.mkOr(acc, _enc.isRelevantFor(otherLen, range));
       }
-
       return result.setReturnValue(acc);
 
     } else if (e instanceof NamedPrefixSet) {
@@ -482,7 +479,7 @@ class TransferSSA {
       MatchPrefixSet m = (MatchPrefixSet) expr;
       // For BGP, may change prefix length
       TransferResult<BoolExpr, BoolExpr> result =
-          matchPrefixSet(_conf, m.getPrefixSet(), p.getData());
+          matchPrefixSet(_conf, m.getPrefixSet(), p.getData());    
       return result.setReturnAssignedValue(_enc.mkTrue());
 
       // TODO: implement me
@@ -1058,7 +1055,6 @@ class TransferSSA {
         result = result.addChangedVariables(r);
         BoolExpr guard = (BoolExpr) r.getReturnValue().simplify();
         String str = guard.toString();
-        System.out.println("%%% \nIf statement created: " + i.getGuard() + " \n$$ " +str + "\n");
 
         // If there are updates in the guard, add them to the parameter p before entering branches
         for (Pair<String, Expr> changed : r.getChangedVariables()) {

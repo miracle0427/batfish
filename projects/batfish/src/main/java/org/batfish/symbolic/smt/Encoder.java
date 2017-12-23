@@ -759,6 +759,7 @@ public class Encoder {
       writer.write(_solver.toString());
       writer.close();
       */
+      System.out.println("\n\nMAXSMT MAXSMT.smt\n\n");
       BufferedWriter writer = new BufferedWriter(new FileWriter("MAXSMT.smt"));
       writer.write(_optsolve.toString());
       writer.close();
