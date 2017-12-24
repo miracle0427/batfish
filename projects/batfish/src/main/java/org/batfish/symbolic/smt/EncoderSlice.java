@@ -422,6 +422,7 @@ class EncoderSlice {
     for (Entry<String, Configuration> entry : getGraph().getConfigurations().entrySet()) {
       String router = entry.getKey();
       Configuration conf = entry.getValue();
+      System.out.println("\n##\n Router " + router + "\n##\n");
       for (Protocol proto : getProtocols().get(router)) {
         Set<Protocol> redistributed = new HashSet<>();
         redistributed.add(proto);
@@ -437,6 +438,7 @@ class EncoderSlice {
               redistributed.add(p);
             }
           }
+          System.out.println("\n##\n Proto: " + proto + "\tset: " + ps + "\n##\n");
         }
       }
     }
