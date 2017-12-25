@@ -374,7 +374,7 @@ class EncoderSlice {
                   _encoder.getId(), _sliceName, router, i.getName(), "INBOUND", "SOFT");
           BoolExpr inAcl = getCtx().mkBoolConst(inName + "Add");
           // @archie inAcl is soft constraint to do out ACL add
-          addSoft(inAcl, 1, "SoftInAclAdd");
+          addSoft(inAcl, 10, "SoftInAclAdd");
           _inboundAcls.put(ge, inAcl);
         }
       }
@@ -422,14 +422,16 @@ class EncoderSlice {
     for (Entry<String, Configuration> entry : getGraph().getConfigurations().entrySet()) {
       String router = entry.getKey();
       Configuration conf = entry.getValue();
-      System.out.println("\n##\n Router " + router + "\n##\n");
+      System.out.println("\n##\n Router " + router);
       for (Protocol proto : getProtocols().get(router)) {
+        System.out.println(" Protocol : " + proto);
         Set<Protocol> redistributed = new HashSet<>();
         redistributed.add(proto);
         _logicalGraph.getRedistributedProtocols().put(router, proto, redistributed);
         RoutingPolicy pol = Graph.findCommonRoutingPolicy(conf, proto);
         if (pol != null) {
           Set<Protocol> ps = getGraph().findRedistributedProtocols(conf, pol, proto);
+          System.out.println("ps" + ps);
           for (Protocol p : ps) {
             // Make sure there is actually a routing process for the other protocol
             // For example, it might get sliced away if not relevant
@@ -438,10 +440,12 @@ class EncoderSlice {
               redistributed.add(p);
             }
           }
-          System.out.println("\n##\n Proto: " + proto + "\tset: " + ps + "\n##\n");
         }
       }
+      System.out.println(" Router: " + router + "\tset: " +
+       _logicalGraph.getRedistributedProtocols().get(router));
     }
+
   }
 
   /*
@@ -733,7 +737,7 @@ class EncoderSlice {
               String.format(
                   "%d_%s%s_%s_%s",
                   _encoder.getId(), _sliceName, router, proto.name(), "Redistributed");
-
+          System.out.println("\n\n%%%^^  REDISTRIBUTED: " + rname + " \n\n");
           SymbolicRoute rec =
               new SymbolicRoute(this, rname, router, proto, _optimizations, null, false);
           _ospfRedistributed.put(router, rec);
@@ -2246,6 +2250,7 @@ class EncoderSlice {
           TransferSSA f =
               new TransferSSA(this, conf, varsOther, vars, proto, statements, cost, ge, false);
           importFunction = f.compute();
+          System.out.println("** IMPORT **\n" + importFunction + "\n**   **");
           BoolExpr acc = mkIf(usable, importFunction, val);
           if (Encoder.ENABLE_DEBUGGING) {
             System.out.println("IMPORT FUNCTION: " + router + " " + varsOther.getName());
@@ -2364,7 +2369,7 @@ class EncoderSlice {
         TransferSSA f =
             new TransferSSA(this, conf, varsOther, vars, proto, statements, cost, ge, true);
         acc = f.compute();
-
+        System.out.println("** EXPORT **\n" + acc + "\n**   **");
         BoolExpr usable = mkAnd(active, doExport, varsOther.getPermitted(), notFailed);
 
         // OSPF is complicated because it can have routes redistributed into it
@@ -2377,16 +2382,20 @@ class EncoderSlice {
           f =
               new TransferSSA(
                   this, conf, overallBest, ospfRedistribVars, proto, statements, cost, ge, true);
+          BoolExpr redisRemove = getCtx().mkBoolConst(router + proto.name() + "SoftRedisRemove");
+          addSoft(redisRemove, 1, "RedisRemove");
+
           BoolExpr acc2 = f.compute();
           // System.out.println("ADDING: \n" + acc2.simplify());
           add(acc2);
-          BoolExpr usable2 = mkAnd(active, doExport, ospfRedistribVars.getPermitted(), notFailed);
+          BoolExpr usable2 = mkAnd(active, doExport, ospfRedistribVars.getPermitted(), notFailed, redisRemove);
           BoolExpr geq = greaterOrEqual(conf, proto, ospfRedistribVars, varsOther, e);
           BoolExpr isBetter = mkNot(mkAnd(ospfRedistribVars.getPermitted(), geq));
           BoolExpr usesOspf = mkAnd(varsOther.getPermitted(), isBetter);
           BoolExpr eq = equal(conf, proto, ospfRedistribVars, vars, e, false);
           BoolExpr eqPer = mkEq(ospfRedistribVars.getPermitted(), vars.getPermitted());
           acc = mkIf(usesOspf, mkIf(usable, acc, val), mkIf(usable2, mkAnd(eq, eqPer), val));
+          System.out.println("\n\nUSESOSPF " + usesOspf + "\n\n" + usable2 + "\n\n");
         } else {
           acc = mkIf(usable, acc, val);
         }
