@@ -312,7 +312,7 @@ class EncoderSlice {
         //System.out.println(ge.toString() + " *");
         IpAccessList outbound = i.getOutgoingFilter();
         if (outbound != null) {
-          System.out.println("Outbound ACL " + outbound.toString());
+          //System.out.println("Outbound ACL " + outbound.toString());
           String outName =
               String.format(
                   "%d_%s_%s_%s_%s_%s",
@@ -351,7 +351,7 @@ class EncoderSlice {
 
         IpAccessList inbound = i.getIncomingFilter();
         if (inbound != null) {
-          System.out.println("Inbound ACL " + inbound.toString());
+          //System.out.println("Inbound ACL " + inbound.toString());
           String inName =
               String.format(
                   "%d_%s_%s_%s_%s_%s",
@@ -422,16 +422,13 @@ class EncoderSlice {
     for (Entry<String, Configuration> entry : getGraph().getConfigurations().entrySet()) {
       String router = entry.getKey();
       Configuration conf = entry.getValue();
-      System.out.println("\n##\n Router " + router);
       for (Protocol proto : getProtocols().get(router)) {
-        System.out.println(" Protocol : " + proto);
         Set<Protocol> redistributed = new HashSet<>();
         redistributed.add(proto);
         _logicalGraph.getRedistributedProtocols().put(router, proto, redistributed);
         RoutingPolicy pol = Graph.findCommonRoutingPolicy(conf, proto);
         if (pol != null) {
           Set<Protocol> ps = getGraph().findRedistributedProtocols(conf, pol, proto);
-          System.out.println("ps" + ps);
           for (Protocol p : ps) {
             // Make sure there is actually a routing process for the other protocol
             // For example, it might get sliced away if not relevant
@@ -442,8 +439,8 @@ class EncoderSlice {
           }
         }
       }
-      System.out.println(" Router: " + router + "\tset: " +
-       _logicalGraph.getRedistributedProtocols().get(router));
+      //System.out.println(" Router: " + router + "\tset: " +
+      // _logicalGraph.getRedistributedProtocols().get(router));
     }
 
   }
@@ -737,7 +734,6 @@ class EncoderSlice {
               String.format(
                   "%d_%s%s_%s_%s",
                   _encoder.getId(), _sliceName, router, proto.name(), "Redistributed");
-          System.out.println("\n\n%%%^^  REDISTRIBUTED: " + rname + " \n\n");
           SymbolicRoute rec =
               new SymbolicRoute(this, rname, router, proto, _optimizations, null, false);
           _ospfRedistributed.put(router, rec);
@@ -2239,6 +2235,7 @@ class EncoderSlice {
 
           List<Statement> statements;
           if (pol == null) {
+            System.out.println("\nEmpty Import Policy\n");
             Statements.StaticStatement s = new Statements.StaticStatement(Statements.ExitAccept);
             statements = Collections.singletonList(s);
           } else {
@@ -2395,7 +2392,6 @@ class EncoderSlice {
           BoolExpr eq = equal(conf, proto, ospfRedistribVars, vars, e, false);
           BoolExpr eqPer = mkEq(ospfRedistribVars.getPermitted(), vars.getPermitted());
           acc = mkIf(usesOspf, mkIf(usable, acc, val), mkIf(usable2, mkAnd(eq, eqPer), val));
-          System.out.println("\n\nUSESOSPF " + usesOspf + "\n\n" + usable2 + "\n\n");
         } else {
           acc = mkIf(usable, acc, val);
         }
