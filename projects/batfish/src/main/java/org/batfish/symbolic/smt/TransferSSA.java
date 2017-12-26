@@ -253,7 +253,7 @@ class TransferSSA {
           int start = r.getLengthRange().getStart();
           int end = r.getLengthRange().getEnd();
           Prefix pfx = r.getPrefix();
-          System.out.println("\n Explicit Prefix " + pfx + "\n");
+          //System.out.println("\n Explicit Prefix " + pfx + "\n");
           if (start == end && start == pfx.getPrefixLength()) {
             String router = _conf.getName();
             Set<Prefix> origin = _enc.getOriginatedNetworks().get(router, Protocol.BGP);
@@ -268,8 +268,10 @@ class TransferSSA {
                 BoolExpr directRoute = _enc.isRelevantFor(originLength, r);
                 ArithExpr newLength = _enc.mkIf(directRoute, originLength, otherLen);
                 result = result.addChangedVariable("PREFIX-LEN", newLength);
-                System.out.println("\n Explicit Direct route return= "+ directRoute + "\n");
-                return result.setReturnValue(directRoute);
+                BoolExpr shouldRemove = _enc.getCtx().mkBoolConst(pfx + "BGPExportRemoveSoft"
+                 + other.getRouterId());
+                _enc.addSoft(shouldRemove, 1, "BGPExportRemove");
+                return result.setReturnValue(_enc.mkAnd(directRoute, shouldRemove));
               } else {
                 // Also use network statement if OSPF has a route with the correct length
                 SymbolicRoute rec = _enc.getBestNeighborPerProtocol(router, Protocol.OSPF);
@@ -298,7 +300,7 @@ class TransferSSA {
       NamedPrefixSet x = (NamedPrefixSet) e;
       String name = x.getName();
       RouteFilterList fl = conf.getRouteFilterLists().get(name);
-      System.out.println("\nROUTE FILTER\n");
+      System.out.println("\nRoute Filter\n");
       return result.setReturnValue(matchFilterList(fl, other));
 
     } else {
@@ -486,7 +488,6 @@ class TransferSSA {
     }
 
     if (expr instanceof MatchPrefixSet) {
-      System.out.println("\n compute MatchPrefixSet " + expr +"\n");
       p.debug("MatchPrefixSet");
       MatchPrefixSet m = (MatchPrefixSet) expr;
       // For BGP, may change prefix length
@@ -1073,7 +1074,7 @@ class TransferSSA {
       } else if (stmt instanceof If) {
         p.debug("If");
         If i = (If) stmt;
-        System.out.println("COMPUTE GUARD");
+        //System.out.println("COMPUTE GUARD");
         TransferResult<BoolExpr, BoolExpr> r = compute(i.getGuard(), p);
         result = result.addChangedVariables(r);
         BoolExpr guard = (BoolExpr) r.getReturnValue().simplify();
@@ -1085,7 +1086,7 @@ class TransferSSA {
           updateSingleValue(p, changed.getFirst(), changed.getSecond());
         }
 
-        p.debug("** guard: " + str);
+        p.debug("guard: " + str);
         // If we know the branch ahead of time, then specialize
         switch (str) {
           case "true":
