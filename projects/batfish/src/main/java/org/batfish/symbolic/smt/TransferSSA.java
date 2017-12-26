@@ -269,7 +269,7 @@ class TransferSSA {
                 ArithExpr newLength = _enc.mkIf(directRoute, originLength, otherLen);
                 result = result.addChangedVariable("PREFIX-LEN", newLength);
                 BoolExpr shouldRemove = _enc.getCtx().mkBoolConst(pfx + "BGPExportRemoveSoft"
-                 + other.getRouterId());
+                 + other.getName());
                 _enc.addSoft(shouldRemove, 1, "BGPExportRemove");
                 return result.setReturnValue(_enc.mkAnd(directRoute, shouldRemove));
               } else {
@@ -407,6 +407,10 @@ class TransferSSA {
         result = result.addChangedVariables(r);
         acc = _enc.mkOr(acc, r.getReturnValue());
       }
+      BoolExpr shouldAdd = _enc.getCtx().mkBoolConst(p.getData().getName() + 
+        "BGPExportAddSoft");
+      _enc.addSoft(_enc.mkNot(shouldAdd), 1, "BGPExportAdd");
+      acc = _enc.mkOr(acc, shouldAdd);
       p.debug("has changed variable");
       return result.setReturnValue(acc);
     }
