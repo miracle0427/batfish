@@ -995,9 +995,9 @@ class TransferSSA {
       TransferParam<SymbolicRoute> p,
       TransferResult<BoolExpr, BoolExpr> result) {
     boolean doesReturn = false;
-
+    System.out.println("Statememts Size: " + statements.size());
     for (Statement stmt : statements) {
-
+      System.out.println("Stmt: " + stmt);
       if (stmt instanceof StaticStatement) {
         StaticStatement ss = (StaticStatement) stmt;
 
