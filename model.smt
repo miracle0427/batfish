@@ -95,7 +95,7 @@
 (define-fun |0__reachable-id_A| () Int
   1)
 (define-fun |0_src-ip| () (_ BitVec 32)
-  #x6a000203)
+  #xce000203)
 (define-fun |0_dst-ip| () (_ BitVec 32)
   #x68000103)
 (define-fun |0_DATA-FORWARDING_B_GigabitEthernet0/3| () Bool
