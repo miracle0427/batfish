@@ -261,15 +261,20 @@ class TransferSSA {
                 BoolExpr directRoute = _enc.isRelevantFor(originLength, r);
                 ArithExpr newLength = _enc.mkIf(directRoute, originLength, otherLen);
                 result = result.addChangedVariable("PREFIX-LEN", newLength);
-                BoolExpr shouldRemove = _enc.getCtx().mkBoolConst(pfx + "BGPExportRemoveSoft"
+                BoolExpr shouldRemove = _enc.getCtx().mkBoolConst(pfx + "Stat-Conn-ExportRemoveSoft"
                  + other.getName());
-                _enc.addSoft(shouldRemove, 1, "BGPExportRemove");
+                _enc.addSoft(shouldRemove, 1, "SCExportRemove");
                 return result.setReturnValue(_enc.mkAnd(directRoute, shouldRemove));
               } else {
                 // Also use network statement if OSPF has a route with the correct length
                 SymbolicRoute rec = _enc.getBestNeighborPerProtocol(router, Protocol.OSPF);
                 if (rec != null) {
-                  BoolExpr ospfRelevant = _enc.isRelevantFor(rec.getPrefixLength(), r);
+                  BoolExpr shouldRemove = _enc.getCtx().mkBoolConst(pfx + "OSPF-ExportRemoveSoft"
+                   + other.getName());
+                  _enc.addSoft(shouldRemove, 1, "OExportRemove");
+                  BoolExpr ospfRelevant = _enc.mkAnd(_enc.isRelevantFor(rec.getPrefixLength(), r),
+                   shouldRemove);
+                  //System.out.println("\n\nCONS OSPF " + ospfRelevant);
                   ArithExpr newLength = _enc.mkIf(ospfRelevant, originLength, otherLen);
                   result = result.addChangedVariable("PREFIX-LEN", newLength);
                   //System.out.println("\n Explicit OSPF releveant return \n");
@@ -285,6 +290,7 @@ class TransferSSA {
       BoolExpr acc = _enc.mkFalse();
       for (PrefixRange range : ranges) {
         acc = _enc.mkOr(acc, _enc.isRelevantFor(otherLen, range));
+        //System.out.println("\n\nPrefix range " + _enc.isRelevantFor(otherLen, range));
       }
       //System.out.println("\n Explicit return \n");
       return result.setReturnValue(acc);

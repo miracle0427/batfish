@@ -2398,7 +2398,6 @@ class EncoderSlice {
 
         allacc = acc;
         // from now allacc will be different from acc as they deal with different prefixes
-        System.out.println("Originations length: " + originations.size());
         for (Prefix p : originations) {
           // For OSPF, we need to explicitly initiate a route
           if (proto.isOspf()) {
@@ -2443,10 +2442,13 @@ class EncoderSlice {
             acc = mkIf(relevant, values, acc);
           }
         }
-        BoolExpr shouldAdd = getCtx().mkBoolConst(router + "OSPFExportAddSoft");
-        addSoft(mkNot(shouldAdd), 1, "OSPFExportAdd");
-        acc = mkOr(shouldAdd, acc);
-        System.out.println("Exp: \n" + acc);
+        if (proto.isOspf()) {
+          BoolExpr shouldAdd = getCtx().mkBoolConst(router + "OSPFExportAddSoft");
+          addSoft(mkNot(shouldAdd), 1, "OSPFExportAdd");
+          //acc = mkOr(shouldAdd, acc);
+          acc = (mkOr(shouldAdd, acc));
+        }
+        //System.out.println("Exp: \n" + acc);
         /*
         // @archie duplicated but with allOriginations prefix set
         for (Prefix p : allOriginations) {
