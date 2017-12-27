@@ -2398,13 +2398,16 @@ class EncoderSlice {
 
         allacc = acc;
         // from now allacc will be different from acc as they deal with different prefixes
-
+        System.out.println("Originations length: " + originations.size());
         for (Prefix p : originations) {
           // For OSPF, we need to explicitly initiate a route
           if (proto.isOspf()) {
 
             BoolExpr ifaceUp = interfaceActive(iface, proto);
             BoolExpr relevantPrefix = isRelevantFor(p, _symbolicPacket.getDstIp());
+            BoolExpr shouldRemove = getCtx().mkBoolConst(router + "OSPFExportRemoveSoft" + p);
+            addSoft(shouldRemove, 1, "OSPFExportRemove");
+            relevantPrefix = mkAnd(relevantPrefix, shouldRemove);
             BoolExpr relevant = mkAnd(ifaceUp, relevantPrefix);
 
             int adminDistance = defaultAdminDistance(conf, proto);
@@ -2440,7 +2443,11 @@ class EncoderSlice {
             acc = mkIf(relevant, values, acc);
           }
         }
-
+        BoolExpr shouldAdd = getCtx().mkBoolConst(router + "OSPFExportAddSoft");
+        addSoft(mkNot(shouldAdd), 1, "OSPFExportAdd");
+        acc = mkOr(shouldAdd, acc);
+        System.out.println("Exp: \n" + acc);
+        /*
         // @archie duplicated but with allOriginations prefix set
         for (Prefix p : allOriginations) {
           // For OSPF, we need to explicitly initiate a route
@@ -2485,9 +2492,9 @@ class EncoderSlice {
         }
 
         add(mkOr(acc,allacc));
-        addSoft(mkOr(acc, mkNot(allacc)), 1, "exportIPSoft");
-
-        //add(acc);
+        addSoft(mkOr(acc, mkNot(allacc)), 10, "exportIPSoft");
+        */
+        add(acc);
         if (Encoder.ENABLE_DEBUGGING) {
           System.out.println("EXPORT: " + router + " " + varsOther.getName() + " " + ge);
           System.out.println(acc.simplify());
