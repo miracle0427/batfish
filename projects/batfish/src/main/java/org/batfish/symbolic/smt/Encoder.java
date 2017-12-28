@@ -415,7 +415,7 @@ public class Encoder {
 
   // Add soft constraint to the model 
   void addSoft(BoolExpr e, int weight, String name) { 
-    _optsolve.AssertSoft(e, weight, name);
+    _optsolve.AssertSoft(e, weight, "a");
   }  
 
   /*

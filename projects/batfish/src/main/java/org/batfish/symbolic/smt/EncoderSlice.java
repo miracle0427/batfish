@@ -552,7 +552,7 @@ class EncoderSlice {
         BoolExpr shouldRemove = getCtx().mkBoolConst(prefixLen + "BGPRemoveFilter");
         addSoft(shouldRemove, 1, "BGPRemoveFilter");
         BoolExpr shouldAdd = getCtx().mkBoolConst(prefixLen + "BGPAddFilter");
-        addSoft(mkNot(shouldAdd), 1, "BGPAddFilter");
+        addSoft(mkNot(shouldAdd), 2, "BGPAddFilter");
         BoolExpr softconst = mkOr(mkAnd(lowerBitsMatch, shouldRemove), shouldAdd);
         return mkAnd(lengthLowerBound, lengthUpperBound, softconst);
       } else {
@@ -2104,6 +2104,7 @@ class EncoderSlice {
     if (vars.getIsUsed()) {
 
       if (proto.isConnected()) {
+        System.out.println("Connected");
         Prefix p = iface.getPrefix();
         BoolExpr relevant =
             mkAnd(
@@ -2120,6 +2121,7 @@ class EncoderSlice {
       }
 
       if (proto.isStatic()) {
+        System.out.println("Static");
         List<StaticRoute> srs = getGraph().getStaticRoutes().get(router, iface.getName());
         assert (srs != null);
         BoolExpr acc = mkNot(vars.getPermitted());
@@ -2248,6 +2250,11 @@ class EncoderSlice {
               new TransferSSA(this, conf, varsOther, vars, proto, statements, cost, ge, false);
           importFunction = f.compute();
           System.out.println("** IMPORT **\n" + importFunction + "\n**   **");
+
+          BoolExpr shouldAddFilter = getCtx().mkBoolConst(router + "ImportFilterAddSoft"
+           + vars.getName());
+          addSoft(shouldAddFilter, 1, "ImportFilterAdd");
+          importFunction = mkAnd(importFunction, shouldAddFilter);
           BoolExpr acc = mkIf(usable, importFunction, val);
           if (Encoder.ENABLE_DEBUGGING) {
             System.out.println("IMPORT FUNCTION: " + router + " " + varsOther.getName());
@@ -2405,7 +2412,7 @@ class EncoderSlice {
             BoolExpr ifaceUp = interfaceActive(iface, proto);
             BoolExpr relevantPrefix = isRelevantFor(p, _symbolicPacket.getDstIp());
             BoolExpr shouldRemove = getCtx().mkBoolConst(router + "OSPFExportRemoveSoft" + p);
-            addSoft(shouldRemove, 1, "OSPFExportRemove");
+            addSoft(shouldRemove, 3, "OSPFExportRemove");
             relevantPrefix = mkAnd(relevantPrefix, shouldRemove);
             BoolExpr relevant = mkAnd(ifaceUp, relevantPrefix);
 
@@ -2443,10 +2450,9 @@ class EncoderSlice {
           }
         }
         if (proto.isOspf()) {
-          BoolExpr shouldAdd = getCtx().mkBoolConst(router + "OSPFExportAddSoft");
-          addSoft(mkNot(shouldAdd), 1, "OSPFExportAdd");
-          //acc = mkOr(shouldAdd, acc);
-          acc = (mkOr(shouldAdd, acc));
+          //BoolExpr shouldAdd = getCtx().mkBoolConst(router + "OSPFExportAddSoft");
+          //addSoft(mkNot(shouldAdd), 10, "OSPFExportAdd");
+          //acc = (mkOr(shouldAdd, acc));
         }
         //System.out.println("Exp: \n" + acc);
         /*
