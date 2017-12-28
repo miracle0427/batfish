@@ -270,15 +270,16 @@ class TransferSSA {
                 result = result.addChangedVariable("PREFIX-LEN", newLength);
                 BoolExpr shouldRemove = _enc.getCtx().mkBoolConst(pfx + "Stat-Conn-ExportRemoveSoft"
                  + other.getName());
-                _enc.addSoft(shouldRemove, 1, "SCExportRemove");
+                _enc.addSoft(shouldRemove, 30, "SCExportRemove");
                 return result.setReturnValue(_enc.mkAnd(directRoute, shouldRemove));
+                //return result.setReturnValue(directRoute);
               } else {
                 // Also use network statement if OSPF has a route with the correct length
                 SymbolicRoute rec = _enc.getBestNeighborPerProtocol(router, Protocol.OSPF);
                 if (rec != null) {
                   BoolExpr shouldRemove = _enc.getCtx().mkBoolConst(pfx + "OSPF-ExportRemoveSoft"
                    + other.getName());
-                  _enc.addSoft(shouldRemove, 1, "OExportRemove");
+                  _enc.addSoft(shouldRemove, 30, "OExportRemove");
                   BoolExpr ospfRelevant = _enc.mkAnd(_enc.isRelevantFor(rec.getPrefixLength(), r),
                    shouldRemove);
                   //System.out.println("\n\nCONS OSPF " + ospfRelevant);
@@ -1001,7 +1002,7 @@ class TransferSSA {
       TransferParam<SymbolicRoute> p,
       TransferResult<BoolExpr, BoolExpr> result) {
     boolean doesReturn = false;
-    System.out.println("Statememts Size: " + statements.size());
+    System.out.println("Statements Size: " + statements.size());
     for (Statement stmt : statements) {
       System.out.println("Stmt: " + stmt);
       if (stmt instanceof StaticStatement) {
