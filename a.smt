@@ -1,7 +1,0 @@
-(declare-const a1 Bool)
-(declare-const a2 Bool)
-(assert-soft a1 :weight 1)
-(assert-soft a2 :weight 2)
-(assert (or (and a1 (not a2)) (and a2 (not a1))))
-(check-sat)
-(get-model)
