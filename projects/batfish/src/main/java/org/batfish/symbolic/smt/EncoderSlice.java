@@ -95,6 +95,8 @@ class EncoderSlice {
   private Table2<String, Protocol, Set<Prefix>> _originatedNetworks;
 
   private Table2<String, Protocol, Set<Prefix>> _allOriginatedNetworks;
+
+  private Set<GraphEdge> _bothIfaceEdges;
   /**
    * Create a new encoding slice
    *
@@ -124,6 +126,7 @@ class EncoderSlice {
     _logicalGraph = new LogicalGraph(graph);
     _symbolicDecisions = new SymbolicDecisions();
     _symbolicPacket = new SymbolicPacket(enc.getCtx(), enc.getId(), _sliceName);
+    _bothIfaceEdges = new HashSet<>();
 
     enc.getAllVariables().put(_symbolicPacket.getDstIp().toString() + _encoder.getStringId(),
      _symbolicPacket.getDstIp());
@@ -1730,7 +1733,7 @@ class EncoderSlice {
 
       // For edges that are never used, we constraint them to not be forwarded out of
       for (GraphEdge ge : getGraph().getEdgeMap().get(router)) {
-        if (!constrained.contains(ge)) {
+        if (!constrained.contains(ge) && !_bothIfaceEdges.contains(ge)) {
           BoolExpr cForward = _symbolicDecisions.getControlForwarding().get(router, ge);
           assert (cForward != null);
           add(mkNot(cForward));
@@ -1740,6 +1743,9 @@ class EncoderSlice {
       // Handle the case that the router has no protocol running
       if (!someEdge) {
         for (GraphEdge ge : getGraph().getEdgeMap().get(router)) {
+          if (_bothIfaceEdges.contains(ge)) {
+            continue;
+          }
           BoolExpr cForward = _symbolicDecisions.getControlForwarding().get(router, ge);
           assert (cForward != null);
           add(mkNot(cForward));
@@ -2105,7 +2111,7 @@ class EncoderSlice {
     if (vars.getIsUsed()) {
 
       if (proto.isConnected()) {
-        System.out.println("Connected");
+        System.out.println("Connected Import " + e.getEdge());
         Prefix p = iface.getPrefix();
         BoolExpr relevant =
             mkAnd(
@@ -2122,7 +2128,7 @@ class EncoderSlice {
       }
 
       if (proto.isStatic()) {
-        System.out.println("Static");
+        System.out.println("Static Import " + e.getEdge());
         List<StaticRoute> srs = getGraph().getStaticRoutes().get(router, iface.getName());
         assert (srs != null);
         BoolExpr acc = mkNot(vars.getPermitted());
@@ -2305,11 +2311,13 @@ class EncoderSlice {
     if (!_optimizations.getSliceCanKeepSingleExportVar().get(router).get(proto) || !usedExport) {
 
       if (proto.isConnected()) {
+        System.out.println("Connected Export");
         BoolExpr val = mkNot(vars.getPermitted());
         add(val);
       }
 
       if (proto.isStatic()) {
+        System.out.println("Static Export");
         BoolExpr val = mkNot(vars.getPermitted());
         add(val);
       }
@@ -2514,6 +2522,26 @@ class EncoderSlice {
           System.out.println("\n\n");
         }
 
+      }
+    }
+  }
+
+  /*
+  Add soft constraints to represent adding static routes
+  */
+  private void addStaticRouteSoftConstraints() {
+
+    for (Entry<String, List<GraphEdge>> entry : getGraph().getEdgeMap().entrySet()) {
+      String router = entry.getKey();
+      List<GraphEdge> edges = entry.getValue();
+      for (GraphEdge ge : edges) {
+        if (ge.getStart()!=null && ge.getEnd()!=null && (!_bothIfaceEdges.contains(ge))) {
+          System.out.println("Static Add " + ge);
+          BoolExpr shouldAdd = getCtx().mkBoolConst(router + "-StaticRouteAdd-" + ge);
+          addSoft(mkNot(shouldAdd), 1, "StaticAdd");
+          add(mkEq(shouldAdd, _symbolicDecisions.getControlForwarding().get(router, ge)));
+          _bothIfaceEdges.add(ge);
+        }
       }
     }
   }
@@ -2889,6 +2917,7 @@ class EncoderSlice {
     addBoundConstraints();
     addCommunityConstraints();
     addTransferFunction();
+    addStaticRouteSoftConstraints();
     addHistoryConstraints();
     addBestPerProtocolConstraints();
     addChoicePerProtocolConstraints();

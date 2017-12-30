@@ -783,12 +783,13 @@ public class Encoder {
         SortedSet<String> fwdModel = new TreeSet<>();
         SortedMap<String, SortedMap<String, String>> envModel = new TreeMap<>();
         SortedSet<String> failures = new TreeSet<>();
+        /*
         buildCounterExample(this, m, model, packetModel, fwdModel, envModel, failures);
         if (_previousEncoder != null) {
           buildCounterExample(
               _previousEncoder, m, model, packetModel, fwdModel, envModel, failures);
         }
-
+        */
         result = new VerificationResult(false, model, packetModel, envModel, fwdModel, failures);
 
         if (!_question.getMinimize()) {
