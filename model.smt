@@ -18,14 +18,14 @@
   2)
 (define-fun |0__A_GigabitEthernet0/3_INBOUND_SOFTAdd| () Bool
   true)
-(define-fun |0_CONTROL-FORWARDING_A_GigabitEthernet0/1| () Bool
+(define-fun |0_DATA-FORWARDING_A_GigabitEthernet0/1| () Bool
+  true)
+(define-fun |0_DATA-FORWARDING_B_GigabitEthernet0/1| () Bool
+  false)
+(define-fun |0__A_GigabitEthernet0/3_OUTBOUND_SOFTAdd| () Bool
   true)
 (define-fun |0_ip-protocol| () Int
   0)
-(define-fun |0__A_GigabitEthernet0/3_OUTBOUND_SOFTAdd| () Bool
-  true)
-(define-fun |0_CONTROL-FORWARDING_B_GigabitEthernet0/1| () Bool
-  false)
 (define-fun |0__A_GigabitEthernet0/1_INBOUND_SOFTAdd| () Bool
   true)
 (define-fun |0_icmp-code| () Int
@@ -54,15 +54,19 @@
   0)
 (define-fun |0_DATA-FORWARDING_B_GigabitEthernet0/3| () Bool
   false)
-(define-fun |0_DATA-FORWARDING_B_GigabitEthernet0/1| () Bool
+(define-fun |B-StaticRouteAdd-B,GigabitEthernet0/1 --> A,GigabitEthernet0/1| () Bool
   false)
-(define-fun |0_DATA-FORWARDING_A_GigabitEthernet0/1| () Bool
+(define-fun |A-StaticRouteAdd-A,GigabitEthernet0/1 --> B,GigabitEthernet0/1| () Bool
   true)
 (define-fun |0_DATA-FORWARDING_A_GigabitEthernet0/4| () Bool
   false)
 (define-fun |0_DATA-FORWARDING_A_GigabitEthernet0/3| () Bool
   false)
 (define-fun |0_CONTROL-FORWARDING_B_GigabitEthernet0/3| () Bool
+  false)
+(define-fun |0_CONTROL-FORWARDING_B_GigabitEthernet0/1| () Bool
+  false)
+(define-fun |0_CONTROL-FORWARDING_A_GigabitEthernet0/1| () Bool
   false)
 (define-fun |0_CONTROL-FORWARDING_A_GigabitEthernet0/4| () Bool
   false)
@@ -76,10 +80,6 @@
   true)
 (define-fun |0_B_OVERALL_BEST_None_prefixLength| () Int
   8)
-(define-fun |B-StaticRouteAdd-B,GigabitEthernet0/1 --> A,GigabitEthernet0/1| () Bool
-  false)
-(define-fun |A-StaticRouteAdd-A,GigabitEthernet0/1 --> B,GigabitEthernet0/1| () Bool
-  true)
 (define-fun |0_B_CONNECTED_IMPORT_GigabitEthernet0/3_permitted| () Bool
   true)
 (define-fun |0_FAILED-EDGE_A_GigabitEthernet0/4| () Int

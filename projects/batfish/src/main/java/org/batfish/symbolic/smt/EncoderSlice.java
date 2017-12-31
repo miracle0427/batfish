@@ -92,11 +92,16 @@ class EncoderSlice {
 
   private Map<String, SymbolicRoute> _ospfRedistributed;
 
+  private Map<String, SymbolicRoute> _softOspfRedistributed;
+
   private Table2<String, Protocol, Set<Prefix>> _originatedNetworks;
 
   private Table2<String, Protocol, Set<Prefix>> _allOriginatedNetworks;
 
   private Set<GraphEdge> _bothIfaceEdges;
+
+  private Table2<String, Protocol, Set<Protocol>> _softRedistributed;
+
   /**
    * Create a new encoding slice
    *
@@ -127,6 +132,7 @@ class EncoderSlice {
     _symbolicDecisions = new SymbolicDecisions();
     _symbolicPacket = new SymbolicPacket(enc.getCtx(), enc.getId(), _sliceName);
     _bothIfaceEdges = new HashSet<>();
+    _softRedistributed = new Table2<>();
 
     enc.getAllVariables().put(_symbolicPacket.getDstIp().toString() + _encoder.getStringId(),
      _symbolicPacket.getDstIp());
@@ -167,6 +173,7 @@ class EncoderSlice {
     _outboundAcls = new HashMap<>();
     _forwardsAcross = new Table2<>();
     _ospfRedistributed = new HashMap<>();
+    _softOspfRedistributed = new HashMap<>();
     _originatedNetworks = new Table2<>();
     _allOriginatedNetworks = new Table2<>(); 
 
@@ -430,6 +437,8 @@ class EncoderSlice {
         redistributed.add(proto);
         _logicalGraph.getRedistributedProtocols().put(router, proto, redistributed);
         RoutingPolicy pol = Graph.findCommonRoutingPolicy(conf, proto);
+        Set<Protocol> unused = new HashSet<Protocol>(getProtocols().get(router));
+        unused.remove(proto);
         if (pol != null) {
           Set<Protocol> ps = getGraph().findRedistributedProtocols(conf, pol, proto);
           for (Protocol p : ps) {
@@ -438,12 +447,15 @@ class EncoderSlice {
             boolean isProto = getProtocols().get(router).contains(p);
             if (isProto) {
               redistributed.add(p);
+              unused.remove(p);
             }
           }
         }
+        _softRedistributed.put(router, proto, unused);
       }
-      //System.out.println(" Router: " + router + "\tset: " +
-      // _logicalGraph.getRedistributedProtocols().get(router));
+      System.out.println(" Router: " + router + "\nUsed: " +
+       _logicalGraph.getRedistributedProtocols().get(router) + "\nUnused: " +
+       _softRedistributed.get(router));
     }
 
   }
@@ -744,6 +756,21 @@ class EncoderSlice {
           getAllSymbolicRecords().add(rec);
         }
 
+        r = _softRedistributed.get(router, proto);
+        assert r != null;
+        if (proto.isOspf() && r.size() > 0) {
+          // Add the soft ospf redistributed record if needed
+          String rname =
+              String.format(
+                  "%d_%s%s_%s_%s",
+                  _encoder.getId(), _sliceName, router, proto.name(), "SoftRedistributed");
+          SymbolicRoute rec =
+              new SymbolicRoute(this, rname, router, proto, _optimizations, null, false);
+          _softOspfRedistributed.put(router, rec);
+          getAllSymbolicRecords().add(rec);
+        }
+
+
         Boolean useSingleExport =
             _optimizations.getSliceCanKeepSingleExportVar().get(router, proto);
         assert (useSingleExport != null);
@@ -858,6 +885,7 @@ class EncoderSlice {
           }
         }
       }
+      System.out.println("Soft Ospf " + router + " = " + _softOspfRedistributed.get(router));  
     }
 
     // Build a map to find the opposite of a given edge
@@ -1733,7 +1761,7 @@ class EncoderSlice {
 
       // For edges that are never used, we constraint them to not be forwarded out of
       for (GraphEdge ge : getGraph().getEdgeMap().get(router)) {
-        if (!constrained.contains(ge) && !_bothIfaceEdges.contains(ge)) {
+        if (!constrained.contains(ge)/* && !_bothIfaceEdges.contains(ge)*/) {
           BoolExpr cForward = _symbolicDecisions.getControlForwarding().get(router, ge);
           assert (cForward != null);
           add(mkNot(cForward));
@@ -1743,9 +1771,9 @@ class EncoderSlice {
       // Handle the case that the router has no protocol running
       if (!someEdge) {
         for (GraphEdge ge : getGraph().getEdgeMap().get(router)) {
-          if (_bothIfaceEdges.contains(ge)) {
+          /*if (_bothIfaceEdges.contains(ge)) {
             continue;
-          }
+          }*/
           BoolExpr cForward = _symbolicDecisions.getControlForwarding().get(router, ge);
           assert (cForward != null);
           add(mkNot(cForward));
@@ -2081,6 +2109,12 @@ class EncoderSlice {
             acl = mkTrue();
           }
           BoolExpr notBlocked = mkAnd(fwd, acl);
+          if (ge.getStart()!=null && ge.getEnd()!=null && (!_bothIfaceEdges.contains(ge))) {
+            System.out.println("Static Add " + ge);
+            BoolExpr shouldAdd = getCtx().mkBoolConst(router + "-StaticRouteAdd-" + ge);
+            addSoft(mkNot(shouldAdd), 2, "StaticAdd");
+            notBlocked = mkOr(notBlocked, shouldAdd);
+          }
           add(mkEq(notBlocked, dForward));
         }
       }
@@ -2388,7 +2422,7 @@ class EncoderSlice {
         acc = f.compute();
         System.out.println("** EXPORT **\n" + acc + "\n**   **");
         BoolExpr usable = mkAnd(active, doExport, varsOther.getPermitted(), notFailed);
-
+        SymbolicRoute softospf = _softOspfRedistributed.get(router);
         // OSPF is complicated because it can have routes redistributed into it
         // from the FIB, but also needs to know about other routes in OSPF as well.
         // We model the export here as being the better of the redistributed route
@@ -2403,6 +2437,7 @@ class EncoderSlice {
           addSoft(redisRemove, 2, "RedisRemove");
 
           BoolExpr acc2 = f.compute();
+          System.out.println("################\n" + acc2 + "\n#############");
           // System.out.println("ADDING: \n" + acc2.simplify());
           add(acc2);
           BoolExpr usable2 = mkAnd(active, doExport, ospfRedistribVars.getPermitted(), notFailed, redisRemove);
@@ -2411,9 +2446,40 @@ class EncoderSlice {
           BoolExpr usesOspf = mkAnd(varsOther.getPermitted(), isBetter);
           BoolExpr eq = equal(conf, proto, ospfRedistribVars, vars, e, false);
           BoolExpr eqPer = mkEq(ospfRedistribVars.getPermitted(), vars.getPermitted());
+
+          System.out.println("**************\n" + mkIf(usesOspf, mkIf(usable, acc, val),
+           mkIf(usable2, mkAnd(eq, eqPer), val)) + "\n**********");
+
           acc = mkIf(usesOspf, mkIf(usable, acc, val), mkIf(usable2, mkAnd(eq, eqPer), val));
         } else {
-          acc = mkIf(usable, acc, val);
+          if (softospf!=null) {
+            f =
+                new TransferSSA(
+                    this, conf, overallBest, softospf, proto, statements, cost, ge, true);
+
+            //BoolExpr acc2 = f.compute();
+            // System.out.println("ADDING: \n" + acc2.simplify());
+            //add(acc2);
+            BoolExpr shouldAdd = getCtx().mkBoolConst(router + "RedisAddSoft" + proto.name());
+            addSoft(mkNot(shouldAdd), 1, "RedisAdd");
+            add(mkEq(shouldAdd, softospf.getPermitted()));
+
+            BoolExpr usable2 = mkAnd(active, doExport, softospf.getPermitted(), notFailed);
+            BoolExpr geq = greaterOrEqual(conf, proto, softospf, varsOther, e);
+            BoolExpr isBetter = mkNot(mkAnd(softospf.getPermitted(), geq));
+            BoolExpr usesOspf = mkAnd(varsOther.getPermitted(), isBetter);
+            BoolExpr eq = equal(conf, proto, softospf, vars, e, false);
+            BoolExpr eqPer = mkEq(softospf.getPermitted(), vars.getPermitted());
+
+            System.out.println("*!!!!!!!!!!!!!!!\n" + mkIf(usesOspf, mkIf(usable, acc, val),
+             mkIf(usable2, mkAnd(eq, eqPer), val)) + "\n*!!!!!!!!!!!!!!!");
+
+            acc = mkIf(usesOspf, mkIf(usable, acc, val), mkIf(usable2, mkAnd(eq, eqPer), val));
+
+          } else {
+            acc = mkIf(usable, acc, val);
+          }
+          //acc = mkIf(usable, acc, val);
         }
 
         allacc = acc;
@@ -2457,6 +2523,12 @@ class EncoderSlice {
               BoolExpr better = mkOr(betterLen, mkAnd(equalLen, betterAd));
               BoolExpr betterRedistributed = mkAnd(ospfRedistribVars.getPermitted(), better);
               relevant = mkAnd(relevant, mkNot(betterRedistributed));
+            } else if (softospf != null) {
+              BoolExpr betterLen = mkGt(softospf.getPrefixLength(), mkInt(prefixLength));
+              BoolExpr equalLen = mkEq(softospf.getPrefixLength(), mkInt(prefixLength));
+              BoolExpr better = mkOr(betterLen, equalLen);
+              BoolExpr betterRedistributed = mkAnd(softospf.getPermitted(), better);
+              relevant = mkAnd(relevant, mkNot(betterRedistributed));              
             }
 
             acc = mkIf(relevant, values, acc);
@@ -2538,8 +2610,10 @@ class EncoderSlice {
         if (ge.getStart()!=null && ge.getEnd()!=null && (!_bothIfaceEdges.contains(ge))) {
           System.out.println("Static Add " + ge);
           BoolExpr shouldAdd = getCtx().mkBoolConst(router + "-StaticRouteAdd-" + ge);
-          addSoft(mkNot(shouldAdd), 1, "StaticAdd");
-          add(mkEq(shouldAdd, _symbolicDecisions.getControlForwarding().get(router, ge)));
+          addSoft(mkNot(shouldAdd), 2, "StaticAdd");
+          //add(mkEq(shouldAdd, _symbolicDecisions.getControlForwarding().get(router, ge)));
+          BoolExpr addstatic = mkOr(_symbolicDecisions.getDataForwarding().get(router, ge), shouldAdd);
+          _symbolicDecisions.getDataForwarding().put(router, ge, addstatic);
           _bothIfaceEdges.add(ge);
         }
       }
@@ -2917,12 +2991,12 @@ class EncoderSlice {
     addBoundConstraints();
     addCommunityConstraints();
     addTransferFunction();
-    addStaticRouteSoftConstraints();
     addHistoryConstraints();
     addBestPerProtocolConstraints();
     addChoicePerProtocolConstraints();
     addBestOverallConstraints();
     addControlForwardingConstraints();
+    //addStaticRouteSoftConstraints();
     addDataForwardingConstraints();
     addUnusedDefaultValueConstraints();
     addHeaderSpaceConstraint();
