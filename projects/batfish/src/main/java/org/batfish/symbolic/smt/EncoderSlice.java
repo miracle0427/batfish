@@ -2451,7 +2451,7 @@ class EncoderSlice {
            mkIf(usable2, mkAnd(eq, eqPer), val)) + "\n**********");
 
           acc = mkIf(usesOspf, mkIf(usable, acc, val), mkIf(usable2, mkAnd(eq, eqPer), val));
-        } else {
+        } else {/*
           if (softospf!=null) {
             f =
                 new TransferSSA(
@@ -2478,8 +2478,8 @@ class EncoderSlice {
 
           } else {
             acc = mkIf(usable, acc, val);
-          }
-          //acc = mkIf(usable, acc, val);
+          }*/
+          acc = mkIf(usable, acc, val);
         }
 
         allacc = acc;
@@ -2523,13 +2523,13 @@ class EncoderSlice {
               BoolExpr better = mkOr(betterLen, mkAnd(equalLen, betterAd));
               BoolExpr betterRedistributed = mkAnd(ospfRedistribVars.getPermitted(), better);
               relevant = mkAnd(relevant, mkNot(betterRedistributed));
-            } else if (softospf != null) {
+            }/* else if (softospf != null) {
               BoolExpr betterLen = mkGt(softospf.getPrefixLength(), mkInt(prefixLength));
               BoolExpr equalLen = mkEq(softospf.getPrefixLength(), mkInt(prefixLength));
               BoolExpr better = mkOr(betterLen, equalLen);
               BoolExpr betterRedistributed = mkAnd(softospf.getPermitted(), better);
               relevant = mkAnd(relevant, mkNot(betterRedistributed));              
-            }
+            }*/
 
             acc = mkIf(relevant, values, acc);
           }
