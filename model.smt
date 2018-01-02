@@ -15,7 +15,7 @@
 (define-fun |0_C_OSPF_SINGLE-EXPORT__metric| () Int
   1)
 (define-fun |0_dst-ip| () (_ BitVec 32)
-  #x6b000000)
+  #x6b000483)
 (define-fun |0_CONTROL-FORWARDING_A_GigabitEthernet0/1| () Bool
   false)
 (define-fun |0_CONTROL-FORWARDING_C_GigabitEthernet0/1| () Bool
@@ -59,7 +59,7 @@
 (define-fun |0_A_OVERALL_BEST_None_prefixLength| () Int
   8)
 (define-fun |0_C_OSPF_SoftRedistributed_metric| () Int
-  1)
+  0)
 (define-fun |0_CONTROL-FORWARDING_C_GigabitEthernet0/4| () Bool
   true)
 (define-fun |0__C_GigabitEthernet0/4_INBOUND_SOFTAdd| () Bool
@@ -92,8 +92,6 @@
   8)
 (define-fun |0_CONTROL-FORWARDING_B_GigabitEthernet0/2| () Bool
   true)
-(define-fun |0_D_OSPF_SoftRedistributed_permitted| () Bool
-  true)
 (define-fun |0_A_OVERALL_BEST_None_metric| () Int
   2)
 (define-fun COSPFExportRemoveSoft3.0.0.0/16 () Bool
@@ -123,14 +121,16 @@
 (define-fun |0_A_OSPF_IMPORT_GigabitEthernet0/2_metric| () Int
   2)
 (define-fun |0_D_OSPF_SoftRedistributed_prefixLength| () Int
-  1)
+  0)
 (define-fun |0_D_OSPF_SoftRedistributed_metric| () Int
-  1)
+  0)
 (define-fun DOSPFExportAddSoft () Bool
   false)
 (define-fun BOSPFExportRemoveSoft2.0.0.0/16 () Bool
   true)
 (define-fun |0_D_OSPF_BEST_None_permitted| () Bool
+  true)
+(define-fun CRedisAddSoftOSPF () Bool
   true)
 (define-fun |0__C_GigabitEthernet0/2_OUTBOUND_SOFTAdd| () Bool
   true)
@@ -157,7 +157,7 @@
 (define-fun |0_C_OSPF_IMPORT_GigabitEthernet0/4_prefixLength| () Int
   8)
 (define-fun |0_C_OSPF_SoftRedistributed_prefixLength| () Int
-  1)
+  0)
 (define-fun |0__B_GigabitEthernet0/2_OUTBOUND_SOFTAdd| () Bool
   true)
 (define-fun |0__A_GigabitEthernet0/3_OUTBOUND_SOFTAdd| () Bool
@@ -214,8 +214,6 @@
   2)
 (define-fun |0_C_OSPF_BEST_None_metric| () Int
   1)
-(define-fun |0_C_OSPF_SoftRedistributed_permitted| () Bool
-  true)
 (define-fun |0_C_OVERALL_BEST_None_adminDist| () Int
   110)
 (define-fun |0_B_OVERALL_BEST_None_metric| () Int
@@ -227,6 +225,8 @@
 (define-fun |0_A_OSPF_IMPORT_GigabitEthernet0/2_permitted| () Bool
   true)
 (define-fun |0_A_OSPF_IMPORT_GigabitEthernet0/1_permitted| () Bool
+  true)
+(define-fun DRedisAddSoftOSPF () Bool
   true)
 (define-fun |0__D_GigabitEthernet0/2_INBOUND_SOFTAdd| () Bool
   true)
@@ -334,6 +334,10 @@
   true)
 (define-fun |0_D_CONNECTED_IMPORT_GigabitEthernet0/3_permitted| () Bool
   true)
+(define-fun |0_D_OSPF_SoftRedistributed_permitted| () Bool
+  false)
+(define-fun |0_C_OSPF_SoftRedistributed_permitted| () Bool
+  false)
 (define-fun |0_FAILED-EDGE_D_GigabitEthernet0/3| () Int
   0)
 (define-fun |0_FAILED-EDGE_C_D| () Int
