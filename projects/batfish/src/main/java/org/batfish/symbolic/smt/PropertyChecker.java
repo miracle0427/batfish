@@ -1289,7 +1289,7 @@ public class PropertyChecker {
       BoolExpr hasLoop = pa.instrumentLoop(router);
       someLoop = ctx.mkOr(someLoop, hasLoop);
     }
-    enc.add(someLoop);
+    enc.add(enc.mkNot(someLoop));
 
     VerificationResult result = enc.verify().getFirst();
     return new SmtOneAnswerElement(result);
