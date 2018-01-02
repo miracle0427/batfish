@@ -80,6 +80,8 @@
 (declare-fun |0_C_OSPF_IMPORT_GigabitEthernet0/4_permitted| () Bool)
 (declare-fun |0_D_OSPF_SINGLE-EXPORT__permitted| () Bool)
 (declare-fun CImportFilterAddSoft0_C_OSPF_IMPORT_GigabitEthernet0/4 () Bool)
+(declare-fun |0_C_OSPF_SoftRedistributed_permitted| () Bool)
+(declare-fun CRedisAddSoftOSPF () Bool)
 (declare-fun |0_C_OSPF_BEST_None_permitted| () Bool)
 (declare-fun COSPFExportRemoveSoft2.0.0.0/16 () Bool)
 (declare-fun COSPFExportRemoveSoft3.0.0.0/16 () Bool)
@@ -94,6 +96,8 @@
 (declare-fun CStaticRouteRemove107.0.4.3/8 () Bool)
 (declare-fun |0_D_OSPF_IMPORT_GigabitEthernet0/2_permitted| () Bool)
 (declare-fun DImportFilterAddSoft0_D_OSPF_IMPORT_GigabitEthernet0/2 () Bool)
+(declare-fun |0_D_OSPF_SoftRedistributed_permitted| () Bool)
+(declare-fun DRedisAddSoftOSPF () Bool)
 (declare-fun |0_D_OSPF_BEST_None_permitted| () Bool)
 (declare-fun DOSPFExportRemoveSoft4.0.0.0/16 () Bool)
 (declare-fun DOSPFExportRemoveSoft107.0.0.0/8 () Bool)
@@ -172,8 +176,6 @@
              ()
              Bool)
 (declare-fun |0__D_GigabitEthernet0/2_OUTBOUND_SOFTAdd| () Bool)
-(declare-fun |0_C_OSPF_SoftRedistributed_permitted| () Bool)
-(declare-fun |0_D_OSPF_SoftRedistributed_permitted| () Bool)
 (declare-fun |0_src-ip| () (_ BitVec 32))
 (declare-fun |0__on-loop_C_B| () Bool)
 (declare-fun |0__B_GigabitEthernet0/1_INBOUND_SOFTAdd| () Bool)
@@ -564,6 +566,7 @@
             CImportFilterAddSoft0_C_OSPF_IMPORT_GigabitEthernet0/4)
        (ite true a!1 (not |0_C_OSPF_IMPORT_GigabitEthernet0/4_permitted|))
        (not |0_C_OSPF_IMPORT_GigabitEthernet0/4_permitted|))))
+(assert (= (not CRedisAddSoftOSPF) |0_C_OSPF_SoftRedistributed_permitted|))
 (assert (let ((a!1 (and |0_C_OSPF_SINGLE-EXPORT__permitted|
                 true
                 true
@@ -596,33 +599,44 @@
                           true)
                      (not |0_C_OSPF_SINGLE-EXPORT__permitted|))
                 (not |0_C_OSPF_SINGLE-EXPORT__permitted|))))
-(let ((a!3 (ite (and (and true true)
-                     (= (bvand |0_dst-ip| #xffff0000)
-                        (bvand #x02000000 #xffff0000))
-                     COSPFExportRemoveSoft2.0.0.0/16)
-                a!1
+(let ((a!3 (ite |0_C_OSPF_BEST_None_permitted|
                 (ite (and (and true true)
                           true
                           |0_C_OSPF_BEST_None_permitted|
                           (= |0_FAILED-EDGE_C_D| 0))
                      a!2
+                     (not |0_C_OSPF_SINGLE-EXPORT__permitted|))
+                (ite (and |0_C_OSPF_SoftRedistributed_permitted|
+                          (= |0_FAILED-EDGE_C_D| 0))
+                     (= |0_C_OSPF_SoftRedistributed_permitted|
+                        |0_C_OSPF_SINGLE-EXPORT__permitted|)
                      (not |0_C_OSPF_SINGLE-EXPORT__permitted|)))))
 (let ((a!4 (ite (and (and true true)
                      (= (bvand |0_dst-ip| #xffff0000)
-                        (bvand #x03000000 #xffff0000))
-                     COSPFExportRemoveSoft3.0.0.0/16)
+                        (bvand #x02000000 #xffff0000))
+                     COSPFExportRemoveSoft2.0.0.0/16
+                     (not |0_C_OSPF_SoftRedistributed_permitted|))
                 a!1
                 a!3)))
 (let ((a!5 (ite (and (and true true)
                      (= (bvand |0_dst-ip| #xffff0000)
-                        (bvand #x04000000 #xffff0000))
-                     COSPFExportRemoveSoft4.0.0.0/16)
+                        (bvand #x03000000 #xffff0000))
+                     COSPFExportRemoveSoft3.0.0.0/16
+                     (not |0_C_OSPF_SoftRedistributed_permitted|))
                 a!1
                 a!4)))
 (let ((a!6 (ite (and (and true true)
+                     (= (bvand |0_dst-ip| #xffff0000)
+                        (bvand #x04000000 #xffff0000))
+                     COSPFExportRemoveSoft4.0.0.0/16
+                     (not |0_C_OSPF_SoftRedistributed_permitted|))
+                a!1
+                a!5)))
+(let ((a!7 (ite (and (and true true)
                      (= (bvand |0_dst-ip| #xff000000)
                         (bvand #x67000000 #xff000000))
-                     COSPFExportRemoveSoft103.0.0.0/8)
+                     COSPFExportRemoveSoft103.0.0.0/8
+                     (not |0_C_OSPF_SoftRedistributed_permitted|))
                 (and |0_C_OSPF_SINGLE-EXPORT__permitted|
                      true
                      true
@@ -634,8 +648,8 @@
                      true
                      true
                      true)
-                a!5)))
-  (or COSPFExportAddSoft a!6)))))))
+                a!6)))
+  (or COSPFExportAddSoft a!7))))))))
 (assert (let ((a!1 (ite (<= (+ |0_A_OSPF_SINGLE-EXPORT__metric| 1) 65535)
                 (and (= |0_C_OSPF_IMPORT_GigabitEthernet0/2_permitted|
                         |0_A_OSPF_SINGLE-EXPORT__permitted|)
@@ -727,6 +741,7 @@
             DImportFilterAddSoft0_D_OSPF_IMPORT_GigabitEthernet0/2)
        (ite true a!1 (not |0_D_OSPF_IMPORT_GigabitEthernet0/2_permitted|))
        (not |0_D_OSPF_IMPORT_GigabitEthernet0/2_permitted|))))
+(assert (= (not DRedisAddSoftOSPF) |0_D_OSPF_SoftRedistributed_permitted|))
 (assert (let ((a!1 (ite true
                 (ite (<= |0_D_OSPF_BEST_None_metric| 65535)
                      (and (= |0_D_OSPF_SINGLE-EXPORT__permitted|
@@ -748,10 +763,23 @@
                           true)
                      (not |0_D_OSPF_SINGLE-EXPORT__permitted|))
                 (not |0_D_OSPF_SINGLE-EXPORT__permitted|))))
-(let ((a!2 (ite (and (and true true)
+(let ((a!2 (ite |0_D_OSPF_BEST_None_permitted|
+                (ite (and (and true true)
+                          true
+                          |0_D_OSPF_BEST_None_permitted|
+                          (= |0_FAILED-EDGE_C_D| 0))
+                     a!1
+                     (not |0_D_OSPF_SINGLE-EXPORT__permitted|))
+                (ite (and |0_D_OSPF_SoftRedistributed_permitted|
+                          (= |0_FAILED-EDGE_C_D| 0))
+                     (= |0_D_OSPF_SoftRedistributed_permitted|
+                        |0_D_OSPF_SINGLE-EXPORT__permitted|)
+                     (not |0_D_OSPF_SINGLE-EXPORT__permitted|)))))
+(let ((a!3 (ite (and (and true true)
                      (= (bvand |0_dst-ip| #xffff0000)
                         (bvand #x04000000 #xffff0000))
-                     DOSPFExportRemoveSoft4.0.0.0/16)
+                     DOSPFExportRemoveSoft4.0.0.0/16
+                     (not |0_D_OSPF_SoftRedistributed_permitted|))
                 (and |0_D_OSPF_SINGLE-EXPORT__permitted|
                      true
                      true
@@ -763,16 +791,12 @@
                      true
                      true
                      true)
-                (ite (and (and true true)
-                          true
-                          |0_D_OSPF_BEST_None_permitted|
-                          (= |0_FAILED-EDGE_C_D| 0))
-                     a!1
-                     (not |0_D_OSPF_SINGLE-EXPORT__permitted|)))))
-(let ((a!3 (ite (and (and true true)
+                a!2)))
+(let ((a!4 (ite (and (and true true)
                      (= (bvand |0_dst-ip| #xff000000)
                         (bvand #x6b000000 #xff000000))
-                     DOSPFExportRemoveSoft107.0.0.0/8)
+                     DOSPFExportRemoveSoft107.0.0.0/8
+                     (not |0_D_OSPF_SoftRedistributed_permitted|))
                 (and |0_D_OSPF_SINGLE-EXPORT__permitted|
                      true
                      true
@@ -784,8 +808,8 @@
                      true
                      true
                      true)
-                a!2)))
-  (or DOSPFExportAddSoft a!3)))))
+                a!3)))
+  (or DOSPFExportAddSoft a!4))))))
 (assert (ite (and true
           (= (bvand |0_dst-ip| #xff000000) (bvand #x6b000000 #xff000000))
           (= |0_FAILED-EDGE_D_GigabitEthernet0/3| 0))
@@ -1973,6 +1997,7 @@
 (assert-soft (not BOSPFExportAddSoft) :weight 10 :id a)
 (assert-soft BImportFilterAddSoft0_B_OSPF_IMPORT_GigabitEthernet0/2 :weight 2 :id a)
 (assert-soft CImportFilterAddSoft0_C_OSPF_IMPORT_GigabitEthernet0/4 :weight 2 :id a)
+(assert-soft CRedisAddSoftOSPF :weight 1 :id a)
 (assert-soft COSPFExportRemoveSoft2.0.0.0/16 :weight 3 :id a)
 (assert-soft COSPFExportRemoveSoft3.0.0.0/16 :weight 3 :id a)
 (assert-soft COSPFExportRemoveSoft4.0.0.0/16 :weight 3 :id a)
@@ -1982,6 +2007,7 @@
 (assert-soft CImportFilterAddSoft0_C_OSPF_IMPORT_GigabitEthernet0/1 :weight 2 :id a)
 (assert-soft CStaticRouteRemove107.0.4.3/8 :weight 1 :id a)
 (assert-soft DImportFilterAddSoft0_D_OSPF_IMPORT_GigabitEthernet0/2 :weight 2 :id a)
+(assert-soft DRedisAddSoftOSPF :weight 1 :id a)
 (assert-soft DOSPFExportRemoveSoft4.0.0.0/16 :weight 3 :id a)
 (assert-soft DOSPFExportRemoveSoft107.0.0.0/8 :weight 3 :id a)
 (assert-soft (not DOSPFExportAddSoft) :weight 10 :id a)

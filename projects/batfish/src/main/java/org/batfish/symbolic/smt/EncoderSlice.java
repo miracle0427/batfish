@@ -2207,7 +2207,7 @@ class EncoderSlice {
            mkIf(usable2, mkAnd(eq, eqPer), val)) + "\n**********");
 
           acc = mkIf(usesOspf, mkIf(usable, acc, val), mkIf(usable2, mkAnd(eq, eqPer), val));
-        } else {/*
+        } else {
           if (softospf!=null) {
             f =
                 new TransferSSA(
@@ -2217,25 +2217,26 @@ class EncoderSlice {
             // System.out.println("ADDING: \n" + acc2.simplify());
             //add(acc2);
             BoolExpr shouldAdd = getCtx().mkBoolConst(router + "RedisAddSoft" + proto.name());
-            addSoft(mkNot(shouldAdd), 1, "RedisAdd");
-            add(mkEq(shouldAdd, softospf.getPermitted()));
+            addSoft(shouldAdd, 1, "RedisAdd");
+            add(mkEq(mkNot(shouldAdd), softospf.getPermitted()));
 
-            BoolExpr usable2 = mkAnd(active, doExport, softospf.getPermitted(), notFailed);
-            BoolExpr geq = greaterOrEqual(conf, proto, softospf, varsOther, e);
-            BoolExpr isBetter = mkNot(mkAnd(softospf.getPermitted(), geq));
-            BoolExpr usesOspf = mkAnd(varsOther.getPermitted(), isBetter);
-            BoolExpr eq = equal(conf, proto, softospf, vars, e, false);
+            BoolExpr usable2 = mkAnd(softospf.getPermitted(), notFailed);
+            //BoolExpr geq = greaterOrEqual(conf, proto, softospf, varsOther, e);
+            //BoolExpr isBetter = mkNot(mkAnd(softospf.getPermitted(), geq));
+            //BoolExpr usesOspf = mkAnd(varsOther.getPermitted(), isBetter);
+            //BoolExpr eq = equal(conf, proto, softospf, vars, e, false);
             BoolExpr eqPer = mkEq(softospf.getPermitted(), vars.getPermitted());
 
-            System.out.println("*!!!!!!!!!!!!!!!\n" + mkIf(usesOspf, mkIf(usable, acc, val),
-             mkIf(usable2, mkAnd(eq, eqPer), val)) + "\n*!!!!!!!!!!!!!!!");
+            //System.out.println("*!!!!!!!!!!!!!!!\n" + mkIf(usesOspf, mkIf(usable, acc, val),
+            // mkIf(usable2, mkAnd(eq, eqPer), val)) + "\n*!!!!!!!!!!!!!!!");
 
-            acc = mkIf(usesOspf, mkIf(usable, acc, val), mkIf(usable2, mkAnd(eq, eqPer), val));
+            acc = mkIf(varsOther.getPermitted(), mkIf(usable, acc, val),
+              mkIf(usable2, eqPer, val));
 
           } else {
             acc = mkIf(usable, acc, val);
-          }*/
-          acc = mkIf(usable, acc, val);
+          }
+          //acc = mkIf(usable, acc, val);
         }
 
         allacc = acc;
@@ -2279,13 +2280,10 @@ class EncoderSlice {
               BoolExpr better = mkOr(betterLen, mkAnd(equalLen, betterAd));
               BoolExpr betterRedistributed = mkAnd(ospfRedistribVars.getPermitted(), better);
               relevant = mkAnd(relevant, mkNot(betterRedistributed));
-            }/* else if (softospf != null) {
-              BoolExpr betterLen = mkGt(softospf.getPrefixLength(), mkInt(prefixLength));
-              BoolExpr equalLen = mkEq(softospf.getPrefixLength(), mkInt(prefixLength));
-              BoolExpr better = mkOr(betterLen, equalLen);
-              BoolExpr betterRedistributed = mkAnd(softospf.getPermitted(), better);
+            } else if (softospf != null) {
+              BoolExpr betterRedistributed = softospf.getPermitted();
               relevant = mkAnd(relevant, mkNot(betterRedistributed));              
-            }*/
+            }
 
             acc = mkIf(relevant, values, acc);
           }
