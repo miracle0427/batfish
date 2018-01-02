@@ -1263,8 +1263,8 @@ public class PropertyChecker {
       }
       someBlackHole = ctx.mkOr(someBlackHole, ctx.mkAnd(isFwdTo, doesNotFwd));
     }
-
-    enc.add(someBlackHole);
+    System.out.println("someBlackHole " + someBlackHole);
+    enc.add(enc.mkNot(someBlackHole));
     VerificationResult result = enc.verify().getFirst();
     return new SmtOneAnswerElement(result);
   }

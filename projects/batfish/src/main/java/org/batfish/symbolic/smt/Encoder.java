@@ -781,6 +781,7 @@ public class Encoder {
 
     if (status == Status.UNSATISFIABLE) {
       VerificationResult res = new VerificationResult(true, null, null, null, null, null, stats);
+      System.out.println("\n\nUNSATISFIABLE\n\n");
       return new Tuple<>(res, null);
     } else if (status == Status.UNKNOWN) {
       throw new BatfishException("ERROR: satisfiability unknown");
@@ -790,6 +791,15 @@ public class Encoder {
       Model m;
       while (true) {
         m = _optsolve.getModel();
+        try {
+          System.out.println("\n\nModel printed in model.smt\n\n");
+          BufferedWriter writer = new BufferedWriter(new FileWriter("model.smt"));
+          writer.write(m.toString());
+          writer.close();
+        } catch (IOException e) {
+          System.out.println("IO error");
+        }
+
         SortedMap<String, String> model = new TreeMap<>();
         SortedMap<String, String> packetModel = new TreeMap<>();
         SortedSet<String> fwdModel = new TreeSet<>();

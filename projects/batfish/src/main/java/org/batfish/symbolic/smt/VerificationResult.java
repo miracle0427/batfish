@@ -163,7 +163,7 @@ public class VerificationResult {
         sb.append("\nCounterexample Found:\n");
       }
       sb.append("==========================================\n");
-      sb.append(prettyPrintPacket());
+      //sb.append(prettyPrintPacket());
       sb.append(prettyPrintEnv());
       sb.append(prettyPrintForwarding());
       sb.append(prettyPrintFailures());
