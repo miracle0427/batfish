@@ -268,8 +268,8 @@ class TransferSSA {
                 BoolExpr directRoute = _enc.isRelevantFor(originLength, r);
                 ArithExpr newLength = _enc.mkIf(directRoute, originLength, otherLen);
                 result = result.addChangedVariable("PREFIX-LEN", newLength);
-                BoolExpr shouldRemove = _enc.getCtx().mkBoolConst(pfx + "Stat-Conn-ExportRemoveSoft"
-                 + other.getName());
+                BoolExpr shouldRemove = _enc.getCtx().mkBoolConst(_enc.getEncoder().getId() + "_"
+                 + pfx + "Stat-Conn-ExportRemoveSoft" + other.getName());
                 _enc.addSoft(shouldRemove, 30, "SCExportRemove");
                 return result.setReturnValue(_enc.mkAnd(directRoute, shouldRemove));
                 //return result.setReturnValue(directRoute);
@@ -277,8 +277,8 @@ class TransferSSA {
                 // Also use network statement if OSPF has a route with the correct length
                 SymbolicRoute rec = _enc.getBestNeighborPerProtocol(router, Protocol.OSPF);
                 if (rec != null) {
-                  BoolExpr shouldRemove = _enc.getCtx().mkBoolConst(pfx + "OSPF-ExportRemoveSoft"
-                   + other.getName());
+                  BoolExpr shouldRemove = _enc.getCtx().mkBoolConst(_enc.getEncoder().getId() + "_"
+                   + pfx + "OSPF-ExportRemoveSoft" + other.getName());
                   _enc.addSoft(shouldRemove, 30, "OExportRemove");
                   BoolExpr ospfRelevant = _enc.mkAnd(_enc.isRelevantFor(rec.getPrefixLength(), r),
                    shouldRemove);
@@ -414,8 +414,8 @@ class TransferSSA {
         result = result.addChangedVariables(r);
         acc = _enc.mkOr(acc, r.getReturnValue());
       }
-      BoolExpr shouldAdd = _enc.getCtx().mkBoolConst(p.getData().getName() + 
-        "BGPExportAddSoft");
+      BoolExpr shouldAdd = _enc.getCtx().mkBoolConst(_enc.getEncoder().getId() + "_" + 
+        p.getData().getName() + "BGPExportAddSoft");
       _enc.addSoft(_enc.mkNot(shouldAdd), 1, "BGPExportAdd");
       acc = _enc.mkOr(acc, shouldAdd);
       p.debug("has changed variable");

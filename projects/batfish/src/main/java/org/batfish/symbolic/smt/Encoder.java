@@ -205,6 +205,8 @@ public class Encoder {
       _allVariables = new HashMap<>();
     } else {
       _allVariables = vars;
+      _optsolve = enc.getOptimize();
+      _solver = enc.getSolver();
     }
 
     if (ENABLE_DEBUGGING) {

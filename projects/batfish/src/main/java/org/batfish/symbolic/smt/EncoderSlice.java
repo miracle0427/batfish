@@ -313,7 +313,7 @@ class EncoderSlice {
           BoolExpr outAcl = getCtx().mkBoolConst(outName);
           BoolExpr outAclFunc = computeACL(outbound);
 
-          BoolExpr outAclRemove = getCtx().mkBoolConst(outName + "Remove");
+          BoolExpr outAclRemove = getCtx().mkBoolConst(_encoder.getId() + "_" + outName + "Remove");
           addSoft(mkNot(outAclRemove), 10, "SoftOutAclRemove");
           // @archie outAclRemove is soft constraint to do out ACL remove
           add(mkEq(outAcl, outAclFunc));
@@ -330,7 +330,7 @@ class EncoderSlice {
                   i.getName(),
                   "OUTBOUND",
                   "SOFT");
-          BoolExpr outAcl = getCtx().mkBoolConst(outName + "Add");
+          BoolExpr outAcl = getCtx().mkBoolConst(_encoder.getId() + "_" + outName + "Add");
           // @archie outAcl is soft constraint to do out ACL add
           addSoft(outAcl, 10, "SoftOutAclAdd");
           _outboundAcls.put(ge, outAcl);
@@ -347,7 +347,7 @@ class EncoderSlice {
           BoolExpr inAcl = getCtx().mkBoolConst(inName);
           BoolExpr inAclFunc = computeACL(inbound);
           
-          BoolExpr inAclRemove = getCtx().mkBoolConst(inName + "Remove");
+          BoolExpr inAclRemove = getCtx().mkBoolConst(_encoder.getId() + "_" + inName + "Remove");
           addSoft(mkNot(inAclRemove), 10, "SoftInAclRemove");
           // @archie inAclRemove is soft constraint to do in ACL remove
           add(mkEq(inAcl, inAclFunc));
@@ -359,7 +359,7 @@ class EncoderSlice {
               String.format(
                   "%d_%s_%s_%s_%s_%s",
                   _encoder.getId(), _sliceName, router, i.getName(), "INBOUND", "SOFT");
-          BoolExpr inAcl = getCtx().mkBoolConst(inName + "Add");
+          BoolExpr inAcl = getCtx().mkBoolConst(_encoder.getId() + "_" + inName + "Add");
           // @archie inAcl is soft constraint to do out ACL add
           addSoft(inAcl, 10, "SoftInAclAdd");
           _inboundAcls.put(ge, inAcl);
@@ -534,9 +534,10 @@ class EncoderSlice {
       BoolExpr lengthUpperBound = mkLe(prefixLen, mkInt(upper));
       if (!(lowerBitsMatch.toString().equals("true") || lowerBitsMatch.toString().equals("false"))) {
         //System.out.println("Lower bits match: " + lowerBitsMatch);
-        BoolExpr shouldRemove = getCtx().mkBoolConst(prefixLen + "BGPRemoveFilter");
+        BoolExpr shouldRemove = getCtx().mkBoolConst(_encoder.getId() + "_"
+         + prefixLen + "BGPRemoveFilter");
         addSoft(shouldRemove, 1, "BGPRemoveFilter");
-        //BoolExpr shouldAdd = getCtx().mkBoolConst(prefixLen + "BGPAddFilter");
+        //BoolExpr shouldAdd = getCtx().mkBoolConst(_encoder.getId() + "_" + prefixLen + "BGPAddFilter");
         //addSoft(mkNot(shouldAdd), 1, "BGPAddFilter");
         //BoolExpr softconst = mkOr(mkAnd(lowerBitsMatch, shouldRemove), shouldAdd);
         BoolExpr softconst = mkAnd(lowerBitsMatch, shouldRemove);
@@ -1867,7 +1868,8 @@ class EncoderSlice {
           BoolExpr notBlocked = mkAnd(fwd, acl);
           if (ge.getStart()!=null && ge.getEnd()!=null && (!_bothIfaceEdges.contains(ge))) {
             System.out.println("Static Add " + ge);
-            BoolExpr shouldAdd = getCtx().mkBoolConst(router + "-StaticRouteAdd-" + ge);
+            BoolExpr shouldAdd = getCtx().mkBoolConst(_encoder.getId() + "_" + router +
+             "-StaticRouteAdd-" + ge);
             addSoft(mkNot(shouldAdd), 2, "StaticAdd");
             notBlocked = mkOr(notBlocked, shouldAdd);
           }
@@ -1923,7 +1925,8 @@ class EncoderSlice {
         BoolExpr acc = mkNot(vars.getPermitted());
         for (StaticRoute sr : srs) {
           Prefix p = sr.getNetwork();
-          BoolExpr shouldRemove = getCtx().mkBoolConst(router + "StaticRouteRemove" + p);
+          BoolExpr shouldRemove = getCtx().mkBoolConst(_encoder.getId() + "_"
+           + router + "StaticRouteRemove" + p);
           addSoft(shouldRemove, 1, "StaticRemove");
             
           BoolExpr relevant =
@@ -2051,8 +2054,8 @@ class EncoderSlice {
           importFunction = f.compute();
           System.out.println("** IMPORT **\n" + importFunction + "\n**   **");
 
-          BoolExpr shouldAddFilter = getCtx().mkBoolConst(router + "ImportFilterAddSoft"
-           + vars.getName());
+          BoolExpr shouldAddFilter = getCtx().mkBoolConst(_encoder.getId() + "_" + router
+           + "ImportFilterAddSoft" + vars.getName());
           addSoft(shouldAddFilter, 2, "ImportFilterAdd");
           //importFunction = mkOr(importFunction, shouldAddFilter);
           BoolExpr acc = mkIf(mkAnd(usable, shouldAddFilter), importFunction, val);
@@ -2176,7 +2179,7 @@ class EncoderSlice {
         TransferSSA f =
             new TransferSSA(this, conf, varsOther, vars, proto, statements, cost, ge, true);
         acc = f.compute();
-        System.out.println("** EXPORT **\n" + acc + "\n**   **");
+        //System.out.println("** EXPORT **\n" + acc + "\n**   **");
         BoolExpr usable = mkAnd(active, doExport, varsOther.getPermitted(), notFailed);
         SymbolicRoute softospf = _softOspfRedistributed.get(router);
         // OSPF is complicated because it can have routes redistributed into it
@@ -2189,11 +2192,12 @@ class EncoderSlice {
           f =
               new TransferSSA(
                   this, conf, overallBest, ospfRedistribVars, proto, statements, cost, ge, true);
-          BoolExpr redisRemove = getCtx().mkBoolConst(router + proto.name() + "SoftRedisRemove");
+          BoolExpr redisRemove = getCtx().mkBoolConst(_encoder.getId() + "_"
+           + router + proto.name() + "SoftRedisRemove");
           addSoft(redisRemove, 2, "RedisRemove");
 
           BoolExpr acc2 = f.compute();
-          System.out.println("################\n" + acc2 + "\n#############");
+          //System.out.println("################\n" + acc2 + "\n#############");
           // System.out.println("ADDING: \n" + acc2.simplify());
           add(acc2);
           BoolExpr usable2 = mkAnd(active, doExport, ospfRedistribVars.getPermitted(), notFailed, redisRemove);
@@ -2203,8 +2207,8 @@ class EncoderSlice {
           BoolExpr eq = equal(conf, proto, ospfRedistribVars, vars, e, false);
           BoolExpr eqPer = mkEq(ospfRedistribVars.getPermitted(), vars.getPermitted());
 
-          System.out.println("**************\n" + mkIf(usesOspf, mkIf(usable, acc, val),
-           mkIf(usable2, mkAnd(eq, eqPer), val)) + "\n**********");
+          //System.out.println("**************\n" + mkIf(usesOspf, mkIf(usable, acc, val),
+          // mkIf(usable2, mkAnd(eq, eqPer), val)) + "\n**********");
 
           acc = mkIf(usesOspf, mkIf(usable, acc, val), mkIf(usable2, mkAnd(eq, eqPer), val));
         } else {
@@ -2216,7 +2220,8 @@ class EncoderSlice {
             //BoolExpr acc2 = f.compute();
             // System.out.println("ADDING: \n" + acc2.simplify());
             //add(acc2);
-            BoolExpr shouldAdd = getCtx().mkBoolConst(router + "RedisAddSoft" + proto.name());
+            BoolExpr shouldAdd = getCtx().mkBoolConst(_encoder.getId() + "_" 
+              + router + "RedisAddSoft" + proto.name());
             addSoft(shouldAdd, 1, "RedisAdd");
             add(mkEq(mkNot(shouldAdd), softospf.getPermitted()));
 
@@ -2247,7 +2252,8 @@ class EncoderSlice {
 
             BoolExpr ifaceUp = interfaceActive(iface, proto);
             BoolExpr relevantPrefix = isRelevantFor(p, _symbolicPacket.getDstIp());
-            BoolExpr shouldRemove = getCtx().mkBoolConst(router + "OSPFExportRemoveSoft" + p);
+            BoolExpr shouldRemove = getCtx().mkBoolConst(_encoder.getId() + "_"
+             + router + "OSPFExportRemoveSoft" + p);
             addSoft(shouldRemove, 3, "OSPFExportRemove");
             relevantPrefix = mkAnd(relevantPrefix, shouldRemove);
             BoolExpr relevant = mkAnd(ifaceUp, relevantPrefix);
@@ -2289,7 +2295,8 @@ class EncoderSlice {
           }
         }
         if (proto.isOspf()) {
-          BoolExpr shouldAdd = getCtx().mkBoolConst(router + "OSPFExportAddSoft");
+          BoolExpr shouldAdd = getCtx().mkBoolConst(_encoder.getId() + "_"
+           + router + "OSPFExportAddSoft");
           addSoft(mkNot(shouldAdd), 10, "OSPFExportAdd");
           acc = (mkOr(shouldAdd, acc));
         }
@@ -2348,28 +2355,6 @@ class EncoderSlice {
           System.out.println("\n\n");
         }
 
-      }
-    }
-  }
-
-  /*
-  Add soft constraints to represent adding static routes
-  */
-  private void addStaticRouteSoftConstraints() {
-
-    for (Entry<String, List<GraphEdge>> entry : getGraph().getEdgeMap().entrySet()) {
-      String router = entry.getKey();
-      List<GraphEdge> edges = entry.getValue();
-      for (GraphEdge ge : edges) {
-        if (ge.getStart()!=null && ge.getEnd()!=null && (!_bothIfaceEdges.contains(ge))) {
-          System.out.println("Static Add " + ge);
-          BoolExpr shouldAdd = getCtx().mkBoolConst(router + "-StaticRouteAdd-" + ge);
-          addSoft(mkNot(shouldAdd), 2, "StaticAdd");
-          //add(mkEq(shouldAdd, _symbolicDecisions.getControlForwarding().get(router, ge)));
-          BoolExpr addstatic = mkOr(_symbolicDecisions.getDataForwarding().get(router, ge), shouldAdd);
-          _symbolicDecisions.getDataForwarding().put(router, ge, addstatic);
-          _bothIfaceEdges.add(ge);
-        }
       }
     }
   }
