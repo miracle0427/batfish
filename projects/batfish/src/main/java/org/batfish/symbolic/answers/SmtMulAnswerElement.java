@@ -25,6 +25,10 @@ public class SmtMulAnswerElement implements AnswerElement {
   @Override
   public String prettyPrint() {
     StringBuilder sb = new StringBuilder();
+    if (_result == null) {
+      sb.append("\nNull Result");
+      return sb + "";
+    }
     if (_result.isVerified()) {
       sb.append("\nVerified");
     }

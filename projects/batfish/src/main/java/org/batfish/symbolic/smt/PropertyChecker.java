@@ -6,8 +6,10 @@ import com.microsoft.z3.BoolExpr;
 import com.microsoft.z3.Context;
 import com.microsoft.z3.Expr;
 import com.microsoft.z3.Model;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -20,7 +22,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Optional;
-import java.util.Scanner;
 import java.util.Set;
 import java.util.SortedMap;
 import java.util.SortedSet;
@@ -63,6 +64,8 @@ import org.batfish.symbolic.utils.PatternUtils;
 import org.batfish.symbolic.utils.TriFunction;
 import org.batfish.symbolic.utils.Tuple;
 
+
+
 /**
  * A collection of functions to check if various properties hold in the network. The general idea is
  * to create a new encoder object for the network, instrument additional properties on top of the
@@ -71,6 +74,17 @@ import org.batfish.symbolic.utils.Tuple;
  * @author Ryan Beckett
  */
 public class PropertyChecker {
+
+  class Ips {
+    public IpWildcard srcip;
+    public IpWildcard dstip;
+
+    public Ips(IpWildcard src, IpWildcard dst) {
+      srcip = src;
+      dstip = dst;
+    }
+  }
+
 
   private IBatfish _batfish;
 
@@ -251,6 +265,16 @@ public class PropertyChecker {
       singleEc.add(sup);
       return singleEc.stream();
     }
+  }
+
+  private Stream<Supplier<EquivalenceClass>> createEquivalenceClasses(
+      HeaderQuestion q, @Nullable Graph graph, boolean useDefaultCase) {
+    List<Supplier<EquivalenceClass>> singleEc = new ArrayList<>();
+    Graph g = graph == null ? new Graph(_batfish) : graph;
+    EquivalenceClass ec = new EquivalenceClass(q.getHeaderSpace(), g, null);
+    Supplier<EquivalenceClass> sup = () -> ec;
+    singleEc.add(sup);
+    return singleEc.stream();
   }
 
   /*
@@ -696,26 +720,35 @@ public class PropertyChecker {
       TriFunction<Encoder, Set<String>, Set<GraphEdge>, Map<String, BoolExpr>> loadBalancing,*/
       Function<VerifyParam, AnswerElement> answer) {
     long l = System.currentTimeMillis();
-    PathRegexes p = new PathRegexes(q);
+    //PathRegexes p = new PathRegexes(q);
     Graph graph = new Graph(_batfish);
     HeaderSpace h = new HeaderSpace();
     SortedSet<IpWildcard> srcIps = new TreeSet<IpWildcard>();
     SortedSet<IpWildcard> dstIps = new TreeSet<IpWildcard>();
-
-    IpWildcard s1;
-
-    for (int i = 0; i < 12; i++) {
-      s1 = new IpWildcard("20.2.1." + String.valueOf(i));
-      srcIps.add(s1);
-      s1 = new IpWildcard("20.1.1." + String.valueOf(i));
-      dstIps.add(s1);
+    List<Ips> ips = new ArrayList<Ips>();
+    IpWildcard s1, s2;
+    String line;
+    try {
+      System.out.println("\nRead reachability.txt\n");
+      BufferedReader reader = new BufferedReader(new FileReader("reachability.txt"));
+      while((line = reader.readLine()) != null) {
+        String[] split = line.split(" ");
+        s1 = new IpWildcard(split[0]);
+        s2 = new IpWildcard(split[1]);
+        srcIps.add(s1);
+        dstIps.add(s2);
+        Ips ip_set = new Ips(s1, s2);
+        ips.add(ip_set);
+      }
+      reader.close();
+    } catch (IOException e) {
+      System.out.println("Reader IO error");
     }
-
     h.setDstIps(dstIps);
     h.setSrcIps(srcIps);
-
+    System.out.println(" Src Ip " + srcIps + "   Dst Ip " + dstIps);
     q.setHeaderSpace(h);
-
+    /*
     Set<GraphEdge> destPorts = findFinalInterfaces(graph, p);
     List<String> sourceRouters = PatternUtils.findMatchingSourceNodes(graph, p);
     
@@ -728,8 +761,9 @@ public class PropertyChecker {
     }
 
     inferDestinationHeaderSpace(graph, destPorts, q);
+    */
     Set<GraphEdge> failOptions = failLinkSet(graph, q);
-    Stream<Supplier<EquivalenceClass>> stream = findAllEquivalenceClasses(q, graph, true);
+    Stream<Supplier<EquivalenceClass>> stream = createEquivalenceClasses(q, graph, true);
 
     AnswerElement[] answerElement = new AnswerElement[1];
     VerificationResult[] result = new VerificationResult[1];
@@ -738,103 +772,70 @@ public class PropertyChecker {
     Object o = new Object();
     Encoder enc2 = null;
     Map<String, BoolExpr> prop2 = null;
-
-
     // Checks ECs in parallel, but short circuits when a counterexample is found
     boolean hasCounterExample =
         stream.anyMatch(
             lazyEc -> {
               long ecTime = System.currentTimeMillis();
-              Scanner scanner;
-              int trafficclasses = 0;
-              try {
-                scanner = new Scanner(new File("tclass.txt"));
-                while (scanner.hasNextInt()) {
-                  trafficclasses = scanner.nextInt();
-                }
-              } catch (Exception e) {
-                System.out.println("Traffic class file not there");
-              }
-
+              Encoder enc = null;
+              Map<String, BoolExpr> prop = null;
+              Set<String> srcRouters = null;
               EquivalenceClass ec = lazyEc.get();
               if (q.getBenchmark()) {
                 System.out.println("  Compute EC: " + (System.currentTimeMillis() - ecTime));
               }
-              IpWildcard s;
-              for (int i = 0; i < trafficclasses; i++) {
-                s = new IpWildcard("20.2.1." + String.valueOf(i));
-                srcIps.add(s);
-                s = new IpWildcard("20.1.1." + String.valueOf(i));
-                dstIps.add(s);
-              }
+              boolean firstDone = false;
+              for (Ips currIp : ips) {
+                SortedSet<IpWildcard> sIps = new TreeSet<IpWildcard>();
+                SortedSet<IpWildcard> dIps = new TreeSet<IpWildcard>();
+                sIps.add(currIp.srcip);
+                dIps.add(currIp.dstip);
+                h.setSrcIps(sIps);
+                h.setDstIps(dIps);
+                System.out.println(" setSrcIps " + sIps + "  setDstIps " + dIps);
+                q.setHeaderSpace(h);
 
-              h.setDstIps(dstIps);
-              h.setSrcIps(srcIps);
+                // Make sure the headerspace is correct
+                HeaderLocationQuestion question = new HeaderLocationQuestion(q);
+                //question.setHeaderSpace(ec.getHeaderSpace());
+                question.setHeaderSpace(h);
 
-              q.setHeaderSpace(h);
+                // Get the EC graph and mapping
+                Graph g = ec.getGraph();
 
-              // Make sure the headerspace is correct
-              HeaderLocationQuestion question = new HeaderLocationQuestion(q);
-              //question.setHeaderSpace(ec.getHeaderSpace());
-              question.setHeaderSpace(h);
-
-              // Get the EC graph and mapping
-              Graph g = ec.getGraph();
-
-              PathRegexes p1 = new PathRegexes(q);
-              Set<GraphEdge> destPorts1 = findFinalInterfaces(graph, p1);
-              List<String> sourceRouters1 = PatternUtils.findMatchingSourceNodes(graph, p1);
-
-
-              Set<String> srcRouters = mapConcreteToAbstract(ec, sourceRouters1);
-
-              long l1 = System.currentTimeMillis();
-              Encoder enc = new Encoder(g, question);
-              enc.computeEncoding();
-              if (question.getBenchmark()) {
-                System.out.println("  Base Encoding: " + (System.currentTimeMillis() - l1));
-              }
-
-              // Add environment constraints for base case
-              addEnvironmentConstraints(enc, question.getBaseEnvironmentType());
-
-              Map<String, BoolExpr> prop = reachability.apply(enc, srcRouters, destPorts1);
-
-              BoolExpr allProp = enc.mkTrue();
-              
-              for (String router : srcRouters) {
-                BoolExpr r = prop.get(router);
-                allProp = enc.mkAnd(allProp, r);
-              
-              }
-              
-              enc.add(allProp);
-
-              addFailureConstraints(enc, destPorts1, failOptions);
-
-              for (int i = 1; i < trafficclasses; i++) {
-                s = new IpWildcard("20.2.1." + String.valueOf(i));
-                srcIps.add(s);
-                s = new IpWildcard("20.1.1." + String.valueOf(i));
-                dstIps.add(s);
-                p1 = new PathRegexes(q);
-                destPorts1 = findFinalInterfaces(graph, p1);
-                sourceRouters1 = PatternUtils.findMatchingSourceNodes(graph, p1);
+                PathRegexes p1 = new PathRegexes(q);
+                Set<GraphEdge> destPorts1 = findFinalInterfaces(graph, p1);
+                List<String> sourceRouters1 = PatternUtils.findMatchingSourceNodes(graph, p1);
+                inferDestinationHeaderSpace(graph, destPorts1, q);
 
                 srcRouters = mapConcreteToAbstract(ec, sourceRouters1);
-
-                Encoder newenc = new Encoder(enc, g);
+                Encoder newenc = null;
+                long l1 = System.currentTimeMillis();
+                if (firstDone == false) {
+                  newenc = new Encoder(g, question);
+                } else {
+                  newenc = new Encoder(enc, g);
+                }
+                firstDone = true;
                 newenc.computeEncoding();
+                if (question.getBenchmark()) {
+                  System.out.println("  Base Encoding: " + (System.currentTimeMillis() - l1));
+                }
+
+                // Add environment constraints for base case
+                addEnvironmentConstraints(newenc, question.getBaseEnvironmentType());
 
                 prop = reachability.apply(newenc, srcRouters, destPorts1);
 
-                allProp = newenc.mkTrue();
+                BoolExpr allProp = newenc.mkTrue();
+                
                 for (String router : srcRouters) {
                   BoolExpr r = prop.get(router);
                   allProp = newenc.mkAnd(allProp, r);
                 }
-
+                
                 newenc.add(allProp);
+
                 addFailureConstraints(newenc, destPorts1, failOptions);
                 enc = newenc;
               }
@@ -849,7 +850,7 @@ public class PropertyChecker {
 
               long startVerify = System.currentTimeMillis();
               Tuple<VerificationResult, Model> tup = enc.verify();
-              if (true/*question.getBenchmark()*/) {
+              if (true) {
                 System.out.println("  z3 time: " + (System.currentTimeMillis() - startVerify));
               }
 
@@ -879,13 +880,14 @@ public class PropertyChecker {
               }
               return false;
             });
-
-    if (/*q.getBenchmark()*/true) {
+    
+    if (true) {
       System.out.println("Total time: " + (System.currentTimeMillis() - l));
     }
+    /*
     if (hasCounterExample) {
       return answerElement[0];
-    }
+    }*/
     VerifyParam vp = new VerifyParam(result[0], null, null, null, null, null, null);
     return answer.apply(vp);
   }
