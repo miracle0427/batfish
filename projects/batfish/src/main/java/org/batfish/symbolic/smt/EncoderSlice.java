@@ -102,6 +102,15 @@ class EncoderSlice {
 
   private Table2<String, Protocol, Set<Protocol>> _softRedistributed;
 
+  private boolean _isTCE;
+
+  private boolean _first;
+
+  private EncoderSlice _existsES;
+
+  private Map<GraphEdge, BoolExpr> _staticRouteAddSoft;
+
+  private EncoderSlice _oldES;
   /**
    * Create a new encoding slice
    *
@@ -124,6 +133,10 @@ class EncoderSlice {
    */
   EncoderSlice(Encoder enc, HeaderSpace h, Graph graph, String sliceName) {
     _encoder = enc;
+    _first = (enc.getId() == 0);
+    if (!_first) {
+      _oldES = enc.getPreviousEncoderSlice();
+    }
     _sliceName = sliceName;
     _headerSpace = h;
     _allSymbolicRoutes = new ArrayList<>();
@@ -133,6 +146,8 @@ class EncoderSlice {
     _symbolicPacket = new SymbolicPacket(enc.getCtx(), enc.getId(), _sliceName);
     _bothIfaceEdges = new HashSet<>();
     _softRedistributed = new Table2<>();
+    _isTCE = false;
+    _staticRouteAddSoft = new HashMap<>();
 
     enc.getAllVariables().put(_symbolicPacket.getDstIp().toString() + _encoder.getStringId(),
      _symbolicPacket.getDstIp());
@@ -177,14 +192,112 @@ class EncoderSlice {
     _originatedNetworks = new Table2<>();
     _allOriginatedNetworks = new Table2<>(); 
 
-    initOptimizations();
-    initOriginatedPrefixes();
-    initCommunities();
+    if (_first) {
+      initOptimizations();
+      initOriginatedPrefixes();
+      initCommunities();
+    } else {
+      _optimizations = _oldES.getOptimizations();
+      _originatedNetworks = _oldES.getOriginatedNetworks();
+      _allOriginatedNetworks = _oldES.getAllOriginatedNetworks(); 
+      _allCommunities = _oldES.getAllCommunities();
+      _namedCommunities = _oldES.getNamedCommunities();
+      _communityDependencies = _oldES.getCommunityDependencies();
+
+    }
     initRedistributionProtocols();
     initVariables();
     initAclFunctions();
     initForwardingAcross();
   }
+
+
+  /**
+   * Create a new encoding slice
+   *
+   * @param enc The parent encoder object
+   * @param h The packet headerspace of interest
+   * @param graph The network graph
+   * @param sliceName The name of this slice
+   * @param isTCE checks if this is an encoding for Traffic Class only (i.e. Encoding exists for
+   * destination)
+   */
+  EncoderSlice(Encoder enc, HeaderSpace h, Graph graph, String sliceName, EncoderSlice existsES) {
+    _encoder = enc;
+    _first = (enc.getId() == 0);
+    if (!_first) {
+      _oldES = enc.getPreviousEncoderSlice();
+    }
+    _sliceName = sliceName;
+    _headerSpace = h;
+    _allSymbolicRoutes = existsES.getAllSymbolicRecords();
+    _optimizations = existsES.getOptimizations();
+    _logicalGraph = existsES.getLogicalGraph();
+    _symbolicDecisions = existsES.getSymbolicDecisions();
+    _symbolicPacket = new SymbolicPacket(enc.getCtx(), enc.getId(), _sliceName);
+    _bothIfaceEdges = existsES.getBothIfaceEdges();
+    _softRedistributed = existsES.getSoftRedistributed();
+    _isTCE = true;
+    _existsES = existsES;
+    _staticRouteAddSoft = new HashMap<>();
+
+    enc.getAllVariables().put(_symbolicPacket.getDstIp().toString() + _encoder.getStringId(),
+     _symbolicPacket.getDstIp());
+    enc.getAllVariables().put(_symbolicPacket.getSrcIp().toString() + _encoder.getStringId(),
+     _symbolicPacket.getSrcIp());
+    enc.getAllVariables()
+        .put(_symbolicPacket.getDstPort().toString() + _encoder.getStringId(),
+         _symbolicPacket.getDstPort());
+    enc.getAllVariables()
+        .put(_symbolicPacket.getSrcPort().toString() + _encoder.getStringId(),
+         _symbolicPacket.getSrcPort());
+    enc.getAllVariables()
+        .put(_symbolicPacket.getIcmpCode().toString() + _encoder.getStringId(),
+         _symbolicPacket.getIcmpCode());
+    enc.getAllVariables()
+        .put(_symbolicPacket.getIcmpType().toString() + _encoder.getStringId(),
+         _symbolicPacket.getIcmpType());
+    enc.getAllVariables().put(_symbolicPacket.getTcpAck().toString() + _encoder.getStringId(),
+     _symbolicPacket.getTcpAck());
+    enc.getAllVariables().put(_symbolicPacket.getTcpCwr().toString() + _encoder.getStringId(),
+     _symbolicPacket.getTcpCwr());
+    enc.getAllVariables().put(_symbolicPacket.getTcpEce().toString() + _encoder.getStringId(),
+     _symbolicPacket.getTcpEce());
+    enc.getAllVariables().put(_symbolicPacket.getTcpFin().toString() + _encoder.getStringId(),
+     _symbolicPacket.getTcpFin());
+    enc.getAllVariables().put(_symbolicPacket.getTcpPsh().toString() + _encoder.getStringId(),
+     _symbolicPacket.getTcpPsh());
+    enc.getAllVariables().put(_symbolicPacket.getTcpRst().toString() + _encoder.getStringId(),
+     _symbolicPacket.getTcpRst());
+    enc.getAllVariables().put(_symbolicPacket.getTcpSyn().toString() + _encoder.getStringId(),
+     _symbolicPacket.getTcpSyn());
+    enc.getAllVariables().put(_symbolicPacket.getTcpUrg().toString() + _encoder.getStringId(),
+     _symbolicPacket.getTcpUrg());
+    enc.getAllVariables()
+        .put(_symbolicPacket.getIpProtocol().toString(), _symbolicPacket.getIpProtocol());
+
+    _inboundAcls = new HashMap<>();
+    _outboundAcls = new HashMap<>();
+    _forwardsAcross = new Table2<>();
+    _ospfRedistributed = existsES.getOspfRedistributed();
+    _softOspfRedistributed = existsES.getSoftOspfRedistributed();
+    _originatedNetworks = existsES.getOriginatedNetworks();
+    _allOriginatedNetworks = existsES.getAllOriginatedNetworks(); 
+
+    //initOptimizations();
+    //initOriginatedPrefixes();
+    //initCommunities();
+    _allCommunities = existsES.getAllCommunities();
+    _namedCommunities = existsES.getNamedCommunities();
+    _communityDependencies = existsES.getCommunityDependencies();
+
+    //initRedistributionProtocols();
+    addDataForwardingVariables();
+    initAclFunctions();
+    initForwardingAcross();
+  }
+
+
 
   // Add a variable to the encoding
   void add(BoolExpr e) {
@@ -453,9 +566,9 @@ class EncoderSlice {
         }
         _softRedistributed.put(router, proto, unused);
       }
-      System.out.println(" Router: " + router + "\nUsed: " +
-       _logicalGraph.getRedistributedProtocols().get(router) + "\nUnused: " +
-       _softRedistributed.get(router));
+      //System.out.println(" Router: " + router + "\nUsed: " +
+      // _logicalGraph.getRedistributedProtocols().get(router) + "\nUnused: " +
+      // _softRedistributed.get(router));
     }
 
   }
@@ -636,6 +749,28 @@ class EncoderSlice {
           getAllVariables().put(choiceVar.toString() + _encoder.getStringId(),
            choiceVar);
           edgeMap.put(e, choiceVar);
+        }
+      }
+    }
+  }
+
+  /*
+   * Initalizes variables representing the data plane final forwarding decisions
+   */
+  private void addDataForwardingVariables() {
+    _symbolicDecisions.setDataForwarding();
+    for (Entry<String, List<GraphEdge>> entry : getGraph().getEdgeMap().entrySet()) {
+      String router = entry.getKey();
+      List<GraphEdge> edges = entry.getValue();
+      for (GraphEdge edge : edges) {
+        String iface = edge.getStart().getName();
+        if (!edge.isAbstract()) {
+          String dName =
+              _encoder.getId() + "_" + _sliceName + "DATA-FORWARDING_" + router + "_" + iface;
+          BoolExpr dForward = getCtx().mkBoolConst(dName);
+          getAllVariables().put(dForward.toString() + _encoder.getStringId(),
+           dForward);
+          _symbolicDecisions.getDataForwarding().put(router, edge, dForward);
         }
       }
     }
@@ -886,7 +1021,7 @@ class EncoderSlice {
           }
         }
       }
-      System.out.println("Soft Ospf " + router + " = " + _softOspfRedistributed.get(router));  
+      //System.out.println("Soft Ospf " + router + " = " + _softOspfRedistributed.get(router));  
     }
 
     // Build a map to find the opposite of a given edge
@@ -1042,6 +1177,32 @@ class EncoderSlice {
     addChoiceVariables();
     addEnvironmentVariables();
   }
+
+
+private void addSymbolicPacketBoundConstraints() {
+
+    ArithExpr upperBound4 = mkInt((long) Math.pow(2, 4));
+    ArithExpr upperBound8 = mkInt((long) Math.pow(2, 8));
+    ArithExpr upperBound16 = mkInt((long) Math.pow(2, 16));
+    ArithExpr upperBound32 = mkInt((long) Math.pow(2, 32));
+    ArithExpr zero = mkInt(0);
+
+    // Valid 16 bit integer
+    add(mkGe(_symbolicPacket.getDstPort(), zero));
+    add(mkGe(_symbolicPacket.getSrcPort(), zero));
+    add(mkLt(_symbolicPacket.getDstPort(), upperBound16));
+    add(mkLt(_symbolicPacket.getSrcPort(), upperBound16));
+
+    // Valid 8 bit integer
+    add(mkGe(_symbolicPacket.getIcmpType(), zero));
+    add(mkGe(_symbolicPacket.getIpProtocol(), zero));
+    add(mkLt(_symbolicPacket.getIcmpType(), upperBound8));
+    add(mkLe(_symbolicPacket.getIpProtocol(), upperBound8));
+
+    // Valid 4 bit integer
+    add(mkGe(_symbolicPacket.getIcmpCode(), zero));
+    add(mkLt(_symbolicPacket.getIcmpCode(), upperBound4));
+}
 
   /*
    * Constraint each variable to fall within a valid range.
@@ -2111,11 +2272,18 @@ class EncoderSlice {
           }
           BoolExpr notBlocked = mkAnd(fwd, acl);
           if (ge.getStart()!=null && ge.getEnd()!=null && (!_bothIfaceEdges.contains(ge))) {
-            System.out.println("Static Add " + ge);
-            BoolExpr shouldAdd = getCtx().mkBoolConst(_encoder.getId() + "_" + router +
-             "-StaticRouteAdd-" + ge);
-            addSoft(mkNot(shouldAdd), 2, "StaticAdd");
+            BoolExpr shouldAdd;
+            if (!_isTCE)
+            {
+              shouldAdd = getCtx().mkBoolConst(_encoder.getId() + "_" + router +
+               "-StaticRouteAdd-" + ge);
+              addSoft(mkNot(shouldAdd), 2, "StaticAdd");
+              _staticRouteAddSoft.put(ge, shouldAdd);
+            } else {
+              shouldAdd = _existsES.getStaticRouteAddSoft().get(ge);
+            }
             notBlocked = mkOr(notBlocked, shouldAdd);
+            
           }
           add(mkEq(notBlocked, dForward));
         }
@@ -2147,7 +2315,7 @@ class EncoderSlice {
     if (vars.getIsUsed()) {
 
       if (proto.isConnected()) {
-        System.out.println("Connected Import " + e.getEdge());
+        //System.out.println("Connected Import " + e.getEdge());
         Prefix p = iface.getPrefix();
         BoolExpr relevant =
             mkAnd(
@@ -2164,7 +2332,7 @@ class EncoderSlice {
       }
 
       if (proto.isStatic()) {
-        System.out.println("Static Import " + e.getEdge());
+        //System.out.println("Static Import " + e.getEdge());
         List<StaticRoute> srs = getGraph().getStaticRoutes().get(router, iface.getName());
         assert (srs != null);
         BoolExpr acc = mkNot(vars.getPermitted());
@@ -2285,7 +2453,7 @@ class EncoderSlice {
 
           List<Statement> statements;
           if (pol == null) {
-            System.out.println("\nEmpty Import Policy\n");
+            //System.out.println("\nEmpty Import Policy\n");
             Statements.StaticStatement s = new Statements.StaticStatement(Statements.ExitAccept);
             statements = Collections.singletonList(s);
           } else {
@@ -2297,7 +2465,7 @@ class EncoderSlice {
           TransferSSA f =
               new TransferSSA(this, conf, varsOther, vars, proto, statements, cost, ge, false);
           importFunction = f.compute();
-          System.out.println("** IMPORT **\n" + importFunction + "\n**   **");
+          //System.out.println("** IMPORT **\n" + importFunction + "\n**   **");
 
           BoolExpr shouldAddFilter = getCtx().mkBoolConst(_encoder.getId() + "_" + router
            + "ImportFilterAddSoft" + vars.getName());
@@ -2348,13 +2516,13 @@ class EncoderSlice {
     if (!_optimizations.getSliceCanKeepSingleExportVar().get(router).get(proto) || !usedExport) {
 
       if (proto.isConnected()) {
-        System.out.println("Connected Export");
+        //System.out.println("Connected Export");
         BoolExpr val = mkNot(vars.getPermitted());
         add(val);
       }
 
       if (proto.isStatic()) {
-        System.out.println("Static Export");
+        //System.out.println("Static Export");
         BoolExpr val = mkNot(vars.getPermitted());
         add(val);
       }
@@ -2456,6 +2624,7 @@ class EncoderSlice {
 
           acc = mkIf(usesOspf, mkIf(usable, acc, val), mkIf(usable2, mkAnd(eq, eqPer), val));
         } else {
+          /*
           if (softospf!=null) {
             f =
                 new TransferSSA(
@@ -2484,8 +2653,8 @@ class EncoderSlice {
 
           } else {
             acc = mkIf(usable, acc, val);
-          }
-          //acc = mkIf(usable, acc, val);
+          }*/
+          acc = mkIf(usable, acc, val);
         }
 
         allacc = acc;
@@ -2530,10 +2699,10 @@ class EncoderSlice {
               BoolExpr better = mkOr(betterLen, mkAnd(equalLen, betterAd));
               BoolExpr betterRedistributed = mkAnd(ospfRedistribVars.getPermitted(), better);
               relevant = mkAnd(relevant, mkNot(betterRedistributed));
-            } else if (softospf != null) {
+            }/* else if (softospf != null) {
               BoolExpr betterRedistributed = softospf.getPermitted();
               relevant = mkAnd(relevant, mkNot(betterRedistributed));              
-            }
+            }*/
 
             acc = mkIf(relevant, values, acc);
           }
@@ -2971,6 +3140,13 @@ class EncoderSlice {
    * relevant constraints.
    */
   void computeEncoding() {
+    if (_isTCE) {
+      addSymbolicPacketBoundConstraints();
+      addDataForwardingConstraints();
+      addHeaderSpaceConstraint();
+      return;
+    }
+
     addBoundConstraints();
     addCommunityConstraints();
     addTransferFunction();
@@ -2979,7 +3155,6 @@ class EncoderSlice {
     addChoicePerProtocolConstraints();
     addBestOverallConstraints();
     addControlForwardingConstraints();
-    //addStaticRouteSoftConstraints();
     addDataForwardingConstraints();
     addUnusedDefaultValueConstraints();
     addHeaderSpaceConstraint();
@@ -3079,4 +3254,25 @@ class EncoderSlice {
   Table2<String, Protocol, Set<Prefix>> getAllOriginatedNetworks() {
     return _allOriginatedNetworks;
   }
+
+   private Table2<String, Protocol, Set<Protocol>> getSoftRedistributed() {
+    return _softRedistributed;
+  }
+
+  Set<GraphEdge> getBothIfaceEdges() {
+    return _bothIfaceEdges;
+  }
+
+  Map<String, SymbolicRoute> getOspfRedistributed() {
+    return _ospfRedistributed;
+  }
+
+  Map<String, SymbolicRoute> getSoftOspfRedistributed() {
+    return _softOspfRedistributed;
+  }
+
+  Map<GraphEdge, BoolExpr> getStaticRouteAddSoft() {
+    return _staticRouteAddSoft;
+  }
+
 }

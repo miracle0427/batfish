@@ -78,10 +78,11 @@ public class PropertyChecker {
   class Ips {
     public IpWildcard srcip;
     public IpWildcard dstip;
-
-    public Ips(IpWildcard src, IpWildcard dst) {
+    public String prop;
+    public Ips(IpWildcard src, IpWildcard dst, String property) {
       srcip = src;
       dstip = dst;
+      prop = property;
     }
   }
 
@@ -729,15 +730,15 @@ public class PropertyChecker {
     IpWildcard s1, s2;
     String line;
     try {
-      System.out.println("\nRead reachability.txt\n");
-      BufferedReader reader = new BufferedReader(new FileReader("reachability.txt"));
+      System.out.println("\nRead properties.txt\n");
+      BufferedReader reader = new BufferedReader(new FileReader("properties.txt"));
       while((line = reader.readLine()) != null) {
         String[] split = line.split(" ");
-        s1 = new IpWildcard(split[0]);
-        s2 = new IpWildcard(split[1]);
+        s1 = new IpWildcard(split[1]);
+        s2 = new IpWildcard(split[2]);
         srcIps.add(s1);
         dstIps.add(s2);
-        Ips ip_set = new Ips(s1, s2);
+        Ips ip_set = new Ips(s1, s2, split[0]);
         ips.add(ip_set);
       }
       reader.close();
@@ -746,22 +747,9 @@ public class PropertyChecker {
     }
     h.setDstIps(dstIps);
     h.setSrcIps(srcIps);
-    System.out.println(" Src Ip " + srcIps + "   Dst Ip " + dstIps);
+    //System.out.println(" Src Ip " + srcIps + "   Dst Ip " + dstIps);
     q.setHeaderSpace(h);
-    /*
-    Set<GraphEdge> destPorts = findFinalInterfaces(graph, p);
-    List<String> sourceRouters = PatternUtils.findMatchingSourceNodes(graph, p);
-    
 
-    if (destPorts.isEmpty()) {
-      throw new BatfishException("Set of valid destination interfaces is empty");
-    }
-    if (sourceRouters.isEmpty()) {
-      throw new BatfishException("Set of valid ingress nodes is empty");
-    }
-
-    inferDestinationHeaderSpace(graph, destPorts, q);
-    */
     Set<GraphEdge> failOptions = failLinkSet(graph, q);
     Stream<Supplier<EquivalenceClass>> stream = createEquivalenceClasses(q, graph, true);
 
@@ -790,54 +778,117 @@ public class PropertyChecker {
                 SortedSet<IpWildcard> dIps = new TreeSet<IpWildcard>();
                 sIps.add(currIp.srcip);
                 dIps.add(currIp.dstip);
-                h.setSrcIps(sIps);
-                h.setDstIps(dIps);
-                System.out.println(" setSrcIps " + sIps + "  setDstIps " + dIps);
-                q.setHeaderSpace(h);
 
-                // Make sure the headerspace is correct
-                HeaderLocationQuestion question = new HeaderLocationQuestion(q);
-                //question.setHeaderSpace(ec.getHeaderSpace());
-                question.setHeaderSpace(h);
+                switch (currIp.prop) {
+                  case "reachable":
+                  {
+                    h.setSrcIps(sIps);
+                    h.setDstIps(dIps);
+                    //System.out.println(" setSrcIps " + sIps + "  setDstIps " + dIps);
+                    q.setHeaderSpace(h);
 
-                // Get the EC graph and mapping
-                Graph g = ec.getGraph();
+                    // Make sure the headerspace is correct
+                    HeaderLocationQuestion question = new HeaderLocationQuestion(q);
+                    //question.setHeaderSpace(ec.getHeaderSpace());
+                    question.setHeaderSpace(h);
 
-                PathRegexes p1 = new PathRegexes(q);
-                Set<GraphEdge> destPorts1 = findFinalInterfaces(graph, p1);
-                List<String> sourceRouters1 = PatternUtils.findMatchingSourceNodes(graph, p1);
-                inferDestinationHeaderSpace(graph, destPorts1, q);
+                    // Get the EC graph and mapping
+                    Graph g = ec.getGraph();
 
-                srcRouters = mapConcreteToAbstract(ec, sourceRouters1);
-                Encoder newenc = null;
-                long l1 = System.currentTimeMillis();
-                if (firstDone == false) {
-                  newenc = new Encoder(g, question);
-                } else {
-                  newenc = new Encoder(enc, g);
+                    PathRegexes p1 = new PathRegexes(q);
+                    Set<GraphEdge> destPorts1 = findFinalInterfaces(graph, p1);
+                    List<String> sourceRouters1 = PatternUtils.findMatchingSourceNodes(graph, p1);
+                    inferDestinationHeaderSpace(graph, destPorts1, q);
+
+                    srcRouters = mapConcreteToAbstract(ec, sourceRouters1);
+                    Encoder newenc = null;
+                    long l1 = System.currentTimeMillis();
+                    if (firstDone == false) {
+                      newenc = new Encoder(g, question, currIp.srcip, currIp.dstip);
+                    } else {
+                      newenc = new Encoder(enc, g, question, currIp.srcip, currIp.dstip);
+                    }
+                    firstDone = true;
+                    newenc.computeEncoding();
+                    if (question.getBenchmark()) {
+                      System.out.println("  Base Encoding: " + (System.currentTimeMillis() - l1));
+                    }
+
+                    // Add environment constraints for base case
+                    addEnvironmentConstraints(newenc, question.getBaseEnvironmentType());
+
+                    prop = reachability.apply(newenc, srcRouters, destPorts1);
+
+                    BoolExpr allProp = newenc.mkTrue();
+                    
+                    for (String router : srcRouters) {
+                      BoolExpr r = prop.get(router);
+                      allProp = newenc.mkAnd(allProp, r);
+                    }
+                    
+                    newenc.add(allProp);
+
+                    addFailureConstraints(newenc, destPorts1, failOptions);
+                    enc = newenc;
+                    break;
+                  }
+                  case "block":
+                  {
+                    h.setSrcIps(sIps);
+                    h.setDstIps(dIps);
+                    //System.out.println(" setSrcIps " + sIps + "  setDstIps " + dIps);
+                    q.setHeaderSpace(h);
+
+                    // Make sure the headerspace is correct
+                    HeaderLocationQuestion question = new HeaderLocationQuestion(q);
+                    //question.setHeaderSpace(ec.getHeaderSpace());
+                    question.setHeaderSpace(h);
+
+                    // Get the EC graph and mapping
+                    Graph g = ec.getGraph();
+
+                    PathRegexes p1 = new PathRegexes(q);
+                    Set<GraphEdge> destPorts1 = findFinalInterfaces(graph, p1);
+                    List<String> sourceRouters1 = PatternUtils.findMatchingSourceNodes(graph, p1);
+                    inferDestinationHeaderSpace(graph, destPorts1, q);
+
+                    srcRouters = mapConcreteToAbstract(ec, sourceRouters1);
+                    Encoder newenc = null;
+                    long l1 = System.currentTimeMillis();
+                    if (firstDone == false) {
+                      newenc = new Encoder(g, question, currIp.srcip, currIp.dstip);
+                    } else {
+                      newenc = new Encoder(enc, g, question, currIp.srcip, currIp.dstip);
+                    }
+                    firstDone = true;
+                    newenc.computeEncoding();
+                    if (question.getBenchmark()) {
+                      System.out.println("  Base Encoding: " + (System.currentTimeMillis() - l1));
+                    }
+
+                    // Add environment constraints for base case
+                    addEnvironmentConstraints(newenc, question.getBaseEnvironmentType());
+
+                    prop = reachability.apply(newenc, srcRouters, destPorts1);
+
+                    BoolExpr allProp = newenc.mkTrue();
+                    
+                    for (String router : srcRouters) {
+                      BoolExpr r = prop.get(router);
+                      allProp = newenc.mkAnd(allProp, r);
+                    }
+                    
+                    newenc.add(newenc.mkNot(allProp));
+
+                    addFailureConstraints(newenc, destPorts1, failOptions);
+                    enc = newenc;
+                    break;
+                  }
+                  default:
+                    System.out.println("\nProperty to check does not exists");
+                    break;
                 }
-                firstDone = true;
-                newenc.computeEncoding();
-                if (question.getBenchmark()) {
-                  System.out.println("  Base Encoding: " + (System.currentTimeMillis() - l1));
-                }
 
-                // Add environment constraints for base case
-                addEnvironmentConstraints(newenc, question.getBaseEnvironmentType());
-
-                prop = reachability.apply(newenc, srcRouters, destPorts1);
-
-                BoolExpr allProp = newenc.mkTrue();
-                
-                for (String router : srcRouters) {
-                  BoolExpr r = prop.get(router);
-                  allProp = newenc.mkAnd(allProp, r);
-                }
-                
-                newenc.add(allProp);
-
-                addFailureConstraints(newenc, destPorts1, failOptions);
-                enc = newenc;
               }
   
               try {
@@ -969,7 +1020,6 @@ public class PropertyChecker {
    * one or more destinations.
    */
   public AnswerElement checkMul(HeaderLocationQuestion q) {
-    System.out.println("\ncheckMul\n");
     SmtMulAnswerElement mul;
     return checkAllProperty(
       q,
