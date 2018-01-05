@@ -64,6 +64,11 @@ class SymbolicDecisions {
     return _dataForwarding;
   }
 
+  void setDataForwarding() {
+    _dataForwarding = new Table2<>();
+  }
+
+
   @Nullable
   SymbolicRoute getBestVars(Optimizations opts, String router, Protocol proto) {
     if (opts.getSliceHasSingleProtocol().contains(router)) {

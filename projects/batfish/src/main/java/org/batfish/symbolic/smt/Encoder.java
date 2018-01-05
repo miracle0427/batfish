@@ -91,6 +91,18 @@ public class Encoder {
 
   private Settings _settings;
 
+  private IpWildcard _srcIp;
+  
+  private IpWildcard _dstIp;
+
+  public Map<IpWildcard, Encoder> _dstEncoders;
+
+  public Map<IpWildcard, Map<IpWildcard, Encoder>> _tcEncoders;
+
+  public boolean _dstEncoderExists;
+
+  public boolean _tcEncoderExists;
+
   /**
    * @archie created this variable. optsolve will use same constraints as solver, but can support soft
    * constraints
@@ -144,6 +156,131 @@ public class Encoder {
   Encoder(Encoder e, Graph g, HeaderQuestion q) {
     this(e._settings, e, g, q, e.getCtx(), e.getSolver(), e.getAllVariables(), e.getId() + 1);
   }
+
+
+  /**
+   * Create an encoder object that will consider all packets in the provided headerspace.
+   *
+   * @param graph The network graph
+   * @param q A header question
+   * @param src source ip used to create encoder
+   * @param dst destination ip used to create encoder
+   */
+  Encoder(Graph graph, HeaderQuestion q, IpWildcard src, IpWildcard dst) {
+    this(null, graph, q, null, null, null, 0, src, dst);
+  }
+
+
+  /**
+   * Create an encoder object from an existing encoder.
+   *
+   * @param e An existing encoder object
+   * @param g An existing network graph
+   * @param q A header question
+   * @param src source ip used to create encoder
+   * @param dst destination ip used to create encoder
+   */
+  Encoder(Encoder e, Graph g, HeaderQuestion q, IpWildcard src, IpWildcard dst) {
+    this(e, g, q, e.getCtx(), e.getSolver(), e.getAllVariables(), e.getId() + 1,
+     src, dst);
+  }
+
+
+  /**
+   * Create an encoder object while possibly reusing the partial encoding of another encoder. mkIf
+   * the context and solver are null, then a new encoder is created. Otherwise the old encoder is
+   * used.
+   */
+  private Encoder(
+      @Nullable Encoder enc,
+      Graph graph,
+      HeaderQuestion q,
+      @Nullable Context ctx,
+      @Nullable Solver solver,
+      @Nullable Map<String, Expr> vars,
+      int id,
+      IpWildcard src,
+      IpWildcard dst) {
+    _graph = graph;
+    _previousEncoder = enc;
+    _modelIgp = true;
+    _encodingId = id;
+    _encId = "_enc_" + Integer.toString(id);
+    _question = q;
+    _slices = new HashMap<>();
+    _sliceReachability = new HashMap<>();
+    _srcIp = src;
+    _dstIp = dst;
+
+    HashMap<String, String> cfg = new HashMap<>();
+
+    if (enc == null) {
+      _dstEncoders =  new HashMap<>();
+      _tcEncoders =  new HashMap<>();
+    } else {
+      _dstEncoders = enc._dstEncoders;
+      _tcEncoders = enc._tcEncoders;
+    }
+
+    _dstEncoderExists = _dstEncoders.containsKey(dst);
+    _tcEncoderExists = false;
+
+    if (_dstEncoderExists) {
+      _tcEncoderExists = _tcEncoders.get(dst).containsKey(src);
+    }
+
+    // allows for unsat core when debugging
+    if (ENABLE_UNSAT_CORE) {
+      cfg.put("proof", "true");
+      cfg.put("auto-config", "false");
+    }
+
+    _ctx = (ctx == null ? new Context(cfg) : ctx);
+
+    _optsolve = _ctx.mkOptimize(); 
+
+    if (solver == null) {
+      if (ENABLE_UNSAT_CORE) {
+        _solver = _ctx.mkSolver();
+      } else {
+        Tactic t1 = _ctx.mkTactic("simplify");
+        Tactic t2 = _ctx.mkTactic("propagate-values");
+        Tactic t3 = _ctx.mkTactic("solve-eqs");
+        Tactic t4 = _ctx.mkTactic("bit-blast");
+        Tactic t5 = _ctx.mkTactic("smt");
+        Tactic t = _ctx.then(t1, t2, t3, t4, t5);
+        _solver = _ctx.mkSolver(t);
+        // System.out.println("Help: \n" + _solver.getHelp());
+      }
+    } else {
+      _solver = solver;
+    }
+
+    _symbolicFailures = new SymbolicFailures(this._ctx);
+
+    if (vars == null) {
+      _allVariables = new HashMap<>();
+    } else {
+      _allVariables = vars;
+      _optsolve = enc.getOptimize();
+      _solver = enc.getSolver();
+    }
+
+    if (ENABLE_DEBUGGING) {
+      System.out.println(graph);
+    }
+
+    _unsatCore = new UnsatCore(ENABLE_UNSAT_CORE);
+
+    if (id == 0) {
+      initFailedLinkVariables();
+    } else {
+      _symbolicFailures = enc.getSymbolicFailures();
+    }
+    modInitSlices(_question.getHeaderSpace(), graph);
+  }
+
+
 
   /**
    * Create an encoder object while possibly reusing the partial encoding of another encoder. If the
@@ -220,6 +357,17 @@ public class Encoder {
   }
 
   /*
+   * Return Source and destination Ip used to create this encoder
+   */
+  IpWildcard getSrcIp() {
+    return _srcIp;
+  } 
+
+  IpWildcard getDstIp() {
+    return _dstIp;
+  } 
+
+  /*
    * Initialize symbolic variables to represent link failures.
    */
   private void initFailedLinkVariables() {
@@ -245,6 +393,81 @@ public class Encoder {
         ArithExpr var = _ctx.mkIntConst(name);
         _symbolicFailures.getFailedInternalLinks().put(router, peer, var);
         _allVariables.put(var.toString() + getStringId(), var);
+      }
+    }
+  }
+
+
+  /*
+   * Modified Initialize encoding slice.
+   */
+  private void modInitSlices(HeaderSpace h, Graph g) {
+    if (_tcEncoderExists) {
+        Encoder copy = _tcEncoders.get(_dstIp).get(_srcIp);
+        _slices = copy.getSlices();
+        _sliceReachability = copy.getSliceReachability();
+    } else {
+      if (!_dstEncoderExists) {
+        if (g.getIbgpNeighbors().isEmpty() || !_modelIgp) {
+          _slices.put(MAIN_SLICE_NAME, new EncoderSlice(this, h, g, ""));
+        } else {
+          _slices.put(MAIN_SLICE_NAME, new EncoderSlice(this, h, g, MAIN_SLICE_NAME));
+        }
+      } else {
+        if (g.getIbgpNeighbors().isEmpty() || !_modelIgp) {
+          _slices.put(MAIN_SLICE_NAME, new EncoderSlice(this, h, g, "",
+           _dstEncoders.get(_dstIp).getMainSlice() ));
+        } else {
+          _slices.put(MAIN_SLICE_NAME, new EncoderSlice(this, h, g, MAIN_SLICE_NAME,
+           _dstEncoders.get(_dstIp).getMainSlice() ));
+        }        
+      }
+    }
+
+
+    if (_modelIgp) {
+      SortedSet<Pair<String, Ip>> ibgpRouters = new TreeSet<>();
+
+      for (Entry<GraphEdge, BgpNeighbor> entry : g.getIbgpNeighbors().entrySet()) {
+        GraphEdge ge = entry.getKey();
+        BgpNeighbor n = entry.getValue();
+        String router = ge.getRouter();
+        Ip ip = n.getLocalIp();
+        Pair<String, Ip> pair = new Pair<>(router, ip);
+
+        // Add one slice per (router, source ip) pair
+        if (!ibgpRouters.contains(pair)) {
+
+          ibgpRouters.add(pair);
+
+          // Create a control plane slice only for this ip
+          HeaderSpace hs = new HeaderSpace();
+
+          // Make sure messages are sent to this destination IP
+          SortedSet<IpWildcard> ips = new TreeSet<>();
+          ips.add(new IpWildcard(n.getLocalIp()));
+          hs.setDstIps(ips);
+
+          // Make sure messages use TCP port 179
+          SortedSet<SubRange> dstPorts = new TreeSet<>();
+          dstPorts.add(new SubRange(179, 179));
+          hs.setDstPorts(dstPorts);
+
+          // Make sure messages use the TCP protocol
+          SortedSet<IpProtocol> protocols = new TreeSet<>();
+          protocols.add(IpProtocol.TCP);
+          hs.setIpProtocols(protocols);
+
+          // TODO: create domains once
+          Graph gNew = new Graph(g.getBatfish(), null, g.getDomain(router));
+          String sliceName = "SLICE-" + router + "_";
+          EncoderSlice slice = new EncoderSlice(this, hs, gNew, sliceName);
+          _slices.put(sliceName, slice);
+
+          PropertyAdder pa = new PropertyAdder(slice);
+          Map<String, BoolExpr> reachVars = pa.instrumentReachability(router);
+          _sliceReachability.put(router, reachVars);
+        }
       }
     }
   }
@@ -846,6 +1069,11 @@ public class Encoder {
       throw new BatfishException(
           "Cannot encode a network that has a static route with a dynamic next hop");
     }
+
+    if (_tcEncoderExists) {
+      return;
+    }
+
     addFailedConstraints(_question.getFailures());
     getMainSlice().computeEncoding();
     for (Entry<String, EncoderSlice> entry : _slices.entrySet()) {
@@ -855,6 +1083,25 @@ public class Encoder {
         slice.computeEncoding();
       }
     }
+
+    if ((_dstIp!= null) && (_srcIp!= null)) {
+
+      if (!_dstEncoderExists) {
+        _dstEncoders.put(_dstIp, this);
+        Map<IpWildcard, Encoder> srcTc = new HashMap<>();
+        srcTc.put(_srcIp, this);
+        _tcEncoders.put(_dstIp, srcTc);
+      
+      } else {
+        if (!_tcEncoders.get(_dstIp).containsKey(_srcIp)) {
+          _tcEncoders.get(_dstIp).put(_srcIp, this);
+        }
+      }
+
+      //System.out.println("dETGS: " + _dstEncoders);
+      //System.out.println("tcETGS: " + _tcEncoders);
+    }
+
   }
 
   /*
@@ -936,5 +1183,7 @@ public class Encoder {
 
   public BitVecExpr mkBVAND(BitVecExpr expr, BitVecExpr mask) {
     return _ctx.mkBVAND(expr, mask);
+  private EncoderSlice getPreviousEncoderSlice() {
+    return _previousEncoder.getMainSlice();
   }
 }
