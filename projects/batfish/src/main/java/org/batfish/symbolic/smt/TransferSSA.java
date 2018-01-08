@@ -11,6 +11,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeSet;
 import org.batfish.common.BatfishException;
 import org.batfish.common.Pair;
 import org.batfish.datamodel.BgpNeighbor;
@@ -156,6 +157,8 @@ class TransferSSA {
 
   private boolean _isExport;
 
+  private String _currentName;
+
   TransferSSA(
       EncoderSlice encoderSlice,
       Configuration conf,
@@ -177,6 +180,7 @@ class TransferSSA {
     _iface = ge.getStart();
     _isExport = isExport;
     _aggregates = null;
+    _currentName = current.getName().substring(1+current.getName().indexOf('_'));
   }
 
   /*
@@ -879,6 +883,7 @@ class TransferSSA {
         break;
       case "LOCAL-PREF":
         p.getData().setLocalPref((ArithExpr) expr);
+        System.out.println("\n3 **** " + expr + "\n\n");
         break;
       case "OSPF-TYPE":
         p.getData().getOspfType().setBitVec((BitVecExpr) expr);
@@ -952,6 +957,7 @@ class TransferSSA {
       Expr t = (trueBranch == null ? p.getData().getLocalPref() : trueBranch);
       Expr f = (falseBranch == null ? p.getData().getLocalPref() : falseBranch);
       ArithExpr newValue = _enc.mkIf(guard, (ArithExpr) t, (ArithExpr) f);
+      System.out.println("\n1. **** " + newValue + "\n\n");
       newValue = _enc.mkIf(r.getReturnAssignedValue(), p.getData().getLocalPref(), newValue);
       ArithExpr ret = createArithVariableWith(p, "LOCAL-PREF", newValue);
       p.getData().setLocalPref(ret);
@@ -994,6 +1000,49 @@ class TransferSSA {
     throw new BatfishException("[joinPoint]: unhandled case for " + variableName);
   }
 
+
+  private ArithExpr getVarLocalPref(int actualVal) {
+    Map<String, ArithExpr> prefMap = _enc.getLocalPrefMap();
+    if (prefMap.containsKey(_currentName)) {
+      return prefMap.get(_currentName);
+    }
+    TreeSet<Integer> sets = _enc.getLocalPrefSet();
+    int highestVal = sets.last() + 1;
+    ArithExpr val = _enc.getCtx().mkInt(highestVal);
+    BoolExpr exists = _enc.mkFalse();
+    BoolExpr doesChange = _enc.mkFalse();
+    for (Integer intval : sets) {
+      BoolExpr lp1 = _enc.getCtx().mkBoolConst(_currentName + "_localpref_" + (intval-1));
+      BoolExpr lp2 = _enc.getCtx().mkBoolConst(_currentName + "_localpref_" + intval);
+      val = _enc.mkIf(lp1, _enc.getCtx().mkInt(intval-1), val);
+      //_enc.addSoft(_enc.mkNot(lp1), 2, "localpref");
+      val = _enc.mkIf(lp2, _enc.getCtx().mkInt(intval), val);
+      if (actualVal == intval) {
+        _enc.addSoft(lp2, 2, "localpref");
+        doesChange = _enc.mkOr(doesChange, lp1, _enc.mkNot(lp2));
+      } else {
+        //_enc.addSoft(_enc.mkNot(lp2), 2, "localpref");
+        doesChange = _enc.mkOr(doesChange, lp1, lp2);
+      }
+      exists =_enc.mkOr(exists, lp1, lp2);
+    }
+    BoolExpr lp = _enc.getCtx().mkBoolConst(_currentName + "_localpref_" + highestVal);
+    lp =_enc.mkNot(exists);
+    _enc.addSoft(_enc.mkNot(doesChange), 2, "localpref");
+    //System.out.println("\nExists: " + lp + "\nVal:  " + val);
+    prefMap.put(_currentName, val);
+    return val;
+  }
+
+  private int getIntFromExpr(IntExpr e) {
+    if (e instanceof LiteralInt) {
+      LiteralInt z = (LiteralInt) e;
+      return z.getValue();
+    }
+    return 0;
+  }
+
+
   /*
    * Convert a list of statements into a Z3 boolean expression for the transfer function.
    */
@@ -1002,9 +1051,7 @@ class TransferSSA {
       TransferParam<SymbolicRoute> p,
       TransferResult<BoolExpr, BoolExpr> result) {
     boolean doesReturn = false;
-    System.out.println("Statements Size: " + statements.size());
     for (Statement stmt : statements) {
-      System.out.println("Stmt: " + stmt);
       if (stmt instanceof StaticStatement) {
         StaticStatement ss = (StaticStatement) stmt;
 
@@ -1194,8 +1241,14 @@ class TransferSSA {
         SetLocalPreference slp = (SetLocalPreference) stmt;
         IntExpr ie = slp.getLocalPreference();
         ArithExpr newValue = applyIntExprModification(p.getData().getLocalPref(), ie);
+        int lpValue = getIntFromExpr(ie);
         newValue = _enc.mkIf(result.getReturnAssignedValue(), p.getData().getLocalPref(), newValue);
         ArithExpr x = createArithVariableWith(p, "LOCAL-PREF", newValue);
+
+        System.out.println("\n2.  **** " + x + " XX =   " + lpValue);
+        //ArithExpr oneh = _enc.mkInt(100);
+        ArithExpr getAllVal = getVarLocalPref(lpValue);
+        x = getAllVal;//_enc.mkIf(_enc.mkTrue(), oneh, x);
         p.getData().setLocalPref(x);
         result = result.addChangedVariable("LOCAL-PREF", x);
 

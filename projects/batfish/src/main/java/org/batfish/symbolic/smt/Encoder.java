@@ -1183,7 +1183,9 @@ public class Encoder {
 
   public BitVecExpr mkBVAND(BitVecExpr expr, BitVecExpr mask) {
     return _ctx.mkBVAND(expr, mask);
-  private EncoderSlice getPreviousEncoderSlice() {
+  }
+  
+  public EncoderSlice getPreviousEncoderSlice() {
     return _previousEncoder.getMainSlice();
   }
 }

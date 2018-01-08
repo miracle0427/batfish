@@ -762,8 +762,8 @@ public class PropertyChecker {
    */
   private AnswerElement checkAllProperty(
       HeaderLocationQuestion q,
-      TriFunction<Encoder, Set<String>, Set<GraphEdge>, Map<String, BoolExpr>> reachability,/*
-      TriFunction<Encoder, Set<String>, Set<GraphEdge>, Map<String, BoolExpr>> boundedLength,
+      TriFunction<Encoder, Set<String>, Set<GraphEdge>, Map<String, BoolExpr>> reachability,
+      TriFunction<Encoder, Set<String>, Set<GraphEdge>, Map<String, BoolExpr>> boundedLength,/*
       TriFunction<Encoder, Set<String>, Set<GraphEdge>, Map<String, BoolExpr>> equalLength,
       TriFunction<Encoder, Set<String>, Set<GraphEdge>, Map<String, BoolExpr>> loadBalancing,*/
       Function<VerifyParam, AnswerElement> answer) {
@@ -843,9 +843,9 @@ public class PropertyChecker {
                     Graph g = ec.getGraph();
 
                     PathRegexes p1 = new PathRegexes(q);
-                    Set<GraphEdge> destPorts1 = findFinalInterfaces(graph, p1);
-                    List<String> sourceRouters1 = PatternUtils.findMatchingSourceNodes(graph, p1);
-                    inferDestinationHeaderSpace(graph, destPorts1, q);
+                    Set<GraphEdge> destPorts1 = findFinalInterfaces(g, p1);
+                    List<String> sourceRouters1 = PatternUtils.findMatchingSourceNodes(g, p1);
+                    inferDestinationHeaderSpace(g, destPorts1, q);
 
                     srcRouters = mapConcreteToAbstract(ec, sourceRouters1);
                     Encoder newenc = null;
@@ -895,9 +895,9 @@ public class PropertyChecker {
                     Graph g = ec.getGraph();
 
                     PathRegexes p1 = new PathRegexes(q);
-                    Set<GraphEdge> destPorts1 = findFinalInterfaces(graph, p1);
-                    List<String> sourceRouters1 = PatternUtils.findMatchingSourceNodes(graph, p1);
-                    inferDestinationHeaderSpace(graph, destPorts1, q);
+                    Set<GraphEdge> destPorts1 = findFinalInterfaces(g, p1);
+                    List<String> sourceRouters1 = PatternUtils.findMatchingSourceNodes(g, p1);
+                    inferDestinationHeaderSpace(g, destPorts1, q);
 
                     srcRouters = mapConcreteToAbstract(ec, sourceRouters1);
                     Encoder newenc = null;
@@ -926,6 +926,197 @@ public class PropertyChecker {
                     }
                     
                     newenc.add(newenc.mkNot(allProp));
+
+                    addFailureConstraints(newenc, destPorts1, failOptions);
+                    enc = newenc;
+                    break;
+                  }
+                  case "blackhole":
+                  {
+                    h.setSrcIps(sIps);
+                    h.setDstIps(dIps);
+                    q.setHeaderSpace(h);
+
+                    // Make sure the headerspace is correct
+                    HeaderLocationQuestion question = new HeaderLocationQuestion(q);
+                    //question.setHeaderSpace(ec.getHeaderSpace());
+                    question.setHeaderSpace(h);
+
+                    // Get the EC graph and mapping
+                    Graph g = ec.getGraph();
+
+                    Encoder newenc = null;
+
+                    if (firstDone == false) {
+                      newenc = new Encoder(g, question, currIp.srcip, currIp.dstip);
+                    } else {
+                      newenc = new Encoder(enc, g, question, currIp.srcip, currIp.dstip);
+                    }
+                    firstDone = true;
+
+
+                    newenc.computeEncoding();
+                    Context ctx = newenc.getCtx();
+                    EncoderSlice slice = newenc.getMainSlice();
+
+                    // Collect routers that have no host/environment edge
+                    List<String> toCheck = new ArrayList<>();
+                    for (Entry<String, List<GraphEdge>> entry : g.getEdgeMap().entrySet()) {
+                      String router = entry.getKey();
+                      List<GraphEdge> edges = entry.getValue();
+                      boolean check = true;
+                      for (GraphEdge edge : edges) {
+                        if (edge.getEnd() == null) {
+                          check = false;
+                          break;
+                        }
+                      }
+                      if (check) {
+                        toCheck.add(router);
+                      }
+                    }
+
+                    // Ensure the router never receives traffic and then drops the traffic
+                    BoolExpr someBlackHole = ctx.mkBool(false);
+                    for (String router : toCheck) {
+                      Map<GraphEdge, BoolExpr> edges = slice.getSymbolicDecisions().getDataForwarding().get(router);
+                      BoolExpr doesNotFwd = ctx.mkBool(true);
+                      for (Map.Entry<GraphEdge, BoolExpr> entry : edges.entrySet()) {
+                        BoolExpr dataFwd = entry.getValue();
+                        doesNotFwd = ctx.mkAnd(doesNotFwd, ctx.mkNot(dataFwd));
+                      }
+                      BoolExpr isFwdTo = ctx.mkBool(false);
+                      Set<String> neighbors = g.getNeighbors().get(router);
+                      for (String n : neighbors) {
+                        for (Map.Entry<GraphEdge, BoolExpr> entry :
+                            slice.getSymbolicDecisions().getDataForwarding().get(n).entrySet()) {
+                          GraphEdge ge = entry.getKey();
+                          BoolExpr fwd = entry.getValue();
+                          if (router.equals(ge.getPeer())) {
+                            isFwdTo = ctx.mkOr(isFwdTo, fwd);
+                          }
+                        }
+                      }
+                      someBlackHole = ctx.mkOr(someBlackHole, ctx.mkAnd(isFwdTo, doesNotFwd));
+                    }
+                    //System.out.println("someBlackHole " + someBlackHole);
+                    newenc.add(newenc.mkNot(someBlackHole));
+                    enc = newenc;
+                    break;
+                  }
+                  case "routingloop":
+                  {
+                    h.setSrcIps(sIps);
+                    h.setDstIps(dIps);
+                    q.setHeaderSpace(h);
+
+                    // Make sure the headerspace is correct
+                    HeaderLocationQuestion question = new HeaderLocationQuestion(q);
+                    //question.setHeaderSpace(ec.getHeaderSpace());
+                    question.setHeaderSpace(h);
+
+                    // Get the EC graph and mapping
+                    Graph g = ec.getGraph();
+
+                    // Collect all relevant destinations
+                    List<Prefix> prefixes = new ArrayList<>();
+                    g
+                        .getStaticRoutes()
+                        .forEach(
+                            (router, ifaceName, srs) -> {
+                              for (StaticRoute sr : srs) {
+                                prefixes.add(sr.getNetwork());
+                              }
+                            });
+
+                    SortedSet<IpWildcard> pfxs = new TreeSet<>();
+                    for (Prefix prefix : prefixes) {
+                      pfxs.add(new IpWildcard(prefix));
+                    }
+                    question.getHeaderSpace().setDstIps(pfxs);
+
+                    // Collect all routers that use static routes as a
+                    // potential node along a loop
+                    List<String> routers = new ArrayList<>();
+                    for (Entry<String, Configuration> entry : g.getConfigurations().entrySet()) {
+                      String router = entry.getKey();
+                      Configuration conf = entry.getValue();
+                      if (conf.getDefaultVrf().getStaticRoutes().size() > 0) {
+                        routers.add(router);
+                      }
+                    }
+
+                    Encoder newenc = null;
+
+                    if (firstDone == false) {
+                      newenc = new Encoder(g, question, currIp.srcip, currIp.dstip);
+                    } else {
+                      newenc = new Encoder(enc, g, question, currIp.srcip, currIp.dstip);
+                    }
+                    firstDone = true;
+
+                    newenc.computeEncoding();
+                    Context ctx = newenc.getCtx();
+                    EncoderSlice slice = newenc.getMainSlice();
+                    PropertyAdder pa = new PropertyAdder(slice);
+
+                    BoolExpr someLoop = ctx.mkBool(false);
+                    for (String router : routers) {
+                      BoolExpr hasLoop = pa.instrumentLoop(router);
+                      someLoop = ctx.mkOr(someLoop, hasLoop);
+                    }
+                    newenc.add(newenc.mkNot(someLoop));
+
+                    enc = newenc;
+                    break;
+                  }
+                  case "bounded":
+                  {
+                    h.setSrcIps(sIps);
+                    h.setDstIps(dIps);
+                    //System.out.println(" setSrcIps " + sIps + "  setDstIps " + dIps);
+                    q.setHeaderSpace(h);
+
+                    // Make sure the headerspace is correct
+                    HeaderLocationQuestion question = new HeaderLocationQuestion(q);
+                    //question.setHeaderSpace(ec.getHeaderSpace());
+                    question.setHeaderSpace(h);
+
+                    // Get the EC graph and mapping
+                    Graph g = ec.getGraph();
+
+                    PathRegexes p1 = new PathRegexes(q);
+                    Set<GraphEdge> destPorts1 = findFinalInterfaces(g, p1);
+                    List<String> sourceRouters1 = PatternUtils.findMatchingSourceNodes(g, p1);
+                    inferDestinationHeaderSpace(g, destPorts1, q);
+
+                    srcRouters = mapConcreteToAbstract(ec, sourceRouters1);
+                    Encoder newenc = null;
+                    long l1 = System.currentTimeMillis();
+                    if (firstDone == false) {
+                      newenc = new Encoder(g, question, currIp.srcip, currIp.dstip);
+                    } else {
+                      newenc = new Encoder(enc, g, question, currIp.srcip, currIp.dstip);
+                    }
+                    firstDone = true;
+                    newenc.computeEncoding();
+                    if (question.getBenchmark()) {
+                      System.out.println("  Base Encoding: " + (System.currentTimeMillis() - l1));
+                    }
+
+                    // Add environment constraints for base case
+                    addEnvironmentConstraints(newenc, question.getBaseEnvironmentType());
+
+                    prop = boundedLength.apply(newenc, srcRouters, destPorts1);
+
+                    BoolExpr allProp = newenc.mkTrue();
+                    
+                    for (String router : srcRouters) {
+                      BoolExpr r = prop.get(router);
+                      allProp = newenc.mkAnd(allProp, r);
+                    }
+                    
+                    newenc.add(allProp);
 
                     addFailureConstraints(newenc, destPorts1, failOptions);
                     enc = newenc;
@@ -1088,15 +1279,15 @@ public class PropertyChecker {
       (enc, srcRouters, destPorts) -> { // check reachability
         PropertyAdder pa = new PropertyAdder(enc.getMainSlice());
         return pa.instrumentReachability(destPorts);
-      },/*
+      },
       (enc, srcRouters, destPorts) -> { // check boundedLength
-        ArithExpr bound = enc.mkInt(k);
+        ArithExpr bound = enc.mkInt(1);
         PropertyAdder pa = new PropertyAdder(enc.getMainSlice());
         Map<String, ArithExpr> lenVars = pa.instrumentPathLength(destPorts);
         Map<String, BoolExpr> boundVars = new HashMap<>();
         lenVars.forEach((n, ae) -> boundVars.put(n, enc.mkLe(ae, bound)));
         return boundVars;
-      },
+      },/*
       (enc, srcRouters, destPorts) -> { // check EqualLength
         PropertyAdder pa = new PropertyAdder(enc.getMainSlice());
         Map<String, ArithExpr> lenVars = pa.instrumentPathLength(destPorts);
