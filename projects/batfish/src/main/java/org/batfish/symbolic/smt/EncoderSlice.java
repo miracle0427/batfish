@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.TreeSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -39,10 +40,14 @@ import org.batfish.datamodel.SubRange;
 import org.batfish.datamodel.TcpFlags;
 import org.batfish.datamodel.routing_policy.RoutingPolicy;
 import org.batfish.datamodel.routing_policy.expr.BooleanExpr;
+import org.batfish.datamodel.routing_policy.expr.IntExpr;
+import org.batfish.datamodel.routing_policy.expr.LiteralInt;
 import org.batfish.datamodel.routing_policy.expr.MatchProtocol;
 import org.batfish.datamodel.routing_policy.statement.If;
+import org.batfish.datamodel.routing_policy.statement.SetLocalPreference;
 import org.batfish.datamodel.routing_policy.statement.Statement;
 import org.batfish.datamodel.routing_policy.statement.Statements;
+import org.batfish.symbolic.AstVisitor;
 import org.batfish.symbolic.CommunityVar;
 import org.batfish.symbolic.Graph;
 import org.batfish.symbolic.GraphEdge;
@@ -111,6 +116,10 @@ class EncoderSlice {
   private Map<GraphEdge, BoolExpr> _staticRouteAddSoft;
 
   private EncoderSlice _oldES;
+
+  private TreeSet<Integer> _localPref;
+
+  private Map<String, ArithExpr> _localPrefMap;
   /**
    * Create a new encoding slice
    *
@@ -134,8 +143,10 @@ class EncoderSlice {
   EncoderSlice(Encoder enc, HeaderSpace h, Graph graph, String sliceName) {
     _encoder = enc;
     _first = (enc.getId() == 0);
+    _localPrefMap = new HashMap<>();
     if (!_first) {
       _oldES = enc.getPreviousEncoderSlice();
+      _localPrefMap = _oldES.getLocalPrefMap();
     }
     _sliceName = sliceName;
     _headerSpace = h;
@@ -148,6 +159,7 @@ class EncoderSlice {
     _softRedistributed = new Table2<>();
     _isTCE = false;
     _staticRouteAddSoft = new HashMap<>();
+    _localPref = new TreeSet<Integer>();
 
     enc.getAllVariables().put(_symbolicPacket.getDstIp().toString() + _encoder.getStringId(),
      _symbolicPacket.getDstIp());
@@ -225,8 +237,10 @@ class EncoderSlice {
   EncoderSlice(Encoder enc, HeaderSpace h, Graph graph, String sliceName, EncoderSlice existsES) {
     _encoder = enc;
     _first = (enc.getId() == 0);
+    _localPrefMap = new HashMap<>();
     if (!_first) {
       _oldES = enc.getPreviousEncoderSlice();
+      _localPrefMap = _oldES.getLocalPrefMap();
     }
     _sliceName = sliceName;
     _headerSpace = h;
@@ -240,6 +254,7 @@ class EncoderSlice {
     _isTCE = true;
     _existsES = existsES;
     _staticRouteAddSoft = new HashMap<>();
+    _localPref = new TreeSet<Integer>();
 
     enc.getAllVariables().put(_symbolicPacket.getDstIp().toString() + _encoder.getStringId(),
      _symbolicPacket.getDstIp());
@@ -1074,6 +1089,34 @@ class EncoderSlice {
    */
   private void initOptimizations() {
     _optimizations.computeOptimizations();
+    getLocalPref();
+  }
+
+
+  private void getLocalPref() {
+    getGraph()
+        .getConfigurations()
+        .forEach(
+            (router, conf) ->
+                conf.getRoutingPolicies()
+                    .forEach(
+                        (name, pol) -> {
+                          AstVisitor v = new AstVisitor();
+                          v.visit(
+                              conf,
+                              pol.getStatements(),
+                              stmt -> {
+                                if (stmt instanceof SetLocalPreference) {
+                                  SetLocalPreference slp = (SetLocalPreference) stmt;
+                                  IntExpr e = slp.getLocalPreference();
+                                  if (e instanceof LiteralInt) {
+                                    LiteralInt z = (LiteralInt) e;
+                                    _localPref.add(z.getValue());
+                                  }
+                                }
+                              },
+                              expr -> {});
+                        }));
   }
 
   private void initOriginatedPrefixes() {
@@ -2465,7 +2508,7 @@ private void addSymbolicPacketBoundConstraints() {
           TransferSSA f =
               new TransferSSA(this, conf, varsOther, vars, proto, statements, cost, ge, false);
           importFunction = f.compute();
-          //System.out.println("** IMPORT **\n" + importFunction + "\n**   **");
+          //System.out.println("** IMPORT **\n" + ge + "   " + importFunction + "\n**   **");
 
           BoolExpr shouldAddFilter = getCtx().mkBoolConst(_encoder.getId() + "_" + router
            + "ImportFilterAddSoft" + vars.getName());
@@ -3273,6 +3316,14 @@ private void addSymbolicPacketBoundConstraints() {
 
   Map<GraphEdge, BoolExpr> getStaticRouteAddSoft() {
     return _staticRouteAddSoft;
+  }
+
+  TreeSet<Integer> getLocalPrefSet() {
+    return _localPref;
+  }
+
+  Map<String, ArithExpr> getLocalPrefMap() {
+    return _localPrefMap;
   }
 
 }

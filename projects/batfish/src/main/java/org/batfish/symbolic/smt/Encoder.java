@@ -1161,7 +1161,7 @@ public class Encoder {
     this._question = question;
   }
 
-  private EncoderSlice getPreviousEncoderSlice() {
+  public EncoderSlice getPreviousEncoderSlice() {
     return _previousEncoder.getMainSlice();
   }
 }
