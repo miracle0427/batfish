@@ -67,6 +67,7 @@ import org.batfish.symbolic.answers.SmtReachabilityAnswerElement;
 import org.batfish.symbolic.collections.Table2;
 import org.batfish.symbolic.utils.PathRegexes;
 import org.batfish.symbolic.utils.PatternUtils;
+import org.batfish.symbolic.utils.QuadFunction;
 import org.batfish.symbolic.utils.TriFunction;
 import org.batfish.symbolic.utils.Tuple;
 
@@ -85,10 +86,17 @@ public class PropertyChecker {
     public IpWildcard srcip;
     public IpWildcard dstip;
     public String prop;
+    public int intval;
     public Ips(IpWildcard src, IpWildcard dst, String property) {
       srcip = src;
       dstip = dst;
       prop = property;
+    }
+    public Ips(IpWildcard src, IpWildcard dst, String property, String k) {
+      srcip = src;
+      dstip = dst;
+      prop = property;
+      intval = Integer.parseInt(k);
     }
   }
 
@@ -763,7 +771,7 @@ public class PropertyChecker {
   private AnswerElement checkAllProperty(
       HeaderLocationQuestion q,
       TriFunction<Encoder, Set<String>, Set<GraphEdge>, Map<String, BoolExpr>> reachability,
-      TriFunction<Encoder, Set<String>, Set<GraphEdge>, Map<String, BoolExpr>> boundedLength,/*
+      QuadFunction<Encoder, Set<String>, Set<GraphEdge>, Integer, Map<String, BoolExpr>> boundedLength,/*
       TriFunction<Encoder, Set<String>, Set<GraphEdge>, Map<String, BoolExpr>> equalLength,
       TriFunction<Encoder, Set<String>, Set<GraphEdge>, Map<String, BoolExpr>> loadBalancing,*/
       Function<VerifyParam, AnswerElement> answer) {
@@ -785,7 +793,12 @@ public class PropertyChecker {
         s2 = new IpWildcard(split[2]);
         srcIps.add(s1);
         dstIps.add(s2);
-        Ips ip_set = new Ips(s1, s2, split[0]);
+        Ips ip_set;
+        if (split.length > 3) {
+          ip_set = new Ips(s1, s2, split[0], split[3]);
+        } else {
+          ip_set = new Ips(s1, s2, split[0]);
+        }
         ips.add(ip_set);
       }
       reader.close();
@@ -1107,7 +1120,7 @@ public class PropertyChecker {
                     // Add environment constraints for base case
                     addEnvironmentConstraints(newenc, question.getBaseEnvironmentType());
 
-                    prop = boundedLength.apply(newenc, srcRouters, destPorts1);
+                    prop = boundedLength.apply(newenc, srcRouters, destPorts1, currIp.intval);
 
                     BoolExpr allProp = newenc.mkTrue();
                     
@@ -1280,8 +1293,8 @@ public class PropertyChecker {
         PropertyAdder pa = new PropertyAdder(enc.getMainSlice());
         return pa.instrumentReachability(destPorts);
       },
-      (enc, srcRouters, destPorts) -> { // check boundedLength
-        ArithExpr bound = enc.mkInt(1);
+      (enc, srcRouters, destPorts, k) -> { // check boundedLength
+        ArithExpr bound = enc.mkInt(k);
         PropertyAdder pa = new PropertyAdder(enc.getMainSlice());
         Map<String, ArithExpr> lenVars = pa.instrumentPathLength(destPorts);
         Map<String, BoolExpr> boundVars = new HashMap<>();
