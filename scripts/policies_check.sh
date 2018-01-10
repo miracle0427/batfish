@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Checks which policies are satisfied
+
 if [[ $(uname) == "Darwin" ]]; then
     SCRIPTPATH=`greadlink -f $0`
 else
@@ -10,7 +12,7 @@ source $BASEDIR/scripts/common_preamble.sh
 
 # Get policies to check
 CHECKFILE="$TESTRIG_DIR/policies/tocheck.txt"
-CMDFILE="/tmp/checkpolicies.batfish"
+CMDFILE="/tmp/policies_check.batfish"
 rm -f $CMDFILE
 
 cat $CHECKFILE | while read POLICY; do
@@ -19,7 +21,7 @@ done
 
 # Check policies
 echo "*** CHECKING POLICIES ***"
-LOGFILE="$TESTRIG_DIR/policies/checkpolicies.log"
+LOGFILE="$TESTRIG_DIR/policies/policies_check.log"
 
 allinone $BATFISH_ARGS -runmode batch -cmdfile $CMDFILE | tee "$LOGFILE"
 
