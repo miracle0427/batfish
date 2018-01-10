@@ -35,6 +35,12 @@ public class SmtRoutingLoopQuestionPlugin extends QuestionPlugin {
     public String getName() {
       return "smt-routing-loop";
     }
+    
+    @Override
+    public String prettyPrint() {
+      String retString = String.format("smt-routing-loop %s", super.prettyPrintParams());
+      return retString;
+    }
   }
 
   @Override

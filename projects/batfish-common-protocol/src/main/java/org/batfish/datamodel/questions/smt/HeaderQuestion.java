@@ -341,6 +341,9 @@ public class HeaderQuestion extends Question implements IQuestion {
       if (getNotSrcPorts() != null && getNotSrcPorts().size() != 0) {
         retString += String.format(", notSrcPorts=%s", getNotSrcPorts());
       }
+      if (getFailures() != 0) {
+        retString += String.format(", failures=%d", getFailures());
+      }
       return retString;
     } catch (Exception e) {
       return "Pretty printing failed. Printing Json\n" + toJsonString();

@@ -55,6 +55,13 @@ public class SmtBoundedLengthQuestionPlugin extends QuestionPlugin {
     public String getName() {
       return "smt-bounded-length";
     }
+    
+    @Override
+    public String prettyPrint() {
+      String retString = String.format("smt-bounded-length %s, %s=%d", 
+          super.prettyPrintParams(), LENGTH_VAR, _bound);
+      return retString;
+    }
   }
 
   @Override

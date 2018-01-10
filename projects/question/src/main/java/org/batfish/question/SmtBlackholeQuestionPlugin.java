@@ -32,6 +32,12 @@ public class SmtBlackholeQuestionPlugin extends QuestionPlugin {
     public String getName() {
       return "smt-blackhole";
     }
+    
+    @Override
+    public String prettyPrint() {
+      String retString = String.format("smt-blackhole %s", super.prettyPrintParams());
+      return retString;
+    }
   }
 
   @Override
