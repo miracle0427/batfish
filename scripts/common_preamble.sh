@@ -4,7 +4,7 @@ source $BASEDIR/tools/batfish_functions.sh
 
 TESTRIG_DIR="$BASEDIR/test_rigs"
 
-while getopts t: OPT; do
+while getopts t:h OPT; do
     case $OPT in
         t) # Relative test rig path
             TESTRIG=$OPTARG
