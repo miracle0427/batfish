@@ -11,6 +11,20 @@ if_autostate
    NO? AUTOSTATE NEWLINE
 ;
 
+if_channel_group
+:
+	CHANNEL_GROUP num = DEC
+	(
+		MODE
+		(
+			ON
+			| ACTIVE
+			| PASSIVE
+            | DESIRABLE
+		)
+	)? NEWLINE
+;
+
 if_default_gw
 :
    DEFAULT_GW IP_ADDRESS NEWLINE
@@ -358,7 +372,6 @@ if_null_block
       | CARRIER_DELAY
       | CDP
       | CHANNEL
-      | CHANNEL_GROUP
       | CHANNEL_PROTOCOL
       | CLASS
       | CLNS
@@ -474,6 +487,7 @@ if_null_block
                   BORDER
                   | BORDER_ROUTER
                   | BSR_BORDER
+                  | DENSE_MODE
                   | DR_PRIORITY
                   | HELLO_INTERVAL
                   | PASSIVE
@@ -491,6 +505,7 @@ if_null_block
             | RIP
             | ROUTE_CACHE
             | RSVP
+            | SAP
             | SDR
             | TCP
             | UNNUMBERED
@@ -1068,6 +1083,7 @@ s_interface
    )
    (
       if_autostate
+   	  | if_channel_group
       | if_default_gw
       | if_description
       | if_flow_sampler
