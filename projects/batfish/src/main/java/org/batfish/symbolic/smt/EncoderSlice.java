@@ -120,6 +120,11 @@ class EncoderSlice {
   private TreeSet<Integer> _localPref;
 
   private Map<String, ArithExpr> _localPrefMap;
+
+  private Set<LogicalEdge> _ospfAllow;
+
+  private Set<LogicalEdge> _bgpAllow;
+
   /**
    * Create a new encoding slice
    *
@@ -160,6 +165,13 @@ class EncoderSlice {
     _isTCE = false;
     _staticRouteAddSoft = new HashMap<>();
     _localPref = new TreeSet<Integer>();
+
+    _ospfAllow = new HashSet<>();
+
+    _bgpAllow = new HashSet<>();
+
+
+
 
     enc.getAllVariables().put(_symbolicPacket.getDstIp().toString() + _encoder.getStringId(),
      _symbolicPacket.getDstIp());
@@ -255,6 +267,10 @@ class EncoderSlice {
     _existsES = existsES;
     _staticRouteAddSoft = new HashMap<>();
     _localPref = new TreeSet<Integer>();
+
+    _ospfAllow = new HashSet<>();
+
+    _bgpAllow = new HashSet<>();
 
     enc.getAllVariables().put(_symbolicPacket.getDstIp().toString() + _encoder.getStringId(),
      _symbolicPacket.getDstIp());
@@ -598,7 +614,7 @@ class EncoderSlice {
     assert (les != null);
     for (ArrayList<LogicalEdge> es : les) {
       for (LogicalEdge le : es) {
-        if (_logicalGraph.isEdgeUsed(conf, proto, le) && le.getEdgeType() == EdgeType.IMPORT) {
+        if ( ( _logicalGraph.isEdgeUsed(conf, proto, le) || _ospfAllow.contains(le) ||  _bgpAllow.contains(le) ) && le.getEdgeType() == EdgeType.IMPORT) {
           eList.add(le);
         }
       }
@@ -631,9 +647,9 @@ class EncoderSlice {
   /*
    * Determine if an interface is active for a particular protocol.
    */
-  private BoolExpr interfaceActive(Interface iface, Protocol proto) {
+  private BoolExpr interfaceActive(Interface iface, Protocol proto, LogicalEdge e) {
     BoolExpr active = mkBool(iface.getActive());
-    if (proto.isOspf()) {
+    if (proto.isOspf() && !_ospfAllow.contains(e)) {
       active = mkAnd(active, mkBool(iface.getOspfEnabled()));
     }
     return active;
@@ -1033,6 +1049,134 @@ class EncoderSlice {
             allEdges.addAll(importEdgeList);
             allEdges.addAll(exportEdgeList);
             es.add(allEdges);
+          } else if ((proto.isOspf() || proto.isBgp()) && e.getStart()!=null && e.getEnd()!=null) {
+            System.out.println(" Edge without OSPF or BGP: " + e);
+            /////////////////////////////////////////////////////////////////////////
+
+
+            ArrayList<LogicalEdge> importEdgeList = new ArrayList<>();
+            ArrayList<LogicalEdge> exportEdgeList = new ArrayList<>();
+            importGraphEdgeMap.put(e, importEdgeList);
+            exportGraphEdgeMap.put(e, exportEdgeList);
+
+            for (int len = 0; len <= BITS; len++) {
+
+              String ifaceName = e.getStart().getName();
+
+              if (!proto.isConnected() && !proto.isStatic()) {
+                // If we use a single set of export variables, then make sure
+                // to reuse the existing variables instead of creating new ones
+                if (useSingleExport) {
+                  SymbolicRoute singleVars = singleExportMap.get(router).get(proto);
+                  SymbolicRoute ev1;
+                  if (singleVars == null) {
+                    String name =
+                        String.format(
+                            "%d_%s%s_%s_%s_%s",
+                            _encoder.getId(),
+                            _sliceName,
+                            router,
+                            proto.name(),
+                            "SINGLE-EXPORT",
+                            "");
+                    ev1 =
+                        new SymbolicRoute(
+                            this, name, router, proto, _optimizations, null, e.isAbstract());
+                    //addSoft(mkNot(ev1.getPermitted()), 1, "Enable" + name );
+                    singleProtoMap.put(proto, ev1);
+                    getAllSymbolicRecords().add(ev1);
+
+                  } else {
+                    ev1 = singleVars;
+                  }
+                  LogicalEdge eExport = new LogicalEdge(e, EdgeType.EXPORT, ev1);
+                  exportEdgeList.add(eExport);
+                  if (proto.isOspf()) {
+                    _ospfAllow.add(eExport);
+                  } else if (proto.isBgp()) {
+                    _bgpAllow.add(eExport);
+                  }
+
+                } else {
+                  String name =
+                      String.format(
+                          "%d_%s%s_%s_%s_%s",
+                          _encoder.getId(), _sliceName, router, proto.name(), "EXPORT", ifaceName);
+
+                  SymbolicRoute ev1 =
+                      new SymbolicRoute(
+                          this, name, router, proto, _optimizations, null, e.isAbstract());
+                  //addSoft(mkNot(ev1.getPermitted()), 1, "Enable" + name );
+                  LogicalEdge eExport = new LogicalEdge(e, EdgeType.EXPORT, ev1);
+                  exportEdgeList.add(eExport);
+                  if (proto.isOspf()) {
+                    _ospfAllow.add(eExport);
+                  } else if (proto.isBgp()) {
+                    _bgpAllow.add(eExport);
+                  }
+                  getAllSymbolicRecords().add(ev1);
+                }
+              }
+
+              boolean notNeeded =
+                  _optimizations
+                      .getSliceCanCombineImportExportVars()
+                      .get(router)
+                      .get(proto)
+                      .contains(e);
+
+              Interface i = e.getStart();
+              Prefix p = i.getPrefix();
+
+              boolean doModel = !(proto.isConnected() && p != null && !relevantPrefix(p));
+              // Optimization: Don't model the connected interfaces that aren't relevant
+              if (doModel) {
+                if (notNeeded) {
+                  String name =
+                      String.format(
+                          "%d_%s%s_%s_%s_%s",
+                          _encoder.getId(), _sliceName, router, proto.name(), "IMPORT", ifaceName);
+                  SymbolicRoute ev2 = new SymbolicRoute(name, proto);
+                  //addSoft(mkNot(ev2.getPermitted()), 1, "Enable" + name );
+                  LogicalEdge eImport = new LogicalEdge(e, EdgeType.IMPORT, ev2);
+                  importEdgeList.add(eImport);
+                  if (proto.isOspf()) {
+                    _ospfAllow.add(eImport);
+                  } else if (proto.isBgp()) {
+                    _bgpAllow.add(eImport);
+                  }
+                } else {
+                  String name =
+                      String.format(
+                          "%d_%s%s_%s_%s_%s",
+                          _encoder.getId(), _sliceName, router, proto.name(), "IMPORT", ifaceName);
+                  SymbolicRoute ev2 =
+                      new SymbolicRoute(
+                          this, name, router, proto, _optimizations, null, e.isAbstract());
+                  //addSoft(mkNot(ev2.getPermitted()), 1, "Enable" + name );
+                  LogicalEdge eImport = new LogicalEdge(e, EdgeType.IMPORT, ev2);
+                  importEdgeList.add(eImport);
+                  if (proto.isOspf()) {
+                    _ospfAllow.add(eImport);
+                  } else if (proto.isBgp()) {
+                    _bgpAllow.add(eImport);
+                  }
+                  getAllSymbolicRecords().add(ev2);
+                }
+              }
+            }
+
+            List<ArrayList<LogicalEdge>> es = _logicalGraph.getLogicalEdges().get(router, proto);
+            assert (es != null);
+
+            ArrayList<LogicalEdge> allEdges = new ArrayList<>();
+            allEdges.addAll(importEdgeList);
+            allEdges.addAll(exportEdgeList);
+            es.add(allEdges);
+
+
+            /////////////////////////////////////////////////////////////////////////
+
           }
         }
       }
@@ -1123,18 +1267,24 @@ class EncoderSlice {
     for (Entry<String, Configuration> entry : getGraph().getConfigurations().entrySet()) {
       String router = entry.getKey();
       Configuration conf = entry.getValue();
-
-      Set<Prefix> allprefixes = new HashSet<Prefix>();
+      
+      Set<Prefix> allprefixes = Graph.getOriginatedNetworks(conf, Protocol.CONNECTED);
+      /*
       // @archie allprefixes has all prefixes orignating at theis router
+ 
       for (Protocol proto : _optimizations.getProtocols().get(router)) {
         Set<Prefix> tempprefixes = Graph.getOriginatedNetworks(conf, proto);
         allprefixes.addAll(tempprefixes);
-      }
+        System.out.println("Proto " + proto + " " + tempprefixes);
+      }*/
 
       for (Protocol proto : _optimizations.getProtocols().get(router)) {
         Set<Prefix> prefixes = Graph.getOriginatedNetworks(conf, proto);
         _originatedNetworks.put(router, proto, prefixes);
-        _allOriginatedNetworks.put(router, proto, allprefixes);
+        Set<Prefix> tempPrefixes = new HashSet<>();
+        tempPrefixes.addAll(allprefixes);
+        tempPrefixes.removeAll(prefixes);
+        _allOriginatedNetworks.put(router, proto, tempPrefixes);
       }
     }
   }
@@ -1903,6 +2053,13 @@ private void addSymbolicPacketBoundConstraints() {
           BoolExpr choice = _symbolicDecisions.getChoiceVariables().get(router, proto, e);
           assert (choice != null);
           BoolExpr isBest = equal(conf, proto, bestVars, vars, e, false);
+          if (_bgpAllow.contains(e) || _ospfAllow.contains(e)) {
+            BoolExpr shouldAllow = getCtx().mkBoolConst(_encoder.getId() + "_"
+              + vars.getName() + "AllowChoice");
+            addSoft(mkNot(shouldAllow), 1, "AllowRoute");
+
+            isBest = mkAnd(isBest,shouldAllow);
+          }
           add(mkEq(choice, mkAnd(vars.getPermitted(), isBest)));
         }
       }
@@ -2320,7 +2477,7 @@ private void addSymbolicPacketBoundConstraints() {
             {
               shouldAdd = getCtx().mkBoolConst(_encoder.getId() + "_" + router +
                "-StaticRouteAdd-" + ge);
-              addSoft(mkNot(shouldAdd), 2, "StaticAdd");
+              addSoft(mkNot(shouldAdd), 3, "StaticAdd");
               _staticRouteAddSoft.put(ge, shouldAdd);
             } else {
               shouldAdd = _existsES.getStaticRouteAddSoft().get(ge);
@@ -2362,7 +2519,7 @@ private void addSymbolicPacketBoundConstraints() {
         Prefix p = iface.getPrefix();
         BoolExpr relevant =
             mkAnd(
-                interfaceActive(iface, proto),
+                interfaceActive(iface, proto, e),
                 isRelevantFor(p, _symbolicPacket.getDstIp()),
                 notFailed);
         BoolExpr per = vars.getPermitted();
@@ -2387,7 +2544,7 @@ private void addSymbolicPacketBoundConstraints() {
             
           BoolExpr relevant =
               mkAnd(
-                  interfaceActive(iface, proto),
+                  interfaceActive(iface, proto, e),
                   isRelevantFor(p, _symbolicPacket.getDstIp()),
                   notFailed,
                   shouldRemove);
@@ -2408,13 +2565,17 @@ private void addSymbolicPacketBoundConstraints() {
         if (varsOther != null) {
 
           // BoolExpr isRoot = relevantOrigination(originations);
-          BoolExpr active = interfaceActive(iface, proto);
+          BoolExpr active = interfaceActive(iface, proto, e);
 
-          // Handle iBGP by checking reachability to the next hop to send messages
-          boolean isNonClient =
-              (proto.isBgp()) && (getGraph().peerType(ge) != Graph.BgpSendType.TO_EBGP);
-          boolean isClient =
-              (proto.isBgp()) && (getGraph().peerType(ge) == Graph.BgpSendType.TO_RR);
+          boolean isNonClient = false;
+          boolean isClient = false;   
+          if (!_bgpAllow.contains(e)) {
+            // Handle iBGP by checking reachability to the next hop to send messages
+            isNonClient =
+                (proto.isBgp()) && (getGraph().peerType(ge) != Graph.BgpSendType.TO_EBGP);
+            isClient =
+                (proto.isBgp()) && (getGraph().peerType(ge) == Graph.BgpSendType.TO_RR);
+          }
 
           BoolExpr receiveMessage;
           String currentRouter = ge.getRouter();
@@ -2486,7 +2647,12 @@ private void addSymbolicPacketBoundConstraints() {
           assert (loop != null);
 
           BoolExpr usable = mkAnd(mkNot(loop), active, varsOther.getPermitted(), receiveMessage);
-
+          if (_bgpAllow.contains(e) || _ospfAllow.contains(e)) {
+            BoolExpr shouldAllow = getCtx().mkBoolConst(_encoder.getId() + "_"
+              + vars.getName() + "AllowChoice");
+            addSoft(mkNot(shouldAllow), 1, "AllowRoute");
+            usable = mkAnd(usable, shouldAllow);
+          }
           BoolExpr importFunction;
           RoutingPolicy pol = getGraph().findImportRoutingPolicy(router, proto, e.getEdge());
 
@@ -2576,17 +2742,20 @@ private void addSymbolicPacketBoundConstraints() {
         Integer cost = proto.isBgp() ? addedCost(proto, ge) : 0;
 
         BoolExpr val = mkNot(vars.getPermitted());
-        BoolExpr active = interfaceActive(iface, proto);
+        BoolExpr active = interfaceActive(iface, proto, e);
 
         // Apply BGP export policy and cost based on peer type
         // (1) EBGP --> ALL
         // (2) CLIENT --> ALL
         // (3) NONCLIENT --> EBGP, CLIENT
-        boolean isNonClientEdge =
-            proto.isBgp() && getGraph().peerType(ge) != Graph.BgpSendType.TO_EBGP;
-        boolean isClientEdge =
-            proto.isBgp() && getGraph().peerType(ge) == Graph.BgpSendType.TO_CLIENT;
-
+        boolean isNonClientEdge = false;
+        boolean isClientEdge = false;   
+        if (!_bgpAllow.contains(e)) {
+          isNonClientEdge =
+              proto.isBgp() && getGraph().peerType(ge) != Graph.BgpSendType.TO_EBGP;
+          isClientEdge =
+              proto.isBgp() && getGraph().peerType(ge) == Graph.BgpSendType.TO_CLIENT;
+        }
         boolean isInternalExport =
             varsOther.isBest() && _optimizations.getNeedBgpInternal().contains(router);
         BoolExpr doExport = mkTrue();
@@ -2702,11 +2871,12 @@ private void addSymbolicPacketBoundConstraints() {
 
         allacc = acc;
         // from now allacc will be different from acc as they deal with different prefixes
+        //System.out.println("Originations " + originations + " All " + allOriginations);
         for (Prefix p : originations) {
           // For OSPF, we need to explicitly initiate a route
           if (proto.isOspf()) {
 
-            BoolExpr ifaceUp = interfaceActive(iface, proto);
+            BoolExpr ifaceUp = interfaceActive(iface, proto, e);
             BoolExpr relevantPrefix = isRelevantFor(p, _symbolicPacket.getDstIp());
             BoolExpr shouldRemove = getCtx().mkBoolConst(_encoder.getId() + "_"
              + router + "OSPFExportRemoveSoft" + p);
@@ -2750,12 +2920,65 @@ private void addSymbolicPacketBoundConstraints() {
             acc = mkIf(relevant, values, acc);
           }
         }
+        //*
+
+        for (Prefix p : allOriginations) {
+          // For OSPF, we need to explicitly initiate a route
+          if (proto.isOspf()) {
+
+            BoolExpr ifaceUp = interfaceActive(iface, proto, e);
+            BoolExpr relevantPrefix = isRelevantFor(p, _symbolicPacket.getDstIp());
+            BoolExpr shouldAdd = getCtx().mkBoolConst(_encoder.getId() + "_"
+             + router + "OSPFExportAddSoft" + p);
+            addSoft(mkNot(shouldAdd), 2, "OSPFExportAdd");
+            relevantPrefix = mkAnd(relevantPrefix, shouldAdd);
+            BoolExpr relevant = mkAnd(ifaceUp, relevantPrefix);
+
+            int adminDistance = defaultAdminDistance(conf, proto);
+            int prefixLength = p.getPrefixLength();
+
+            BoolExpr per = vars.getPermitted();
+            BoolExpr lp = safeEq(vars.getLocalPref(), mkInt(0));
+            BoolExpr ad = safeEq(vars.getAdminDist(), mkInt(adminDistance));
+            BoolExpr met = safeEq(vars.getMetric(), mkInt(cost));
+            BoolExpr med = safeEq(vars.getMed(), mkInt(100));
+            BoolExpr len = safeEq(vars.getPrefixLength(), mkInt(prefixLength));
+            BoolExpr type = safeEqEnum(vars.getOspfType(), OspfType.O);
+            BoolExpr area = safeEqEnum(vars.getOspfArea(), iface.getOspfAreaName());
+            BoolExpr internal = safeEq(vars.getBgpInternal(), mkFalse());
+            BoolExpr igpMet = safeEq(vars.getIgpMetric(), mkInt(0));
+            BoolExpr comms = mkTrue();
+            for (Map.Entry<CommunityVar, BoolExpr> entry : vars.getCommunities().entrySet()) {
+              comms = mkAnd(comms, mkNot(entry.getValue()));
+            }
+            BoolExpr values =
+                mkAnd(per, lp, ad, met, med, len, type, area, internal, igpMet, comms);
+
+            // Don't originate OSPF route when there is a better redistributed route
+            if (ospfRedistribVars != null) {
+              BoolExpr betterLen = mkGt(ospfRedistribVars.getPrefixLength(), mkInt(prefixLength));
+              BoolExpr equalLen = mkEq(ospfRedistribVars.getPrefixLength(), mkInt(prefixLength));
+              BoolExpr betterAd = mkLt(ospfRedistribVars.getAdminDist(), mkInt(110));
+              BoolExpr better = mkOr(betterLen, mkAnd(equalLen, betterAd));
+              BoolExpr betterRedistributed = mkAnd(ospfRedistribVars.getPermitted(), better);
+              relevant = mkAnd(relevant, mkNot(betterRedistributed));
+            }// else if (softospf != null) {
+            //  BoolExpr betterRedistributed = softospf.getPermitted();
+             // relevant = mkAnd(relevant, mkNot(betterRedistributed));              
+            //}
+
+            acc = mkIf(relevant, values, acc);
+          }
+        }//*/
+
+        /*
         if (proto.isOspf()) {
           BoolExpr shouldAdd = getCtx().mkBoolConst(_encoder.getId() + "_"
            + router + "OSPFExportAddSoft");
-          addSoft(mkNot(shouldAdd), 10, "OSPFExportAdd");
+          addSoft(mkNot(shouldAdd), 3, "OSPFExportAdd");
           acc = (mkOr(shouldAdd, acc));
         }
+        *///*/
         //System.out.println("Exp: \n" + acc);
         /*
         // @archie duplicated but with allOriginations prefix set
@@ -2802,8 +3025,8 @@ private void addSymbolicPacketBoundConstraints() {
         }
 
         add(mkOr(acc,allacc));
-        addSoft(mkOr(acc, mkNot(allacc)), 10, "exportIPSoft");
-        */
+        addSoft(mkOr(acc, mkNot(allacc)), 2, "exportIPSoft");
+        //*/
         add(acc);
         if (Encoder.ENABLE_DEBUGGING) {
           System.out.println("EXPORT: " + router + " " + varsOther.getName() + " " + ge);
@@ -2835,7 +3058,8 @@ private void addSymbolicPacketBoundConstraints() {
           for (LogicalEdge e : eList) {
             GraphEdge ge = e.getEdge();
 
-            if (!getGraph().isEdgeUsed(conf, proto, ge)) {
+            if (!getGraph().isEdgeUsed(conf, proto, ge) && !(
+              _ospfAllow.contains(e) ||  _bgpAllow.contains(e))) {
               continue;
             }
 
