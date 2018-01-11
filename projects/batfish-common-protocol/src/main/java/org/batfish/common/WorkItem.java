@@ -51,11 +51,11 @@ public class WorkItem {
     }
   }
 
-  private String _containerName;
-  private UUID _id;
+  private final String _containerName;
+  private final UUID _id;
   private HashMap<String, String> _requestParams;
   private HashMap<String, String> _responseParams;
-  private String _testrigName;
+  private final String _testrigName;
   private Map<String, String> _spanData; /* Map used by the TextMap carrier for SpanContext */
 
   public WorkItem(String containerName, String testrigName) {
@@ -118,6 +118,19 @@ public class WorkItem {
   }
 
   /**
+   * The supplied workItem is a match if it has the same container, testrig, and request parameters
+   *
+   * @param workItem The workItem that should be matched
+   * @return {@link boolean} that indicates whether the supplied workItem is a match
+   */
+  public boolean matches(WorkItem workItem) {
+    return (workItem != null
+        && workItem._containerName.equals(_containerName)
+        && workItem._testrigName.equals(_testrigName)
+        && workItem._requestParams.equals(_requestParams));
+  }
+
+  /**
    * Takes an {@link ActiveSpan} and attaches it to the {@link WorkItem} which can be fetched later
    * using {@link WorkItem#getSourceSpan()}
    */
@@ -131,10 +144,6 @@ public class WorkItem {
       return;
     }
     tracer.inject(activeSpan.context(), Builtin.TEXT_MAP, new TextMapInjectAdapter(_spanData));
-  }
-
-  public void setId(String idString) {
-    _id = UUID.fromString(idString);
   }
 
   public String toJsonString() {

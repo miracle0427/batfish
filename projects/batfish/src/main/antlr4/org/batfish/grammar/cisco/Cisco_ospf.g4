@@ -229,6 +229,7 @@ ro_null
          )
       )
       | LOG
+      | LOG_ADJ_CHANGES
       | LOG_ADJACENCY_CHANGES
       | MAX_LSA
       |

@@ -2046,6 +2046,16 @@ CONGESTION_CONTROL
    'congestion-control'
 ;
 
+CONN
+:
+   'conn'
+;
+
+CONN_HOLDDOWN
+:
+   'conn-holddown'
+;
+
 CONNECT_RETRY
 :
    'connect-retry'
@@ -2255,6 +2265,11 @@ CRITICAL
 CRYPTO
 :
    'crypto'
+;
+
+CRYPTOCHECKSUM
+:
+   'Cryptochecksum'
 ;
 
 CRYPTO_LOCAL
@@ -4186,6 +4201,11 @@ FLAP_LIST
    'flap-list'
 ;
 
+FLOATING_CONN
+:
+   'floating-conn'
+;
+
 FLOW
 :
    'flow'
@@ -4581,6 +4601,11 @@ HA_POLICY
    'ha-policy'
 ;
 
+HALF_CLOSED
+:
+   'half-closed'
+;
+
 HALF_DUPLEX
 :
    'half-duplex'
@@ -4824,6 +4849,11 @@ ICMP
 ICMP_ECHO
 :
    'icmp-echo'
+;
+
+ICMP_ERROR
+:
+   'icmp-error'
 ;
 
 ICMP_ERRORS
@@ -5853,6 +5883,11 @@ LOG
    'log'
 ;
 
+LOG_ADJ_CHANGES
+:
+   'log-adj-changes'
+;
+
 LOG_ADJACENCY_CHANGES
 :
    'log-adjacency-changes'
@@ -6441,6 +6476,11 @@ MFWD
 MGCP
 :
    'mgcp'
+;
+
+MGCP_PAT
+:
+   'mgcp-pat'
 ;
 
 MGMT
@@ -7636,6 +7676,11 @@ PASSWORD_STORAGE
 PASSWD
 :
    'passwd'
+;
+
+PAT_XLATE
+:
+   'pat-xlate'
 ;
 
 PATH_ECHO
@@ -9793,6 +9838,21 @@ SIP
    'sip'
 ;
 
+SIP_DISCONNECT
+:
+   'sip-disconnect'
+;
+
+SIP_INVITE
+:
+   'sip-invite'
+;
+
+SIP_MEDIA
+:
+   'sip_media'
+;
+
 SIP_MIDCALL_REQ_TIMEOUT
 :
    'sip-midcall-req-timeout'
@@ -9801,6 +9861,11 @@ SIP_MIDCALL_REQ_TIMEOUT
 SIP_PROFILES
 :
    'sip-profiles'
+;
+
+SIP_PROVISIONAL_MEDIA
+:
+   'sip-provisional-media'
 ;
 
 SIP_SERVER
@@ -10121,6 +10186,11 @@ STACK_MIB
 STACK_UNIT
 :
    'stack-unit'
+;
+
+STALE_ROUTE
+:
+   'stale-route'
 ;
 
 STANDARD
@@ -10650,6 +10720,16 @@ TCP_CONNECT
    'tcp-connect'
 ;
 
+TCP_INSPECTION
+:
+   'tcp-inspection'
+;
+
+TCP_PROXY_REASSEMBLY
+:
+   'tcp-proxy-reassembly'
+;
+
 TCP_SESSION
 :
    'tcp-session'
@@ -11118,6 +11198,11 @@ TYPE_1
 TYPE_2
 :
    'type-2'
+;
+
+UAUTH
+:
+   'uauth'
 ;
 
 UC_TX_QUEUE
