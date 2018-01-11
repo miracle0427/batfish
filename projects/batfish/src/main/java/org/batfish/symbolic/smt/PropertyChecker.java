@@ -1,5 +1,7 @@
 package org.batfish.symbolic.smt;
 
+import com.google.common.collect.Comparators;
+import com.google.common.collect.Iterables;
 import com.microsoft.z3.ArithExpr;
 import com.microsoft.z3.BitVecExpr;
 import com.microsoft.z3.BoolExpr;
@@ -50,6 +52,7 @@ import org.batfish.symbolic.answers.SmtDeterminismAnswerElement;
 import org.batfish.symbolic.answers.SmtManyAnswerElement;
 import org.batfish.symbolic.answers.SmtOneAnswerElement;
 import org.batfish.symbolic.answers.SmtReachabilityAnswerElement;
+import org.batfish.symbolic.answers.SmtWaypointAnswerElement;
 import org.batfish.symbolic.collections.Table2;
 import org.batfish.symbolic.utils.PathRegexes;
 import org.batfish.symbolic.utils.PatternUtils;
@@ -79,36 +82,44 @@ public class PropertyChecker {
 
   private void inferDestinationHeaderSpace(
       Graph g, Collection<GraphEdge> destPorts, HeaderLocationQuestion q) {
+    // Skip inference if the destination IP headerspace does not need to be inferred.
+    if (!q.getHeaderSpace().getDstIps().isEmpty()) {
+      return;
+    }
+
     // Infer relevant destination IP headerspace from interfaces
-    if (q.getHeaderSpace().getDstIps().isEmpty()) {
-      for (GraphEdge ge : destPorts) {
-        // If there is an external interface, then
-        // it can be any prefix, so we leave it unconstrained
-        if (g.getEbgpNeighbors().containsKey(ge)) {
-          q.getHeaderSpace().getDstIps().clear();
-          q.getHeaderSpace().getNotDstIps().clear();
-          break;
-        }
-        // If we don't know what is on the other end
-        if (ge.getPeer() == null) {
+    HeaderSpace headerSpace = q.getHeaderSpace();
+    for (GraphEdge ge : destPorts) {
+      // If there is an external interface, then
+      // it can be any prefix, so we leave it unconstrained
+      if (g.getEbgpNeighbors().containsKey(ge)) {
+        headerSpace.setDstIps(Collections.emptySet());
+        headerSpace.setNotDstIps(Collections.emptySet());
+        break;
+      }
+      // If we don't know what is on the other end
+      if (ge.getPeer() == null) {
+        Prefix pfx = ge.getStart().getPrefix().getNetworkPrefix();
+        IpWildcard dst = new IpWildcard(pfx);
+        headerSpace.setDstIps(
+            Iterables.concat(headerSpace.getDstIps(), Collections.singleton(dst)));
+      } else {
+        // If host, add the subnet but not the neighbor's address
+        if (g.isHost(ge.getRouter())) {
           Prefix pfx = ge.getStart().getPrefix().getNetworkPrefix();
           IpWildcard dst = new IpWildcard(pfx);
-          q.getHeaderSpace().getDstIps().add(dst);
+          headerSpace.setDstIps(
+              Iterables.concat(headerSpace.getDstIps(), Collections.singleton(dst)));
+          Ip ip = ge.getEnd().getPrefix().getAddress();
+          IpWildcard dst2 = new IpWildcard(ip);
+          headerSpace.setNotDstIps(
+              Iterables.concat(headerSpace.getNotDstIps(), Collections.singleton(dst2)));
         } else {
-          // If host, add the subnet but not the neighbor's address
-          if (g.isHost(ge.getRouter())) {
-            Prefix pfx = ge.getStart().getPrefix().getNetworkPrefix();
-            IpWildcard dst = new IpWildcard(pfx);
-            q.getHeaderSpace().getDstIps().add(dst);
-            Ip ip = ge.getEnd().getPrefix().getAddress();
-            IpWildcard dst2 = new IpWildcard(ip);
-            q.getHeaderSpace().getNotDstIps().add(dst2);
-          } else {
-            // Otherwise, we add the exact address
-            Ip ip = ge.getStart().getPrefix().getAddress();
-            IpWildcard dst = new IpWildcard(ip);
-            q.getHeaderSpace().getDstIps().add(dst);
-          }
+          // Otherwise, we add the exact address
+          Ip ip = ge.getStart().getPrefix().getAddress();
+          IpWildcard dst = new IpWildcard(ip);
+          headerSpace.setDstIps(
+              Iterables.concat(headerSpace.getDstIps(), Collections.singleton(dst)));
         }
       }
     }
@@ -412,7 +423,8 @@ public class PropertyChecker {
 
                 related = enc.mkAnd(related, relatePackets(enc, enc2));
                 enc.add(related);
-                enc.add(enc.mkNot(required));
+                BoolExpr property = q.getNegate() ? required : enc.mkNot(required);
+                enc.add(property);
 
               } else {
                 BoolExpr allProp = enc.mkTrue();
@@ -420,7 +432,8 @@ public class PropertyChecker {
                   BoolExpr r = prop.get(router);
                   allProp = enc.mkAnd(allProp, r);
                 }
-                enc.add(enc.mkNot(allProp));
+                BoolExpr property = q.getNegate() ? allProp : enc.mkNot(allProp);
+                enc.add(property);
               }
 
               addFailureConstraints(enc, destPorts, failOptions);
@@ -480,13 +493,16 @@ public class PropertyChecker {
               fh =
                   ce.buildFlowHistoryDiff(
                       testrigName,
+                      q.getNegate(),
                       vp.getSrcRouters(),
                       vp.getEnc(),
                       vp.getEncDiff(),
                       vp.getProp(),
                       vp.getPropDiff());
             } else {
-              fh = ce.buildFlowHistory(testrigName, vp.getSrcRouters(), vp.getEnc(), vp.getProp());
+              fh =
+                  ce.buildFlowHistory(
+                      testrigName, q.getNegate(), vp.getSrcRouters(), vp.getEnc(), vp.getProp());
             }
             return new SmtReachabilityAnswerElement(vp.getResult(), fh);
           }
@@ -536,6 +552,61 @@ public class PropertyChecker {
           return eqVars;
         },
         (vp) -> new SmtOneAnswerElement(vp.getResult()));
+  }
+
+  /*
+   * Computes whether a collection of source routers will always send
+   * traffic through a collection of waypoints.
+   */
+  public AnswerElement checkWaypointing(HeaderLocationQuestion q, List<String> waypoints) {
+    if (waypoints.size() == 0) {
+      throw new BatfishException("Empty list of  waypoints");
+    }
+    // Compute the collections of waypoints from regexes
+    Pattern empty = Pattern.compile("");
+    Graph g = new Graph(_batfish);
+    List<List<String>> waypointChoices = new ArrayList<>();
+    for (String waypoint : waypoints) {
+      Pattern p = Pattern.compile(waypoint);
+      List<String> choices = PatternUtils.findMatchingNodes(g, p, empty);
+      waypointChoices.add(choices);
+    }
+    // Ensure that the network satisfies the waypointing requirements
+    return checkProperty(
+        q,
+        (enc, srcRouters, destPorts) -> {
+          PropertyAdder pa = new PropertyAdder(enc.getMainSlice());
+          Map<String, ArithExpr> waypointIdxVars =
+              pa.instrumentWaypointing(destPorts, waypointChoices);
+          Map<String, BoolExpr> waypointVars = new HashMap<>();
+          waypointIdxVars.forEach((n, ae) -> waypointVars.put(n, enc.mkEq(ae, enc.mkInt(0))));
+          return waypointVars;
+        },
+        (vp) -> {
+          if (vp.getResult().isVerified()) {
+            return new SmtWaypointAnswerElement(vp.getResult(), new FlowHistory());
+          } else {
+            FlowHistory fh;
+            CounterExample ce = new CounterExample(vp.getModel());
+            String testrigName = _batfish.getTestrigName();
+            if (q.getDiffType() != null) {
+              fh =
+                  ce.buildFlowHistoryDiff(
+                      testrigName,
+                      q.getNegate(),
+                      vp.getSrcRouters(),
+                      vp.getEnc(),
+                      vp.getEncDiff(),
+                      vp.getProp(),
+                      vp.getPropDiff());
+            } else {
+              fh =
+                  ce.buildFlowHistory(
+                      testrigName, q.getNegate(), vp.getSrcRouters(), vp.getEnc(), vp.getProp());
+            }
+            return new SmtWaypointAnswerElement(vp.getResult(), fh);
+          }
+        });
   }
 
   /*
@@ -620,6 +691,13 @@ public class PropertyChecker {
           }
         }
       }
+      // Ensure cases appear in dictionary order
+      List<SortedSet<String>> cases = new ArrayList<>();
+      cases.add(case1);
+      cases.add(case2);
+      cases.sort(Comparators.lexicographical(String::compareTo));
+      case1 = cases.get(0);
+      case2 = cases.get(1);
     }
 
     return new SmtDeterminismAnswerElement(res, flow, case1, case2);
