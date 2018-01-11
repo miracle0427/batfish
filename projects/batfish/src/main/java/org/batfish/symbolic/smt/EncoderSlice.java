@@ -478,7 +478,7 @@ class EncoderSlice {
                   "SOFT");
           BoolExpr outAcl = getCtx().mkBoolConst(_encoder.getId() + "_" + outName + "Add");
           // @archie outAcl is soft constraint to do out ACL add
-          addSoft(outAcl, 10, "SoftOutAclAdd");
+          addSoft(outAcl, 1, "SoftOutAclAdd");
           _outboundAcls.put(ge, outAcl);
         }
 
@@ -507,7 +507,7 @@ class EncoderSlice {
                   _encoder.getId(), _sliceName, router, i.getName(), "INBOUND", "SOFT");
           BoolExpr inAcl = getCtx().mkBoolConst(_encoder.getId() + "_" + inName + "Add");
           // @archie inAcl is soft constraint to do out ACL add
-          addSoft(inAcl, 10, "SoftInAclAdd");
+          addSoft(inAcl, 1, "SoftInAclAdd");
           _inboundAcls.put(ge, inAcl);
         }
       }
@@ -2406,7 +2406,7 @@ private void addSymbolicPacketBoundConstraints() {
           BoolExpr usable = mkAnd(mkNot(loop), active, varsOther.getPermitted(), receiveMessage);
           if (_bgpAllow.contains(e) || _ospfAllow.contains(e)) {
             BoolExpr shouldAllow = getCtx().mkBoolConst(_encoder.getId() + "_"
-              + vars.getName() + "AllowChoice");
+              + vars.getName() + "AllowChoiceUse");
             addSoft(mkNot(shouldAllow), 1, "AllowRoute");
             usable = mkAnd(usable, shouldAllow);
           }

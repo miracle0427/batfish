@@ -1,186 +1,96 @@
-(define-fun |0__reachable-id_R1| () Int
-  0)
-(define-fun |0_dst-port| () Int
-  0)
-(define-fun |0_R2_OSPF_BEST_None_metric| () Int
-  0)
-(define-fun |0_R2_OVERALL_BEST_None_ospfType| () (_ BitVec 2)
-  #b00)
-(define-fun |0_src-port| () Int
-  0)
-(define-fun |0_R1_OSPF_SINGLE-EXPORT__permitted| () Bool
-  false)
-(define-fun |0_R2_OSPF_SINGLE-EXPORT__adminDist| () Int
-  0)
-(define-fun |0_0__R2_Serial0_INBOUND_SOFTAdd| () Bool
-  true)
-(define-fun |0_0__R2_Serial1_INBOUND_SOFTAdd| () Bool
-  true)
-(define-fun |0_0__R1_Loopback0_INBOUND_SOFTAdd| () Bool
-  true)
-(define-fun |0_R2_OSPF_BEST_None_prefixLength| () Int
-  0)
-(define-fun |0_R2_OSPF_Redistributed_permitted| () Bool
-  true)
-(define-fun |0_R2_OVERALL_BEST_None_history| () (_ BitVec 1)
-  #b1)
-(define-fun |0_CONTROL-FORWARDING_R2_Serial0| () Bool
-  false)
-(define-fun |0_R2_OSPF_IMPORT_Serial0_prefixLength| () Int
-  0)
-(define-fun |0_R2_OSPF_Redistributed_prefixLength| () Int
-  24)
-(define-fun |0_R1_OSPF_SINGLE-EXPORT__adminDist| () Int
-  0)
-(define-fun |0_R1_OSPF_SINGLE-EXPORT__ospfType| () (_ BitVec 2)
-  #b00)
-(define-fun |0_R1OSPFExportRemoveSoft70.70.70.0/24| () Bool
-  true)
-(define-fun |0_R1_OSPF_SINGLE-EXPORT__metric| () Int
-  0)
-(define-fun |0_R1ImportFilterAddSoft0_R1_OSPF_IMPORT_Serial0| () Bool
-  true)
-(define-fun |0_R2OSPFSoftRedisRemove| () Bool
-  false)
-(define-fun |0_0__R1_Serial0_INBOUND_SOFTAdd| () Bool
-  true)
-(define-fun |0_0__R2_Loopback0_OUTBOUND_SOFTAdd| () Bool
-  true)
-(define-fun |0_icmp-code| () Int
-  0)
-(define-fun |0_R2_OSPF_IMPORT_Serial0_ospfType| () (_ BitVec 2)
-  #b00)
-(define-fun |0_R1_OVERALL_BEST_None_ospfType| () (_ BitVec 2)
-  #b00)
-(define-fun |0_R1_OVERALL_BEST_None_adminDist| () Int
-  0)
-(define-fun |0_0__R2_Serial0_OUTBOUND_SOFTAdd| () Bool
-  true)
-(define-fun |0_R1_OVERALL_BEST_None_permitted| () Bool
-  false)
-(define-fun |0_R2OSPFExportAddSoft69.69.69.0/24| () Bool
-  false)
-(define-fun |0_R2ImportFilterAddSoft0_R2_OSPF_IMPORT_Serial0| () Bool
-  true)
-(define-fun |0_R2_OVERALL_BEST_None_adminDist| () Int
-  0)
-(define-fun |0_R2_OSPF_IMPORT_Serial0_metric| () Int
-  0)
-(define-fun |0_R1_OSPF_IMPORT_Serial0_metric| () Int
-  0)
-(define-fun |0_R2_OSPF_SINGLE-EXPORT__permitted| () Bool
-  false)
-(define-fun |0_R2-StaticRouteAdd-R2,Serial0 --> R1,Serial0| () Bool
-  false)
-(define-fun |0_R2OSPFExportAddSoft180.0.0.0/24| () Bool
-  false)
-(define-fun |0_R2_OVERALL_BEST_None_prefixLength| () Int
-  24)
-(define-fun |0_R2_OSPF_Redistributed_adminDist| () Int
-  0)
-(define-fun |0_R2_OSPF_SINGLE-EXPORT__metric| () Int
-  0)
-(define-fun |0_R2OSPFExportRemoveSoft192.168.42.0/24| () Bool
-  true)
-(define-fun |0_R2_OSPF_Redistributed_ospfType| () (_ BitVec 2)
-  #b11)
-(define-fun |0_R2_OSPF_SINGLE-EXPORT__ospfType| () (_ BitVec 2)
-  #b00)
-(define-fun |0_R1OSPFExportRemoveSoft192.168.42.0/24| () Bool
-  true)
-(define-fun |0_0__R2_Serial1_OUTBOUND_SOFTAdd| () Bool
-  true)
-(define-fun |0_R2_OSPF_Redistributed_metric| () Int
-  10)
-(define-fun |0_icmp-type| () Int
-  0)
-(define-fun |0_R2_OSPF_BEST_None_ospfType| () (_ BitVec 2)
-  #b00)
-(define-fun |0_R1_OSPF_SINGLE-EXPORT__prefixLength| () Int
-  0)
-(define-fun |0_R2_OSPF_BEST_None_permitted| () Bool
-  false)
-(define-fun |0_R1-StaticRouteAdd-R1,Serial0 --> R2,Serial0| () Bool
-  false)
-(define-fun |0_R2_OSPF_BEST_None_adminDist| () Int
-  0)
-(define-fun |0_R1_OVERALL_BEST_None_metric| () Int
-  0)
-(define-fun |0_R2_OSPF_IMPORT_Serial0_adminDist| () Int
-  0)
-(define-fun |0_R1_OSPF_IMPORT_Serial0_adminDist| () Int
-  0)
-(define-fun |0_0__R1_Loopback0_OUTBOUND_SOFTAdd| () Bool
-  true)
-(define-fun |0_CONTROL-FORWARDING_R1_Serial0| () Bool
-  false)
-(define-fun |0_0__R2_Loopback0_INBOUND_SOFTAdd| () Bool
-  true)
-(define-fun |0_R2_OVERALL_BEST_None_metric| () Int
-  0)
-(define-fun |0_R1_OSPF_IMPORT_Serial0_ospfType| () (_ BitVec 2)
-  #b00)
-(define-fun |0_0__R1_Serial0_OUTBOUND_SOFTAdd| () Bool
-  true)
-(define-fun |0_R2_OSPF_SINGLE-EXPORT__prefixLength| () Int
-  0)
-(define-fun |0_ip-protocol| () Int
-  0)
-(define-fun |0_R1_OVERALL_BEST_None_prefixLength| () Int
-  0)
-(define-fun |0_R1_OSPF_IMPORT_Serial0_prefixLength| () Int
-  0)
-(define-fun |0_R2_CONNECTED_IMPORT_Loopback0_prefixLength| () Int
-  24)
-(define-fun |0__reachable_R1| () Bool
-  false)
-(define-fun |0__reachable_R2| () Bool
-  true)
-(define-fun |0__reachable-id_R2| () Int
-  1)
-(define-fun |0_src-ip| () (_ BitVec 32)
-  #x46464646)
-(define-fun |0_dst-ip| () (_ BitVec 32)
-  #x45454501)
-(define-fun |0_DATA-FORWARDING_R1_Loopback0| () Bool
-  false)
-(define-fun |0_DATA-FORWARDING_R1_Serial0| () Bool
-  false)
-(define-fun |0_DATA-FORWARDING_R2_Serial0| () Bool
-  false)
-(define-fun |0_DATA-FORWARDING_R2_Loopback0| () Bool
-  false)
-(define-fun |0_DATA-FORWARDING_R2_Serial1| () Bool
-  false)
-(define-fun |0_CONTROL-FORWARDING_R1_Loopback0| () Bool
-  false)
-(define-fun |0_CONTROL-FORWARDING_R2_Loopback0| () Bool
-  false)
-(define-fun |0_CONTROL-FORWARDING_R2_Serial1| () Bool
-  false)
-(define-fun |0_R2_OVERALL_BEST_None_permitted| () Bool
-  true)
-(define-fun |0_R1_OSPF_IMPORT_Serial0_choice| () Bool
-  false)
-(define-fun |0_R2_CONNECTED_IMPORT_Loopback0_choice| () Bool
-  true)
-(define-fun |0_R2_OSPF_IMPORT_Serial0_choice| () Bool
-  false)
-(define-fun |0_R1_OSPF_IMPORT_Serial0_permitted| () Bool
-  false)
-(define-fun |0_R2_CONNECTED_BEST_None_permitted| () Bool
-  true)
-(define-fun |0_R2_CONNECTED_BEST_None_prefixLength| () Int
-  24)
-(define-fun |0_R2_OSPF_IMPORT_Serial0_permitted| () Bool
-  false)
-(define-fun |0_R2_CONNECTED_IMPORT_Loopback0_permitted| () Bool
-  true)
-(define-fun |0_FAILED-EDGE_R1_Loopback0| () Int
-  0)
-(define-fun |0_FAILED-EDGE_R1_R2| () Int
-  0)
-(define-fun |0_FAILED-EDGE_R2_Loopback0| () Int
-  0)
-(define-fun |0_FAILED-EDGE_R2_Serial1| () Int
-  0)
+0_dst-port -> 0
+0_CONTROL-FORWARDING_R3_Serial0 -> true
+0__reachable-id_R2 -> 2
+0_R2_OVERALL_BEST_None_routerID -> 707406337
+0_R1_BGP_BEST_None_prefixLength -> 24
+0_src-port -> 0
+0_R3-StaticRouteAdd-R3,Serial0 --> R2,Serial1 -> false
+0_0__R2_Serial0_INBOUND_SOFTAdd -> true
+0_0__R2_Serial1_INBOUND_SOFTAdd -> true
+0_0_R3_OVERALL_BEST_NoneBGPExportAddSoft -> false
+0_0__R1_Loopback0_INBOUND_SOFTAdd -> true
+0_R3_OVERALL_BEST_None_routerID -> 1162167553
+0_R1_BGP_SINGLE-EXPORT__metric -> 1
+0_CONTROL-FORWARDING_R2_Serial0 -> true
+0_R3_BGP_SINGLE-EXPORT__metric -> 3
+0_R1_BGP_SINGLE-EXPORT__prefixLength -> 24
+0_0_R2_OVERALL_BEST_NoneBGPExportAddSoft -> false
+0_0__R2_Loopback0_OUTBOUND_SOFTAdd -> true
+0_0__R1_Serial0_INBOUND_SOFTAdd -> true
+0_R2_BGP_SINGLE-EXPORT__metric -> 2
+0_icmp-code -> 0
+0_0__R3_Serial0_INBOUND_SOFTAdd -> true
+0_R3_OVERALL_BEST_None_permitted -> true
+0_R1_OVERALL_BEST_None_adminDist -> 0
+0_0__R2_Serial0_OUTBOUND_SOFTAdd -> true
+0_0__R1_Loopback1_OUTBOUND_SOFTAdd -> true
+0_CONTROL-FORWARDING_R2_Serial1 -> false
+0_R1_OVERALL_BEST_None_routerID -> 0
+0_R3_BGP_SINGLE-EXPORT__prefixLength -> 24
+0_R3_BGP_SINGLE-EXPORT__permitted -> true
+0_R2-StaticRouteAdd-R2,Serial0 --> R1,Serial0 -> false
+0_R1_BGP_SINGLE-EXPORT__permitted -> true
+0_R2_OVERALL_BEST_None_prefixLength -> 24
+0_0__R1_Loopback1_INBOUND_SOFTAdd -> true
+0_0_R1_OVERALL_BEST_NoneBGPExportAddSoft -> true
+0_0__R3_Loopback0_OUTBOUND_SOFTAdd -> true
+0_R2-StaticRouteAdd-R2,Serial1 --> R3,Serial0 -> false
+0_0__R2_Serial1_OUTBOUND_SOFTAdd -> true
+0_icmp-type -> 0
+0_R3_OVERALL_BEST_None_prefixLength -> 24
+0_R2_BGP_SINGLE-EXPORT__prefixLength -> 24
+0_42.42.42.0/24Stat-Conn-ExportRemoveSoft0_R1_OVERALL_BEST_None -> true
+0_R1-StaticRouteAdd-R1,Serial0 --> R2,Serial0 -> false
+0_R1_OVERALL_BEST_None_metric -> 0
+0_R3_OVERALL_BEST_None_metric -> 2
+0_R1_BGP_BEST_None_routerID -> 1162167553
+0_R1_BGP_BEST_None_metric -> 2
+0_0__R1_Loopback0_OUTBOUND_SOFTAdd -> true
+0__reachable-id_R3 -> 3
+0_CONTROL-FORWARDING_R1_Serial0 -> false
+0_0__R2_Loopback0_INBOUND_SOFTAdd -> true
+0_R2_OVERALL_BEST_None_metric -> 1
+0_R1_OVERALL_BEST_None_history -> #b1
+0_0__R1_Serial0_OUTBOUND_SOFTAdd -> true
+0_0__R3_Serial0_OUTBOUND_SOFTAdd -> true
+0_0__R3_Loopback0_INBOUND_SOFTAdd -> true
+0_ip-protocol -> 0
+0_R1_OVERALL_BEST_None_prefixLength -> 24
+0_69.69.69.0/24OSPF-ExportRemoveSoft0_R2_OVERALL_BEST_None -> true
+0_R1_CONNECTED_IMPORT_Loopback1_prefixLength -> 24
+0__reachable_R1 -> true
+0__reachable_R3 -> true
+0__reachable_R2 -> true
+0__reachable-id_R1 -> 1
+0_src-ip -> #x4f4f4f01
+0_dst-ip -> #x16161601
+0_DATA-FORWARDING_R1_Loopback0 -> false
+0_DATA-FORWARDING_R1_Loopback1 -> false
+0_DATA-FORWARDING_R1_Serial0 -> false
+0_DATA-FORWARDING_R3_Serial0 -> true
+0_DATA-FORWARDING_R3_Loopback0 -> false
+0_DATA-FORWARDING_R2_Serial0 -> true
+0_DATA-FORWARDING_R2_Serial1 -> false
+0_DATA-FORWARDING_R2_Loopback0 -> false
+0_CONTROL-FORWARDING_R1_Loopback1 -> false
+0_CONTROL-FORWARDING_R1_Loopback0 -> false
+0_CONTROL-FORWARDING_R3_Loopback0 -> false
+0_CONTROL-FORWARDING_R2_Loopback0 -> false
+0_R1_OVERALL_BEST_None_permitted -> true
+0_R1_CONNECTED_IMPORT_Loopback1_choice -> true
+0_R1_BGP_IMPORT_Serial0_choice -> true
+0_R3_BGP_IMPORT_Serial0_choice -> true
+0_R2_BGP_IMPORT_Serial0_choice -> true
+0_R2_BGP_IMPORT_Serial1_choice -> false
+0_R1_CONNECTED_BEST_None_permitted -> true
+0_R1_CONNECTED_BEST_None_prefixLength -> 24
+0_R1_BGP_BEST_None_permitted -> true
+0_R2_BGP_SINGLE-EXPORT__permitted -> true
+0_R2_OVERALL_BEST_None_permitted -> true
+0_R1_CONNECTED_IMPORT_Loopback1_permitted -> true
+0_FAILED-EDGE_R1_Loopback0 -> 0
+0_FAILED-EDGE_R3_Loopback0 -> 0
+0_FAILED-EDGE_R1_R2 -> 0
+0_FAILED-EDGE_R1_Loopback1 -> 0
+0_FAILED-EDGE_R2_Loopback0 -> 0
+0_FAILED-EDGE_R2_R3 -> 0
