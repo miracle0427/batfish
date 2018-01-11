@@ -1213,28 +1213,7 @@ public class PropertyChecker {
           PropertyAdder pa = new PropertyAdder(enc.getMainSlice());
           return pa.instrumentReachability(destPorts);
         },
-        (vp) -> {
-          if (vp.getResult().isVerified()) {
-            return new SmtBlockAnswerElement(vp.getResult(), new FlowHistory());
-          } else {
-            FlowHistory fh;
-            CounterExample ce = new CounterExample(vp.getModel());
-            String testrigName = _batfish.getTestrigName();
-            if (q.getDiffType() != null) {
-              fh =
-                  ce.buildFlowHistoryDiff(
-                      testrigName,
-                      vp.getSrcRouters(),
-                      vp.getEnc(),
-                      vp.getEncDiff(),
-                      vp.getProp(),
-                      vp.getPropDiff());
-            } else {
-              fh = ce.buildFlowHistory(testrigName, vp.getSrcRouters(), vp.getEnc(), vp.getProp());
-            }
-            return new SmtBlockAnswerElement(vp.getResult(), fh);
-          }
-        });
+        (vp) -> new SmtMulAnswerElement(vp.getResult())); 
   }
 
   /*
