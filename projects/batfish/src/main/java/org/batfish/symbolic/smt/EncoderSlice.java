@@ -129,6 +129,7 @@ class EncoderSlice {
 
   private Map<String, BoolExpr> _disableRedis;
 
+  private Map<String, BoolExpr> _enableRoute;
   /**
    * Create a new encoding slice
    *
@@ -155,6 +156,7 @@ class EncoderSlice {
     _localPrefMap = new HashMap<>();
     _disableOSPF = new HashMap<>();
     _disableRedis = new HashMap<>();
+    _enableRoute = new HashMap<>();
     _localPref = new TreeSet<Integer>();
 
     if (!_first) {
@@ -163,6 +165,7 @@ class EncoderSlice {
       _disableOSPF = _oldES.getOspfDisableMap();
       _disableRedis = _oldES.getRedisDisableMap();
       _localPref = _oldES.getLocalPrefSet();
+      _enableRoute = _oldES.getEnableRouteMap();
     }
 
     _sliceName = sliceName;
@@ -263,6 +266,7 @@ class EncoderSlice {
     _localPrefMap = new HashMap<>();
     _disableOSPF = new HashMap<>();
     _disableRedis = new HashMap<>();
+    _enableRoute = new HashMap<>();
     _localPref = new TreeSet<Integer>();
     if (!_first) {
       _oldES = enc.getPreviousEncoderSlice();
@@ -270,6 +274,7 @@ class EncoderSlice {
       _disableOSPF = _oldES.getOspfDisableMap();
       _disableRedis = _oldES.getRedisDisableMap();
       _localPref = _oldES.getLocalPrefSet();
+      _enableRoute = _oldES.getEnableRouteMap();
     }
     _sliceName = sliceName;
     _headerSpace = h;
@@ -3605,4 +3610,7 @@ private void addSymbolicPacketBoundConstraints() {
     return _disableRedis;
   }
 
+  Map<String, BoolExpr> getEnableRouteMap() {
+    return _enableRoute;
+  }
 }
