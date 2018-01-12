@@ -563,11 +563,11 @@ class EncoderSlice {
             }
           }
         }
-        _softRedistributed.put(router, proto, unused);
+        //_softRedistributed.put(router, proto, unused);
       }
-      //System.out.println(" Router: " + router + "\nUsed: " +
-      // _logicalGraph.getRedistributedProtocols().get(router) + "\nUnused: " +
-      // _softRedistributed.get(router));
+      /*System.out.println(" Router: " + router + "\nUsed: " +
+       _logicalGraph.getRedistributedProtocols().get(router) + "\nUnused: " +
+       _softRedistributed.get(router));*/
     }
 
   }
@@ -894,7 +894,7 @@ class EncoderSlice {
           _ospfRedistributed.put(router, rec);
           getAllSymbolicRecords().add(rec);
         }
-
+        /*
         r = _softRedistributed.get(router, proto);
         assert r != null;
         if (proto.isOspf() && r.size() > 0) {
@@ -907,7 +907,7 @@ class EncoderSlice {
               new SymbolicRoute(this, rname, router, proto, _optimizations, null, false);
           _softOspfRedistributed.put(router, rec);
           getAllSymbolicRecords().add(rec);
-        }
+        }*/
 
 
         Boolean useSingleExport =
@@ -923,7 +923,8 @@ class EncoderSlice {
         for (GraphEdge e : edges) {
 
           Configuration conf = getGraph().getConfigurations().get(router);
-
+          boolean edgeHasOspf = getGraph().isEdgeUsed(conf, Protocol.OSPF, e);
+          boolean edgeHasBGP = getGraph().isEdgeUsed(conf, Protocol.BGP, e);
           if (getGraph().isEdgeUsed(conf, proto, e)) {
 
             ArrayList<LogicalEdge> importEdgeList = new ArrayList<>();
@@ -1021,7 +1022,8 @@ class EncoderSlice {
             allEdges.addAll(importEdgeList);
             allEdges.addAll(exportEdgeList);
             es.add(allEdges);
-          } else if ((proto.isOspf() || proto.isBgp()) && e.getStart()!=null && e.getEnd()!=null) {
+          } else if (((proto.isOspf() && !edgeHasBGP) || (proto.isBgp() && !edgeHasOspf))
+           && e.getStart()!=null && e.getEnd()!=null) {
             System.out.println(" Edge without OSPF or BGP: " + e);
             /////////////////////////////////////////////////////////////////////////
 
@@ -2563,7 +2565,11 @@ private void addSymbolicPacketBoundConstraints() {
         acc = f.compute();
         //System.out.println("** EXPORT **\n" + acc + "\n**   **");
         BoolExpr usable = mkAnd(active, doExport, varsOther.getPermitted(), notFailed);
-        SymbolicRoute softospf = _softOspfRedistributed.get(router);
+        /*
+        SymbolicRoute softospf = null;
+        if (proto.isOspf()) {
+          softospf = _softOspfRedistributed.get(router);
+        }*/
         // OSPF is complicated because it can have routes redistributed into it
         // from the FIB, but also needs to know about other routes in OSPF as well.
         // We model the export here as being the better of the redistributed route
@@ -2600,30 +2606,30 @@ private void addSymbolicPacketBoundConstraints() {
                 new TransferSSA(
                     this, conf, overallBest, softospf, proto, statements, cost, ge, true);
 
-            //BoolExpr acc2 = f.compute();
+            BoolExpr acc2 = f.compute();
             // System.out.println("ADDING: \n" + acc2.simplify());
             //add(acc2);
             BoolExpr shouldAdd = getCtx().mkBoolConst(_encoder.getId() + "_" 
               + router + "RedisAddSoft" + proto.name());
-            addSoft(shouldAdd, 1, "RedisAdd");
-            add(mkEq(mkNot(shouldAdd), softospf.getPermitted()));
+            addSoft(mkNot(shouldAdd), 1, "RedisAdd");
+            //add(mkEq(mkNot(shouldAdd), softospf.getPermitted()));
 
-            BoolExpr usable2 = mkAnd(softospf.getPermitted(), notFailed);
+            BoolExpr usable2 = mkAnd(active, doExport, softospf.getPermitted(), notFailed, shouldAdd);
             //BoolExpr geq = greaterOrEqual(conf, proto, softospf, varsOther, e);
             //BoolExpr isBetter = mkNot(mkAnd(softospf.getPermitted(), geq));
             //BoolExpr usesOspf = mkAnd(varsOther.getPermitted(), isBetter);
-            //BoolExpr eq = equal(conf, proto, softospf, vars, e, false);
+            BoolExpr eq = equal(conf, proto, softospf, vars, e, false);
             BoolExpr eqPer = mkEq(softospf.getPermitted(), vars.getPermitted());
 
             //System.out.println("*!!!!!!!!!!!!!!!\n" + mkIf(usesOspf, mkIf(usable, acc, val),
             // mkIf(usable2, mkAnd(eq, eqPer), val)) + "\n*!!!!!!!!!!!!!!!");
 
             acc = mkIf(varsOther.getPermitted(), mkIf(usable, acc, val),
-              mkIf(usable2, eqPer, val));
+              mkIf(usable2, mkAnd(eq, eqPer), val));
 
           } else {
             acc = mkIf(usable, acc, val);
-          }*/
+          }//*/
           acc = mkIf(usable, acc, val);
         }
 
@@ -2840,6 +2846,8 @@ private void addSymbolicPacketBoundConstraints() {
                   varsOther = getBestNeighborPerProtocol(router, proto);
                   if (_ospfRedistributed.containsKey(router)) {
                     ospfRedistribVars = _ospfRedistributed.get(router);
+                    overallBest = _symbolicDecisions.getBestNeighbor().get(router);
+                  } else if(_softOspfRedistributed.containsKey(router)) {
                     overallBest = _symbolicDecisions.getBestNeighbor().get(router);
                   }
                 } else {
