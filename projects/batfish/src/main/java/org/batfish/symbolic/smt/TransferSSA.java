@@ -282,8 +282,8 @@ class TransferSSA {
                 SymbolicRoute rec = _enc.getBestNeighborPerProtocol(router, Protocol.OSPF);
                 if (rec != null) {
                   BoolExpr shouldRemove = _enc.getCtx().mkBoolConst(_enc.getEncoder().getId() + "_"
-                   + pfx + "OSPF-ExportRemoveSoft" + other.getName());
-                  _enc.addSoft(shouldRemove, 30, "OExportRemove");
+                   + pfx + "ExportRemoveSoft" + other.getName());
+                  _enc.addSoft(shouldRemove, 30, "ExportRemove");
                   BoolExpr ospfRelevant = _enc.mkAnd(_enc.isRelevantFor(rec.getPrefixLength(), r),
                    shouldRemove);
                   //System.out.println("\n\nCONS OSPF " + ospfRelevant);
