@@ -926,6 +926,7 @@ ip_dhcp_null
       | PACKET
       | SMART_RELAY
       | SNOOPING
+      | USE
    ) ~NEWLINE* NEWLINE
 ;
 
@@ -3208,11 +3209,14 @@ spanning_tree_null
 :
    (
       BACKBONEFAST
+      | BPDUFILTER
       | BRIDGE
+      | COST
       | DISPUTE
       | ETHERCHANNEL
       | EXTEND
       | FCOE
+      | GUARD
       | LOGGING
       | LOOPGUARD
       | MODE

@@ -5398,6 +5398,11 @@ IUC
    'iuc'
 ;
 
+JOIN_GROUP
+:
+    'join-group'
+;
+
 JUMBO
 :
    'jumbo'

@@ -890,7 +890,8 @@ if_tunnel
 :
    TUNNEL
    (
-       iftunnel_destination
+       iftunnel_bandwidth
+       | iftunnel_destination
        | iftunnel_mode
        | iftunnel_protection
        | iftunnel_source
@@ -970,6 +971,7 @@ ifigmp_null
    (
       GROUP_TIMEOUT
       | HOST_PROXY
+      | JOIN_GROUP
       | LAST_MEMBER_QUERY_COUNT
       | LAST_MEMBER_QUERY_INTERVAL
       | LAST_MEMBER_QUERY_RESPONSE_TIME
@@ -1008,6 +1010,16 @@ ifigmpsg_null
    ) ~NEWLINE* NEWLINE
 ;
 
+iftunnel_bandwidth
+:
+   BANDWIDTH 
+   (
+      RECEIVE
+      | TRANSMIT
+   ) DEC NEWLINE
+;
+
+
 iftunnel_destination
 :
    DESTINATION IP_ADDRESS NEWLINE
@@ -1034,7 +1046,11 @@ iftunnel_protection
 
 iftunnel_source
 :
-   SOURCE IP_ADDRESS NEWLINE
+   SOURCE 
+   (
+     IP_ADDRESS 
+     | interface_name
+   ) NEWLINE
 ;
 
 ifvrrp_authentication
