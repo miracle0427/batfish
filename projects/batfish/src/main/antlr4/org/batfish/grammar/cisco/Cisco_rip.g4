@@ -33,7 +33,10 @@ rr_distribute_list
    (
       IN
       | OUT
-   ) NEWLINE
+   ) 
+   (
+      i = interface_name 
+   )? NEWLINE
 ;
 
 rr_network
