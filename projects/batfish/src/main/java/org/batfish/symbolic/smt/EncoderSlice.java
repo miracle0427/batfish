@@ -125,6 +125,10 @@ class EncoderSlice {
 
   private Set<LogicalEdge> _bgpAllow;
 
+  private Map<String, BoolExpr> _disableOSPF;
+
+  private Map<String, BoolExpr> _disableRedis;
+
   /**
    * Create a new encoding slice
    *
@@ -149,10 +153,18 @@ class EncoderSlice {
     _encoder = enc;
     _first = (enc.getId() == 0);
     _localPrefMap = new HashMap<>();
+    _disableOSPF = new HashMap<>();
+    _disableRedis = new HashMap<>();
+    _localPref = new TreeSet<Integer>();
+
     if (!_first) {
       _oldES = enc.getPreviousEncoderSlice();
       _localPrefMap = _oldES.getLocalPrefMap();
+      _disableOSPF = _oldES.getOspfDisableMap();
+      _disableRedis = _oldES.getRedisDisableMap();
+      _localPref = _oldES.getLocalPrefSet();
     }
+
     _sliceName = sliceName;
     _headerSpace = h;
     _allSymbolicRoutes = new ArrayList<>();
@@ -164,7 +176,6 @@ class EncoderSlice {
     _softRedistributed = new Table2<>();
     _isTCE = false;
     _staticRouteAddSoft = new HashMap<>();
-    _localPref = new TreeSet<Integer>();
 
     _ospfAllow = new HashSet<>();
 
@@ -250,9 +261,15 @@ class EncoderSlice {
     _encoder = enc;
     _first = (enc.getId() == 0);
     _localPrefMap = new HashMap<>();
+    _disableOSPF = new HashMap<>();
+    _disableRedis = new HashMap<>();
+    _localPref = new TreeSet<Integer>();
     if (!_first) {
       _oldES = enc.getPreviousEncoderSlice();
       _localPrefMap = _oldES.getLocalPrefMap();
+      _disableOSPF = _oldES.getOspfDisableMap();
+      _disableRedis = _oldES.getRedisDisableMap();
+      _localPref = _oldES.getLocalPrefSet();
     }
     _sliceName = sliceName;
     _headerSpace = h;
@@ -266,7 +283,6 @@ class EncoderSlice {
     _isTCE = true;
     _existsES = existsES;
     _staticRouteAddSoft = new HashMap<>();
-    _localPref = new TreeSet<Integer>();
 
     _ospfAllow = new HashSet<>();
 
@@ -2822,10 +2838,23 @@ private void addSymbolicPacketBoundConstraints() {
           f =
               new TransferSSA(
                   this, conf, overallBest, ospfRedistribVars, proto, statements, cost, ge, true);
+
+          BoolExpr redisRemove;
+          String keyvalue = router + proto.name();
+          if (_disableRedis.containsKey(keyvalue)) {
+            redisRemove = _disableRedis.get(keyvalue);
+          } else {
+            redisRemove = getCtx().mkBoolConst(_encoder.getId() + "_"
+             + router + proto.name() + "SoftRedisRemove");
+            addSoft(redisRemove, 2, "RedisRemove");
+
+            _disableRedis.put(keyvalue, redisRemove);
+          }
+          /*
           BoolExpr redisRemove = getCtx().mkBoolConst(_encoder.getId() + "_"
            + router + proto.name() + "SoftRedisRemove");
           addSoft(redisRemove, 2, "RedisRemove");
-
+          */
           BoolExpr acc2 = f.compute();
           //System.out.println("################\n" + acc2 + "\n#############");
           // System.out.println("ADDING: \n" + acc2.simplify());
@@ -2884,9 +2913,19 @@ private void addSymbolicPacketBoundConstraints() {
 
             BoolExpr ifaceUp = interfaceActive(iface, proto, e);
             BoolExpr relevantPrefix = isRelevantFor(p, _symbolicPacket.getDstIp());
-            BoolExpr shouldRemove = getCtx().mkBoolConst(_encoder.getId() + "_"
+            BoolExpr shouldRemove;
+            String keyvalue = router + p;
+            if (_disableOSPF.containsKey(keyvalue)) {
+              shouldRemove = _disableOSPF.get(keyvalue);
+            } else {
+              shouldRemove = getCtx().mkBoolConst(_encoder.getId() + "_"
+                + router + "OSPFExportRemoveSoft" + p);
+              addSoft(shouldRemove, 3, "OSPFExportRemove"); 
+              _disableOSPF.put(keyvalue, shouldRemove);
+            }
+            /*BoolExpr shouldRemove = getCtx().mkBoolConst(_encoder.getId() + "_"
              + router + "OSPFExportRemoveSoft" + p);
-            addSoft(shouldRemove, 3, "OSPFExportRemove");
+            addSoft(shouldRemove, 3, "OSPFExportRemove");*/
             relevantPrefix = mkAnd(relevantPrefix, shouldRemove);
             BoolExpr relevant = mkAnd(ifaceUp, relevantPrefix);
 
@@ -2936,7 +2975,7 @@ private void addSymbolicPacketBoundConstraints() {
             BoolExpr relevantPrefix = isRelevantFor(p, _symbolicPacket.getDstIp());
             BoolExpr shouldAdd = getCtx().mkBoolConst(_encoder.getId() + "_"
              + router + "OSPFExportAddSoft" + p);
-            addSoft(mkNot(shouldAdd), 2, "OSPFExportAdd");
+            addSoft(mkNot(shouldAdd), 20, "OSPFExportAdd");
             relevantPrefix = mkAnd(relevantPrefix, shouldAdd);
             BoolExpr relevant = mkAnd(ifaceUp, relevantPrefix);
 
@@ -3089,9 +3128,9 @@ private void addSymbolicPacketBoundConstraints() {
                   if (_ospfRedistributed.containsKey(router)) {
                     ospfRedistribVars = _ospfRedistributed.get(router);
                     overallBest = _symbolicDecisions.getBestNeighbor().get(router);
-                  } else if(_softOspfRedistributed.containsKey(router)) {
+                  }/* else if(_softOspfRedistributed.containsKey(router)) {
                     overallBest = _symbolicDecisions.getBestNeighbor().get(router);
-                  }
+                  }*/
                 } else {
                   varsOther = _symbolicDecisions.getBestNeighbor().get(router);
                 }
@@ -3556,6 +3595,14 @@ private void addSymbolicPacketBoundConstraints() {
 
   Map<String, ArithExpr> getLocalPrefMap() {
     return _localPrefMap;
+  }
+
+  Map<String, BoolExpr> getOspfDisableMap() {
+    return _disableOSPF;
+  }
+
+  Map<String, BoolExpr> getRedisDisableMap() {
+    return _disableRedis;
   }
 
 }
