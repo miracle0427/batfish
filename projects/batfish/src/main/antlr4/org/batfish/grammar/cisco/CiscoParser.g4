@@ -926,6 +926,7 @@ ip_dhcp_null
       | PACKET
       | SMART_RELAY
       | SNOOPING
+      | USE
    ) ~NEWLINE* NEWLINE
 ;
 
