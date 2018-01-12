@@ -4295,6 +4295,12 @@ public class Batfish extends PluginConsumer implements IBatfish {
   }
 
   @Override
+  public AnswerElement smtPathPreferences(HeaderLocationQuestion q, List<List<String>> pathPrefs) {
+    PropertyChecker p = new PropertyChecker(this);
+    return p.checkPathPreferences(q, pathPrefs);
+  }
+
+  @Override
   public AnswerElement smtReachability(HeaderLocationQuestion q) {
     PropertyChecker p = new PropertyChecker(this);
     return p.checkReachability(q);
@@ -4312,6 +4318,12 @@ public class Batfish extends PluginConsumer implements IBatfish {
   public AnswerElement smtRoutingLoop(HeaderQuestion q) {
     PropertyChecker p = new PropertyChecker(this);
     return p.checkRoutingLoop(q);
+  }
+
+  @Override
+  public AnswerElement smtWaypoint(HeaderLocationQuestion q, List<String> waypoints) {
+    PropertyChecker p = new PropertyChecker(this);
+    return p.checkWaypointing(q, waypoints);
   }
 
   @Override

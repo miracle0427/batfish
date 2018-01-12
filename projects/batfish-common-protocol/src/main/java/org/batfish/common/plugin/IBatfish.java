@@ -1,5 +1,6 @@
 package org.batfish.common.plugin;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.SortedMap;
@@ -168,11 +169,15 @@ public interface IBatfish extends IPluginConsumer {
 
   AnswerElement smtMultipathConsistency(HeaderLocationQuestion q);
 
+  AnswerElement smtPathPreferences(HeaderLocationQuestion q, List<List<String>> pathPrefs);
+
   AnswerElement smtReachability(HeaderLocationQuestion q);
 
   AnswerElement smtRoles(EquivalenceType t, String nodeRegex);
 
   AnswerElement smtRoutingLoop(HeaderQuestion q);
+
+  AnswerElement smtWaypoint(HeaderLocationQuestion q, List<String> waypoints);
 
   AnswerElement standard(
       HeaderSpace headerSpace,
