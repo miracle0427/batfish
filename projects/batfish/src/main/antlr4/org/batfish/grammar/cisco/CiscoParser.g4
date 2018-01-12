@@ -3209,10 +3209,12 @@ spanning_tree_null
    (
       BACKBONEFAST
       | BRIDGE
+      | COST
       | DISPUTE
       | ETHERCHANNEL
       | EXTEND
       | FCOE
+      | GUARD
       | LOGGING
       | LOOPGUARD
       | MODE
