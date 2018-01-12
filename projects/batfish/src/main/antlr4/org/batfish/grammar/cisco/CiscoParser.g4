@@ -3208,6 +3208,7 @@ spanning_tree_null
 :
    (
       BACKBONEFAST
+      | BPDUFILTER
       | BRIDGE
       | COST
       | DISPUTE
