@@ -1551,7 +1551,7 @@ private void addSymbolicPacketBoundConstraints() {
    * This method is necessary, because optimizations might
    * decide that certain records can be merged together.
    */
-  private SymbolicRoute correctVars(LogicalEdge e) {
+  SymbolicRoute correctVars(LogicalEdge e) {
     SymbolicRoute vars = e.getSymbolicRecord();
     if (!vars.getIsUsed()) {
       return _logicalGraph.getOtherEnd().get(e).getSymbolicRecord();
@@ -2281,7 +2281,7 @@ private void addSymbolicPacketBoundConstraints() {
             notBlocked = mkOr(notBlocked, shouldAdd);
             
           }
-          add(mkEq(notBlocked, dForward));
+          add(mkEq(mkAnd(notBlocked, mkEq(getSymbolicFailures().getFailedVariable(ge), mkInt(0))), dForward));
         }
       }
     }
