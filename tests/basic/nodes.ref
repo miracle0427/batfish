@@ -4,6 +4,7 @@
       "class" : "org.batfish.question.NodesQuestionPlugin$NodesAnswerElement",
       "nodes" : {
         "as1border1" : {
+          "configurationFormat" : "CISCO_IOS",
           "name" : "as1border1",
           "communityLists" : {
             "as1_community" : {
@@ -37,19 +38,50 @@
               "invertMatch" : false
             }
           },
-          "configurationFormat" : "CISCO_IOS",
           "defaultCrossZoneAction" : "ACCEPT",
           "defaultInboundAction" : "ACCEPT",
+          "deviceType" : "ROUTER",
           "domainName" : "lab.local",
           "interfaces" : {
-            "FastEthernet0/0" : {
-              "name" : "FastEthernet0/0",
+            "Ethernet0/0" : {
+              "name" : "Ethernet0/0",
+              "accessVlan" : 0,
+              "active" : false,
+              "autostate" : true,
+              "bandwidth" : 1.0E7,
+              "declaredNames" : [
+                "Ethernet0/0"
+              ],
+              "isisL1InterfaceMode" : "unset",
+              "isisL2InterfaceMode" : "unset",
+              "mtu" : 1500,
+              "nativeVlan" : 1,
+              "ospfDeadInterval" : 0,
+              "ospfEnabled" : false,
+              "ospfHelloMultiplier" : 0,
+              "ospfPassive" : false,
+              "ospfPointToPoint" : false,
+              "proxyArp" : true,
+              "ripEnabled" : false,
+              "ripPassive" : false,
+              "spanningTreePortfast" : false,
+              "switchportMode" : "NONE",
+              "switchportTrunkEncapsulation" : "DOT1Q",
+              "type" : "PHYSICAL",
+              "vrf" : "default"
+            },
+            "GigabitEthernet0/0" : {
+              "name" : "GigabitEthernet0/0",
               "accessVlan" : 0,
               "active" : true,
               "allPrefixes" : [
                 "1.0.1.1/24"
               ],
-              "bandwidth" : 1.0E8,
+              "autostate" : true,
+              "bandwidth" : 1.0E9,
+              "declaredNames" : [
+                "GigabitEthernet0/0"
+              ],
               "isisL1InterfaceMode" : "unset",
               "isisL2InterfaceMode" : "unset",
               "mtu" : 1500,
@@ -60,20 +92,29 @@
               "ospfEnabled" : true,
               "ospfHelloMultiplier" : 0,
               "ospfPassive" : false,
+              "ospfPointToPoint" : false,
               "prefix" : "1.0.1.1/24",
               "proxyArp" : true,
+              "ripEnabled" : false,
+              "ripPassive" : false,
+              "spanningTreePortfast" : false,
               "switchportMode" : "NONE",
               "switchportTrunkEncapsulation" : "DOT1Q",
+              "type" : "PHYSICAL",
               "vrf" : "default"
             },
-            "FastEthernet0/1" : {
-              "name" : "FastEthernet0/1",
+            "GigabitEthernet1/0" : {
+              "name" : "GigabitEthernet1/0",
               "accessVlan" : 0,
               "active" : true,
               "allPrefixes" : [
                 "10.12.11.1/24"
               ],
-              "bandwidth" : 1.0E8,
+              "autostate" : true,
+              "bandwidth" : 1.0E9,
+              "declaredNames" : [
+                "GigabitEthernet1/0"
+              ],
               "isisL1InterfaceMode" : "unset",
               "isisL2InterfaceMode" : "unset",
               "mtu" : 1500,
@@ -82,10 +123,15 @@
               "ospfEnabled" : false,
               "ospfHelloMultiplier" : 0,
               "ospfPassive" : false,
+              "ospfPointToPoint" : false,
               "prefix" : "10.12.11.1/24",
               "proxyArp" : true,
+              "ripEnabled" : false,
+              "ripPassive" : false,
+              "spanningTreePortfast" : false,
               "switchportMode" : "NONE",
               "switchportTrunkEncapsulation" : "DOT1Q",
+              "type" : "PHYSICAL",
               "vrf" : "default"
             },
             "Loopback0" : {
@@ -95,7 +141,11 @@
               "allPrefixes" : [
                 "1.1.1.1/32"
               ],
+              "autostate" : true,
               "bandwidth" : 1.0E12,
+              "declaredNames" : [
+                "Loopback0"
+              ],
               "isisL1InterfaceMode" : "unset",
               "isisL2InterfaceMode" : "unset",
               "mtu" : 1500,
@@ -106,10 +156,15 @@
               "ospfEnabled" : true,
               "ospfHelloMultiplier" : 0,
               "ospfPassive" : true,
+              "ospfPointToPoint" : false,
               "prefix" : "1.1.1.1/32",
               "proxyArp" : true,
+              "ripEnabled" : false,
+              "ripPassive" : false,
+              "spanningTreePortfast" : false,
               "switchportMode" : "NONE",
               "switchportTrunkEncapsulation" : "DOT1Q",
+              "type" : "LOOPBACK",
               "vrf" : "default"
             }
           },
@@ -196,6 +251,9 @@
               ]
             }
           },
+          "roles" : [
+            "border"
+          ],
           "route6FilterLists" : {
             "~BGP_NETWORK6_NETWORKS_FILTER:default~" : {
               "name" : "~BGP_NETWORK6_NETWORKS_FILTER:default~"
@@ -308,7 +366,7 @@
                             {
                               "class" : "org.batfish.datamodel.routing_policy.statement.SetMetric",
                               "metric" : {
-                                "class" : "org.batfish.datamodel.routing_policy.expr.LiteralInt",
+                                "class" : "org.batfish.datamodel.routing_policy.expr.LiteralLong",
                                 "value" : 50
                               }
                             },
@@ -351,7 +409,7 @@
                         {
                           "class" : "org.batfish.datamodel.routing_policy.statement.SetMetric",
                           "metric" : {
-                            "class" : "org.batfish.datamodel.routing_policy.expr.LiteralInt",
+                            "class" : "org.batfish.datamodel.routing_policy.expr.LiteralLong",
                             "value" : 50
                           }
                         },
@@ -394,7 +452,7 @@
                     {
                       "class" : "org.batfish.datamodel.routing_policy.statement.SetMetric",
                       "metric" : {
-                        "class" : "org.batfish.datamodel.routing_policy.expr.LiteralInt",
+                        "class" : "org.batfish.datamodel.routing_policy.expr.LiteralLong",
                         "value" : 50
                       }
                     },
@@ -454,7 +512,7 @@
                         {
                           "class" : "org.batfish.datamodel.routing_policy.statement.SetMetric",
                           "metric" : {
-                            "class" : "org.batfish.datamodel.routing_policy.expr.LiteralInt",
+                            "class" : "org.batfish.datamodel.routing_policy.expr.LiteralLong",
                             "value" : 50
                           }
                         },
@@ -497,7 +555,7 @@
                     {
                       "class" : "org.batfish.datamodel.routing_policy.statement.SetMetric",
                       "metric" : {
-                        "class" : "org.batfish.datamodel.routing_policy.expr.LiteralInt",
+                        "class" : "org.batfish.datamodel.routing_policy.expr.LiteralLong",
                         "value" : 50
                       }
                     },
@@ -883,7 +941,7 @@
                 {
                   "class" : "org.batfish.datamodel.routing_policy.statement.SetMetric",
                   "metric" : {
-                    "class" : "org.batfish.datamodel.routing_policy.expr.LiteralInt",
+                    "class" : "org.batfish.datamodel.routing_policy.expr.LiteralLong",
                     "value" : 20
                   }
                 },
@@ -910,6 +968,9 @@
           },
           "vendorFamily" : {
             "cisco" : {
+              "aaa" : {
+                "newModel" : false
+              },
               "hostname" : "as1border1",
               "lines" : {
                 "aux0" : {
@@ -949,26 +1010,23 @@
                 }
               },
               "services" : {
-                "log" : {
-                  "enabled" : true,
-                  "subservices" : {
-                    "datetime" : {
-                      "enabled" : true,
-                      "subservices" : {
-                        "msec" : {
-                          "enabled" : true
-                        }
-                      }
-                    }
-                  }
-                },
-                "password-encryption" : {
-                  "enabled" : false
-                },
                 "timestamps" : {
                   "enabled" : true,
                   "subservices" : {
                     "debug" : {
+                      "enabled" : true,
+                      "subservices" : {
+                        "datetime" : {
+                          "enabled" : true,
+                          "subservices" : {
+                            "msec" : {
+                              "enabled" : true
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "log" : {
                       "enabled" : true,
                       "subservices" : {
                         "datetime" : {
@@ -991,13 +1049,17 @@
               "name" : "default",
               "bgpProcess" : {
                 "multipathEbgp" : true,
+                "multipathEquivalentAsPathMatchMode" : "EXACT_PATH",
                 "multipathIbgp" : true,
                 "neighbors" : {
                   "1.10.1.1/32" : {
                     "name" : "1.10.1.1/32",
+                    "additionalPathsReceive" : true,
+                    "additionalPathsSelectAll" : true,
+                    "additionalPathsSend" : true,
                     "address" : "1.10.1.1",
                     "advertiseExternal" : false,
-                    "advertiseInactive" : false,
+                    "advertiseInactive" : true,
                     "allowLocalAsIn" : false,
                     "allowRemoteAsOut" : false,
                     "clusterId" : 16843009,
@@ -1016,9 +1078,12 @@
                   },
                   "3.2.2.2/32" : {
                     "name" : "3.2.2.2/32",
+                    "additionalPathsReceive" : true,
+                    "additionalPathsSelectAll" : true,
+                    "additionalPathsSend" : true,
                     "address" : "3.2.2.2",
                     "advertiseExternal" : false,
-                    "advertiseInactive" : false,
+                    "advertiseInactive" : true,
                     "allowLocalAsIn" : false,
                     "allowRemoteAsOut" : false,
                     "clusterId" : 16843009,
@@ -1036,9 +1101,12 @@
                   },
                   "5.6.7.8/32" : {
                     "name" : "5.6.7.8/32",
+                    "additionalPathsReceive" : true,
+                    "additionalPathsSelectAll" : true,
+                    "additionalPathsSend" : true,
                     "address" : "5.6.7.8",
                     "advertiseExternal" : false,
-                    "advertiseInactive" : false,
+                    "advertiseInactive" : true,
                     "allowLocalAsIn" : false,
                     "allowRemoteAsOut" : false,
                     "clusterId" : 16843009,
@@ -1056,9 +1124,12 @@
                   },
                   "10.12.11.2/32" : {
                     "name" : "10.12.11.2/32",
+                    "additionalPathsReceive" : true,
+                    "additionalPathsSelectAll" : true,
+                    "additionalPathsSend" : true,
                     "address" : "10.12.11.2",
                     "advertiseExternal" : false,
-                    "advertiseInactive" : false,
+                    "advertiseInactive" : true,
                     "allowLocalAsIn" : false,
                     "allowRemoteAsOut" : false,
                     "clusterId" : 16843009,
@@ -1066,8 +1137,14 @@
                     "dynamic" : false,
                     "ebgpMultihop" : false,
                     "exportPolicy" : "~BGP_PEER_EXPORT_POLICY:default:10.12.11.2~",
+                    "exportPolicySources" : [
+                      "as1_to_as2"
+                    ],
                     "group" : "as2",
                     "importPolicy" : "as2_to_as1",
+                    "importPolicySources" : [
+                      "as2_to_as1"
+                    ],
                     "localAs" : 1,
                     "localIp" : "10.12.11.1",
                     "remoteAs" : 2,
@@ -1077,11 +1154,13 @@
                     "vrf" : "default"
                   }
                 },
-                "routerId" : "1.1.1.1"
+                "routerId" : "1.1.1.1",
+                "tieBreaker" : "ARRIVAL_ORDER"
               },
               "interfaces" : [
-                "FastEthernet0/0",
-                "FastEthernet0/1",
+                "Ethernet0/0",
+                "GigabitEthernet0/0",
+                "GigabitEthernet1/0",
                 "Loopback0"
               ],
               "ospfProcess" : {
@@ -1089,7 +1168,7 @@
                   "1" : {
                     "name" : 1,
                     "interfaces" : [
-                      "FastEthernet0/0",
+                      "GigabitEthernet0/0",
                       "Loopback0"
                     ]
                   }
@@ -1102,6 +1181,7 @@
           }
         },
         "as1border2" : {
+          "configurationFormat" : "CISCO_IOS",
           "name" : "as1border2",
           "communityLists" : {
             "as1_community" : {
@@ -1145,19 +1225,81 @@
               "invertMatch" : false
             }
           },
-          "configurationFormat" : "CISCO_IOS",
           "defaultCrossZoneAction" : "ACCEPT",
           "defaultInboundAction" : "ACCEPT",
+          "deviceType" : "ROUTER",
           "domainName" : "lab.local",
           "interfaces" : {
-            "FastEthernet0/0" : {
-              "name" : "FastEthernet0/0",
+            "Ethernet0/0" : {
+              "name" : "Ethernet0/0",
+              "accessVlan" : 0,
+              "active" : false,
+              "autostate" : true,
+              "bandwidth" : 1.0E7,
+              "declaredNames" : [
+                "Ethernet0/0"
+              ],
+              "isisL1InterfaceMode" : "unset",
+              "isisL2InterfaceMode" : "unset",
+              "mtu" : 1500,
+              "nativeVlan" : 1,
+              "ospfDeadInterval" : 0,
+              "ospfEnabled" : false,
+              "ospfHelloMultiplier" : 0,
+              "ospfPassive" : false,
+              "ospfPointToPoint" : false,
+              "proxyArp" : true,
+              "ripEnabled" : false,
+              "ripPassive" : false,
+              "spanningTreePortfast" : false,
+              "switchportMode" : "NONE",
+              "switchportTrunkEncapsulation" : "DOT1Q",
+              "type" : "PHYSICAL",
+              "vrf" : "default"
+            },
+            "GigabitEthernet0/0" : {
+              "name" : "GigabitEthernet0/0",
+              "accessVlan" : 0,
+              "active" : true,
+              "allPrefixes" : [
+                "10.13.22.1/24"
+              ],
+              "autostate" : true,
+              "bandwidth" : 1.0E9,
+              "declaredNames" : [
+                "GigabitEthernet0/0"
+              ],
+              "isisL1InterfaceMode" : "unset",
+              "isisL2InterfaceMode" : "unset",
+              "mtu" : 1500,
+              "nativeVlan" : 1,
+              "ospfDeadInterval" : 0,
+              "ospfEnabled" : false,
+              "ospfHelloMultiplier" : 0,
+              "ospfPassive" : false,
+              "ospfPointToPoint" : false,
+              "prefix" : "10.13.22.1/24",
+              "proxyArp" : true,
+              "ripEnabled" : false,
+              "ripPassive" : false,
+              "spanningTreePortfast" : false,
+              "switchportMode" : "NONE",
+              "switchportTrunkEncapsulation" : "DOT1Q",
+              "type" : "PHYSICAL",
+              "vrf" : "default"
+            },
+            "GigabitEthernet1/0" : {
+              "name" : "GigabitEthernet1/0",
               "accessVlan" : 0,
               "active" : true,
               "allPrefixes" : [
                 "1.0.2.1/24"
               ],
-              "bandwidth" : 1.0E8,
+              "autostate" : true,
+              "bandwidth" : 1.0E9,
+              "declaredNames" : [
+                "GigabitEthernet1/0"
+              ],
               "isisL1InterfaceMode" : "unset",
               "isisL2InterfaceMode" : "unset",
               "mtu" : 1500,
@@ -1168,42 +1310,29 @@
               "ospfEnabled" : true,
               "ospfHelloMultiplier" : 0,
               "ospfPassive" : false,
+              "ospfPointToPoint" : false,
               "prefix" : "1.0.2.1/24",
               "proxyArp" : true,
+              "ripEnabled" : false,
+              "ripPassive" : false,
+              "spanningTreePortfast" : false,
               "switchportMode" : "NONE",
               "switchportTrunkEncapsulation" : "DOT1Q",
+              "type" : "PHYSICAL",
               "vrf" : "default"
             },
-            "FastEthernet0/1" : {
-              "name" : "FastEthernet0/1",
-              "accessVlan" : 0,
-              "active" : true,
-              "allPrefixes" : [
-                "10.13.22.1/24"
-              ],
-              "bandwidth" : 1.0E8,
-              "isisL1InterfaceMode" : "unset",
-              "isisL2InterfaceMode" : "unset",
-              "mtu" : 1500,
-              "nativeVlan" : 1,
-              "ospfDeadInterval" : 0,
-              "ospfEnabled" : false,
-              "ospfHelloMultiplier" : 0,
-              "ospfPassive" : false,
-              "prefix" : "10.13.22.1/24",
-              "proxyArp" : true,
-              "switchportMode" : "NONE",
-              "switchportTrunkEncapsulation" : "DOT1Q",
-              "vrf" : "default"
-            },
-            "FastEthernet0/2" : {
-              "name" : "FastEthernet0/2",
+            "GigabitEthernet2/0" : {
+              "name" : "GigabitEthernet2/0",
               "accessVlan" : 0,
               "active" : true,
               "allPrefixes" : [
                 "10.14.22.1/24"
               ],
-              "bandwidth" : 1.0E8,
+              "autostate" : true,
+              "bandwidth" : 1.0E9,
+              "declaredNames" : [
+                "GigabitEthernet2/0"
+              ],
               "isisL1InterfaceMode" : "unset",
               "isisL2InterfaceMode" : "unset",
               "mtu" : 1500,
@@ -1212,10 +1341,15 @@
               "ospfEnabled" : false,
               "ospfHelloMultiplier" : 0,
               "ospfPassive" : false,
+              "ospfPointToPoint" : false,
               "prefix" : "10.14.22.1/24",
               "proxyArp" : true,
+              "ripEnabled" : false,
+              "ripPassive" : false,
+              "spanningTreePortfast" : false,
               "switchportMode" : "NONE",
               "switchportTrunkEncapsulation" : "DOT1Q",
+              "type" : "PHYSICAL",
               "vrf" : "default"
             },
             "Loopback0" : {
@@ -1225,7 +1359,11 @@
               "allPrefixes" : [
                 "1.2.2.2/32"
               ],
+              "autostate" : true,
               "bandwidth" : 1.0E12,
+              "declaredNames" : [
+                "Loopback0"
+              ],
               "isisL1InterfaceMode" : "unset",
               "isisL2InterfaceMode" : "unset",
               "mtu" : 1500,
@@ -1236,10 +1374,15 @@
               "ospfEnabled" : true,
               "ospfHelloMultiplier" : 0,
               "ospfPassive" : false,
+              "ospfPointToPoint" : false,
               "prefix" : "1.2.2.2/32",
               "proxyArp" : true,
+              "ripEnabled" : false,
+              "ripPassive" : false,
+              "spanningTreePortfast" : false,
               "switchportMode" : "NONE",
               "switchportTrunkEncapsulation" : "DOT1Q",
+              "type" : "LOOPBACK",
               "vrf" : "default"
             }
           },
@@ -1311,21 +1454,17 @@
                   "srcIps" : [
                     "3.0.1.0"
                   ]
-                },
-                {
-                  "action" : "ACCEPT",
-                  "dstIps" : [
-                    "255.255.255.0"
-                  ],
-                  "name" : "permit ip host 3.0.2.0 host 255.255.255.0",
-                  "negate" : false,
-                  "srcIps" : [
-                    "3.0.2.0"
-                  ]
                 }
               ]
             }
           },
+          "ntpServers" : [
+            "18.18.18.18",
+            "23.23.23.23"
+          ],
+          "roles" : [
+            "border"
+          ],
           "route6FilterLists" : {
             "~BGP_NETWORK6_NETWORKS_FILTER:default~" : {
               "name" : "~BGP_NETWORK6_NETWORKS_FILTER:default~"
@@ -1369,11 +1508,6 @@
                   "action" : "ACCEPT",
                   "lengthRange" : "24-24",
                   "prefix" : "3.0.1.0/24"
-                },
-                {
-                  "action" : "ACCEPT",
-                  "lengthRange" : "24-24",
-                  "prefix" : "3.0.2.0/24"
                 }
               ]
             },
@@ -1434,7 +1568,7 @@
                         {
                           "class" : "org.batfish.datamodel.routing_policy.statement.SetMetric",
                           "metric" : {
-                            "class" : "org.batfish.datamodel.routing_policy.expr.LiteralInt",
+                            "class" : "org.batfish.datamodel.routing_policy.expr.LiteralLong",
                             "value" : 50
                           }
                         },
@@ -1477,7 +1611,7 @@
                     {
                       "class" : "org.batfish.datamodel.routing_policy.statement.SetMetric",
                       "metric" : {
-                        "class" : "org.batfish.datamodel.routing_policy.expr.LiteralInt",
+                        "class" : "org.batfish.datamodel.routing_policy.expr.LiteralLong",
                         "value" : 50
                       }
                     },
@@ -1537,7 +1671,7 @@
                         {
                           "class" : "org.batfish.datamodel.routing_policy.statement.SetMetric",
                           "metric" : {
-                            "class" : "org.batfish.datamodel.routing_policy.expr.LiteralInt",
+                            "class" : "org.batfish.datamodel.routing_policy.expr.LiteralLong",
                             "value" : 50
                           }
                         },
@@ -1580,7 +1714,7 @@
                     {
                       "class" : "org.batfish.datamodel.routing_policy.statement.SetMetric",
                       "metric" : {
-                        "class" : "org.batfish.datamodel.routing_policy.expr.LiteralInt",
+                        "class" : "org.batfish.datamodel.routing_policy.expr.LiteralLong",
                         "value" : 50
                       }
                     },
@@ -1616,7 +1750,7 @@
                 {
                   "class" : "org.batfish.datamodel.routing_policy.statement.SetMetric",
                   "metric" : {
-                    "class" : "org.batfish.datamodel.routing_policy.expr.LiteralInt",
+                    "class" : "org.batfish.datamodel.routing_policy.expr.LiteralLong",
                     "value" : 50
                   }
                 },
@@ -2034,7 +2168,7 @@
                 {
                   "class" : "org.batfish.datamodel.routing_policy.statement.SetMetric",
                   "metric" : {
-                    "class" : "org.batfish.datamodel.routing_policy.expr.LiteralInt",
+                    "class" : "org.batfish.datamodel.routing_policy.expr.LiteralLong",
                     "value" : 20
                   }
                 },
@@ -2061,6 +2195,9 @@
           },
           "vendorFamily" : {
             "cisco" : {
+              "aaa" : {
+                "newModel" : false
+              },
               "hostname" : "as1border2",
               "lines" : {
                 "aux0" : {
@@ -2099,27 +2236,34 @@
                   "execTimeoutSeconds" : 0
                 }
               },
-              "services" : {
-                "log" : {
-                  "enabled" : true,
-                  "subservices" : {
-                    "datetime" : {
-                      "enabled" : true,
-                      "subservices" : {
-                        "msec" : {
-                          "enabled" : true
-                        }
-                      }
-                    }
+              "ntp" : {
+                "servers" : {
+                  "18.18.18.18" : {
+                    "name" : "18.18.18.18"
+                  },
+                  "23.23.23.23" : {
+                    "name" : "23.23.23.23"
                   }
-                },
-                "password-encryption" : {
-                  "enabled" : false
-                },
+                }
+              },
+              "services" : {
                 "timestamps" : {
                   "enabled" : true,
                   "subservices" : {
                     "debug" : {
+                      "enabled" : true,
+                      "subservices" : {
+                        "datetime" : {
+                          "enabled" : true,
+                          "subservices" : {
+                            "msec" : {
+                              "enabled" : true
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "log" : {
                       "enabled" : true,
                       "subservices" : {
                         "datetime" : {
@@ -2142,13 +2286,17 @@
               "name" : "default",
               "bgpProcess" : {
                 "multipathEbgp" : true,
+                "multipathEquivalentAsPathMatchMode" : "EXACT_PATH",
                 "multipathIbgp" : true,
                 "neighbors" : {
                   "1.10.1.1/32" : {
                     "name" : "1.10.1.1/32",
+                    "additionalPathsReceive" : true,
+                    "additionalPathsSelectAll" : true,
+                    "additionalPathsSend" : true,
                     "address" : "1.10.1.1",
                     "advertiseExternal" : false,
-                    "advertiseInactive" : false,
+                    "advertiseInactive" : true,
                     "allowLocalAsIn" : false,
                     "allowRemoteAsOut" : false,
                     "clusterId" : 16908802,
@@ -2167,9 +2315,12 @@
                   },
                   "10.13.22.3/32" : {
                     "name" : "10.13.22.3/32",
+                    "additionalPathsReceive" : true,
+                    "additionalPathsSelectAll" : true,
+                    "additionalPathsSend" : true,
                     "address" : "10.13.22.3",
                     "advertiseExternal" : false,
-                    "advertiseInactive" : false,
+                    "advertiseInactive" : true,
                     "allowLocalAsIn" : false,
                     "allowRemoteAsOut" : false,
                     "clusterId" : 16908802,
@@ -2177,8 +2328,14 @@
                     "dynamic" : false,
                     "ebgpMultihop" : false,
                     "exportPolicy" : "~BGP_PEER_EXPORT_POLICY:default:10.13.22.3~",
+                    "exportPolicySources" : [
+                      "as1_to_as3"
+                    ],
                     "group" : "as3",
                     "importPolicy" : "as3_to_as1",
+                    "importPolicySources" : [
+                      "as3_to_as1"
+                    ],
                     "localAs" : 1,
                     "localIp" : "10.13.22.1",
                     "remoteAs" : 3,
@@ -2189,9 +2346,12 @@
                   },
                   "10.14.22.4/32" : {
                     "name" : "10.14.22.4/32",
+                    "additionalPathsReceive" : true,
+                    "additionalPathsSelectAll" : true,
+                    "additionalPathsSend" : true,
                     "address" : "10.14.22.4",
                     "advertiseExternal" : false,
-                    "advertiseInactive" : false,
+                    "advertiseInactive" : true,
                     "allowLocalAsIn" : false,
                     "allowRemoteAsOut" : false,
                     "clusterId" : 16908802,
@@ -2199,8 +2359,14 @@
                     "dynamic" : false,
                     "ebgpMultihop" : false,
                     "exportPolicy" : "~BGP_PEER_EXPORT_POLICY:default:10.14.22.4~",
+                    "exportPolicySources" : [
+                      "as1_to_as4"
+                    ],
                     "group" : "as4",
                     "importPolicy" : "as4_to_as1",
+                    "importPolicySources" : [
+                      "as4_to_as1"
+                    ],
                     "localAs" : 1,
                     "localIp" : "10.14.22.1",
                     "remoteAs" : 4,
@@ -2210,12 +2376,14 @@
                     "vrf" : "default"
                   }
                 },
-                "routerId" : "1.2.2.2"
+                "routerId" : "1.2.2.2",
+                "tieBreaker" : "ARRIVAL_ORDER"
               },
               "interfaces" : [
-                "FastEthernet0/0",
-                "FastEthernet0/1",
-                "FastEthernet0/2",
+                "Ethernet0/0",
+                "GigabitEthernet0/0",
+                "GigabitEthernet1/0",
+                "GigabitEthernet2/0",
                 "Loopback0"
               ],
               "ospfProcess" : {
@@ -2223,7 +2391,7 @@
                   "1" : {
                     "name" : 1,
                     "interfaces" : [
-                      "FastEthernet0/0",
+                      "GigabitEthernet1/0",
                       "Loopback0"
                     ]
                   }
@@ -2236,44 +2404,52 @@
           }
         },
         "as1core1" : {
-          "name" : "as1core1",
           "configurationFormat" : "CISCO_IOS",
+          "name" : "as1core1",
           "defaultCrossZoneAction" : "ACCEPT",
           "defaultInboundAction" : "ACCEPT",
+          "deviceType" : "ROUTER",
           "domainName" : "lab.local",
           "interfaces" : {
-            "FastEthernet0/0" : {
-              "name" : "FastEthernet0/0",
+            "Ethernet0/0" : {
+              "name" : "Ethernet0/0",
               "accessVlan" : 0,
-              "active" : true,
-              "allPrefixes" : [
-                "1.0.1.2/24"
+              "active" : false,
+              "autostate" : true,
+              "bandwidth" : 1.0E7,
+              "declaredNames" : [
+                "Ethernet0/0"
               ],
-              "bandwidth" : 1.0E8,
               "isisL1InterfaceMode" : "unset",
               "isisL2InterfaceMode" : "unset",
               "mtu" : 1500,
               "nativeVlan" : 1,
-              "ospfArea" : 1,
-              "ospfCost" : 1,
               "ospfDeadInterval" : 0,
-              "ospfEnabled" : true,
+              "ospfEnabled" : false,
               "ospfHelloMultiplier" : 0,
               "ospfPassive" : false,
-              "prefix" : "1.0.1.2/24",
+              "ospfPointToPoint" : false,
               "proxyArp" : true,
+              "ripEnabled" : false,
+              "ripPassive" : false,
+              "spanningTreePortfast" : false,
               "switchportMode" : "NONE",
               "switchportTrunkEncapsulation" : "DOT1Q",
+              "type" : "PHYSICAL",
               "vrf" : "default"
             },
-            "FastEthernet0/1" : {
-              "name" : "FastEthernet0/1",
+            "GigabitEthernet0/0" : {
+              "name" : "GigabitEthernet0/0",
               "accessVlan" : 0,
               "active" : true,
               "allPrefixes" : [
                 "1.0.2.2/24"
               ],
-              "bandwidth" : 1.0E8,
+              "autostate" : true,
+              "bandwidth" : 1.0E9,
+              "declaredNames" : [
+                "GigabitEthernet0/0"
+              ],
               "isisL1InterfaceMode" : "unset",
               "isisL2InterfaceMode" : "unset",
               "mtu" : 1500,
@@ -2284,10 +2460,48 @@
               "ospfEnabled" : true,
               "ospfHelloMultiplier" : 0,
               "ospfPassive" : false,
+              "ospfPointToPoint" : false,
               "prefix" : "1.0.2.2/24",
               "proxyArp" : true,
+              "ripEnabled" : false,
+              "ripPassive" : false,
+              "spanningTreePortfast" : false,
               "switchportMode" : "NONE",
               "switchportTrunkEncapsulation" : "DOT1Q",
+              "type" : "PHYSICAL",
+              "vrf" : "default"
+            },
+            "GigabitEthernet1/0" : {
+              "name" : "GigabitEthernet1/0",
+              "accessVlan" : 0,
+              "active" : true,
+              "allPrefixes" : [
+                "1.0.1.2/24"
+              ],
+              "autostate" : true,
+              "bandwidth" : 1.0E9,
+              "declaredNames" : [
+                "GigabitEthernet1/0"
+              ],
+              "isisL1InterfaceMode" : "unset",
+              "isisL2InterfaceMode" : "unset",
+              "mtu" : 1500,
+              "nativeVlan" : 1,
+              "ospfArea" : 1,
+              "ospfCost" : 1,
+              "ospfDeadInterval" : 0,
+              "ospfEnabled" : true,
+              "ospfHelloMultiplier" : 0,
+              "ospfPassive" : false,
+              "ospfPointToPoint" : false,
+              "prefix" : "1.0.1.2/24",
+              "proxyArp" : true,
+              "ripEnabled" : false,
+              "ripPassive" : false,
+              "spanningTreePortfast" : false,
+              "switchportMode" : "NONE",
+              "switchportTrunkEncapsulation" : "DOT1Q",
+              "type" : "PHYSICAL",
               "vrf" : "default"
             },
             "Loopback0" : {
@@ -2297,7 +2511,11 @@
               "allPrefixes" : [
                 "1.10.1.1/32"
               ],
+              "autostate" : true,
               "bandwidth" : 1.0E12,
+              "declaredNames" : [
+                "Loopback0"
+              ],
               "isisL1InterfaceMode" : "unset",
               "isisL2InterfaceMode" : "unset",
               "mtu" : 1500,
@@ -2308,13 +2526,25 @@
               "ospfEnabled" : true,
               "ospfHelloMultiplier" : 0,
               "ospfPassive" : false,
+              "ospfPointToPoint" : false,
               "prefix" : "1.10.1.1/32",
               "proxyArp" : true,
+              "ripEnabled" : false,
+              "ripPassive" : false,
+              "spanningTreePortfast" : false,
               "switchportMode" : "NONE",
               "switchportTrunkEncapsulation" : "DOT1Q",
+              "type" : "LOOPBACK",
               "vrf" : "default"
             }
           },
+          "loggingServers" : [
+            "1.1.1.1",
+            "2.2.2.2"
+          ],
+          "roles" : [
+            "core"
+          ],
           "route6FilterLists" : {
             "~BGP_NETWORK6_NETWORKS_FILTER:default~" : {
               "name" : "~BGP_NETWORK6_NETWORKS_FILTER:default~"
@@ -2408,6 +2638,9 @@
           },
           "vendorFamily" : {
             "cisco" : {
+              "aaa" : {
+                "newModel" : false
+              },
               "hostname" : "as1core1",
               "lines" : {
                 "aux0" : {
@@ -2446,27 +2679,35 @@
                   "execTimeoutSeconds" : 0
                 }
               },
-              "services" : {
-                "log" : {
-                  "enabled" : true,
-                  "subservices" : {
-                    "datetime" : {
-                      "enabled" : true,
-                      "subservices" : {
-                        "msec" : {
-                          "enabled" : true
-                        }
-                      }
-                    }
+              "logging" : {
+                "hosts" : {
+                  "1.1.1.1" : {
+                    "name" : "1.1.1.1"
+                  },
+                  "2.2.2.2" : {
+                    "name" : "2.2.2.2"
                   }
                 },
-                "password-encryption" : {
-                  "enabled" : false
-                },
+                "on" : true
+              },
+              "services" : {
                 "timestamps" : {
                   "enabled" : true,
                   "subservices" : {
                     "debug" : {
+                      "enabled" : true,
+                      "subservices" : {
+                        "datetime" : {
+                          "enabled" : true,
+                          "subservices" : {
+                            "msec" : {
+                              "enabled" : true
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "log" : {
                       "enabled" : true,
                       "subservices" : {
                         "datetime" : {
@@ -2489,13 +2730,17 @@
               "name" : "default",
               "bgpProcess" : {
                 "multipathEbgp" : true,
+                "multipathEquivalentAsPathMatchMode" : "EXACT_PATH",
                 "multipathIbgp" : true,
                 "neighbors" : {
                   "1.1.1.1/32" : {
                     "name" : "1.1.1.1/32",
+                    "additionalPathsReceive" : true,
+                    "additionalPathsSelectAll" : true,
+                    "additionalPathsSend" : true,
                     "address" : "1.1.1.1",
                     "advertiseExternal" : false,
-                    "advertiseInactive" : false,
+                    "advertiseInactive" : true,
                     "allowLocalAsIn" : false,
                     "allowRemoteAsOut" : false,
                     "clusterId" : 17432833,
@@ -2514,9 +2759,12 @@
                   },
                   "1.2.2.2/32" : {
                     "name" : "1.2.2.2/32",
+                    "additionalPathsReceive" : true,
+                    "additionalPathsSelectAll" : true,
+                    "additionalPathsSend" : true,
                     "address" : "1.2.2.2",
                     "advertiseExternal" : false,
-                    "advertiseInactive" : false,
+                    "advertiseInactive" : true,
                     "allowLocalAsIn" : false,
                     "allowRemoteAsOut" : false,
                     "clusterId" : 17432833,
@@ -2534,11 +2782,13 @@
                     "vrf" : "default"
                   }
                 },
-                "routerId" : "1.10.1.1"
+                "routerId" : "1.10.1.1",
+                "tieBreaker" : "ARRIVAL_ORDER"
               },
               "interfaces" : [
-                "FastEthernet0/0",
-                "FastEthernet0/1",
+                "Ethernet0/0",
+                "GigabitEthernet0/0",
+                "GigabitEthernet1/0",
                 "Loopback0"
               ],
               "ospfProcess" : {
@@ -2546,8 +2796,8 @@
                   "1" : {
                     "name" : 1,
                     "interfaces" : [
-                      "FastEthernet0/0",
-                      "FastEthernet0/1",
+                      "GigabitEthernet0/0",
+                      "GigabitEthernet1/0",
                       "Loopback0"
                     ]
                   }
@@ -2560,6 +2810,7 @@
           }
         },
         "as2border1" : {
+          "configurationFormat" : "CISCO_IOS",
           "name" : "as2border1",
           "communityLists" : {
             "as1_community" : {
@@ -2593,19 +2844,50 @@
               "invertMatch" : false
             }
           },
-          "configurationFormat" : "CISCO_IOS",
           "defaultCrossZoneAction" : "ACCEPT",
           "defaultInboundAction" : "ACCEPT",
+          "deviceType" : "ROUTER",
           "domainName" : "lab.local",
           "interfaces" : {
-            "FastEthernet0/0" : {
-              "name" : "FastEthernet0/0",
+            "Ethernet0/0" : {
+              "name" : "Ethernet0/0",
+              "accessVlan" : 0,
+              "active" : false,
+              "autostate" : true,
+              "bandwidth" : 1.0E7,
+              "declaredNames" : [
+                "Ethernet0/0"
+              ],
+              "isisL1InterfaceMode" : "unset",
+              "isisL2InterfaceMode" : "unset",
+              "mtu" : 1500,
+              "nativeVlan" : 1,
+              "ospfDeadInterval" : 0,
+              "ospfEnabled" : false,
+              "ospfHelloMultiplier" : 0,
+              "ospfPassive" : false,
+              "ospfPointToPoint" : false,
+              "proxyArp" : true,
+              "ripEnabled" : false,
+              "ripPassive" : false,
+              "spanningTreePortfast" : false,
+              "switchportMode" : "NONE",
+              "switchportTrunkEncapsulation" : "DOT1Q",
+              "type" : "PHYSICAL",
+              "vrf" : "default"
+            },
+            "GigabitEthernet0/0" : {
+              "name" : "GigabitEthernet0/0",
               "accessVlan" : 0,
               "active" : true,
               "allPrefixes" : [
                 "10.12.11.2/24"
               ],
-              "bandwidth" : 1.0E8,
+              "autostate" : true,
+              "bandwidth" : 1.0E9,
+              "declaredNames" : [
+                "GigabitEthernet0/0"
+              ],
               "incomingFilter" : "OUTSIDE_TO_INSIDE",
               "isisL1InterfaceMode" : "unset",
               "isisL2InterfaceMode" : "unset",
@@ -2615,21 +2897,30 @@
               "ospfEnabled" : false,
               "ospfHelloMultiplier" : 0,
               "ospfPassive" : false,
+              "ospfPointToPoint" : false,
               "outgoingFilter" : "INSIDE_TO_AS1",
               "prefix" : "10.12.11.2/24",
               "proxyArp" : true,
+              "ripEnabled" : false,
+              "ripPassive" : false,
+              "spanningTreePortfast" : false,
               "switchportMode" : "NONE",
               "switchportTrunkEncapsulation" : "DOT1Q",
+              "type" : "PHYSICAL",
               "vrf" : "default"
             },
-            "FastEthernet0/1" : {
-              "name" : "FastEthernet0/1",
+            "GigabitEthernet1/0" : {
+              "name" : "GigabitEthernet1/0",
               "accessVlan" : 0,
               "active" : true,
               "allPrefixes" : [
                 "2.12.11.1/24"
               ],
-              "bandwidth" : 1.0E8,
+              "autostate" : true,
+              "bandwidth" : 1.0E9,
+              "declaredNames" : [
+                "GigabitEthernet1/0"
+              ],
               "isisL1InterfaceMode" : "unset",
               "isisL2InterfaceMode" : "unset",
               "mtu" : 1500,
@@ -2640,20 +2931,29 @@
               "ospfEnabled" : true,
               "ospfHelloMultiplier" : 0,
               "ospfPassive" : false,
+              "ospfPointToPoint" : false,
               "prefix" : "2.12.11.1/24",
               "proxyArp" : true,
+              "ripEnabled" : false,
+              "ripPassive" : false,
+              "spanningTreePortfast" : false,
               "switchportMode" : "NONE",
               "switchportTrunkEncapsulation" : "DOT1Q",
+              "type" : "PHYSICAL",
               "vrf" : "default"
             },
-            "FastEthernet1/0" : {
-              "name" : "FastEthernet1/0",
+            "GigabitEthernet2/0" : {
+              "name" : "GigabitEthernet2/0",
               "accessVlan" : 0,
               "active" : true,
               "allPrefixes" : [
                 "2.12.12.1/24"
               ],
-              "bandwidth" : 1.0E8,
+              "autostate" : true,
+              "bandwidth" : 1.0E9,
+              "declaredNames" : [
+                "GigabitEthernet2/0"
+              ],
               "isisL1InterfaceMode" : "unset",
               "isisL2InterfaceMode" : "unset",
               "mtu" : 1500,
@@ -2664,10 +2964,15 @@
               "ospfEnabled" : true,
               "ospfHelloMultiplier" : 0,
               "ospfPassive" : false,
+              "ospfPointToPoint" : false,
               "prefix" : "2.12.12.1/24",
               "proxyArp" : true,
+              "ripEnabled" : false,
+              "ripPassive" : false,
+              "spanningTreePortfast" : false,
               "switchportMode" : "NONE",
               "switchportTrunkEncapsulation" : "DOT1Q",
+              "type" : "PHYSICAL",
               "vrf" : "default"
             },
             "Loopback0" : {
@@ -2677,7 +2982,11 @@
               "allPrefixes" : [
                 "2.1.1.1/32"
               ],
+              "autostate" : true,
               "bandwidth" : 1.0E12,
+              "declaredNames" : [
+                "Loopback0"
+              ],
               "isisL1InterfaceMode" : "unset",
               "isisL2InterfaceMode" : "unset",
               "mtu" : 1500,
@@ -2688,10 +2997,15 @@
               "ospfEnabled" : true,
               "ospfHelloMultiplier" : 0,
               "ospfPassive" : false,
+              "ospfPointToPoint" : false,
               "prefix" : "2.1.1.1/32",
               "proxyArp" : true,
+              "ripEnabled" : false,
+              "ripPassive" : false,
+              "spanningTreePortfast" : false,
               "switchportMode" : "NONE",
               "switchportTrunkEncapsulation" : "DOT1Q",
+              "type" : "LOOPBACK",
               "vrf" : "default"
             }
           },
@@ -2769,7 +3083,7 @@
                   "dstIps" : [
                     "0.0.0.0/0"
                   ],
-                  "name" : "deny ip any any",
+                  "name" : "deny   ip any any",
                   "negate" : false,
                   "srcIps" : [
                     "0.0.0.0/0"
@@ -2785,7 +3099,7 @@
                   "dstIps" : [
                     "0.0.0.0/0"
                   ],
-                  "name" : "deny ip 2.0.0.0 0.255.255.255 any",
+                  "name" : "deny   ip 2.0.0.0 0.255.255.255 any",
                   "negate" : false,
                   "srcIps" : [
                     "2.0.0.0/8"
@@ -2796,7 +3110,7 @@
                   "dstIps" : [
                     "2.128.1.101"
                   ],
-                  "name" : "deny ip any host 2.128.1.101",
+                  "name" : "deny   ip any host 2.128.1.101",
                   "negate" : false,
                   "srcIps" : [
                     "0.0.0.0/0"
@@ -2816,6 +3130,13 @@
               ]
             }
           },
+          "ntpServers" : [
+            "18.18.18.18",
+            "23.23.23.23"
+          ],
+          "roles" : [
+            "border"
+          ],
           "route6FilterLists" : {
             "~BGP_NETWORK6_NETWORKS_FILTER:default~" : {
               "name" : "~BGP_NETWORK6_NETWORKS_FILTER:default~"
@@ -2972,7 +3293,7 @@
                         {
                           "class" : "org.batfish.datamodel.routing_policy.statement.SetMetric",
                           "metric" : {
-                            "class" : "org.batfish.datamodel.routing_policy.expr.LiteralInt",
+                            "class" : "org.batfish.datamodel.routing_policy.expr.LiteralLong",
                             "value" : 50
                           }
                         },
@@ -3015,7 +3336,7 @@
                     {
                       "class" : "org.batfish.datamodel.routing_policy.statement.SetMetric",
                       "metric" : {
-                        "class" : "org.batfish.datamodel.routing_policy.expr.LiteralInt",
+                        "class" : "org.batfish.datamodel.routing_policy.expr.LiteralLong",
                         "value" : 50
                       }
                     },
@@ -3075,7 +3396,7 @@
                         {
                           "class" : "org.batfish.datamodel.routing_policy.statement.SetMetric",
                           "metric" : {
-                            "class" : "org.batfish.datamodel.routing_policy.expr.LiteralInt",
+                            "class" : "org.batfish.datamodel.routing_policy.expr.LiteralLong",
                             "value" : 50
                           }
                         },
@@ -3118,7 +3439,7 @@
                     {
                       "class" : "org.batfish.datamodel.routing_policy.statement.SetMetric",
                       "metric" : {
-                        "class" : "org.batfish.datamodel.routing_policy.expr.LiteralInt",
+                        "class" : "org.batfish.datamodel.routing_policy.expr.LiteralLong",
                         "value" : 50
                       }
                     },
@@ -3421,7 +3742,7 @@
                 {
                   "class" : "org.batfish.datamodel.routing_policy.statement.SetMetric",
                   "metric" : {
-                    "class" : "org.batfish.datamodel.routing_policy.expr.LiteralInt",
+                    "class" : "org.batfish.datamodel.routing_policy.expr.LiteralLong",
                     "value" : 20
                   }
                 },
@@ -3494,27 +3815,34 @@
                   "execTimeoutSeconds" : 0
                 }
               },
-              "services" : {
-                "log" : {
-                  "enabled" : true,
-                  "subservices" : {
-                    "datetime" : {
-                      "enabled" : true,
-                      "subservices" : {
-                        "msec" : {
-                          "enabled" : true
-                        }
-                      }
-                    }
+              "ntp" : {
+                "servers" : {
+                  "18.18.18.18" : {
+                    "name" : "18.18.18.18"
+                  },
+                  "23.23.23.23" : {
+                    "name" : "23.23.23.23"
                   }
-                },
-                "password-encryption" : {
-                  "enabled" : false
-                },
+                }
+              },
+              "services" : {
                 "timestamps" : {
                   "enabled" : true,
                   "subservices" : {
                     "debug" : {
+                      "enabled" : true,
+                      "subservices" : {
+                        "datetime" : {
+                          "enabled" : true,
+                          "subservices" : {
+                            "msec" : {
+                              "enabled" : true
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "log" : {
                       "enabled" : true,
                       "subservices" : {
                         "datetime" : {
@@ -3538,21 +3866,28 @@
               "aggregateRoutes" : [
                 {
                   "class" : "org.batfish.datamodel.GeneratedRoute",
-                  "network" : "2.128.0.0/16",
                   "administrativeCost" : 200,
+                  "asPath" : [ ],
                   "discard" : true,
-                  "generationPolicy" : "~AGGREGATE_ROUTE_GEN:default:2.128.0.0/16~"
+                  "generationPolicy" : "~AGGREGATE_ROUTE_GEN:default:2.128.0.0/16~",
+                  "metric" : 0,
+                  "network" : "2.128.0.0/16",
+                  "nextHopIp" : "AUTO/NONE(-1l)"
                 }
               ],
               "bgpProcess" : {
                 "multipathEbgp" : true,
+                "multipathEquivalentAsPathMatchMode" : "EXACT_PATH",
                 "multipathIbgp" : true,
                 "neighbors" : {
                   "2.1.2.1/32" : {
                     "name" : "2.1.2.1/32",
+                    "additionalPathsReceive" : true,
+                    "additionalPathsSelectAll" : true,
+                    "additionalPathsSend" : true,
                     "address" : "2.1.2.1",
                     "advertiseExternal" : false,
-                    "advertiseInactive" : false,
+                    "advertiseInactive" : true,
                     "allowLocalAsIn" : false,
                     "allowRemoteAsOut" : false,
                     "clusterId" : 33620225,
@@ -3571,9 +3906,12 @@
                   },
                   "2.1.2.2/32" : {
                     "name" : "2.1.2.2/32",
+                    "additionalPathsReceive" : true,
+                    "additionalPathsSelectAll" : true,
+                    "additionalPathsSend" : true,
                     "address" : "2.1.2.2",
                     "advertiseExternal" : false,
-                    "advertiseInactive" : false,
+                    "advertiseInactive" : true,
                     "allowLocalAsIn" : false,
                     "allowRemoteAsOut" : false,
                     "clusterId" : 33620225,
@@ -3592,9 +3930,12 @@
                   },
                   "10.12.11.1/32" : {
                     "name" : "10.12.11.1/32",
+                    "additionalPathsReceive" : true,
+                    "additionalPathsSelectAll" : true,
+                    "additionalPathsSend" : true,
                     "address" : "10.12.11.1",
                     "advertiseExternal" : false,
-                    "advertiseInactive" : false,
+                    "advertiseInactive" : true,
                     "allowLocalAsIn" : false,
                     "allowRemoteAsOut" : false,
                     "clusterId" : 33620225,
@@ -3602,8 +3943,14 @@
                     "dynamic" : false,
                     "ebgpMultihop" : false,
                     "exportPolicy" : "~BGP_PEER_EXPORT_POLICY:default:10.12.11.1~",
+                    "exportPolicySources" : [
+                      "as2_to_as1"
+                    ],
                     "group" : "as1",
                     "importPolicy" : "as1_to_as2",
+                    "importPolicySources" : [
+                      "as1_to_as2"
+                    ],
                     "localAs" : 2,
                     "localIp" : "10.12.11.2",
                     "remoteAs" : 1,
@@ -3613,12 +3960,14 @@
                     "vrf" : "default"
                   }
                 },
-                "routerId" : "2.1.1.1"
+                "routerId" : "2.1.1.1",
+                "tieBreaker" : "ARRIVAL_ORDER"
               },
               "interfaces" : [
-                "FastEthernet0/0",
-                "FastEthernet0/1",
-                "FastEthernet1/0",
+                "Ethernet0/0",
+                "GigabitEthernet0/0",
+                "GigabitEthernet1/0",
+                "GigabitEthernet2/0",
                 "Loopback0"
               ],
               "ospfProcess" : {
@@ -3626,8 +3975,8 @@
                   "1" : {
                     "name" : 1,
                     "interfaces" : [
-                      "FastEthernet0/1",
-                      "FastEthernet1/0",
+                      "GigabitEthernet1/0",
+                      "GigabitEthernet2/0",
                       "Loopback0"
                     ]
                   }
@@ -3640,6 +3989,7 @@
           }
         },
         "as2border2" : {
+          "configurationFormat" : "CISCO_IOS",
           "name" : "as2border2",
           "communityLists" : {
             "as1_community" : {
@@ -3673,19 +4023,50 @@
               "invertMatch" : false
             }
           },
-          "configurationFormat" : "CISCO_IOS",
           "defaultCrossZoneAction" : "ACCEPT",
           "defaultInboundAction" : "ACCEPT",
+          "deviceType" : "ROUTER",
           "domainName" : "lab.local",
           "interfaces" : {
-            "FastEthernet0/0" : {
-              "name" : "FastEthernet0/0",
+            "Ethernet0/0" : {
+              "name" : "Ethernet0/0",
+              "accessVlan" : 0,
+              "active" : false,
+              "autostate" : true,
+              "bandwidth" : 1.0E7,
+              "declaredNames" : [
+                "Ethernet0/0"
+              ],
+              "isisL1InterfaceMode" : "unset",
+              "isisL2InterfaceMode" : "unset",
+              "mtu" : 1500,
+              "nativeVlan" : 1,
+              "ospfDeadInterval" : 0,
+              "ospfEnabled" : false,
+              "ospfHelloMultiplier" : 0,
+              "ospfPassive" : false,
+              "ospfPointToPoint" : false,
+              "proxyArp" : true,
+              "ripEnabled" : false,
+              "ripPassive" : false,
+              "spanningTreePortfast" : false,
+              "switchportMode" : "NONE",
+              "switchportTrunkEncapsulation" : "DOT1Q",
+              "type" : "PHYSICAL",
+              "vrf" : "default"
+            },
+            "GigabitEthernet0/0" : {
+              "name" : "GigabitEthernet0/0",
               "accessVlan" : 0,
               "active" : true,
               "allPrefixes" : [
                 "10.23.21.2/24"
               ],
-              "bandwidth" : 1.0E8,
+              "autostate" : true,
+              "bandwidth" : 1.0E9,
+              "declaredNames" : [
+                "GigabitEthernet0/0"
+              ],
               "incomingFilter" : "OUTSIDE_TO_INSIDE",
               "isisL1InterfaceMode" : "unset",
               "isisL2InterfaceMode" : "unset",
@@ -3695,45 +4076,30 @@
               "ospfEnabled" : false,
               "ospfHelloMultiplier" : 0,
               "ospfPassive" : false,
+              "ospfPointToPoint" : false,
               "outgoingFilter" : "INSIDE_TO_AS3",
               "prefix" : "10.23.21.2/24",
               "proxyArp" : true,
+              "ripEnabled" : false,
+              "ripPassive" : false,
+              "spanningTreePortfast" : false,
               "switchportMode" : "NONE",
               "switchportTrunkEncapsulation" : "DOT1Q",
+              "type" : "PHYSICAL",
               "vrf" : "default"
             },
-            "FastEthernet0/1" : {
-              "name" : "FastEthernet0/1",
-              "accessVlan" : 0,
-              "active" : true,
-              "allPrefixes" : [
-                "2.12.21.1/24"
-              ],
-              "bandwidth" : 1.0E8,
-              "isisL1InterfaceMode" : "unset",
-              "isisL2InterfaceMode" : "unset",
-              "mtu" : 1500,
-              "nativeVlan" : 1,
-              "ospfArea" : 1,
-              "ospfCost" : 1,
-              "ospfDeadInterval" : 0,
-              "ospfEnabled" : true,
-              "ospfHelloMultiplier" : 0,
-              "ospfPassive" : false,
-              "prefix" : "2.12.21.1/24",
-              "proxyArp" : true,
-              "switchportMode" : "NONE",
-              "switchportTrunkEncapsulation" : "DOT1Q",
-              "vrf" : "default"
-            },
-            "FastEthernet1/0" : {
-              "name" : "FastEthernet1/0",
+            "GigabitEthernet1/0" : {
+              "name" : "GigabitEthernet1/0",
               "accessVlan" : 0,
               "active" : true,
               "allPrefixes" : [
                 "2.12.22.1/24"
               ],
-              "bandwidth" : 1.0E8,
+              "autostate" : true,
+              "bandwidth" : 1.0E9,
+              "declaredNames" : [
+                "GigabitEthernet1/0"
+              ],
               "isisL1InterfaceMode" : "unset",
               "isisL2InterfaceMode" : "unset",
               "mtu" : 1500,
@@ -3744,10 +4110,48 @@
               "ospfEnabled" : true,
               "ospfHelloMultiplier" : 0,
               "ospfPassive" : false,
+              "ospfPointToPoint" : false,
               "prefix" : "2.12.22.1/24",
               "proxyArp" : true,
+              "ripEnabled" : false,
+              "ripPassive" : false,
+              "spanningTreePortfast" : false,
               "switchportMode" : "NONE",
               "switchportTrunkEncapsulation" : "DOT1Q",
+              "type" : "PHYSICAL",
+              "vrf" : "default"
+            },
+            "GigabitEthernet2/0" : {
+              "name" : "GigabitEthernet2/0",
+              "accessVlan" : 0,
+              "active" : true,
+              "allPrefixes" : [
+                "2.12.21.1/24"
+              ],
+              "autostate" : true,
+              "bandwidth" : 1.0E9,
+              "declaredNames" : [
+                "GigabitEthernet2/0"
+              ],
+              "isisL1InterfaceMode" : "unset",
+              "isisL2InterfaceMode" : "unset",
+              "mtu" : 1500,
+              "nativeVlan" : 1,
+              "ospfArea" : 1,
+              "ospfCost" : 1,
+              "ospfDeadInterval" : 0,
+              "ospfEnabled" : true,
+              "ospfHelloMultiplier" : 0,
+              "ospfPassive" : false,
+              "ospfPointToPoint" : false,
+              "prefix" : "2.12.21.1/24",
+              "proxyArp" : true,
+              "ripEnabled" : false,
+              "ripPassive" : false,
+              "spanningTreePortfast" : false,
+              "switchportMode" : "NONE",
+              "switchportTrunkEncapsulation" : "DOT1Q",
+              "type" : "PHYSICAL",
               "vrf" : "default"
             },
             "Loopback0" : {
@@ -3757,7 +4161,11 @@
               "allPrefixes" : [
                 "2.1.1.2/32"
               ],
+              "autostate" : true,
               "bandwidth" : 1.0E12,
+              "declaredNames" : [
+                "Loopback0"
+              ],
               "isisL1InterfaceMode" : "unset",
               "isisL2InterfaceMode" : "unset",
               "mtu" : 1500,
@@ -3768,10 +4176,15 @@
               "ospfEnabled" : true,
               "ospfHelloMultiplier" : 0,
               "ospfPassive" : false,
+              "ospfPointToPoint" : false,
               "prefix" : "2.1.1.2/32",
               "proxyArp" : true,
+              "ripEnabled" : false,
+              "ripPassive" : false,
+              "spanningTreePortfast" : false,
               "switchportMode" : "NONE",
               "switchportTrunkEncapsulation" : "DOT1Q",
+              "type" : "LOOPBACK",
               "vrf" : "default"
             }
           },
@@ -3849,7 +4262,7 @@
                   "dstIps" : [
                     "0.0.0.0/0"
                   ],
-                  "name" : "deny ip any any",
+                  "name" : "deny   ip any any",
                   "negate" : false,
                   "srcIps" : [
                     "0.0.0.0/0"
@@ -3865,7 +4278,7 @@
                   "dstIps" : [
                     "0.0.0.0/0"
                   ],
-                  "name" : "deny ip 2.0.0.0 0.255.255.255 any",
+                  "name" : "deny   ip 2.0.0.0 0.255.255.255 any",
                   "negate" : false,
                   "srcIps" : [
                     "2.0.0.0/8"
@@ -3885,6 +4298,12 @@
               ]
             }
           },
+          "ntpServers" : [
+            "18.18.18.18"
+          ],
+          "roles" : [
+            "border"
+          ],
           "route6FilterLists" : {
             "~BGP_NETWORK6_NETWORKS_FILTER:default~" : {
               "name" : "~BGP_NETWORK6_NETWORKS_FILTER:default~"
@@ -4041,7 +4460,7 @@
                         {
                           "class" : "org.batfish.datamodel.routing_policy.statement.SetMetric",
                           "metric" : {
-                            "class" : "org.batfish.datamodel.routing_policy.expr.LiteralInt",
+                            "class" : "org.batfish.datamodel.routing_policy.expr.LiteralLong",
                             "value" : 50
                           }
                         },
@@ -4084,7 +4503,7 @@
                     {
                       "class" : "org.batfish.datamodel.routing_policy.statement.SetMetric",
                       "metric" : {
-                        "class" : "org.batfish.datamodel.routing_policy.expr.LiteralInt",
+                        "class" : "org.batfish.datamodel.routing_policy.expr.LiteralLong",
                         "value" : 50
                       }
                     },
@@ -4144,7 +4563,7 @@
                         {
                           "class" : "org.batfish.datamodel.routing_policy.statement.SetMetric",
                           "metric" : {
-                            "class" : "org.batfish.datamodel.routing_policy.expr.LiteralInt",
+                            "class" : "org.batfish.datamodel.routing_policy.expr.LiteralLong",
                             "value" : 50
                           }
                         },
@@ -4187,7 +4606,7 @@
                     {
                       "class" : "org.batfish.datamodel.routing_policy.statement.SetMetric",
                       "metric" : {
-                        "class" : "org.batfish.datamodel.routing_policy.expr.LiteralInt",
+                        "class" : "org.batfish.datamodel.routing_policy.expr.LiteralLong",
                         "value" : 50
                       }
                     },
@@ -4490,7 +4909,7 @@
                 {
                   "class" : "org.batfish.datamodel.routing_policy.statement.SetMetric",
                   "metric" : {
-                    "class" : "org.batfish.datamodel.routing_policy.expr.LiteralInt",
+                    "class" : "org.batfish.datamodel.routing_policy.expr.LiteralLong",
                     "value" : 20
                   }
                 },
@@ -4517,6 +4936,9 @@
           },
           "vendorFamily" : {
             "cisco" : {
+              "aaa" : {
+                "newModel" : false
+              },
               "hostname" : "as2border2",
               "lines" : {
                 "aux0" : {
@@ -4555,27 +4977,31 @@
                   "execTimeoutSeconds" : 0
                 }
               },
-              "services" : {
-                "log" : {
-                  "enabled" : true,
-                  "subservices" : {
-                    "datetime" : {
-                      "enabled" : true,
-                      "subservices" : {
-                        "msec" : {
-                          "enabled" : true
-                        }
-                      }
-                    }
+              "ntp" : {
+                "servers" : {
+                  "18.18.18.18" : {
+                    "name" : "18.18.18.18"
                   }
-                },
-                "password-encryption" : {
-                  "enabled" : false
-                },
+                }
+              },
+              "services" : {
                 "timestamps" : {
                   "enabled" : true,
                   "subservices" : {
                     "debug" : {
+                      "enabled" : true,
+                      "subservices" : {
+                        "datetime" : {
+                          "enabled" : true,
+                          "subservices" : {
+                            "msec" : {
+                              "enabled" : true
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "log" : {
                       "enabled" : true,
                       "subservices" : {
                         "datetime" : {
@@ -4599,21 +5025,28 @@
               "aggregateRoutes" : [
                 {
                   "class" : "org.batfish.datamodel.GeneratedRoute",
-                  "network" : "2.128.0.0/16",
                   "administrativeCost" : 200,
+                  "asPath" : [ ],
                   "discard" : true,
-                  "generationPolicy" : "~AGGREGATE_ROUTE_GEN:default:2.128.0.0/16~"
+                  "generationPolicy" : "~AGGREGATE_ROUTE_GEN:default:2.128.0.0/16~",
+                  "metric" : 0,
+                  "network" : "2.128.0.0/16",
+                  "nextHopIp" : "AUTO/NONE(-1l)"
                 }
               ],
               "bgpProcess" : {
                 "multipathEbgp" : true,
+                "multipathEquivalentAsPathMatchMode" : "EXACT_PATH",
                 "multipathIbgp" : true,
                 "neighbors" : {
                   "2.1.2.1/32" : {
                     "name" : "2.1.2.1/32",
+                    "additionalPathsReceive" : true,
+                    "additionalPathsSelectAll" : true,
+                    "additionalPathsSend" : true,
                     "address" : "2.1.2.1",
                     "advertiseExternal" : false,
-                    "advertiseInactive" : false,
+                    "advertiseInactive" : true,
                     "allowLocalAsIn" : false,
                     "allowRemoteAsOut" : false,
                     "clusterId" : 33620226,
@@ -4632,9 +5065,12 @@
                   },
                   "2.1.2.2/32" : {
                     "name" : "2.1.2.2/32",
+                    "additionalPathsReceive" : true,
+                    "additionalPathsSelectAll" : true,
+                    "additionalPathsSend" : true,
                     "address" : "2.1.2.2",
                     "advertiseExternal" : false,
-                    "advertiseInactive" : false,
+                    "advertiseInactive" : true,
                     "allowLocalAsIn" : false,
                     "allowRemoteAsOut" : false,
                     "clusterId" : 33620226,
@@ -4653,9 +5089,12 @@
                   },
                   "10.23.21.3/32" : {
                     "name" : "10.23.21.3/32",
+                    "additionalPathsReceive" : true,
+                    "additionalPathsSelectAll" : true,
+                    "additionalPathsSend" : true,
                     "address" : "10.23.21.3",
                     "advertiseExternal" : false,
-                    "advertiseInactive" : false,
+                    "advertiseInactive" : true,
                     "allowLocalAsIn" : false,
                     "allowRemoteAsOut" : false,
                     "clusterId" : 33620226,
@@ -4663,8 +5102,14 @@
                     "dynamic" : false,
                     "ebgpMultihop" : false,
                     "exportPolicy" : "~BGP_PEER_EXPORT_POLICY:default:10.23.21.3~",
+                    "exportPolicySources" : [
+                      "as2_to_as3"
+                    ],
                     "group" : "as3",
                     "importPolicy" : "as3_to_as2",
+                    "importPolicySources" : [
+                      "as3_to_as2"
+                    ],
                     "localAs" : 2,
                     "localIp" : "10.23.21.2",
                     "remoteAs" : 3,
@@ -4674,12 +5119,14 @@
                     "vrf" : "default"
                   }
                 },
-                "routerId" : "2.1.1.2"
+                "routerId" : "2.1.1.2",
+                "tieBreaker" : "ARRIVAL_ORDER"
               },
               "interfaces" : [
-                "FastEthernet0/0",
-                "FastEthernet0/1",
-                "FastEthernet1/0",
+                "Ethernet0/0",
+                "GigabitEthernet0/0",
+                "GigabitEthernet1/0",
+                "GigabitEthernet2/0",
                 "Loopback0"
               ],
               "ospfProcess" : {
@@ -4687,8 +5134,8 @@
                   "1" : {
                     "name" : 1,
                     "interfaces" : [
-                      "FastEthernet0/1",
-                      "FastEthernet1/0",
+                      "GigabitEthernet1/0",
+                      "GigabitEthernet2/0",
                       "Loopback0"
                     ]
                   }
@@ -4701,20 +5148,52 @@
           }
         },
         "as2core1" : {
-          "name" : "as2core1",
           "configurationFormat" : "CISCO_IOS",
+          "name" : "as2core1",
           "defaultCrossZoneAction" : "ACCEPT",
           "defaultInboundAction" : "ACCEPT",
+          "deviceType" : "ROUTER",
           "domainName" : "lab.local",
           "interfaces" : {
-            "FastEthernet0/0" : {
-              "name" : "FastEthernet0/0",
+            "Ethernet0/0" : {
+              "name" : "Ethernet0/0",
+              "accessVlan" : 0,
+              "active" : false,
+              "autostate" : true,
+              "bandwidth" : 1.0E7,
+              "declaredNames" : [
+                "Ethernet0/0"
+              ],
+              "isisL1InterfaceMode" : "unset",
+              "isisL2InterfaceMode" : "unset",
+              "mtu" : 1500,
+              "nativeVlan" : 1,
+              "ospfDeadInterval" : 0,
+              "ospfEnabled" : false,
+              "ospfHelloMultiplier" : 0,
+              "ospfPassive" : false,
+              "ospfPointToPoint" : false,
+              "proxyArp" : true,
+              "ripEnabled" : false,
+              "ripPassive" : false,
+              "spanningTreePortfast" : false,
+              "switchportMode" : "NONE",
+              "switchportTrunkEncapsulation" : "DOT1Q",
+              "type" : "PHYSICAL",
+              "vrf" : "default"
+            },
+            "GigabitEthernet0/0" : {
+              "name" : "GigabitEthernet0/0",
               "accessVlan" : 0,
               "active" : true,
               "allPrefixes" : [
                 "2.12.11.2/24"
               ],
-              "bandwidth" : 1.0E8,
+              "autostate" : true,
+              "bandwidth" : 1.0E9,
+              "declaredNames" : [
+                "GigabitEthernet0/0"
+              ],
               "isisL1InterfaceMode" : "unset",
               "isisL2InterfaceMode" : "unset",
               "mtu" : 1500,
@@ -4725,20 +5204,29 @@
               "ospfEnabled" : true,
               "ospfHelloMultiplier" : 0,
               "ospfPassive" : false,
+              "ospfPointToPoint" : false,
               "prefix" : "2.12.11.2/24",
               "proxyArp" : true,
+              "ripEnabled" : false,
+              "ripPassive" : false,
+              "spanningTreePortfast" : false,
               "switchportMode" : "NONE",
               "switchportTrunkEncapsulation" : "DOT1Q",
+              "type" : "PHYSICAL",
               "vrf" : "default"
             },
-            "FastEthernet0/1" : {
-              "name" : "FastEthernet0/1",
+            "GigabitEthernet1/0" : {
+              "name" : "GigabitEthernet1/0",
               "accessVlan" : 0,
               "active" : true,
               "allPrefixes" : [
                 "2.12.21.2/24"
               ],
-              "bandwidth" : 1.0E8,
+              "autostate" : true,
+              "bandwidth" : 1.0E9,
+              "declaredNames" : [
+                "GigabitEthernet1/0"
+              ],
               "isisL1InterfaceMode" : "unset",
               "isisL2InterfaceMode" : "unset",
               "mtu" : 1500,
@@ -4749,45 +5237,29 @@
               "ospfEnabled" : true,
               "ospfHelloMultiplier" : 0,
               "ospfPassive" : false,
+              "ospfPointToPoint" : false,
               "prefix" : "2.12.21.2/24",
               "proxyArp" : true,
+              "ripEnabled" : false,
+              "ripPassive" : false,
+              "spanningTreePortfast" : false,
               "switchportMode" : "NONE",
               "switchportTrunkEncapsulation" : "DOT1Q",
+              "type" : "PHYSICAL",
               "vrf" : "default"
             },
-            "FastEthernet1/0" : {
-              "name" : "FastEthernet1/0",
-              "accessVlan" : 0,
-              "active" : true,
-              "allPrefixes" : [
-                "2.23.12.2/24"
-              ],
-              "bandwidth" : 1.0E8,
-              "incomingFilter" : "blocktelnet",
-              "isisL1InterfaceMode" : "unset",
-              "isisL2InterfaceMode" : "unset",
-              "mtu" : 1500,
-              "nativeVlan" : 1,
-              "ospfArea" : 1,
-              "ospfCost" : 1,
-              "ospfDeadInterval" : 0,
-              "ospfEnabled" : true,
-              "ospfHelloMultiplier" : 0,
-              "ospfPassive" : false,
-              "prefix" : "2.23.12.2/24",
-              "proxyArp" : true,
-              "switchportMode" : "NONE",
-              "switchportTrunkEncapsulation" : "DOT1Q",
-              "vrf" : "default"
-            },
-            "FastEthernet2/0" : {
-              "name" : "FastEthernet2/0",
+            "GigabitEthernet2/0" : {
+              "name" : "GigabitEthernet2/0",
               "accessVlan" : 0,
               "active" : true,
               "allPrefixes" : [
                 "2.23.11.2/24"
               ],
-              "bandwidth" : 1.0E8,
+              "autostate" : true,
+              "bandwidth" : 1.0E9,
+              "declaredNames" : [
+                "GigabitEthernet2/0"
+              ],
               "incomingFilter" : "blocktelnet",
               "isisL1InterfaceMode" : "unset",
               "isisL2InterfaceMode" : "unset",
@@ -4799,10 +5271,49 @@
               "ospfEnabled" : true,
               "ospfHelloMultiplier" : 0,
               "ospfPassive" : false,
+              "ospfPointToPoint" : false,
               "prefix" : "2.23.11.2/24",
               "proxyArp" : true,
+              "ripEnabled" : false,
+              "ripPassive" : false,
+              "spanningTreePortfast" : false,
               "switchportMode" : "NONE",
               "switchportTrunkEncapsulation" : "DOT1Q",
+              "type" : "PHYSICAL",
+              "vrf" : "default"
+            },
+            "GigabitEthernet3/0" : {
+              "name" : "GigabitEthernet3/0",
+              "accessVlan" : 0,
+              "active" : true,
+              "allPrefixes" : [
+                "2.23.12.2/24"
+              ],
+              "autostate" : true,
+              "bandwidth" : 1.0E9,
+              "declaredNames" : [
+                "GigabitEthernet3/0"
+              ],
+              "incomingFilter" : "blocktelnet",
+              "isisL1InterfaceMode" : "unset",
+              "isisL2InterfaceMode" : "unset",
+              "mtu" : 1500,
+              "nativeVlan" : 1,
+              "ospfArea" : 1,
+              "ospfCost" : 1,
+              "ospfDeadInterval" : 0,
+              "ospfEnabled" : true,
+              "ospfHelloMultiplier" : 0,
+              "ospfPassive" : false,
+              "ospfPointToPoint" : false,
+              "prefix" : "2.23.12.2/24",
+              "proxyArp" : true,
+              "ripEnabled" : false,
+              "ripPassive" : false,
+              "spanningTreePortfast" : false,
+              "switchportMode" : "NONE",
+              "switchportTrunkEncapsulation" : "DOT1Q",
+              "type" : "PHYSICAL",
               "vrf" : "default"
             },
             "Loopback0" : {
@@ -4812,7 +5323,11 @@
               "allPrefixes" : [
                 "2.1.2.1/32"
               ],
+              "autostate" : true,
               "bandwidth" : 1.0E12,
+              "declaredNames" : [
+                "Loopback0"
+              ],
               "isisL1InterfaceMode" : "unset",
               "isisL2InterfaceMode" : "unset",
               "mtu" : 1500,
@@ -4823,10 +5338,15 @@
               "ospfEnabled" : true,
               "ospfHelloMultiplier" : 0,
               "ospfPassive" : false,
+              "ospfPointToPoint" : false,
               "prefix" : "2.1.2.1/32",
               "proxyArp" : true,
+              "ripEnabled" : false,
+              "ripPassive" : false,
+              "spanningTreePortfast" : false,
               "switchportMode" : "NONE",
               "switchportTrunkEncapsulation" : "DOT1Q",
+              "type" : "LOOPBACK",
               "vrf" : "default"
             }
           },
@@ -4865,6 +5385,13 @@
               ]
             }
           },
+          "loggingServers" : [
+            "1.1.1.1",
+            "2.1.2.2"
+          ],
+          "roles" : [
+            "core"
+          ],
           "route6FilterLists" : {
             "~BGP_NETWORK6_NETWORKS_FILTER:default~" : {
               "name" : "~BGP_NETWORK6_NETWORKS_FILTER:default~"
@@ -5008,6 +5535,9 @@
           },
           "vendorFamily" : {
             "cisco" : {
+              "aaa" : {
+                "newModel" : false
+              },
               "hostname" : "as2core1",
               "lines" : {
                 "aux0" : {
@@ -5046,27 +5576,35 @@
                   "execTimeoutSeconds" : 0
                 }
               },
-              "services" : {
-                "log" : {
-                  "enabled" : true,
-                  "subservices" : {
-                    "datetime" : {
-                      "enabled" : true,
-                      "subservices" : {
-                        "msec" : {
-                          "enabled" : true
-                        }
-                      }
-                    }
+              "logging" : {
+                "hosts" : {
+                  "1.1.1.1" : {
+                    "name" : "1.1.1.1"
+                  },
+                  "2.1.2.2" : {
+                    "name" : "2.1.2.2"
                   }
                 },
-                "password-encryption" : {
-                  "enabled" : false
-                },
+                "on" : true
+              },
+              "services" : {
                 "timestamps" : {
                   "enabled" : true,
                   "subservices" : {
                     "debug" : {
+                      "enabled" : true,
+                      "subservices" : {
+                        "datetime" : {
+                          "enabled" : true,
+                          "subservices" : {
+                            "msec" : {
+                              "enabled" : true
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "log" : {
                       "enabled" : true,
                       "subservices" : {
                         "datetime" : {
@@ -5089,13 +5627,17 @@
               "name" : "default",
               "bgpProcess" : {
                 "multipathEbgp" : true,
+                "multipathEquivalentAsPathMatchMode" : "EXACT_PATH",
                 "multipathIbgp" : true,
                 "neighbors" : {
                   "2.1.1.1/32" : {
                     "name" : "2.1.1.1/32",
+                    "additionalPathsReceive" : true,
+                    "additionalPathsSelectAll" : true,
+                    "additionalPathsSend" : true,
                     "address" : "2.1.1.1",
                     "advertiseExternal" : false,
-                    "advertiseInactive" : false,
+                    "advertiseInactive" : true,
                     "allowLocalAsIn" : false,
                     "allowRemoteAsOut" : false,
                     "clusterId" : 33620481,
@@ -5114,9 +5656,12 @@
                   },
                   "2.1.1.2/32" : {
                     "name" : "2.1.1.2/32",
+                    "additionalPathsReceive" : true,
+                    "additionalPathsSelectAll" : true,
+                    "additionalPathsSend" : true,
                     "address" : "2.1.1.2",
                     "advertiseExternal" : false,
-                    "advertiseInactive" : false,
+                    "advertiseInactive" : true,
                     "allowLocalAsIn" : false,
                     "allowRemoteAsOut" : false,
                     "clusterId" : 33620481,
@@ -5135,9 +5680,12 @@
                   },
                   "2.1.3.1/32" : {
                     "name" : "2.1.3.1/32",
+                    "additionalPathsReceive" : true,
+                    "additionalPathsSelectAll" : true,
+                    "additionalPathsSend" : true,
                     "address" : "2.1.3.1",
                     "advertiseExternal" : false,
-                    "advertiseInactive" : false,
+                    "advertiseInactive" : true,
                     "allowLocalAsIn" : false,
                     "allowRemoteAsOut" : false,
                     "clusterId" : 33620481,
@@ -5156,9 +5704,12 @@
                   },
                   "2.1.3.2/32" : {
                     "name" : "2.1.3.2/32",
+                    "additionalPathsReceive" : true,
+                    "additionalPathsSelectAll" : true,
+                    "additionalPathsSend" : true,
                     "address" : "2.1.3.2",
                     "advertiseExternal" : false,
-                    "advertiseInactive" : false,
+                    "advertiseInactive" : true,
                     "allowLocalAsIn" : false,
                     "allowRemoteAsOut" : false,
                     "clusterId" : 33620481,
@@ -5176,13 +5727,15 @@
                     "vrf" : "default"
                   }
                 },
-                "routerId" : "2.1.2.1"
+                "routerId" : "2.1.2.1",
+                "tieBreaker" : "ARRIVAL_ORDER"
               },
               "interfaces" : [
-                "FastEthernet0/0",
-                "FastEthernet0/1",
-                "FastEthernet1/0",
-                "FastEthernet2/0",
+                "Ethernet0/0",
+                "GigabitEthernet0/0",
+                "GigabitEthernet1/0",
+                "GigabitEthernet2/0",
+                "GigabitEthernet3/0",
                 "Loopback0"
               ],
               "ospfProcess" : {
@@ -5190,10 +5743,10 @@
                   "1" : {
                     "name" : 1,
                     "interfaces" : [
-                      "FastEthernet0/0",
-                      "FastEthernet0/1",
-                      "FastEthernet1/0",
-                      "FastEthernet2/0",
+                      "GigabitEthernet0/0",
+                      "GigabitEthernet1/0",
+                      "GigabitEthernet2/0",
+                      "GigabitEthernet3/0",
                       "Loopback0"
                     ]
                   }
@@ -5206,23 +5759,55 @@
           }
         },
         "as2core2" : {
-          "name" : "as2core2",
           "configurationFormat" : "CISCO_IOS",
+          "name" : "as2core2",
           "defaultCrossZoneAction" : "ACCEPT",
           "defaultInboundAction" : "ACCEPT",
+          "deviceType" : "ROUTER",
           "domainName" : "lab.local",
           "interfaces" : {
-            "FastEthernet0/0" : {
-              "name" : "FastEthernet0/0",
+            "Ethernet0/0" : {
+              "name" : "Ethernet0/0",
+              "accessVlan" : 0,
+              "active" : false,
+              "autostate" : true,
+              "bandwidth" : 1.0E7,
+              "declaredNames" : [
+                "Ethernet0/0"
+              ],
+              "isisL1InterfaceMode" : "unset",
+              "isisL2InterfaceMode" : "unset",
+              "mtu" : 1500,
+              "nativeVlan" : 1,
+              "ospfDeadInterval" : 0,
+              "ospfEnabled" : false,
+              "ospfHelloMultiplier" : 0,
+              "ospfPassive" : false,
+              "ospfPointToPoint" : false,
+              "proxyArp" : true,
+              "ripEnabled" : false,
+              "ripPassive" : false,
+              "spanningTreePortfast" : false,
+              "switchportMode" : "NONE",
+              "switchportTrunkEncapsulation" : "DOT1Q",
+              "type" : "PHYSICAL",
+              "vrf" : "default"
+            },
+            "GigabitEthernet0/0" : {
+              "name" : "GigabitEthernet0/0",
               "accessVlan" : 0,
               "active" : true,
               "allPrefixes" : [
                 "2.12.22.2/24"
               ],
-              "bandwidth" : 1.0E8,
+              "autostate" : true,
+              "bandwidth" : 1.0E9,
+              "declaredNames" : [
+                "GigabitEthernet0/0"
+              ],
               "isisL1InterfaceMode" : "unset",
               "isisL2InterfaceMode" : "unset",
-              "mtu" : 1300,
+              "mtu" : 1800,
               "nativeVlan" : 1,
               "ospfArea" : 1,
               "ospfCost" : 1,
@@ -5230,23 +5815,32 @@
               "ospfEnabled" : true,
               "ospfHelloMultiplier" : 0,
               "ospfPassive" : false,
+              "ospfPointToPoint" : false,
               "prefix" : "2.12.22.2/24",
               "proxyArp" : true,
+              "ripEnabled" : false,
+              "ripPassive" : false,
+              "spanningTreePortfast" : false,
               "switchportMode" : "NONE",
               "switchportTrunkEncapsulation" : "DOT1Q",
+              "type" : "PHYSICAL",
               "vrf" : "default"
             },
-            "FastEthernet0/1" : {
-              "name" : "FastEthernet0/1",
+            "GigabitEthernet1/0" : {
+              "name" : "GigabitEthernet1/0",
               "accessVlan" : 0,
               "active" : true,
               "allPrefixes" : [
                 "2.12.12.2/24"
               ],
-              "bandwidth" : 1.0E8,
+              "autostate" : true,
+              "bandwidth" : 1.0E9,
+              "declaredNames" : [
+                "GigabitEthernet1/0"
+              ],
               "isisL1InterfaceMode" : "unset",
               "isisL2InterfaceMode" : "unset",
-              "mtu" : 1100,
+              "mtu" : 1600,
               "nativeVlan" : 1,
               "ospfArea" : 1,
               "ospfCost" : 1,
@@ -5254,20 +5848,62 @@
               "ospfEnabled" : true,
               "ospfHelloMultiplier" : 0,
               "ospfPassive" : false,
+              "ospfPointToPoint" : false,
               "prefix" : "2.12.12.2/24",
               "proxyArp" : true,
+              "ripEnabled" : false,
+              "ripPassive" : false,
+              "spanningTreePortfast" : false,
               "switchportMode" : "NONE",
               "switchportTrunkEncapsulation" : "DOT1Q",
+              "type" : "PHYSICAL",
               "vrf" : "default"
             },
-            "FastEthernet1/0" : {
-              "name" : "FastEthernet1/0",
+            "GigabitEthernet2/0" : {
+              "name" : "GigabitEthernet2/0",
+              "accessVlan" : 0,
+              "active" : true,
+              "allPrefixes" : [
+                "2.23.22.2/24"
+              ],
+              "autostate" : true,
+              "bandwidth" : 1.0E9,
+              "declaredNames" : [
+                "GigabitEthernet2/0"
+              ],
+              "isisL1InterfaceMode" : "unset",
+              "isisL2InterfaceMode" : "unset",
+              "mtu" : 1700,
+              "nativeVlan" : 1,
+              "ospfArea" : 1,
+              "ospfCost" : 1,
+              "ospfDeadInterval" : 0,
+              "ospfEnabled" : true,
+              "ospfHelloMultiplier" : 0,
+              "ospfPassive" : false,
+              "ospfPointToPoint" : false,
+              "prefix" : "2.23.22.2/24",
+              "proxyArp" : true,
+              "ripEnabled" : false,
+              "ripPassive" : false,
+              "spanningTreePortfast" : false,
+              "switchportMode" : "NONE",
+              "switchportTrunkEncapsulation" : "DOT1Q",
+              "type" : "PHYSICAL",
+              "vrf" : "default"
+            },
+            "GigabitEthernet3/0" : {
+              "name" : "GigabitEthernet3/0",
               "accessVlan" : 0,
               "active" : true,
               "allPrefixes" : [
                 "2.23.21.2/24"
               ],
-              "bandwidth" : 1.0E8,
+              "autostate" : true,
+              "bandwidth" : 1.0E9,
+              "declaredNames" : [
+                "GigabitEthernet3/0"
+              ],
               "isisL1InterfaceMode" : "unset",
               "isisL2InterfaceMode" : "unset",
               "mtu" : 1500,
@@ -5278,34 +5914,15 @@
               "ospfEnabled" : true,
               "ospfHelloMultiplier" : 0,
               "ospfPassive" : false,
+              "ospfPointToPoint" : false,
               "prefix" : "2.23.21.2/24",
               "proxyArp" : true,
+              "ripEnabled" : false,
+              "ripPassive" : false,
+              "spanningTreePortfast" : false,
               "switchportMode" : "NONE",
               "switchportTrunkEncapsulation" : "DOT1Q",
-              "vrf" : "default"
-            },
-            "FastEthernet2/0" : {
-              "name" : "FastEthernet2/0",
-              "accessVlan" : 0,
-              "active" : true,
-              "allPrefixes" : [
-                "2.23.22.2/24"
-              ],
-              "bandwidth" : 1.0E8,
-              "isisL1InterfaceMode" : "unset",
-              "isisL2InterfaceMode" : "unset",
-              "mtu" : 1200,
-              "nativeVlan" : 1,
-              "ospfArea" : 1,
-              "ospfCost" : 1,
-              "ospfDeadInterval" : 0,
-              "ospfEnabled" : true,
-              "ospfHelloMultiplier" : 0,
-              "ospfPassive" : false,
-              "prefix" : "2.23.22.2/24",
-              "proxyArp" : true,
-              "switchportMode" : "NONE",
-              "switchportTrunkEncapsulation" : "DOT1Q",
+              "type" : "PHYSICAL",
               "vrf" : "default"
             },
             "Loopback0" : {
@@ -5315,7 +5932,11 @@
               "allPrefixes" : [
                 "2.1.2.2/32"
               ],
+              "autostate" : true,
               "bandwidth" : 1.0E12,
+              "declaredNames" : [
+                "Loopback0"
+              ],
               "isisL1InterfaceMode" : "unset",
               "isisL2InterfaceMode" : "unset",
               "mtu" : 1500,
@@ -5326,13 +5947,25 @@
               "ospfEnabled" : true,
               "ospfHelloMultiplier" : 0,
               "ospfPassive" : false,
+              "ospfPointToPoint" : false,
               "prefix" : "2.1.2.2/32",
               "proxyArp" : true,
+              "ripEnabled" : false,
+              "ripPassive" : false,
+              "spanningTreePortfast" : false,
               "switchportMode" : "NONE",
               "switchportTrunkEncapsulation" : "DOT1Q",
+              "type" : "LOOPBACK",
               "vrf" : "default"
             }
           },
+          "loggingServers" : [
+            "1.1.1.1",
+            "2.2.2.2"
+          ],
+          "roles" : [
+            "core"
+          ],
           "route6FilterLists" : {
             "~BGP_NETWORK6_NETWORKS_FILTER:default~" : {
               "name" : "~BGP_NETWORK6_NETWORKS_FILTER:default~"
@@ -5476,6 +6109,9 @@
           },
           "vendorFamily" : {
             "cisco" : {
+              "aaa" : {
+                "newModel" : false
+              },
               "hostname" : "as2core2",
               "lines" : {
                 "aux0" : {
@@ -5514,27 +6150,35 @@
                   "execTimeoutSeconds" : 0
                 }
               },
-              "services" : {
-                "log" : {
-                  "enabled" : true,
-                  "subservices" : {
-                    "datetime" : {
-                      "enabled" : true,
-                      "subservices" : {
-                        "msec" : {
-                          "enabled" : true
-                        }
-                      }
-                    }
+              "logging" : {
+                "hosts" : {
+                  "1.1.1.1" : {
+                    "name" : "1.1.1.1"
+                  },
+                  "2.2.2.2" : {
+                    "name" : "2.2.2.2"
                   }
                 },
-                "password-encryption" : {
-                  "enabled" : false
-                },
+                "on" : true
+              },
+              "services" : {
                 "timestamps" : {
                   "enabled" : true,
                   "subservices" : {
                     "debug" : {
+                      "enabled" : true,
+                      "subservices" : {
+                        "datetime" : {
+                          "enabled" : true,
+                          "subservices" : {
+                            "msec" : {
+                              "enabled" : true
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "log" : {
                       "enabled" : true,
                       "subservices" : {
                         "datetime" : {
@@ -5557,13 +6201,17 @@
               "name" : "default",
               "bgpProcess" : {
                 "multipathEbgp" : true,
+                "multipathEquivalentAsPathMatchMode" : "EXACT_PATH",
                 "multipathIbgp" : true,
                 "neighbors" : {
                   "2.1.1.1/32" : {
                     "name" : "2.1.1.1/32",
+                    "additionalPathsReceive" : true,
+                    "additionalPathsSelectAll" : true,
+                    "additionalPathsSend" : true,
                     "address" : "2.1.1.1",
                     "advertiseExternal" : false,
-                    "advertiseInactive" : false,
+                    "advertiseInactive" : true,
                     "allowLocalAsIn" : false,
                     "allowRemoteAsOut" : false,
                     "clusterId" : 33620482,
@@ -5582,9 +6230,12 @@
                   },
                   "2.1.1.2/32" : {
                     "name" : "2.1.1.2/32",
+                    "additionalPathsReceive" : true,
+                    "additionalPathsSelectAll" : true,
+                    "additionalPathsSend" : true,
                     "address" : "2.1.1.2",
                     "advertiseExternal" : false,
-                    "advertiseInactive" : false,
+                    "advertiseInactive" : true,
                     "allowLocalAsIn" : false,
                     "allowRemoteAsOut" : false,
                     "clusterId" : 33620482,
@@ -5603,9 +6254,12 @@
                   },
                   "2.1.3.1/32" : {
                     "name" : "2.1.3.1/32",
+                    "additionalPathsReceive" : true,
+                    "additionalPathsSelectAll" : true,
+                    "additionalPathsSend" : true,
                     "address" : "2.1.3.1",
                     "advertiseExternal" : false,
-                    "advertiseInactive" : false,
+                    "advertiseInactive" : true,
                     "allowLocalAsIn" : false,
                     "allowRemoteAsOut" : false,
                     "clusterId" : 33620482,
@@ -5624,9 +6278,12 @@
                   },
                   "2.1.3.2/32" : {
                     "name" : "2.1.3.2/32",
+                    "additionalPathsReceive" : true,
+                    "additionalPathsSelectAll" : true,
+                    "additionalPathsSend" : true,
                     "address" : "2.1.3.2",
                     "advertiseExternal" : false,
-                    "advertiseInactive" : false,
+                    "advertiseInactive" : true,
                     "allowLocalAsIn" : false,
                     "allowRemoteAsOut" : false,
                     "clusterId" : 33620482,
@@ -5644,13 +6301,15 @@
                     "vrf" : "default"
                   }
                 },
-                "routerId" : "2.1.2.2"
+                "routerId" : "2.1.2.2",
+                "tieBreaker" : "ARRIVAL_ORDER"
               },
               "interfaces" : [
-                "FastEthernet0/0",
-                "FastEthernet0/1",
-                "FastEthernet1/0",
-                "FastEthernet2/0",
+                "Ethernet0/0",
+                "GigabitEthernet0/0",
+                "GigabitEthernet1/0",
+                "GigabitEthernet2/0",
+                "GigabitEthernet3/0",
                 "Loopback0"
               ],
               "ospfProcess" : {
@@ -5658,10 +6317,10 @@
                   "1" : {
                     "name" : 1,
                     "interfaces" : [
-                      "FastEthernet0/0",
-                      "FastEthernet0/1",
-                      "FastEthernet1/0",
-                      "FastEthernet2/0",
+                      "GigabitEthernet0/0",
+                      "GigabitEthernet1/0",
+                      "GigabitEthernet2/0",
+                      "GigabitEthernet3/0",
                       "Loopback0"
                     ]
                   }
@@ -5674,6 +6333,7 @@
           }
         },
         "as2dept1" : {
+          "configurationFormat" : "CISCO_IOS",
           "name" : "as2dept1",
           "communityLists" : {
             "as2_community" : {
@@ -5687,19 +6347,50 @@
               "invertMatch" : false
             }
           },
-          "configurationFormat" : "CISCO_IOS",
           "defaultCrossZoneAction" : "ACCEPT",
           "defaultInboundAction" : "ACCEPT",
+          "deviceType" : "ROUTER",
           "domainName" : "lab.local",
           "interfaces" : {
-            "FastEthernet0/0" : {
-              "name" : "FastEthernet0/0",
+            "Ethernet0/0" : {
+              "name" : "Ethernet0/0",
+              "accessVlan" : 0,
+              "active" : false,
+              "autostate" : true,
+              "bandwidth" : 1.0E7,
+              "declaredNames" : [
+                "Ethernet0/0"
+              ],
+              "isisL1InterfaceMode" : "unset",
+              "isisL2InterfaceMode" : "unset",
+              "mtu" : 1500,
+              "nativeVlan" : 1,
+              "ospfDeadInterval" : 0,
+              "ospfEnabled" : false,
+              "ospfHelloMultiplier" : 0,
+              "ospfPassive" : false,
+              "ospfPointToPoint" : false,
+              "proxyArp" : true,
+              "ripEnabled" : false,
+              "ripPassive" : false,
+              "spanningTreePortfast" : false,
+              "switchportMode" : "NONE",
+              "switchportTrunkEncapsulation" : "DOT1Q",
+              "type" : "PHYSICAL",
+              "vrf" : "default"
+            },
+            "GigabitEthernet0/0" : {
+              "name" : "GigabitEthernet0/0",
               "accessVlan" : 0,
               "active" : true,
               "allPrefixes" : [
                 "2.34.101.4/24"
               ],
-              "bandwidth" : 1.0E8,
+              "autostate" : true,
+              "bandwidth" : 1.0E9,
+              "declaredNames" : [
+                "GigabitEthernet0/0"
+              ],
               "isisL1InterfaceMode" : "unset",
               "isisL2InterfaceMode" : "unset",
               "mtu" : 1500,
@@ -5708,20 +6399,29 @@
               "ospfEnabled" : false,
               "ospfHelloMultiplier" : 0,
               "ospfPassive" : false,
+              "ospfPointToPoint" : false,
               "prefix" : "2.34.101.4/24",
               "proxyArp" : true,
+              "ripEnabled" : false,
+              "ripPassive" : false,
+              "spanningTreePortfast" : false,
               "switchportMode" : "NONE",
               "switchportTrunkEncapsulation" : "DOT1Q",
+              "type" : "PHYSICAL",
               "vrf" : "default"
             },
-            "FastEthernet0/1" : {
-              "name" : "FastEthernet0/1",
+            "GigabitEthernet1/0" : {
+              "name" : "GigabitEthernet1/0",
               "accessVlan" : 0,
               "active" : true,
               "allPrefixes" : [
                 "2.34.201.4/24"
               ],
-              "bandwidth" : 1.0E8,
+              "autostate" : true,
+              "bandwidth" : 1.0E9,
+              "declaredNames" : [
+                "GigabitEthernet1/0"
+              ],
               "isisL1InterfaceMode" : "unset",
               "isisL2InterfaceMode" : "unset",
               "mtu" : 1500,
@@ -5730,20 +6430,29 @@
               "ospfEnabled" : false,
               "ospfHelloMultiplier" : 0,
               "ospfPassive" : false,
+              "ospfPointToPoint" : false,
               "prefix" : "2.34.201.4/24",
               "proxyArp" : true,
+              "ripEnabled" : false,
+              "ripPassive" : false,
+              "spanningTreePortfast" : false,
               "switchportMode" : "NONE",
               "switchportTrunkEncapsulation" : "DOT1Q",
+              "type" : "PHYSICAL",
               "vrf" : "default"
             },
-            "FastEthernet1/0" : {
-              "name" : "FastEthernet1/0",
+            "GigabitEthernet2/0" : {
+              "name" : "GigabitEthernet2/0",
               "accessVlan" : 0,
               "active" : true,
               "allPrefixes" : [
                 "2.128.0.1/24"
               ],
-              "bandwidth" : 1.0E8,
+              "autostate" : true,
+              "bandwidth" : 1.0E9,
+              "declaredNames" : [
+                "GigabitEthernet2/0"
+              ],
               "incomingFilter" : "RESTRICT_HOST_TRAFFIC_IN",
               "isisL1InterfaceMode" : "unset",
               "isisL2InterfaceMode" : "unset",
@@ -5753,20 +6462,29 @@
               "ospfEnabled" : false,
               "ospfHelloMultiplier" : 0,
               "ospfPassive" : false,
+              "ospfPointToPoint" : false,
               "prefix" : "2.128.0.1/24",
               "proxyArp" : true,
+              "ripEnabled" : false,
+              "ripPassive" : false,
+              "spanningTreePortfast" : false,
               "switchportMode" : "NONE",
               "switchportTrunkEncapsulation" : "DOT1Q",
+              "type" : "PHYSICAL",
               "vrf" : "default"
             },
-            "FastEthernet1/1" : {
-              "name" : "FastEthernet1/1",
+            "GigabitEthernet3/0" : {
+              "name" : "GigabitEthernet3/0",
               "accessVlan" : 0,
               "active" : true,
               "allPrefixes" : [
                 "2.128.1.1/24"
               ],
-              "bandwidth" : 1.0E8,
+              "autostate" : true,
+              "bandwidth" : 1.0E9,
+              "declaredNames" : [
+                "GigabitEthernet3/0"
+              ],
               "incomingFilter" : "RESTRICT_HOST_TRAFFIC_IN",
               "isisL1InterfaceMode" : "unset",
               "isisL2InterfaceMode" : "unset",
@@ -5776,10 +6494,15 @@
               "ospfEnabled" : false,
               "ospfHelloMultiplier" : 0,
               "ospfPassive" : false,
+              "ospfPointToPoint" : false,
               "prefix" : "2.128.1.1/24",
               "proxyArp" : true,
+              "ripEnabled" : false,
+              "ripPassive" : false,
+              "spanningTreePortfast" : false,
               "switchportMode" : "NONE",
               "switchportTrunkEncapsulation" : "DOT1Q",
+              "type" : "PHYSICAL",
               "vrf" : "default"
             },
             "Loopback0" : {
@@ -5789,7 +6512,11 @@
               "allPrefixes" : [
                 "2.1.1.2/32"
               ],
+              "autostate" : true,
               "bandwidth" : 1.0E12,
+              "declaredNames" : [
+                "Loopback0"
+              ],
               "isisL1InterfaceMode" : "unset",
               "isisL2InterfaceMode" : "unset",
               "mtu" : 1500,
@@ -5798,10 +6525,15 @@
               "ospfEnabled" : false,
               "ospfHelloMultiplier" : 0,
               "ospfPassive" : false,
+              "ospfPointToPoint" : false,
               "prefix" : "2.1.1.2/32",
               "proxyArp" : true,
+              "ripEnabled" : false,
+              "ripPassive" : false,
+              "spanningTreePortfast" : false,
               "switchportMode" : "NONE",
               "switchportTrunkEncapsulation" : "DOT1Q",
+              "type" : "LOOPBACK",
               "vrf" : "default"
             }
           },
@@ -5901,7 +6633,7 @@
                   "dstIps" : [
                     "0.0.0.0/0"
                   ],
-                  "name" : "deny ip any any",
+                  "name" : "deny   ip any any",
                   "negate" : false,
                   "srcIps" : [
                     "0.0.0.0/0"
@@ -5942,7 +6674,7 @@
                   "dstIps" : [
                     "2.128.0.0/16"
                   ],
-                  "name" : "deny ip 1.128.0.0 0.0.255.255 2.128.0.0 0.0.255.255",
+                  "name" : "deny   ip 1.128.0.0 0.0.255.255 2.128.0.0 0.0.255.255",
                   "negate" : false,
                   "srcIps" : [
                     "1.128.0.0/16"
@@ -5953,7 +6685,7 @@
                   "dstIps" : [
                     "0.0.0.0/0"
                   ],
-                  "name" : "deny ip any any",
+                  "name" : "deny   ip any any",
                   "negate" : false,
                   "srcIps" : [
                     "0.0.0.0/0"
@@ -5962,6 +6694,9 @@
               ]
             }
           },
+          "roles" : [
+            "dept"
+          ],
           "route6FilterLists" : {
             "~BGP_NETWORK6_NETWORKS_FILTER:default~" : {
               "name" : "~BGP_NETWORK6_NETWORKS_FILTER:default~"
@@ -6046,7 +6781,7 @@
                     {
                       "class" : "org.batfish.datamodel.routing_policy.statement.SetMetric",
                       "metric" : {
-                        "class" : "org.batfish.datamodel.routing_policy.expr.LiteralInt",
+                        "class" : "org.batfish.datamodel.routing_policy.expr.LiteralLong",
                         "value" : 50
                       }
                     },
@@ -6318,6 +7053,9 @@
           },
           "vendorFamily" : {
             "cisco" : {
+              "aaa" : {
+                "newModel" : false
+              },
               "hostname" : "as2dept1",
               "lines" : {
                 "aux0" : {
@@ -6357,26 +7095,23 @@
                 }
               },
               "services" : {
-                "log" : {
-                  "enabled" : true,
-                  "subservices" : {
-                    "datetime" : {
-                      "enabled" : true,
-                      "subservices" : {
-                        "msec" : {
-                          "enabled" : true
-                        }
-                      }
-                    }
-                  }
-                },
-                "password-encryption" : {
-                  "enabled" : false
-                },
                 "timestamps" : {
                   "enabled" : true,
                   "subservices" : {
                     "debug" : {
+                      "enabled" : true,
+                      "subservices" : {
+                        "datetime" : {
+                          "enabled" : true,
+                          "subservices" : {
+                            "msec" : {
+                              "enabled" : true
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "log" : {
                       "enabled" : true,
                       "subservices" : {
                         "datetime" : {
@@ -6399,13 +7134,17 @@
               "name" : "default",
               "bgpProcess" : {
                 "multipathEbgp" : true,
+                "multipathEquivalentAsPathMatchMode" : "EXACT_PATH",
                 "multipathIbgp" : true,
                 "neighbors" : {
                   "2.34.101.3/32" : {
                     "name" : "2.34.101.3/32",
+                    "additionalPathsReceive" : true,
+                    "additionalPathsSelectAll" : true,
+                    "additionalPathsSend" : true,
                     "address" : "2.34.101.3",
                     "advertiseExternal" : false,
-                    "advertiseInactive" : false,
+                    "advertiseInactive" : true,
                     "allowLocalAsIn" : false,
                     "allowRemoteAsOut" : false,
                     "clusterId" : 33620993,
@@ -6413,8 +7152,14 @@
                     "dynamic" : false,
                     "ebgpMultihop" : false,
                     "exportPolicy" : "~BGP_PEER_EXPORT_POLICY:default:2.34.101.3~",
+                    "exportPolicySources" : [
+                      "dept_to_as2"
+                    ],
                     "group" : "as2",
                     "importPolicy" : "as2_to_dept",
+                    "importPolicySources" : [
+                      "as2_to_dept"
+                    ],
                     "localAs" : 65001,
                     "localIp" : "2.34.101.4",
                     "remoteAs" : 2,
@@ -6425,9 +7170,12 @@
                   },
                   "2.34.201.3/32" : {
                     "name" : "2.34.201.3/32",
+                    "additionalPathsReceive" : true,
+                    "additionalPathsSelectAll" : true,
+                    "additionalPathsSend" : true,
                     "address" : "2.34.201.3",
                     "advertiseExternal" : false,
-                    "advertiseInactive" : false,
+                    "advertiseInactive" : true,
                     "allowLocalAsIn" : false,
                     "allowRemoteAsOut" : false,
                     "clusterId" : 33620993,
@@ -6435,8 +7183,14 @@
                     "dynamic" : false,
                     "ebgpMultihop" : false,
                     "exportPolicy" : "~BGP_PEER_EXPORT_POLICY:default:2.34.201.3~",
+                    "exportPolicySources" : [
+                      "dept_to_as2"
+                    ],
                     "group" : "as2",
                     "importPolicy" : "as2_to_dept",
+                    "importPolicySources" : [
+                      "as2_to_dept"
+                    ],
                     "localAs" : 65001,
                     "localIp" : "2.34.201.4",
                     "remoteAs" : 2,
@@ -6446,19 +7200,22 @@
                     "vrf" : "default"
                   }
                 },
-                "routerId" : "2.1.4.1"
+                "routerId" : "2.1.4.1",
+                "tieBreaker" : "ARRIVAL_ORDER"
               },
               "interfaces" : [
-                "FastEthernet0/0",
-                "FastEthernet0/1",
-                "FastEthernet1/0",
-                "FastEthernet1/1",
+                "Ethernet0/0",
+                "GigabitEthernet0/0",
+                "GigabitEthernet1/0",
+                "GigabitEthernet2/0",
+                "GigabitEthernet3/0",
                 "Loopback0"
               ]
             }
           }
         },
         "as2dist1" : {
+          "configurationFormat" : "CISCO_IOS",
           "name" : "as2dist1",
           "communityLists" : {
             "dept_community" : {
@@ -6472,67 +7229,20 @@
               "invertMatch" : false
             }
           },
-          "configurationFormat" : "CISCO_IOS",
           "defaultCrossZoneAction" : "ACCEPT",
           "defaultInboundAction" : "ACCEPT",
+          "deviceType" : "ROUTER",
           "domainName" : "lab.local",
           "interfaces" : {
-            "FastEthernet0/0" : {
-              "name" : "FastEthernet0/0",
+            "Ethernet0/0" : {
+              "name" : "Ethernet0/0",
               "accessVlan" : 0,
-              "active" : true,
-              "allPrefixes" : [
-                "2.23.21.3/24"
+              "active" : false,
+              "autostate" : true,
+              "bandwidth" : 1.0E7,
+              "declaredNames" : [
+                "Ethernet0/0"
               ],
-              "bandwidth" : 1.0E8,
-              "isisL1InterfaceMode" : "unset",
-              "isisL2InterfaceMode" : "unset",
-              "mtu" : 1500,
-              "nativeVlan" : 1,
-              "ospfArea" : 1,
-              "ospfCost" : 1,
-              "ospfDeadInterval" : 0,
-              "ospfEnabled" : true,
-              "ospfHelloMultiplier" : 0,
-              "ospfPassive" : false,
-              "prefix" : "2.23.21.3/24",
-              "proxyArp" : true,
-              "switchportMode" : "NONE",
-              "switchportTrunkEncapsulation" : "DOT1Q",
-              "vrf" : "default"
-            },
-            "FastEthernet0/1" : {
-              "name" : "FastEthernet0/1",
-              "accessVlan" : 0,
-              "active" : true,
-              "allPrefixes" : [
-                "2.23.11.3/24"
-              ],
-              "bandwidth" : 1.0E8,
-              "isisL1InterfaceMode" : "unset",
-              "isisL2InterfaceMode" : "unset",
-              "mtu" : 1500,
-              "nativeVlan" : 1,
-              "ospfArea" : 1,
-              "ospfCost" : 1,
-              "ospfDeadInterval" : 0,
-              "ospfEnabled" : true,
-              "ospfHelloMultiplier" : 0,
-              "ospfPassive" : false,
-              "prefix" : "2.23.11.3/24",
-              "proxyArp" : true,
-              "switchportMode" : "NONE",
-              "switchportTrunkEncapsulation" : "DOT1Q",
-              "vrf" : "default"
-            },
-            "FastEthernet1/0" : {
-              "name" : "FastEthernet1/0",
-              "accessVlan" : 0,
-              "active" : true,
-              "allPrefixes" : [
-                "2.34.101.3/24"
-              ],
-              "bandwidth" : 1.0E8,
               "isisL1InterfaceMode" : "unset",
               "isisL2InterfaceMode" : "unset",
               "mtu" : 1500,
@@ -6541,10 +7251,111 @@
               "ospfEnabled" : false,
               "ospfHelloMultiplier" : 0,
               "ospfPassive" : false,
-              "prefix" : "2.34.101.3/24",
+              "ospfPointToPoint" : false,
               "proxyArp" : true,
+              "ripEnabled" : false,
+              "ripPassive" : false,
+              "spanningTreePortfast" : false,
               "switchportMode" : "NONE",
               "switchportTrunkEncapsulation" : "DOT1Q",
+              "type" : "PHYSICAL",
+              "vrf" : "default"
+            },
+            "GigabitEthernet0/0" : {
+              "name" : "GigabitEthernet0/0",
+              "accessVlan" : 0,
+              "active" : true,
+              "allPrefixes" : [
+                "2.23.11.3/24"
+              ],
+              "autostate" : true,
+              "bandwidth" : 1.0E9,
+              "declaredNames" : [
+                "GigabitEthernet0/0"
+              ],
+              "isisL1InterfaceMode" : "unset",
+              "isisL2InterfaceMode" : "unset",
+              "mtu" : 1500,
+              "nativeVlan" : 1,
+              "ospfArea" : 1,
+              "ospfCost" : 1,
+              "ospfDeadInterval" : 0,
+              "ospfEnabled" : true,
+              "ospfHelloMultiplier" : 0,
+              "ospfPassive" : false,
+              "ospfPointToPoint" : false,
+              "prefix" : "2.23.11.3/24",
+              "proxyArp" : true,
+              "ripEnabled" : false,
+              "ripPassive" : false,
+              "spanningTreePortfast" : false,
+              "switchportMode" : "NONE",
+              "switchportTrunkEncapsulation" : "DOT1Q",
+              "type" : "PHYSICAL",
+              "vrf" : "default"
+            },
+            "GigabitEthernet1/0" : {
+              "name" : "GigabitEthernet1/0",
+              "accessVlan" : 0,
+              "active" : true,
+              "allPrefixes" : [
+                "2.23.21.3/24"
+              ],
+              "autostate" : true,
+              "bandwidth" : 1.0E9,
+              "declaredNames" : [
+                "GigabitEthernet1/0"
+              ],
+              "isisL1InterfaceMode" : "unset",
+              "isisL2InterfaceMode" : "unset",
+              "mtu" : 1500,
+              "nativeVlan" : 1,
+              "ospfArea" : 1,
+              "ospfCost" : 1,
+              "ospfDeadInterval" : 0,
+              "ospfEnabled" : true,
+              "ospfHelloMultiplier" : 0,
+              "ospfPassive" : false,
+              "ospfPointToPoint" : false,
+              "prefix" : "2.23.21.3/24",
+              "proxyArp" : true,
+              "ripEnabled" : false,
+              "ripPassive" : false,
+              "spanningTreePortfast" : false,
+              "switchportMode" : "NONE",
+              "switchportTrunkEncapsulation" : "DOT1Q",
+              "type" : "PHYSICAL",
+              "vrf" : "default"
+            },
+            "GigabitEthernet2/0" : {
+              "name" : "GigabitEthernet2/0",
+              "accessVlan" : 0,
+              "active" : true,
+              "allPrefixes" : [
+                "2.34.101.3/24"
+              ],
+              "autostate" : true,
+              "bandwidth" : 1.0E9,
+              "declaredNames" : [
+                "GigabitEthernet2/0"
+              ],
+              "isisL1InterfaceMode" : "unset",
+              "isisL2InterfaceMode" : "unset",
+              "mtu" : 1500,
+              "nativeVlan" : 1,
+              "ospfDeadInterval" : 0,
+              "ospfEnabled" : false,
+              "ospfHelloMultiplier" : 0,
+              "ospfPassive" : false,
+              "ospfPointToPoint" : false,
+              "prefix" : "2.34.101.3/24",
+              "proxyArp" : true,
+              "ripEnabled" : false,
+              "ripPassive" : false,
+              "spanningTreePortfast" : false,
+              "switchportMode" : "NONE",
+              "switchportTrunkEncapsulation" : "DOT1Q",
+              "type" : "PHYSICAL",
               "vrf" : "default"
             },
             "Loopback0" : {
@@ -6554,7 +7365,11 @@
               "allPrefixes" : [
                 "2.1.3.1/32"
               ],
+              "autostate" : true,
               "bandwidth" : 1.0E12,
+              "declaredNames" : [
+                "Loopback0"
+              ],
               "isisL1InterfaceMode" : "unset",
               "isisL2InterfaceMode" : "unset",
               "mtu" : 1500,
@@ -6565,10 +7380,15 @@
               "ospfEnabled" : true,
               "ospfHelloMultiplier" : 0,
               "ospfPassive" : false,
+              "ospfPointToPoint" : false,
               "prefix" : "2.1.3.1/32",
               "proxyArp" : true,
+              "ripEnabled" : false,
+              "ripPassive" : false,
+              "spanningTreePortfast" : false,
               "switchportMode" : "NONE",
               "switchportTrunkEncapsulation" : "DOT1Q",
+              "type" : "LOOPBACK",
               "vrf" : "default"
             }
           },
@@ -6639,6 +7459,9 @@
               ]
             }
           },
+          "roles" : [
+            "dist"
+          ],
           "route6FilterLists" : {
             "~BGP_NETWORK6_NETWORKS_FILTER:default~" : {
               "name" : "~BGP_NETWORK6_NETWORKS_FILTER:default~"
@@ -6698,7 +7521,7 @@
                     {
                       "class" : "org.batfish.datamodel.routing_policy.statement.SetMetric",
                       "metric" : {
-                        "class" : "org.batfish.datamodel.routing_policy.expr.LiteralInt",
+                        "class" : "org.batfish.datamodel.routing_policy.expr.LiteralLong",
                         "value" : 50
                       }
                     },
@@ -6884,7 +7707,7 @@
                 {
                   "class" : "org.batfish.datamodel.routing_policy.statement.SetMetric",
                   "metric" : {
-                    "class" : "org.batfish.datamodel.routing_policy.expr.LiteralInt",
+                    "class" : "org.batfish.datamodel.routing_policy.expr.LiteralLong",
                     "value" : 20
                   }
                 },
@@ -6911,6 +7734,9 @@
           },
           "vendorFamily" : {
             "cisco" : {
+              "aaa" : {
+                "newModel" : false
+              },
               "hostname" : "as2dist1",
               "lines" : {
                 "aux0" : {
@@ -6950,26 +7776,23 @@
                 }
               },
               "services" : {
-                "log" : {
-                  "enabled" : true,
-                  "subservices" : {
-                    "datetime" : {
-                      "enabled" : true,
-                      "subservices" : {
-                        "msec" : {
-                          "enabled" : true
-                        }
-                      }
-                    }
-                  }
-                },
-                "password-encryption" : {
-                  "enabled" : false
-                },
                 "timestamps" : {
                   "enabled" : true,
                   "subservices" : {
                     "debug" : {
+                      "enabled" : true,
+                      "subservices" : {
+                        "datetime" : {
+                          "enabled" : true,
+                          "subservices" : {
+                            "msec" : {
+                              "enabled" : true
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "log" : {
                       "enabled" : true,
                       "subservices" : {
                         "datetime" : {
@@ -6992,13 +7815,17 @@
               "name" : "default",
               "bgpProcess" : {
                 "multipathEbgp" : true,
+                "multipathEquivalentAsPathMatchMode" : "EXACT_PATH",
                 "multipathIbgp" : true,
                 "neighbors" : {
                   "2.1.2.1/32" : {
                     "name" : "2.1.2.1/32",
+                    "additionalPathsReceive" : true,
+                    "additionalPathsSelectAll" : true,
+                    "additionalPathsSend" : true,
                     "address" : "2.1.2.1",
                     "advertiseExternal" : false,
-                    "advertiseInactive" : false,
+                    "advertiseInactive" : true,
                     "allowLocalAsIn" : false,
                     "allowRemoteAsOut" : false,
                     "clusterId" : 33620737,
@@ -7017,9 +7844,12 @@
                   },
                   "2.1.2.2/32" : {
                     "name" : "2.1.2.2/32",
+                    "additionalPathsReceive" : true,
+                    "additionalPathsSelectAll" : true,
+                    "additionalPathsSend" : true,
                     "address" : "2.1.2.2",
                     "advertiseExternal" : false,
-                    "advertiseInactive" : false,
+                    "advertiseInactive" : true,
                     "allowLocalAsIn" : false,
                     "allowRemoteAsOut" : false,
                     "clusterId" : 33620737,
@@ -7038,9 +7868,12 @@
                   },
                   "2.34.101.4/32" : {
                     "name" : "2.34.101.4/32",
+                    "additionalPathsReceive" : true,
+                    "additionalPathsSelectAll" : true,
+                    "additionalPathsSend" : true,
                     "address" : "2.34.101.4",
                     "advertiseExternal" : false,
-                    "advertiseInactive" : false,
+                    "advertiseInactive" : true,
                     "allowLocalAsIn" : false,
                     "allowRemoteAsOut" : false,
                     "clusterId" : 33620737,
@@ -7048,8 +7881,14 @@
                     "dynamic" : false,
                     "ebgpMultihop" : false,
                     "exportPolicy" : "~BGP_PEER_EXPORT_POLICY:default:2.34.101.4~",
+                    "exportPolicySources" : [
+                      "as2dist_to_dept"
+                    ],
                     "group" : "dept",
                     "importPolicy" : "dept_to_as2dist",
+                    "importPolicySources" : [
+                      "dept_to_as2dist"
+                    ],
                     "localAs" : 2,
                     "localIp" : "2.34.101.3",
                     "remoteAs" : 65001,
@@ -7059,12 +7898,14 @@
                     "vrf" : "default"
                   }
                 },
-                "routerId" : "2.1.3.1"
+                "routerId" : "2.1.3.1",
+                "tieBreaker" : "ARRIVAL_ORDER"
               },
               "interfaces" : [
-                "FastEthernet0/0",
-                "FastEthernet0/1",
-                "FastEthernet1/0",
+                "Ethernet0/0",
+                "GigabitEthernet0/0",
+                "GigabitEthernet1/0",
+                "GigabitEthernet2/0",
                 "Loopback0"
               ],
               "ospfProcess" : {
@@ -7072,8 +7913,8 @@
                   "1" : {
                     "name" : 1,
                     "interfaces" : [
-                      "FastEthernet0/0",
-                      "FastEthernet0/1",
+                      "GigabitEthernet0/0",
+                      "GigabitEthernet1/0",
                       "Loopback0"
                     ]
                   }
@@ -7086,6 +7927,7 @@
           }
         },
         "as2dist2" : {
+          "configurationFormat" : "CISCO_IOS",
           "name" : "as2dist2",
           "communityLists" : {
             "dept_community" : {
@@ -7099,67 +7941,20 @@
               "invertMatch" : false
             }
           },
-          "configurationFormat" : "CISCO_IOS",
           "defaultCrossZoneAction" : "ACCEPT",
           "defaultInboundAction" : "ACCEPT",
+          "deviceType" : "ROUTER",
           "domainName" : "lab.local",
           "interfaces" : {
-            "FastEthernet0/0" : {
-              "name" : "FastEthernet0/0",
+            "Ethernet0/0" : {
+              "name" : "Ethernet0/0",
               "accessVlan" : 0,
-              "active" : true,
-              "allPrefixes" : [
-                "2.23.22.3/24"
+              "active" : false,
+              "autostate" : true,
+              "bandwidth" : 1.0E7,
+              "declaredNames" : [
+                "Ethernet0/0"
               ],
-              "bandwidth" : 1.0E8,
-              "isisL1InterfaceMode" : "unset",
-              "isisL2InterfaceMode" : "unset",
-              "mtu" : 1500,
-              "nativeVlan" : 1,
-              "ospfArea" : 1,
-              "ospfCost" : 1,
-              "ospfDeadInterval" : 0,
-              "ospfEnabled" : true,
-              "ospfHelloMultiplier" : 0,
-              "ospfPassive" : false,
-              "prefix" : "2.23.22.3/24",
-              "proxyArp" : true,
-              "switchportMode" : "NONE",
-              "switchportTrunkEncapsulation" : "DOT1Q",
-              "vrf" : "default"
-            },
-            "FastEthernet0/1" : {
-              "name" : "FastEthernet0/1",
-              "accessVlan" : 0,
-              "active" : true,
-              "allPrefixes" : [
-                "2.23.12.3/24"
-              ],
-              "bandwidth" : 1.0E8,
-              "isisL1InterfaceMode" : "unset",
-              "isisL2InterfaceMode" : "unset",
-              "mtu" : 1500,
-              "nativeVlan" : 1,
-              "ospfArea" : 1,
-              "ospfCost" : 1,
-              "ospfDeadInterval" : 0,
-              "ospfEnabled" : true,
-              "ospfHelloMultiplier" : 0,
-              "ospfPassive" : false,
-              "prefix" : "2.23.12.3/24",
-              "proxyArp" : true,
-              "switchportMode" : "NONE",
-              "switchportTrunkEncapsulation" : "DOT1Q",
-              "vrf" : "default"
-            },
-            "FastEthernet1/0" : {
-              "name" : "FastEthernet1/0",
-              "accessVlan" : 0,
-              "active" : true,
-              "allPrefixes" : [
-                "2.34.201.3/24"
-              ],
-              "bandwidth" : 1.0E8,
               "isisL1InterfaceMode" : "unset",
               "isisL2InterfaceMode" : "unset",
               "mtu" : 1500,
@@ -7168,10 +7963,111 @@
               "ospfEnabled" : false,
               "ospfHelloMultiplier" : 0,
               "ospfPassive" : false,
-              "prefix" : "2.34.201.3/24",
+              "ospfPointToPoint" : false,
               "proxyArp" : true,
+              "ripEnabled" : false,
+              "ripPassive" : false,
+              "spanningTreePortfast" : false,
               "switchportMode" : "NONE",
               "switchportTrunkEncapsulation" : "DOT1Q",
+              "type" : "PHYSICAL",
+              "vrf" : "default"
+            },
+            "GigabitEthernet0/0" : {
+              "name" : "GigabitEthernet0/0",
+              "accessVlan" : 0,
+              "active" : true,
+              "allPrefixes" : [
+                "2.23.22.3/24"
+              ],
+              "autostate" : true,
+              "bandwidth" : 1.0E9,
+              "declaredNames" : [
+                "GigabitEthernet0/0"
+              ],
+              "isisL1InterfaceMode" : "unset",
+              "isisL2InterfaceMode" : "unset",
+              "mtu" : 1500,
+              "nativeVlan" : 1,
+              "ospfArea" : 1,
+              "ospfCost" : 1,
+              "ospfDeadInterval" : 0,
+              "ospfEnabled" : true,
+              "ospfHelloMultiplier" : 0,
+              "ospfPassive" : false,
+              "ospfPointToPoint" : false,
+              "prefix" : "2.23.22.3/24",
+              "proxyArp" : true,
+              "ripEnabled" : false,
+              "ripPassive" : false,
+              "spanningTreePortfast" : false,
+              "switchportMode" : "NONE",
+              "switchportTrunkEncapsulation" : "DOT1Q",
+              "type" : "PHYSICAL",
+              "vrf" : "default"
+            },
+            "GigabitEthernet1/0" : {
+              "name" : "GigabitEthernet1/0",
+              "accessVlan" : 0,
+              "active" : true,
+              "allPrefixes" : [
+                "2.23.12.3/24"
+              ],
+              "autostate" : true,
+              "bandwidth" : 1.0E9,
+              "declaredNames" : [
+                "GigabitEthernet1/0"
+              ],
+              "isisL1InterfaceMode" : "unset",
+              "isisL2InterfaceMode" : "unset",
+              "mtu" : 1500,
+              "nativeVlan" : 1,
+              "ospfArea" : 1,
+              "ospfCost" : 1,
+              "ospfDeadInterval" : 0,
+              "ospfEnabled" : true,
+              "ospfHelloMultiplier" : 0,
+              "ospfPassive" : false,
+              "ospfPointToPoint" : false,
+              "prefix" : "2.23.12.3/24",
+              "proxyArp" : true,
+              "ripEnabled" : false,
+              "ripPassive" : false,
+              "spanningTreePortfast" : false,
+              "switchportMode" : "NONE",
+              "switchportTrunkEncapsulation" : "DOT1Q",
+              "type" : "PHYSICAL",
+              "vrf" : "default"
+            },
+            "GigabitEthernet2/0" : {
+              "name" : "GigabitEthernet2/0",
+              "accessVlan" : 0,
+              "active" : true,
+              "allPrefixes" : [
+                "2.34.201.3/24"
+              ],
+              "autostate" : true,
+              "bandwidth" : 1.0E9,
+              "declaredNames" : [
+                "GigabitEthernet2/0"
+              ],
+              "isisL1InterfaceMode" : "unset",
+              "isisL2InterfaceMode" : "unset",
+              "mtu" : 1500,
+              "nativeVlan" : 1,
+              "ospfDeadInterval" : 0,
+              "ospfEnabled" : false,
+              "ospfHelloMultiplier" : 0,
+              "ospfPassive" : false,
+              "ospfPointToPoint" : false,
+              "prefix" : "2.34.201.3/24",
+              "proxyArp" : true,
+              "ripEnabled" : false,
+              "ripPassive" : false,
+              "spanningTreePortfast" : false,
+              "switchportMode" : "NONE",
+              "switchportTrunkEncapsulation" : "DOT1Q",
+              "type" : "PHYSICAL",
               "vrf" : "default"
             },
             "Loopback0" : {
@@ -7181,7 +8077,11 @@
               "allPrefixes" : [
                 "2.1.3.2/32"
               ],
+              "autostate" : true,
               "bandwidth" : 1.0E12,
+              "declaredNames" : [
+                "Loopback0"
+              ],
               "isisL1InterfaceMode" : "unset",
               "isisL2InterfaceMode" : "unset",
               "mtu" : 1500,
@@ -7192,10 +8092,15 @@
               "ospfEnabled" : true,
               "ospfHelloMultiplier" : 0,
               "ospfPassive" : false,
+              "ospfPointToPoint" : false,
               "prefix" : "2.1.3.2/32",
               "proxyArp" : true,
+              "ripEnabled" : false,
+              "ripPassive" : false,
+              "spanningTreePortfast" : false,
               "switchportMode" : "NONE",
               "switchportTrunkEncapsulation" : "DOT1Q",
+              "type" : "LOOPBACK",
               "vrf" : "default"
             }
           },
@@ -7266,6 +8171,9 @@
               ]
             }
           },
+          "roles" : [
+            "dist"
+          ],
           "route6FilterLists" : {
             "~BGP_NETWORK6_NETWORKS_FILTER:default~" : {
               "name" : "~BGP_NETWORK6_NETWORKS_FILTER:default~"
@@ -7325,7 +8233,7 @@
                     {
                       "class" : "org.batfish.datamodel.routing_policy.statement.SetMetric",
                       "metric" : {
-                        "class" : "org.batfish.datamodel.routing_policy.expr.LiteralInt",
+                        "class" : "org.batfish.datamodel.routing_policy.expr.LiteralLong",
                         "value" : 50
                       }
                     },
@@ -7511,7 +8419,7 @@
                 {
                   "class" : "org.batfish.datamodel.routing_policy.statement.SetMetric",
                   "metric" : {
-                    "class" : "org.batfish.datamodel.routing_policy.expr.LiteralInt",
+                    "class" : "org.batfish.datamodel.routing_policy.expr.LiteralLong",
                     "value" : 20
                   }
                 },
@@ -7538,6 +8446,9 @@
           },
           "vendorFamily" : {
             "cisco" : {
+              "aaa" : {
+                "newModel" : false
+              },
               "hostname" : "as2dist2",
               "lines" : {
                 "aux0" : {
@@ -7577,26 +8488,23 @@
                 }
               },
               "services" : {
-                "log" : {
-                  "enabled" : true,
-                  "subservices" : {
-                    "datetime" : {
-                      "enabled" : true,
-                      "subservices" : {
-                        "msec" : {
-                          "enabled" : true
-                        }
-                      }
-                    }
-                  }
-                },
-                "password-encryption" : {
-                  "enabled" : false
-                },
                 "timestamps" : {
                   "enabled" : true,
                   "subservices" : {
                     "debug" : {
+                      "enabled" : true,
+                      "subservices" : {
+                        "datetime" : {
+                          "enabled" : true,
+                          "subservices" : {
+                            "msec" : {
+                              "enabled" : true
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "log" : {
                       "enabled" : true,
                       "subservices" : {
                         "datetime" : {
@@ -7619,13 +8527,17 @@
               "name" : "default",
               "bgpProcess" : {
                 "multipathEbgp" : true,
+                "multipathEquivalentAsPathMatchMode" : "EXACT_PATH",
                 "multipathIbgp" : true,
                 "neighbors" : {
                   "2.1.2.1/32" : {
                     "name" : "2.1.2.1/32",
+                    "additionalPathsReceive" : true,
+                    "additionalPathsSelectAll" : true,
+                    "additionalPathsSend" : true,
                     "address" : "2.1.2.1",
                     "advertiseExternal" : false,
-                    "advertiseInactive" : false,
+                    "advertiseInactive" : true,
                     "allowLocalAsIn" : false,
                     "allowRemoteAsOut" : false,
                     "clusterId" : 33620738,
@@ -7644,9 +8556,12 @@
                   },
                   "2.1.2.2/32" : {
                     "name" : "2.1.2.2/32",
+                    "additionalPathsReceive" : true,
+                    "additionalPathsSelectAll" : true,
+                    "additionalPathsSend" : true,
                     "address" : "2.1.2.2",
                     "advertiseExternal" : false,
-                    "advertiseInactive" : false,
+                    "advertiseInactive" : true,
                     "allowLocalAsIn" : false,
                     "allowRemoteAsOut" : false,
                     "clusterId" : 33620738,
@@ -7665,9 +8580,12 @@
                   },
                   "2.34.201.4/32" : {
                     "name" : "2.34.201.4/32",
+                    "additionalPathsReceive" : true,
+                    "additionalPathsSelectAll" : true,
+                    "additionalPathsSend" : true,
                     "address" : "2.34.201.4",
                     "advertiseExternal" : false,
-                    "advertiseInactive" : false,
+                    "advertiseInactive" : true,
                     "allowLocalAsIn" : false,
                     "allowRemoteAsOut" : false,
                     "clusterId" : 33620738,
@@ -7675,8 +8593,14 @@
                     "dynamic" : false,
                     "ebgpMultihop" : false,
                     "exportPolicy" : "~BGP_PEER_EXPORT_POLICY:default:2.34.201.4~",
+                    "exportPolicySources" : [
+                      "as2dist_to_dept"
+                    ],
                     "group" : "dept",
                     "importPolicy" : "dept_to_as2dist",
+                    "importPolicySources" : [
+                      "dept_to_as2dist"
+                    ],
                     "localAs" : 2,
                     "localIp" : "2.34.201.3",
                     "remoteAs" : 65001,
@@ -7686,12 +8610,14 @@
                     "vrf" : "default"
                   }
                 },
-                "routerId" : "2.1.3.2"
+                "routerId" : "2.1.3.2",
+                "tieBreaker" : "ARRIVAL_ORDER"
               },
               "interfaces" : [
-                "FastEthernet0/0",
-                "FastEthernet0/1",
-                "FastEthernet1/0",
+                "Ethernet0/0",
+                "GigabitEthernet0/0",
+                "GigabitEthernet1/0",
+                "GigabitEthernet2/0",
                 "Loopback0"
               ],
               "ospfProcess" : {
@@ -7699,8 +8625,8 @@
                   "1" : {
                     "name" : 1,
                     "interfaces" : [
-                      "FastEthernet0/0",
-                      "FastEthernet0/1",
+                      "GigabitEthernet0/0",
+                      "GigabitEthernet1/0",
                       "Loopback0"
                     ]
                   }
@@ -7713,6 +8639,7 @@
           }
         },
         "as3border1" : {
+          "configurationFormat" : "CISCO_IOS",
           "name" : "as3border1",
           "communityLists" : {
             "as1_community" : {
@@ -7746,19 +8673,20 @@
               "invertMatch" : false
             }
           },
-          "configurationFormat" : "CISCO_IOS",
           "defaultCrossZoneAction" : "ACCEPT",
           "defaultInboundAction" : "ACCEPT",
+          "deviceType" : "ROUTER",
           "domainName" : "lab.local",
           "interfaces" : {
-            "FastEthernet0/0" : {
-              "name" : "FastEthernet0/0",
+            "Ethernet0/0" : {
+              "name" : "Ethernet0/0",
               "accessVlan" : 0,
-              "active" : true,
-              "allPrefixes" : [
-                "10.23.21.3/24"
+              "active" : false,
+              "autostate" : true,
+              "bandwidth" : 1.0E7,
+              "declaredNames" : [
+                "Ethernet0/0"
               ],
-              "bandwidth" : 1.0E8,
               "isisL1InterfaceMode" : "unset",
               "isisL2InterfaceMode" : "unset",
               "mtu" : 1500,
@@ -7767,20 +8695,28 @@
               "ospfEnabled" : false,
               "ospfHelloMultiplier" : 0,
               "ospfPassive" : false,
-              "prefix" : "10.23.21.3/24",
+              "ospfPointToPoint" : false,
               "proxyArp" : true,
+              "ripEnabled" : false,
+              "ripPassive" : false,
+              "spanningTreePortfast" : false,
               "switchportMode" : "NONE",
               "switchportTrunkEncapsulation" : "DOT1Q",
+              "type" : "PHYSICAL",
               "vrf" : "default"
             },
-            "FastEthernet0/1" : {
-              "name" : "FastEthernet0/1",
+            "GigabitEthernet0/0" : {
+              "name" : "GigabitEthernet0/0",
               "accessVlan" : 0,
               "active" : true,
               "allPrefixes" : [
                 "3.0.1.1/24"
               ],
-              "bandwidth" : 1.0E8,
+              "autostate" : true,
+              "bandwidth" : 1.0E9,
+              "declaredNames" : [
+                "GigabitEthernet0/0"
+              ],
               "isisL1InterfaceMode" : "unset",
               "isisL2InterfaceMode" : "unset",
               "mtu" : 1500,
@@ -7791,10 +8727,46 @@
               "ospfEnabled" : true,
               "ospfHelloMultiplier" : 0,
               "ospfPassive" : false,
+              "ospfPointToPoint" : false,
               "prefix" : "3.0.1.1/24",
               "proxyArp" : true,
+              "ripEnabled" : false,
+              "ripPassive" : false,
+              "spanningTreePortfast" : false,
               "switchportMode" : "NONE",
               "switchportTrunkEncapsulation" : "DOT1Q",
+              "type" : "PHYSICAL",
+              "vrf" : "default"
+            },
+            "GigabitEthernet1/0" : {
+              "name" : "GigabitEthernet1/0",
+              "accessVlan" : 0,
+              "active" : true,
+              "allPrefixes" : [
+                "10.23.21.3/24"
+              ],
+              "autostate" : true,
+              "bandwidth" : 1.0E9,
+              "declaredNames" : [
+                "GigabitEthernet1/0"
+              ],
+              "isisL1InterfaceMode" : "unset",
+              "isisL2InterfaceMode" : "unset",
+              "mtu" : 1500,
+              "nativeVlan" : 1,
+              "ospfDeadInterval" : 0,
+              "ospfEnabled" : false,
+              "ospfHelloMultiplier" : 0,
+              "ospfPassive" : false,
+              "ospfPointToPoint" : false,
+              "prefix" : "10.23.21.3/24",
+              "proxyArp" : true,
+              "ripEnabled" : false,
+              "ripPassive" : false,
+              "spanningTreePortfast" : false,
+              "switchportMode" : "NONE",
+              "switchportTrunkEncapsulation" : "DOT1Q",
+              "type" : "PHYSICAL",
               "vrf" : "default"
             },
             "Loopback0" : {
@@ -7804,7 +8776,11 @@
               "allPrefixes" : [
                 "3.1.1.1/32"
               ],
+              "autostate" : true,
               "bandwidth" : 1.0E12,
+              "declaredNames" : [
+                "Loopback0"
+              ],
               "isisL1InterfaceMode" : "unset",
               "isisL2InterfaceMode" : "unset",
               "mtu" : 1500,
@@ -7815,10 +8791,15 @@
               "ospfEnabled" : true,
               "ospfHelloMultiplier" : 0,
               "ospfPassive" : false,
+              "ospfPointToPoint" : false,
               "prefix" : "3.1.1.1/32",
               "proxyArp" : true,
+              "ripEnabled" : false,
+              "ripPassive" : false,
+              "spanningTreePortfast" : false,
               "switchportMode" : "NONE",
               "switchportTrunkEncapsulation" : "DOT1Q",
+              "type" : "LOOPBACK",
               "vrf" : "default"
             }
           },
@@ -7905,6 +8886,13 @@
               ]
             }
           },
+          "ntpServers" : [
+            "18.18.18.18",
+            "23.23.23.23"
+          ],
+          "roles" : [
+            "border"
+          ],
           "route6FilterLists" : {
             "~BGP_NETWORK6_NETWORKS_FILTER:default~" : {
               "name" : "~BGP_NETWORK6_NETWORKS_FILTER:default~"
@@ -8083,7 +9071,7 @@
                         {
                           "class" : "org.batfish.datamodel.routing_policy.statement.SetMetric",
                           "metric" : {
-                            "class" : "org.batfish.datamodel.routing_policy.expr.LiteralInt",
+                            "class" : "org.batfish.datamodel.routing_policy.expr.LiteralLong",
                             "value" : 50
                           }
                         },
@@ -8126,7 +9114,7 @@
                     {
                       "class" : "org.batfish.datamodel.routing_policy.statement.SetMetric",
                       "metric" : {
-                        "class" : "org.batfish.datamodel.routing_policy.expr.LiteralInt",
+                        "class" : "org.batfish.datamodel.routing_policy.expr.LiteralLong",
                         "value" : 50
                       }
                     },
@@ -8190,7 +9178,7 @@
                             {
                               "class" : "org.batfish.datamodel.routing_policy.statement.SetMetric",
                               "metric" : {
-                                "class" : "org.batfish.datamodel.routing_policy.expr.LiteralInt",
+                                "class" : "org.batfish.datamodel.routing_policy.expr.LiteralLong",
                                 "value" : 50
                               }
                             },
@@ -8233,7 +9221,7 @@
                         {
                           "class" : "org.batfish.datamodel.routing_policy.statement.SetMetric",
                           "metric" : {
-                            "class" : "org.batfish.datamodel.routing_policy.expr.LiteralInt",
+                            "class" : "org.batfish.datamodel.routing_policy.expr.LiteralLong",
                             "value" : 50
                           }
                         },
@@ -8276,7 +9264,7 @@
                     {
                       "class" : "org.batfish.datamodel.routing_policy.statement.SetMetric",
                       "metric" : {
-                        "class" : "org.batfish.datamodel.routing_policy.expr.LiteralInt",
+                        "class" : "org.batfish.datamodel.routing_policy.expr.LiteralLong",
                         "value" : 50
                       }
                     },
@@ -8542,7 +9530,7 @@
                 {
                   "class" : "org.batfish.datamodel.routing_policy.statement.SetMetric",
                   "metric" : {
-                    "class" : "org.batfish.datamodel.routing_policy.expr.LiteralInt",
+                    "class" : "org.batfish.datamodel.routing_policy.expr.LiteralLong",
                     "value" : 20
                   }
                 },
@@ -8569,6 +9557,9 @@
           },
           "vendorFamily" : {
             "cisco" : {
+              "aaa" : {
+                "newModel" : false
+              },
               "hostname" : "as3border1",
               "lines" : {
                 "aux0" : {
@@ -8607,27 +9598,34 @@
                   "execTimeoutSeconds" : 0
                 }
               },
-              "services" : {
-                "log" : {
-                  "enabled" : true,
-                  "subservices" : {
-                    "datetime" : {
-                      "enabled" : true,
-                      "subservices" : {
-                        "msec" : {
-                          "enabled" : true
-                        }
-                      }
-                    }
+              "ntp" : {
+                "servers" : {
+                  "18.18.18.18" : {
+                    "name" : "18.18.18.18"
+                  },
+                  "23.23.23.23" : {
+                    "name" : "23.23.23.23"
                   }
-                },
-                "password-encryption" : {
-                  "enabled" : false
-                },
+                }
+              },
+              "services" : {
                 "timestamps" : {
                   "enabled" : true,
                   "subservices" : {
                     "debug" : {
+                      "enabled" : true,
+                      "subservices" : {
+                        "datetime" : {
+                          "enabled" : true,
+                          "subservices" : {
+                            "msec" : {
+                              "enabled" : true
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "log" : {
                       "enabled" : true,
                       "subservices" : {
                         "datetime" : {
@@ -8650,13 +9648,17 @@
               "name" : "default",
               "bgpProcess" : {
                 "multipathEbgp" : true,
+                "multipathEquivalentAsPathMatchMode" : "EXACT_PATH",
                 "multipathIbgp" : true,
                 "neighbors" : {
                   "3.10.1.1/32" : {
                     "name" : "3.10.1.1/32",
+                    "additionalPathsReceive" : true,
+                    "additionalPathsSelectAll" : true,
+                    "additionalPathsSend" : true,
                     "address" : "3.10.1.1",
                     "advertiseExternal" : false,
-                    "advertiseInactive" : false,
+                    "advertiseInactive" : true,
                     "allowLocalAsIn" : false,
                     "allowRemoteAsOut" : false,
                     "clusterId" : 50397441,
@@ -8675,9 +9677,12 @@
                   },
                   "10.23.21.2/32" : {
                     "name" : "10.23.21.2/32",
+                    "additionalPathsReceive" : true,
+                    "additionalPathsSelectAll" : true,
+                    "additionalPathsSend" : true,
                     "address" : "10.23.21.2",
                     "advertiseExternal" : false,
-                    "advertiseInactive" : false,
+                    "advertiseInactive" : true,
                     "allowLocalAsIn" : false,
                     "allowRemoteAsOut" : false,
                     "clusterId" : 50397441,
@@ -8685,8 +9690,14 @@
                     "dynamic" : false,
                     "ebgpMultihop" : false,
                     "exportPolicy" : "~BGP_PEER_EXPORT_POLICY:default:10.23.21.2~",
+                    "exportPolicySources" : [
+                      "as3_to_as2"
+                    ],
                     "group" : "as2",
                     "importPolicy" : "as2_to_as3",
+                    "importPolicySources" : [
+                      "as2_to_as3"
+                    ],
                     "localAs" : 3,
                     "localIp" : "10.23.21.3",
                     "remoteAs" : 2,
@@ -8696,11 +9707,13 @@
                     "vrf" : "default"
                   }
                 },
-                "routerId" : "3.1.1.1"
+                "routerId" : "3.1.1.1",
+                "tieBreaker" : "ARRIVAL_ORDER"
               },
               "interfaces" : [
-                "FastEthernet0/0",
-                "FastEthernet0/1",
+                "Ethernet0/0",
+                "GigabitEthernet0/0",
+                "GigabitEthernet1/0",
                 "Loopback0"
               ],
               "ospfProcess" : {
@@ -8708,7 +9721,7 @@
                   "1" : {
                     "name" : 1,
                     "interfaces" : [
-                      "FastEthernet0/1",
+                      "GigabitEthernet0/0",
                       "Loopback0"
                     ]
                   }
@@ -8721,6 +9734,7 @@
           }
         },
         "as3border2" : {
+          "configurationFormat" : "CISCO_IOS",
           "name" : "as3border2",
           "communityLists" : {
             "as1_community" : {
@@ -8754,19 +9768,81 @@
               "invertMatch" : false
             }
           },
-          "configurationFormat" : "CISCO_IOS",
           "defaultCrossZoneAction" : "ACCEPT",
           "defaultInboundAction" : "ACCEPT",
+          "deviceType" : "ROUTER",
           "domainName" : "lab.local",
           "interfaces" : {
-            "FastEthernet0/0" : {
-              "name" : "FastEthernet0/0",
+            "Ethernet0/0" : {
+              "name" : "Ethernet0/0",
+              "accessVlan" : 0,
+              "active" : false,
+              "autostate" : true,
+              "bandwidth" : 1.0E7,
+              "declaredNames" : [
+                "Ethernet0/0"
+              ],
+              "isisL1InterfaceMode" : "unset",
+              "isisL2InterfaceMode" : "unset",
+              "mtu" : 1500,
+              "nativeVlan" : 1,
+              "ospfDeadInterval" : 0,
+              "ospfEnabled" : false,
+              "ospfHelloMultiplier" : 0,
+              "ospfPassive" : false,
+              "ospfPointToPoint" : false,
+              "proxyArp" : true,
+              "ripEnabled" : false,
+              "ripPassive" : false,
+              "spanningTreePortfast" : false,
+              "switchportMode" : "NONE",
+              "switchportTrunkEncapsulation" : "DOT1Q",
+              "type" : "PHYSICAL",
+              "vrf" : "default"
+            },
+            "GigabitEthernet0/0" : {
+              "name" : "GigabitEthernet0/0",
+              "accessVlan" : 0,
+              "active" : true,
+              "allPrefixes" : [
+                "10.13.22.3/24"
+              ],
+              "autostate" : true,
+              "bandwidth" : 1.0E9,
+              "declaredNames" : [
+                "GigabitEthernet0/0"
+              ],
+              "isisL1InterfaceMode" : "unset",
+              "isisL2InterfaceMode" : "unset",
+              "mtu" : 1500,
+              "nativeVlan" : 1,
+              "ospfDeadInterval" : 0,
+              "ospfEnabled" : false,
+              "ospfHelloMultiplier" : 0,
+              "ospfPassive" : false,
+              "ospfPointToPoint" : false,
+              "prefix" : "10.13.22.3/24",
+              "proxyArp" : true,
+              "ripEnabled" : false,
+              "ripPassive" : false,
+              "spanningTreePortfast" : false,
+              "switchportMode" : "NONE",
+              "switchportTrunkEncapsulation" : "DOT1Q",
+              "type" : "PHYSICAL",
+              "vrf" : "default"
+            },
+            "GigabitEthernet1/0" : {
+              "name" : "GigabitEthernet1/0",
               "accessVlan" : 0,
               "active" : true,
               "allPrefixes" : [
                 "3.0.2.1/24"
               ],
-              "bandwidth" : 1.0E8,
+              "autostate" : true,
+              "bandwidth" : 1.0E9,
+              "declaredNames" : [
+                "GigabitEthernet1/0"
+              ],
               "isisL1InterfaceMode" : "unset",
               "isisL2InterfaceMode" : "unset",
               "mtu" : 1500,
@@ -8777,32 +9853,15 @@
               "ospfEnabled" : true,
               "ospfHelloMultiplier" : 0,
               "ospfPassive" : false,
+              "ospfPointToPoint" : false,
               "prefix" : "3.0.2.1/24",
               "proxyArp" : true,
+              "ripEnabled" : false,
+              "ripPassive" : false,
+              "spanningTreePortfast" : false,
               "switchportMode" : "NONE",
               "switchportTrunkEncapsulation" : "DOT1Q",
-              "vrf" : "default"
-            },
-            "FastEthernet0/1" : {
-              "name" : "FastEthernet0/1",
-              "accessVlan" : 0,
-              "active" : true,
-              "allPrefixes" : [
-                "10.13.22.3/24"
-              ],
-              "bandwidth" : 1.0E8,
-              "isisL1InterfaceMode" : "unset",
-              "isisL2InterfaceMode" : "unset",
-              "mtu" : 1500,
-              "nativeVlan" : 1,
-              "ospfDeadInterval" : 0,
-              "ospfEnabled" : false,
-              "ospfHelloMultiplier" : 0,
-              "ospfPassive" : false,
-              "prefix" : "10.13.22.3/24",
-              "proxyArp" : true,
-              "switchportMode" : "NONE",
-              "switchportTrunkEncapsulation" : "DOT1Q",
+              "type" : "PHYSICAL",
               "vrf" : "default"
             },
             "Loopback0" : {
@@ -8812,7 +9871,11 @@
               "allPrefixes" : [
                 "3.2.2.2/32"
               ],
+              "autostate" : true,
               "bandwidth" : 1.0E12,
+              "declaredNames" : [
+                "Loopback0"
+              ],
               "isisL1InterfaceMode" : "unset",
               "isisL2InterfaceMode" : "unset",
               "mtu" : 1500,
@@ -8823,10 +9886,15 @@
               "ospfEnabled" : true,
               "ospfHelloMultiplier" : 0,
               "ospfPassive" : false,
+              "ospfPointToPoint" : false,
               "prefix" : "3.2.2.2/32",
               "proxyArp" : true,
+              "ripEnabled" : false,
+              "ripPassive" : false,
+              "spanningTreePortfast" : false,
               "switchportMode" : "NONE",
               "switchportTrunkEncapsulation" : "DOT1Q",
+              "type" : "LOOPBACK",
               "vrf" : "default"
             }
           },
@@ -8913,6 +9981,13 @@
               ]
             }
           },
+          "ntpServers" : [
+            "18.18.18.18",
+            "23.23.23.23"
+          ],
+          "roles" : [
+            "border"
+          ],
           "route6FilterLists" : {
             "~BGP_NETWORK6_NETWORKS_FILTER:default~" : {
               "name" : "~BGP_NETWORK6_NETWORKS_FILTER:default~"
@@ -9081,7 +10156,7 @@
                         {
                           "class" : "org.batfish.datamodel.routing_policy.statement.SetMetric",
                           "metric" : {
-                            "class" : "org.batfish.datamodel.routing_policy.expr.LiteralInt",
+                            "class" : "org.batfish.datamodel.routing_policy.expr.LiteralLong",
                             "value" : 50
                           }
                         },
@@ -9124,7 +10199,7 @@
                     {
                       "class" : "org.batfish.datamodel.routing_policy.statement.SetMetric",
                       "metric" : {
-                        "class" : "org.batfish.datamodel.routing_policy.expr.LiteralInt",
+                        "class" : "org.batfish.datamodel.routing_policy.expr.LiteralLong",
                         "value" : 50
                       }
                     },
@@ -9184,7 +10259,7 @@
                         {
                           "class" : "org.batfish.datamodel.routing_policy.statement.SetMetric",
                           "metric" : {
-                            "class" : "org.batfish.datamodel.routing_policy.expr.LiteralInt",
+                            "class" : "org.batfish.datamodel.routing_policy.expr.LiteralLong",
                             "value" : 50
                           }
                         },
@@ -9227,7 +10302,7 @@
                     {
                       "class" : "org.batfish.datamodel.routing_policy.statement.SetMetric",
                       "metric" : {
-                        "class" : "org.batfish.datamodel.routing_policy.expr.LiteralInt",
+                        "class" : "org.batfish.datamodel.routing_policy.expr.LiteralLong",
                         "value" : 50
                       }
                     },
@@ -9493,7 +10568,7 @@
                 {
                   "class" : "org.batfish.datamodel.routing_policy.statement.SetMetric",
                   "metric" : {
-                    "class" : "org.batfish.datamodel.routing_policy.expr.LiteralInt",
+                    "class" : "org.batfish.datamodel.routing_policy.expr.LiteralLong",
                     "value" : 20
                   }
                 },
@@ -9520,6 +10595,9 @@
           },
           "vendorFamily" : {
             "cisco" : {
+              "aaa" : {
+                "newModel" : false
+              },
               "hostname" : "as3border2",
               "lines" : {
                 "aux0" : {
@@ -9558,27 +10636,34 @@
                   "execTimeoutSeconds" : 0
                 }
               },
-              "services" : {
-                "log" : {
-                  "enabled" : true,
-                  "subservices" : {
-                    "datetime" : {
-                      "enabled" : true,
-                      "subservices" : {
-                        "msec" : {
-                          "enabled" : true
-                        }
-                      }
-                    }
+              "ntp" : {
+                "servers" : {
+                  "18.18.18.18" : {
+                    "name" : "18.18.18.18"
+                  },
+                  "23.23.23.23" : {
+                    "name" : "23.23.23.23"
                   }
-                },
-                "password-encryption" : {
-                  "enabled" : false
-                },
+                }
+              },
+              "services" : {
                 "timestamps" : {
                   "enabled" : true,
                   "subservices" : {
                     "debug" : {
+                      "enabled" : true,
+                      "subservices" : {
+                        "datetime" : {
+                          "enabled" : true,
+                          "subservices" : {
+                            "msec" : {
+                              "enabled" : true
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "log" : {
                       "enabled" : true,
                       "subservices" : {
                         "datetime" : {
@@ -9601,13 +10686,17 @@
               "name" : "default",
               "bgpProcess" : {
                 "multipathEbgp" : true,
+                "multipathEquivalentAsPathMatchMode" : "EXACT_PATH",
                 "multipathIbgp" : true,
                 "neighbors" : {
                   "3.10.1.1/32" : {
                     "name" : "3.10.1.1/32",
+                    "additionalPathsReceive" : true,
+                    "additionalPathsSelectAll" : true,
+                    "additionalPathsSend" : true,
                     "address" : "3.10.1.1",
                     "advertiseExternal" : false,
-                    "advertiseInactive" : false,
+                    "advertiseInactive" : true,
                     "allowLocalAsIn" : false,
                     "allowRemoteAsOut" : false,
                     "clusterId" : 50463234,
@@ -9626,9 +10715,12 @@
                   },
                   "10.13.22.1/32" : {
                     "name" : "10.13.22.1/32",
+                    "additionalPathsReceive" : true,
+                    "additionalPathsSelectAll" : true,
+                    "additionalPathsSend" : true,
                     "address" : "10.13.22.1",
                     "advertiseExternal" : false,
-                    "advertiseInactive" : false,
+                    "advertiseInactive" : true,
                     "allowLocalAsIn" : false,
                     "allowRemoteAsOut" : false,
                     "clusterId" : 50463234,
@@ -9636,8 +10728,14 @@
                     "dynamic" : false,
                     "ebgpMultihop" : false,
                     "exportPolicy" : "~BGP_PEER_EXPORT_POLICY:default:10.13.22.1~",
+                    "exportPolicySources" : [
+                      "as3_to_as1"
+                    ],
                     "group" : "as1",
                     "importPolicy" : "as1_to_as3",
+                    "importPolicySources" : [
+                      "as1_to_as3"
+                    ],
                     "localAs" : 3,
                     "localIp" : "10.13.22.3",
                     "remoteAs" : 1,
@@ -9647,11 +10745,13 @@
                     "vrf" : "default"
                   }
                 },
-                "routerId" : "3.2.2.2"
+                "routerId" : "3.2.2.2",
+                "tieBreaker" : "ARRIVAL_ORDER"
               },
               "interfaces" : [
-                "FastEthernet0/0",
-                "FastEthernet0/1",
+                "Ethernet0/0",
+                "GigabitEthernet0/0",
+                "GigabitEthernet1/0",
                 "Loopback0"
               ],
               "ospfProcess" : {
@@ -9659,7 +10759,7 @@
                   "1" : {
                     "name" : 1,
                     "interfaces" : [
-                      "FastEthernet0/0",
+                      "GigabitEthernet1/0",
                       "Loopback0"
                     ]
                   }
@@ -9672,20 +10772,52 @@
           }
         },
         "as3core1" : {
-          "name" : "as3core1",
           "configurationFormat" : "CISCO_IOS",
+          "name" : "as3core1",
           "defaultCrossZoneAction" : "ACCEPT",
           "defaultInboundAction" : "ACCEPT",
+          "deviceType" : "ROUTER",
           "domainName" : "lab.local",
           "interfaces" : {
-            "FastEthernet0/0" : {
-              "name" : "FastEthernet0/0",
+            "Ethernet0/0" : {
+              "name" : "Ethernet0/0",
+              "accessVlan" : 0,
+              "active" : false,
+              "autostate" : true,
+              "bandwidth" : 1.0E7,
+              "declaredNames" : [
+                "Ethernet0/0"
+              ],
+              "isisL1InterfaceMode" : "unset",
+              "isisL2InterfaceMode" : "unset",
+              "mtu" : 1500,
+              "nativeVlan" : 1,
+              "ospfDeadInterval" : 0,
+              "ospfEnabled" : false,
+              "ospfHelloMultiplier" : 0,
+              "ospfPassive" : false,
+              "ospfPointToPoint" : false,
+              "proxyArp" : true,
+              "ripEnabled" : false,
+              "ripPassive" : false,
+              "spanningTreePortfast" : false,
+              "switchportMode" : "NONE",
+              "switchportTrunkEncapsulation" : "DOT1Q",
+              "type" : "PHYSICAL",
+              "vrf" : "default"
+            },
+            "GigabitEthernet0/0" : {
+              "name" : "GigabitEthernet0/0",
               "accessVlan" : 0,
               "active" : true,
               "allPrefixes" : [
                 "3.0.2.2/24"
               ],
-              "bandwidth" : 1.0E8,
+              "autostate" : true,
+              "bandwidth" : 1.0E9,
+              "declaredNames" : [
+                "GigabitEthernet0/0"
+              ],
               "isisL1InterfaceMode" : "unset",
               "isisL2InterfaceMode" : "unset",
               "mtu" : 1500,
@@ -9696,20 +10828,29 @@
               "ospfEnabled" : true,
               "ospfHelloMultiplier" : 0,
               "ospfPassive" : false,
+              "ospfPointToPoint" : false,
               "prefix" : "3.0.2.2/24",
               "proxyArp" : true,
+              "ripEnabled" : false,
+              "ripPassive" : false,
+              "spanningTreePortfast" : false,
               "switchportMode" : "NONE",
               "switchportTrunkEncapsulation" : "DOT1Q",
+              "type" : "PHYSICAL",
               "vrf" : "default"
             },
-            "FastEthernet0/1" : {
-              "name" : "FastEthernet0/1",
+            "GigabitEthernet1/0" : {
+              "name" : "GigabitEthernet1/0",
               "accessVlan" : 0,
               "active" : true,
               "allPrefixes" : [
                 "3.0.1.2/24"
               ],
-              "bandwidth" : 1.0E8,
+              "autostate" : true,
+              "bandwidth" : 1.0E9,
+              "declaredNames" : [
+                "GigabitEthernet1/0"
+              ],
               "isisL1InterfaceMode" : "unset",
               "isisL2InterfaceMode" : "unset",
               "mtu" : 1500,
@@ -9720,20 +10861,29 @@
               "ospfEnabled" : true,
               "ospfHelloMultiplier" : 0,
               "ospfPassive" : false,
+              "ospfPointToPoint" : false,
               "prefix" : "3.0.1.2/24",
               "proxyArp" : true,
+              "ripEnabled" : false,
+              "ripPassive" : false,
+              "spanningTreePortfast" : false,
               "switchportMode" : "NONE",
               "switchportTrunkEncapsulation" : "DOT1Q",
+              "type" : "PHYSICAL",
               "vrf" : "default"
             },
-            "FastEthernet1/0" : {
-              "name" : "FastEthernet1/0",
+            "GigabitEthernet2/0" : {
+              "name" : "GigabitEthernet2/0",
               "accessVlan" : 0,
               "active" : true,
               "allPrefixes" : [
                 "90.90.90.1/24"
               ],
-              "bandwidth" : 1.0E8,
+              "autostate" : true,
+              "bandwidth" : 1.0E9,
+              "declaredNames" : [
+                "GigabitEthernet2/0"
+              ],
               "isisL1InterfaceMode" : "unset",
               "isisL2InterfaceMode" : "unset",
               "mtu" : 1500,
@@ -9742,20 +10892,29 @@
               "ospfEnabled" : false,
               "ospfHelloMultiplier" : 0,
               "ospfPassive" : false,
+              "ospfPointToPoint" : false,
               "prefix" : "90.90.90.1/24",
               "proxyArp" : true,
+              "ripEnabled" : false,
+              "ripPassive" : false,
+              "spanningTreePortfast" : false,
               "switchportMode" : "NONE",
               "switchportTrunkEncapsulation" : "DOT1Q",
+              "type" : "PHYSICAL",
               "vrf" : "default"
             },
-            "FastEthernet1/1" : {
-              "name" : "FastEthernet1/1",
+            "GigabitEthernet3/0" : {
+              "name" : "GigabitEthernet3/0",
               "accessVlan" : 0,
               "active" : true,
               "allPrefixes" : [
                 "90.90.90.2/24"
               ],
-              "bandwidth" : 1.0E8,
+              "autostate" : true,
+              "bandwidth" : 1.0E9,
+              "declaredNames" : [
+                "GigabitEthernet3/0"
+              ],
               "isisL1InterfaceMode" : "unset",
               "isisL2InterfaceMode" : "unset",
               "mtu" : 1500,
@@ -9764,10 +10923,15 @@
               "ospfEnabled" : false,
               "ospfHelloMultiplier" : 0,
               "ospfPassive" : false,
+              "ospfPointToPoint" : false,
               "prefix" : "90.90.90.2/24",
               "proxyArp" : true,
+              "ripEnabled" : false,
+              "ripPassive" : false,
+              "spanningTreePortfast" : false,
               "switchportMode" : "NONE",
               "switchportTrunkEncapsulation" : "DOT1Q",
+              "type" : "PHYSICAL",
               "vrf" : "default"
             },
             "Loopback0" : {
@@ -9777,7 +10941,11 @@
               "allPrefixes" : [
                 "3.10.1.1/32"
               ],
+              "autostate" : true,
               "bandwidth" : 1.0E12,
+              "declaredNames" : [
+                "Loopback0"
+              ],
               "isisL1InterfaceMode" : "unset",
               "isisL2InterfaceMode" : "unset",
               "mtu" : 1500,
@@ -9788,13 +10956,25 @@
               "ospfEnabled" : true,
               "ospfHelloMultiplier" : 0,
               "ospfPassive" : false,
+              "ospfPointToPoint" : false,
               "prefix" : "3.10.1.1/32",
               "proxyArp" : true,
+              "ripEnabled" : false,
+              "ripPassive" : false,
+              "spanningTreePortfast" : false,
               "switchportMode" : "NONE",
               "switchportTrunkEncapsulation" : "DOT1Q",
+              "type" : "LOOPBACK",
               "vrf" : "default"
             }
           },
+          "loggingServers" : [
+            "1.1.1.1",
+            "2.2.2.2"
+          ],
+          "roles" : [
+            "core"
+          ],
           "route6FilterLists" : {
             "~BGP_NETWORK6_NETWORKS_FILTER:default~" : {
               "name" : "~BGP_NETWORK6_NETWORKS_FILTER:default~"
@@ -10028,6 +11208,9 @@
           },
           "vendorFamily" : {
             "cisco" : {
+              "aaa" : {
+                "newModel" : false
+              },
               "hostname" : "as3core1",
               "lines" : {
                 "aux0" : {
@@ -10066,27 +11249,35 @@
                   "execTimeoutSeconds" : 0
                 }
               },
-              "services" : {
-                "log" : {
-                  "enabled" : true,
-                  "subservices" : {
-                    "datetime" : {
-                      "enabled" : true,
-                      "subservices" : {
-                        "msec" : {
-                          "enabled" : true
-                        }
-                      }
-                    }
+              "logging" : {
+                "hosts" : {
+                  "1.1.1.1" : {
+                    "name" : "1.1.1.1"
+                  },
+                  "2.2.2.2" : {
+                    "name" : "2.2.2.2"
                   }
                 },
-                "password-encryption" : {
-                  "enabled" : false
-                },
+                "on" : true
+              },
+              "services" : {
                 "timestamps" : {
                   "enabled" : true,
                   "subservices" : {
                     "debug" : {
+                      "enabled" : true,
+                      "subservices" : {
+                        "datetime" : {
+                          "enabled" : true,
+                          "subservices" : {
+                            "msec" : {
+                              "enabled" : true
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "log" : {
                       "enabled" : true,
                       "subservices" : {
                         "datetime" : {
@@ -10109,13 +11300,17 @@
               "name" : "default",
               "bgpProcess" : {
                 "multipathEbgp" : true,
+                "multipathEquivalentAsPathMatchMode" : "EXACT_PATH",
                 "multipathIbgp" : true,
                 "neighbors" : {
                   "3.1.1.1/32" : {
                     "name" : "3.1.1.1/32",
+                    "additionalPathsReceive" : true,
+                    "additionalPathsSelectAll" : true,
+                    "additionalPathsSend" : true,
                     "address" : "3.1.1.1",
                     "advertiseExternal" : false,
-                    "advertiseInactive" : false,
+                    "advertiseInactive" : true,
                     "allowLocalAsIn" : false,
                     "allowRemoteAsOut" : false,
                     "clusterId" : 50987265,
@@ -10134,9 +11329,12 @@
                   },
                   "3.2.2.2/32" : {
                     "name" : "3.2.2.2/32",
+                    "additionalPathsReceive" : true,
+                    "additionalPathsSelectAll" : true,
+                    "additionalPathsSend" : true,
                     "address" : "3.2.2.2",
                     "advertiseExternal" : false,
-                    "advertiseInactive" : false,
+                    "advertiseInactive" : true,
                     "allowLocalAsIn" : false,
                     "allowRemoteAsOut" : false,
                     "clusterId" : 50987265,
@@ -10154,13 +11352,15 @@
                     "vrf" : "default"
                   }
                 },
-                "routerId" : "3.10.1.1"
+                "routerId" : "3.10.1.1",
+                "tieBreaker" : "ARRIVAL_ORDER"
               },
               "interfaces" : [
-                "FastEthernet0/0",
-                "FastEthernet0/1",
-                "FastEthernet1/0",
-                "FastEthernet1/1",
+                "Ethernet0/0",
+                "GigabitEthernet0/0",
+                "GigabitEthernet1/0",
+                "GigabitEthernet2/0",
+                "GigabitEthernet3/0",
                 "Loopback0"
               ],
               "ospfProcess" : {
@@ -10168,8 +11368,8 @@
                   "1" : {
                     "name" : 1,
                     "interfaces" : [
-                      "FastEthernet0/0",
-                      "FastEthernet0/1",
+                      "GigabitEthernet0/0",
+                      "GigabitEthernet1/0",
                       "Loopback0"
                     ]
                   }
@@ -10182,10 +11382,11 @@
           }
         },
         "host1" : {
-          "name" : "host1",
           "configurationFormat" : "HOST",
+          "name" : "host1",
           "defaultCrossZoneAction" : "ACCEPT",
           "defaultInboundAction" : "ACCEPT",
+          "deviceType" : "HOST",
           "interfaces" : {
             "eth0" : {
               "name" : "eth0",
@@ -10194,7 +11395,11 @@
               "allPrefixes" : [
                 "2.128.0.101/24"
               ],
+              "autostate" : true,
               "bandwidth" : 1.0E9,
+              "declaredNames" : [
+                "eth0"
+              ],
               "incomingFilter" : "filter::INPUT",
               "isisL1InterfaceMode" : "unset",
               "isisL2InterfaceMode" : "unset",
@@ -10204,10 +11409,16 @@
               "ospfEnabled" : false,
               "ospfHelloMultiplier" : 0,
               "ospfPassive" : false,
+              "ospfPointToPoint" : false,
               "outgoingFilter" : "filter::OUTPUT",
               "prefix" : "2.128.0.101/24",
+              "ripEnabled" : false,
+              "ripPassive" : false,
+              "spanningTreePortfast" : false,
               "switchportMode" : "NONE",
-              "switchportTrunkEncapsulation" : "DOT1Q"
+              "switchportTrunkEncapsulation" : "DOT1Q",
+              "type" : "PHYSICAL",
+              "vrf" : "default"
             }
           },
           "ipAccessLists" : {
@@ -10216,6 +11427,7 @@
               "lines" : [
                 {
                   "action" : "ACCEPT",
+                  "name" : "default",
                   "negate" : false
                 }
               ]
@@ -10231,6 +11443,7 @@
                   "ipProtocols" : [
                     "UDP"
                   ],
+                  "name" : "-p udp --dport 53 -j ACCEPT",
                   "negate" : false
                 },
                 {
@@ -10241,10 +11454,12 @@
                   "ipProtocols" : [
                     "TCP"
                   ],
+                  "name" : "-p tcp --dport 22 -j ACCEPT",
                   "negate" : false
                 },
                 {
                   "action" : "REJECT",
+                  "name" : "default",
                   "negate" : false
                 }
               ]
@@ -10254,6 +11469,7 @@
               "lines" : [
                 {
                   "action" : "ACCEPT",
+                  "name" : "default",
                   "negate" : false
                 }
               ]
@@ -10263,6 +11479,7 @@
               "lines" : [
                 {
                   "action" : "ACCEPT",
+                  "name" : "default",
                   "negate" : false
                 }
               ]
@@ -10272,6 +11489,7 @@
               "lines" : [
                 {
                   "action" : "ACCEPT",
+                  "name" : "default",
                   "negate" : false
                 }
               ]
@@ -10281,6 +11499,7 @@
               "lines" : [
                 {
                   "action" : "ACCEPT",
+                  "name" : "default",
                   "negate" : false
                 }
               ]
@@ -10290,6 +11509,7 @@
               "lines" : [
                 {
                   "action" : "ACCEPT",
+                  "name" : "default",
                   "negate" : false
                 }
               ]
@@ -10299,6 +11519,7 @@
               "lines" : [
                 {
                   "action" : "ACCEPT",
+                  "name" : "default",
                   "negate" : false
                 }
               ]
@@ -10308,6 +11529,7 @@
               "lines" : [
                 {
                   "action" : "ACCEPT",
+                  "name" : "default",
                   "negate" : false
                 }
               ]
@@ -10317,6 +11539,7 @@
               "lines" : [
                 {
                   "action" : "ACCEPT",
+                  "name" : "default",
                   "negate" : false
                 }
               ]
@@ -10326,11 +11549,15 @@
               "lines" : [
                 {
                   "action" : "ACCEPT",
+                  "name" : "default",
                   "negate" : false
                 }
               ]
             }
           },
+          "roles" : [
+            "host"
+          ],
           "vendorFamily" : { },
           "vrfs" : {
             "default" : {
@@ -10341,21 +11568,22 @@
               "staticRoutes" : [
                 {
                   "class" : "org.batfish.datamodel.StaticRoute",
+                  "administrativeCost" : 1,
                   "network" : "0.0.0.0/0",
                   "nextHopInterface" : "eth0",
                   "nextHopIp" : "2.128.0.1",
-                  "tag" : -1,
-                  "administrativeCost" : 1
+                  "tag" : -1
                 }
               ]
             }
           }
         },
         "host2" : {
-          "name" : "host2",
           "configurationFormat" : "HOST",
+          "name" : "host2",
           "defaultCrossZoneAction" : "ACCEPT",
           "defaultInboundAction" : "ACCEPT",
+          "deviceType" : "HOST",
           "interfaces" : {
             "eth0" : {
               "name" : "eth0",
@@ -10364,7 +11592,11 @@
               "allPrefixes" : [
                 "2.128.1.101/24"
               ],
+              "autostate" : true,
               "bandwidth" : 1.0E9,
+              "declaredNames" : [
+                "eth0"
+              ],
               "incomingFilter" : "filter::INPUT",
               "isisL1InterfaceMode" : "unset",
               "isisL2InterfaceMode" : "unset",
@@ -10374,10 +11606,16 @@
               "ospfEnabled" : false,
               "ospfHelloMultiplier" : 0,
               "ospfPassive" : false,
+              "ospfPointToPoint" : false,
               "outgoingFilter" : "filter::OUTPUT",
               "prefix" : "2.128.1.101/24",
+              "ripEnabled" : false,
+              "ripPassive" : false,
+              "spanningTreePortfast" : false,
               "switchportMode" : "NONE",
-              "switchportTrunkEncapsulation" : "DOT1Q"
+              "switchportTrunkEncapsulation" : "DOT1Q",
+              "type" : "PHYSICAL",
+              "vrf" : "default"
             }
           },
           "ipAccessLists" : {
@@ -10386,6 +11624,7 @@
               "lines" : [
                 {
                   "action" : "ACCEPT",
+                  "name" : "default",
                   "negate" : false
                 }
               ]
@@ -10401,10 +11640,12 @@
                   "ipProtocols" : [
                     "TCP"
                   ],
+                  "name" : "-p tcp --dport 22 -j ACCEPT",
                   "negate" : false
                 },
                 {
                   "action" : "REJECT",
+                  "name" : "default",
                   "negate" : false
                 }
               ]
@@ -10417,10 +11658,12 @@
                   "dstIps" : [
                     "2.128.0.101"
                   ],
+                  "name" : "-d 2.128.0.101 -j DROP",
                   "negate" : false
                 },
                 {
                   "action" : "ACCEPT",
+                  "name" : "default",
                   "negate" : false
                 }
               ]
@@ -10430,6 +11673,7 @@
               "lines" : [
                 {
                   "action" : "ACCEPT",
+                  "name" : "default",
                   "negate" : false
                 }
               ]
@@ -10439,6 +11683,7 @@
               "lines" : [
                 {
                   "action" : "ACCEPT",
+                  "name" : "default",
                   "negate" : false
                 }
               ]
@@ -10448,6 +11693,7 @@
               "lines" : [
                 {
                   "action" : "ACCEPT",
+                  "name" : "default",
                   "negate" : false
                 }
               ]
@@ -10457,6 +11703,7 @@
               "lines" : [
                 {
                   "action" : "ACCEPT",
+                  "name" : "default",
                   "negate" : false
                 }
               ]
@@ -10466,6 +11713,7 @@
               "lines" : [
                 {
                   "action" : "ACCEPT",
+                  "name" : "default",
                   "negate" : false
                 }
               ]
@@ -10475,6 +11723,7 @@
               "lines" : [
                 {
                   "action" : "ACCEPT",
+                  "name" : "default",
                   "negate" : false
                 }
               ]
@@ -10484,6 +11733,7 @@
               "lines" : [
                 {
                   "action" : "ACCEPT",
+                  "name" : "default",
                   "negate" : false
                 }
               ]
@@ -10493,11 +11743,15 @@
               "lines" : [
                 {
                   "action" : "ACCEPT",
+                  "name" : "default",
                   "negate" : false
                 }
               ]
             }
           },
+          "roles" : [
+            "host"
+          ],
           "vendorFamily" : { },
           "vrfs" : {
             "default" : {
@@ -10508,11 +11762,11 @@
               "staticRoutes" : [
                 {
                   "class" : "org.batfish.datamodel.StaticRoute",
+                  "administrativeCost" : 1,
                   "network" : "0.0.0.0/0",
                   "nextHopInterface" : "eth0",
                   "nextHopIp" : "2.128.1.1",
-                  "tag" : -1,
-                  "administrativeCost" : 1
+                  "tag" : -1
                 }
               ]
             }
@@ -10527,5 +11781,10 @@
     "nodeRegex" : ".*",
     "summary" : false
   },
-  "status" : "SUCCESS"
+  "status" : "SUCCESS",
+  "summary" : {
+    "numFailed" : 0,
+    "numPassed" : 0,
+    "numResults" : 0
+  }
 }

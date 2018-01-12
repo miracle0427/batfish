@@ -5,26 +5,26 @@ Batfish is a network configuration analysis tool that can find bugs and guarante
 
 **Batfish does not require access to network devices.** It only needs offline configuration files, e.g., pulled from RANCID or template authoring tools.
 
-The developers of Batfish include researchers from Intentionet, University of California Los Angeles, University of Southern California, and Microsoft Research. See [www.batfish.org] (http://www.batfish.org) for technical information on how it works.
+The developers of Batfish include researchers from [Intentionet](https://www.intentionet.com), University of California Los Angeles, University of Southern California, and Microsoft Research. See [www.batfish.org](http://www.batfish.org) for technical information on how it works.
 
 ## What kinds of correctness checks does Batfish support?
 
 Batfish supports many types of correctness checks, including
 
-1. #####Compliance and best-practices guidelines, e.g.:
+1. ##### Compliance and best-practices guidelines, e.g.:
   - Flag undefined-but-referenced or defined-but-unreferenced structures (e.g., ACLs, route maps)
   - Ensure that all interface MTUs are per the network's standard
   - AAA, SNMP, and NTP configuration is correct
   - Devices can only be accessed using SSHv2 and password is not null
   - Logging is on
 
-2. #####Consistency of configuration across two or more devices, e.g.: 
+2. ##### Consistency of configuration across two or more devices, e.g.: 
   - BGP sessions are compatibly configured across neighbors
   - IPSec/VPN tunnels compatibly configured with the same key
   - All interface IP addresses are unique
   - Identically-named structures (e.g., ACLs, route maps) across devices have identical functionality
 
-3. #####Checks on data flow, e.g.:
+3. ##### Checks on data flow, e.g.:
   - Path (shape) between two devices is as expected (e.g., traverses a firewall, valley-free routing)
   - Number of paths between two devices is as expected (i.e., correct multi-path configuration)
   - Paths for two devices inside the data center never leaves the data center
@@ -32,36 +32,40 @@ Batfish supports many types of correctness checks, including
   - Certain sensitive services can be reached only from specific subnets or devices
   - All pairs of top-of-rack switches can reach each other
 
-4. #####Fault-tolerance, e.g.: 
+4. ##### Fault-tolerance, e.g.: 
   - End-to-end reachability is not impacted for *any* flow after *any* single-link or -device failure
   - Traffic correctly fails over after a failure
 
-5. #####"Differential" analysis of two sets of configuration, e.g.:
+5. ##### "Differential" analysis of two sets of configuration, e.g.:
   - End-to-end reachability is identical across new and old configurations
   - Planned ACL changes have no collateral damage, e.g., relative to the current configuration, only flows that are intended to be (un)blocked are (un)blocked; no other flow is impacted.
   - Two configurations, potentially from different vendors, are semantically equivalent
 
-These checks are performed by asking questions about configurations. See [here] (https://github.com/batfish/batfish/wiki/Questions) for the list of questions.
+These checks are performed by asking questions about configurations. See [here](https://github.com/batfish/batfish/wiki/Questions) for the list of questions.
 
 ## How do I get started?
 
-If you are a DIYer, go to [Batfish Wiki] (https://github.com/batfish/batfish/wiki)
+If you are a DIYer, go to [Batfish Wiki](https://github.com/batfish/batfish/wiki)
 
-If you'd like a hosted service, drop a line to info@intentionet.com.
+Batfish is being maintained and released as a commercial product by [Intentionet](https://www.intentionet.com). If you'd like a hosted service, drop a line to [info@intentionet.com](mailto:info@intentionet.com).
 
 ## What configuration formats does Batfish support? 
 
 Batfish supports configurations for a large and growing set of (physical and virtual) devices, including:
   - Arista
+  - Aruba
   - AWS VPCs
   - Cisco (Nexus, IOS, IOS-XR, ASA)
   - Dell Force10
   - Foundry
   - iptables (on hosts)
-  - Juniper (JunOS, Firewall)
+  - Juniper (JunOS, SRX)
   - MRV
   - Quagga
   - Quanta
   - VyOS
 
-Report an issue if your device is not on the list, and we'll try to support it. Batfish does not parse all possible configuration directives. If Batfish fails to parse your files, report an issue and we'll try to fix. Or, you can :)
+Batfish does not yet support all devices and may be missing support for less
+common configuration directives. Please file feature requests or bug reports
+using the [GitHub issue tracker](https://github.com/batfish/batfish/issues/new)
+and we'll try to fix. Or, you can :) -- we welcome pull requests!

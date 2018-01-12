@@ -1,0 +1,65 @@
+{
+  "answerElements" : [
+    {
+      "class" : "org.batfish.question.OutliersQuestionPlugin$OutliersAnswerElement",
+      "namedStructureOutliers" : [
+        {
+          "conformers" : [
+            "as1border1",
+            "as2border1",
+            "as2border2",
+            "as3border1",
+            "as3border2"
+          ],
+          "hypothesis" : "sameDefinition",
+          "name" : "103",
+          "outliers" : [
+            "as1border2"
+          ],
+          "structType" : "IpAccessList"
+        },
+        {
+          "conformers" : [
+            "as1border1",
+            "as2border1",
+            "as2border2",
+            "as3border1",
+            "as3border2"
+          ],
+          "hypothesis" : "sameDefinition",
+          "name" : "103",
+          "outliers" : [
+            "as1border2"
+          ],
+          "structType" : "RouteFilterList"
+        },
+        {
+          "conformers" : [
+            "as1border1",
+            "as1border2",
+            "as3border1",
+            "as3border2"
+          ],
+          "hypothesis" : "sameDefinition",
+          "name" : "102",
+          "outliers" : [
+            "as2dept1"
+          ],
+          "structType" : "RouteFilterList"
+        }
+      ]
+    }
+  ],
+  "question" : {
+    "class" : "org.batfish.question.OutliersQuestionPlugin$OutliersQuestion",
+    "differential" : false,
+    "hypothesis" : "sameDefinition",
+    "nodeRegex" : ".*"
+  },
+  "status" : "SUCCESS",
+  "summary" : {
+    "numFailed" : 0,
+    "numPassed" : 0,
+    "numResults" : 0
+  }
+}

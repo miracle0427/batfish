@@ -19,6 +19,8 @@ logging buffered 5000 5
 logging buffered 5000 alerts
 logging buffered discriminator MPLS-NOL 32000 notifications
 logging buffered warnings
+logging cmts ipc-cable log-level errors
+logging cmts sea syslog-level errors
 logging console warnings
 logging console disable
 logging debug-trace
@@ -35,6 +37,7 @@ logging dead:beef::1 vrf default severity info port default
 logging host mgmt 10.246.131.130
 logging host 10.246.131.130
 logging host 10.246.131.138
+logging host 1.1.1.1 transport udp port 12345
 logging host 1.2.3.4 vrf mgmtVrf
 logging host 1.2.3.4 vrf mgmtVrf port default
 logging host 1.2.3.4 vrf mgmtVrf port 514

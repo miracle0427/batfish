@@ -6,14 +6,31 @@ aaa accounting commands 1 default start-stop group tacacs+
 aaa accounting commands 15 default start-stop group tacacs+
 aaa accounting commands 0-1,15 default stop-only group tacacs+
 aaa accounting commands all default stop-only group tacacs+
+aaa accounting commands 0 default
+ action-type start-stop
+ group tacacs+
+!
 aaa accounting connection default wait-start group radius
+aaa accounting connection default
+ action-type start-stop
+ group radius
+!
 aaa accounting delay-start all
 aaa accounting exec default start-stop group tacacs+
+aaa accounting exec default start-stop radius
 aaa accounting exec default wait-start group radius
+aaa accounting exec default
+ action-type start-stop
+ group tacacs+
+!
 aaa accounting nested
 aaa accounting network default start-stop group tacacs+
 aaa accounting send stop-record authentication failure
 aaa accounting system default start-stop group tacacs+
+aaa accounting system default
+ action-type start-stop
+ group tacacs+
+!
 aaa accounting update newinfo
 aaa authentication banner ^CUnauthorized access prohibited by law - disconnect now!^C
 aaa authentication dot1x default group radius
@@ -25,6 +42,7 @@ aaa authentication login blah group tacacs+ enable
 aaa authentication login default line
 aaa authentication login default tacacs+ enable
 aaa authentication login default group tacacs+ local enable
+no aaa authentication login invalid-username-log
 aaa authentication login privilege-mode
 aaa authentication policy local allow-nopassword-remote-login
 aaa authentication policy on-failure log
@@ -55,8 +73,8 @@ aaa group server tacacs+ authservers
  !
  server-private 2.3.4.5 port 49
  !
+!
 aaa new-model
-no aaa authentication login invalid-username-log
 no aaa new-model
 no aaa root
 aaa session-id common

@@ -6,6 +6,9 @@
         "AsPathAccessList" : {
           "structureClassName" : "AsPathAccessList"
         },
+        "AuthenticationKeyChain" : {
+          "structureClassName" : "AuthenticationKeyChain"
+        },
         "CommunityList" : {
           "structureClassName" : "CommunityList"
         },
@@ -18,76 +21,97 @@
         "IkeProposal" : {
           "structureClassName" : "IkeProposal"
         },
+        "Ip6AccessList" : {
+          "structureClassName" : "Ip6AccessList"
+        },
         "IpAccessList" : {
+          "structureClassName" : "IpAccessList",
           "sameNamedStructures" : {
             "102" : [
               {
-                "representativeElement" : "as1border1",
                 "nodes" : [
                   "as1border1",
                   "as1border2",
                   "as3border1",
                   "as3border2"
-                ]
+                ],
+                "representativeElement" : "as1border1"
               },
               {
-                "representativeElement" : "as2dept1",
                 "nodes" : [
                   "as2dept1"
-                ]
+                ],
+                "representativeElement" : "as2dept1"
               },
               {
-                "representativeElement" : "as2dist1",
                 "nodes" : [
                   "as2dist1",
                   "as2dist2"
-                ]
+                ],
+                "representativeElement" : "as2dist1"
+              }
+            ],
+            "103" : [
+              {
+                "nodes" : [
+                  "as1border1",
+                  "as2border1",
+                  "as2border2",
+                  "as3border1",
+                  "as3border2"
+                ],
+                "representativeElement" : "as1border1"
+              },
+              {
+                "nodes" : [
+                  "as1border2"
+                ],
+                "representativeElement" : "as1border2"
               }
             ],
             "OUTSIDE_TO_INSIDE" : [
               {
-                "representativeElement" : "as2border1",
                 "nodes" : [
                   "as2border1"
-                ]
+                ],
+                "representativeElement" : "as2border1"
               },
               {
-                "representativeElement" : "as2border2",
                 "nodes" : [
                   "as2border2"
-                ]
+                ],
+                "representativeElement" : "as2border2"
               }
             ],
             "filter::INPUT" : [
               {
-                "representativeElement" : "host1",
                 "nodes" : [
                   "host1"
-                ]
+                ],
+                "representativeElement" : "host1"
               },
               {
-                "representativeElement" : "host2",
                 "nodes" : [
                   "host2"
-                ]
+                ],
+                "representativeElement" : "host2"
               }
             ],
             "filter::OUTPUT" : [
               {
-                "representativeElement" : "host1",
                 "nodes" : [
                   "host1"
-                ]
+                ],
+                "representativeElement" : "host1"
               },
               {
-                "representativeElement" : "host2",
                 "nodes" : [
                   "host2"
-                ]
+                ],
+                "representativeElement" : "host2"
               }
             ]
-          },
-          "structureClassName" : "IpAccessList"
+          }
         },
         "IpsecPolicy" : {
           "structureClassName" : "IpsecPolicy"
@@ -98,170 +122,221 @@
         "IpsecVpn" : {
           "structureClassName" : "IpsecVpn"
         },
+        "Route6FilterList" : {
+          "structureClassName" : "Route6FilterList"
+        },
         "RouteFilterList" : {
+          "structureClassName" : "RouteFilterList",
           "sameNamedStructures" : {
             "102" : [
               {
-                "representativeElement" : "as1border1",
                 "nodes" : [
                   "as1border1",
                   "as1border2",
                   "as3border1",
                   "as3border2"
-                ]
+                ],
+                "representativeElement" : "as1border1"
               },
               {
-                "representativeElement" : "as2dept1",
                 "nodes" : [
                   "as2dept1"
-                ]
+                ],
+                "representativeElement" : "as2dept1"
+              }
+            ],
+            "103" : [
+              {
+                "nodes" : [
+                  "as1border1",
+                  "as2border1",
+                  "as2border2",
+                  "as3border1",
+                  "as3border2"
+                ],
+                "representativeElement" : "as1border1"
+              },
+              {
+                "nodes" : [
+                  "as1border2"
+                ],
+                "representativeElement" : "as1border2"
               }
             ],
             "inbound_route_filter" : [
               {
-                "representativeElement" : "as1border1",
                 "nodes" : [
                   "as1border1",
                   "as1border2"
-                ]
+                ],
+                "representativeElement" : "as1border1"
               },
               {
-                "representativeElement" : "as2border1",
                 "nodes" : [
                   "as2border1",
                   "as2border2"
-                ]
+                ],
+                "representativeElement" : "as2border1"
               },
               {
-                "representativeElement" : "as3border1",
                 "nodes" : [
                   "as3border1",
                   "as3border2"
-                ]
+                ],
+                "representativeElement" : "as3border1"
               }
             ]
-          },
-          "structureClassName" : "RouteFilterList"
+          }
         },
         "RoutingPolicy" : {
+          "structureClassName" : "RoutingPolicy",
           "sameNamedStructures" : {
             "as1_to_as2" : [
               {
-                "representativeElement" : "as1border1",
                 "nodes" : [
                   "as1border1"
-                ]
+                ],
+                "representativeElement" : "as1border1"
               },
               {
-                "representativeElement" : "as1border2",
                 "nodes" : [
                   "as1border2"
-                ]
+                ],
+                "representativeElement" : "as1border2"
               },
               {
-                "representativeElement" : "as2border1",
                 "nodes" : [
                   "as2border1",
                   "as2border2"
-                ]
+                ],
+                "representativeElement" : "as2border1"
               }
             ],
             "as1_to_as3" : [
               {
-                "representativeElement" : "as1border1",
                 "nodes" : [
                   "as1border1",
                   "as1border2"
-                ]
+                ],
+                "representativeElement" : "as1border1"
               },
               {
-                "representativeElement" : "as3border1",
                 "nodes" : [
                   "as3border1",
                   "as3border2"
-                ]
+                ],
+                "representativeElement" : "as3border1"
               }
             ],
             "as2_to_as1" : [
               {
-                "representativeElement" : "as1border1",
                 "nodes" : [
                   "as1border1",
                   "as1border2"
-                ]
+                ],
+                "representativeElement" : "as1border1"
               },
               {
-                "representativeElement" : "as2border1",
                 "nodes" : [
                   "as2border1",
                   "as2border2"
-                ]
+                ],
+                "representativeElement" : "as2border1"
               }
             ],
             "as2_to_as3" : [
               {
-                "representativeElement" : "as2border1",
                 "nodes" : [
                   "as2border1",
                   "as2border2"
-                ]
+                ],
+                "representativeElement" : "as2border1"
               },
               {
-                "representativeElement" : "as3border1",
                 "nodes" : [
                   "as3border1",
                   "as3border2"
-                ]
+                ],
+                "representativeElement" : "as3border1"
               }
             ],
             "as3_to_as1" : [
               {
-                "representativeElement" : "as1border1",
                 "nodes" : [
                   "as1border1",
                   "as1border2"
-                ]
+                ],
+                "representativeElement" : "as1border1"
               },
               {
-                "representativeElement" : "as3border1",
                 "nodes" : [
                   "as3border1",
                   "as3border2"
-                ]
+                ],
+                "representativeElement" : "as3border1"
               }
             ],
             "as3_to_as2" : [
               {
-                "representativeElement" : "as2border1",
                 "nodes" : [
                   "as2border1",
                   "as2border2"
-                ]
+                ],
+                "representativeElement" : "as2border1"
               },
               {
-                "representativeElement" : "as3border1",
                 "nodes" : [
                   "as3border1"
-                ]
+                ],
+                "representativeElement" : "as3border1"
               },
               {
-                "representativeElement" : "as3border2",
                 "nodes" : [
                   "as3border2"
-                ]
+                ],
+                "representativeElement" : "as3border2"
               }
             ]
-          },
-          "structureClassName" : "RoutingPolicy"
+          }
+        },
+        "Zone" : {
+          "structureClassName" : "Zone"
         }
-      }
+      },
+      "nodes" : [
+        "as1border1",
+        "as1border2",
+        "as1core1",
+        "as2border1",
+        "as2border2",
+        "as2core1",
+        "as2core2",
+        "as2dept1",
+        "as2dist1",
+        "as2dist2",
+        "as3border1",
+        "as3border2",
+        "as3core1",
+        "host1",
+        "host2"
+      ]
     }
   ],
   "question" : {
     "class" : "org.batfish.question.CompareSameNameQuestionPlugin$CompareSameNameQuestion",
     "differential" : false,
+    "excludedNamedStructTypes" : [
+      "Interface",
+      "Vrf"
+    ],
+    "missing" : false,
     "nodeRegex" : ".*",
     "singletons" : false
   },
-  "status" : "SUCCESS"
+  "status" : "SUCCESS",
+  "summary" : {
+    "numFailed" : 0,
+    "numPassed" : 0,
+    "numResults" : 0
+  }
 }

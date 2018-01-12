@@ -90,6 +90,8 @@ crypto dynamic-map mydefaultcryptomap 65535 set security-association lifetime ki
 crypto dynamic-map mydynamicmap 1
  set transform-set ESP-3DES-MD5 ESP-3DES-SHA
 crypto engine large-mod-accel
+crypto ca trustpool policy
+ auto-import
 crypto ikev1 am-disable
 crypto ikev1 enable outside
 crypto ikev1 enable inside
@@ -232,6 +234,12 @@ crypto pki trustpoint HTTPS_SS_CERT_KEYPAIR
  serial-number
  subject-name cn=gawerfowefoiwejfio
  no validation-usage
+!
+crypto pki server CN
+ no database archive
+ issuer-name cn=CN
+ grant auto
+ cdp-url http://192.168.0.1/CN.crl
 !
 key chain mykeychain1
  key 1

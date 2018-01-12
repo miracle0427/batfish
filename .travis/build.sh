@@ -8,25 +8,42 @@ fi
 
 trap 'kill -9 $(pgrep -g $$ | grep -v $$) >& /dev/null' EXIT SIGINT SIGTERM
 
+export ALLINONE_JAVA_ARGS="-enableassertions $ALLINONE_JAVA_ARGS"
+
 . tools/batfish_functions.sh
-batfish_build_all || exit 1
+batfish_test_all || exit 1
 
 echo -e "\n  ..... Running parsing tests"
 allinone -cmdfile test_rigs/parsing-tests/commands || exit 1
 
+echo -e "\n  ..... Running parsing tests with error"
+allinone -cmdfile test_rigs/parsing-errors-tests/commands || exit 1
+
 echo -e "\n  ..... Running basic client tests"
 allinone -cmdfile tests/basic/commands || exit 1
 
+echo -e "\n  ..... Running jsonpath-addons tests"
+allinone -cmdfile tests/jsonpath-addons/commands || exit 1
+
 echo -e "\n  ..... Running ui-focused client tests"
 allinone -cmdfile tests/ui-focused/commands || exit 1
+
+echo -e "\n  ..... Running aws client tests"
+allinone -cmdfile tests/aws/commands || exit 1
+
+echo -e "\n  ..... Running java-smt client tests"
+allinone -cmdfile tests/java-smt/commands || exit 1
 
 #Test running separately
 coordinator &
 batfish -servicemode -register -coordinatorhost localhost -loglevel output &
 
 echo -e "\n  ..... Running java demo tests"
-batfish_client -cmdfile demos/java/commands -coordinatorhost localhost > demos/java/commands.ref.testout || exit 1
-rm demos/java/commands.ref.testout
+if ! batfish_client -cmdfile demos/example/commands -coordinatorhost localhost > demos/example/commands.ref.testout; then
+   echo "DEMO FAILED!" 1>&2
+else
+   rm demos/example/commands.ref.testout
+fi
 
 echo -e "\n .... Failed tests: "
 $GNU_FIND -name *.testout

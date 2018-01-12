@@ -86,6 +86,24 @@
             ]
           }
         },
+        "as1border2" : {
+          "103" : {
+            "name" : "103",
+            "lines" : [
+              {
+                "action" : "ACCEPT",
+                "dstIps" : [
+                  "255.255.255.0"
+                ],
+                "name" : "permit ip host 3.0.1.0 host 255.255.255.0",
+                "negate" : false,
+                "srcIps" : [
+                  "3.0.1.0"
+                ]
+              }
+            ]
+          }
+        },
         "as2border1" : {
           "INSIDE_TO_AS1" : {
             "name" : "INSIDE_TO_AS1",
@@ -106,7 +124,7 @@
                 "dstIps" : [
                   "0.0.0.0/0"
                 ],
-                "name" : "deny ip any any",
+                "name" : "deny   ip any any",
                 "negate" : false,
                 "srcIps" : [
                   "0.0.0.0/0"
@@ -122,7 +140,7 @@
                 "dstIps" : [
                   "0.0.0.0/0"
                 ],
-                "name" : "deny ip 2.0.0.0 0.255.255.255 any",
+                "name" : "deny   ip 2.0.0.0 0.255.255.255 any",
                 "negate" : false,
                 "srcIps" : [
                   "2.0.0.0/8"
@@ -133,7 +151,7 @@
                 "dstIps" : [
                   "2.128.1.101"
                 ],
-                "name" : "deny ip any host 2.128.1.101",
+                "name" : "deny   ip any host 2.128.1.101",
                 "negate" : false,
                 "srcIps" : [
                   "0.0.0.0/0"
@@ -173,7 +191,7 @@
                 "dstIps" : [
                   "0.0.0.0/0"
                 ],
-                "name" : "deny ip any any",
+                "name" : "deny   ip any any",
                 "negate" : false,
                 "srcIps" : [
                   "0.0.0.0/0"
@@ -189,7 +207,7 @@
                 "dstIps" : [
                   "0.0.0.0/0"
                 ],
-                "name" : "deny ip 2.0.0.0 0.255.255.255 any",
+                "name" : "deny   ip 2.0.0.0 0.255.255.255 any",
                 "negate" : false,
                 "srcIps" : [
                   "2.0.0.0/8"
@@ -340,7 +358,7 @@
                 "dstIps" : [
                   "0.0.0.0/0"
                 ],
-                "name" : "deny ip any any",
+                "name" : "deny   ip any any",
                 "negate" : false,
                 "srcIps" : [
                   "0.0.0.0/0"
@@ -381,7 +399,7 @@
                 "dstIps" : [
                   "2.128.0.0/16"
                 ],
-                "name" : "deny ip 1.128.0.0 0.0.255.255 2.128.0.0 0.0.255.255",
+                "name" : "deny   ip 1.128.0.0 0.0.255.255 2.128.0.0 0.0.255.255",
                 "negate" : false,
                 "srcIps" : [
                   "1.128.0.0/16"
@@ -392,7 +410,7 @@
                 "dstIps" : [
                   "0.0.0.0/0"
                 ],
-                "name" : "deny ip any any",
+                "name" : "deny   ip any any",
                 "negate" : false,
                 "srcIps" : [
                   "0.0.0.0/0"
@@ -425,6 +443,7 @@
             "lines" : [
               {
                 "action" : "ACCEPT",
+                "name" : "default",
                 "negate" : false
               }
             ]
@@ -440,6 +459,7 @@
                 "ipProtocols" : [
                   "UDP"
                 ],
+                "name" : "-p udp --dport 53 -j ACCEPT",
                 "negate" : false
               },
               {
@@ -450,10 +470,12 @@
                 "ipProtocols" : [
                   "TCP"
                 ],
+                "name" : "-p tcp --dport 22 -j ACCEPT",
                 "negate" : false
               },
               {
                 "action" : "REJECT",
+                "name" : "default",
                 "negate" : false
               }
             ]
@@ -463,6 +485,7 @@
             "lines" : [
               {
                 "action" : "ACCEPT",
+                "name" : "default",
                 "negate" : false
               }
             ]
@@ -472,6 +495,7 @@
             "lines" : [
               {
                 "action" : "ACCEPT",
+                "name" : "default",
                 "negate" : false
               }
             ]
@@ -481,6 +505,7 @@
             "lines" : [
               {
                 "action" : "ACCEPT",
+                "name" : "default",
                 "negate" : false
               }
             ]
@@ -490,6 +515,7 @@
             "lines" : [
               {
                 "action" : "ACCEPT",
+                "name" : "default",
                 "negate" : false
               }
             ]
@@ -499,6 +525,7 @@
             "lines" : [
               {
                 "action" : "ACCEPT",
+                "name" : "default",
                 "negate" : false
               }
             ]
@@ -508,6 +535,7 @@
             "lines" : [
               {
                 "action" : "ACCEPT",
+                "name" : "default",
                 "negate" : false
               }
             ]
@@ -517,6 +545,7 @@
             "lines" : [
               {
                 "action" : "ACCEPT",
+                "name" : "default",
                 "negate" : false
               }
             ]
@@ -526,6 +555,7 @@
             "lines" : [
               {
                 "action" : "ACCEPT",
+                "name" : "default",
                 "negate" : false
               }
             ]
@@ -535,6 +565,7 @@
             "lines" : [
               {
                 "action" : "ACCEPT",
+                "name" : "default",
                 "negate" : false
               }
             ]
@@ -552,10 +583,12 @@
                 "ipProtocols" : [
                   "TCP"
                 ],
+                "name" : "-p tcp --dport 22 -j ACCEPT",
                 "negate" : false
               },
               {
                 "action" : "REJECT",
+                "name" : "default",
                 "negate" : false
               }
             ]
@@ -568,10 +601,12 @@
                 "dstIps" : [
                   "2.128.0.101"
                 ],
+                "name" : "-d 2.128.0.101 -j DROP",
                 "negate" : false
               },
               {
                 "action" : "ACCEPT",
+                "name" : "default",
                 "negate" : false
               }
             ]
@@ -607,11 +642,13 @@
         "103" : {
           "as1border1" : [
             "as1border1",
-            "as1border2",
             "as2border1",
             "as2border2",
             "as3border1",
             "as3border2"
+          ],
+          "as1border2" : [
+            "as1border2"
           ]
         },
         "105" : {
@@ -764,6 +801,15 @@
             }
           ]
         },
+        "as1border2" : {
+          "103" : [
+            {
+              "index" : 0,
+              "name" : "permit ip host 3.0.1.0 host 255.255.255.0",
+              "differentAction" : false
+            }
+          ]
+        },
         "as2border1" : {
           "INSIDE_TO_AS1" : [
             {
@@ -773,19 +819,19 @@
             },
             {
               "index" : 1,
-              "name" : "deny ip any any",
+              "name" : "deny   ip any any",
               "differentAction" : false
             }
           ],
           "OUTSIDE_TO_INSIDE" : [
             {
               "index" : 0,
-              "name" : "deny ip 2.0.0.0 0.255.255.255 any",
+              "name" : "deny   ip 2.0.0.0 0.255.255.255 any",
               "differentAction" : false
             },
             {
               "index" : 1,
-              "name" : "deny ip any host 2.128.1.101",
+              "name" : "deny   ip any host 2.128.1.101",
               "differentAction" : false
             },
             {
@@ -804,14 +850,14 @@
             },
             {
               "index" : 1,
-              "name" : "deny ip any any",
+              "name" : "deny   ip any any",
               "differentAction" : false
             }
           ],
           "OUTSIDE_TO_INSIDE" : [
             {
               "index" : 0,
-              "name" : "deny ip 2.0.0.0 0.255.255.255 any",
+              "name" : "deny   ip 2.0.0.0 0.255.255.255 any",
               "differentAction" : false
             },
             {
@@ -878,7 +924,7 @@
             },
             {
               "index" : 1,
-              "name" : "deny ip any any",
+              "name" : "deny   ip any any",
               "differentAction" : false
             }
           ],
@@ -890,7 +936,7 @@
             },
             {
               "index" : 2,
-              "name" : "deny ip any any",
+              "name" : "deny   ip any any",
               "differentAction" : false
             }
           ]
@@ -908,74 +954,87 @@
           "filter::FORWARD" : [
             {
               "index" : 0,
+              "name" : "default",
               "differentAction" : false
             }
           ],
           "filter::INPUT" : [
             {
               "index" : 0,
+              "name" : "-p udp --dport 53 -j ACCEPT",
               "differentAction" : false
             },
             {
               "index" : 1,
+              "name" : "-p tcp --dport 22 -j ACCEPT",
               "differentAction" : false
             },
             {
               "index" : 2,
+              "name" : "default",
               "differentAction" : false
             }
           ],
           "filter::OUTPUT" : [
             {
               "index" : 0,
+              "name" : "default",
               "differentAction" : false
             }
           ],
           "mangle::FORWARD" : [
             {
               "index" : 0,
+              "name" : "default",
               "differentAction" : false
             }
           ],
           "mangle::INPUT" : [
             {
               "index" : 0,
+              "name" : "default",
               "differentAction" : false
             }
           ],
           "mangle::OUTPUT" : [
             {
               "index" : 0,
+              "name" : "default",
               "differentAction" : false
             }
           ],
           "mangle::POSTROUTING" : [
             {
               "index" : 0,
+              "name" : "default",
               "differentAction" : false
             }
           ],
           "mangle::PREROUTING" : [
             {
               "index" : 0,
+              "name" : "default",
               "differentAction" : false
             }
           ],
           "nat::OUTPUT" : [
             {
               "index" : 0,
+              "name" : "default",
               "differentAction" : false
             }
           ],
           "nat::POSTROUTING" : [
             {
               "index" : 0,
+              "name" : "default",
               "differentAction" : false
             }
           ],
           "nat::PREROUTING" : [
             {
               "index" : 0,
+              "name" : "default",
               "differentAction" : false
             }
           ]
@@ -984,20 +1043,24 @@
           "filter::INPUT" : [
             {
               "index" : 0,
+              "name" : "-p tcp --dport 22 -j ACCEPT",
               "differentAction" : false
             },
             {
               "index" : 1,
+              "name" : "default",
               "differentAction" : false
             }
           ],
           "filter::OUTPUT" : [
             {
               "index" : 0,
+              "name" : "-d 2.128.0.101 -j DROP",
               "differentAction" : false
             },
             {
               "index" : 1,
+              "name" : "default",
               "differentAction" : false
             }
           ]
@@ -1011,13 +1074,13 @@
               "name" : "permit icmp any any",
               "differentAction" : true,
               "earliestMoreGeneralLineIndex" : 1,
-              "earliestMoreGeneralLineName" : "deny ip any any"
+              "earliestMoreGeneralLineName" : "deny   ip any any"
             }
           ],
           "RESTRICT_HOST_TRAFFIC_OUT" : [
             {
               "index" : 1,
-              "name" : "deny ip 1.128.0.0 0.0.255.255 2.128.0.0 0.0.255.255",
+              "name" : "deny   ip 1.128.0.0 0.0.255.255 2.128.0.0 0.0.255.255",
               "differentAction" : true,
               "earliestMoreGeneralLineIndex" : 0,
               "earliestMoreGeneralLineName" : "permit ip any 2.128.0.0 0.0.255.255"
@@ -1033,5 +1096,10 @@
     "differential" : false,
     "nodeRegex" : ".*"
   },
-  "status" : "SUCCESS"
+  "status" : "SUCCESS",
+  "summary" : {
+    "numFailed" : 0,
+    "numPassed" : 0,
+    "numResults" : 0
+  }
 }

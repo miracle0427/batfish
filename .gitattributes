@@ -1,9 +1,6 @@
 * text eol=lf
+*.sln text eol=crlf
 *.jar binary
 *.class binary
 *.zip binary
-*.lbb binary
-*.lbp binary
-*.object binary
-*.sln -text
 *.png binary
