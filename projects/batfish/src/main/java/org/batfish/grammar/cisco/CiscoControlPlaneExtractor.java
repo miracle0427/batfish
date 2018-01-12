@@ -3651,7 +3651,11 @@ public class CiscoControlPlaneExtractor extends CiscoParserBaseListener
 
   @Override
   public void exitIftunnel_source(Iftunnel_sourceContext ctx) {
-    Ip source = toIp(ctx.IP_ADDRESS());
+    // FIXME: Handle interface sources
+    Ip source = null;
+    if (ctx.IP_ADDRESS() != null) {
+        source = toIp(ctx.IP_ADDRESS());
+    }
     for (Interface iface : _currentInterfaces) {
       iface.getTunnelInitIfNull().setSource(source);
     }
