@@ -2077,9 +2077,24 @@ private void addSymbolicPacketBoundConstraints() {
           assert (choice != null);
           BoolExpr isBest = equal(conf, proto, bestVars, vars, e, false);
           if (_bgpAllow.contains(e) || _ospfAllow.contains(e)) {
+ 
+            BoolExpr shouldAllow;
+            String nameOfLE = e.getSymbolicRecord().getName();
+            String keyvalue = nameOfLE.substring(nameOfLE.indexOf(_sliceName) + _sliceName.length() + 2) ;
+            //System.out.println("Key = " + keyvalue + "  for  " + nameOfLE);
+            
+            if (_enableRoute.containsKey(keyvalue)) {
+              shouldAllow = _enableRoute.get(keyvalue);
+            } else {
+              shouldAllow = getCtx().mkBoolConst(_encoder.getId() + "_"
+                + keyvalue + "AllowChoice");
+              addSoft(mkNot(shouldAllow), 1, "AllowRoute");
+              _enableRoute.put(keyvalue, shouldAllow);
+            }
+            /*
             BoolExpr shouldAllow = getCtx().mkBoolConst(_encoder.getId() + "_"
               + vars.getName() + "AllowChoice");
-            addSoft(mkNot(shouldAllow), 1, "AllowRoute");
+            addSoft(mkNot(shouldAllow), 1, "AllowRoute");*/
 
             isBest = mkAnd(isBest,shouldAllow);
           }
@@ -2671,9 +2686,26 @@ private void addSymbolicPacketBoundConstraints() {
 
           BoolExpr usable = mkAnd(mkNot(loop), active, varsOther.getPermitted(), receiveMessage);
           if (_bgpAllow.contains(e) || _ospfAllow.contains(e)) {
+
+            BoolExpr shouldAllow;
+            String nameOfLE = e.getSymbolicRecord().getName();
+            String keyvalue = nameOfLE.substring(nameOfLE.indexOf(_sliceName) + _sliceName.length() + 2) ;
+            //System.out.println("Key = " + keyvalue + "  for  " + nameOfLE);
+            
+            if (_enableRoute.containsKey(keyvalue)) {
+              shouldAllow = _enableRoute.get(keyvalue);
+            } else {
+              shouldAllow = getCtx().mkBoolConst(_encoder.getId() + "_"
+                + keyvalue + "AllowChoiceUse");
+              addSoft(mkNot(shouldAllow), 1, "AllowRoute");
+              _enableRoute.put(keyvalue, shouldAllow);
+            }
+
+            /*
             BoolExpr shouldAllow = getCtx().mkBoolConst(_encoder.getId() + "_"
               + vars.getName() + "AllowChoiceUse");
-            addSoft(mkNot(shouldAllow), 1, "AllowRoute");
+            addSoft(mkNot(shouldAllow), 1, "AllowRoute");*/
+
             usable = mkAnd(usable, shouldAllow);
           }
           BoolExpr importFunction;
