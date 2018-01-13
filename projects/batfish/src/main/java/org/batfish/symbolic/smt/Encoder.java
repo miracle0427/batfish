@@ -8,7 +8,9 @@ import com.microsoft.z3.Expr;
 import com.microsoft.z3.Model;
 import com.microsoft.z3.Optimize;
 import com.microsoft.z3.Solver;
+import com.microsoft.z3.Sort;
 import com.microsoft.z3.Status;
+import com.microsoft.z3.Symbol;
 import com.microsoft.z3.Tactic;
 import java.util.Arrays;
 import java.io.BufferedWriter;
@@ -102,6 +104,10 @@ public class Encoder {
   public boolean _dstEncoderExists;
 
   public boolean _tcEncoderExists;
+
+  public BoolExpr _modelAnd;
+
+  public BoolExpr _propertRep;
 
   /**
    * @archie created this variable. optsolve will use same constraints as solver, but can support soft
@@ -259,11 +265,13 @@ public class Encoder {
     _symbolicFailures = new SymbolicFailures(this._ctx);
 
     if (vars == null) {
+      _modelAnd = mkTrue();
       _allVariables = new HashMap<>();
     } else {
       _allVariables = vars;
       _optsolve = enc.getOptimize();
       _solver = enc.getSolver();
+      _modelAnd = enc.getModelAnd();
     }
 
     if (ENABLE_DEBUGGING) {
@@ -278,6 +286,7 @@ public class Encoder {
       _symbolicFailures = enc.getSymbolicFailures();
     }
     modInitSlices(_question.getHeaderSpace(), graph);
+    trackFailVars();
   }
 
 
@@ -304,7 +313,6 @@ public class Encoder {
     _question = q;
     _slices = new HashMap<>();
     _sliceReachability = new HashMap<>();
-
     HashMap<String, String> cfg = new HashMap<>();
 
     // allows for unsat core when debugging
@@ -340,10 +348,12 @@ public class Encoder {
 
     if (vars == null) {
       _allVariables = new HashMap<>();
+      _modelAnd = mkTrue();
     } else {
       _allVariables = vars;
       _optsolve = enc.getOptimize();
       _solver = enc.getSolver();
+      _modelAnd = enc.getModelAnd();
     }
 
     if (ENABLE_DEBUGGING) {
@@ -354,6 +364,7 @@ public class Encoder {
 
     initFailedLinkVariables();
     initSlices(_question.getHeaderSpace(), graph);
+    trackFailVars();
   }
 
   /*
@@ -397,6 +408,31 @@ public class Encoder {
     }
   }
 
+  private void trackFailVars() {
+    for (List<GraphEdge> edges : _graph.getEdgeMap().values()) {
+      for (GraphEdge ge : edges) {
+        if (ge.getPeer() == null) {
+          Interface i = ge.getStart();
+          String name = getId() + "_FAILED-EDGE_" + ge.getRouter() + "_" + i.getName();
+          Symbol temp = getCtx().mkSymbol(name);
+          _slices.get(MAIN_SLICE_NAME).getAllArithVarsList().add(temp); 
+        }
+      }
+    }
+
+    for (Entry<String, Set<String>> entry : _graph.getNeighbors().entrySet()) {
+      String router = entry.getKey();
+      Set<String> peers = entry.getValue();
+      for (String peer : peers) {
+        // sort names for unique
+        String pair = (router.compareTo(peer) < 0 ? router + "_" + peer : peer + "_" + router);
+        String name = getId() + "_FAILED-EDGE_" + pair;
+        Symbol temp = getCtx().mkSymbol(name);
+        _slices.get(MAIN_SLICE_NAME).getAllArithVarsList().add(temp); 
+
+      }
+    }
+  }
 
   /*
    * Modified Initialize encoding slice.
@@ -650,7 +686,11 @@ public class Encoder {
   void add(BoolExpr e) {
     _unsatCore.track(_solver, _ctx, e);
     // @archie added the optsolve add code to add things to optimiser in addition to solver
-    _optsolve.Add(e);
+    if (_question.getFailures() == 0) {
+      _optsolve.Add(e);  
+    } else {
+      _modelAnd = mkAnd(_modelAnd, e);
+    }
   }
 
   // Add soft constraint to the model 
@@ -978,6 +1018,68 @@ public class Encoder {
       numEdges += e.getValue().size();
     }
 
+    if (_question.getFailures() != 0) {
+      //_optsolve.Add(_modelAnd);
+
+      Map<Symbol, Integer> _allBVValues = mainSlice.getAllBVValuesMap();
+      /*
+      Set<BoolExpr> boollist = _slices.get(MAIN_SLICE_NAME).getAllBoolVars();
+      Set<ArithExpr> arithlist = _slices.get(MAIN_SLICE_NAME).getAllArithVars();
+      Set<BitVecExpr> _bvlist = _slices.get(MAIN_SLICE_NAME).getAllBVVars();
+      Map<Symbol, Integer> _allBVValues = mainSlice.getAllBVValues();
+      */
+      List<Symbol> boollist = _slices.get(MAIN_SLICE_NAME).getAllBoolVarsList();
+      List<Symbol> arithlist = _slices.get(MAIN_SLICE_NAME).getAllArithVarsList();
+      List<Symbol> bvlist = _slices.get(MAIN_SLICE_NAME).getAllBVVarsList();
+      
+      int length = boollist.size() + arithlist.size() + bvlist.size();
+
+      int index = 0;
+      Symbol[] names = new Symbol[length];
+      Sort[] sorts = new Sort[length];
+
+      for (Symbol temp : boollist) {
+        //String x = temp.toString().replace("\\|","");
+        names[index] = temp;//getCtx().mkSymbol(x);
+        sorts[index] = getCtx().getBoolSort();
+        //System.out.println(temp.toString());
+        index = index + 1;
+      }    
+      for (Symbol temp : arithlist) {
+        //String x = temp.toString().replace("\\|","");
+        names[index] = temp;//getCtx().mkSymbol(x);
+        sorts[index] = getCtx().getIntSort();
+        //System.out.println(temp.toString());
+        index = index + 1;
+      }    
+      for (Symbol temp : bvlist) {
+        //String x = temp.toString().replace("\\|","");
+        names[index] = temp;//getCtx().mkSymbol(x);
+        sorts[index] = getCtx().mkBitVecSort(_allBVValues.get(temp));
+        index = index + 1;
+      }
+      /*
+      String k = "x";
+      Symbol[] names1 = new Symbol[] { getCtx().mkSymbol(k),
+                      getCtx().mkSymbol("y") };
+
+      BoolExpr aexpr = getCtx().mkBoolConst(k);
+      Sort[] sorts1 = new Sort[] { getCtx().getBoolSort(), getCtx().getBoolSort() };
+
+      BoolExpr king = getCtx().mkForall(sorts1,
+        names1, 
+      aexpr, 1, null , null, null, null);
+      _optsolve.Add(king);
+      System.out.println(king);
+      */
+      BoolExpr quick = getCtx().mkForall(sorts,
+        names, 
+      mkImplies(_modelAnd, _propertRep), 1, null , null, null, null);
+      _optsolve.Add(quick);
+      //System.out.println(quick);
+
+    }
+
     long start = System.currentTimeMillis();
     Status status = _optsolve.Check();
     long time = System.currentTimeMillis() - start;
@@ -1187,5 +1289,9 @@ public class Encoder {
   
   public EncoderSlice getPreviousEncoderSlice() {
     return _previousEncoder.getMainSlice();
+  }
+
+  public BoolExpr getModelAnd() {
+    return _modelAnd;
   }
 }
