@@ -12,7 +12,10 @@ import com.microsoft.z3.Sort;
 import com.microsoft.z3.Status;
 import com.microsoft.z3.Symbol;
 import com.microsoft.z3.Tactic;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
@@ -105,6 +108,13 @@ public class Encoder {
   public BoolExpr _modelAnd;
 
   public BoolExpr _propertRep;
+
+  public Map<String, Integer> _weightMap;
+
+  public Map<String, BoolExpr> _routerConsMap;
+
+  public int _repairObjective = 0;
+
   /**
    * @archie created this variable. optsolve will use same constraints as solver, but can support soft
    * constraints
@@ -254,11 +264,15 @@ public class Encoder {
     if (vars == null) {
       _modelAnd = mkTrue();
       _allVariables = new HashMap<>();
+      setWeights();
     } else {
       _allVariables = vars;
       _optsolve = enc.getOptimize();
       _solver = enc.getSolver();
       _modelAnd = enc.getModelAnd();
+      _routerConsMap = enc._routerConsMap;
+      _weightMap = enc._weightMap;
+      _routerConsMap = enc._routerConsMap;
     }
 
     if (ENABLE_DEBUGGING) {
@@ -333,11 +347,15 @@ public class Encoder {
     if (vars == null) {
       _allVariables = new HashMap<>();
       _modelAnd = mkTrue();
+      setWeights();
     } else {
       _allVariables = vars;
       _optsolve = enc.getOptimize();
       _solver = enc.getSolver();
       _modelAnd = enc.getModelAnd();
+      _routerConsMap = enc._routerConsMap;
+      _weightMap = enc._weightMap;
+      _routerConsMap = enc._routerConsMap;
     }
 
     if (ENABLE_DEBUGGING) {
@@ -361,6 +379,49 @@ public class Encoder {
   IpWildcard getDstIp() {
     return _dstIp;
   } 
+
+
+  public void setWeights() {
+    _routerConsMap = new HashMap<> ();
+    for (Entry<String, Set<String>> entry : _graph.getNeighbors().entrySet()) {
+      String router = entry.getKey();
+      _routerConsMap.put(router, mkTrue());
+    }
+
+    _weightMap = new HashMap<> ();
+    try {
+      String weightPath = "weights.txt";
+      String objPath = "obj.txt";
+      String line;
+      File f = new File(weightPath);
+      if(f.exists() && !f.isDirectory()) { 
+        System.out.println("\nRead weights.txt\n");
+        BufferedReader reader = new BufferedReader(new FileReader(weightPath));
+        while((line = reader.readLine()) != null) {
+          String[] split = line.split(" ");
+          String s1 = split[0];
+          int s2 = Integer.parseInt(split[1]);
+          _weightMap.put(s1, s2);
+        }
+        reader.close();
+      }
+
+      f = new File(objPath);
+      if(f.exists() && !f.isDirectory()) { 
+        System.out.println("\nRead obj.txt\n");
+        BufferedReader reader = new BufferedReader(new FileReader(objPath));
+        while((line = reader.readLine()) != null) {
+          String[] split = line.split(" ");
+          int s1 = Integer.parseInt(split[0]);
+          _repairObjective = s1;
+        }
+        reader.close();
+      }
+
+    } catch (IOException e) {
+      System.out.println("Error in reading weights and objective");
+    }
+  }
 
   /*
    * Initialize symbolic variables to represent link failures.
@@ -987,27 +1048,10 @@ public class Encoder {
     return mkAnd(acc1, acc2);
   }
 
-  /**
-   * Checks that a property is always true by seeing if the encoding is unsatisfiable. mkIf the
-   * model is satisfiable, then there is a counter example to the property.
-   *
-   * @return A VerificationResult indicating the status of the check.
-   */
-  public Tuple<VerificationResult, Model> verify() {
-    // @archie modified to use _optsolve
-    EncoderSlice mainSlice = _slices.get(MAIN_SLICE_NAME);
-
-    int numVariables = _allVariables.size();
-    int numConstraints = _solver.getAssertions().length;
-    int numNodes = mainSlice.getGraph().getConfigurations().size();
-    int numEdges = 0;
-    for (Map.Entry<String, Set<String>> e : mainSlice.getGraph().getNeighbors().entrySet()) {
-      numEdges += e.getValue().size();
-    }
-
+  void setIfReq() {
     if (_question.getFailures() != 0) {
       //_optsolve.Add(_modelAnd);
-
+      EncoderSlice mainSlice = _slices.get(MAIN_SLICE_NAME);
       Map<Symbol, Integer> _allBVValues = mainSlice.getAllBVValuesMap();
       /*
       Set<BoolExpr> boollist = _slices.get(MAIN_SLICE_NAME).getAllBoolVars();
@@ -1065,6 +1109,33 @@ public class Encoder {
       _optsolve.Add(quick);
       //System.out.println(quick);
 
+    }
+
+  }
+
+
+  /**
+   * Checks that a property is always true by seeing if the encoding is unsatisfiable. mkIf the
+   * model is satisfiable, then there is a counter example to the property.
+   *
+   * @return A VerificationResult indicating the status of the check.
+   */
+  public Tuple<VerificationResult, Model> verify() {
+    // @archie modified to use _optsolve
+    EncoderSlice mainSlice = _slices.get(MAIN_SLICE_NAME);
+
+    int numVariables = _allVariables.size();
+    int numConstraints = _solver.getAssertions().length;
+    int numNodes = mainSlice.getGraph().getConfigurations().size();
+    int numEdges = 0;
+    for (Map.Entry<String, Set<String>> e : mainSlice.getGraph().getNeighbors().entrySet()) {
+      numEdges += e.getValue().size();
+    }
+
+    if (_repairObjective == 1) {
+      for (String keyRouter : _routerConsMap.keySet()) {
+        addSoft(_routerConsMap.get(keyRouter), 1000, "deviceAffected");
+      }
     }
 
     long start = System.currentTimeMillis();
