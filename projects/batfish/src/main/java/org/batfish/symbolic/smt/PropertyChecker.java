@@ -514,6 +514,7 @@ public class PropertyChecker {
                 }
               }
               addFailureConstraints(enc, destPorts, failOptions);
+              enc.setIfReq();
               /*
               try {
                 System.out.println("Encoding written in enc.smt");
@@ -702,12 +703,18 @@ public class PropertyChecker {
                   BoolExpr r = prop.get(router);
                   allProp = enc.mkAnd(allProp, r);
                 }
-                enc.add(enc.mkNot(allProp));
+                if (enc.getFailures() != 0) {
+                  enc._propertRep = enc.mkNot(allProp);
+                } else {
+                  enc.add(enc.mkNot(allProp));
+                }
+
                 //@archie instead of not(property). It's now property
                 //enc.add(allProp);
               }
 
               addFailureConstraints(enc, destPorts, failOptions);
+              enc.setIfReq();
               /*
               try {
                 System.out.println("Encoding written in enc.smt");
@@ -886,10 +893,16 @@ public class PropertyChecker {
                       BoolExpr r = prop.get(router);
                       allProp = newenc.mkAnd(allProp, r);
                     }
+                    if (newenc.getFailures() != 0) {
+                      newenc._propertRep = allProp;
+                    } else {
+                      newenc.add(allProp);
+                    }
                     
-                    newenc.add(allProp);
+                    //newenc.add(allProp);
 
                     addFailureConstraints(newenc, destPorts1, failOptions);
+                    newenc.setIfReq();
                     enc = newenc;
                     break;
                   }
@@ -939,9 +952,15 @@ public class PropertyChecker {
                       allProp = newenc.mkAnd(allProp, r);
                     }
                     
-                    newenc.add(newenc.mkNot(allProp));
+                    if (newenc.getFailures() != 0) {
+                      newenc._propertRep = newenc.mkNot(allProp);
+                    } else {
+                      newenc.add(newenc.mkNot(allProp));
+                    }
+                    //newenc.add(newenc.mkNot(allProp));
 
                     addFailureConstraints(newenc, destPorts1, failOptions);
+                    newenc.setIfReq();
                     enc = newenc;
                     break;
                   }
@@ -1014,7 +1033,13 @@ public class PropertyChecker {
                       someBlackHole = ctx.mkOr(someBlackHole, ctx.mkAnd(isFwdTo, doesNotFwd));
                     }
                     //System.out.println("someBlackHole " + someBlackHole);
-                    newenc.add(newenc.mkNot(someBlackHole));
+                    if (newenc.getFailures() != 0) {
+                      newenc._propertRep = newenc.mkNot(someBlackHole);
+                    } else {
+                      newenc.add(newenc.mkNot(someBlackHole));
+                    }
+                    //newenc.add(newenc.mkNot(someBlackHole));
+                    newenc.setIfReq();
                     enc = newenc;
                     break;
                   }
@@ -1079,7 +1104,13 @@ public class PropertyChecker {
                       BoolExpr hasLoop = pa.instrumentLoop(router);
                       someLoop = ctx.mkOr(someLoop, hasLoop);
                     }
-                    newenc.add(newenc.mkNot(someLoop));
+                    if (newenc.getFailures() != 0) {
+                      newenc._propertRep = newenc.mkNot(someLoop);
+                    } else {
+                      newenc.add(newenc.mkNot(someLoop));
+                    }
+                    //newenc.add(newenc.mkNot(someLoop));
+                    newenc.setIfReq();
 
                     enc = newenc;
                     break;
@@ -1130,9 +1161,15 @@ public class PropertyChecker {
                       allProp = newenc.mkAnd(allProp, r);
                     }
                     
-                    newenc.add(allProp);
+                    if (newenc.getFailures() != 0) {
+                      newenc._propertRep = allProp;
+                    } else {
+                      newenc.add(allProp);
+                    }
+                    //newenc.add(allProp);
 
                     addFailureConstraints(newenc, destPorts1, failOptions);
+                    newenc.setIfReq();
                     enc = newenc;
                     break;
                   }
@@ -1553,7 +1590,13 @@ public class PropertyChecker {
       someBlackHole = ctx.mkOr(someBlackHole, ctx.mkAnd(isFwdTo, doesNotFwd));
     }
     System.out.println("someBlackHole " + someBlackHole);
-    enc.add(enc.mkNot(someBlackHole));
+    if (enc.getFailures() != 0) {
+      enc._propertRep = enc.mkNot(someBlackHole);
+    } else {
+      enc.add(enc.mkNot(someBlackHole));
+    }
+    enc.setIfReq();
+    //enc.add(enc.mkNot(someBlackHole));
     VerificationResult result = enc.verify().getFirst();
     return new SmtOneAnswerElement(result);
   }
@@ -1764,7 +1807,14 @@ public class PropertyChecker {
       BoolExpr hasLoop = pa.instrumentLoop(router);
       someLoop = ctx.mkOr(someLoop, hasLoop);
     }
-    enc.add(enc.mkNot(someLoop));
+    if (enc.getFailures() != 0) {
+      enc._propertRep = enc.mkNot(someLoop);
+    } else {
+      enc.add(enc.mkNot(someLoop));
+    }
+
+    enc.setIfReq();
+    //enc.add(enc.mkNot(someLoop));
 
     VerificationResult result = enc.verify().getFirst();
     return new SmtOneAnswerElement(result);

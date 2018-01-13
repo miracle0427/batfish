@@ -140,6 +140,17 @@ class EncoderSlice {
 
   private Map<Symbol, Integer> _allBVValuesMap;
 
+  public Map<String, BoolExpr> _routerConsMap;
+
+  public int aclWeight;
+  public int bgpWeight;
+  public int ospfWeight;
+  public int enableAdjWeight;
+  public int staticWeight;
+  public int importWeight;
+  public int redisWeight;
+  public int localprefWeight;
+
   /**
    * Create a new encoding slice
    *
@@ -150,6 +161,7 @@ class EncoderSlice {
    */
   EncoderSlice(Encoder enc, HeaderSpace h, Graph graph, String sliceName) {
     _encoder = enc;
+    _routerConsMap = _encoder._routerConsMap;
     _first = (enc.getId() == 0);
     _localPrefMap = new HashMap<>();
     _disableOSPF = new HashMap<>();
@@ -193,7 +205,7 @@ class EncoderSlice {
     _bgpAllow = new HashSet<>();
 
 
-
+    setWeight();
 
     enc.getAllVariables().put(_symbolicPacket.getDstIp().toString() + _encoder.getStringId(),
      _symbolicPacket.getDstIp());
@@ -270,6 +282,7 @@ class EncoderSlice {
    */
   EncoderSlice(Encoder enc, HeaderSpace h, Graph graph, String sliceName, EncoderSlice existsES) {
     _encoder = enc;
+    _routerConsMap = _encoder._routerConsMap;
     _first = (enc.getId() == 0);
     _localPrefMap = new HashMap<>();
     _disableOSPF = new HashMap<>();
@@ -313,6 +326,8 @@ class EncoderSlice {
 
     _bgpAllow = new HashSet<>();
 
+    setWeight();
+ 
     enc.getAllVariables().put(_symbolicPacket.getDstIp().toString() + _encoder.getStringId(),
      _symbolicPacket.getDstIp());
     enc.getAllVariables().put(_symbolicPacket.getSrcIp().toString() + _encoder.getStringId(),
@@ -369,7 +384,43 @@ class EncoderSlice {
     initForwardingAcross();
   }
 
+  void setWeight() {
+    aclWeight = 1;
+    bgpWeight = 1;
+    ospfWeight = 1;
+    enableAdjWeight = 1;
+    staticWeight = 1;
+    importWeight = 1;
+    redisWeight = 1;
+    localprefWeight = 1;
 
+    if (_encoder._weightMap.containsKey("acl")) {
+      aclWeight = _encoder._weightMap.get("acl");  
+    }
+    if (_encoder._weightMap.containsKey("bgp")) {
+      bgpWeight = _encoder._weightMap.get("bgp");  
+    }
+    if (_encoder._weightMap.containsKey("ospf")) {
+      ospfWeight = _encoder._weightMap.get("ospf");  
+    }
+    if (_encoder._weightMap.containsKey("enable")) {
+      enableAdjWeight = _encoder._weightMap.get("enable");  
+    }
+    if (_encoder._weightMap.containsKey("static")) {
+      staticWeight = _encoder._weightMap.get("static");  
+    }
+    if (_encoder._weightMap.containsKey("filter")) {
+      importWeight = _encoder._weightMap.get("filter");  
+    }
+    if (_encoder._weightMap.containsKey("redis")) {
+      redisWeight = _encoder._weightMap.get("redis");  
+    }
+    if (_encoder._weightMap.containsKey("localpref")) {
+      localprefWeight = _encoder._weightMap.get("localpref");  
+    }
+
+
+  }
 
   // Add a variable to the encoding
   void add(BoolExpr e) {
@@ -522,7 +573,8 @@ class EncoderSlice {
           BoolExpr outAclFunc = computeACL(outbound);
 
           BoolExpr outAclRemove = getCtx().mkBoolConst(_encoder.getId() + "_" + outName + "Remove");
-          addSoft(mkNot(outAclRemove), 10, "SoftOutAclRemove");
+          addSoft(mkNot(outAclRemove), aclWeight, "SoftOutAclRemove");
+          _routerConsMap.put(router, mkAnd(_routerConsMap.get(router), mkNot(outAclRemove)));
           // @archie outAclRemove is soft constraint to do out ACL remove
           add(mkEq(outAcl, outAclFunc));
           //_outboundAcls.put(ge, outAcl);
@@ -540,7 +592,8 @@ class EncoderSlice {
                   "SOFT");
           BoolExpr outAcl = getCtx().mkBoolConst(_encoder.getId() + "_" + outName + "Add");
           // @archie outAcl is soft constraint to do out ACL add
-          addSoft(outAcl, 1, "SoftOutAclAdd");
+          addSoft(outAcl, aclWeight, "SoftOutAclAdd");
+          _routerConsMap.put(router, mkAnd(_routerConsMap.get(router), outAcl));
           _outboundAcls.put(ge, outAcl);
         }
 
@@ -556,7 +609,8 @@ class EncoderSlice {
           BoolExpr inAclFunc = computeACL(inbound);
           
           BoolExpr inAclRemove = getCtx().mkBoolConst(_encoder.getId() + "_" + inName + "Remove");
-          addSoft(mkNot(inAclRemove), 10, "SoftInAclRemove");
+          addSoft(mkNot(inAclRemove), aclWeight, "SoftInAclRemove");
+          _routerConsMap.put(router, mkAnd(_routerConsMap.get(router), mkNot(inAclRemove)));
           // @archie inAclRemove is soft constraint to do in ACL remove
           add(mkEq(inAcl, inAclFunc));
           //_inboundAcls.put(ge, inAcl);
@@ -569,7 +623,8 @@ class EncoderSlice {
                   _encoder.getId(), _sliceName, router, i.getName(), "INBOUND", "SOFT");
           BoolExpr inAcl = getCtx().mkBoolConst(_encoder.getId() + "_" + inName + "Add");
           // @archie inAcl is soft constraint to do out ACL add
-          addSoft(inAcl, 1, "SoftInAclAdd");
+          addSoft(inAcl, aclWeight, "SoftInAclAdd");
+          _routerConsMap.put(router, mkAnd(_routerConsMap.get(router), inAcl));
           _inboundAcls.put(ge, inAcl);
         }
       }
@@ -724,7 +779,7 @@ class EncoderSlice {
    * Check if a prefix range match is applicable for the packet destination
    * Ip address, given the prefix length variable.
    */
-  BoolExpr isRelevantForSoft(ArithExpr prefixLen, PrefixRange range) {
+  BoolExpr isRelevantForSoft(ArithExpr prefixLen, PrefixRange range, String routerName) {
     Prefix p = range.getPrefix();
     SubRange r = range.getLengthRange();
     long pfx = p.getNetworkAddress().asLong();
@@ -744,7 +799,8 @@ class EncoderSlice {
         //System.out.println("Lower bits match: " + lowerBitsMatch);
         BoolExpr shouldRemove = getCtx().mkBoolConst(_encoder.getId() + "_"
          + prefixLen + "BGPRemoveFilterSoft");
-        addSoft(shouldRemove, 1, "BGPRemoveFilter");
+        addSoft(shouldRemove, importWeight, "BGPRemoveFilter");
+        _routerConsMap.put(routerName, mkAnd(_routerConsMap.get(routerName), shouldRemove));
         //BoolExpr shouldAdd = getCtx().mkBoolConst(_encoder.getId() + "_" + prefixLen + "BGPAddFilter");
         //addSoft(mkNot(shouldAdd), 1, "BGPAddFilter");
         //BoolExpr softconst = mkOr(mkAnd(lowerBitsMatch, shouldRemove), shouldAdd);
@@ -2119,7 +2175,8 @@ private void addSymbolicPacketBoundConstraints() {
             } else {
               shouldAllow = getCtx().mkBoolConst(_encoder.getId() + "_"
                 + keyvalue + "AllowChoiceSoft");
-              addSoft(mkNot(shouldAllow), 1, "AllowRoute");
+              addSoft(mkNot(shouldAllow), enableAdjWeight, "AllowRoute");
+              _routerConsMap.put(router, mkAnd(_routerConsMap.get(router), mkNot(shouldAllow)));
               _enableRoute.put(keyvalue, shouldAllow);
             }
             /*
@@ -2332,8 +2389,9 @@ private void addSymbolicPacketBoundConstraints() {
             {
               shouldAdd = getCtx().mkBoolConst(_encoder.getId() + "_" + router +
                "-StaticRouteAddSoft-" + ge);
-              addSoft(mkNot(shouldAdd), 3, "StaticAdd");
+              addSoft(mkNot(shouldAdd), staticWeight, "StaticAdd");
               _staticRouteAddSoft.put(ge, shouldAdd);
+              _routerConsMap.put(router, mkAnd(_routerConsMap.get(router), mkNot(shouldAdd)));
             } else {
               shouldAdd = _existsES.getStaticRouteAddSoft().get(ge);
             }
@@ -2394,8 +2452,8 @@ private void addSymbolicPacketBoundConstraints() {
           Prefix p = sr.getNetwork();
           BoolExpr shouldRemove = getCtx().mkBoolConst(_encoder.getId() + "_"
            + router + "StaticRouteRemoveSoft" + p);
-          addSoft(shouldRemove, 1, "StaticRemove");
-            
+          addSoft(shouldRemove, staticWeight, "StaticRemove");
+          _routerConsMap.put(router, mkAnd(_routerConsMap.get(router), shouldRemove));  
           BoolExpr relevant =
               mkAnd(
                   interfaceActive(iface, proto, e),
@@ -2513,7 +2571,8 @@ private void addSymbolicPacketBoundConstraints() {
             } else {
               shouldAllow = getCtx().mkBoolConst(_encoder.getId() + "_"
                 + keyvalue + "AllowChoiceUseSoft");
-              addSoft(mkNot(shouldAllow), 1, "AllowRouteSoft");
+              addSoft(mkNot(shouldAllow), enableAdjWeight, "AllowRouteSoft");
+              _routerConsMap.put(router, mkAnd(_routerConsMap.get(router), mkNot(shouldAllow)));  
               _enableRoute.put(keyvalue, shouldAllow);
             }
 
@@ -2549,7 +2608,8 @@ private void addSymbolicPacketBoundConstraints() {
 
           BoolExpr shouldAddFilter = getCtx().mkBoolConst(_encoder.getId() + "_" + router
            + "ImportFilterAddSoft" + vars.getName());
-          addSoft(shouldAddFilter, 2, "ImportFilterAdd");
+          addSoft(shouldAddFilter, importWeight, "ImportFilterAdd");
+          _routerConsMap.put(router, mkAnd(_routerConsMap.get(router), shouldAddFilter));  
           //importFunction = mkOr(importFunction, shouldAddFilter);
           BoolExpr acc = mkIf(mkAnd(usable, shouldAddFilter), importFunction, val);
           if (Encoder.ENABLE_DEBUGGING) {
@@ -2700,8 +2760,8 @@ private void addSymbolicPacketBoundConstraints() {
           } else {
             redisRemove = getCtx().mkBoolConst(_encoder.getId() + "_"
              + router + proto.name() + "SoftRedisRemove");
-            addSoft(redisRemove, 2, "RedisRemove");
-
+            addSoft(redisRemove, redisWeight, "RedisRemove");
+            _routerConsMap.put(router, mkAnd(_routerConsMap.get(router), redisRemove));  
             _disableRedis.put(keyvalue, redisRemove);
           }
           /*
@@ -2774,7 +2834,8 @@ private void addSymbolicPacketBoundConstraints() {
             } else {
               shouldRemove = getCtx().mkBoolConst(_encoder.getId() + "_"
                 + router + "OSPFExportRemoveSoft" + p);
-              addSoft(shouldRemove, 3, "OSPFExportRemove"); 
+              addSoft(shouldRemove, ospfWeight, "OSPFExportRemove"); 
+              _routerConsMap.put(router, mkAnd(_routerConsMap.get(router), shouldRemove));  
               _disableOSPF.put(keyvalue, shouldRemove);
             }
             /*BoolExpr shouldRemove = getCtx().mkBoolConst(_encoder.getId() + "_"
@@ -2829,7 +2890,8 @@ private void addSymbolicPacketBoundConstraints() {
             BoolExpr relevantPrefix = isRelevantFor(p, _symbolicPacket.getDstIp());
             BoolExpr shouldAdd = getCtx().mkBoolConst(_encoder.getId() + "_"
              + router + "OSPFExportAddSoft" + p);
-            addSoft(mkNot(shouldAdd), 20, "OSPFExportAdd");
+            addSoft(mkNot(shouldAdd), ospfWeight, "OSPFExportAdd");
+            _routerConsMap.put(router, mkAnd(_routerConsMap.get(router), mkNot(shouldAdd)));  
             relevantPrefix = mkAnd(relevantPrefix, shouldAdd);
             BoolExpr relevant = mkAnd(ifaceUp, relevantPrefix);
 

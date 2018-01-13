@@ -224,7 +224,7 @@ class TransferSSA {
       Prefix p = line.getIpWildcard().toPrefix();
       SubRange r = line.getLengthRange();
       PrefixRange range = new PrefixRange(p, r);
-      BoolExpr matches = _enc.isRelevantForSoft(other.getPrefixLength(), range);
+      BoolExpr matches = _enc.isRelevantForSoft(other.getPrefixLength(), range, _conf.getName());
       BoolExpr action = _enc.mkBool(line.getAction() == LineAction.ACCEPT);
       acc = _enc.mkIf(matches, action, acc);
     }
@@ -274,7 +274,8 @@ class TransferSSA {
                 result = result.addChangedVariable("PREFIX-LEN", newLength);
                 BoolExpr shouldRemove = _enc.getCtx().mkBoolConst(_enc.getEncoder().getId() + "_"
                  + pfx + "Stat-Conn-ExportRemoveSoft" + other.getName());
-                _enc.addSoft(shouldRemove, 30, "SCExportRemove");
+                _enc.addSoft(shouldRemove, _enc.bgpWeight, "SCExportRemove");
+                _enc._routerConsMap.put(router, _enc.mkAnd(_enc._routerConsMap.get(router), shouldRemove));
                 return result.setReturnValue(_enc.mkAnd(directRoute, shouldRemove));
                 //return result.setReturnValue(directRoute);
               } else {
@@ -283,7 +284,8 @@ class TransferSSA {
                 if (rec != null) {
                   BoolExpr shouldRemove = _enc.getCtx().mkBoolConst(_enc.getEncoder().getId() + "_"
                    + pfx + "ExportRemoveSoft" + other.getName());
-                  _enc.addSoft(shouldRemove, 30, "ExportRemove");
+                  _enc.addSoft(shouldRemove, _enc.bgpWeight, "ExportRemove");
+                  _enc._routerConsMap.put(router, _enc.mkAnd(_enc._routerConsMap.get(router), shouldRemove));
                   BoolExpr ospfRelevant = _enc.mkAnd(_enc.isRelevantFor(rec.getPrefixLength(), r),
                    shouldRemove);
                   //System.out.println("\n\nCONS OSPF " + ospfRelevant);
@@ -420,7 +422,9 @@ class TransferSSA {
       }
       BoolExpr shouldAdd = _enc.getCtx().mkBoolConst(_enc.getEncoder().getId() + "_" + 
         p.getData().getName() + "BGPExportAddSoft");
-      _enc.addSoft(_enc.mkNot(shouldAdd), 1, "BGPExportAdd");
+      _enc.addSoft(_enc.mkNot(shouldAdd), _enc.bgpWeight, "BGPExportAdd");
+      _enc._routerConsMap.put(_conf.getName(), _enc.mkAnd(_enc._routerConsMap.get(_conf.getName()), _enc.mkNot(shouldAdd)));
+
       acc = _enc.mkOr(acc, shouldAdd);
       p.debug("has changed variable");
       return result.setReturnValue(acc);
@@ -1018,7 +1022,8 @@ class TransferSSA {
       //_enc.addSoft(_enc.mkNot(lp1), 2, "localpref");
       val = _enc.mkIf(lp2, _enc.getCtx().mkInt(intval), val);
       if (actualVal == intval) {
-        _enc.addSoft(lp2, 2, "localpref");
+        _enc.addSoft(lp2, _enc.localprefWeight, "localpref");
+        _enc._routerConsMap.put(_conf.getName(), _enc.mkAnd(_enc._routerConsMap.get(_conf.getName()), lp2));
         doesChange = _enc.mkOr(doesChange, lp1, _enc.mkNot(lp2));
       } else {
         //_enc.addSoft(_enc.mkNot(lp2), 2, "localpref");
@@ -1028,7 +1033,9 @@ class TransferSSA {
     }
     BoolExpr lp = _enc.getCtx().mkBoolConst(_currentName + "_localpref_" + highestVal);
     lp =_enc.mkNot(exists);
-    _enc.addSoft(_enc.mkNot(doesChange), 2, "localpref");
+    _enc.addSoft(_enc.mkNot(doesChange), _enc.localprefWeight, "localpref");
+    _enc._routerConsMap.put(_conf.getName(), _enc.mkAnd(_enc._routerConsMap.get(_conf.getName()),
+     _enc.mkNot(doesChange)));
     //System.out.println("\nExists: " + lp + "\nVal:  " + val);
     prefMap.put(_currentName, val);
     return val;
