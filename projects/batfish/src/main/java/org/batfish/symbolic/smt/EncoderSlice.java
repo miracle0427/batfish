@@ -6,7 +6,9 @@ import com.microsoft.z3.BoolExpr;
 import com.microsoft.z3.Context;
 import com.microsoft.z3.Expr;
 import com.microsoft.z3.Optimize;
+import com.microsoft.z3.Sort;
 import com.microsoft.z3.Solver;
+import com.microsoft.z3.Symbol;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException; 
@@ -130,6 +132,23 @@ class EncoderSlice {
   private Map<String, BoolExpr> _disableRedis;
 
   private Map<String, BoolExpr> _enableRoute;
+
+  private Set<BoolExpr> _allBoolVars;
+
+  private Set<ArithExpr> _allArithVars;
+
+  private Set<BitVecExpr> _allBVVars;
+
+  private Map<BitVecExpr, Integer> _allBVValues;
+
+  private List<Symbol> _allBoolVarsList;
+
+  private List<Symbol> _allArithVarsList;
+
+  private List<Symbol> _allBVVarsList;
+
+  private Map<Symbol, Integer> _allBVValuesMap;
+
   /**
    * Create a new encoding slice
    *
@@ -158,6 +177,16 @@ class EncoderSlice {
     _disableRedis = new HashMap<>();
     _enableRoute = new HashMap<>();
     _localPref = new TreeSet<Integer>();
+
+    _allBoolVars = new HashSet<>();
+    _allArithVars = new HashSet<>();
+    _allBVVars = new HashSet<>();
+    _allBVValues = new HashMap<>();
+
+    _allBoolVarsList = new ArrayList<>();
+    _allArithVarsList = new ArrayList<>();
+    _allBVVarsList = new ArrayList<>();
+    _allBVValuesMap = new HashMap<>();
 
     if (!_first) {
       _oldES = enc.getPreviousEncoderSlice();
@@ -268,6 +297,18 @@ class EncoderSlice {
     _disableRedis = new HashMap<>();
     _enableRoute = new HashMap<>();
     _localPref = new TreeSet<Integer>();
+
+    _allBoolVars = existsES.getAllBoolVars();
+    _allArithVars = existsES.getAllArithVars();
+    _allBVVars = existsES.getAllBVVars();
+    _allBVValues = existsES.getAllBVValues();
+
+    _allBoolVarsList = existsES.getAllBoolVarsList();
+    _allArithVarsList = existsES.getAllArithVarsList();
+    _allBVVarsList = existsES.getAllBVVarsList();
+    _allBVValuesMap = existsES.getAllBVValuesMap();
+
+
     if (!_first) {
       _oldES = enc.getPreviousEncoderSlice();
       _localPrefMap = _oldES.getLocalPrefMap();
@@ -730,7 +771,7 @@ class EncoderSlice {
       if (!(lowerBitsMatch.toString().equals("true") || lowerBitsMatch.toString().equals("false"))) {
         //System.out.println("Lower bits match: " + lowerBitsMatch);
         BoolExpr shouldRemove = getCtx().mkBoolConst(_encoder.getId() + "_"
-         + prefixLen + "BGPRemoveFilter");
+         + prefixLen + "BGPRemoveFilterSoft");
         addSoft(shouldRemove, 1, "BGPRemoveFilter");
         //BoolExpr shouldAdd = getCtx().mkBoolConst(_encoder.getId() + "_" + prefixLen + "BGPAddFilter");
         //addSoft(mkNot(shouldAdd), 1, "BGPAddFilter");
@@ -801,6 +842,10 @@ class EncoderSlice {
           getAllVariables().put(choiceVar.toString() + _encoder.getStringId(),
            choiceVar);
           edgeMap.put(e, choiceVar);
+          _allBoolVars.add(choiceVar);
+          Symbol temp = getCtx().mkSymbol(chName);
+          _allBoolVarsList.add(temp);
+
         }
       }
     }
@@ -844,6 +889,9 @@ class EncoderSlice {
         getAllVariables().put(cForward.toString() + _encoder.getStringId(),
          cForward);
         _symbolicDecisions.getControlForwarding().put(router, edge, cForward);
+        _allBoolVars.add(cForward);
+        Symbol temp = getCtx().mkSymbol(cName);
+        _allBoolVarsList.add(temp);
 
         // Don't add data forwarding variable for abstract edge
         if (!edge.isAbstract()) {
@@ -853,6 +901,10 @@ class EncoderSlice {
           getAllVariables().put(dForward.toString() + _encoder.getStringId(),
            dForward);
           _symbolicDecisions.getDataForwarding().put(router, edge, dForward);
+          _allBoolVars.add(dForward);
+          Symbol temp2 = getCtx().mkSymbol(dName);
+          _allBoolVarsList.add(temp2);
+
         }
       }
     }
@@ -874,6 +926,13 @@ class EncoderSlice {
                 _encoder.getId(), _sliceName, router, "OVERALL", "BEST", "None");
         String historyName = name + "_history";
         SymbolicEnum<Protocol> h = new SymbolicEnum<>(this, allProtos, historyName);
+        if (h.getBitVec()!=null) {
+          _allBVVars.add(h.getBitVec());
+          _allBVValues.put(h.getBitVec(),h._numBits);
+          Symbol temp = getCtx().mkSymbol(historyName);
+          _allBVVarsList.add(temp);
+          _allBVValuesMap.put(temp, h._numBits);
+        }
         SymbolicRoute evBest =
             new SymbolicRoute(this, name, router, Protocol.BEST, _optimizations, h, false);
         getAllSymbolicRecords().add(evBest);
@@ -2087,7 +2146,7 @@ private void addSymbolicPacketBoundConstraints() {
               shouldAllow = _enableRoute.get(keyvalue);
             } else {
               shouldAllow = getCtx().mkBoolConst(_encoder.getId() + "_"
-                + keyvalue + "AllowChoice");
+                + keyvalue + "AllowChoiceSoft");
               addSoft(mkNot(shouldAllow), 1, "AllowRoute");
               _enableRoute.put(keyvalue, shouldAllow);
             }
@@ -2514,7 +2573,7 @@ private void addSymbolicPacketBoundConstraints() {
             if (!_isTCE)
             {
               shouldAdd = getCtx().mkBoolConst(_encoder.getId() + "_" + router +
-               "-StaticRouteAdd-" + ge);
+               "-StaticRouteAddSoft-" + ge);
               addSoft(mkNot(shouldAdd), 3, "StaticAdd");
               _staticRouteAddSoft.put(ge, shouldAdd);
             } else {
@@ -2577,7 +2636,7 @@ private void addSymbolicPacketBoundConstraints() {
         for (StaticRoute sr : srs) {
           Prefix p = sr.getNetwork();
           BoolExpr shouldRemove = getCtx().mkBoolConst(_encoder.getId() + "_"
-           + router + "StaticRouteRemove" + p);
+           + router + "StaticRouteRemoveSoft" + p);
           addSoft(shouldRemove, 1, "StaticRemove");
             
           BoolExpr relevant =
@@ -2696,8 +2755,8 @@ private void addSymbolicPacketBoundConstraints() {
               shouldAllow = _enableRoute.get(keyvalue);
             } else {
               shouldAllow = getCtx().mkBoolConst(_encoder.getId() + "_"
-                + keyvalue + "AllowChoiceUse");
-              addSoft(mkNot(shouldAllow), 1, "AllowRoute");
+                + keyvalue + "AllowChoiceUseSoft");
+              addSoft(mkNot(shouldAllow), 1, "AllowRouteSoft");
               _enableRoute.put(keyvalue, shouldAllow);
             }
 
@@ -3280,6 +3339,110 @@ private void addSymbolicPacketBoundConstraints() {
     }
   }
 
+
+  /*
+   * Add to a map
+   */
+  private void addtoMap() {
+
+    Symbol temp;
+    for (SymbolicRoute vars : getAllSymbolicRecords()) {
+      String symName = vars.getName();
+      _allBoolVars.add(vars.getPermitted());
+      temp = getCtx().mkSymbol(symName + "_permitted");
+      _allBoolVarsList.add(temp);
+
+      if (vars.getAdminDist() != null) {
+        _allArithVars.add(vars.getAdminDist());
+        temp = getCtx().mkSymbol(symName + "_adminDist");
+        _allArithVarsList.add(temp);        
+      }
+      if (vars.getMed() != null) {
+        _allArithVars.add(vars.getMed());
+        temp = getCtx().mkSymbol(symName + "_med");
+        _allArithVarsList.add(temp);        
+      }
+      if (vars.getLocalPref() != null) {
+        _allArithVars.add(vars.getLocalPref());
+        temp = getCtx().mkSymbol(symName + "_localPref");
+        _allArithVarsList.add(temp);        
+      }
+      if (vars.getPrefixLength() != null) {
+        _allArithVars.add(vars.getPrefixLength());
+        temp = getCtx().mkSymbol(symName + "_prefixLength");
+        _allArithVarsList.add(temp);        
+      }
+      if (vars.getMetric() != null) {
+        _allArithVars.add(vars.getMetric());
+        temp = getCtx().mkSymbol(symName + "_metric");
+        _allArithVarsList.add(temp);        
+      }
+      if (vars.getBgpInternal() != null) {
+        _allBoolVars.add(vars.getBgpInternal());
+        temp = getCtx().mkSymbol(symName + "_bgpInternal");
+        _allBoolVarsList.add(temp);
+      }
+      if (vars.getIgpMetric() != null) {
+        _allArithVars.add(vars.getIgpMetric());
+        temp = getCtx().mkSymbol(symName + "_igpMetric");
+        _allArithVarsList.add(temp);        
+      }
+      if (vars.getRouterId() != null) {
+        _allArithVars.add(vars.getRouterId());
+        temp = getCtx().mkSymbol(symName + "_routerID");
+        _allArithVarsList.add(temp);        
+      }
+    }
+
+    getSymbolicFailures().getFailedInternalLinks().forEach((router, peer, var) -> _allArithVars.add(var));
+    getSymbolicFailures().getFailedEdgeLinks().forEach((ge, var) -> _allArithVars.add(var));
+
+    String packname = _encoder.getId() + "_" + _sliceName;
+    _allArithVars.add(_symbolicPacket.getDstPort());
+    temp = getCtx().mkSymbol(packname + "dst-port");
+    _allArithVarsList.add(temp);        
+
+    _allArithVars.add(_symbolicPacket.getSrcPort());
+    temp = getCtx().mkSymbol(packname + "src-port");
+    _allArithVarsList.add(temp);        
+
+    _allArithVars.add(_symbolicPacket.getIcmpType());
+    temp = getCtx().mkSymbol(packname + "icmp-type");
+    _allArithVarsList.add(temp);        
+
+    _allArithVars.add(_symbolicPacket.getIpProtocol());
+    temp = getCtx().mkSymbol(packname + "ip-protocol");
+    _allArithVarsList.add(temp);        
+
+    _allArithVars.add(_symbolicPacket.getIcmpCode());
+    temp = getCtx().mkSymbol(packname + "icmp-code");
+    _allArithVarsList.add(temp);        
+
+    if (_symbolicPacket.getDstIp() != null) {
+      _allBVVars.add(_symbolicPacket.getDstIp());
+      _allBVValues.put(_symbolicPacket.getDstIp(), 32);
+      String dstname = packname + "dst-ip";
+      temp = getCtx().mkSymbol(dstname);
+      _allBVVarsList.add(temp);
+      _allBVValuesMap.put(temp, 32);
+
+    }
+
+    if (_symbolicPacket.getSrcIp() != null) {
+      _allBVVars.add(_symbolicPacket.getSrcIp());
+      _allBVValues.put(_symbolicPacket.getSrcIp(), 32);
+
+      String srcname = packname + "src-ip";
+      temp = getCtx().mkSymbol(srcname);
+      _allBVVarsList.add(temp);
+      _allBVValuesMap.put(temp, 32);
+
+    }
+
+  }
+
+
+
   /*
    * Create boolean expression for a variable being within a bound.
    */
@@ -3495,9 +3658,10 @@ private void addSymbolicPacketBoundConstraints() {
       addSymbolicPacketBoundConstraints();
       addDataForwardingConstraints();
       addHeaderSpaceConstraint();
+      addtoMap();
       return;
     }
-
+    addtoMap();
     addBoundConstraints();
     addCommunityConstraints();
     addTransferFunction();
@@ -3645,4 +3809,38 @@ private void addSymbolicPacketBoundConstraints() {
   Map<String, BoolExpr> getEnableRouteMap() {
     return _enableRoute;
   }
+
+  Set<BoolExpr> getAllBoolVars() {
+    return _allBoolVars;
+  }
+
+  Set<ArithExpr> getAllArithVars() {
+    return _allArithVars;
+  }
+
+  Set<BitVecExpr> getAllBVVars() {
+    return _allBVVars;
+  }
+
+  Map<BitVecExpr, Integer> getAllBVValues() {
+    return _allBVValues;
+  }
+
+  List<Symbol> getAllBoolVarsList() {
+    return _allBoolVarsList;
+  }
+
+  List<Symbol> getAllArithVarsList() {
+    return _allArithVarsList;
+  }
+
+  List<Symbol> getAllBVVarsList() {
+    return _allBVVarsList;
+  }
+
+  Map<Symbol, Integer> getAllBVValuesMap() {
+    return _allBVValuesMap;
+  }
+
+
 }

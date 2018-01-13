@@ -463,7 +463,11 @@ public class PropertyChecker {
                 }
                 //enc.add(enc.mkNot(allProp));
                 //@archie instead of not(property). It's now property
-                enc.add(allProp);
+                if (enc.getFailures() != 0) {
+                  enc._propertRep = allProp;
+                } else {
+                  enc.add(allProp);
+                }
               }
 
               addFailureConstraints(enc, destPorts, failOptions);

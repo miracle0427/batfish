@@ -7,6 +7,7 @@ import com.microsoft.z3.Context;
 import com.microsoft.z3.Expr;
 import com.microsoft.z3.Optimize;
 import com.microsoft.z3.Solver;
+import com.microsoft.z3.Symbol;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -56,21 +57,29 @@ class PropertyAdder {
 
     String sliceName = slice.getSliceName();
     ArithExpr zero = ctx.mkInt(0);
-    Optimize opt = slice.getOptimize();
+    //Optimize opt = slice.getOptimize();
     for (String r : _encoderSlice.getGraph().getRouters()) {
       int id = _encoderSlice.getEncoder().getId();
       String s1 = id + "_" + sliceName + "_reachable-id_" + r;
       String s2 = id + "_" + sliceName + "_reachable_" + r;
       ArithExpr idVar = ctx.mkIntConst(s1);
       BoolExpr var = ctx.mkBoolConst(s2);
+      slice.getAllBoolVars().add(var);
+      Symbol temp = ctx.mkSymbol(s2);
+      slice.getAllBoolVarsList().add(temp);
+
+      slice.getAllArithVars().add(idVar);
+      temp = ctx.mkSymbol(s1);
+      slice.getAllArithVarsList().add(temp);
+      
       idVars.put(r, idVar);
       reachableVars.put(r, var);
       _encoderSlice.getAllVariables().put(idVar.toString(), idVar);
       _encoderSlice.getAllVariables().put(var.toString(), var);
-      solver.add(ctx.mkEq(var, ctx.mkGt(idVar, zero)));
-      solver.add(ctx.mkGe(idVar, zero));
-      opt.Add(ctx.mkEq(var, ctx.mkGt(idVar, zero)));
-      opt.Add(ctx.mkGe(idVar, zero)); 
+      _encoderSlice.add(ctx.mkEq(var, ctx.mkGt(idVar, zero)));
+      _encoderSlice.add(ctx.mkGe(idVar, zero));
+      //opt.Add(ctx.mkEq(var, ctx.mkGt(idVar, zero)));
+      //opt.Add(ctx.mkGe(idVar, zero)); 
     }
   }
 
@@ -122,7 +131,7 @@ class PropertyAdder {
     Map<String, ArithExpr> idVars = new HashMap<>();
     initializeReachabilityVars(slice, ctx, solver, reachableVars, idVars);
     Graph g = _encoderSlice.getGraph();
-    Optimize opt = slice.getOptimize();
+    //Optimize opt = slice.getOptimize();
 
     for (Entry<String, List<GraphEdge>> entry : g.getEdgeMap().entrySet()) {
       String router = entry.getKey();
@@ -159,8 +168,9 @@ class PropertyAdder {
       BoolExpr recursive = recursiveReachability(ctx, slice, edges, idVars, router, id);
       BoolExpr guard = ctx.mkOr(hasDirectRoute, isAbsorbed);
       BoolExpr cond = slice.mkIf(guard, ctx.mkEq(id, ctx.mkInt(1)), recursive);
-      solver.add(cond);
-      opt.Add(cond);
+      //solver.add(cond);
+      //opt.Add(cond);
+      slice.add(cond);
     }
 
     return reachableVars;
@@ -176,7 +186,7 @@ class PropertyAdder {
     Map<String, BoolExpr> reachableVars = new HashMap<>();
     Map<String, ArithExpr> idVars = new HashMap<>();
     initializeReachabilityVars(_encoderSlice, ctx, solver, reachableVars, idVars);
-    Optimize opt = _encoderSlice.getOptimize(); 
+    //Optimize opt = _encoderSlice.getOptimize(); 
 
     ArithExpr baseId = idVars.get(router);
     _encoderSlice.add(ctx.mkEq(baseId, ctx.mkInt(1)));
@@ -188,8 +198,8 @@ class PropertyAdder {
       if (!r.equals(router)) {
         ArithExpr id = idVars.get(r);
         BoolExpr cond = recursiveReachability(ctx, _encoderSlice, edges, idVars, r, id);
-        solver.add(cond);
-        opt.Add(cond);
+        //solver.add(cond);
+        _encoderSlice.add(cond);
       }
     }
 
@@ -324,9 +334,9 @@ class PropertyAdder {
    */
   Map<String, ArithExpr> instrumentPathLength(Set<GraphEdge> ges) {
     Context ctx = _encoderSlice.getCtx();
-    Solver solver = _encoderSlice.getSolver();
+    //Solver solver = _encoderSlice.getSolver();
     String sliceName = _encoderSlice.getSliceName();
-    Optimize opt = _encoderSlice.getOptimize(); 
+    //Optimize opt = _encoderSlice.getOptimize(); 
 
     // Initialize path length variables
     Graph graph = _encoderSlice.getGraph();
@@ -343,8 +353,8 @@ class PropertyAdder {
     ArithExpr minusOne = ctx.mkInt(-1);
 
     // Lower bound for all lengths
-    lenVars.forEach((name, var) -> solver.add(ctx.mkGe(var, minusOne)));
-    lenVars.forEach((name, var) -> opt.Add(ctx.mkGe(var, minusOne)));
+    lenVars.forEach((name, var) ->  _encoderSlice.add(ctx.mkGe(var, minusOne)));
+    //lenVars.forEach((name, var) -> opt.Add(ctx.mkGe(var, minusOne)));
     for (Entry<String, List<GraphEdge>> entry : graph.getEdgeMap().entrySet()) {
       String router = entry.getKey();
       List<GraphEdge> edges = entry.getValue();
@@ -393,8 +403,8 @@ class PropertyAdder {
       BoolExpr guard = _encoderSlice.mkOr(hasDirectRoute, isAbsorbed);
       BoolExpr cond1 = _encoderSlice.mkIf(accNone, ctx.mkEq(length, minusOne), accSome);
       BoolExpr cond2 = _encoderSlice.mkIf(guard, ctx.mkEq(length, zero), cond1);
-      solver.add(cond2);
-      opt.Add(cond2);
+      _encoderSlice.add(cond2);
+      //opt.Add(cond2);
     }
 
     return lenVars;
@@ -512,9 +522,9 @@ class PropertyAdder {
    */
   Map<String, ArithExpr> instrumentLoad(Set<GraphEdge> ges) {
     Context ctx = _encoderSlice.getCtx();
-    Solver solver = _encoderSlice.getSolver();
+    //Solver solver = _encoderSlice.getSolver();
     String sliceName = _encoderSlice.getSliceName();
-    Optimize opt = _encoderSlice.getOptimize(); 
+    //Optimize opt = _encoderSlice.getOptimize(); 
 
     Map<String, ArithExpr> loadVars = new HashMap<>();
     Graph graph = _encoderSlice.getGraph();
@@ -525,8 +535,8 @@ class PropertyAdder {
       _encoderSlice.getAllVariables().put(var.toString(), var);
     }
 
-    loadVars.forEach((name, var) -> solver.add(ctx.mkGe(var, ctx.mkInt(0))));
-    loadVars.forEach((name, var) -> opt.Add(ctx.mkGe(var, ctx.mkInt(0))));
+    loadVars.forEach((name, var) -> _encoderSlice.add(ctx.mkGe(var, ctx.mkInt(0))));
+    //loadVars.forEach((name, var) -> opt.Add(ctx.mkGe(var, ctx.mkInt(0))));
     ArithExpr zero = ctx.mkInt(0);
     ArithExpr one = ctx.mkInt(1);
 
@@ -569,12 +579,12 @@ class PropertyAdder {
           }
         }
       }
-      solver.add(ctx.mkEq(load, acc));
-      opt.Add(ctx.mkEq(load, acc));
+      _encoderSlice.add(ctx.mkEq(load, acc));
+      //opt.Add(ctx.mkEq(load, acc));
       BoolExpr guard = _encoderSlice.mkOr(hasDirectRoute, isAbsorbed);
       BoolExpr cond = _encoderSlice.mkIf(guard, ctx.mkEq(load, one), ctx.mkEq(load, acc));
-      solver.add(cond);
-      opt.Add(cond);
+      _encoderSlice.add(cond);
+      //opt.Add(cond);
     }
 
     return loadVars;
@@ -586,9 +596,9 @@ class PropertyAdder {
    */
   BoolExpr instrumentLoop(String router) {
     Context ctx = _encoderSlice.getCtx();
-    Solver solver = _encoderSlice.getSolver();
+    //Solver solver = _encoderSlice.getSolver();
     String sliceName = _encoderSlice.getSliceName();
-    Optimize opt = _encoderSlice.getOptimize(); 
+    //Optimize opt = _encoderSlice.getOptimize(); 
 
     // Add on-loop variables to track a loop
     Map<String, BoolExpr> onLoop = new HashMap<>();
@@ -623,8 +633,9 @@ class PropertyAdder {
           }
         }
       }
-      solver.add(ctx.mkEq(var, acc));
-      opt.Add(ctx.mkEq(var, acc));
+      //solver.add(ctx.mkEq(var, acc));
+      //opt.Add(ctx.mkEq(var, acc));
+      _encoderSlice.add(ctx.mkEq(var, acc));
     }
 
     return onLoop.get(router);
