@@ -448,8 +448,8 @@ class PropertyAdder {
       // Bound waypoint index range
       BoolExpr lowerBound = ctx.mkGe(var, ctx.mkInt(-1));
       BoolExpr upperBound = ctx.mkLe(var, ctx.mkInt(startIndex));
-      solver.add(lowerBound);
-      solver.add(upperBound);
+      _encoderSlice.add(lowerBound);
+      _encoderSlice.add(upperBound);
     }
 
     for (Entry<String, List<GraphEdge>> entry : graph.getEdgeMap().entrySet()) {
@@ -509,7 +509,7 @@ class PropertyAdder {
       BoolExpr guard = _encoderSlice.mkOr(hasDirectRoute, isAbsorbed);
       BoolExpr cond1 = _encoderSlice.mkIf(accNone, ctx.mkEq(waypoint, minusOne), accSome);
       BoolExpr cond2 = _encoderSlice.mkIf(guard, ctx.mkEq(waypoint, start), cond1);
-      solver.add(cond2);
+      _encoderSlice.add(cond2);
     }
 
     return waypointVars;

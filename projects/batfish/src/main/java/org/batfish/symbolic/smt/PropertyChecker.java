@@ -1583,14 +1583,16 @@ public class PropertyChecker {
             BoolExpr implication = enc.mkImplies(fwdOnPath, notAvailable);
             allImplications = enc.mkAnd(allImplications, implication);
           }
-          //System.out.println("Assert: " + allImplications.simplify());
+          System.out.println("Assert: " + allImplications);
+          System.out.println("Assert: " + allImplications.simplify());
 
-          enc.getSolver().add(enc.mkNot(allImplications));
+          //enc.getSolver().add(enc.mkNot(allImplications));
+          enc.add(allImplications);
 
           // Return some dummy instrumentation
           Map<String, BoolExpr> vars = new HashMap<>();
           for (String router : srcRouters) {
-            vars.put(router, enc.mkFalse());
+            vars.put(router, enc.mkTrue());
           }
           return vars;
         },
