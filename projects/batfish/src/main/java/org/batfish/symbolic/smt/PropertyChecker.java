@@ -86,8 +86,36 @@ public class PropertyChecker {
   class Ips {
     public IpWildcard srcip;
     public IpWildcard dstip;
-    public String prop;
+    public String prop = "";
     public int intval;
+    public int bound=0;
+    public int fails=0;
+    public String ingressNodeRegex="";
+    public String finalNodeRegex="";
+
+    public Ips(Map<String, String> argues, String property) {
+      prop = property;
+      if (argues.containsKey("finalNodeRegex")) {
+        finalNodeRegex = argues.get("finalNodeRegex");
+      }
+      if (argues.containsKey("ingressNodeRegex")) {
+        ingressNodeRegex = argues.get("ingressNodeRegex");
+      }
+      if (argues.containsKey("failures")) {
+        fails = Integer.parseInt(argues.get("failures"));
+      }
+      if (argues.containsKey("bound")) {
+        bound = Integer.parseInt(argues.get("bound"));
+      }
+      if (argues.containsKey("dstIps")) {
+        dstip = new IpWildcard(argues.get("dstIps"));
+      }
+      if (argues.containsKey("srcIps")) {
+        srcip = new IpWildcard(argues.get("srcIps"));
+      }
+    }
+
+    /*
     public Ips(IpWildcard src, IpWildcard dst, String property) {
       srcip = src;
       dstip = dst;
@@ -98,7 +126,7 @@ public class PropertyChecker {
       dstip = dst;
       prop = property;
       intval = Integer.parseInt(k);
-    }
+    }*/
   }
 
 
@@ -793,21 +821,38 @@ public class PropertyChecker {
     IpWildcard s1, s2;
     String line;
     try {
-      System.out.println("\nRead properties.txt\n");
+      //System.out.println("\nRead properties.txt\n");
       BufferedReader reader = new BufferedReader(new FileReader("properties.txt"));
+      String policy="";
+      Map<String, String> argues;
       while((line = reader.readLine()) != null) {
+        argues = new HashMap<>();
         String[] split = line.split(" ");
-        s1 = new IpWildcard(split[1]);
-        s2 = new IpWildcard(split[2]);
-        srcIps.add(s1);
-        dstIps.add(s2);
+        for(String temp : split) {
+          if (temp.contains("=")) {
+            String[] var = temp.split("=");
+            String valvar = var[1].replace("\"","").replace(",","").replace("[","").replace("]","");
+            //System.out.println(var[0] + " " + var[1] + " " + valvar);
+            argues.put(var[0], valvar);
+          } else {
+            policy = temp;
+          }
+        }
+
         Ips ip_set;
+        ip_set = new Ips(argues, policy);
+        /*
         if (split.length > 3) {
           ip_set = new Ips(s1, s2, split[0], split[3]);
         } else {
           ip_set = new Ips(s1, s2, split[0]);
-        }
+        }*/
         ips.add(ip_set);
+        //s1 = new IpWildcard(split[1]);
+        //s2 = new IpWildcard(split[2]);
+        srcIps.add(ip_set.srcip);
+        dstIps.add(ip_set.dstip);
+
       }
       reader.close();
     } catch (IOException e) {
@@ -846,9 +891,18 @@ public class PropertyChecker {
                 SortedSet<IpWildcard> dIps = new TreeSet<IpWildcard>();
                 sIps.add(currIp.srcip);
                 dIps.add(currIp.dstip);
-
+                h.setSrcIps(sIps);
+                h.setDstIps(dIps);
+                q.setHeaderSpace(h);
+                if (currIp.ingressNodeRegex != "") {
+                  q.setIngressNodeRegex(currIp.ingressNodeRegex);  
+                }
+                if (currIp.finalNodeRegex != "") {
+                  q.setFinalNodeRegex(currIp.finalNodeRegex);
+                }
+                q.setFailures(currIp.fails);
                 switch (currIp.prop) {
-                  case "reachable":
+                  case "smt-reachability":
                   {
                     h.setSrcIps(sIps);
                     h.setDstIps(dIps);
@@ -859,6 +913,17 @@ public class PropertyChecker {
                     HeaderLocationQuestion question = new HeaderLocationQuestion(q);
                     //question.setHeaderSpace(ec.getHeaderSpace());
                     question.setHeaderSpace(h);
+                    if (currIp.ingressNodeRegex != "") {
+                      question.setIngressNodeRegex(currIp.ingressNodeRegex);  
+                    }
+                    if (currIp.finalNodeRegex != "") {
+                      question.setFinalNodeRegex(currIp.finalNodeRegex);
+                    }
+                    /*
+                    question.setIngressNodeRegex(currIp.ingressNodeRegex);
+                    question.setFinalNodeRegex(currIp.finalNodeRegex);
+                    */
+                    question.setFailures(currIp.fails);
 
                     // Get the EC graph and mapping
                     Graph g = ec.getGraph();
@@ -906,7 +971,7 @@ public class PropertyChecker {
                     enc = newenc;
                     break;
                   }
-                  case "block":
+                  case "smt-block":
                   {
                     h.setSrcIps(sIps);
                     h.setDstIps(dIps);
@@ -917,6 +982,13 @@ public class PropertyChecker {
                     HeaderLocationQuestion question = new HeaderLocationQuestion(q);
                     //question.setHeaderSpace(ec.getHeaderSpace());
                     question.setHeaderSpace(h);
+                    if (currIp.ingressNodeRegex != "") {
+                      question.setIngressNodeRegex(currIp.ingressNodeRegex);  
+                    }
+                    if (currIp.finalNodeRegex != "") {
+                      question.setFinalNodeRegex(currIp.finalNodeRegex);
+                    }
+                    question.setFailures(currIp.fails);
 
                     // Get the EC graph and mapping
                     Graph g = ec.getGraph();
@@ -964,7 +1036,7 @@ public class PropertyChecker {
                     enc = newenc;
                     break;
                   }
-                  case "blackhole":
+                  case "smt-blackhole":
                   {
                     h.setSrcIps(sIps);
                     h.setDstIps(dIps);
@@ -974,6 +1046,13 @@ public class PropertyChecker {
                     HeaderLocationQuestion question = new HeaderLocationQuestion(q);
                     //question.setHeaderSpace(ec.getHeaderSpace());
                     question.setHeaderSpace(h);
+                    if (currIp.ingressNodeRegex != "") {
+                      question.setIngressNodeRegex(currIp.ingressNodeRegex);  
+                    }
+                    if (currIp.finalNodeRegex != "") {
+                      question.setFinalNodeRegex(currIp.finalNodeRegex);
+                    }
+                    question.setFailures(currIp.fails);
 
                     // Get the EC graph and mapping
                     Graph g = ec.getGraph();
@@ -1043,7 +1122,7 @@ public class PropertyChecker {
                     enc = newenc;
                     break;
                   }
-                  case "routingloop":
+                  case "smt-routing-loop":
                   {
                     h.setSrcIps(sIps);
                     h.setDstIps(dIps);
@@ -1053,6 +1132,13 @@ public class PropertyChecker {
                     HeaderLocationQuestion question = new HeaderLocationQuestion(q);
                     //question.setHeaderSpace(ec.getHeaderSpace());
                     question.setHeaderSpace(h);
+                    if (currIp.ingressNodeRegex != "") {
+                      question.setIngressNodeRegex(currIp.ingressNodeRegex);  
+                    }
+                    if (currIp.finalNodeRegex != "") {
+                      question.setFinalNodeRegex(currIp.finalNodeRegex);
+                    }
+                    question.setFailures(currIp.fails);
 
                     // Get the EC graph and mapping
                     Graph g = ec.getGraph();
@@ -1115,7 +1201,7 @@ public class PropertyChecker {
                     enc = newenc;
                     break;
                   }
-                  case "bounded":
+                  case "smt-bounded-length":
                   {
                     h.setSrcIps(sIps);
                     h.setDstIps(dIps);
@@ -1126,6 +1212,13 @@ public class PropertyChecker {
                     HeaderLocationQuestion question = new HeaderLocationQuestion(q);
                     //question.setHeaderSpace(ec.getHeaderSpace());
                     question.setHeaderSpace(h);
+                    if (currIp.ingressNodeRegex != "") {
+                      question.setIngressNodeRegex(currIp.ingressNodeRegex);  
+                    }
+                    if (currIp.finalNodeRegex != "") {
+                      question.setFinalNodeRegex(currIp.finalNodeRegex);
+                    }
+                    question.setFailures(currIp.fails);
 
                     // Get the EC graph and mapping
                     Graph g = ec.getGraph();
@@ -1152,7 +1245,7 @@ public class PropertyChecker {
                     // Add environment constraints for base case
                     addEnvironmentConstraints(newenc, question.getBaseEnvironmentType());
 
-                    prop = boundedLength.apply(newenc, srcRouters, destPorts1, currIp.intval);
+                    prop = boundedLength.apply(newenc, srcRouters, destPorts1, currIp.bound);
 
                     BoolExpr allProp = newenc.mkTrue();
                     
@@ -1589,7 +1682,7 @@ public class PropertyChecker {
       }
       someBlackHole = ctx.mkOr(someBlackHole, ctx.mkAnd(isFwdTo, doesNotFwd));
     }
-    System.out.println("someBlackHole " + someBlackHole);
+    //System.out.println("someBlackHole " + someBlackHole);
     if (enc.getFailures() != 0) {
       enc._propertRep = enc.mkNot(someBlackHole);
     } else {

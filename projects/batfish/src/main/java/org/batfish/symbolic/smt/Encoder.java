@@ -66,7 +66,7 @@ import org.batfish.symbolic.utils.Tuple;
  */
 public class Encoder {
 
-  static final Boolean ENABLE_DEBUGGING = true;
+  static final Boolean ENABLE_DEBUGGING = false;
   static final String MAIN_SLICE_NAME = "SLICE-MAIN_";
   private static final boolean ENABLE_UNSAT_CORE = false;
   private int _encodingId;
@@ -293,13 +293,15 @@ public class Encoder {
 
     _unsatCore = new UnsatCore(ENABLE_UNSAT_CORE);
 
-    if (id == 0) {
+    if (id == 0 || !_tcEncoderExists) {
       initFailedLinkVariables();
     } else {
       _symbolicFailures = enc.getSymbolicFailures();
     }
     modInitSlices(_question.getHeaderSpace(), graph);
-    trackFailVars();
+    if (id == 0 || !_tcEncoderExists) {
+      trackFailVars();
+    }
   }
 
 
@@ -410,7 +412,7 @@ public class Encoder {
       String line;
       File f = new File(weightPath);
       if(f.exists() && !f.isDirectory()) { 
-        System.out.println("\nRead weights.txt\n");
+        //System.out.println("\nRead weights.txt\n");
         BufferedReader reader = new BufferedReader(new FileReader(weightPath));
         while((line = reader.readLine()) != null) {
           String[] split = line.split(" ");
@@ -423,7 +425,7 @@ public class Encoder {
 
       f = new File(objPath);
       if(f.exists() && !f.isDirectory()) { 
-        System.out.println("\nRead obj.txt\n");
+        //System.out.println("\nRead obj.txt\n");
         BufferedReader reader = new BufferedReader(new FileReader(objPath));
         while((line = reader.readLine()) != null) {
           String[] split = line.split(" ");
@@ -469,17 +471,20 @@ public class Encoder {
   }
 
   private void trackFailVars() {
+    Set<String> existAlready = new HashSet<>();
     for (List<GraphEdge> edges : _graph.getEdgeMap().values()) {
       for (GraphEdge ge : edges) {
         if (ge.getPeer() == null) {
           Interface i = ge.getStart();
           String name = getId() + "_FAILED-EDGE_" + ge.getRouter() + "_" + i.getName();
-          Symbol temp = getCtx().mkSymbol(name);
-          _slices.get(MAIN_SLICE_NAME).getAllArithVarsList().add(temp); 
+          if (!existAlready.contains(name)) {
+            Symbol temp = getCtx().mkSymbol(name);
+            _slices.get(MAIN_SLICE_NAME).getAllArithVarsList().add(temp); 
+            existAlready.add(name);
+          }
         }
       }
     }
-
     for (Entry<String, Set<String>> entry : _graph.getNeighbors().entrySet()) {
       String router = entry.getKey();
       Set<String> peers = entry.getValue();
@@ -487,9 +492,11 @@ public class Encoder {
         // sort names for unique
         String pair = (router.compareTo(peer) < 0 ? router + "_" + peer : peer + "_" + router);
         String name = getId() + "_FAILED-EDGE_" + pair;
-        Symbol temp = getCtx().mkSymbol(name);
-        _slices.get(MAIN_SLICE_NAME).getAllArithVarsList().add(temp); 
-
+        if (!existAlready.contains(name)) {
+          Symbol temp = getCtx().mkSymbol(name);
+          _slices.get(MAIN_SLICE_NAME).getAllArithVarsList().add(temp); 
+          existAlready.add(name);
+        }
       }
     }
   }
@@ -1150,18 +1157,6 @@ public class Encoder {
       }
     }
 
-    long start = System.currentTimeMillis();
-    Status status = _optsolve.Check();
-    long time = System.currentTimeMillis() - start;
-
-    if (ENABLE_BENCHMARKING) {
-      VerificationStats stats =
-          new VerificationStats(numNodes, numEdges, numVariables, numConstraints, time);
-      System.out.println("Constraints: " + stats.getNumConstraints());
-      System.out.println("Variables: " + stats.getNumVariables());
-      System.out.println("Z3 Time: " + stats.getTime());
-      System.out.println("Stats: \n" + _optsolve.getStatistics());
-    }
     try {
       /*
       BufferedWriter writer = new BufferedWriter(new FileWriter("SMT.smt"));
@@ -1174,6 +1169,25 @@ public class Encoder {
       writer.close();
     } catch (IOException e) {
       System.out.println("IO error");
+    }
+    //*
+    if (true) {
+      VerificationResult res = new VerificationResult(true, null, null, null, null, null);
+      System.out.println("\n\nUNSATISFIABLE\n\n");
+      return new Tuple<>(res, null);
+    }//*/
+
+    long start = System.currentTimeMillis();
+    Status status = _optsolve.Check();
+    long time = System.currentTimeMillis() - start;
+
+    if (ENABLE_BENCHMARKING) {
+      VerificationStats stats =
+          new VerificationStats(numNodes, numEdges, numVariables, numConstraints, time);
+      System.out.println("Constraints: " + stats.getNumConstraints());
+      System.out.println("Variables: " + stats.getNumVariables());
+      System.out.println("Z3 Time: " + stats.getTime());
+      System.out.println("Stats: \n" + _optsolve.getStatistics());
     }
 
     if (status == Status.UNSATISFIABLE) {

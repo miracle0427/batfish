@@ -3212,6 +3212,34 @@ private void addSymbolicPacketBoundConstraints() {
         temp = getCtx().mkSymbol(symName + "_routerID");
         _allArithVarsList.add(temp);        
       }
+      if (vars.getRouterId() != null) {
+        _allArithVars.add(vars.getRouterId());
+        temp = getCtx().mkSymbol(symName + "_routerID");
+        _allArithVarsList.add(temp);        
+      }
+      if (vars.getRouterId() != null) {
+        _allArithVars.add(vars.getRouterId());
+        temp = getCtx().mkSymbol(symName + "_routerID");
+        _allArithVarsList.add(temp);        
+      }
+      if (vars.getOspfArea() != null) {
+        _allBVVars.add(vars.getOspfArea()._bitvec);
+        _allBVValues.put(_symbolicPacket.getDstIp(), vars.getOspfArea()._numBits);
+        _allArithVars.add(vars.getRouterId());
+        temp = getCtx().mkSymbol(symName + "_ospfArea");
+        _allBVVarsList.add(temp);
+        _allBVValuesMap.put(temp, vars.getOspfArea()._numBits);
+
+      }
+      if (vars.getOspfType() != null) {
+        _allBVVars.add(vars.getOspfType()._bitvec);
+        _allBVValues.put(_symbolicPacket.getDstIp(), vars.getOspfType()._numBits);
+        _allArithVars.add(vars.getRouterId());
+        temp = getCtx().mkSymbol(symName + "_ospfType");
+        _allBVVarsList.add(temp); 
+        _allBVValuesMap.put(temp, vars.getOspfType()._numBits);       
+      }
+
     }
 
     getSymbolicFailures().getFailedInternalLinks().forEach((router, peer, var) -> _allArithVars.add(var));

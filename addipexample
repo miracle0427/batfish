@@ -1,2 +1,0 @@
-init-testrig test_rigs/smt-examples/AddPrefix
-get smt-reachability dstIps=["105.0.1.4"], srcIps=["103.0.3.3"]
