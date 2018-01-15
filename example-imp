@@ -1,2 +1,0 @@
-init-testrig test_rigs/smt-examples/ImportChng
-get smt-reachability dstIps=["192.168.42.2"], srcIps=["42.42.42.1"]
