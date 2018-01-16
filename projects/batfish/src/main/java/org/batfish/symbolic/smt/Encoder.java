@@ -93,9 +93,9 @@ public class Encoder {
 
   private UnsatCore _unsatCore;
 
-  private IpWildcard _srcIp;
+  public IpWildcard _srcIp;
   
-  private IpWildcard _dstIp;
+  public IpWildcard _dstIp;
 
   public Map<IpWildcard, Encoder> _dstEncoders;
 

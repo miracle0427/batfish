@@ -271,6 +271,11 @@ class EncoderSlice {
     _originatedNetworks = new Table2<>();
     _allOriginatedNetworks = new Table2<>(); 
 
+    initOptimizations();
+    initOriginatedPrefixes();
+    initCommunities();
+
+    /*
     if (_first) {
       initOptimizations();
       initOriginatedPrefixes();
@@ -283,7 +288,7 @@ class EncoderSlice {
       _namedCommunities = _oldES.getNamedCommunities();
       _communityDependencies = _oldES.getCommunityDependencies();
 
-    }
+    }*/
     initRedistributionProtocols();
     initVariables();
     initAclFunctions();
@@ -387,18 +392,15 @@ class EncoderSlice {
     _inboundAcls = new HashMap<>();
     _outboundAcls = new HashMap<>();
     _forwardsAcross = new Table2<>();
+
     _ospfRedistributed = existsES.getOspfRedistributed();
     _softOspfRedistributed = existsES.getSoftOspfRedistributed();
     _originatedNetworks = existsES.getOriginatedNetworks();
     _allOriginatedNetworks = existsES.getAllOriginatedNetworks(); 
 
-    //initOptimizations();
-    //initOriginatedPrefixes();
-    //initCommunities();
     _allCommunities = existsES.getAllCommunities();
     _namedCommunities = existsES.getNamedCommunities();
     _communityDependencies = existsES.getCommunityDependencies();
-
     //initRedistributionProtocols();
     addDataForwardingVariables();
     initAclFunctions();
@@ -578,7 +580,7 @@ class EncoderSlice {
         Interface i = ge.getStart();
         //System.out.println(ge.toString() + " *");
         IpAccessList outbound = i.getOutgoingFilter();
-        if (outbound != null) {
+        if (outbound != null && existsACL(outbound)) {
           //System.out.println("Outbound ACL " + outbound.toString());
           String outName =
               String.format(
@@ -592,6 +594,10 @@ class EncoderSlice {
 
           BoolExpr outAcl = getCtx().mkBoolConst(outName);
           BoolExpr outAclFunc = computeACL(outbound);
+          /*
+          if (existsACL(outbound)) {
+            System.out.println(router + i.getName() + "-out");
+          }*/
 
           BoolExpr outAclRemove = getCtx().mkBoolConst(_encoder.getId() + "_" + outName + "Remove");
           addSoft(mkNot(outAclRemove), aclWeight, "SoftOutAclRemove");
@@ -619,7 +625,7 @@ class EncoderSlice {
         }
 
         IpAccessList inbound = i.getIncomingFilter();
-        if (inbound != null) {
+        if (inbound != null && existsACL(inbound)) {
           //System.out.println("Inbound ACL " + inbound.toString());
           String inName =
               String.format(
@@ -628,6 +634,9 @@ class EncoderSlice {
 
           BoolExpr inAcl = getCtx().mkBoolConst(inName);
           BoolExpr inAclFunc = computeACL(inbound);
+          /*if (existsACL(inbound)) {
+            System.out.println(router + i.getName() + "-in");
+          }*/
           
           BoolExpr inAclRemove = getCtx().mkBoolConst(_encoder.getId() + "_" + inName + "Remove");
           addSoft(mkNot(inAclRemove), aclWeight, "SoftInAclRemove");
@@ -2323,6 +2332,30 @@ private void addSymbolicPacketBoundConstraints() {
     }
   }
 
+  public boolean matchIpWithPref(IpWildcard addr, Prefix wc) {
+    if (addr.contains(wc.getAddress()) || wc.contains(addr.getIp())) {
+      return true;
+    }
+    return false;
+  }
+
+  private boolean matchIp(IpWildcard addr, IpWildcard wc) {
+    if (addr.contains(wc.getIp()) || wc.contains(addr.getIp())) {
+      return true;
+    }
+    return false;
+  }
+
+  private boolean shouldAddACL(Set<IpWildcard> wcs, IpWildcard addr) {
+    for (IpWildcard wc : wcs) {
+      if(matchIp(addr, wc)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+
   /*
    * Convert a set of wildcards and a packet field to a symbolic boolean expression
    */
@@ -2410,6 +2443,52 @@ private void addSymbolicPacketBoundConstraints() {
     return (BoolExpr) acc.simplify();
   }
 
+  private boolean hasZero(Set<IpWildcard> wcs) {
+    for (IpWildcard wc : wcs) {
+      if(wc.toString().equals("0.0.0.0/0")) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  private boolean existsACL(IpAccessList acl) {
+    if (acl == null) {
+      return false;
+    }
+    List<IpAccessListLine> lines = new ArrayList<>(acl.getLines());
+    Collections.reverse(lines);
+    //bool exists = false;
+    for (IpAccessListLine l : lines) {
+      if (l.getDstIps() == null && l.getSrcIps() == null) {
+        continue;
+      }
+      if (l.getSrcIps() == null) { 
+        if (hasZero(l.getDstIps())) {
+          continue;
+        }
+      } else if (l.getDstIps() == null) { 
+        if (hasZero(l.getSrcIps())) {
+          continue;
+        }
+      } else {
+        if (hasZero(l.getSrcIps()) && hasZero(l.getDstIps())) {
+          continue;
+        }
+      }
+      boolean individualExists = true;
+      if (l.getDstIps() != null && _encoder._dstIp != null) {
+        individualExists = individualExists & shouldAddACL(l.getDstIps(), _encoder._dstIp);
+      }
+      if (l.getSrcIps() != null && _encoder._srcIp != null) {
+        individualExists = individualExists & shouldAddACL(l.getSrcIps(), _encoder._srcIp);
+      }
+      if (individualExists == true) {
+        return true;
+      }
+    }
+    return false;
+  }
   /*
    * Convert an Access Control List (ACL) to a symbolic boolean expression.
    * The default action in an ACL is to deny all traffic.
@@ -2424,22 +2503,47 @@ private void addSymbolicPacketBoundConstraints() {
 
     List<IpAccessListLine> lines = new ArrayList<>(acl.getLines());
     Collections.reverse(lines);
-
     for (IpAccessListLine l : lines) {
       BoolExpr local = null;
 
-      if (l.getDstIps() != null) {
-        BoolExpr val = computeWildcardMatch(l.getDstIps(), _symbolicPacket.getDstIp());
-        val = l.getDstIps().isEmpty() ? mkTrue() : val;
-        local = val;
+      boolean individualExists = true;
+      if (l.getDstIps() != null  && _encoder._dstIp != null) {
+        individualExists = individualExists & shouldAddACL(l.getDstIps(), _encoder._dstIp);
+      }
+      if (l.getSrcIps() != null && _encoder._srcIp != null) {
+        individualExists = individualExists & shouldAddACL(l.getSrcIps(), _encoder._srcIp);
+      }
+      if (individualExists == false) {
+        continue;
       }
 
-      if (l.getSrcIps() != null) {
-        BoolExpr val = computeWildcardMatch(l.getSrcIps(), _symbolicPacket.getSrcIp());
-        val = l.getDstIps().isEmpty() ? mkTrue() : val;
-        local = (local == null ? val : mkAnd(local, val));
-      }
+      if (_encoder._dstIp != null) {
+        if (l.getDstIps() != null && shouldAddACL(l.getDstIps(), _encoder._dstIp)) {
+          BoolExpr val = computeWildcardMatch(l.getDstIps(), _symbolicPacket.getDstIp());
+          val = l.getDstIps().isEmpty() ? mkTrue() : val;
+          local = val;
+        }
+      } else {
+        if (l.getDstIps() != null) {
+          BoolExpr val = computeWildcardMatch(l.getDstIps(), _symbolicPacket.getDstIp());
+          val = l.getDstIps().isEmpty() ? mkTrue() : val;
+          local = val;
+        }
 
+      }
+      if (_encoder._srcIp != null) {
+        if (_encoder._srcIp != null && l.getSrcIps() != null && shouldAddACL(l.getSrcIps(), _encoder._srcIp)) {
+          BoolExpr val = computeWildcardMatch(l.getSrcIps(), _symbolicPacket.getSrcIp());
+          val = l.getDstIps().isEmpty() ? mkTrue() : val;
+          local = (local == null ? val : mkAnd(local, val));
+        }
+      } else {
+        if (l.getSrcIps() != null) {
+          BoolExpr val = computeWildcardMatch(l.getSrcIps(), _symbolicPacket.getSrcIp());
+          val = l.getDstIps().isEmpty() ? mkTrue() : val;
+          local = (local == null ? val : mkAnd(local, val));
+        }
+      }
       if (l.getDscps() != null && !l.getDscps().isEmpty()) {
         throw new BatfishException("detected dscps");
       }
@@ -2693,11 +2797,27 @@ private void addSymbolicPacketBoundConstraints() {
         BoolExpr acc = mkNot(vars.getPermitted());
         for (StaticRoute sr : srs) {
           Prefix p = sr.getNetwork();
+          BoolExpr relevant;
+          if (getEncoder()._dstIp != null && matchIpWithPref(getEncoder()._dstIp, p)) {
+            System.out.println("Only req Stat Remove " + p);
+            /*
+              BoolExpr shouldRemove = getCtx().mkBoolConst(_encoder.getId() + "_"
+               + router + "StaticRouteRemoveSoft" + p);
+              addSoft(shouldRemove, staticWeight, "StaticRemove");
+              _routerConsMap.put(router, mkAnd(_routerConsMap.get(router), shouldRemove));  
+              BoolExpr relevant =
+                  mkAnd(
+                      interfaceActive(iface, proto, e),
+                      isRelevantFor(p, _symbolicPacket.getDstIp()),
+                      notFailed,
+                      shouldRemove);
+            */            
+          }
           BoolExpr shouldRemove = getCtx().mkBoolConst(_encoder.getId() + "_"
            + router + "StaticRouteRemoveSoft" + p);
           addSoft(shouldRemove, staticWeight, "StaticRemove");
           _routerConsMap.put(router, mkAnd(_routerConsMap.get(router), shouldRemove));  
-          BoolExpr relevant =
+          relevant =
               mkAnd(
                   interfaceActive(iface, proto, e),
                   isRelevantFor(p, _symbolicPacket.getDstIp()),
@@ -2996,6 +3116,7 @@ private void addSymbolicPacketBoundConstraints() {
                   this, conf, overallBest, ospfRedistribVars, proto, statements, cost, ge, true);
 
           BoolExpr redisRemove;
+          // remove the sharing of redis concept
           String keyvalue = router + proto.name();
           if (_disableRedis.containsKey(keyvalue)) {
             redisRemove = _disableRedis.get(keyvalue);
@@ -3074,6 +3195,22 @@ private void addSymbolicPacketBoundConstraints() {
             if (_disableOSPF.containsKey(keyvalue)) {
               shouldRemove = _disableOSPF.get(keyvalue);
             } else {
+              if (getEncoder()._dstIp != null && matchIpWithPref(getEncoder()._dstIp, p)) {
+                System.out.println("Only req ospf remove " + p);
+                /*
+                  BoolExpr shouldRemove = getCtx().mkBoolConst(_encoder.getId() + "_"
+                   + router + "StaticRouteRemoveSoft" + p);
+                  addSoft(shouldRemove, staticWeight, "StaticRemove");
+                  _routerConsMap.put(router, mkAnd(_routerConsMap.get(router), shouldRemove));  
+                  BoolExpr relevant =
+                      mkAnd(
+                          interfaceActive(iface, proto, e),
+                          isRelevantFor(p, _symbolicPacket.getDstIp()),
+                          notFailed,
+                          shouldRemove);
+                */            
+              }
+
               shouldRemove = getCtx().mkBoolConst(_encoder.getId() + "_"
                 + router + "OSPFExportRemoveSoft" + p);
               addSoft(shouldRemove, ospfWeight, "OSPFExportRemove"); 
@@ -3126,6 +3263,9 @@ private void addSymbolicPacketBoundConstraints() {
 
         for (Prefix p : allOriginations) {
           // For OSPF, we need to explicitly initiate a route
+          if (getEncoder()._dstIp != null && matchIpWithPref(getEncoder()._dstIp, p)) {
+            System.out.println("Avoid add ospf " + p);
+          }
           if (proto.isOspf()) {
 
             BoolExpr ifaceUp = interfaceActive(iface, proto, e);
