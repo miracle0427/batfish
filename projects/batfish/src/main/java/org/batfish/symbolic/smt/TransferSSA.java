@@ -272,6 +272,16 @@ class TransferSSA {
                 BoolExpr directRoute = _enc.isRelevantFor(originLength, r);
                 ArithExpr newLength = _enc.mkIf(directRoute, originLength, otherLen);
                 result = result.addChangedVariable("PREFIX-LEN", newLength);
+                //if (_enc.matchIpWithPref(_enc.getEncoder()._dstIp))
+                if (_enc.getEncoder()._dstIp != null && _enc.matchIpWithPref(_enc.getEncoder()._dstIp, pfx)) {
+                  /*
+                  BoolExpr shouldRemove = _enc.getCtx().mkBoolConst(_enc.getEncoder().getId() + "_"
+                   + pfx + "Stat-Conn-ExportRemoveSoft" + other.getName());
+                  _enc.addSoft(shouldRemove, _enc.bgpWeight, "SCExportRemove");
+                  _enc._routerConsMap.put(router, _enc.mkAnd(_enc._routerConsMap.get(router), shouldRemove));
+                  return result.setReturnValue(_enc.mkAnd(directRoute, shouldRemove));*/
+                  System.out.println("Only req Stat " + pfx);
+                }
                 BoolExpr shouldRemove = _enc.getCtx().mkBoolConst(_enc.getEncoder().getId() + "_"
                  + pfx + "Stat-Conn-ExportRemoveSoft" + other.getName());
                 _enc.addSoft(shouldRemove, _enc.bgpWeight, "SCExportRemove");
@@ -282,6 +292,16 @@ class TransferSSA {
                 // Also use network statement if OSPF has a route with the correct length
                 SymbolicRoute rec = _enc.getBestNeighborPerProtocol(router, Protocol.OSPF);
                 if (rec != null) {
+                  if (_enc.getEncoder()._dstIp != null && _enc.matchIpWithPref(_enc.getEncoder()._dstIp, pfx)) {
+                    /*
+                    BoolExpr shouldRemove = _enc.getCtx().mkBoolConst(_enc.getEncoder().getId() + "_"
+                     + pfx + "ExportRemoveSoft" + other.getName());
+                    _enc.addSoft(shouldRemove, _enc.bgpWeight, "ExportRemove");
+                    _enc._routerConsMap.put(router, _enc.mkAnd(_enc._routerConsMap.get(router), shouldRemove));
+                    BoolExpr ospfRelevant = _enc.mkAnd(_enc.isRelevantFor(rec.getPrefixLength(), r),
+                     shouldRemove);*/
+                    System.out.println("Only req Export" + pfx);
+                  }
                   BoolExpr shouldRemove = _enc.getCtx().mkBoolConst(_enc.getEncoder().getId() + "_"
                    + pfx + "ExportRemoveSoft" + other.getName());
                   _enc.addSoft(shouldRemove, _enc.bgpWeight, "ExportRemove");

@@ -1,7 +1,7 @@
-acl 1
-bgp 2
-ospf 3
-enable 4
+acl 2
+bgp 3
+ospf 1
+enable 1
 static 5
 filter 6
 redis 7

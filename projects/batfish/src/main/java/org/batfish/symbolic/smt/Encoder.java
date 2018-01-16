@@ -96,9 +96,9 @@ public class Encoder {
 
   private Settings _settings;
 
-  private IpWildcard _srcIp;
+  public IpWildcard _srcIp;
   
-  private IpWildcard _dstIp;
+  public IpWildcard _dstIp;
 
   public Map<IpWildcard, Encoder> _dstEncoders;
 
