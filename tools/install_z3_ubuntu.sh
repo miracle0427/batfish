@@ -61,4 +61,3 @@ strip "${BINDIR}/z3"
 umask "${OLD_UMASK}"
 cd "${OLD_PWD}"
 rm -rf "${WORKING}"
-

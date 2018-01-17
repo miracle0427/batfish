@@ -907,7 +907,6 @@ class TransferSSA {
         break;
       case "LOCAL-PREF":
         p.getData().setLocalPref((ArithExpr) expr);
-        System.out.println("\n3 **** " + expr + "\n\n");
         break;
       case "OSPF-TYPE":
         p.getData().getOspfType().setBitVec((BitVecExpr) expr);
@@ -981,7 +980,6 @@ class TransferSSA {
       Expr t = (trueBranch == null ? p.getData().getLocalPref() : trueBranch);
       Expr f = (falseBranch == null ? p.getData().getLocalPref() : falseBranch);
       ArithExpr newValue = _enc.mkIf(guard, (ArithExpr) t, (ArithExpr) f);
-      System.out.println("\n1. **** " + newValue + "\n\n");
       newValue = _enc.mkIf(r.getReturnAssignedValue(), p.getData().getLocalPref(), newValue);
       ArithExpr ret = createArithVariableWith(p, "LOCAL-PREF", newValue);
       p.getData().setLocalPref(ret);
@@ -1031,14 +1029,22 @@ class TransferSSA {
       return prefMap.get(_currentName);
     }
     TreeSet<Integer> sets = _enc.getLocalPrefSet();
-    int highestVal = sets.last() + 1;
+    int highestVal = sets.last() + 100;
     ArithExpr val = _enc.getCtx().mkInt(highestVal);
     BoolExpr exists = _enc.mkFalse();
     BoolExpr doesChange = _enc.mkFalse();
+    boolean first = false;
     for (Integer intval : sets) {
-      BoolExpr lp1 = _enc.getCtx().mkBoolConst(_currentName + "_localpref_" + (intval-1));
+      BoolExpr lp1 = null;
+      if (first == false) {
+        lp1 = _enc.getCtx().mkBoolConst(_currentName + "_localpref_" + (100));  
+        val = _enc.mkIf(lp1, _enc.getCtx().mkInt(100), val);
+        first = true;
+      } else {
+        lp1 = _enc.getCtx().mkBoolConst(_currentName + "_localpref_" + (intval-1));
+        val = _enc.mkIf(lp1, _enc.getCtx().mkInt(intval-1), val);
+      }
       BoolExpr lp2 = _enc.getCtx().mkBoolConst(_currentName + "_localpref_" + intval);
-      val = _enc.mkIf(lp1, _enc.getCtx().mkInt(intval-1), val);
       //_enc.addSoft(_enc.mkNot(lp1), 2, "localpref");
       val = _enc.mkIf(lp2, _enc.getCtx().mkInt(intval), val);
       if (actualVal == intval) {
@@ -1053,7 +1059,7 @@ class TransferSSA {
     }
     BoolExpr lp = _enc.getCtx().mkBoolConst(_currentName + "_localpref_" + highestVal);
     lp =_enc.mkNot(exists);
-    _enc.addSoft(_enc.mkNot(doesChange), _enc.localprefWeight, "localpref");
+    _enc.addSoft(_enc.mkAnd(_enc.mkNot(doesChange), exists), _enc.localprefWeight, "localpref");
     _enc._routerConsMap.put(_conf.getName(), _enc.mkAnd(_enc._routerConsMap.get(_conf.getName()),
      _enc.mkNot(doesChange)));
     //System.out.println("\nExists: " + lp + "\nVal:  " + val);
@@ -1272,7 +1278,7 @@ class TransferSSA {
         newValue = _enc.mkIf(result.getReturnAssignedValue(), p.getData().getLocalPref(), newValue);
         ArithExpr x = createArithVariableWith(p, "LOCAL-PREF", newValue);
 
-        System.out.println("\n2.  **** " + x + " XX =   " + lpValue);
+        //System.out.println("\n2.  **** " + x + " XX =   " + lpValue);
         //ArithExpr oneh = _enc.mkInt(100);
         ArithExpr getAllVal = getVarLocalPref(lpValue);
         x = getAllVal;//_enc.mkIf(_enc.mkTrue(), oneh, x);

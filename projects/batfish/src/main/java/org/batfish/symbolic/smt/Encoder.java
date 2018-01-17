@@ -19,6 +19,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -118,6 +119,7 @@ public class Encoder {
 
   public int _repairObjective = 0;
 
+  private List<Symbol> _allFailList;
   /**
    * @archie created this variable. optsolve will use same constraints as solver, but can support soft
    * constraints
@@ -330,6 +332,29 @@ public class Encoder {
     _sliceReachability = new HashMap<>();
     HashMap<String, String> cfg = new HashMap<>();
 
+    if (_question.getHeaderSpace().getSrcIps() != null) {
+      _srcIp = _question.getHeaderSpace().getSrcIps().iterator().next();
+    }
+    if (_question.getHeaderSpace().getDstIps() != null) {
+      _dstIp = _question.getHeaderSpace().getDstIps().iterator().next();
+    }
+
+    if (enc == null) {
+      _dstEncoders =  new HashMap<>();
+      _tcEncoders =  new HashMap<>();
+    } else {
+      _dstEncoders = enc._dstEncoders;
+      _tcEncoders = enc._tcEncoders;
+    }
+
+    _dstEncoderExists = _dstEncoders.containsKey(_dstIp);
+    _tcEncoderExists = false;
+
+    if (_dstEncoderExists) {
+      _tcEncoderExists = _tcEncoders.get(_dstIp).containsKey(_srcIp);
+    }
+
+
     // allows for unsat core when debugging
     if (ENABLE_UNSAT_CORE) {
       cfg.put("proof", "true");
@@ -471,6 +496,7 @@ public class Encoder {
   }
 
   private void trackFailVars() {
+    _allFailList = new ArrayList<>();
     Set<String> existAlready = new HashSet<>();
     for (List<GraphEdge> edges : _graph.getEdgeMap().values()) {
       for (GraphEdge ge : edges) {
@@ -479,7 +505,7 @@ public class Encoder {
           String name = getId() + "_FAILED-EDGE_" + ge.getRouter() + "_" + i.getName();
           if (!existAlready.contains(name)) {
             Symbol temp = getCtx().mkSymbol(name);
-            _slices.get(MAIN_SLICE_NAME).getAllArithVarsList().add(temp); 
+            _allFailList.add(temp); 
             existAlready.add(name);
           }
         }
@@ -494,7 +520,7 @@ public class Encoder {
         String name = getId() + "_FAILED-EDGE_" + pair;
         if (!existAlready.contains(name)) {
           Symbol temp = getCtx().mkSymbol(name);
-          _slices.get(MAIN_SLICE_NAME).getAllArithVarsList().add(temp); 
+          _allFailList.add(temp); 
           existAlready.add(name);
         }
       }
@@ -1082,7 +1108,7 @@ public class Encoder {
       List<Symbol> arithlist = _slices.get(MAIN_SLICE_NAME).getAllArithVarsList();
       List<Symbol> bvlist = _slices.get(MAIN_SLICE_NAME).getAllBVVarsList();
       
-      int length = boollist.size() + arithlist.size() + bvlist.size();
+      int length = boollist.size() + arithlist.size() + bvlist.size();// + _allFailList.size();
 
       int index = 0;
       Symbol[] names = new Symbol[length];
@@ -1122,9 +1148,35 @@ public class Encoder {
       _optsolve.Add(king);
       System.out.println(king);
       */
+      //*
+      length = _allFailList.size();
+
+      index = 0;
+      Symbol[] failnames = new Symbol[length];
+      Sort[] failsorts = new Sort[length];
+      //*/
+      for (Symbol temp : _allFailList) {
+        failnames[index] = temp;
+        failsorts[index] = getCtx().getIntSort();
+        index = index + 1;
+      }    
+      /*
       BoolExpr quick = getCtx().mkForall(sorts,
         names, 
       mkImplies(_modelAnd, _propertRep), 1, null , null, null, null);
+      */
+      BoolExpr quick = getCtx().mkForall(failsorts,
+        failnames, 
+      getCtx().mkExists(sorts, names, mkImplies(_modelAnd, _propertRep),
+         1, null , null, null, null), 1, null , null, null, null);
+      
+      /*
+      BoolExpr quick = getCtx().mkForall(failsorts,
+        failnames, 
+        getCtx().mkExists(sorts, names, mkAnd(_modelAnd, _propertRep),
+         1, null , null, null, null) ,
+          1, null , null, null, null);
+      */
       _optsolve.Add(quick);
       //System.out.println(quick);
 
