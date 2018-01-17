@@ -1,0 +1,254 @@
+sat
+(objectives
+ (a 0)
+)
+(model 
+  (define-fun |0_dst-port| () Int
+    0)
+  (define-fun |0_CONTROL-FORWARDING_R3_Serial0| () Bool
+    false)
+  (define-fun |0_R1_OVERALL_BEST_None_prefixLength| () Int
+    24)
+  (define-fun |0_R2_OVERALL_BEST_None_routerID| () Int
+    1246382593)
+  (define-fun |0_R2_BGP_SINGLE-EXPORT__localPref| () Int
+    300)
+  (define-fun |0_R2_BGP_IMPORT_Serial1_localPref| () Int
+    300)
+  (define-fun |0_src-port| () Int
+    0)
+  (define-fun |0_R3_BGP_IMPORT_Serial0_localPref| () Int
+    0)
+  (define-fun |0_0__R2_Serial0_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_R2ImportFilterAddSoft0_R2_BGP_IMPORT_Serial1| () Bool
+    true)
+  (define-fun |0_0__R2_Serial1_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_0_R3_OVERALL_BEST_NoneBGPExportAddSoft| () Bool
+    false)
+  (define-fun |0_0__R3_Serial1_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_0__R1_Loopback0_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_R3_OVERALL_BEST_None_routerID| () Int
+    0)
+  (define-fun |0_R1_BGP_SINGLE-EXPORT__metric| () Int
+    3)
+  (define-fun |0_74.74.74.0/24Stat-Conn-ExportRemoveSoft0_R3_OVERALL_BEST_None| () Bool
+    true)
+  (define-fun |0_R3_OVERALL_BEST_None_adminDist| () Int
+    0)
+  (define-fun |0_R2-StaticRouteAddSoft-R2,Serial1 --> R3,Serial0| () Bool
+    false)
+  (define-fun |0_R3ImportFilterAddSoft0_R3_BGP_IMPORT_Serial0| () Bool
+    true)
+  (define-fun |0_CONTROL-FORWARDING_R2_Serial0| () Bool
+    false)
+  (define-fun |0_R3_BGP_SINGLE-EXPORT__metric| () Int
+    1)
+  (define-fun R3_BGP_IMPORT_Serial0_localpref_199 () Bool
+    false)
+  (define-fun |0_R1_BGP_SINGLE-EXPORT__prefixLength| () Int
+    24)
+  (define-fun |0_R3_BGP_IMPORT_Serial0_metric| () Int
+    0)
+  (define-fun |0_0_R2_OVERALL_BEST_NoneBGPExportAddSoft| () Bool
+    false)
+  (define-fun |0_R2-StaticRouteAddSoft-R2,Serial0 --> R1,Serial0| () Bool
+    false)
+  (define-fun R2_BGP_IMPORT_Serial1_localpref_200 () Bool
+    false)
+  (define-fun |0_0__R1_Serial0_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_0__R2_Loopback0_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_icmp-code| () Int
+    0)
+  (define-fun |0_R3_OVERALL_BEST_None_localPref| () Int
+    100)
+  (define-fun |0_0__R3_Serial0_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_R3_BGP_BEST_None_prefixLength| () Int
+    24)
+  (define-fun |0_42.42.42.0/24ExportRemoveSoft0_R1_OVERALL_BEST_None| () Bool
+    true)
+  (define-fun |0_R2_BGP_SINGLE-EXPORT__metric| () Int
+    2)
+  (define-fun |0_0__R2_Serial0_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_CONTROL-FORWARDING_R2_Serial1| () Bool
+    true)
+  (define-fun |0_R2_BGP_IMPORT_Serial1_permitted| () Bool
+    true)
+  (define-fun |0_R1_OVERALL_BEST_None_routerID| () Int
+    1162167553)
+  (define-fun R3_BGP_IMPORT_Serial0_localpref_299 () Bool
+    false)
+  (define-fun |0_0__R1_Serial1_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_R2_BGP_IMPORT_Serial1_prefixLength| () Int
+    24)
+  (define-fun |0_R3_BGP_SINGLE-EXPORT__permitted| () Bool
+    true)
+  (define-fun |0_R3_BGP_SINGLE-EXPORT__prefixLength| () Int
+    24)
+  (define-fun |0_R1_BGP_SINGLE-EXPORT__permitted| () Bool
+    true)
+  (define-fun R2_BGP_IMPORT_Serial1_localpref_300 () Bool
+    true)
+  (define-fun |0_DATA-FORWARDING_R1_Serial1| () Bool
+    false)
+  (define-fun |0_R3-StaticRouteAddSoft-R3,Serial1 --> R1,Serial1| () Bool
+    false)
+  (define-fun |0_R2_OVERALL_BEST_None_prefixLength| () Int
+    24)
+  (define-fun |0_R3_BGP_SINGLE-EXPORT__localPref| () Int
+    100)
+  (define-fun R3_BGP_IMPORT_Serial0_localpref_200 () Bool
+    true)
+  (define-fun |0_R1_BGP_SINGLE-EXPORT__localPref| () Int
+    300)
+  (define-fun |0_R1_OVERALL_BEST_None_localPref| () Int
+    300)
+  (define-fun R2_BGP_IMPORT_Serial1_localpref_299 () Bool
+    false)
+  (define-fun |0_R2_BGP_SINGLE-EXPORT__permitted| () Bool
+    true)
+  (define-fun |0_R2_BGP_IMPORT_Serial1_metric| () Int
+    1)
+  (define-fun |0_0_R1_OVERALL_BEST_NoneBGPExportAddSoft| () Bool
+    false)
+  (define-fun |0_R3-StaticRouteAddSoft-R3,Serial0 --> R2,Serial1| () Bool
+    false)
+  (define-fun |0_R1-StaticRouteAddSoft-R1,Serial0 --> R2,Serial0| () Bool
+    false)
+  (define-fun |0_0__R2_Serial1_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_0__R3_Serial1_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun R2_BGP_IMPORT_Serial1_localpref_199 () Bool
+    false)
+  (define-fun |0_R3_BGP_IMPORT_Serial0_permitted| () Bool
+    false)
+  (define-fun |0_0__R3_Loopback0_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_icmp-type| () Int
+    0)
+  (define-fun R3_BGP_IMPORT_Serial0_localpref_300 () Bool
+    false)
+  (define-fun |0_R3_OVERALL_BEST_None_prefixLength| () Int
+    24)
+  (define-fun |0_R3_BGP_BEST_None_routerID| () Int
+    707406337)
+  (define-fun |0_R3_BGP_BEST_None_metric| () Int
+    3)
+  (define-fun |0_69.69.69.0/24ExportRemoveSoft0_R2_OVERALL_BEST_None| () Bool
+    true)
+  (define-fun |0_R1_OVERALL_BEST_None_metric| () Int
+    2)
+  (define-fun |0_R3_OVERALL_BEST_None_metric| () Int
+    0)
+  (define-fun |0_R3_BGP_BEST_None_localPref| () Int
+    300)
+  (define-fun |0_R2_BGP_SINGLE-EXPORT__prefixLength| () Int
+    24)
+  (define-fun |0_0__R1_Loopback0_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_R3_BGP_IMPORT_Serial0_prefixLength| () Int
+    0)
+  (define-fun |0_0__R1_Serial1_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_CONTROL-FORWARDING_R1_Serial0| () Bool
+    true)
+  (define-fun |0_0__R2_Loopback0_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_R2_OVERALL_BEST_None_metric| () Int
+    1)
+  (define-fun |0_0__R1_Serial0_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_0__R3_Serial0_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_0__R3_Loopback0_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_ip-protocol| () Int
+    0)
+  (define-fun |0_R3_OVERALL_BEST_None_history| () (_ BitVec 1)
+    #b1)
+  (define-fun |0_CONTROL-FORWARDING_R3_Serial1| () Bool
+    false)
+  (define-fun |0_R2_OVERALL_BEST_None_localPref| () Int
+    300)
+  (define-fun |0_R3_CONNECTED_IMPORT_Loopback0_prefixLength| () Int
+    24)
+  (define-fun |0_CONTROL-FORWARDING_R1_Serial1| () Bool
+    false)
+  (define-fun |0_src-ip| () (_ BitVec 32)
+    #x2a2a2a01)
+  (define-fun |0_dst-ip| () (_ BitVec 32)
+    #x4a4a4a01)
+  (define-fun |0_R1-StaticRouteAddSoft-R1,Serial1 --> R3,Serial1| () Bool
+    false)
+  (define-fun |0_DATA-FORWARDING_R1_Loopback0| () Bool
+    false)
+  (define-fun |0_DATA-FORWARDING_R1_Serial0| () Bool
+    true)
+  (define-fun |0_DATA-FORWARDING_R3_Serial1| () Bool
+    false)
+  (define-fun |0_DATA-FORWARDING_R3_Serial0| () Bool
+    false)
+  (define-fun |0_DATA-FORWARDING_R3_Loopback0| () Bool
+    false)
+  (define-fun |0_DATA-FORWARDING_R2_Serial0| () Bool
+    false)
+  (define-fun |0_DATA-FORWARDING_R2_Serial1| () Bool
+    true)
+  (define-fun |0_DATA-FORWARDING_R2_Loopback0| () Bool
+    false)
+  (define-fun |0_CONTROL-FORWARDING_R1_Loopback0| () Bool
+    false)
+  (define-fun |0_CONTROL-FORWARDING_R3_Loopback0| () Bool
+    false)
+  (define-fun |0_CONTROL-FORWARDING_R2_Loopback0| () Bool
+    false)
+  (define-fun |0_R3_OVERALL_BEST_None_permitted| () Bool
+    true)
+  (define-fun |0_R1_BGP_IMPORT_Serial1_choice| () Bool
+    false)
+  (define-fun |0_R1_BGP_IMPORT_Serial0_choice| () Bool
+    true)
+  (define-fun |0_R3_CONNECTED_IMPORT_Loopback0_choice| () Bool
+    true)
+  (define-fun |0_R3_BGP_IMPORT_Serial1_choice| () Bool
+    true)
+  (define-fun |0_R3_BGP_IMPORT_Serial0_choice| () Bool
+    false)
+  (define-fun |0_R2_BGP_IMPORT_Serial0_choice| () Bool
+    false)
+  (define-fun |0_R2_BGP_IMPORT_Serial1_choice| () Bool
+    true)
+  (define-fun |0_R1_OVERALL_BEST_None_permitted| () Bool
+    true)
+  (define-fun |0_R3_CONNECTED_BEST_None_permitted| () Bool
+    true)
+  (define-fun |0_R3_CONNECTED_BEST_None_prefixLength| () Int
+    24)
+  (define-fun |0_R3_BGP_BEST_None_permitted| () Bool
+    true)
+  (define-fun |0_R2_OVERALL_BEST_None_permitted| () Bool
+    true)
+  (define-fun |0_R3_CONNECTED_IMPORT_Loopback0_permitted| () Bool
+    true)
+  (define-fun |0_FAILED-EDGE_R1_Loopback0| () Int
+    0)
+  (define-fun |0_FAILED-EDGE_R3_Loopback0| () Int
+    0)
+  (define-fun |0_FAILED-EDGE_R1_R3| () Int
+    0)
+  (define-fun |0_FAILED-EDGE_R1_R2| () Int
+    0)
+  (define-fun |0_FAILED-EDGE_R2_Loopback0| () Int
+    0)
+  (define-fun |0_FAILED-EDGE_R2_R3| () Int
+    0)
+)

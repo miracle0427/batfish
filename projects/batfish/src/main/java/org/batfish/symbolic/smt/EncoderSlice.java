@@ -2798,9 +2798,11 @@ private void addSymbolicPacketBoundConstraints() {
         for (StaticRoute sr : srs) {
           Prefix p = sr.getNetwork();
           BoolExpr relevant;
+          System.out.println("Static " + p);
+          /*
           if (getEncoder()._dstIp != null && matchIpWithPref(getEncoder()._dstIp, p)) {
             System.out.println("Only req Stat Remove " + p);
-            /*
+            
               BoolExpr shouldRemove = getCtx().mkBoolConst(_encoder.getId() + "_"
                + router + "StaticRouteRemoveSoft" + p);
               addSoft(shouldRemove, staticWeight, "StaticRemove");
@@ -2811,8 +2813,8 @@ private void addSymbolicPacketBoundConstraints() {
                       isRelevantFor(p, _symbolicPacket.getDstIp()),
                       notFailed,
                       shouldRemove);
-            */            
-          }
+                        
+          }*/
           BoolExpr shouldRemove = getCtx().mkBoolConst(_encoder.getId() + "_"
            + router + "StaticRouteRemoveSoft" + p);
           addSoft(shouldRemove, staticWeight, "StaticRemove");
@@ -3186,41 +3188,32 @@ private void addSymbolicPacketBoundConstraints() {
         //System.out.println("Originations " + originations + " All " + allOriginations);
         for (Prefix p : originations) {
           // For OSPF, we need to explicitly initiate a route
+          /*
+          if (getEncoder()._dstIp != null && !matchIpWithPref(getEncoder()._dstIp, p)) {
+            //System.out.println("Only req ospf remove " + p);
+            continue;
+          }*/
           if (proto.isOspf()) {
 
             BoolExpr ifaceUp = interfaceActive(iface, proto, e);
             BoolExpr relevantPrefix = isRelevantFor(p, _symbolicPacket.getDstIp());
-            BoolExpr shouldRemove;
-            String keyvalue = router + p;
-            if (_disableOSPF.containsKey(keyvalue)) {
-              shouldRemove = _disableOSPF.get(keyvalue);
-            } else {
-              if (getEncoder()._dstIp != null && matchIpWithPref(getEncoder()._dstIp, p)) {
-                System.out.println("Only req ospf remove " + p);
-                /*
-                  BoolExpr shouldRemove = getCtx().mkBoolConst(_encoder.getId() + "_"
-                   + router + "StaticRouteRemoveSoft" + p);
-                  addSoft(shouldRemove, staticWeight, "StaticRemove");
-                  _routerConsMap.put(router, mkAnd(_routerConsMap.get(router), shouldRemove));  
-                  BoolExpr relevant =
-                      mkAnd(
-                          interfaceActive(iface, proto, e),
-                          isRelevantFor(p, _symbolicPacket.getDstIp()),
-                          notFailed,
-                          shouldRemove);
-                */            
+            if (getEncoder()._dstIp != null && matchIpWithPref(getEncoder()._dstIp, p)) {
+              BoolExpr shouldRemove;
+              String keyvalue = router + p;
+              if (_disableOSPF.containsKey(keyvalue)) {
+                shouldRemove = _disableOSPF.get(keyvalue);
+              } else {
+                shouldRemove = getCtx().mkBoolConst(_encoder.getId() + "_"
+                  + router + "OSPFExportRemoveSoft" + p);
+                addSoft(shouldRemove, ospfWeight, "OSPFExportRemove"); 
+                _routerConsMap.put(router, mkAnd(_routerConsMap.get(router), shouldRemove));  
+                _disableOSPF.put(keyvalue, shouldRemove);
               }
-
-              shouldRemove = getCtx().mkBoolConst(_encoder.getId() + "_"
-                + router + "OSPFExportRemoveSoft" + p);
-              addSoft(shouldRemove, ospfWeight, "OSPFExportRemove"); 
-              _routerConsMap.put(router, mkAnd(_routerConsMap.get(router), shouldRemove));  
-              _disableOSPF.put(keyvalue, shouldRemove);
+              /*BoolExpr shouldRemove = getCtx().mkBoolConst(_encoder.getId() + "_"
+               + router + "OSPFExportRemoveSoft" + p);
+              addSoft(shouldRemove, 3, "OSPFExportRemove");*/
+              relevantPrefix = mkAnd(relevantPrefix, shouldRemove);
             }
-            /*BoolExpr shouldRemove = getCtx().mkBoolConst(_encoder.getId() + "_"
-             + router + "OSPFExportRemoveSoft" + p);
-            addSoft(shouldRemove, 3, "OSPFExportRemove");*/
-            relevantPrefix = mkAnd(relevantPrefix, shouldRemove);
             BoolExpr relevant = mkAnd(ifaceUp, relevantPrefix);
 
             int adminDistance = defaultAdminDistance(conf, proto);
@@ -3263,9 +3256,11 @@ private void addSymbolicPacketBoundConstraints() {
 
         for (Prefix p : allOriginations) {
           // For OSPF, we need to explicitly initiate a route
-          if (getEncoder()._dstIp != null && matchIpWithPref(getEncoder()._dstIp, p)) {
-            System.out.println("Avoid add ospf " + p);
-          }
+          /*
+          if (getEncoder()._dstIp != null && !matchIpWithPref(getEncoder()._dstIp, p)) {
+            //System.out.println("Avoid add ospf " + p);
+            continue;
+          }*/
           if (proto.isOspf()) {
 
             BoolExpr ifaceUp = interfaceActive(iface, proto, e);
