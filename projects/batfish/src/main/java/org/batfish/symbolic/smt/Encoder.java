@@ -1108,7 +1108,7 @@ public class Encoder {
       List<Symbol> arithlist = _slices.get(MAIN_SLICE_NAME).getAllArithVarsList();
       List<Symbol> bvlist = _slices.get(MAIN_SLICE_NAME).getAllBVVarsList();
       
-      int length = boollist.size() + arithlist.size() + bvlist.size();// + _allFailList.size();
+      int length = boollist.size() + arithlist.size() + bvlist.size() + _allFailList.size();
 
       int index = 0;
       Symbol[] names = new Symbol[length];
@@ -1148,7 +1148,7 @@ public class Encoder {
       _optsolve.Add(king);
       System.out.println(king);
       */
-      //*
+      /*
       length = _allFailList.size();
 
       index = 0;
@@ -1156,20 +1156,20 @@ public class Encoder {
       Sort[] failsorts = new Sort[length];
       //*/
       for (Symbol temp : _allFailList) {
-        failnames[index] = temp;
-        failsorts[index] = getCtx().getIntSort();
+        names[index] = temp;
+        sorts[index] = getCtx().getIntSort();
         index = index + 1;
       }    
-      /*
+      //*
       BoolExpr quick = getCtx().mkForall(sorts,
         names, 
       mkImplies(_modelAnd, _propertRep), 1, null , null, null, null);
-      */
-      BoolExpr quick = getCtx().mkForall(failsorts,
+      //*/
+      /*BoolExpr quick = getCtx().mkForall(failsorts,
         failnames, 
       getCtx().mkExists(sorts, names, mkImplies(_modelAnd, _propertRep),
          1, null , null, null, null), 1, null , null, null, null);
-      
+      */
       /*
       BoolExpr quick = getCtx().mkForall(failsorts,
         failnames, 
