@@ -10,4 +10,4 @@ fi
 BASEDIR="`dirname $SCRIPTPATH`/.."
 source $BASEDIR/scripts/common_preamble.sh
 
-allinone $BATFISH_ARGS -runmode interactive
+$BATFISH_PROG $BATFISH_ARGS -runmode interactive

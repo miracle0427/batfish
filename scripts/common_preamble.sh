@@ -3,14 +3,18 @@
 source $BASEDIR/tools/batfish_functions.sh
 
 TESTRIG_DIR="$BASEDIR/test_rigs"
+BATFISH_PROG="allinone"
 
-while getopts t:h OPT; do
+while getopts t:ch OPT; do
     case $OPT in
         t) # Relative test rig path
             TESTRIG=$OPTARG
             ;;
+        c) # Only run batfish client
+            BATFISH_PROG="batfish_client"
+            ;;
         h | \?)
-            echo "Usage: `basename $0` -t TESTRIG_DIR"
+            echo "Usage: `basename $0` -[h] [-t TESTRIG_DIR] [-c]"
             exit 1
             ;;
     esac

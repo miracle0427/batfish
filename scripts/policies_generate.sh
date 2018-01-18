@@ -12,7 +12,10 @@ source $BASEDIR/scripts/common_preamble.sh
 
 ARCDIR="$BASEDIR/../arc"
 
-$ARCDIR/projects/arc/scripts/minesweeper_tocheck.sh -c minesweeper/$TESTRIG -m 65536
+MINGROUP=3 # For fattree
+MINGROUP=64 # For uwmadison
+
+$ARCDIR/projects/arc/scripts/minesweeper_tocheck.sh -c minesweeper/$TESTRIG -m $MINGROUP
 
 POLICIESDIR="$TESTRIG_DIR/policies"
 mkdir -p $POLICIESDIR

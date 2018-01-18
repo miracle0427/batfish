@@ -16,14 +16,14 @@ CMDFILE="/tmp/policies_check.batfish"
 rm -f $CMDFILE
 
 cat $CHECKFILE | while read POLICY; do
-    echo "get $POLICY" >> $CMDFILE
+    echo "get $POLICY,benchmark=True" >> $CMDFILE
 done
 
 # Check policies
 echo "*** CHECKING POLICIES ***"
 LOGFILE="$TESTRIG_DIR/policies/policies_check.log"
 
-allinone $BATFISH_ARGS -runmode batch -cmdfile $CMDFILE | tee "$LOGFILE"
+$BATFISH_PROG $BATFISH_ARGS -runmode batch -cmdfile $CMDFILE | tee "$LOGFILE"
 
 # Filter checked policies to only include satisfied policies
 VERIFIEDFILE="$TESTRIG_DIR/policies/verified.txt"
