@@ -13,6 +13,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.EnumMap;
@@ -86,7 +87,8 @@ public class PropertyChecker {
     public int fails=0;
     public String ingressNodeRegex="";
     public String finalNodeRegex="";
-
+    public List<String> waypoints;
+    List<List<String>> pathPrefs;
     public Ips(Map<String, String> argues, String property) {
       prop = property;
       if (argues.containsKey("finalNodeRegex")) {
@@ -107,6 +109,21 @@ public class PropertyChecker {
       if (argues.containsKey("srcIps")) {
         srcip = new IpWildcard(argues.get("srcIps"));
       }
+      if (argues.containsKey("waypoints")) {
+        String temp = argues.get("waypoints").replace("[","").replace("]","");
+        waypoints = new ArrayList<String>(Arrays.asList(temp.split(",")));
+      }
+      if (argues.containsKey("prefs")) {
+        String temp = argues.get("prefs").replace("[[","").replace("]]","");
+        pathPrefs = new ArrayList<>();
+        String[] preferences = temp.split("],");
+        for (String aPath : preferences) {
+          aPath = aPath.replace("[","");
+          List<String> aList = new ArrayList<String>(Arrays.asList(aPath.split(",")));
+          pathPrefs.add(aList);
+        }
+      }
+
     }
 
     /*
@@ -764,7 +781,10 @@ public class PropertyChecker {
   private AnswerElement checkAllProperty(
       HeaderLocationQuestion q,
       TriFunction<Encoder, Set<String>, Set<GraphEdge>, Map<String, BoolExpr>> reachability,
-      QuadFunction<Encoder, Set<String>, Set<GraphEdge>, Integer, Map<String, BoolExpr>> boundedLength,/*
+      QuadFunction<Encoder, Set<String>, Set<GraphEdge>, Integer, Map<String, BoolExpr>> boundedLength,
+      QuadFunction<Encoder, Set<String>, Set<GraphEdge>, Integer, Map<String, BoolExpr>> loadBalance,
+      QuadFunction<Encoder, Set<String>, Set<GraphEdge>, List<String>, Map<String, BoolExpr>> waypointing,
+      QuadFunction<Encoder, Set<String>, Set<GraphEdge>, List<List<String>>, Map<String, BoolExpr>> pathPrefs,/*
       TriFunction<Encoder, Set<String>, Set<GraphEdge>, Map<String, BoolExpr>> equalLength,
       TriFunction<Encoder, Set<String>, Set<GraphEdge>, Map<String, BoolExpr>> loadBalancing,*/
       Function<VerifyParam, AnswerElement> answer) {
@@ -788,7 +808,12 @@ public class PropertyChecker {
         for(String temp : split) {
           if (temp.contains("=")) {
             String[] var = temp.split("=");
-            String valvar = var[1].replace("\"","").replace(",","").replace("[","").replace("]","");
+            String valvar;
+            if (!(var[0].equals("prefs") || var[0].equals("waypoints"))) {
+              valvar = var[1].replace("\"","").replace(",","").replace("[","").replace("]","");
+            } else {
+              valvar = var[1].replace("\"","");
+            }
             //System.out.println(var[0] + " " + var[1] + " " + valvar);
             argues.put(var[0], valvar);
           } else {
@@ -1223,6 +1248,201 @@ public class PropertyChecker {
                     enc = newenc;
                     break;
                   }
+                  case "smt-load-balance":
+                  {
+                    h.setSrcIps(sIps);
+                    h.setDstIps(dIps);
+                    //System.out.println(" setSrcIps " + sIps + "  setDstIps " + dIps);
+                    q.setHeaderSpace(h);
+
+                    // Make sure the headerspace is correct
+                    HeaderLocationQuestion question = new HeaderLocationQuestion(q);
+                    //question.setHeaderSpace(ec.getHeaderSpace());
+                    question.setHeaderSpace(h);
+                    if (currIp.ingressNodeRegex != "") {
+                      question.setIngressNodeRegex(currIp.ingressNodeRegex);  
+                    }
+                    if (currIp.finalNodeRegex != "") {
+                      question.setFinalNodeRegex(currIp.finalNodeRegex);
+                    }
+                    question.setFailures(currIp.fails);
+
+                    // Get the EC graph and mapping
+                    Graph g = ec.getGraph();
+
+                    PathRegexes p1 = new PathRegexes(q);
+                    Set<GraphEdge> destPorts1 = findFinalInterfaces(g, p1);
+                    List<String> sourceRouters1 = PatternUtils.findMatchingSourceNodes(g, p1);
+                    inferDestinationHeaderSpace(g, destPorts1, q);
+
+                    srcRouters = mapConcreteToAbstract(ec, sourceRouters1);
+                    Encoder newenc = null;
+                    long l1 = System.currentTimeMillis();
+                    if (firstDone == false) {
+                      newenc = new Encoder(g, question, currIp.srcip, currIp.dstip);
+                    } else {
+                      newenc = new Encoder(enc, g, question, currIp.srcip, currIp.dstip);
+                    }
+                    firstDone = true;
+                    newenc.computeEncoding();
+                    if (question.getBenchmark()) {
+                      System.out.println("  Base Encoding: " + (System.currentTimeMillis() - l1));
+                    }
+
+                    // Add environment constraints for base case
+                    addEnvironmentConstraints(newenc, question.getBaseEnvironmentType());
+
+                    prop = loadBalance.apply(newenc, srcRouters, destPorts1, currIp.bound);
+
+                    BoolExpr allProp = newenc.mkTrue();
+                    
+                    for (String router : srcRouters) {
+                      BoolExpr r = prop.get(router);
+                      allProp = newenc.mkAnd(allProp, r);
+                    }
+                    
+                    if (newenc.getFailures() != 0) {
+                      newenc._propertRep = allProp;
+                    } else {
+                      newenc.add(allProp);
+                    }
+                    //newenc.add(allProp);
+
+                    addFailureConstraints(newenc, destPorts1, failOptions);
+                    newenc.setIfReq();
+                    enc = newenc;
+                    break;
+                  }
+                  case "smt-waypointing":
+                  {
+                    h.setSrcIps(sIps);
+                    h.setDstIps(dIps);
+                    //System.out.println(" setSrcIps " + sIps + "  setDstIps " + dIps);
+                    q.setHeaderSpace(h);
+
+                    // Make sure the headerspace is correct
+                    HeaderLocationQuestion question = new HeaderLocationQuestion(q);
+                    //question.setHeaderSpace(ec.getHeaderSpace());
+                    question.setHeaderSpace(h);
+                    if (currIp.ingressNodeRegex != "") {
+                      question.setIngressNodeRegex(currIp.ingressNodeRegex);  
+                    }
+                    if (currIp.finalNodeRegex != "") {
+                      question.setFinalNodeRegex(currIp.finalNodeRegex);
+                    }
+                    question.setFailures(currIp.fails);
+
+                    // Get the EC graph and mapping
+                    Graph g = ec.getGraph();
+
+                    PathRegexes p1 = new PathRegexes(q);
+                    Set<GraphEdge> destPorts1 = findFinalInterfaces(g, p1);
+                    List<String> sourceRouters1 = PatternUtils.findMatchingSourceNodes(g, p1);
+                    inferDestinationHeaderSpace(g, destPorts1, q);
+
+                    srcRouters = mapConcreteToAbstract(ec, sourceRouters1);
+                    Encoder newenc = null;
+                    long l1 = System.currentTimeMillis();
+                    if (firstDone == false) {
+                      newenc = new Encoder(g, question, currIp.srcip, currIp.dstip);
+                    } else {
+                      newenc = new Encoder(enc, g, question, currIp.srcip, currIp.dstip);
+                    }
+                    firstDone = true;
+                    newenc.computeEncoding();
+                    if (question.getBenchmark()) {
+                      System.out.println("  Base Encoding: " + (System.currentTimeMillis() - l1));
+                    }
+
+                    // Add environment constraints for base case
+                    addEnvironmentConstraints(newenc, question.getBaseEnvironmentType());
+
+                    prop = waypointing.apply(newenc, srcRouters, destPorts1, currIp.waypoints);
+
+                    BoolExpr allProp = newenc.mkTrue();
+                    
+                    for (String router : srcRouters) {
+                      BoolExpr r = prop.get(router);
+                      allProp = newenc.mkAnd(allProp, r);
+                    }
+                    
+                    if (newenc.getFailures() != 0) {
+                      newenc._propertRep = allProp;
+                    } else {
+                      newenc.add(allProp);
+                    }
+                    //newenc.add(allProp);
+
+                    addFailureConstraints(newenc, destPorts1, failOptions);
+                    newenc.setIfReq();
+                    enc = newenc;
+                    break;
+                  }
+                  case "smt-path-preference":
+                  {
+                    h.setSrcIps(sIps);
+                    h.setDstIps(dIps);
+                    //System.out.println(" setSrcIps " + sIps + "  setDstIps " + dIps);
+                    q.setHeaderSpace(h);
+
+                    // Make sure the headerspace is correct
+                    HeaderLocationQuestion question = new HeaderLocationQuestion(q);
+                    //question.setHeaderSpace(ec.getHeaderSpace());
+                    question.setHeaderSpace(h);
+                    if (currIp.ingressNodeRegex != "") {
+                      question.setIngressNodeRegex(currIp.ingressNodeRegex);  
+                    }
+                    if (currIp.finalNodeRegex != "") {
+                      question.setFinalNodeRegex(currIp.finalNodeRegex);
+                    }
+                    question.setFailures(currIp.fails);
+
+                    // Get the EC graph and mapping
+                    Graph g = ec.getGraph();
+
+                    PathRegexes p1 = new PathRegexes(q);
+                    Set<GraphEdge> destPorts1 = findFinalInterfaces(g, p1);
+                    List<String> sourceRouters1 = PatternUtils.findMatchingSourceNodes(g, p1);
+                    inferDestinationHeaderSpace(g, destPorts1, q);
+
+                    srcRouters = mapConcreteToAbstract(ec, sourceRouters1);
+                    Encoder newenc = null;
+                    long l1 = System.currentTimeMillis();
+                    if (firstDone == false) {
+                      newenc = new Encoder(g, question, currIp.srcip, currIp.dstip);
+                    } else {
+                      newenc = new Encoder(enc, g, question, currIp.srcip, currIp.dstip);
+                    }
+                    firstDone = true;
+                    newenc.computeEncoding();
+                    if (question.getBenchmark()) {
+                      System.out.println("  Base Encoding: " + (System.currentTimeMillis() - l1));
+                    }
+
+                    // Add environment constraints for base case
+                    addEnvironmentConstraints(newenc, question.getBaseEnvironmentType());
+
+                    prop = pathPrefs.apply(newenc, srcRouters, destPorts1, currIp.pathPrefs);
+
+                    BoolExpr allProp = newenc.mkTrue();
+                    
+                    for (String router : srcRouters) {
+                      BoolExpr r = prop.get(router);
+                      allProp = newenc.mkAnd(allProp, r);
+                    }
+                    
+                    if (newenc.getFailures() != 0) {
+                      newenc._propertRep = allProp;
+                    } else {
+                      newenc.add(allProp);
+                    }
+                    //newenc.add(allProp);
+
+                    addFailureConstraints(newenc, destPorts1, failOptions);
+                    newenc.setIfReq();
+                    enc = newenc;
+                    break;
+                  }
                   default:
                     System.out.println("\nProperty to check does not exists");
                     break;
@@ -1352,31 +1572,69 @@ public class PropertyChecker {
         Map<String, BoolExpr> boundVars = new HashMap<>();
         lenVars.forEach((n, ae) -> boundVars.put(n, enc.mkLe(ae, bound)));
         return boundVars;
-      },/*
-      (enc, srcRouters, destPorts) -> { // check EqualLength
-        PropertyAdder pa = new PropertyAdder(enc.getMainSlice());
-        Map<String, ArithExpr> lenVars = pa.instrumentPathLength(destPorts);
-        Map<String, BoolExpr> eqVars = new HashMap<>();
-        List<Expr> lens = new ArrayList<>();
-        for (String router : srcRouters) {
-          lens.add(lenVars.get(router));
-        }
-        BoolExpr allEqual = PropertyAdder.allEqual(enc.getCtx(), lens);
-        enc.add(enc.mkNot(allEqual));
-        for (Entry<String, ArithExpr> entry : lenVars.entrySet()) {
-          String name = entry.getKey();
-          BoolExpr b = srcRouters.contains(name) ? allEqual : enc.mkTrue();
-          eqVars.put(name, b);
-        }
-        return eqVars;
       },
-      (enc, srcRouters, destPorts) -> { // check LoadBalancing
+      (enc, srcRouters, destPorts, k) -> { // check loadbalancing
         PropertyAdder pa = new PropertyAdder(enc.getMainSlice());
         Map<String, ArithExpr> loads = pa.instrumentLoad(destPorts);
         Map<String, BoolExpr> prop = new HashMap<>();
+        // TODO: implement this properly after refactoring
         loads.forEach((name, ae) -> prop.put(name, enc.mkTrue()));
         return prop;
-      },*/
+      },
+      (enc, srcRouters, destPorts, waypoints) -> {
+
+        // Compute the collections of waypoints from regexes
+        Pattern empty = Pattern.compile("");
+        Graph g = new Graph(_batfish);
+        List<List<String>> waypointChoices = new ArrayList<>();
+        for (String waypoint : waypoints) {
+          Pattern p = Pattern.compile(waypoint);
+          List<String> choices = PatternUtils.findMatchingNodes(g, p, empty);
+          waypointChoices.add(choices);
+        }
+
+        PropertyAdder pa = new PropertyAdder(enc.getMainSlice());
+        Map<String, ArithExpr> waypointIdxVars =
+            pa.instrumentWaypointing(destPorts, waypointChoices);
+        Map<String, BoolExpr> waypointVars = new HashMap<>();
+        waypointIdxVars.forEach((n, ae) -> waypointVars.put(n, enc.mkEq(ae, enc.mkInt(0))));
+        return waypointVars;
+      },
+      (enc, srcRouters, destPorts, pathPrefs) -> {
+        List<List<String>> pathPrefsRev = new ArrayList<>(pathPrefs);
+        Collections.reverse(pathPrefsRev);
+        // Add the path preference constraints
+        BoolExpr allImplications = enc.mkTrue();
+
+        for (int i = 0; i < pathPrefsRev.size(); i++) {
+          List<String> path = pathPrefsRev.get(i);
+          if (path.isEmpty()) {
+            throw new BatfishException("Empty path: " + path);
+          }
+          // create symbolic expression for forwarding along the path
+          BoolExpr fwdOnPath = forwardOnPath(enc, path);
+
+          BoolExpr notAvailable = enc.mkTrue();
+          for (int j = i + 1; j < pathPrefsRev.size(); j++) {
+            List<String> path2 = pathPrefsRev.get(j);
+            notAvailable = enc.mkAnd(notAvailable, pathNotAvailable(enc, path2));
+          }
+          BoolExpr implication = enc.mkImplies(fwdOnPath, notAvailable);
+          allImplications = enc.mkAnd(allImplications, implication);
+        }
+        //System.out.println("Assert: " + allImplications);
+        //System.out.println("Assert: " + allImplications.simplify());
+
+        //enc.getSolver().add(enc.mkNot(allImplications));
+        enc.add(allImplications);
+
+        // Return some dummy instrumentation
+        Map<String, BoolExpr> vars = new HashMap<>();
+        for (String router : srcRouters) {
+          vars.put(router, enc.mkTrue());
+        }
+        return vars;
+      },
       (vp) -> new SmtMulAnswerElement(vp.getResult())); 
 
   }
