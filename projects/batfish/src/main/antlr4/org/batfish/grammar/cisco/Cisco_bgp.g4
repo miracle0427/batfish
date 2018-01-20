@@ -551,10 +551,8 @@ null_bgp_tail
       (
          BESTPATH
          (
-            AS_PATH
-            (
-               CONFED
-            )
+            ( AS_PATH CONFED )
+            | ( MED ALWAYS )
          )
       )
       | BFD
@@ -568,10 +566,8 @@ null_bgp_tail
             (
                BESTPATH
                (
-                  AS_PATH
-                  (
-                     CONFED
-                  )
+                  ( AS_PATH CONFED )
+                  | ( MED ALWAYS )
                )
             )
             | CLIENT_TO_CLIENT
