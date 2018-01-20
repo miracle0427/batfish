@@ -16,7 +16,7 @@ CMDFILE="/tmp/policies_check.batfish"
 rm -f $CMDFILE
 
 cat $CHECKFILE | while read POLICY; do
-    echo "get $POLICY,benchmark=True" >> $CMDFILE
+    echo "get $POLICY" >> $CMDFILE
 done
 
 # Check policies
