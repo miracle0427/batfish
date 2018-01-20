@@ -37,4 +37,4 @@ wait
 echo "All edgeprops Z3 done"
 end=`date +%s`
 runtime=$((end-start))
-echo "Total time for running all parallel props in unbroken $config: $runtime"
+echo "unbroken,$config,$runtime" >> runoutput
