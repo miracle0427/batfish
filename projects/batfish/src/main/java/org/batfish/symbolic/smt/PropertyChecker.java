@@ -853,9 +853,9 @@ public class PropertyChecker {
             String[] var = temp.split("=");
             String valvar;
             if (!(var[0].equals("prefs") || var[0].equals("waypoints"))) {
-              valvar = var[1].replace("\"","").replace(",","").replace("[","").replace("]","");
+              valvar = var[1].replace("\"","").replace("\'","").replace(",","").replace("[","").replace("]","");
             } else {
-              valvar = var[1].replace("\"","");
+              valvar = var[1].replace("\"","").replace("\'","");
             }
             //System.out.println(var[0] + " " + var[1] + " " + valvar);
             argues.put(var[0], valvar);

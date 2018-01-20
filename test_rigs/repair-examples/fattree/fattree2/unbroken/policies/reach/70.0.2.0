@@ -1,0 +1,4 @@
+smt-reachability srcIps=['70.0.1.0/31'], dstIps=['70.0.2.0/31']
+smt-reachability srcIps=['70.0.3.0/31'], dstIps=['70.0.2.0/31']
+smt-reachability srcIps=['70.0.0.0/31'], dstIps=['70.0.2.0/31']
+smt-reachability srcIps=['70.0.4.0/31'], dstIps=['70.0.2.0/31']
