@@ -38,4 +38,4 @@ wait
 echo "All edgeprops Z3 done"
 end=`date +%s`
 runtime=$((end-start))
-echo "Total time for running all parallel props in rm-neighbor_one $config: $runtime"
+echo "neigh,$config,$runtime" >> runoutput
