@@ -740,7 +740,8 @@ if_null_single
 :
    NO?
    (
-      BCMC_OPTIMIZATION
+      APPLETALK
+      | BCMC_OPTIMIZATION
       | JUMBO
       | LINKDEBOUNCE
       | PHY

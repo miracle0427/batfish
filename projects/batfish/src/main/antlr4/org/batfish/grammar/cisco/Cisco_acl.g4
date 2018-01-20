@@ -72,8 +72,12 @@ appletalk_access_list_null_tail
    action = access_list_action
    (
       (
-         CABLE_RANGE ~NEWLINE*
+         (
+            CABLE_RANGE 
+            | ZONE
+         ) ~NEWLINE*
       )
+      | ADDITIONAL_ZONES
       | OTHER_ACCESS
    )? NEWLINE
 ;

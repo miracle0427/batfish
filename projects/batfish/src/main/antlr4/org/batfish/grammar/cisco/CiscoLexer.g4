@@ -269,6 +269,11 @@ ADDITIONAL_PATHS
    'additional-paths'
 ;
 
+ADDITIONAL_ZONES
+:
+   'additional-zones'
+;
+
 ADDITIVE
 :
    'additive'
