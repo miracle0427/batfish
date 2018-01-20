@@ -3603,6 +3603,7 @@ t_server_null
    NO?
    (
       SINGLE_CONNECTION
+      | TIMEOUT
    ) ~NEWLINE* NEWLINE
 ;
 
