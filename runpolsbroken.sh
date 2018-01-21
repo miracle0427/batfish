@@ -2,7 +2,7 @@ start=`date +%s`
 prop=$1
 for entry in "$prop"/*
 do
-  #echo "$entry"
+  echo "$entry"
   cp $entry properties.txt
   allinone -cmdfile runacl.txt
   entryname=`echo $entry | awk -F"/" '{print $2}'`
