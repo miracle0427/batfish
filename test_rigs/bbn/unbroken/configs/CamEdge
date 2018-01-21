@@ -1,0 +1,428 @@
+
+!
+! Last configuration change at 07:08:51 EDT Fri Apr 11 2008 by pchhabra
+! NVRAM config last updated at 07:08:58 EDT Fri Apr 11 2008 by pchhabra
+!
+version 12.0
+no service pad
+service timestamps debug datetime localtime show-timezone
+service timestamps log datetime localtime
+service password-encryption
+!
+hostname CamEdge
+!
+aaa new-model
+aaa authentication login default radius local
+aaa authorization exec default radius local
+aaa accounting send stop-record authentication failure
+aaa accounting exec default start-stop radius
+aaa accounting commands 15 default stop-only radius
+aaa accounting connection default start-stop radius
+!
+clock timezone EST -5
+clock summer-time EDT recurring 2 Sun Mar 2:00 1 Sun Nov 2:00
+ip subnet-zero
+ip tftp source-interface GigabitEthernet49
+ip name-server 128.33.0.20
+!
+!
+!
+interface Loopback0
+ description Loopback
+ ip address 10.1.8.1 255.255.255.255
+ no ip directed-broadcast
+!
+interface FastEthernet1
+ no ip address
+ no ip directed-broadcast
+ shutdown
+!
+interface FastEthernet2
+ no ip address
+ no ip directed-broadcast
+ shutdown
+!
+interface FastEthernet3
+ description gCamFW
+ ip address 128.33.97.1 255.255.255.224
+ no ip directed-broadcast
+ no ip proxy-arp
+!
+interface FastEthernet4
+ no ip address
+ no ip directed-broadcast
+ shutdown
+!
+interface FastEthernet5
+ description gCamHome
+ ip address 128.33.98.1 255.255.255.224
+ no ip directed-broadcast
+!
+interface FastEthernet6
+ no ip address
+ no ip directed-broadcast
+ shutdown
+!
+interface FastEthernet7
+ description gCamViz
+ ip address 128.33.99.1 255.255.255.240
+ no ip directed-broadcast
+!
+interface FastEthernet8
+ no ip address
+ no ip directed-broadcast
+ shutdown
+!
+interface FastEthernet9
+ description CamVPN
+ ip address 128.89.252.1 255.255.252.0
+ no ip directed-broadcast
+!
+interface FastEthernet10
+ description gCamDmz
+ ip address 128.33.100.1 255.255.255.224
+ no ip directed-broadcast
+!
+interface FastEthernet11
+ no ip address
+ no ip directed-broadcast
+ shutdown
+!
+interface FastEthernet12
+ description Speech DMZ
+ ip address 128.33.103.1 255.255.255.224
+ no ip directed-broadcast
+!
+interface FastEthernet13
+ description Avaya Phone Switch 6/101
+ ip address 128.33.102.1 255.255.255.240 secondary
+ ip address 192.168.102.1 255.255.255.240
+ no ip directed-broadcast
+!
+interface FastEthernet14
+ no ip address
+ no ip directed-broadcast
+ shutdown
+!
+interface FastEthernet15
+ description IDSG machine in 6.102
+ ip address 128.33.118.249 255.255.255.248
+ no ip directed-broadcast
+!
+interface FastEthernet16
+ no ip address
+ no ip directed-broadcast
+ shutdown
+!
+interface FastEthernet17
+ description UPS in 6.102
+ ip address 192.168.32.1 255.255.255.240
+ no ip directed-broadcast
+!
+interface FastEthernet18
+ no ip address
+ no ip directed-broadcast
+ shutdown
+!
+interface FastEthernet19
+ description gCamTADS
+ ip address 128.33.105.1 255.255.255.248
+ no ip directed-broadcast
+!
+interface FastEthernet20
+ no ip address
+ no ip directed-broadcast
+ shutdown
+!
+interface FastEthernet21
+ description gCamVPN
+ ip address 128.33.106.1 255.255.255.248
+ no ip directed-broadcast
+!
+interface FastEthernet22
+ no ip address
+ no ip directed-broadcast
+ shutdown
+!
+interface FastEthernet23
+ no ip address
+ no ip directed-broadcast
+ shutdown
+!
+interface FastEthernet24
+ no ip address
+ no ip directed-broadcast
+ shutdown
+!
+interface FastEthernet25
+ no ip address
+ no ip directed-broadcast
+ shutdown
+!
+interface FastEthernet26
+ no ip address
+ no ip directed-broadcast
+ shutdown
+!
+interface FastEthernet27
+ no ip address
+ no ip directed-broadcast
+ shutdown
+!
+interface FastEthernet28
+ no ip address
+ no ip directed-broadcast
+ shutdown
+!
+interface FastEthernet29
+ no ip address
+ no ip directed-broadcast
+ shutdown
+!
+interface FastEthernet30
+ no ip address
+ no ip directed-broadcast
+ shutdown
+!
+interface FastEthernet31
+ no ip address
+ no ip directed-broadcast
+ shutdown
+!
+interface FastEthernet32
+ no ip address
+ no ip directed-broadcast
+ shutdown
+!
+interface FastEthernet33
+ no ip address
+ no ip directed-broadcast
+ shutdown
+!
+interface FastEthernet34
+ no ip address
+ no ip directed-broadcast
+ shutdown
+!
+interface FastEthernet35
+ description tcammax2
+ ip address 128.89.224.1 255.255.254.0
+ no ip directed-broadcast
+!
+interface FastEthernet36
+ description tcammax1
+ ip address 128.33.224.1 255.255.240.0
+ no ip directed-broadcast
+!
+interface FastEthernet37
+ description Camera for project IMPEL; Bldg 6 back door
+ ip address 192.168.254.1 255.255.255.248
+ no ip directed-broadcast
+!
+interface FastEthernet38
+ description Camera for project IMPEL; Bldg 2 back door
+ ip address 192.168.254.9 255.255.255.248
+ no ip directed-broadcast
+!
+interface FastEthernet39
+ no ip address
+ no ip directed-broadcast
+ shutdown
+!
+interface FastEthernet40
+ description BUSAPPS machines in North Bay of CSC (Charu)
+ ip address 128.33.118.129 255.255.255.224
+ no ip directed-broadcast
+!
+interface FastEthernet41
+ description Camera in Bldg 6 Lobby
+ ip address 192.168.167.57 255.255.255.248
+ no ip directed-broadcast
+!
+interface FastEthernet42
+ description description BU-A machines in North Bay of CSC (Jim Glockling, Susan Katz)
+ ip address 128.89.250.1 255.255.255.0
+ no ip directed-broadcast
+!
+interface FastEthernet43
+ description BU-A machines in North Bay of CSC (KNODE)
+ ip address 192.168.197.1 255.255.255.0 secondary
+ ip address 128.89.82.1 255.255.255.0
+ no ip directed-broadcast
+!
+interface FastEthernet44
+ description BBNTDOORS
+ ip address 192.168.168.121 255.255.255.248
+ no ip directed-broadcast
+ speed 10
+!
+interface FastEthernet45
+ description 8y lab in BLDG 17
+ ip address 128.33.118.1 255.255.255.224
+ no ip directed-broadcast
+!
+interface FastEthernet46
+ description Fax/Voice Server 
+ ip address 192.168.198.65 255.255.255.224
+ no ip directed-broadcast
+!
+interface FastEthernet47
+ description 6.105 Door Security Connection
+ ip address 192.168.168.97 255.255.255.248
+ no ip directed-broadcast
+!
+interface FastEthernet48
+ description 6.604  Security Office
+ ip address 192.168.168.105 255.255.255.248
+ no ip directed-broadcast
+!
+interface GigabitEthernet49
+ description Cambridge Backbone 128.89.64.0/27
+ ip address 192.168.201.1 255.255.255.224 secondary
+ ip address 128.89.64.1 255.255.255.224
+ ip access-group 101 out
+ no ip directed-broadcast
+ ip ospf cost 3
+!
+interface GigabitEthernet50
+ description Cambridge Backbone 128.33.64.0/27
+ ip address 192.168.33.1 255.255.255.224 secondary
+ ip address 128.33.64.1 255.255.255.224
+ ip access-group 102 out
+ no ip directed-broadcast
+ ip ospf cost 3
+!
+router ospf 99
+ router-id 10.1.8.1
+ area 0 authentication
+ redistribute connected metric 1 subnets
+ redistribute static metric 1 subnets
+ passive-interface FastEthernet1
+ passive-interface FastEthernet3
+ passive-interface FastEthernet5
+ passive-interface FastEthernet7
+ passive-interface FastEthernet9
+ passive-interface FastEthernet38
+ passive-interface FastEthernet39
+ passive-interface FastEthernet40
+ passive-interface FastEthernet41
+ passive-interface FastEthernet44
+ passive-interface FastEthernet45
+ passive-interface FastEthernet46
+ passive-interface FastEthernet47
+ passive-interface FastEthernet48
+ network 128.33.8.133 0.0.0.0 area 0
+ network 128.33.64.1 0.0.0.0 area 0
+ network 128.89.64.1 0.0.0.0 area 0
+ default-information originate
+!
+ip classless
+ip route 0.0.0.0 0.0.0.0 128.33.97.4
+ip route 10.2.1.1 255.255.255.255 128.33.8.136
+ip route 10.10.10.0 255.255.255.0 128.33.106.4
+ip route 65.89.202.96 255.255.255.240 128.33.106.4
+ip route 128.33.0.0 255.255.0.0 Null0
+ip route 128.33.240.0 255.255.255.0 128.33.106.4
+ip route 128.33.243.0 255.255.255.0 128.33.101.2
+ip route 128.33.244.0 255.255.255.0 128.33.106.4
+ip route 128.33.245.0 255.255.255.0 128.33.106.4
+ip route 128.33.248.0 255.255.255.0 128.33.106.4
+ip route 128.33.249.0 255.255.255.0 128.33.106.4
+ip route 128.33.250.0 255.255.255.0 128.33.98.4
+ip route 128.33.251.0 255.255.255.0 128.33.106.4
+ip route 128.33.252.0 255.255.255.0 128.33.106.4
+ip route 128.33.253.0 255.255.255.0 128.33.106.4
+ip route 128.33.254.0 255.255.255.0 128.33.106.4
+ip route 128.33.255.0 255.255.255.0 128.33.106.4
+ip route 128.89.0.0 255.255.0.0 Null0
+ip route 169.254.0.0 255.255.0.0 Null0
+ip route 172.16.0.0 255.255.0.0 128.33.98.4
+ip route 192.1.0.0 255.255.0.0 Null0
+ip route 192.1.37.0 255.255.255.0 128.33.97.4
+ip route 192.1.96.0 255.255.240.0 128.33.97.4
+ip route 192.1.98.0 255.255.255.0 128.33.97.4
+ip route 192.1.100.0 255.255.255.0 128.33.97.4
+ip route 192.1.118.0 255.255.255.0 128.33.99.4
+ip route 192.1.120.0 255.255.255.0 128.33.100.4
+ip route 192.1.121.0 255.255.255.0 128.33.100.4
+ip route 192.1.122.0 255.255.255.0 128.33.98.4
+ip route 192.1.124.0 255.255.252.0 128.33.103.4
+ip route 192.1.128.0 255.255.254.0 128.33.103.4
+ip route 192.1.130.0 255.255.254.0 128.33.97.4
+ip route 192.1.251.0 255.255.255.0 128.33.98.4
+ip route 192.168.0.0 255.255.0.0 Null0
+ip route 192.168.21.0 255.255.255.0 128.33.97.4
+ip route 192.168.49.0 255.255.255.0 128.33.106.4
+ip route 192.168.50.0 255.255.255.0 128.33.106.4
+ip route 192.168.50.48 255.255.255.240 128.33.106.4
+ip route 192.168.51.0 255.255.255.0 128.33.106.4
+ip route 192.168.52.0 255.255.255.0 128.33.106.4
+ip route 192.168.53.0 255.255.255.0 128.33.106.4
+ip route 192.168.100.0 255.255.255.224 128.33.97.4
+ip route 192.168.101.0 255.255.255.0 128.33.97.4
+ip route 192.168.103.0 255.255.255.240 128.33.97.4
+ip route 192.168.120.0 255.255.255.0 128.33.100.4
+ip route 192.168.122.0 255.255.255.0 128.33.98.4
+ip route 192.168.124.0 255.255.255.224 128.33.103.4
+ip route 192.168.128.0 255.255.255.224 128.33.103.4
+ip route 192.168.130.0 255.255.255.0 128.33.106.4
+ip route 192.168.168.8 255.255.255.248 128.33.106.4
+ip route 192.168.168.24 255.255.255.248 128.33.106.4
+ip route 192.168.168.32 255.255.255.248 128.33.106.4
+ip route 192.168.208.0 255.255.252.0 128.33.106.4
+ip route 192.168.244.0 255.255.255.0 128.33.106.4
+ip route 192.168.246.0 255.255.254.0 128.33.106.4
+ip route 192.168.248.0 255.255.255.0 128.33.105.4
+ip route 192.168.249.0 255.255.255.0 128.33.105.4
+ip route 192.168.251.0 255.255.255.0 128.33.106.4
+ip route 192.168.252.0 255.255.255.224 128.33.106.4
+ip route 192.168.253.0 255.255.255.0 128.33.106.4
+ip route 192.233.49.0 255.255.255.0 128.33.106.4
+ip route 192.233.49.16 255.255.255.240 128.33.106.4
+ip route 192.233.50.0 255.255.255.0 128.33.106.4
+ip route 192.233.51.0 255.255.255.0 128.33.106.4
+ip route 192.233.52.0 255.255.255.0 128.33.106.4
+ip route 194.117.106.128 255.255.255.252 128.33.106.4
+!
+ip radius source-interface GigabitEthernet49
+access-list 1 permit 128.33.1.0 0.0.0.15
+access-list 1 permit 128.33.72.0 0.0.0.15
+access-list 1 permit 128.89.80.0 0.0.0.15
+access-list 4 permit 128.33.1.0 0.0.0.15
+access-list 4 permit 128.33.72.0 0.0.0.15
+access-list 4 permit 128.89.80.0 0.0.0.15
+access-list 4 permit 128.33.8.128 0.0.0.127
+access-list 4 permit 192.168.33.0 0.0.0.255
+access-list 4 permit 192.168.50.0 0.0.0.127
+access-list 4 permit 192.168.200.0 0.0.0.255
+access-list 4 permit 192.168.201.0 0.0.0.255
+access-list 4 permit 128.89.252.8 0.0.0.7
+access-list 11 permit 128.89.88.31
+access-list 11 permit 128.89.88.32
+access-list 101 permit ip any 128.89.32.0 0.0.31.255
+access-list 101 permit ip any any
+access-list 102 permit ip any 128.89.32.0 0.0.31.255
+access-list 102 permit ip any any
+snmp-server location 6.102.A
+snmp-server contact ProtimaChhabra/MikeGribaudo/BobDonaghey
+snmp-server chassis-id FOX04522769
+radius-server host 128.33.1.9 auth-port 1812 acct-port 1813
+radius-server retransmit 2
+radius-server timeout 2
+banner motd 
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+You are connected to CamEdge. Please report any problems to IDSG @  
+617-873-4374 or send email to idsg@bbn.com.
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+!
+line con 0
+ transport input none
+line aux 0
+line vty 0 4
+ session-timeout 5 
+ access-class 4 in
+!
+ntp server 128.33.0.20
+ntp server 128.33.1.20
+end

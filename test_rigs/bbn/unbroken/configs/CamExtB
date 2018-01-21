@@ -1,0 +1,263 @@
+
+!
+! Last configuration change at 13:24:27 EDT Sun Apr 6 2008 by pchhabra
+! NVRAM config last updated at 13:18:59 EDT Sun Apr 6 2008 by pchhabra
+!
+version 12.4
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname CamExtB
+!
+boot-start-marker
+boot-end-marker
+!
+logging buffered 51200 warnings
+!
+aaa new-model
+!
+!
+aaa authentication login default group radius local
+aaa authorization exec default group radius local 
+aaa accounting send stop-record authentication failure 
+aaa accounting exec default start-stop group radius
+aaa accounting connection default start-stop group radius
+!
+!
+aaa session-id common
+clock timezone EST -5
+clock summer-time EDT recurring
+ip cef
+!
+!
+!
+!
+ip domain name bbn.com
+multilink bundle-name authenticated
+!
+voice-card 0
+ no dspfarm
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+archive
+ log config
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ description Towerstream
+ ip address 64.119.128.44 255.255.255.248
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1
+ description CamT3
+ ip address 192.1.102.2 255.255.255.248
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface FastEthernet0/0/0
+ description sCamExt-G1mA [Fa0/1]
+ ip address 192.168.101.3 255.255.255.224 secondary
+ ip address 192.1.100.3 255.255.255.0 secondary
+ ip address 192.1.101.3 255.255.255.0
+ duplex auto
+ speed auto
+ standby 10 ip 192.1.101.1
+ standby 10 priority 90
+ standby 10 preempt
+ standby 11 ip 192.168.101.1
+ standby 11 priority 90
+ standby 11 preempt
+ standby 13 ip 192.1.100.1
+ standby 13 priority 90
+ standby 13 preempt
+!
+interface FastEthernet0/0/1
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+!
+router bgp 11488
+ no synchronization
+ bgp log-neighbor-changes
+ network 128.33.0.0
+ network 128.89.0.0
+ network 192.1.4.0
+ network 192.1.17.0
+ network 192.1.37.0
+ network 192.1.98.0 mask 255.255.254.0
+ network 192.1.100.0 mask 255.255.254.0
+ network 192.1.102.0
+ network 192.1.105.0
+ network 192.1.113.0
+ network 192.1.114.0
+ network 192.1.115.0
+ network 192.1.118.0
+ network 192.1.120.0 mask 255.255.254.0
+ network 192.1.122.0
+ network 192.1.124.0 mask 255.255.252.0
+ network 192.1.128.0 mask 255.255.254.0
+ network 192.1.132.0
+ network 192.1.140.0 mask 255.255.252.0
+ network 192.1.144.0 mask 255.255.254.0
+ network 192.1.150.0 mask 255.255.254.0
+ redistribute connected
+ neighbor 64.119.128.41 remote-as 19406
+ neighbor 64.119.128.41 soft-reconfiguration inbound
+ neighbor 64.119.128.41 route-map from-towerstream in
+ neighbor 64.119.128.41 route-map to-towerstream out
+ neighbor 192.1.102.1 remote-as 11488
+ neighbor 192.1.102.1 next-hop-self
+ neighbor 192.1.102.1 soft-reconfiguration inbound
+ no auto-summary
+!
+ip forward-protocol nd
+ip route 128.33.0.0 255.255.0.0 192.1.101.10
+ip route 128.33.98.0 255.255.255.224 192.1.101.18
+ip route 128.33.99.0 255.255.255.224 192.1.101.60
+ip route 128.33.103.0 255.255.255.224 192.1.101.130
+ip route 128.33.106.0 255.255.255.240 192.1.101.40
+ip route 128.33.240.0 255.255.240.0 192.1.101.40
+ip route 128.33.241.0 255.255.255.0 192.1.101.10
+ip route 128.33.242.0 255.255.255.0 192.1.101.10
+ip route 128.33.244.0 255.255.255.0 192.1.101.40
+ip route 128.33.251.0 255.255.255.0 192.1.101.40
+ip route 128.89.0.0 255.255.0.0 192.1.101.10
+ip route 128.89.252.0 255.255.252.0 192.1.101.20
+ip route 192.1.15.0 255.255.255.0 192.1.101.10
+ip route 192.1.16.0 255.255.255.0 192.1.101.10
+ip route 192.1.17.0 255.255.255.0 Null0
+ip route 192.1.23.0 255.255.255.0 192.1.101.10
+ip route 192.1.37.0 255.255.255.224 192.1.100.222
+ip route 192.1.50.0 255.255.255.0 192.1.101.10
+ip route 192.1.98.0 255.255.254.0 192.1.100.222
+ip route 192.1.99.0 255.255.255.0 192.1.100.117
+ip route 192.1.100.0 255.255.254.0 Null0
+ip route 192.1.102.0 255.255.255.0 Null0
+ip route 192.1.105.0 255.255.255.0 192.1.100.222
+ip route 192.1.112.0 255.255.255.0 192.1.101.10
+ip route 192.1.113.0 255.255.255.0 Null0
+ip route 192.1.114.0 255.255.255.0 Null0
+ip route 192.1.115.0 255.255.255.0 Null0
+ip route 192.1.118.0 255.255.255.0 192.1.101.60
+ip route 192.1.120.0 255.255.254.0 192.1.101.26
+ip route 192.1.122.0 255.255.255.0 192.1.101.18
+ip route 192.1.124.0 255.255.252.0 Null0
+ip route 192.1.128.0 255.255.254.0 192.1.101.130
+ip route 192.1.130.0 255.255.254.0 Null0
+ip route 192.1.132.0 255.255.255.0 192.1.101.50
+ip route 192.1.140.0 255.255.252.0 Null0
+ip route 192.1.144.0 255.255.254.0 Null0
+ip route 192.1.150.0 255.255.255.224 192.1.100.16
+ip route 192.168.100.32 255.255.255.224 192.1.101.10
+ip route 192.168.168.60 255.255.255.255 192.1.101.40
+ip route 192.168.246.0 255.255.254.0 192.1.101.40
+!
+no ip http server
+no ip http secure-server
+!
+ip radius source-interface FastEthernet0/0/0 
+access-list 1 permit 128.33.1.0 0.0.0.15
+access-list 1 permit 128.33.72.0 0.0.0.15
+access-list 4 permit 128.33.1.0 0.0.0.15
+access-list 4 permit 128.33.72.0 0.0.0.15
+access-list 4 permit 128.89.252.8 0.0.0.7
+access-list 10 permit 128.33.0.0 0.0.255.255
+access-list 10 permit 192.1.118.0 0.0.0.255
+access-list 20 permit 128.89.0.0 0.0.255.255
+access-list 20 permit 192.1.4.0 0.0.0.255
+access-list 20 permit 192.1.17.0 0.0.0.255
+access-list 20 permit 192.1.37.0 0.0.0.255
+access-list 20 permit 192.1.98.0 0.0.1.255
+access-list 20 permit 192.1.100.0 0.0.1.255
+access-list 20 permit 192.1.102.0 0.0.0.255
+access-list 20 permit 192.1.105.0 0.0.0.255
+access-list 20 permit 192.1.113.0 0.0.0.255
+access-list 20 permit 192.1.114.0 0.0.0.255
+access-list 20 permit 192.1.115.0 0.0.0.255
+access-list 20 permit 192.1.120.0 0.0.1.255
+access-list 20 permit 192.1.122.0 0.0.0.255
+access-list 20 permit 192.1.124.0 0.0.3.255
+access-list 20 permit 192.1.128.0 0.0.1.255
+access-list 20 permit 192.1.132.0 0.0.0.255
+access-list 20 permit 192.1.140.0 0.0.3.255
+access-list 20 permit 192.1.144.0 0.0.1.255
+access-list 20 permit 192.1.150.0 0.0.1.255
+snmp-server location 6.102
+snmp-server contact Protima Chhabra, Mike Gribaudo
+no cdp run
+route-map to-towerstream permit 10
+ match ip address 20
+ set as-path prepend 11488 11488 11488 11488
+!
+route-map to-towerstream permit 20
+ match ip address 10
+!
+route-map from-towerstream permit 10
+ match as-path 11
+ set local-preference 150
+!
+!
+!
+radius-server host 128.33.1.9 auth-port 1812 acct-port 1813
+radius-server retransmit 2
+radius-server timeout 2
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+!
+banner login 
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+You are connected to CamExtB. Please report any problems to IDSG @
+617-873-4374 or send email to idsg@bbn.com.
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+!
+line con 0
+line aux 0
+line vty 0 4
+ session-timeout 15  output
+ access-class 4 in
+ timeout login response 120
+ privilege level 15
+ transport input telnet
+line vty 5 15
+ transport input none
+!
+scheduler allocate 20000 1000
+ntp server 192.1.100.189
+!
+end

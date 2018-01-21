@@ -1,0 +1,191 @@
+
+!
+! Last configuration change at 11:40:50 EDT Wed Apr 9 2008 by pchhabra
+! NVRAM config last updated at 11:40:58 EDT Wed Apr 9 2008 by pchhabra
+!
+version 12.0
+no service pad
+service timestamps debug uptime
+service timestamps log uptime
+service password-encryption
+!
+hostname CamDataB
+!
+aaa new-model
+aaa authentication login default radius local
+aaa authorization exec default radius local
+aaa accounting send stop-record authentication failure
+aaa accounting exec default start-stop radius
+aaa accounting commands 15 default stop-only radius
+aaa accounting connection default start-stop radius
+!
+clock timezone EST -5
+clock summer-time EDT recurring 2 Sun Mar 2:00 1 Sun Nov 2:00
+ip subnet-zero
+ip tftp source-interface GigabitEthernet1
+ip multicast-routing
+!
+!
+!
+interface Loopback0
+ description Loopback
+ ip address 10.1.6.2 255.255.255.255
+ no ip directed-broadcast
+!
+interface GigabitEthernet1
+ description Cambridge Backbone 128.89.64.0/27
+ ip address 192.168.201.6 255.255.255.224 secondary
+ ip address 128.89.64.6 255.255.255.224
+ no ip redirects
+ no ip directed-broadcast
+ ip ospf cost 3
+!
+interface GigabitEthernet2
+ description Data Center
+ ip address 192.168.200.38 255.255.255.224 secondary
+ ip address 128.89.2.6 255.255.255.0 secondary
+ ip address 128.33.101.131 255.255.255.224 secondary
+ ip address 128.33.0.6 255.255.255.0
+ ip helper-address 128.33.0.20
+ no ip redirects
+ no ip directed-broadcast
+ standby 122 priority 120 preempt
+ standby 122 authentication CamDataB
+ standby 122 ip 128.33.0.1
+ standby 122 ip 128.33.101.129 secondary
+ standby 122 ip 128.89.2.1 secondary
+ standby 122 ip 192.168.200.39 secondary
+!
+interface GigabitEthernet3
+ description Data Center and Business Applications
+ ip address 192.168.200.70 255.255.255.224 secondary
+ ip address 128.89.1.6 255.255.255.0 secondary
+ ip address 128.33.1.6 255.255.255.0
+ ip helper-address 128.33.0.20
+ no ip redirects
+ no ip directed-broadcast
+ standby 123 priority 110 preempt
+ standby 123 authentication CamDataA
+ standby 123 ip 128.33.1.1
+ standby 123 ip 128.89.1.1 secondary
+ standby 123 ip 192.168.200.71 secondary
+!
+interface GigabitEthernet4
+ description Backup Server (belphagor) ** NO HSRP **
+ ip address 128.33.6.1 255.255.255.0
+ no ip directed-broadcast
+!
+interface GigabitEthernet5
+ no ip address
+ no ip redirects
+ no ip directed-broadcast
+ shutdown
+!
+interface GigabitEthernet6
+ description 17.134
+ ip address 192.168.33.226 255.255.255.224 secondary
+ ip address 128.33.79.196 255.255.255.224 secondary
+ ip address 128.33.76.6 255.255.254.0
+ ip helper-address 128.33.0.20
+ ip helper-address 128.33.1.20
+ no ip redirects
+ no ip directed-broadcast
+ standby 126 priority 110 preempt
+ standby 126 authentication CamDataB
+ standby 126 ip 128.33.76.1
+ standby 126 ip 128.33.79.193 secondary
+ standby 126 ip 192.168.33.227 secondary
+!
+interface GigabitEthernet7
+ description Data Center - IDSG & Mobile Networking
+ ip address 192.168.200.198 255.255.255.224 secondary
+ ip address 128.89.97.6 255.255.255.0 secondary
+ ip address 128.89.98.6 255.255.255.0 secondary
+ ip address 128.89.96.6 255.255.255.0 secondary
+ ip address 128.89.99.6 255.255.255.0
+ ip helper-address 128.33.0.20
+ ip helper-address 128.33.1.20
+ no ip redirects
+ no ip directed-broadcast
+ standby 127 priority 120 preempt
+ standby 127 authentication CamDataA
+ standby 127 ip 128.89.99.1
+ standby 127 ip 128.89.96.1 secondary
+ standby 127 ip 128.89.97.1 secondary
+ standby 127 ip 128.89.98.1 secondary
+ standby 127 ip 192.168.200.199 secondary
+!
+interface GigabitEthernet8
+ description Cambridge Backbone 128.33.64.0/27
+ ip address 192.168.33.6 255.255.255.224 secondary
+ ip address 128.33.64.6 255.255.255.224
+ no ip redirects
+ no ip directed-broadcast
+ ip ospf cost 3
+ standby 130 priority 120 preempt
+ standby 130 authentication CamDataA
+ standby 130 ip 128.33.64.10
+!
+router ospf 99
+ router-id 10.1.6.2
+ area 0 authentication
+ redistribute connected metric 1 subnets
+ redistribute static metric 2 subnets
+ passive-interface GigabitEthernet2
+ passive-interface GigabitEthernet3
+ passive-interface GigabitEthernet7
+ network 128.33.64.6 0.0.0.0 area 0
+ network 128.89.64.6 0.0.0.0 area 0
+!
+ip classless
+ip route 128.33.241.0 255.255.255.248 128.33.0.125
+!
+ip radius source-interface GigabitEthernet1
+access-list 1 permit 128.33.1.0 0.0.0.15
+access-list 1 permit 128.33.72.0 0.0.0.15
+access-list 1 permit 128.89.80.0 0.0.0.15
+access-list 4 permit 128.33.1.0 0.0.0.15
+access-list 4 permit 128.33.72.0 0.0.0.15
+access-list 4 permit 128.89.80.0 0.0.0.15
+access-list 4 permit 128.33.8.128 0.0.0.127
+access-list 4 permit 192.168.33.0 0.0.0.255
+access-list 4 permit 192.168.50.0 0.0.0.127
+access-list 4 permit 192.168.200.0 0.0.0.255
+access-list 4 permit 192.168.201.0 0.0.0.255
+access-list 4 permit 128.89.252.8 0.0.0.7
+access-list 101 permit tcp host 128.33.72.75 host 128.33.101.140 eq 16384
+access-list 101 permit tcp host 128.33.72.17 host 128.33.101.140 eq 16384
+access-list 101 permit tcp host 128.33.72.15 host 128.33.101.140 eq 16384
+access-list 101 permit tcp host 128.33.73.20 host 128.33.101.140 eq 16384
+access-list 101 deny   tcp 128.33.0.0 0.0.255.255 host 128.33.101.140 eq 16384
+access-list 101 deny   tcp 128.89.0.0 0.0.255.255 host 128.33.101.140 eq 16384
+access-list 101 permit ip any any
+access-list 101 permit udp any any
+access-list 101 permit tcp any any
+access-list 105 permit ip host 128.89.254.2 128.33.1.0 0.0.0.255
+access-list 105 permit ip host 128.89.254.2 128.33.0.0 0.0.0.255
+access-list 105 deny   ip any any
+snmp-server location 2.246.A
+snmp-server contact ProtimaChhabra/MikeGribaudo/BobDonaghey
+snmp-server chassis-id FOX04430144
+radius-server host 128.33.1.9 auth-port 1812 acct-port 1813
+radius-server retransmit 2
+radius-server timeout 2
+banner motd 
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+You are connected to CamDataB. Please report any problems to IDSG @  
+617-873-4374 or send email to idsg@bbn.com.
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+!
+line con 0
+ transport input none
+line aux 0
+line vty 0 4
+ session-timeout 5 
+ access-class 4 in
+!
+ntp update-calendar
+ntp server 128.33.0.20
+ntp server 128.33.1.20
+end
