@@ -1,0 +1,2 @@
+init-testrig test_rigs/smt-examples/fat-04_hosts-6_reachable/advertremove
+get smt-mul srcIps=["103.0.3.3"], dstIps=["104.0.1.3"]

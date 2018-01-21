@@ -1,0 +1,3 @@
+unbroken,test_rigs/repair-examples/fattree/fattree2/unbroken,0
+neigh,test_rigs/repair-examples/fattree/fattree2/rm-neighbor_one,0
+net,test_rigs/repair-examples/fattree/fattree2/rm-network_half,1

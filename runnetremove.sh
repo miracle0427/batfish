@@ -3,10 +3,10 @@ start=`date +%s`
 configs="$1/unbroken"
 policies="$configs/policies/path"
 configs="$1/rm-network_half"
-rm -rf pathModel/$policies
-rm -rf pathModelOut/$policies
-mkdir -p pathModel/$policies
-mkdir -p pathModelOut/$policies
+rm -rf pathModelNet/$policies
+rm -rf pathModelNetOut/$policies
+mkdir -p pathModelNet/$policies
+mkdir -p pathModelNetOut/$policies
 
 for entry in "$policies"/*
 do
@@ -17,7 +17,7 @@ do
   #cat runfile.txt
   allinone -cmdfile runfile.txt
   #entryname=`echo $entry | awk -F"/" '{print $8}'`
-  entryname="pathModel/$entry"
+  entryname="pathModelNet/$entry"
   ./setup.sh $entryname
   #echo $entryname
 done
@@ -27,8 +27,8 @@ start=`date +%s`
 for entry in "$policies"/*
 do
   #entryname=`echo $entry | awk -F"/" '{print $8}'`
-  entryname="pathModel/$entry"
-  output="pathModelOut/$entry.out"
+  entryname="pathModelNet/$entry"
+  output="pathModelNetOut/$entry.out"
   ./runz3s.sh $entryname > $output &
   #echo $entryname
   #echo $output
@@ -38,4 +38,4 @@ wait
 echo "All edgeprops Z3 done"
 end=`date +%s`
 runtime=$((end-start))
-echo "neigh,$config,$runtime" >> runoutput
+echo "net,$configs,$runtime" >> runoutput
