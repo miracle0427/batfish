@@ -1,4 +1,4 @@
-prop="mixpols"
+prop="mixpol"
 for entry in "$prop"/*
 do
   ./runpols.sh $entry
