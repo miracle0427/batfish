@@ -113,14 +113,14 @@ interface Ethernet1
 router bgp 29
   bgp bestpath as-path multipath-relax
   network 70.0.29.0/24
-  
-  
-  
-  
-  
-  
-  
-  
+  neighbor 10.0.17.0 remote-as 24
+  neighbor 10.0.17.0 send-community
+  neighbor 10.0.21.0 remote-as 25
+  neighbor 10.0.21.0 send-community
+  neighbor 10.0.25.0 remote-as 26
+  neighbor 10.0.25.0 send-community
+  neighbor 10.0.29.0 remote-as 27
+  neighbor 10.0.29.0 send-community
 !
 ip route 70.0.29.0/24 Null0
 !
