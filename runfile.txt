@@ -1,2 +1,2 @@
-init-testrig test_rigs/repair-examples/fattree/fattree2//rm-neighbor_one
+init-testrig test_rigs/repair-examples/fattree/fattree2/rm-network_half
 get smt-mul srcIps=["103.0.3.3"], dstIps=["104.0.1.3"]

@@ -37,4 +37,4 @@ wait
 echo "All edgeprops Z3 done"
 end=`date +%s`
 runtime=$((end-start))
-echo "unbroken,$config,$runtime" >> runoutput
+echo "unbroken,$configs,$runtime" >> runoutput

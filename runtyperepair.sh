@@ -1,0 +1,12 @@
+./rununbrokenrepair.sh path
+./runaclrepair.sh path
+./runnetrepair.sh path
+./runadvertrepair.sh path
+./rununbrokenrepair.sh reach
+./runaclrepair.sh reach
+./runnetrepair.sh reach
+./runadvertrepair.sh reach
+./rununbrokenrepair.sh both
+./runaclrepair.sh both
+./runnetrepair.sh both
+./runadvertrepair.sh both
