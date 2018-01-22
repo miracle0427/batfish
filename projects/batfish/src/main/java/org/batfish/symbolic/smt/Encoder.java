@@ -318,13 +318,13 @@ public class Encoder {
     _slices = new HashMap<>();
     _sliceReachability = new HashMap<>();
     HashMap<String, String> cfg = new HashMap<>();
-
+    /*
     if (_question.getHeaderSpace().getSrcIps() != null) {
       _srcIp = _question.getHeaderSpace().getSrcIps().iterator().next();
     }
     if (_question.getHeaderSpace().getDstIps() != null) {
       _dstIp = _question.getHeaderSpace().getDstIps().iterator().next();
-    }
+    }*/
 
     if (enc == null) {
       _dstEncoders =  new HashMap<>();
@@ -1193,7 +1193,7 @@ public class Encoder {
 
     if (_repairObjective == 1) {
       for (String keyRouter : _routerConsMap.keySet()) {
-        addSoft(_routerConsMap.get(keyRouter), 1000, "deviceAffected");
+        addSoft(_routerConsMap.get(keyRouter), 10000, "deviceAffected");
       }
     }
 

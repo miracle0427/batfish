@@ -1,0 +1,1120 @@
+Init'ed and set active container
+Uploaded testrig.
+Parsing now.
+Status: SUCCESS
+PARSING SUMMARY
+STATISTICS
+  Parsing results:
+    Parsed successfully: 20
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.0.0.0/30], srcIps=[30.0.1.0/30], finalNodeRegex=e0-0, ingressNodeRegex=e0-1
+
+Verified
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.0.0.0/30], srcIps=[30.0.1.0/30], failures=1, finalNodeRegex=e0-0, ingressNodeRegex=e0-1
+
+Verified
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.0.0.0/30], srcIps=[30.0.1.0/30], failures=2, finalNodeRegex=e0-0, ingressNodeRegex=e0-1
+
+Flow: ingress:e0-1 vrf:default 30.0.1.0->30.0.0.0 HOPOPT packetLength:0 state:NEW
+  environment:BASE
+Environment{envName=BASE, testrigName=tr_8347aa7b-0cfa-4de6-b00b-ff9330aa7405, edgeBlacklist=[<e0-0:GigabitEthernet0/1, agg0-0:GigabitEthernet0/3>, <e0-0:GigabitEthernet0/2, agg0-1:GigabitEthernet0/3>], interfaceBlacklist=null, nodeBlacklist=null, bgpTables=null, routingTables=null, externalBgpAnnouncements=null}
+    NO_ROUTE
+
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-bounded-length actions=[ACCEPT], dstIps=[30.0.0.0/30], srcIps=[30.0.1.0/30], finalNodeRegex=e0-0, ingressNodeRegex=e0-1, bound=4
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-routing-loop actions=[ACCEPT], srcIps=[30.0.1.0/30]
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-blackhole actions=[ACCEPT], dstIps=[30.0.0.0/30], srcIps=[30.0.1.0/30]
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.0.0.0/30], srcIps=[30.1.0.0/30], finalNodeRegex=e0-0, ingressNodeRegex=e1-0
+
+Verified
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.0.0.0/30], srcIps=[30.1.0.0/30], failures=1, finalNodeRegex=e0-0, ingressNodeRegex=e1-0
+
+Verified
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.0.0.0/30], srcIps=[30.1.0.0/30], failures=2, finalNodeRegex=e0-0, ingressNodeRegex=e1-0
+
+Flow: ingress:e1-0 vrf:default 30.1.0.0->30.0.0.0 HOPOPT packetLength:0 state:NEW
+  environment:BASE
+Environment{envName=BASE, testrigName=tr_8347aa7b-0cfa-4de6-b00b-ff9330aa7405, edgeBlacklist=[<e0-0:GigabitEthernet0/1, agg0-0:GigabitEthernet0/3>, <e0-0:GigabitEthernet0/2, agg0-1:GigabitEthernet0/3>], interfaceBlacklist=null, nodeBlacklist=null, bgpTables=null, routingTables=null, externalBgpAnnouncements=null}
+    NO_ROUTE
+
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-bounded-length actions=[ACCEPT], dstIps=[30.0.0.0/30], srcIps=[30.1.0.0/30], finalNodeRegex=e0-0, ingressNodeRegex=e1-0, bound=4
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-routing-loop actions=[ACCEPT], srcIps=[30.1.0.0/30]
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-blackhole actions=[ACCEPT], dstIps=[30.0.0.0/30], srcIps=[30.1.0.0/30]
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.0.0.0/30], srcIps=[30.1.1.0/30], finalNodeRegex=e0-0, ingressNodeRegex=e1-1
+
+Verified
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.0.0.0/30], srcIps=[30.1.1.0/30], failures=1, finalNodeRegex=e0-0, ingressNodeRegex=e1-1
+
+Verified
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.0.0.0/30], srcIps=[30.1.1.0/30], failures=2, finalNodeRegex=e0-0, ingressNodeRegex=e1-1
+
+Flow: ingress:e1-1 vrf:default 30.1.1.0->30.0.0.0 HOPOPT packetLength:0 state:NEW
+  environment:BASE
+Environment{envName=BASE, testrigName=tr_8347aa7b-0cfa-4de6-b00b-ff9330aa7405, edgeBlacklist=[<e0-0:GigabitEthernet0/1, agg0-0:GigabitEthernet0/3>, <e0-0:GigabitEthernet0/2, agg0-1:GigabitEthernet0/3>], interfaceBlacklist=null, nodeBlacklist=null, bgpTables=null, routingTables=null, externalBgpAnnouncements=null}
+    NO_ROUTE
+
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-bounded-length actions=[ACCEPT], dstIps=[30.0.0.0/30], srcIps=[30.1.1.0/30], finalNodeRegex=e0-0, ingressNodeRegex=e1-1, bound=4
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-routing-loop actions=[ACCEPT], srcIps=[30.1.1.0/30]
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-blackhole actions=[ACCEPT], dstIps=[30.0.0.0/30], srcIps=[30.1.1.0/30]
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.0.0.0/30], srcIps=[30.2.0.0/30], finalNodeRegex=e0-0, ingressNodeRegex=e2-0
+
+Verified
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.0.0.0/30], srcIps=[30.2.0.0/30], failures=1, finalNodeRegex=e0-0, ingressNodeRegex=e2-0
+
+Verified
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.0.0.0/30], srcIps=[30.2.0.0/30], failures=2, finalNodeRegex=e0-0, ingressNodeRegex=e2-0
+
+Flow: ingress:e2-0 vrf:default 30.2.0.0->30.0.0.0 HOPOPT packetLength:0 state:NEW
+  environment:BASE
+Environment{envName=BASE, testrigName=tr_8347aa7b-0cfa-4de6-b00b-ff9330aa7405, edgeBlacklist=[<e0-0:GigabitEthernet0/1, agg0-0:GigabitEthernet0/3>, <e0-0:GigabitEthernet0/2, agg0-1:GigabitEthernet0/3>], interfaceBlacklist=null, nodeBlacklist=null, bgpTables=null, routingTables=null, externalBgpAnnouncements=null}
+    NO_ROUTE
+
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-bounded-length actions=[ACCEPT], dstIps=[30.0.0.0/30], srcIps=[30.2.0.0/30], finalNodeRegex=e0-0, ingressNodeRegex=e2-0, bound=4
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-routing-loop actions=[ACCEPT], srcIps=[30.2.0.0/30]
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-blackhole actions=[ACCEPT], dstIps=[30.0.0.0/30], srcIps=[30.2.0.0/30]
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.0.0.0/30], srcIps=[30.3.0.0/30], finalNodeRegex=e0-0, ingressNodeRegex=e3-0
+
+Verified
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.0.0.0/30], srcIps=[30.3.0.0/30], failures=1, finalNodeRegex=e0-0, ingressNodeRegex=e3-0
+
+Verified
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.0.0.0/30], srcIps=[30.3.0.0/30], failures=2, finalNodeRegex=e0-0, ingressNodeRegex=e3-0
+
+Flow: ingress:e3-0 vrf:default 30.3.0.0->30.0.0.0 HOPOPT packetLength:0 state:NEW
+  environment:BASE
+Environment{envName=BASE, testrigName=tr_8347aa7b-0cfa-4de6-b00b-ff9330aa7405, edgeBlacklist=[<e0-0:GigabitEthernet0/1, agg0-0:GigabitEthernet0/3>, <e0-0:GigabitEthernet0/2, agg0-1:GigabitEthernet0/3>], interfaceBlacklist=null, nodeBlacklist=null, bgpTables=null, routingTables=null, externalBgpAnnouncements=null}
+    NO_ROUTE
+
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-bounded-length actions=[ACCEPT], dstIps=[30.0.0.0/30], srcIps=[30.3.0.0/30], finalNodeRegex=e0-0, ingressNodeRegex=e3-0, bound=4
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-routing-loop actions=[ACCEPT], srcIps=[30.3.0.0/30]
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-blackhole actions=[ACCEPT], dstIps=[30.0.0.0/30], srcIps=[30.3.0.0/30]
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.0.1.0/30], srcIps=[30.0.0.0/30], finalNodeRegex=e0-1, ingressNodeRegex=e0-0
+
+Verified
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.0.1.0/30], srcIps=[30.0.0.0/30], failures=1, finalNodeRegex=e0-1, ingressNodeRegex=e0-0
+
+Verified
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.0.1.0/30], srcIps=[30.0.0.0/30], failures=2, finalNodeRegex=e0-1, ingressNodeRegex=e0-0
+
+Flow: ingress:e0-0 vrf:default 30.0.0.0->30.0.1.0 HOPOPT packetLength:0 state:NEW
+  environment:BASE
+Environment{envName=BASE, testrigName=tr_8347aa7b-0cfa-4de6-b00b-ff9330aa7405, edgeBlacklist=[<e0-1:GigabitEthernet0/1, agg0-0:GigabitEthernet0/4>, <e0-1:GigabitEthernet0/2, agg0-1:GigabitEthernet0/4>], interfaceBlacklist=null, nodeBlacklist=null, bgpTables=null, routingTables=null, externalBgpAnnouncements=null}
+    NO_ROUTE
+
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-bounded-length actions=[ACCEPT], dstIps=[30.0.1.0/30], srcIps=[30.0.0.0/30], finalNodeRegex=e0-1, ingressNodeRegex=e0-0, bound=4
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-routing-loop actions=[ACCEPT], srcIps=[30.0.0.0/30]
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-blackhole actions=[ACCEPT], dstIps=[30.0.1.0/30], srcIps=[30.0.0.0/30]
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.0.1.0/30], srcIps=[30.1.0.0/30], finalNodeRegex=e0-1, ingressNodeRegex=e1-0
+
+Verified
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.0.1.0/30], srcIps=[30.1.0.0/30], failures=1, finalNodeRegex=e0-1, ingressNodeRegex=e1-0
+
+Verified
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.0.1.0/30], srcIps=[30.1.0.0/30], failures=2, finalNodeRegex=e0-1, ingressNodeRegex=e1-0
+
+Flow: ingress:e1-0 vrf:default 30.1.0.0->30.0.1.0 HOPOPT packetLength:0 state:NEW
+  environment:BASE
+Environment{envName=BASE, testrigName=tr_8347aa7b-0cfa-4de6-b00b-ff9330aa7405, edgeBlacklist=[<e0-1:GigabitEthernet0/1, agg0-0:GigabitEthernet0/4>, <e0-1:GigabitEthernet0/2, agg0-1:GigabitEthernet0/4>], interfaceBlacklist=null, nodeBlacklist=null, bgpTables=null, routingTables=null, externalBgpAnnouncements=null}
+    NO_ROUTE
+
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-bounded-length actions=[ACCEPT], dstIps=[30.0.1.0/30], srcIps=[30.1.0.0/30], finalNodeRegex=e0-1, ingressNodeRegex=e1-0, bound=4
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-routing-loop actions=[ACCEPT], srcIps=[30.1.0.0/30]
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-blackhole actions=[ACCEPT], dstIps=[30.0.1.0/30], srcIps=[30.1.0.0/30]
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.0.1.0/30], srcIps=[30.1.1.0/30], finalNodeRegex=e0-1, ingressNodeRegex=e1-1
+
+Verified
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.0.1.0/30], srcIps=[30.1.1.0/30], failures=1, finalNodeRegex=e0-1, ingressNodeRegex=e1-1
+
+Verified
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.0.1.0/30], srcIps=[30.1.1.0/30], failures=2, finalNodeRegex=e0-1, ingressNodeRegex=e1-1
+
+Flow: ingress:e1-1 vrf:default 30.1.1.0->30.0.1.1 HOPOPT packetLength:0 state:NEW
+  environment:BASE
+Environment{envName=BASE, testrigName=tr_8347aa7b-0cfa-4de6-b00b-ff9330aa7405, edgeBlacklist=[<e0-1:GigabitEthernet0/1, agg0-0:GigabitEthernet0/4>, <e0-1:GigabitEthernet0/2, agg0-1:GigabitEthernet0/4>], interfaceBlacklist=null, nodeBlacklist=null, bgpTables=null, routingTables=null, externalBgpAnnouncements=null}
+    NO_ROUTE
+
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-bounded-length actions=[ACCEPT], dstIps=[30.0.1.0/30], srcIps=[30.1.1.0/30], finalNodeRegex=e0-1, ingressNodeRegex=e1-1, bound=4
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-routing-loop actions=[ACCEPT], srcIps=[30.1.1.0/30]
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-blackhole actions=[ACCEPT], dstIps=[30.0.1.0/30], srcIps=[30.1.1.0/30]
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.0.1.0/30], srcIps=[30.2.0.0/30], finalNodeRegex=e0-1, ingressNodeRegex=e2-0
+
+Verified
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.0.1.0/30], srcIps=[30.2.0.0/30], failures=1, finalNodeRegex=e0-1, ingressNodeRegex=e2-0
+
+Verified
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.0.1.0/30], srcIps=[30.2.0.0/30], failures=2, finalNodeRegex=e0-1, ingressNodeRegex=e2-0
+
+Flow: ingress:e2-0 vrf:default 30.2.0.0->30.0.1.0 HOPOPT packetLength:0 state:NEW
+  environment:BASE
+Environment{envName=BASE, testrigName=tr_8347aa7b-0cfa-4de6-b00b-ff9330aa7405, edgeBlacklist=[<e0-1:GigabitEthernet0/1, agg0-0:GigabitEthernet0/4>, <e0-1:GigabitEthernet0/2, agg0-1:GigabitEthernet0/4>], interfaceBlacklist=null, nodeBlacklist=null, bgpTables=null, routingTables=null, externalBgpAnnouncements=null}
+    NO_ROUTE
+
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-bounded-length actions=[ACCEPT], dstIps=[30.0.1.0/30], srcIps=[30.2.0.0/30], finalNodeRegex=e0-1, ingressNodeRegex=e2-0, bound=4
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-routing-loop actions=[ACCEPT], srcIps=[30.2.0.0/30]
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-blackhole actions=[ACCEPT], dstIps=[30.0.1.0/30], srcIps=[30.2.0.0/30]
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.0.1.0/30], srcIps=[30.3.0.0/30], finalNodeRegex=e0-1, ingressNodeRegex=e3-0
+
+Verified
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.0.1.0/30], srcIps=[30.3.0.0/30], failures=1, finalNodeRegex=e0-1, ingressNodeRegex=e3-0
+
+Verified
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.0.1.0/30], srcIps=[30.3.0.0/30], failures=2, finalNodeRegex=e0-1, ingressNodeRegex=e3-0
+
+Flow: ingress:e3-0 vrf:default 30.3.0.0->30.0.1.2 HOPOPT packetLength:0 state:NEW
+  environment:BASE
+Environment{envName=BASE, testrigName=tr_8347aa7b-0cfa-4de6-b00b-ff9330aa7405, edgeBlacklist=[<e0-1:GigabitEthernet0/1, agg0-0:GigabitEthernet0/4>, <e0-1:GigabitEthernet0/2, agg0-1:GigabitEthernet0/4>], interfaceBlacklist=null, nodeBlacklist=null, bgpTables=null, routingTables=null, externalBgpAnnouncements=null}
+    NO_ROUTE
+
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-bounded-length actions=[ACCEPT], dstIps=[30.0.1.0/30], srcIps=[30.3.0.0/30], finalNodeRegex=e0-1, ingressNodeRegex=e3-0, bound=4
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-routing-loop actions=[ACCEPT], srcIps=[30.3.0.0/30]
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-blackhole actions=[ACCEPT], dstIps=[30.0.1.0/30], srcIps=[30.3.0.0/30]
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.1.0.0/30], srcIps=[30.0.0.0/30], finalNodeRegex=e1-0, ingressNodeRegex=e0-0
+
+Verified
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.1.0.0/30], srcIps=[30.0.0.0/30], failures=1, finalNodeRegex=e1-0, ingressNodeRegex=e0-0
+
+Verified
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.1.0.0/30], srcIps=[30.0.0.0/30], failures=2, finalNodeRegex=e1-0, ingressNodeRegex=e0-0
+
+Flow: ingress:e0-0 vrf:default 30.0.0.0->30.1.0.0 HOPOPT packetLength:0 state:NEW
+  environment:BASE
+Environment{envName=BASE, testrigName=tr_8347aa7b-0cfa-4de6-b00b-ff9330aa7405, edgeBlacklist=[<e1-0:GigabitEthernet0/1, agg1-0:GigabitEthernet0/3>, <e1-0:GigabitEthernet0/2, agg1-1:GigabitEthernet0/3>], interfaceBlacklist=null, nodeBlacklist=null, bgpTables=null, routingTables=null, externalBgpAnnouncements=null}
+    NO_ROUTE
+
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-bounded-length actions=[ACCEPT], dstIps=[30.1.0.0/30], srcIps=[30.0.0.0/30], finalNodeRegex=e1-0, ingressNodeRegex=e0-0, bound=4
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-routing-loop actions=[ACCEPT], srcIps=[30.0.0.0/30]
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-blackhole actions=[ACCEPT], dstIps=[30.1.0.0/30], srcIps=[30.0.0.0/30]
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.1.0.0/30], srcIps=[30.0.1.0/30], finalNodeRegex=e1-0, ingressNodeRegex=e0-1
+
+Verified
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.1.0.0/30], srcIps=[30.0.1.0/30], failures=1, finalNodeRegex=e1-0, ingressNodeRegex=e0-1
+
+Verified
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.1.0.0/30], srcIps=[30.0.1.0/30], failures=2, finalNodeRegex=e1-0, ingressNodeRegex=e0-1
+
+Flow: ingress:e0-1 vrf:default 30.0.1.0->30.1.0.0 HOPOPT packetLength:0 state:NEW
+  environment:BASE
+Environment{envName=BASE, testrigName=tr_8347aa7b-0cfa-4de6-b00b-ff9330aa7405, edgeBlacklist=[<e1-0:GigabitEthernet0/1, agg1-0:GigabitEthernet0/3>, <e1-0:GigabitEthernet0/2, agg1-1:GigabitEthernet0/3>], interfaceBlacklist=null, nodeBlacklist=null, bgpTables=null, routingTables=null, externalBgpAnnouncements=null}
+    NO_ROUTE
+
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-bounded-length actions=[ACCEPT], dstIps=[30.1.0.0/30], srcIps=[30.0.1.0/30], finalNodeRegex=e1-0, ingressNodeRegex=e0-1, bound=4
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-routing-loop actions=[ACCEPT], srcIps=[30.0.1.0/30]
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-blackhole actions=[ACCEPT], dstIps=[30.1.0.0/30], srcIps=[30.0.1.0/30]
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.1.0.0/30], srcIps=[30.1.1.0/30], finalNodeRegex=e1-0, ingressNodeRegex=e1-1
+
+Verified
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.1.0.0/30], srcIps=[30.1.1.0/30], failures=1, finalNodeRegex=e1-0, ingressNodeRegex=e1-1
+
+Verified
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.1.0.0/30], srcIps=[30.1.1.0/30], failures=2, finalNodeRegex=e1-0, ingressNodeRegex=e1-1
+
+Flow: ingress:e1-1 vrf:default 30.1.1.0->30.1.0.2 HOPOPT packetLength:0 state:NEW
+  environment:BASE
+Environment{envName=BASE, testrigName=tr_8347aa7b-0cfa-4de6-b00b-ff9330aa7405, edgeBlacklist=[<e1-0:GigabitEthernet0/1, agg1-0:GigabitEthernet0/3>, <e1-0:GigabitEthernet0/2, agg1-1:GigabitEthernet0/3>], interfaceBlacklist=null, nodeBlacklist=null, bgpTables=null, routingTables=null, externalBgpAnnouncements=null}
+    NO_ROUTE
+
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-bounded-length actions=[ACCEPT], dstIps=[30.1.0.0/30], srcIps=[30.1.1.0/30], finalNodeRegex=e1-0, ingressNodeRegex=e1-1, bound=4
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-routing-loop actions=[ACCEPT], srcIps=[30.1.1.0/30]
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-blackhole actions=[ACCEPT], dstIps=[30.1.0.0/30], srcIps=[30.1.1.0/30]
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.1.0.0/30], srcIps=[30.2.0.0/30], finalNodeRegex=e1-0, ingressNodeRegex=e2-0
+
+Verified
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.1.0.0/30], srcIps=[30.2.0.0/30], failures=1, finalNodeRegex=e1-0, ingressNodeRegex=e2-0
+
+Verified
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.1.0.0/30], srcIps=[30.2.0.0/30], failures=2, finalNodeRegex=e1-0, ingressNodeRegex=e2-0
+
+Flow: ingress:e2-0 vrf:default 30.2.0.0->30.1.0.0 HOPOPT packetLength:0 state:NEW
+  environment:BASE
+Environment{envName=BASE, testrigName=tr_8347aa7b-0cfa-4de6-b00b-ff9330aa7405, edgeBlacklist=[<e1-0:GigabitEthernet0/1, agg1-0:GigabitEthernet0/3>, <e1-0:GigabitEthernet0/2, agg1-1:GigabitEthernet0/3>], interfaceBlacklist=null, nodeBlacklist=null, bgpTables=null, routingTables=null, externalBgpAnnouncements=null}
+    NO_ROUTE
+
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-bounded-length actions=[ACCEPT], dstIps=[30.1.0.0/30], srcIps=[30.2.0.0/30], finalNodeRegex=e1-0, ingressNodeRegex=e2-0, bound=4
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-routing-loop actions=[ACCEPT], srcIps=[30.2.0.0/30]
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-blackhole actions=[ACCEPT], dstIps=[30.1.0.0/30], srcIps=[30.2.0.0/30]
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.1.0.0/30], srcIps=[30.3.0.0/30], finalNodeRegex=e1-0, ingressNodeRegex=e3-0
+
+Verified
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.1.0.0/30], srcIps=[30.3.0.0/30], failures=1, finalNodeRegex=e1-0, ingressNodeRegex=e3-0
+
+Verified
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.1.0.0/30], srcIps=[30.3.0.0/30], failures=2, finalNodeRegex=e1-0, ingressNodeRegex=e3-0
+
+Flow: ingress:e3-0 vrf:default 30.3.0.0->30.1.0.0 HOPOPT packetLength:0 state:NEW
+  environment:BASE
+Environment{envName=BASE, testrigName=tr_8347aa7b-0cfa-4de6-b00b-ff9330aa7405, edgeBlacklist=[<e1-0:GigabitEthernet0/1, agg1-0:GigabitEthernet0/3>, <e1-0:GigabitEthernet0/2, agg1-1:GigabitEthernet0/3>], interfaceBlacklist=null, nodeBlacklist=null, bgpTables=null, routingTables=null, externalBgpAnnouncements=null}
+    NO_ROUTE
+
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-bounded-length actions=[ACCEPT], dstIps=[30.1.0.0/30], srcIps=[30.3.0.0/30], finalNodeRegex=e1-0, ingressNodeRegex=e3-0, bound=4
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-routing-loop actions=[ACCEPT], srcIps=[30.3.0.0/30]
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-blackhole actions=[ACCEPT], dstIps=[30.1.0.0/30], srcIps=[30.3.0.0/30]
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.1.1.0/30], srcIps=[30.0.0.0/30], finalNodeRegex=e1-1, ingressNodeRegex=e0-0
+
+Verified
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.1.1.0/30], srcIps=[30.0.0.0/30], failures=1, finalNodeRegex=e1-1, ingressNodeRegex=e0-0
+
+Verified
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.1.1.0/30], srcIps=[30.0.0.0/30], failures=2, finalNodeRegex=e1-1, ingressNodeRegex=e0-0
+
+Flow: ingress:e0-0 vrf:default 30.0.0.0->30.1.1.0 HOPOPT packetLength:0 state:NEW
+  environment:BASE
+Environment{envName=BASE, testrigName=tr_8347aa7b-0cfa-4de6-b00b-ff9330aa7405, edgeBlacklist=[<agg1-0:GigabitEthernet0/4, e1-1:GigabitEthernet0/1>, <agg1-1:GigabitEthernet0/4, e1-1:GigabitEthernet0/2>], interfaceBlacklist=null, nodeBlacklist=null, bgpTables=null, routingTables=null, externalBgpAnnouncements=null}
+    NO_ROUTE
+
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-bounded-length actions=[ACCEPT], dstIps=[30.1.1.0/30], srcIps=[30.0.0.0/30], finalNodeRegex=e1-1, ingressNodeRegex=e0-0, bound=4
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-routing-loop actions=[ACCEPT], srcIps=[30.0.0.0/30]
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-blackhole actions=[ACCEPT], dstIps=[30.1.1.0/30], srcIps=[30.0.0.0/30]
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.1.1.0/30], srcIps=[30.0.1.0/30], finalNodeRegex=e1-1, ingressNodeRegex=e0-1
+
+Verified
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.1.1.0/30], srcIps=[30.0.1.0/30], failures=1, finalNodeRegex=e1-1, ingressNodeRegex=e0-1
+
+Verified
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.1.1.0/30], srcIps=[30.0.1.0/30], failures=2, finalNodeRegex=e1-1, ingressNodeRegex=e0-1
+
+Flow: ingress:e0-1 vrf:default 30.0.1.0->30.1.1.0 HOPOPT packetLength:0 state:NEW
+  environment:BASE
+Environment{envName=BASE, testrigName=tr_8347aa7b-0cfa-4de6-b00b-ff9330aa7405, edgeBlacklist=[<agg1-0:GigabitEthernet0/4, e1-1:GigabitEthernet0/1>, <agg1-1:GigabitEthernet0/4, e1-1:GigabitEthernet0/2>], interfaceBlacklist=null, nodeBlacklist=null, bgpTables=null, routingTables=null, externalBgpAnnouncements=null}
+    NO_ROUTE
+
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-bounded-length actions=[ACCEPT], dstIps=[30.1.1.0/30], srcIps=[30.0.1.0/30], finalNodeRegex=e1-1, ingressNodeRegex=e0-1, bound=4
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-routing-loop actions=[ACCEPT], srcIps=[30.0.1.0/30]
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-blackhole actions=[ACCEPT], dstIps=[30.1.1.0/30], srcIps=[30.0.1.0/30]
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.1.1.0/30], srcIps=[30.1.0.0/30], finalNodeRegex=e1-1, ingressNodeRegex=e1-0
+
+Verified
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.1.1.0/30], srcIps=[30.1.0.0/30], failures=1, finalNodeRegex=e1-1, ingressNodeRegex=e1-0
+
+Verified
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.1.1.0/30], srcIps=[30.1.0.0/30], failures=2, finalNodeRegex=e1-1, ingressNodeRegex=e1-0
+
+Flow: ingress:e1-0 vrf:default 30.1.0.0->30.1.1.0 HOPOPT packetLength:0 state:NEW
+  environment:BASE
+Environment{envName=BASE, testrigName=tr_8347aa7b-0cfa-4de6-b00b-ff9330aa7405, edgeBlacklist=[<agg1-0:GigabitEthernet0/4, e1-1:GigabitEthernet0/1>, <agg1-1:GigabitEthernet0/4, e1-1:GigabitEthernet0/2>], interfaceBlacklist=null, nodeBlacklist=null, bgpTables=null, routingTables=null, externalBgpAnnouncements=null}
+    NO_ROUTE
+
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-bounded-length actions=[ACCEPT], dstIps=[30.1.1.0/30], srcIps=[30.1.0.0/30], finalNodeRegex=e1-1, ingressNodeRegex=e1-0, bound=4
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-routing-loop actions=[ACCEPT], srcIps=[30.1.0.0/30]
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-blackhole actions=[ACCEPT], dstIps=[30.1.1.0/30], srcIps=[30.1.0.0/30]
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.1.1.0/30], srcIps=[30.2.0.0/30], finalNodeRegex=e1-1, ingressNodeRegex=e2-0
+
+Verified
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.1.1.0/30], srcIps=[30.2.0.0/30], failures=1, finalNodeRegex=e1-1, ingressNodeRegex=e2-0
+
+Verified
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.1.1.0/30], srcIps=[30.2.0.0/30], failures=2, finalNodeRegex=e1-1, ingressNodeRegex=e2-0
+
+Flow: ingress:e2-0 vrf:default 30.2.0.0->30.1.1.0 HOPOPT packetLength:0 state:NEW
+  environment:BASE
+Environment{envName=BASE, testrigName=tr_8347aa7b-0cfa-4de6-b00b-ff9330aa7405, edgeBlacklist=[<agg1-0:GigabitEthernet0/4, e1-1:GigabitEthernet0/1>, <agg1-1:GigabitEthernet0/4, e1-1:GigabitEthernet0/2>], interfaceBlacklist=null, nodeBlacklist=null, bgpTables=null, routingTables=null, externalBgpAnnouncements=null}
+    NO_ROUTE
+
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-bounded-length actions=[ACCEPT], dstIps=[30.1.1.0/30], srcIps=[30.2.0.0/30], finalNodeRegex=e1-1, ingressNodeRegex=e2-0, bound=4
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-routing-loop actions=[ACCEPT], srcIps=[30.2.0.0/30]
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-blackhole actions=[ACCEPT], dstIps=[30.1.1.0/30], srcIps=[30.2.0.0/30]
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.1.1.0/30], srcIps=[30.3.0.0/30], finalNodeRegex=e1-1, ingressNodeRegex=e3-0
+
+Verified
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.1.1.0/30], srcIps=[30.3.0.0/30], failures=1, finalNodeRegex=e1-1, ingressNodeRegex=e3-0
+
+Verified
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.1.1.0/30], srcIps=[30.3.0.0/30], failures=2, finalNodeRegex=e1-1, ingressNodeRegex=e3-0
+
+Flow: ingress:e3-0 vrf:default 30.3.0.0->30.1.1.0 HOPOPT packetLength:0 state:NEW
+  environment:BASE
+Environment{envName=BASE, testrigName=tr_8347aa7b-0cfa-4de6-b00b-ff9330aa7405, edgeBlacklist=[<agg1-0:GigabitEthernet0/4, e1-1:GigabitEthernet0/1>, <agg1-1:GigabitEthernet0/4, e1-1:GigabitEthernet0/2>], interfaceBlacklist=null, nodeBlacklist=null, bgpTables=null, routingTables=null, externalBgpAnnouncements=null}
+    NO_ROUTE
+
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-bounded-length actions=[ACCEPT], dstIps=[30.1.1.0/30], srcIps=[30.3.0.0/30], finalNodeRegex=e1-1, ingressNodeRegex=e3-0, bound=4
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-routing-loop actions=[ACCEPT], srcIps=[30.3.0.0/30]
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-blackhole actions=[ACCEPT], dstIps=[30.1.1.0/30], srcIps=[30.3.0.0/30]
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.2.0.0/30], srcIps=[30.0.0.0/30], finalNodeRegex=e2-0, ingressNodeRegex=e0-0
+
+Verified
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.2.0.0/30], srcIps=[30.0.0.0/30], failures=1, finalNodeRegex=e2-0, ingressNodeRegex=e0-0
+
+Verified
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.2.0.0/30], srcIps=[30.0.0.0/30], failures=2, finalNodeRegex=e2-0, ingressNodeRegex=e0-0
+
+Flow: ingress:e0-0 vrf:default 30.0.0.0->30.2.0.0 HOPOPT packetLength:0 state:NEW
+  environment:BASE
+Environment{envName=BASE, testrigName=tr_8347aa7b-0cfa-4de6-b00b-ff9330aa7405, edgeBlacklist=[<agg2-0:GigabitEthernet0/3, e2-0:GigabitEthernet0/1>, <agg2-1:GigabitEthernet0/3, e2-0:GigabitEthernet0/2>], interfaceBlacklist=null, nodeBlacklist=null, bgpTables=null, routingTables=null, externalBgpAnnouncements=null}
+    NO_ROUTE
+
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-bounded-length actions=[ACCEPT], dstIps=[30.2.0.0/30], srcIps=[30.0.0.0/30], finalNodeRegex=e2-0, ingressNodeRegex=e0-0, bound=4
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-routing-loop actions=[ACCEPT], srcIps=[30.0.0.0/30]
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-blackhole actions=[ACCEPT], dstIps=[30.2.0.0/30], srcIps=[30.0.0.0/30]
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.2.0.0/30], srcIps=[30.0.1.0/30], finalNodeRegex=e2-0, ingressNodeRegex=e0-1
+
+Verified
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.2.0.0/30], srcIps=[30.0.1.0/30], failures=1, finalNodeRegex=e2-0, ingressNodeRegex=e0-1
+
+Verified
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.2.0.0/30], srcIps=[30.0.1.0/30], failures=2, finalNodeRegex=e2-0, ingressNodeRegex=e0-1
+
+Flow: ingress:e0-1 vrf:default 30.0.1.0->30.2.0.0 HOPOPT packetLength:0 state:NEW
+  environment:BASE
+Environment{envName=BASE, testrigName=tr_8347aa7b-0cfa-4de6-b00b-ff9330aa7405, edgeBlacklist=[<e0-1:GigabitEthernet0/1, agg0-0:GigabitEthernet0/4>, <e0-1:GigabitEthernet0/2, agg0-1:GigabitEthernet0/4>], interfaceBlacklist=null, nodeBlacklist=null, bgpTables=null, routingTables=null, externalBgpAnnouncements=null}
+    NO_ROUTE
+
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-bounded-length actions=[ACCEPT], dstIps=[30.2.0.0/30], srcIps=[30.0.1.0/30], finalNodeRegex=e2-0, ingressNodeRegex=e0-1, bound=4
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-routing-loop actions=[ACCEPT], srcIps=[30.0.1.0/30]
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-blackhole actions=[ACCEPT], dstIps=[30.2.0.0/30], srcIps=[30.0.1.0/30]
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.2.0.0/30], srcIps=[30.1.0.0/30], finalNodeRegex=e2-0, ingressNodeRegex=e1-0
+
+Verified
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.2.0.0/30], srcIps=[30.1.0.0/30], failures=1, finalNodeRegex=e2-0, ingressNodeRegex=e1-0
+
+Verified
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.2.0.0/30], srcIps=[30.1.0.0/30], failures=2, finalNodeRegex=e2-0, ingressNodeRegex=e1-0
+
+Flow: ingress:e1-0 vrf:default 30.1.0.0->30.2.0.2 HOPOPT packetLength:0 state:NEW
+  environment:BASE
+Environment{envName=BASE, testrigName=tr_8347aa7b-0cfa-4de6-b00b-ff9330aa7405, edgeBlacklist=[<agg2-0:GigabitEthernet0/3, e2-0:GigabitEthernet0/1>, <agg2-1:GigabitEthernet0/3, e2-0:GigabitEthernet0/2>], interfaceBlacklist=null, nodeBlacklist=null, bgpTables=null, routingTables=null, externalBgpAnnouncements=null}
+    NO_ROUTE
+
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-bounded-length actions=[ACCEPT], dstIps=[30.2.0.0/30], srcIps=[30.1.0.0/30], finalNodeRegex=e2-0, ingressNodeRegex=e1-0, bound=4
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-routing-loop actions=[ACCEPT], srcIps=[30.1.0.0/30]
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-blackhole actions=[ACCEPT], dstIps=[30.2.0.0/30], srcIps=[30.1.0.0/30]
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.2.0.0/30], srcIps=[30.1.1.0/30], finalNodeRegex=e2-0, ingressNodeRegex=e1-1
+
+Verified
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.2.0.0/30], srcIps=[30.1.1.0/30], failures=1, finalNodeRegex=e2-0, ingressNodeRegex=e1-1
+
+Verified
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.2.0.0/30], srcIps=[30.1.1.0/30], failures=2, finalNodeRegex=e2-0, ingressNodeRegex=e1-1
+
+Flow: ingress:e1-1 vrf:default 30.1.1.0->30.2.0.0 HOPOPT packetLength:0 state:NEW
+  environment:BASE
+Environment{envName=BASE, testrigName=tr_8347aa7b-0cfa-4de6-b00b-ff9330aa7405, edgeBlacklist=[<agg2-0:GigabitEthernet0/3, e2-0:GigabitEthernet0/1>, <agg2-1:GigabitEthernet0/3, e2-0:GigabitEthernet0/2>], interfaceBlacklist=null, nodeBlacklist=null, bgpTables=null, routingTables=null, externalBgpAnnouncements=null}
+    NO_ROUTE
+
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-bounded-length actions=[ACCEPT], dstIps=[30.2.0.0/30], srcIps=[30.1.1.0/30], finalNodeRegex=e2-0, ingressNodeRegex=e1-1, bound=4
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-routing-loop actions=[ACCEPT], srcIps=[30.1.1.0/30]
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-blackhole actions=[ACCEPT], dstIps=[30.2.0.0/30], srcIps=[30.1.1.0/30]
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.2.0.0/30], srcIps=[30.3.0.0/30], finalNodeRegex=e2-0, ingressNodeRegex=e3-0
+
+Verified
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.2.0.0/30], srcIps=[30.3.0.0/30], failures=1, finalNodeRegex=e2-0, ingressNodeRegex=e3-0
+
+Verified
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.2.0.0/30], srcIps=[30.3.0.0/30], failures=2, finalNodeRegex=e2-0, ingressNodeRegex=e3-0
+
+Flow: ingress:e3-0 vrf:default 30.3.0.0->30.2.0.2 HOPOPT packetLength:0 state:NEW
+  environment:BASE
+Environment{envName=BASE, testrigName=tr_8347aa7b-0cfa-4de6-b00b-ff9330aa7405, edgeBlacklist=[<agg2-0:GigabitEthernet0/3, e2-0:GigabitEthernet0/1>, <agg2-1:GigabitEthernet0/3, e2-0:GigabitEthernet0/2>], interfaceBlacklist=null, nodeBlacklist=null, bgpTables=null, routingTables=null, externalBgpAnnouncements=null}
+    NO_ROUTE
+
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-bounded-length actions=[ACCEPT], dstIps=[30.2.0.0/30], srcIps=[30.3.0.0/30], finalNodeRegex=e2-0, ingressNodeRegex=e3-0, bound=4
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-routing-loop actions=[ACCEPT], srcIps=[30.3.0.0/30]
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-blackhole actions=[ACCEPT], dstIps=[30.2.0.0/30], srcIps=[30.3.0.0/30]
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.3.0.0/30], srcIps=[30.0.0.0/30], finalNodeRegex=e3-0, ingressNodeRegex=e0-0
+
+Verified
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.3.0.0/30], srcIps=[30.0.0.0/30], failures=1, finalNodeRegex=e3-0, ingressNodeRegex=e0-0
+
+Verified
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.3.0.0/30], srcIps=[30.0.0.0/30], failures=2, finalNodeRegex=e3-0, ingressNodeRegex=e0-0
+
+Flow: ingress:e0-0 vrf:default 30.0.0.0->30.3.0.0 HOPOPT packetLength:0 state:NEW
+  environment:BASE
+Environment{envName=BASE, testrigName=tr_8347aa7b-0cfa-4de6-b00b-ff9330aa7405, edgeBlacklist=[<agg3-0:GigabitEthernet0/3, e3-0:GigabitEthernet0/1>, <agg3-1:GigabitEthernet0/3, e3-0:GigabitEthernet0/2>], interfaceBlacklist=null, nodeBlacklist=null, bgpTables=null, routingTables=null, externalBgpAnnouncements=null}
+    NO_ROUTE
+
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-bounded-length actions=[ACCEPT], dstIps=[30.3.0.0/30], srcIps=[30.0.0.0/30], finalNodeRegex=e3-0, ingressNodeRegex=e0-0, bound=4
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-routing-loop actions=[ACCEPT], srcIps=[30.0.0.0/30]
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-blackhole actions=[ACCEPT], dstIps=[30.3.0.0/30], srcIps=[30.0.0.0/30]
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.3.0.0/30], srcIps=[30.0.1.0/30], finalNodeRegex=e3-0, ingressNodeRegex=e0-1
+
+Verified
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.3.0.0/30], srcIps=[30.0.1.0/30], failures=1, finalNodeRegex=e3-0, ingressNodeRegex=e0-1
+
+Verified
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.3.0.0/30], srcIps=[30.0.1.0/30], failures=2, finalNodeRegex=e3-0, ingressNodeRegex=e0-1
+
+Flow: ingress:e0-1 vrf:default 30.0.1.0->30.3.0.0 HOPOPT packetLength:0 state:NEW
+  environment:BASE
+Environment{envName=BASE, testrigName=tr_8347aa7b-0cfa-4de6-b00b-ff9330aa7405, edgeBlacklist=[<agg3-0:GigabitEthernet0/3, e3-0:GigabitEthernet0/1>, <agg3-1:GigabitEthernet0/3, e3-0:GigabitEthernet0/2>], interfaceBlacklist=null, nodeBlacklist=null, bgpTables=null, routingTables=null, externalBgpAnnouncements=null}
+    NO_ROUTE
+
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-bounded-length actions=[ACCEPT], dstIps=[30.3.0.0/30], srcIps=[30.0.1.0/30], finalNodeRegex=e3-0, ingressNodeRegex=e0-1, bound=4
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-routing-loop actions=[ACCEPT], srcIps=[30.0.1.0/30]
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-blackhole actions=[ACCEPT], dstIps=[30.3.0.0/30], srcIps=[30.0.1.0/30]
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.3.0.0/30], srcIps=[30.1.0.0/30], finalNodeRegex=e3-0, ingressNodeRegex=e1-0
+
+Verified
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.3.0.0/30], srcIps=[30.1.0.0/30], failures=1, finalNodeRegex=e3-0, ingressNodeRegex=e1-0
+
+Verified
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.3.0.0/30], srcIps=[30.1.0.0/30], failures=2, finalNodeRegex=e3-0, ingressNodeRegex=e1-0
+
+Flow: ingress:e1-0 vrf:default 30.1.0.0->30.3.0.0 HOPOPT packetLength:0 state:NEW
+  environment:BASE
+Environment{envName=BASE, testrigName=tr_8347aa7b-0cfa-4de6-b00b-ff9330aa7405, edgeBlacklist=[<agg3-0:GigabitEthernet0/3, e3-0:GigabitEthernet0/1>, <agg3-1:GigabitEthernet0/3, e3-0:GigabitEthernet0/2>], interfaceBlacklist=null, nodeBlacklist=null, bgpTables=null, routingTables=null, externalBgpAnnouncements=null}
+    NO_ROUTE
+
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-bounded-length actions=[ACCEPT], dstIps=[30.3.0.0/30], srcIps=[30.1.0.0/30], finalNodeRegex=e3-0, ingressNodeRegex=e1-0, bound=4
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-routing-loop actions=[ACCEPT], srcIps=[30.1.0.0/30]
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-blackhole actions=[ACCEPT], dstIps=[30.3.0.0/30], srcIps=[30.1.0.0/30]
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.3.0.0/30], srcIps=[30.1.1.0/30], finalNodeRegex=e3-0, ingressNodeRegex=e1-1
+
+Verified
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.3.0.0/30], srcIps=[30.1.1.0/30], failures=1, finalNodeRegex=e3-0, ingressNodeRegex=e1-1
+
+Verified
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.3.0.0/30], srcIps=[30.1.1.0/30], failures=2, finalNodeRegex=e3-0, ingressNodeRegex=e1-1
+
+Flow: ingress:e1-1 vrf:default 30.1.1.0->30.3.0.0 HOPOPT packetLength:0 state:NEW
+  environment:BASE
+Environment{envName=BASE, testrigName=tr_8347aa7b-0cfa-4de6-b00b-ff9330aa7405, edgeBlacklist=[<agg3-0:GigabitEthernet0/3, e3-0:GigabitEthernet0/1>, <agg3-1:GigabitEthernet0/3, e3-0:GigabitEthernet0/2>], interfaceBlacklist=null, nodeBlacklist=null, bgpTables=null, routingTables=null, externalBgpAnnouncements=null}
+    NO_ROUTE
+
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-bounded-length actions=[ACCEPT], dstIps=[30.3.0.0/30], srcIps=[30.1.1.0/30], finalNodeRegex=e3-0, ingressNodeRegex=e1-1, bound=4
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-routing-loop actions=[ACCEPT], srcIps=[30.1.1.0/30]
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-blackhole actions=[ACCEPT], dstIps=[30.3.0.0/30], srcIps=[30.1.1.0/30]
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.3.0.0/30], srcIps=[30.2.0.0/30], finalNodeRegex=e3-0, ingressNodeRegex=e2-0
+
+Verified
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.3.0.0/30], srcIps=[30.2.0.0/30], failures=1, finalNodeRegex=e3-0, ingressNodeRegex=e2-0
+
+Verified
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[30.3.0.0/30], srcIps=[30.2.0.0/30], failures=2, finalNodeRegex=e3-0, ingressNodeRegex=e2-0
+
+Flow: ingress:e2-0 vrf:default 30.2.0.0->30.3.0.0 HOPOPT packetLength:0 state:NEW
+  environment:BASE
+Environment{envName=BASE, testrigName=tr_8347aa7b-0cfa-4de6-b00b-ff9330aa7405, edgeBlacklist=[<agg3-0:GigabitEthernet0/3, e3-0:GigabitEthernet0/1>, <agg3-1:GigabitEthernet0/3, e3-0:GigabitEthernet0/2>], interfaceBlacklist=null, nodeBlacklist=null, bgpTables=null, routingTables=null, externalBgpAnnouncements=null}
+    NO_ROUTE
+
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-bounded-length actions=[ACCEPT], dstIps=[30.3.0.0/30], srcIps=[30.2.0.0/30], finalNodeRegex=e3-0, ingressNodeRegex=e2-0, bound=4
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-routing-loop actions=[ACCEPT], srcIps=[30.2.0.0/30]
+
+Verified
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-blackhole actions=[ACCEPT], dstIps=[30.3.0.0/30], srcIps=[30.2.0.0/30]
+
+Verified
+Summary: 0 (non-assertion) results; 

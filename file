@@ -1,0 +1,2746 @@
+sat
+(objectives
+ (a 0)
+)
+(model 
+  (define-fun |0_CamB6AOSPFExportAddSoft10.1.2.1/32| () Bool
+    false)
+  (define-fun |0_0_SLICE-CamExtB__CamExtB_GigabitEthernet0/1_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN_CamExtB_OVERALL_BEST_NoneBGPExportAddSoft| () Bool
+    false)
+  (define-fun |0_0_SLICE-MAIN__CamEdge_FastEthernet3_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_CamB2BOSPFSoftRedisRemove| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamExtA_BGP_EXPORT_GigabitEthernet0/1_adminDist| () Int
+    0)
+  (define-fun |0_0_SLICE-CamExtA__CamExtB_GigabitEthernet0/1_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_CamExtBStaticRouteRemoveSoft192.1.144.0/23| () Bool
+    true)
+  (define-fun |0_mB2A_OSPF_IMPORT_GigabitEthernet6AllowChoiceUseSoft| () Bool
+    false)
+  (define-fun |0_0_SLICE-MAIN__CamDataA_GigabitEthernet7_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-CamExtB_CamExtB_OVERALL_BEST_None_prefixLength| () Int
+    29)
+  (define-fun |0_mDataB_OSPF_IMPORT_GigabitEthernet7AllowChoiceUseSoft| () Bool
+    false)
+  (define-fun |0_0_SLICE-MAIN__CamB2B_Loopback0_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB6B_OSPF_IMPORT_GigabitEthernet6_metric| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamDataA_OSPF_SINGLE-EXPORT__permitted| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamEdge_FastEthernet40_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_192.1.100.0/23Stat-Conn-ExportRemoveSoft0_SLICE-MAIN_CamExtB_OVERALL_BEST_None| () Bool
+    true)
+  (define-fun |0_CamB6B-StaticRouteAddSoft-CamB6B,GigabitEthernet6 --> CamB6A,GigabitEthernet6| () Bool
+    false)
+  (define-fun |0_CamDataAImportFilterAddSoft0_SLICE-MAIN_CamDataA_OSPF_IMPORT_GigabitEthernet2| () Bool
+    true)
+  (define-fun |0_CamB6BOSPFExportAddSoft128.89.72.0/23| () Bool
+    false)
+  (define-fun |0_0_SLICE-MAIN__CamEdge_FastEthernet7_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamExtA_GigabitEthernet0/1_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamDataA_OVERALL_BEST_None_history| () (_ BitVec 1)
+    #b1)
+  (define-fun |0_SLICE-MAIN_CamExtB_BGP_EXPORT_GigabitEthernet0/0_bgpInternal| () Bool
+    false)
+  (define-fun |0_mB6B_OSPF_IMPORT_GigabitEthernet7AllowChoiceUseSoft| () Bool
+    false)
+  (define-fun |0_0_SLICE-MAIN__CamDmz_FastEthernet3_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB6A_OSPF_IMPORT_GigabitEthernet7_adminDist| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamDataB_OSPF_IMPORT_GigabitEthernet6_prefixLength| () Int
+    0)
+  (define-fun |0_0_SLICE-MAIN__CamEdge_FastEthernet15_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamB2A_GigabitEthernet2| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamB6B_GigabitEthernet8| () Bool
+    true)
+  (define-fun |0_CamExtBStaticRouteRemoveSoft192.1.114.0/24| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB2B_OSPF_SINGLE-EXPORT__metric| () Int
+    1)
+  (define-fun |0_SLICE-MAIN_CamB2B_OSPF_IMPORT_GigabitEthernet3_metric| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamDataB_OSPF_IMPORT_GigabitEthernet3_ospfType| () (_ BitVec 2)
+    #b00)
+  (define-fun |0_CamDataBOSPFSoftRedisRemove| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamB2B_GigabitEthernet1_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamB2B_GigabitEthernet8_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamExtB_BGP_IMPORT_iBGP-CamExtA_metric| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamDataA_OSPF_Redistributed_ospfType| () (_ BitVec 2)
+    #b11)
+  (define-fun |0_SLICE-MAIN_CamB2B_OVERALL_BEST_None_prefixLength| () Int
+    27)
+  (define-fun |0_mB6A_OSPF_IMPORT_GigabitEthernet3AllowChoiceUseSoft| () Bool
+    false)
+  (define-fun |0_0_SLICE-CamExtA__CamExtA_iBGP-CamExtB_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamEdge_FastEthernet5_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_CamB6AOSPFExportAddSoft128.89.88.0/23| () Bool
+    false)
+  (define-fun |0_CamB6B-StaticRouteAddSoft-CamB6B,GigabitEthernet5 --> CamB6A,GigabitEthernet5| () Bool
+    false)
+  (define-fun |0_CamB2AOSPFExportAddSoft10.1.0.1/32| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamB2B_OSPF_IMPORT_GigabitEthernet3_permitted| () Bool
+    false)
+  (define-fun |0_0_SLICE-MAIN__CamEdge_FastEthernet46_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamDataA_OSPF_IMPORT_GigabitEthernet3_metric| () Int
+    0)
+  (define-fun |0_SLICE-CamExtA_icmp-code| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamDmz_OVERALL_BEST_None_permitted| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamB6A_OSPF_Redistributed_metric| () Int
+    1)
+  (define-fun |0_SLICE-MAIN_CamB6B_OSPF_SINGLE-EXPORT__metric| () Int
+    1)
+  (define-fun |0_0_SLICE-MAIN__CamB6A_GigabitEthernet7_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_CamB6AImportFilterAddSoft0_SLICE-MAIN_CamB6A_OSPF_IMPORT_GigabitEthernet5| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamExtA_GigabitEthernet0/1| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamDataB_OSPF_Redistributed_metric| () Int
+    1)
+  (define-fun |0_192.1.17.0/24Stat-Conn-ExportRemoveSoft0_SLICE-MAIN_CamExtA_OVERALL_BEST_None| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamB6A_GigabitEthernet2_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamEdge_FastEthernet9_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamB2B_GigabitEthernet6_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_192.1.140.0/22Stat-Conn-ExportRemoveSoft0_SLICE-MAIN_CamExtA_OVERALL_BEST_None| () Bool
+    true)
+  (define-fun |0_mB2A_OSPF_IMPORT_GigabitEthernet7AllowChoiceUseSoft| () Bool
+    false)
+  (define-fun |0_0_SLICE-CamExtB__CamExtA_Serial1/0_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB6B_OVERALL_BEST_None_adminDist| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamB2A_OSPF_IMPORT_GigabitEthernet5_metric| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamB6A_OSPF_BEST_None_ospfType| () (_ BitVec 2)
+    #b00)
+  (define-fun |0_SLICE-MAIN_CamB2A_OSPF_IMPORT_GigabitEthernet5_ospfType| () (_ BitVec 2)
+    #b00)
+  (define-fun |0_0_SLICE-MAIN__CamEdge_FastEthernet45_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB2B_OSPF_Redistributed_permitted| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB6B_OSPF_IMPORT_GigabitEthernet3_prefixLength| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamB2A_OSPF_IMPORT_GigabitEthernet6_adminDist| () Int
+    0)
+  (define-fun |0_0_SLICE-MAIN__CamEdge_FastEthernet7_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_mB6A_OSPF_IMPORT_GigabitEthernet5AllowChoiceUseSoft| () Bool
+    false)
+  (define-fun |0_0_SLICE-MAIN__CamDataA_GigabitEthernet3_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-CamExtB_DATA-FORWARDING_CamExtB_FastEthernet0/0/0| () Bool
+    false)
+  (define-fun |0_0_SLICE-CamExtB__CamExtB_iBGP-CamExtA_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB6B_OSPF_IMPORT_GigabitEthernet2_metric| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamExtB_OVERALL_BEST_None_igpMetric| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamExtA_OVERALL_BEST_None_igpMetric| () Int
+    0)
+  (define-fun |0_192.1.124.0/22Stat-Conn-ExportRemoveSoft0_SLICE-MAIN_CamExtB_OVERALL_BEST_None| () Bool
+    true)
+  (define-fun |0_CamB2BImportFilterAddSoft0_SLICE-MAIN_CamB2B_OSPF_IMPORT_GigabitEthernet3| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamExtA_BGP_IMPORT_iBGP-CamExtB_prefixLength| () Int
+    0)
+  (define-fun |0_mB6B_OSPF_IMPORT_GigabitEthernet2AllowChoiceUseSoft| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamExtA_BGP_IMPORT_iBGP-CamExtB_permitted| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamDataA_OSPF_BEST_None_metric| () Int
+    0)
+  (define-fun |0_CamDataAOSPFExportRemoveSoft128.33.64.0/27| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamDmz_FastEthernet1_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB6A_OSPF_IMPORT_GigabitEthernet5_prefixLength| () Int
+    0)
+  (define-fun |0_SLICE-CamExtA_CamExtB_STATIC_BEST_None_prefixLength| () Int
+    24)
+  (define-fun |0_192.1.105.0/24Stat-Conn-ExportRemoveSoft0_SLICE-MAIN_CamExtA_OVERALL_BEST_None| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamB2B_GigabitEthernet4| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamB2B_GigabitEthernet8| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamDataB_OSPF_IMPORT_GigabitEthernet7_adminDist| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamB6A_GigabitEthernet7| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamDataA_OSPF_IMPORT_GigabitEthernet6_ospfType| () (_ BitVec 2)
+    #b00)
+  (define-fun |0_SLICE-MAIN_CamEdge_OSPF_Redistributed_adminDist| () Int
+    1)
+  (define-fun |0_SLICE-MAIN_CamB2B_OSPF_SINGLE-EXPORT__permitted| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamEdge_FastEthernet40_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB2B_OSPF_IMPORT_GigabitEthernet7_permitted| () Bool
+    false)
+  (define-fun |0_0_SLICE-CamExtA__CamExtA_GigabitEthernet0/1_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamDataA_GigabitEthernet7| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamB2B_OSPF_Redistributed_metric| () Int
+    1)
+  (define-fun |0_SLICE-MAIN_CamDataA_OSPF_SINGLE-EXPORT__prefixLength| () Int
+    27)
+  (define-fun |0_CamB2BOSPFExportAddSoft128.33.88.0/23| () Bool
+    false)
+  (define-fun |0_192.1.118.0/24Stat-Conn-ExportRemoveSoft0_SLICE-MAIN_CamExtB_OVERALL_BEST_None| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamB6B_GigabitEthernet2_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamB2B_GigabitEthernet7| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamB6A_OSPF_IMPORT_GigabitEthernet3_adminDist| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamExtA_OVERALL_BEST_None_prefixLength| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamB2B_OSPF_IMPORT_GigabitEthernet2_adminDist| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamEdge_OVERALL_BEST_None_prefixLength| () Int
+    27)
+  (define-fun |0_SLICE-MAIN_CamExtB_OVERALL_BEST_None_metric| () Int
+    0)
+  (define-fun |0_CamB6BOSPFExportAddSoft128.89.80.0/23| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamB2B_OSPF_IMPORT_GigabitEthernet7_adminDist| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamB2B_OSPF_IMPORT_GigabitEthernet2_ospfType| () (_ BitVec 2)
+    #b00)
+  (define-fun |0_SLICE-MAIN_CamExtA_BGP_EXPORT_GigabitEthernet0/1_permitted| () Bool
+    false)
+  (define-fun |0_0_SLICE-MAIN__CamB2A_GigabitEthernet5_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB2A_OSPF_IMPORT_GigabitEthernet6_prefixLength| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamB6B_OSPF_BEST_None_prefixLength| () Int
+    0)
+  (define-fun |0_0_SLICE-MAIN__CamDmz_FastEthernet1_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_CamExtAStaticRouteRemoveSoft192.1.144.0/23| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB6B_OSPF_IMPORT_GigabitEthernet3_adminDist| () Int
+    0)
+  (define-fun |0_CamB6AOSPFExportAddSoft128.89.84.0/23| () Bool
+    false)
+  (define-fun |0_CamB6BOSPFExportRemoveSoft128.33.64.0/27| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB2A_OSPF_SINGLE-EXPORT__metric| () Int
+    1)
+  (define-fun |0_0_SLICE-MAIN__CamExtA_iBGP-CamExtB_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamExtA_BGP_IMPORT_GigabitEthernet0/1_permitted| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamExtA_BGP_EXPORT_ENV-68.236.83.41_metric| () Int
+    1)
+  (define-fun |0_SLICE-MAIN_CamB6B_OSPF_SINGLE-EXPORT__prefixLength| () Int
+    27)
+  (define-fun |0_SLICE-MAIN_CamDataA_OSPF_IMPORT_GigabitEthernet6_permitted| () Bool
+    false)
+  (define-fun |0_0_SLICE-MAIN__CamB2A_GigabitEthernet7_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamExtB_iBGP-CamExtA_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB6B_OSPF_Redistributed_ospfType| () (_ BitVec 2)
+    #b11)
+  (define-fun |0_SLICE-MAIN_CamB2A_OSPF_BEST_None_prefixLength| () Int
+    0)
+  (define-fun |0_CamExtAStaticRouteRemoveSoft192.1.114.0/24| () Bool
+    true)
+  (define-fun |0_CamB6B-StaticRouteAddSoft-CamB6B,GigabitEthernet3 --> CamB6A,GigabitEthernet3| () Bool
+    false)
+  (define-fun |0_CamDataAOSPFExportAddSoft128.33.0.0/24| () Bool
+    false)
+  (define-fun |0_0_SLICE-MAIN__CamDmz_FastEthernet2_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_CamB2B-StaticRouteAddSoft-CamB2B,GigabitEthernet4 --> CamB2A,GigabitEthernet4| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamB2A_GigabitEthernet7| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamB2A_OSPF_Redistributed_prefixLength| () Int
+    27)
+  (define-fun |0_CamDataA-StaticRouteAddSoft-CamDataA,GigabitEthernet3 --> CamDataB,GigabitEthernet3| () Bool
+    false)
+  (define-fun |0_0_SLICE-MAIN__CamDataA_GigabitEthernet2_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamExtA_BGP_EXPORT_iBGP-CamExtB_prefixLength| () Int
+    0)
+  (define-fun |0_0_SLICE-CamExtA__CamExtA_iBGP-CamExtB_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB6A_OSPF_IMPORT_GigabitEthernet7_metric| () Int
+    0)
+  (define-fun |0_CamB2BImportFilterAddSoft0_SLICE-MAIN_CamB2B_OSPF_IMPORT_GigabitEthernet5| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamB6A_GigabitEthernet5| () Bool
+    false)
+  (define-fun |0_0_SLICE-MAIN__CamB2A_GigabitEthernet3_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_CamDataBOSPFExportAddSoft128.33.6.0/24| () Bool
+    false)
+  (define-fun |0_0_SLICE-MAIN__CamB6B_GigabitEthernet6_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_CamB2AImportFilterAddSoft0_SLICE-MAIN_CamB2A_OSPF_IMPORT_GigabitEthernet3| () Bool
+    true)
+  (define-fun |0_CamB6BImportFilterAddSoft0_SLICE-MAIN_CamB6B_OSPF_IMPORT_GigabitEthernet2| () Bool
+    true)
+  (define-fun |0_mDataA_OSPF_IMPORT_GigabitEthernet3AllowChoiceUseSoft| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamDataA_OSPF_IMPORT_GigabitEthernet2_ospfType| () (_ BitVec 2)
+    #b00)
+  (define-fun |0_0_SLICE-MAIN__CamB6B_GigabitEthernet5_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamDataB_GigabitEthernet8_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB6B_OSPF_SINGLE-EXPORT__ospfType| () (_ BitVec 2)
+    #b11)
+  (define-fun |0_SLICE-MAIN_CamB2A_OSPF_SINGLE-EXPORT__permitted| () Bool
+    true)
+  (define-fun |0_SLICE-CamExtB_CamExtB_OVERALL_BEST_None_metric| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamDataA_OSPF_Redistributed_permitted| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamDataB_OSPF_IMPORT_GigabitEthernet7_prefixLength| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamB6B_OSPF_IMPORT_GigabitEthernet7_metric| () Int
+    0)
+  (define-fun |0_SLICE-CamExtA_CamExtA_OVERALL_BEST_None_prefixLength| () Int
+    29)
+  (define-fun |0_SLICE-MAIN_CamExtB_BGP_EXPORT_FastEthernet0/0/0_adminDist| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamExtA_BGP_IMPORT_iBGP-CamExtB_adminDist| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamB2A_GigabitEthernet4| () Bool
+    false)
+  (define-fun |0_CamB6A-StaticRouteAddSoft-CamB6A,GigabitEthernet5 --> CamB6B,GigabitEthernet5| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamB6A_GigabitEthernet3| () Bool
+    false)
+  (define-fun |0_CamExtAStaticRouteRemoveSoft192.1.140.0/22| () Bool
+    true)
+  (define-fun |0_CamDataBImportFilterAddSoft0_SLICE-MAIN_CamDataB_OSPF_IMPORT_GigabitEthernet7| () Bool
+    true)
+  (define-fun |0_0_SLICE-CamExtA__CamExtB_GigabitEthernet0/1_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_mDataA_OSPF_IMPORT_GigabitEthernet7AllowChoiceUseSoft| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamB6A_GigabitEthernet2| () Bool
+    false)
+  (define-fun |0_0_SLICE-CamExtA__CamExtB_iBGP-CamExtA_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamDataA_OSPF_IMPORT_GigabitEthernet3_prefixLength| () Int
+    0)
+  (define-fun |0_0_SLICE-MAIN__CamEdge_null_interface_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamDataB_OSPF_SINGLE-EXPORT__adminDist| () Int
+    0)
+  (define-fun |0_0_SLICE-CamExtA__CamExtA_null_interface_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamB2A_GigabitEthernet1_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB6B_OSPF_IMPORT_GigabitEthernet2_ospfType| () (_ BitVec 2)
+    #b00)
+  (define-fun |0_SLICE-MAIN_CamExtA_BGP_IMPORT_GigabitEthernet0/1_bgpInternal| () Bool
+    false)
+  (define-fun |0_0_SLICE-MAIN__CamDataB_GigabitEthernet1_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamExtA_iBGP-CamExtB_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB6B_OSPF_IMPORT_GigabitEthernet3_metric| () Int
+    0)
+  (define-fun |0_0_SLICE-MAIN__CamB6A_GigabitEthernet2_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB2B_OSPF_IMPORT_GigabitEthernet6_metric| () Int
+    0)
+  (define-fun |0_SLICE-CamExtA_CamExtA_OVERALL_BEST_None_metric| () Int
+    0)
+  (define-fun |0_SLICE-CamExtB_CamExtB_OVERALL_BEST_None_adminDist| () Int
+    0)
+  (define-fun |0_0_SLICE-MAIN__CamB2A_GigabitEthernet6_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB6A_OSPF_BEST_None_metric| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamB2A_OSPF_IMPORT_GigabitEthernet5_permitted| () Bool
+    false)
+  (define-fun |0_CamDataBOSPFExportAddSoft128.33.0.0/24| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamExtB_BGP_EXPORT_ENV-64.119.128.41_permitted| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamB2A_GigabitEthernet8| () Bool
+    true)
+  (define-fun |0_192.1.105.0/24Stat-Conn-ExportRemoveSoft0_SLICE-MAIN_CamExtB_OVERALL_BEST_None| () Bool
+    true)
+  (define-fun |0_CamB2AImportFilterAddSoft0_SLICE-MAIN_CamB2A_OSPF_IMPORT_GigabitEthernet6| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamB6B_GigabitEthernet7_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamDataB_GigabitEthernet7_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamDataB_OSPF_IMPORT_GigabitEthernet2_metric| () Int
+    0)
+  (define-fun |0_192.1.114.0/24Stat-Conn-ExportRemoveSoft0_SLICE-MAIN_CamExtB_OVERALL_BEST_None| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamExtA_GigabitEthernet0/0_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_CamExtBStaticRouteRemoveSoft192.1.115.0/24| () Bool
+    true)
+  (define-fun |0_SLICE-CamExtB_icmp-code| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamDataA_OSPF_Redistributed_metric| () Int
+    1)
+  (define-fun |0_SLICE-MAIN_CamB2B_OSPF_IMPORT_GigabitEthernet6_permitted| () Bool
+    false)
+  (define-fun |0_0_SLICE-CamExtB__CamExtA_null_interface_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamEdge_FastEthernet36_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamEdge_FastEthernet48_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB2A_OSPF_BEST_None_adminDist| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamB6A_OSPF_IMPORT_GigabitEthernet6_adminDist| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamB2A_OSPF_Redistributed_metric| () Int
+    1)
+  (define-fun |0_SLICE-MAIN_CamB2B_OSPF_IMPORT_GigabitEthernet4_metric| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamB6B_GigabitEthernet6| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamExtA_OVERALL_BEST_None_metric| () Int
+    0)
+  (define-fun |0_0_SLICE-MAIN__CamB2B_GigabitEthernet7_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamB2A_GigabitEthernet2_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_0_SLICE-CamExtA__CamExtA_GigabitEthernet0/0_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_src-port| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamExtB_OVERALL_BEST_None_bgpInternal| () Bool
+    false)
+  (define-fun |0_CamB6BImportFilterAddSoft0_SLICE-MAIN_CamB6B_OSPF_IMPORT_GigabitEthernet7| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamExtB_OVERALL_BEST_None_adminDist| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamExtA_OVERALL_BEST_None_history| () (_ BitVec 1)
+    #b0)
+  (define-fun |0_0_SLICE-CamExtB__CamExtB_GigabitEthernet0/0_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamB2B_GigabitEthernet4_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-CamExtB_CamExtA_OVERALL_BEST_None_prefixLength| () Int
+    29)
+  (define-fun |0_0_SLICE-MAIN__CamEdge_FastEthernet3_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB6B_OSPF_BEST_None_metric| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamB6A_OSPF_IMPORT_GigabitEthernet3_ospfType| () (_ BitVec 2)
+    #b00)
+  (define-fun |0_CamB6AOSPFExportRemoveSoft128.33.64.0/27| () Bool
+    true)
+  (define-fun |0_CamDataBOSPFExportAddSoft128.33.76.0/23| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamExtB_BGP_BEST_None_prefixLength| () Int
+    0)
+  (define-fun |0_SLICE-CamExtA_CONTROL-FORWARDING_CamExtA_null_interface| () Bool
+    false)
+  (define-fun |0_0_SLICE-MAIN__CamEdge_FastEthernet38_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamDataB_OSPF_SINGLE-EXPORT__prefixLength| () Int
+    27)
+  (define-fun |0_SLICE-MAIN_CamB6A_OSPF_IMPORT_GigabitEthernet2_ospfType| () (_ BitVec 2)
+    #b00)
+  (define-fun |0_SLICE-MAIN_CamDataA_OVERALL_BEST_None_ospfType| () (_ BitVec 2)
+    #b00)
+  (define-fun |0_mDataB_OSPF_IMPORT_GigabitEthernet3AllowChoiceUseSoft| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamDataA_OSPF_IMPORT_GigabitEthernet7_permitted| () Bool
+    false)
+  (define-fun |0_0_SLICE-MAIN__CamEdge_FastEthernet12_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_CamEdgeStaticRouteRemoveSoft128.33.0.0/16| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamDataA_Loopback0_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_CamExtBImportFilterAddSoft0_SLICE-MAIN_CamExtB_BGP_IMPORT_FastEthernet0/0/0| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamDmz_FastEthernet11_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_CamDataB-StaticRouteAddSoft-CamDataB,GigabitEthernet6 --> CamDataA,GigabitEthernet6| () Bool
+    false)
+  (define-fun |0_192.1.114.0/24Stat-Conn-ExportRemoveSoft0_SLICE-MAIN_CamExtA_OVERALL_BEST_None| () Bool
+    true)
+  (define-fun |0_0_SLICE-CamExtA__CamExtB_FastEthernet0/0/0_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamB6A_GigabitEthernet4_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB6B_OSPF_IMPORT_GigabitEthernet6_adminDist| () Int
+    0)
+  (define-fun |0_CamExtBStaticRouteRemoveSoft192.1.113.0/24| () Bool
+    true)
+  (define-fun |0_CamB6A-StaticRouteAddSoft-CamB6A,GigabitEthernet2 --> CamB6B,GigabitEthernet2| () Bool
+    false)
+  (define-fun |0_0_SLICE-MAIN__CamDataA_Loopback0_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamB6A_Loopback0_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamB6A_GigabitEthernet5_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamDataB_GigabitEthernet8| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamDmz_Loopback0_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamDataB_OVERALL_BEST_None_metric| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamB6B_OSPF_SINGLE-EXPORT__permitted| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamB6B_GigabitEthernet7_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamDataB_OSPF_IMPORT_GigabitEthernet3_prefixLength| () Int
+    0)
+  (define-fun |0_SLICE-MAIN__path-length_CamB2A| () Int
+    0)
+  (define-fun |0_0_SLICE-MAIN__CamEdge_null_interface_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_CamExtBStaticRouteRemoveSoft192.1.130.0/23| () Bool
+    true)
+  (define-fun |0_mExtB_BGP_IMPORT_FastEthernet0/0/0AllowChoiceUseSoft| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamDataB_OSPF_IMPORT_GigabitEthernet3_metric| () Int
+    0)
+  (define-fun |0_0_SLICE-MAIN__CamDmz_FastEthernet7_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamEdge_FastEthernet48_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-CamExtB_CamExtB_STATIC_BEST_None_prefixLength| () Int
+    24)
+  (define-fun |0_0_SLICE-MAIN__CamExtB_iBGP-CamExtA_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamExtB_OVERALL_BEST_None_history| () (_ BitVec 1)
+    #b0)
+  (define-fun |0_SLICE-CamExtB_DATA-FORWARDING_CamExtB_GigabitEthernet0/1| () Bool
+    false)
+  (define-fun |0_CamExtAStaticRouteRemoveSoft192.1.17.0/24| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB6B_OSPF_IMPORT_GigabitEthernet7_permitted| () Bool
+    false)
+  (define-fun |0_0_SLICE-MAIN__CamB6A_GigabitEthernet6_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamExtB_GigabitEthernet0/0_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamB2A_GigabitEthernet8_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamDataB_OSPF_BEST_None_adminDist| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamB2A_OSPF_IMPORT_GigabitEthernet3_permitted| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamExtA_BGP_EXPORT_Serial1/0_bgpInternal| () Bool
+    false)
+  (define-fun |0_CamExtBStaticRouteRemoveSoft192.1.17.0/24| () Bool
+    true)
+  (define-fun |0_0_SLICE-CamExtB__CamExtB_iBGP-CamExtA_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamExtB_BGP_IMPORT_FastEthernet0/0/0_prefixLength| () Int
+    0)
+  (define-fun |0_SLICE-MAIN__path-length_CamDataB| () Int
+    0)
+  (define-fun |0_192.1.98.0/23Stat-Conn-ExportRemoveSoft0_SLICE-MAIN_CamExtA_OVERALL_BEST_None| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamDataB_OSPF_BEST_None_ospfType| () (_ BitVec 2)
+    #b00)
+  (define-fun |0_CamEdgeStaticRouteRemoveSoft128.89.0.0/16| () Bool
+    true)
+  (define-fun |0_mB2B_OSPF_IMPORT_GigabitEthernet2AllowChoiceUseSoft| () Bool
+    false)
+  (define-fun |0_0_SLICE-MAIN__CamDmz_FastEthernet3_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_128.89.0.0/16Stat-Conn-ExportRemoveSoft0_SLICE-MAIN_CamExtB_OVERALL_BEST_None| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN__path-length_CamB2B| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamExtB_BGP_EXPORT_ENV-64.119.128.41_prefixLength| () Int
+    1)
+  (define-fun |0_CamB6BOSPFSoftRedisRemove| () Bool
+    true)
+  (define-fun |0_CamB2BOSPFExportAddSoft128.33.80.0/23| () Bool
+    false)
+  (define-fun |0_0_SLICE-MAIN_CamExtA_OVERALL_BEST_NoneBGPExportAddSoft| () Bool
+    false)
+  (define-fun |0_192.1.140.0/22Stat-Conn-ExportRemoveSoft0_SLICE-MAIN_CamExtB_OVERALL_BEST_None| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamDmz_FastEthernet11_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamB2B_GigabitEthernet4_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB2A_OSPF_IMPORT_GigabitEthernet4_ospfType| () (_ BitVec 2)
+    #b00)
+  (define-fun |0_CamDataBOSPFExportAddSoft128.89.99.0/24| () Bool
+    false)
+  (define-fun |0_mB2B_OSPF_IMPORT_GigabitEthernet6AllowChoiceUseSoft| () Bool
+    false)
+  (define-fun |0_192.1.115.0/24Stat-Conn-ExportRemoveSoft0_SLICE-MAIN_CamExtB_OVERALL_BEST_None| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamDmz_FastEthernet2_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_CamDataB-StaticRouteAddSoft-CamDataB,GigabitEthernet3 --> CamDataA,GigabitEthernet3| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamB6A_OSPF_IMPORT_GigabitEthernet2_metric| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamExtB_BGP_EXPORT_GigabitEthernet0/0_adminDist| () Int
+    0)
+  (define-fun |0_CamB6AOSPFExportAddSoft128.89.72.0/23| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamExtB_BGP_EXPORT_GigabitEthernet0/0_metric| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamB2B_OVERALL_BEST_None_ospfType| () (_ BitVec 2)
+    #b00)
+  (define-fun |0_0_SLICE-CamExtA__CamExtB_GigabitEthernet0/0_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_CamExtAStaticRouteRemoveSoft192.1.100.0/23| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB2A_OSPF_IMPORT_GigabitEthernet2_metric| () Int
+    0)
+  (define-fun |0_192.1.128.0/23Stat-Conn-ExportRemoveSoft0_SLICE-MAIN_CamExtB_OVERALL_BEST_None| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB6A_OSPF_Redistributed_adminDist| () Int
+    0)
+  (define-fun |0_0_SLICE-MAIN__CamB2A_GigabitEthernet4_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamExtB_FastEthernet0/0/0_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB2A_OVERALL_BEST_None_prefixLength| () Int
+    27)
+  (define-fun |0_SLICE-MAIN_CamDataA_OSPF_Redistributed_adminDist| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamB2B_OSPF_IMPORT_GigabitEthernet5_permitted| () Bool
+    false)
+  (define-fun |0_0_SLICE-MAIN__CamB2A_GigabitEthernet5_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB2B_OSPF_IMPORT_GigabitEthernet4_ospfType| () (_ BitVec 2)
+    #b00)
+  (define-fun |0_SLICE-MAIN_CamExtA_BGP_EXPORT_iBGP-CamExtB_metric| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamExtB_BGP_BEST_None_adminDist| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamDataA_OSPF_IMPORT_GigabitEthernet2_adminDist| () Int
+    0)
+  (define-fun |0_0_SLICE-CamExtA__CamExtA_null_interface_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB6A_OSPF_IMPORT_GigabitEthernet5_permitted| () Bool
+    false)
+  (define-fun |0_CamExtAStaticRouteRemoveSoft192.1.130.0/23| () Bool
+    true)
+  (define-fun |0_SLICE-CamExtA__reachable-id_CamExtB| () Int
+    2)
+  (define-fun |0_SLICE-MAIN_CamB2B_OSPF_SINGLE-EXPORT__prefixLength| () Int
+    27)
+  (define-fun |0_CamB2B-StaticRouteAddSoft-CamB2B,GigabitEthernet6 --> CamB2A,GigabitEthernet6| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamB6A_OSPF_SINGLE-EXPORT__metric| () Int
+    1)
+  (define-fun |0_0_SLICE-MAIN__CamDataB_GigabitEthernet2_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_192.1.122.0/24Stat-Conn-ExportRemoveSoft0_SLICE-MAIN_CamExtA_OVERALL_BEST_None| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB2A_OSPF_IMPORT_GigabitEthernet4_adminDist| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamEdge_STATIC_BEST_None_permitted| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamEdge_STATIC_BEST_None_prefixLength| () Int
+    16)
+  (define-fun |0_SLICE-MAIN_CamB2B_OSPF_IMPORT_GigabitEthernet7_metric| () Int
+    0)
+  (define-fun |0_SLICE-CamExtA_CamExtA_STATIC_BEST_None_permitted| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamExtA_BGP_EXPORT_GigabitEthernet0/0_prefixLength| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamExtB_BGP_EXPORT_GigabitEthernet0/1_bgpInternal| () Bool
+    false)
+  (define-fun |0_0_SLICE-MAIN__CamEdge_FastEthernet21_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB2B_OSPF_IMPORT_GigabitEthernet2_permitted| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamDataB_OSPF_BEST_None_prefixLength| () Int
+    0)
+  (define-fun |0_0_SLICE-MAIN__CamB6A_GigabitEthernet8_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamB6A_GigabitEthernet1_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB6A_OSPF_IMPORT_GigabitEthernet7_ospfType| () (_ BitVec 2)
+    #b00)
+  (define-fun |0_SLICE-MAIN_CamExtB_BGP_EXPORT_GigabitEthernet0/0_prefixLength| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamB6B_OVERALL_BEST_None_history| () (_ BitVec 1)
+    #b1)
+  (define-fun |0_0_SLICE-MAIN__CamDataB_GigabitEthernet4_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_192.1.115.0/24Stat-Conn-ExportRemoveSoft0_SLICE-MAIN_CamExtA_OVERALL_BEST_None| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamExtB_STATIC_IMPORT_null_interface_prefixLength| () Int
+    0)
+  (define-fun |0_0_SLICE-MAIN__CamExtB_GigabitEthernet0/1_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamB6B_GigabitEthernet3_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamB6A_GigabitEthernet6_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamB6A_GigabitEthernet1_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB2A_OSPF_IMPORT_GigabitEthernet3_prefixLength| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamB2B_OSPF_IMPORT_GigabitEthernet5_ospfType| () (_ BitVec 2)
+    #b00)
+  (define-fun |0_CamB2BImportFilterAddSoft0_SLICE-MAIN_CamB2B_OSPF_IMPORT_GigabitEthernet7| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamExtA_BGP_IMPORT_iBGP-CamExtB_metric| () Int
+    0)
+  (define-fun |0_CamB2BImportFilterAddSoft0_SLICE-MAIN_CamB2B_OSPF_IMPORT_GigabitEthernet4| () Bool
+    true)
+  (define-fun |0_CamDataAOSPFSoftRedisRemove| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamDataA_OSPF_IMPORT_GigabitEthernet7_adminDist| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamDataA_OSPF_BEST_None_ospfType| () (_ BitVec 2)
+    #b00)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamB6A_GigabitEthernet8| () Bool
+    false)
+  (define-fun |0_0_SLICE-MAIN__CamDmz_null_interface_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamB6A_GigabitEthernet4_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_CamExtBStaticRouteRemoveSoft192.1.124.0/22| () Bool
+    true)
+  (define-fun |0_mB6B_OSPF_IMPORT_GigabitEthernet5AllowChoiceUseSoft| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamB6B_OSPF_IMPORT_GigabitEthernet7_prefixLength| () Int
+    0)
+  (define-fun |0_CamEdgeStaticRouteRemoveSoft192.168.0.0/16| () Bool
+    true)
+  (define-fun |0_SLICE-CamExtB_CamExtA_STATIC_IMPORT_null_interface_prefixLength| () Int
+    24)
+  (define-fun |0_SLICE-MAIN_CamB2A_OSPF_IMPORT_GigabitEthernet4_prefixLength| () Int
+    0)
+  (define-fun |0_mB6A_OSPF_IMPORT_GigabitEthernet2AllowChoiceUseSoft| () Bool
+    false)
+  (define-fun |0_0_SLICE-MAIN__CamEdge_FastEthernet41_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamExtA_null_interface_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamExtB_STATIC_BEST_None_prefixLength| () Int
+    0)
+  (define-fun |0_CamB6AOSPFExportAddSoft128.89.68.0/23| () Bool
+    false)
+  (define-fun |0_0_SLICE-MAIN__CamEdge_FastEthernet5_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-CamExtB__reachable-id_CamExtA| () Int
+    2)
+  (define-fun |0_SLICE-MAIN_CamB2B_OSPF_IMPORT_GigabitEthernet5_adminDist| () Int
+    0)
+  (define-fun |0_SLICE-CamExtB_CamExtA_STATIC_BEST_None_permitted| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamDmz_STATIC_IMPORT_null_interface_prefixLength| () Int
+    0)
+  (define-fun |0_CamB2BImportFilterAddSoft0_SLICE-MAIN_CamB2B_OSPF_IMPORT_GigabitEthernet2| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamExtB_BGP_EXPORT_iBGP-CamExtA_adminDist| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamExtA_BGP_BEST_None_igpMetric| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamExtB_BGP_IMPORT_iBGP-CamExtA_bgpInternal| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamDataA_GigabitEthernet2| () Bool
+    false)
+  (define-fun |0_SLICE-CamExtB_CamExtA_STATIC_BEST_None_prefixLength| () Int
+    24)
+  (define-fun |0_0_SLICE-MAIN__CamDataB_GigabitEthernet3_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_CamDataBOSPFExportAddSoft10.1.6.2/32| () Bool
+    false)
+  (define-fun |0_CamB6AImportFilterAddSoft0_SLICE-MAIN_CamB6A_OSPF_IMPORT_GigabitEthernet3| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamExtA_BGP_EXPORT_iBGP-CamExtB_adminDist| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamB6A_OSPF_IMPORT_GigabitEthernet5_ospfType| () (_ BitVec 2)
+    #b00)
+  (define-fun |0_0_SLICE-MAIN__CamB6B_GigabitEthernet1_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamB2B_Loopback0_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB2A_OSPF_IMPORT_GigabitEthernet7_ospfType| () (_ BitVec 2)
+    #b00)
+  (define-fun |0_SLICE-MAIN__path-length_CamDataA| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamDataB_OSPF_IMPORT_GigabitEthernet7_metric| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamDataA_OSPF_BEST_None_adminDist| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamB2B_OSPF_IMPORT_GigabitEthernet6_adminDist| () Int
+    0)
+  (define-fun |0_0_SLICE-MAIN__CamB2B_GigabitEthernet3_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_CamDataAOSPFExportAddSoft10.1.5.1/32| () Bool
+    false)
+  (define-fun |0_0_SLICE-MAIN__CamEdge_GigabitEthernet49_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB6B_OSPF_IMPORT_GigabitEthernet7_adminDist| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamB2A_OSPF_SINGLE-EXPORT__ospfType| () (_ BitVec 2)
+    #b11)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamExtB_null_interface| () Bool
+    false)
+  (define-fun |0_0_SLICE-MAIN__CamExtA_GigabitEthernet0/1_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_CamB2A-StaticRouteAddSoft-CamB2A,GigabitEthernet3 --> CamB2B,GigabitEthernet3| () Bool
+    false)
+  (define-fun |0_CamExtBImportFilterAddSoft0_SLICE-MAIN_CamExtB_BGP_IMPORT_iBGP-CamExtA| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB6A_OSPF_IMPORT_GigabitEthernet5_adminDist| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamExtA_BGP_EXPORT_GigabitEthernet0/1_metric| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamExtA_BGP_EXPORT_Serial1/0_prefixLength| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamB2B_OSPF_IMPORT_GigabitEthernet4_adminDist| () Int
+    0)
+  (define-fun |0_0_SLICE-MAIN__CamDataA_GigabitEthernet8_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamDataB_OSPF_IMPORT_GigabitEthernet2_permitted| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamDataB_OSPF_Redistributed_adminDist| () Int
+    0)
+  (define-fun |0_CamB2B-StaticRouteAddSoft-CamB2B,GigabitEthernet3 --> CamB2A,GigabitEthernet3| () Bool
+    false)
+  (define-fun |0_0_SLICE-CamExtA__CamExtA_Serial1/0_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_CamExtBStaticRouteRemoveSoft192.1.102.0/24| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamDataB_GigabitEthernet6| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamB2B_OSPF_IMPORT_GigabitEthernet4_prefixLength| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamB6A_OSPF_IMPORT_GigabitEthernet6_ospfType| () (_ BitVec 2)
+    #b00)
+  (define-fun |0_0_SLICE-MAIN__CamB6B_Loopback0_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamEdge_OSPF_Redistributed_metric| () Int
+    1)
+  (define-fun |0_0_SLICE-CamExtB__CamExtA_iBGP-CamExtB_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamExtB_BGP_IMPORT_iBGP-CamExtA_igpMetric| () Int
+    0)
+  (define-fun |0_CamB6A-StaticRouteAddSoft-CamB6A,GigabitEthernet3 --> CamB6B,GigabitEthernet3| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamDataB_OSPF_IMPORT_GigabitEthernet2_ospfType| () (_ BitVec 2)
+    #b00)
+  (define-fun |0_SLICE-MAIN_CamB2A_OSPF_IMPORT_GigabitEthernet6_ospfType| () (_ BitVec 2)
+    #b00)
+  (define-fun |0_CamDataAImportFilterAddSoft0_SLICE-MAIN_CamDataA_OSPF_IMPORT_GigabitEthernet7| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamDmz_FastEthernet31_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB2B_OSPF_IMPORT_GigabitEthernet7_ospfType| () (_ BitVec 2)
+    #b00)
+  (define-fun |0_CamB2AImportFilterAddSoft0_SLICE-MAIN_CamB2A_OSPF_IMPORT_GigabitEthernet5| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamExtA_BGP_EXPORT_GigabitEthernet0/1_bgpInternal| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamExtA_BGP_BEST_None_routerID| () Int
+    0)
+  (define-fun |0_SLICE-MAIN__path-length_CamB6B| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamExtB_GigabitEthernet0/1| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamDmz_OVERALL_BEST_None_adminDist| () Int
+    0)
+  (define-fun |0_mB6B_OSPF_IMPORT_GigabitEthernet3AllowChoiceUseSoft| () Bool
+    false)
+  (define-fun |0_SLICE-CamExtB_CamExtA_OVERALL_BEST_None_adminDist| () Int
+    0)
+  (define-fun |0_SLICE-CamExtB_DATA-FORWARDING_CamExtA_GigabitEthernet0/1| () Bool
+    false)
+  (define-fun |0_CamB2B-StaticRouteAddSoft-CamB2B,GigabitEthernet5 --> CamB2A,GigabitEthernet5| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamEdge_GigabitEthernet50| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_dst-port| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamB2A_OSPF_IMPORT_GigabitEthernet7_prefixLength| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamEdge_OSPF_Redistributed_permitted| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamExtB_STATIC_BEST_None_permitted| () Bool
+    false)
+  (define-fun |0_128.33.0.0/16Stat-Conn-ExportRemoveSoft0_SLICE-MAIN_CamExtB_OVERALL_BEST_None| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB6B_OSPF_Redistributed_metric| () Int
+    1)
+  (define-fun |0_SLICE-MAIN_CamB2B_OSPF_IMPORT_GigabitEthernet3_prefixLength| () Int
+    0)
+  (define-fun |0_SLICE-CamExtA_CamExtA_STATIC_IMPORT_null_interface_prefixLength| () Int
+    24)
+  (define-fun |0_0_SLICE-MAIN__CamEdge_FastEthernet19_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB2B_OSPF_IMPORT_GigabitEthernet6_prefixLength| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamExtA_BGP_IMPORT_iBGP-CamExtB_igpMetric| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamEdge_OVERALL_BEST_None_ospfType| () (_ BitVec 2)
+    #b00)
+  (define-fun |0_0_SLICE-MAIN__CamEdge_FastEthernet44_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_CamDataAOSPFExportAddSoft128.89.99.0/24| () Bool
+    false)
+  (define-fun |0_mB2A_OSPF_IMPORT_GigabitEthernet3AllowChoiceUseSoft| () Bool
+    false)
+  (define-fun |0_192.1.120.0/23Stat-Conn-ExportRemoveSoft0_SLICE-MAIN_CamExtB_OVERALL_BEST_None| () Bool
+    true)
+  (define-fun |0_CamB6A-StaticRouteAddSoft-CamB6A,GigabitEthernet7 --> CamB6B,GigabitEthernet7| () Bool
+    false)
+  (define-fun |0_CamB6AOSPFExportAddSoft128.89.76.0/23| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamDataB_OSPF_IMPORT_GigabitEthernet3_adminDist| () Int
+    0)
+  (define-fun |0_CamB2BOSPFExportAddSoft128.33.16.0/21| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamExtA_iBGP-CamExtB| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamExtA_BGP_EXPORT_GigabitEthernet0/0_permitted| () Bool
+    false)
+  (define-fun |0_CamExtAImportFilterAddSoft0_SLICE-MAIN_CamExtA_BGP_IMPORT_GigabitEthernet0/1| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB6B_OSPF_IMPORT_GigabitEthernet2_prefixLength| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamB2B_OSPF_IMPORT_GigabitEthernet7_prefixLength| () Int
+    0)
+  (define-fun |0_0_SLICE-MAIN__CamDmz_FastEthernet12_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamB6A_GigabitEthernet6| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamExtB_OVERALL_BEST_None_prefixLength| () Int
+    0)
+  (define-fun |0_192.1.144.0/23Stat-Conn-ExportRemoveSoft0_SLICE-MAIN_CamExtA_OVERALL_BEST_None| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamB2A_GigabitEthernet7_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamB6B_GigabitEthernet4_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_mDataB_OSPF_IMPORT_GigabitEthernet2AllowChoiceUseSoft| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamExtB_BGP_IMPORT_FastEthernet0/0/0_bgpInternal| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamB2A_OSPF_Redistributed_adminDist| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamB2A_OSPF_BEST_None_ospfType| () (_ BitVec 2)
+    #b00)
+  (define-fun |0_mB6B_OSPF_IMPORT_GigabitEthernet6AllowChoiceUseSoft| () Bool
+    false)
+  (define-fun |0_SLICE-CamExtA_CamExtA_OVERALL_BEST_None_history| () (_ BitVec 1)
+    #b0)
+  (define-fun |0_0_SLICE-MAIN__CamB6A_GigabitEthernet5_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB2B_OSPF_BEST_None_prefixLength| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamDataA_OVERALL_BEST_None_adminDist| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamExtB_BGP_EXPORT_iBGP-CamExtA_metric| () Int
+    0)
+  (define-fun |0_CamB6AImportFilterAddSoft0_SLICE-MAIN_CamB6A_OSPF_IMPORT_GigabitEthernet2| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB2B_OSPF_Redistributed_ospfType| () (_ BitVec 2)
+    #b11)
+  (define-fun |0_0_SLICE-MAIN__CamDataB_GigabitEthernet6_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB6A_OSPF_IMPORT_GigabitEthernet7_permitted| () Bool
+    false)
+  (define-fun |0_0_SLICE-MAIN__CamEdge_FastEthernet47_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB6B_OSPF_IMPORT_GigabitEthernet3_permitted| () Bool
+    false)
+  (define-fun |0_0_SLICE-MAIN__CamEdge_FastEthernet37_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamExtB_iBGP-CamExtA| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamDataA_OSPF_IMPORT_GigabitEthernet6_metric| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamEdge_OVERALL_BEST_None_metric| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamExtA_BGP_IMPORT_iBGP-CamExtB_bgpInternal| () Bool
+    false)
+  (define-fun |0_0_SLICE-MAIN__CamExtB_FastEthernet0/0/0_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamDataA_GigabitEthernet3_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamDataA_OSPF_IMPORT_GigabitEthernet2_prefixLength| () Int
+    0)
+  (define-fun |0_0_SLICE-MAIN__CamEdge_FastEthernet36_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB6B_OVERALL_BEST_None_prefixLength| () Int
+    27)
+  (define-fun |0_SLICE-MAIN_CamDataA_OVERALL_BEST_None_prefixLength| () Int
+    27)
+  (define-fun |0_0_SLICE-CamExtB__CamExtA_GigabitEthernet0/1_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamDataB_GigabitEthernet7| () Bool
+    false)
+  (define-fun |0_0_SLICE-MAIN__CamB6A_GigabitEthernet7_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamEdge_FastEthernet43_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_CamB6BOSPFExportAddSoft128.89.76.0/23| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamB2A_OSPF_IMPORT_GigabitEthernet3_adminDist| () Int
+    0)
+  (define-fun |0_0_SLICE-MAIN__CamDataA_GigabitEthernet6_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_0_SLICE-CamExtB__CamExtB_FastEthernet0/0/0_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamExtA_BGP_EXPORT_Serial1/0_permitted| () Bool
+    false)
+  (define-fun |0_CamDataBOSPFExportAddSoft128.33.1.0/24| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamB2B_OSPF_IMPORT_GigabitEthernet6_ospfType| () (_ BitVec 2)
+    #b00)
+  (define-fun |0_CamEdgeStaticRouteRemoveSoft192.1.0.0/16| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB2A_OSPF_IMPORT_GigabitEthernet2_adminDist| () Int
+    0)
+  (define-fun |0_0_SLICE-MAIN__CamEdge_FastEthernet42_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamDmz_FastEthernet31_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_mDataB_OSPF_IMPORT_GigabitEthernet6AllowChoiceUseSoft| () Bool
+    false)
+  (define-fun |0_CamExtBStaticRouteRemoveSoft192.1.140.0/22| () Bool
+    true)
+  (define-fun |0_CamB2A-StaticRouteAddSoft-CamB2A,GigabitEthernet2 --> CamB2B,GigabitEthernet2| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamB2B_OSPF_Redistributed_prefixLength| () Int
+    27)
+  (define-fun |0_SLICE-MAIN_CamB6B_OSPF_Redistributed_permitted| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamDataB_OSPF_IMPORT_GigabitEthernet6_ospfType| () (_ BitVec 2)
+    #b00)
+  (define-fun |0_SLICE-MAIN_CamDataA_OSPF_IMPORT_GigabitEthernet3_ospfType| () (_ BitVec 2)
+    #b00)
+  (define-fun |0_CamB2BOSPFExportAddSoft10.1.1.2/32| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamDataA_OSPF_Redistributed_prefixLength| () Int
+    27)
+  (define-fun |0_0_SLICE-MAIN__CamDataB_GigabitEthernet4_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_CamDataAImportFilterAddSoft0_SLICE-MAIN_CamDataA_OSPF_IMPORT_GigabitEthernet6| () Bool
+    true)
+  (define-fun |0_CamDataAImportFilterAddSoft0_SLICE-MAIN_CamDataA_OSPF_IMPORT_GigabitEthernet3| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamEdge_FastEthernet37_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-CamExtA_CamExtB_OVERALL_BEST_None_metric| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamExtB_BGP_EXPORT_GigabitEthernet0/1_permitted| () Bool
+    false)
+  (define-fun |0_CamB6BOSPFExportAddSoft128.89.68.0/23| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamB6A_OSPF_SINGLE-EXPORT__permitted| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamEdge_FastEthernet10_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB6B_OSPF_Redistributed_prefixLength| () Int
+    27)
+  (define-fun |0_SLICE-MAIN_CamB2B_OVERALL_BEST_None_history| () (_ BitVec 1)
+    #b1)
+  (define-fun |0_SLICE-MAIN_CamB6B_OSPF_BEST_None_ospfType| () (_ BitVec 2)
+    #b00)
+  (define-fun |0_SLICE-MAIN_CamExtA_BGP_IMPORT_GigabitEthernet0/1_metric| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamB6A_OSPF_Redistributed_ospfType| () (_ BitVec 2)
+    #b11)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamDataA_GigabitEthernet3| () Bool
+    false)
+  (define-fun |0_0_SLICE-MAIN__CamDataB_GigabitEthernet6_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamEdge_FastEthernet46_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB2B_OSPF_IMPORT_GigabitEthernet4_permitted| () Bool
+    false)
+  (define-fun |0_0_SLICE-MAIN__CamB2A_GigabitEthernet4_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB2B_OSPF_SINGLE-EXPORT__adminDist| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamExtB_OVERALL_BEST_None_routerID| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamB2B_OSPF_IMPORT_GigabitEthernet2_prefixLength| () Int
+    0)
+  (define-fun |0_0_SLICE-CamExtB__CamExtB_GigabitEthernet0/1_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamEdge_FastEthernet21_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB2A_OSPF_IMPORT_GigabitEthernet5_prefixLength| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamB6A_OVERALL_BEST_None_history| () (_ BitVec 1)
+    #b1)
+  (define-fun |0_SLICE-MAIN_CamB6A_OSPF_IMPORT_GigabitEthernet2_prefixLength| () Int
+    0)
+  (define-fun |0_CamB2AOSPFExportAddSoft128.33.84.0/23| () Bool
+    false)
+  (define-fun |0_SLICE-CamExtB_CamExtA_OVERALL_BEST_None_metric| () Int
+    0)
+  (define-fun |0_0_SLICE-MAIN__CamDmz_null_interface_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamExtA_BGP_BEST_None_bgpInternal| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamB2A_OSPF_BEST_None_metric| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamDataA_OSPF_BEST_None_prefixLength| () Int
+    0)
+  (define-fun |0_SLICE-MAIN__path-length_CamB6A| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamExtB_BGP_EXPORT_FastEthernet0/0/0_prefixLength| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamExtB_BGP_BEST_None_bgpInternal| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamExtA_BGP_EXPORT_iBGP-CamExtB_bgpInternal| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamDataB_OVERALL_BEST_None_prefixLength| () Int
+    27)
+  (define-fun |0_128.33.0.0/16Stat-Conn-ExportRemoveSoft0_SLICE-MAIN_CamExtA_OVERALL_BEST_None| () Bool
+    true)
+  (define-fun |0_SLICE-CamExtA_CamExtB_OVERALL_BEST_None_prefixLength| () Int
+    29)
+  (define-fun |0_0_SLICE-CamExtB__CamExtB_null_interface_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamExtB_null_interface_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB2B_OSPF_BEST_None_adminDist| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamDataB_OSPF_BEST_None_metric| () Int
+    0)
+  (define-fun |0_SLICE-CamExtA_src-port| () Int
+    0)
+  (define-fun |0_0_SLICE-MAIN__CamExtA_GigabitEthernet0/0_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_192.1.102.0/24Stat-Conn-ExportRemoveSoft0_SLICE-MAIN_CamExtA_OVERALL_BEST_None| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamExtA_BGP_BEST_None_prefixLength| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamDataB_OVERALL_BEST_None_ospfType| () (_ BitVec 2)
+    #b00)
+  (define-fun |0_0_SLICE-MAIN__CamDataA_GigabitEthernet6_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_mDataA_OSPF_IMPORT_GigabitEthernet2AllowChoiceUseSoft| () Bool
+    false)
+  (define-fun |0_SLICE-CamExtA_CamExtB_OVERALL_BEST_None_history| () (_ BitVec 1)
+    #b0)
+  (define-fun |0_SLICE-MAIN_CamExtB_BGP_BEST_None_routerID| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamB2A_OSPF_IMPORT_GigabitEthernet4_metric| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamB6B_OSPF_IMPORT_GigabitEthernet5_prefixLength| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamB2A_OSPF_IMPORT_GigabitEthernet3_metric| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamB6A_OSPF_IMPORT_GigabitEthernet6_metric| () Int
+    0)
+  (define-fun |0_CamDataAOSPFExportAddSoft128.33.1.0/24| () Bool
+    false)
+  (define-fun |0_192.1.118.0/24Stat-Conn-ExportRemoveSoft0_SLICE-MAIN_CamExtA_OVERALL_BEST_None| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB2A_OVERALL_BEST_None_adminDist| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamExtB_BGP_EXPORT_ENV-64.119.128.41_metric| () Int
+    1)
+  (define-fun |0_192.1.100.0/23Stat-Conn-ExportRemoveSoft0_SLICE-MAIN_CamExtA_OVERALL_BEST_None| () Bool
+    true)
+  (define-fun |0_0_SLICE-CamExtA__CamExtB_null_interface_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB6A_OSPF_IMPORT_GigabitEthernet3_prefixLength| () Int
+    0)
+  (define-fun |0_CamB6A-StaticRouteAddSoft-CamB6A,GigabitEthernet6 --> CamB6B,GigabitEthernet6| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamB6A_OSPF_SINGLE-EXPORT__ospfType| () (_ BitVec 2)
+    #b11)
+  (define-fun |0_CamExtAStaticRouteRemoveSoft192.1.113.0/24| () Bool
+    true)
+  (define-fun |0_CamExtAStaticRouteRemoveSoft192.1.115.0/24| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamDataB_OSPF_IMPORT_GigabitEthernet7_permitted| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamB6B_OSPF_IMPORT_GigabitEthernet6_prefixLength| () Int
+    0)
+  (define-fun |0_mB6A_OSPF_IMPORT_GigabitEthernet7AllowChoiceUseSoft| () Bool
+    false)
+  (define-fun |0_CamDataA-StaticRouteAddSoft-CamDataA,GigabitEthernet2 --> CamDataB,GigabitEthernet2| () Bool
+    false)
+  (define-fun |0_CamDataA-StaticRouteAddSoft-CamDataA,GigabitEthernet7 --> CamDataB,GigabitEthernet7| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamDataA_OSPF_IMPORT_GigabitEthernet3_permitted| () Bool
+    false)
+  (define-fun |0_0_SLICE-MAIN__CamExtB_GigabitEthernet0/1_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamExtA_STATIC_BEST_None_permitted| () Bool
+    false)
+  (define-fun |0_CamB2A-StaticRouteAddSoft-CamB2A,GigabitEthernet4 --> CamB2B,GigabitEthernet4| () Bool
+    false)
+  (define-fun |0_0_SLICE-CamExtA__CamExtA_GigabitEthernet0/1_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamExtA_Serial1/0_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB2A_OSPF_IMPORT_GigabitEthernet6_metric| () Int
+    0)
+  (define-fun |0_CamEdgeStaticRouteRemoveSoft169.254.0.0/16| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamDmz_FastEthernet5_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB2B_OSPF_IMPORT_GigabitEthernet3_adminDist| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamDataB_GigabitEthernet3| () Bool
+    false)
+  (define-fun |0_CamExtBStaticRouteRemoveSoft192.1.100.0/23| () Bool
+    true)
+  (define-fun |0_CamDataBImportFilterAddSoft0_SLICE-MAIN_CamDataB_OSPF_IMPORT_GigabitEthernet6| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamEdge_GigabitEthernet50_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_0_SLICE-CamExtA__CamExtA_Serial1/0_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamDataA_OSPF_IMPORT_GigabitEthernet7_metric| () Int
+    0)
+  (define-fun |0_0_SLICE-MAIN__CamDataA_GigabitEthernet8_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamExtA_BGP_EXPORT_ENV-68.236.83.41_prefixLength| () Int
+    1)
+  (define-fun |0_mB2B_OSPF_IMPORT_GigabitEthernet3AllowChoiceUseSoft| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_src-ip| () (_ BitVec 32)
+    #x40778028)
+  (define-fun |0_CamB6BImportFilterAddSoft0_SLICE-MAIN_CamB6B_OSPF_IMPORT_GigabitEthernet5| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamB2A_GigabitEthernet3_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamB2B_GigabitEthernet7_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamEdge_FastEthernet38_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamDataB_GigabitEthernet3_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamDataB_OVERALL_BEST_None_history| () (_ BitVec 1)
+    #b1)
+  (define-fun |0_SLICE-MAIN_CamEdge_OSPF_Redistributed_prefixLength| () Int
+    1)
+  (define-fun |0_CamB2AOSPFExportAddSoft128.33.16.0/21| () Bool
+    false)
+  (define-fun |0_0_SLICE-CamExtA__CamExtB_iBGP-CamExtA_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_0_SLICE-CamExtB__CamExtB_null_interface_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB6A_OSPF_BEST_None_prefixLength| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamB6B_GigabitEthernet5| () Bool
+    false)
+  (define-fun |0_mB2A_OSPF_IMPORT_GigabitEthernet4AllowChoiceUseSoft| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamDataB_OSPF_Redistributed_permitted| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamB2B_GigabitEthernet6_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_mB2B_OSPF_IMPORT_GigabitEthernet4AllowChoiceUseSoft| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamExtA_STATIC_IMPORT_null_interface_prefixLength| () Int
+    0)
+  (define-fun |0_0_SLICE-MAIN__CamB2B_GigabitEthernet2_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-CamExtA_icmp-type| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamExtA_BGP_EXPORT_Serial1/0_adminDist| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamExtA_GigabitEthernet0/0| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamDataA_OSPF_IMPORT_GigabitEthernet6_prefixLength| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamB6B_OSPF_SINGLE-EXPORT__adminDist| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamExtA_BGP_EXPORT_GigabitEthernet0/1_prefixLength| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamB2B_OSPF_SINGLE-EXPORT__ospfType| () (_ BitVec 2)
+    #b11)
+  (define-fun |0_SLICE-MAIN_CamDataB_OSPF_Redistributed_ospfType| () (_ BitVec 2)
+    #b11)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamB2A_GigabitEthernet3| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamEdge_OVERALL_BEST_None_adminDist| () Int
+    0)
+  (define-fun |0_0_SLICE-MAIN__CamDataB_GigabitEthernet7_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamEdge_FastEthernet44_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_0_SLICE-CamExtB__CamExtA_GigabitEthernet0/0_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamDataB_OSPF_IMPORT_GigabitEthernet6_metric| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamExtB_BGP_IMPORT_iBGP-CamExtA_permitted| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamB6B_OSPF_IMPORT_GigabitEthernet7_ospfType| () (_ BitVec 2)
+    #b00)
+  (define-fun |0_0_SLICE-CamExtA__CamExtB_null_interface_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB6A_OSPF_SINGLE-EXPORT__adminDist| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamB6A_OSPF_IMPORT_GigabitEthernet2_permitted| () Bool
+    false)
+  (define-fun |0_CamDataBImportFilterAddSoft0_SLICE-MAIN_CamDataB_OSPF_IMPORT_GigabitEthernet3| () Bool
+    true)
+  (define-fun |0_0_SLICE-CamExtB__CamExtA_null_interface_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamExtB_null_interface_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamDataB_GigabitEthernet8_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_CamB2A-StaticRouteAddSoft-CamB2A,GigabitEthernet5 --> CamB2B,GigabitEthernet5| () Bool
+    false)
+  (define-fun |0_CamExtAImportFilterAddSoft0_SLICE-MAIN_CamExtA_BGP_IMPORT_Serial1/0| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamEdge_FastEthernet19_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamB2B_GigabitEthernet1_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamDataA_OSPF_IMPORT_GigabitEthernet6_adminDist| () Int
+    0)
+  (define-fun |0_SLICE-CamExtB_CamExtB_STATIC_IMPORT_null_interface_prefixLength| () Int
+    24)
+  (define-fun |0_0_SLICE-MAIN__CamExtA_null_interface_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamB6B_Loopback0_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamEdge_FastEthernet35_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamDataA_OSPF_IMPORT_GigabitEthernet2_metric| () Int
+    0)
+  (define-fun |0_SLICE-CamExtB_src-port| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamExtA_BGP_IMPORT_GigabitEthernet0/1_adminDist| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamDataB_OSPF_IMPORT_GigabitEthernet6_permitted| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamB6A_OVERALL_BEST_None_adminDist| () Int
+    0)
+  (define-fun |0_CamExtAStaticRouteRemoveSoft192.1.124.0/22| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB2A_OSPF_Redistributed_permitted| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamExtB_BGP_EXPORT_iBGP-CamExtA_prefixLength| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamDataB_OSPF_IMPORT_GigabitEthernet3_permitted| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamExtB_FastEthernet0/0/0| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamExtB_BGP_IMPORT_FastEthernet0/0/0_metric| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamDataA_GigabitEthernet8| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamEdge_FastEthernet13_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamEdge_FastEthernet42_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamDataB_OSPF_Redistributed_prefixLength| () Int
+    27)
+  (define-fun |0_0_SLICE-MAIN__CamB6B_GigabitEthernet8_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-CamExtB_CamExtA_OVERALL_BEST_None_history| () (_ BitVec 1)
+    #b0)
+  (define-fun |0_SLICE-CamExtB_CamExtB_STATIC_BEST_None_permitted| () Bool
+    true)
+  (define-fun |0_SLICE-CamExtB_CamExtB_OVERALL_BEST_None_history| () (_ BitVec 1)
+    #b0)
+  (define-fun |0_0_SLICE-MAIN__CamB2A_GigabitEthernet6_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB2A_OSPF_IMPORT_GigabitEthernet3_ospfType| () (_ BitVec 2)
+    #b00)
+  (define-fun |0_SLICE-MAIN_CamDataB_OSPF_IMPORT_GigabitEthernet7_ospfType| () (_ BitVec 2)
+    #b00)
+  (define-fun |0_mDataA_OSPF_IMPORT_GigabitEthernet6AllowChoiceUseSoft| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamDataB_GigabitEthernet2| () Bool
+    false)
+  (define-fun |0_0_SLICE-MAIN__CamB6B_GigabitEthernet3_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_0_SLICE-CamExtB__CamExtB_GigabitEthernet0/0_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamExtB_BGP_IMPORT_iBGP-CamExtA_adminDist| () Int
+    0)
+  (define-fun |0_0_SLICE-MAIN__CamExtB_GigabitEthernet0/0_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_CamB6AOSPFSoftRedisRemove| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamExtA_null_interface| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamB6A_OVERALL_BEST_None_metric| () Int
+    0)
+  (define-fun |0_mB2A_OSPF_IMPORT_GigabitEthernet2AllowChoiceUseSoft| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_dst-ip| () (_ BitVec 32)
+    #x80214003)
+  (define-fun |0_CamB6B-StaticRouteAddSoft-CamB6B,GigabitEthernet7 --> CamB6A,GigabitEthernet7| () Bool
+    false)
+  (define-fun |0_0_SLICE-MAIN__CamB2A_GigabitEthernet1_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_CamB2AImportFilterAddSoft0_SLICE-MAIN_CamB2A_OSPF_IMPORT_GigabitEthernet4| () Bool
+    true)
+  (define-fun |0_CamB2AOSPFExportAddSoft128.33.88.0/23| () Bool
+    false)
+  (define-fun |0_SLICE-CamExtA_CamExtA_STATIC_BEST_None_prefixLength| () Int
+    24)
+  (define-fun |0_CamDmzStaticRouteRemoveSoft192.1.121.0/24| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB6B_OSPF_BEST_None_adminDist| () Int
+    0)
+  (define-fun |0_192.1.98.0/23Stat-Conn-ExportRemoveSoft0_SLICE-MAIN_CamExtB_OVERALL_BEST_None| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamB2A_Loopback0_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_CamB2A-StaticRouteAddSoft-CamB2A,GigabitEthernet7 --> CamB2B,GigabitEthernet7| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamB2A_OSPF_IMPORT_GigabitEthernet4_permitted| () Bool
+    false)
+  (define-fun |0_CamDataB-StaticRouteAddSoft-CamDataB,GigabitEthernet2 --> CamDataA,GigabitEthernet2| () Bool
+    false)
+  (define-fun |0_CamDataB-StaticRouteAddSoft-CamDataB,GigabitEthernet7 --> CamDataA,GigabitEthernet7| () Bool
+    false)
+  (define-fun |0_0_SLICE-MAIN__CamB6A_GigabitEthernet3_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB6A_OSPF_IMPORT_GigabitEthernet3_permitted| () Bool
+    false)
+  (define-fun |0_0_SLICE-MAIN__CamEdge_FastEthernet15_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_CamDataBOSPFExportRemoveSoft128.33.64.0/27| () Bool
+    true)
+  (define-fun |0_192.1.120.0/23Stat-Conn-ExportRemoveSoft0_SLICE-MAIN_CamExtA_OVERALL_BEST_None| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB2B_OSPF_IMPORT_GigabitEthernet3_ospfType| () (_ BitVec 2)
+    #b00)
+  (define-fun |0_SLICE-MAIN_CamDataB_OSPF_SINGLE-EXPORT__metric| () Int
+    1)
+  (define-fun |0_SLICE-MAIN_CamB6B_OSPF_IMPORT_GigabitEthernet5_metric| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamExtB_BGP_EXPORT_GigabitEthernet0/1_adminDist| () Int
+    0)
+  (define-fun |0_0_SLICE-MAIN__CamExtA_Serial1/0_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB2B_OVERALL_BEST_None_metric| () Int
+    0)
+  (define-fun |0_CamB6AOSPFExportAddSoft128.89.80.0/23| () Bool
+    false)
+  (define-fun |0_SLICE-CamExtA_CONTROL-FORWARDING_CamExtB_null_interface| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamDataB_OSPF_IMPORT_GigabitEthernet6_adminDist| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamDataA_OSPF_SINGLE-EXPORT__adminDist| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamExtB_BGP_IMPORT_iBGP-CamExtA_prefixLength| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamB2B_GigabitEthernet5| () Bool
+    false)
+  (define-fun |0_CamB6AImportFilterAddSoft0_SLICE-MAIN_CamB6A_OSPF_IMPORT_GigabitEthernet7| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamDmz_null_interface| () Bool
+    false)
+  (define-fun |0_0_SLICE-MAIN__CamEdge_FastEthernet17_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB6B_OVERALL_BEST_None_metric| () Int
+    0)
+  (define-fun |0_SLICE-MAIN__path-length_CamExtB| () Int
+    (- 1))
+  (define-fun |0_SLICE-MAIN_CamB6B_OSPF_Redistributed_adminDist| () Int
+    0)
+  (define-fun |0_0_SLICE-MAIN__CamB6A_Loopback0_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamDataB_Loopback0_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamExtA_OVERALL_BEST_None_bgpInternal| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamExtA_BGP_EXPORT_iBGP-CamExtB_permitted| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamDataA_OSPF_IMPORT_GigabitEthernet7_ospfType| () (_ BitVec 2)
+    #b00)
+  (define-fun |0_0_SLICE-CamExtB__CamExtA_GigabitEthernet0/0_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_CamB2AOSPFExportAddSoft128.33.24.0/23| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamExtB_BGP_EXPORT_FastEthernet0/0/0_bgpInternal| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamExtB_BGP_EXPORT_FastEthernet0/0/0_permitted| () Bool
+    false)
+  (define-fun |0_CamB2BOSPFExportAddSoft128.33.24.0/23| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamEdge_null_interface| () Bool
+    false)
+  (define-fun |0_0_SLICE-CamExtA__CamExtB_FastEthernet0/0/0_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-CamExtB_CONTROL-FORWARDING_CamExtB_null_interface| () Bool
+    false)
+  (define-fun |0_192.1.132.0/24Stat-Conn-ExportRemoveSoft0_SLICE-MAIN_CamExtB_OVERALL_BEST_None| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamB2B_GigabitEthernet5_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamB2A_GigabitEthernet5| () Bool
+    false)
+  (define-fun |0_0_SLICE-MAIN__CamDmz_Loopback0_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamEdge_Loopback0_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamExtA_STATIC_BEST_None_prefixLength| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamB6A_OSPF_IMPORT_GigabitEthernet7_prefixLength| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamB2B_OSPF_IMPORT_GigabitEthernet5_prefixLength| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamDataB_OSPF_IMPORT_GigabitEthernet2_adminDist| () Int
+    0)
+  (define-fun |0_0_SLICE-MAIN__CamEdge_FastEthernet10_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamDataB_OVERALL_BEST_None_adminDist| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamB6B_OSPF_IMPORT_GigabitEthernet5_adminDist| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamB6A_OSPF_IMPORT_GigabitEthernet2_adminDist| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamExtA_BGP_EXPORT_ENV-68.236.83.41_permitted| () Bool
+    true)
+  (define-fun |0_192.1.113.0/24Stat-Conn-ExportRemoveSoft0_SLICE-MAIN_CamExtA_OVERALL_BEST_None| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamDataB_OSPF_SINGLE-EXPORT__ospfType| () (_ BitVec 2)
+    #b11)
+  (define-fun |0_SLICE-MAIN_CamB2B_OSPF_BEST_None_metric| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamB6A_OSPF_IMPORT_GigabitEthernet3_metric| () Int
+    0)
+  (define-fun |0_0_SLICE-MAIN__CamB6B_GigabitEthernet1_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamEdge_STATIC_IMPORT_null_interface_prefixLength| () Int
+    16)
+  (define-fun |0_SLICE-MAIN_CamB6A_OSPF_IMPORT_GigabitEthernet6_permitted| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamExtA_BGP_EXPORT_Serial1/0_metric| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamB6B_GigabitEthernet7| () Bool
+    false)
+  (define-fun |0_0_SLICE-MAIN__CamDmz_FastEthernet12_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_mB2B_OSPF_IMPORT_GigabitEthernet5AllowChoiceUseSoft| () Bool
+    false)
+  (define-fun |0_SLICE-CamExtA_CamExtA_OVERALL_BEST_None_adminDist| () Int
+    0)
+  (define-fun |0_CamExtBImportFilterAddSoft0_SLICE-MAIN_CamExtB_BGP_IMPORT_GigabitEthernet0/0| () Bool
+    true)
+  (define-fun |0_CamB2BOSPFExportRemoveSoft128.33.64.0/27| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamB6B_GigabitEthernet6_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamB2B_GigabitEthernet8_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_0_SLICE-CamExtB__CamExtA_iBGP-CamExtB_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB6A_OSPF_BEST_None_adminDist| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamB2A_OVERALL_BEST_None_history| () (_ BitVec 1)
+    #b1)
+  (define-fun |0_CamB6BOSPFExportAddSoft10.1.3.2/32| () Bool
+    false)
+  (define-fun |0_CamB2AOSPFSoftRedisRemove| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamExtB_BGP_EXPORT_iBGP-CamExtA_permitted| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamB6B_GigabitEthernet2| () Bool
+    false)
+  (define-fun |0_0_SLICE-MAIN__CamEdge_FastEthernet45_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamExtB_BGP_BEST_None_metric| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamDmz_OVERALL_BEST_None_prefixLength| () Int
+    0)
+  (define-fun |0_0_SLICE-MAIN__CamB2A_GigabitEthernet2_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB6A_OVERALL_BEST_None_prefixLength| () Int
+    27)
+  (define-fun |0_CamB2A-StaticRouteAddSoft-CamB2A,GigabitEthernet6 --> CamB2B,GigabitEthernet6| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamDmz_OVERALL_BEST_None_metric| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamB2A_OSPF_SINGLE-EXPORT__prefixLength| () Int
+    27)
+  (define-fun |0_SLICE-MAIN_CamExtB_BGP_EXPORT_iBGP-CamExtA_bgpInternal| () Bool
+    false)
+  (define-fun |0_0_SLICE-MAIN__CamEdge_FastEthernet41_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_mB6A_OSPF_IMPORT_GigabitEthernet6AllowChoiceUseSoft| () Bool
+    false)
+  (define-fun |0_CamB6BImportFilterAddSoft0_SLICE-MAIN_CamB6B_OSPF_IMPORT_GigabitEthernet3| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamB2B_GigabitEthernet3_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB2B_OSPF_IMPORT_GigabitEthernet5_metric| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamEdge_OSPF_Redistributed_ospfType| () (_ BitVec 2)
+    #b01)
+  (define-fun |0_SLICE-MAIN_CamExtA_BGP_EXPORT_GigabitEthernet0/0_adminDist| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamExtA_BGP_BEST_None_adminDist| () Int
+    0)
+  (define-fun |0_0_SLICE-MAIN__CamDmz_FastEthernet29_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-CamExtA_DATA-FORWARDING_CamExtA_GigabitEthernet0/0| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamExtA_OVERALL_BEST_None_routerID| () Int
+    0)
+  (define-fun |0_0_SLICE-MAIN__CamB2A_Loopback0_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_CamB6BOSPFExportAddSoft128.89.84.0/23| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamDataA_GigabitEthernet6| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamB2A_OSPF_IMPORT_GigabitEthernet7_adminDist| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamB2A_OSPF_Redistributed_ospfType| () (_ BitVec 2)
+    #b11)
+  (define-fun |0_192.1.132.0/24Stat-Conn-ExportRemoveSoft0_SLICE-MAIN_CamExtA_OVERALL_BEST_None| () Bool
+    true)
+  (define-fun |0_CamB2BImportFilterAddSoft0_SLICE-MAIN_CamB2B_OSPF_IMPORT_GigabitEthernet6| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB2B_OSPF_BEST_None_ospfType| () (_ BitVec 2)
+    #b00)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamB6B_GigabitEthernet3| () Bool
+    false)
+  (define-fun |0_mB2B_OSPF_IMPORT_GigabitEthernet7AllowChoiceUseSoft| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamB2B_OVERALL_BEST_None_adminDist| () Int
+    0)
+  (define-fun |0_0_SLICE-MAIN__CamDataA_GigabitEthernet1_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamDataA_OSPF_SINGLE-EXPORT__ospfType| () (_ BitVec 2)
+    #b11)
+  (define-fun |0_0_SLICE-MAIN__CamDataA_GigabitEthernet1_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamEdge_OVERALL_BEST_None_history| () (_ BitVec 2)
+    #b01)
+  (define-fun |0_SLICE-MAIN_CamB2A_OVERALL_BEST_None_ospfType| () (_ BitVec 2)
+    #b00)
+  (define-fun |0_SLICE-MAIN_CamB6B_OSPF_IMPORT_GigabitEthernet5_ospfType| () (_ BitVec 2)
+    #b00)
+  (define-fun |0_CamB2BOSPFExportAddSoft128.33.72.0/23| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamB6B_OSPF_IMPORT_GigabitEthernet3_ospfType| () (_ BitVec 2)
+    #b00)
+  (define-fun |0_CamB6BImportFilterAddSoft0_SLICE-MAIN_CamB6B_OSPF_IMPORT_GigabitEthernet6| () Bool
+    true)
+  (define-fun |0_192.1.17.0/24Stat-Conn-ExportRemoveSoft0_SLICE-MAIN_CamExtB_OVERALL_BEST_None| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB2A_OVERALL_BEST_None_metric| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamExtA_BGP_EXPORT_GigabitEthernet0/0_metric| () Int
+    0)
+  (define-fun |0_CamExtAImportFilterAddSoft0_SLICE-MAIN_CamExtA_BGP_IMPORT_iBGP-CamExtB| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamExtB_BGP_IMPORT_FastEthernet0/0/0_permitted| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamExtB_BGP_EXPORT_GigabitEthernet0/0_permitted| () Bool
+    false)
+  (define-fun |0_0_SLICE-MAIN__CamDmz_FastEthernet18_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamEdge_FastEthernet12_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB2A_OSPF_IMPORT_GigabitEthernet2_permitted| () Bool
+    false)
+  (define-fun |0_0_SLICE-MAIN__CamB6A_GigabitEthernet3_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_CamB2B-StaticRouteAddSoft-CamB2B,GigabitEthernet2 --> CamB2A,GigabitEthernet2| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamB2A_OSPF_IMPORT_GigabitEthernet7_metric| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamDataA_OSPF_SINGLE-EXPORT__metric| () Int
+    1)
+  (define-fun |0_SLICE-MAIN_CamB6B_OSPF_IMPORT_GigabitEthernet2_permitted| () Bool
+    false)
+  (define-fun |0_0_SLICE-MAIN__CamDmz_FastEthernet5_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB6A_OSPF_IMPORT_GigabitEthernet6_prefixLength| () Int
+    0)
+  (define-fun |0_SLICE-CamExtA_CamExtB_STATIC_BEST_None_permitted| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB6A_OVERALL_BEST_None_ospfType| () (_ BitVec 2)
+    #b00)
+  (define-fun |0_0_SLICE-MAIN__CamB2B_GigabitEthernet2_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamEdge_Loopback0_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamDataA_OSPF_IMPORT_GigabitEthernet7_prefixLength| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamDataA_OVERALL_BEST_None_metric| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamDataA_OSPF_IMPORT_GigabitEthernet3_adminDist| () Int
+    0)
+  (define-fun |0_CamExtAStaticRouteRemoveSoft192.1.102.0/24| () Bool
+    true)
+  (define-fun |0_128.89.0.0/16Stat-Conn-ExportRemoveSoft0_SLICE-MAIN_CamExtA_OVERALL_BEST_None| () Bool
+    true)
+  (define-fun |0_192.1.124.0/22Stat-Conn-ExportRemoveSoft0_SLICE-MAIN_CamExtA_OVERALL_BEST_None| () Bool
+    true)
+  (define-fun |0_SLICE-CamExtB_icmp-type| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamB6B_OVERALL_BEST_None_ospfType| () (_ BitVec 2)
+    #b00)
+  (define-fun |0_SLICE-MAIN_CamB2A_OSPF_IMPORT_GigabitEthernet2_ospfType| () (_ BitVec 2)
+    #b00)
+  (define-fun |0_0_SLICE-CamExtA__CamExtA_GigabitEthernet0/0_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_CamB2AImportFilterAddSoft0_SLICE-MAIN_CamB2A_OSPF_IMPORT_GigabitEthernet2| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamExtB_BGP_IMPORT_FastEthernet0/0/0_adminDist| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamB2B_OSPF_IMPORT_GigabitEthernet2_metric| () Int
+    0)
+  (define-fun |0_SLICE-MAIN__path-length_CamExtA| () Int
+    (- 1))
+  (define-fun |0_SLICE-MAIN_CamB6B_OSPF_IMPORT_GigabitEthernet5_permitted| () Bool
+    false)
+  (define-fun |0_CamB2AImportFilterAddSoft0_SLICE-MAIN_CamB2A_OSPF_IMPORT_GigabitEthernet7| () Bool
+    true)
+  (define-fun |0_0_SLICE-CamExtB__CamExtB_FastEthernet0/0/0_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_192.1.113.0/24Stat-Conn-ExportRemoveSoft0_SLICE-MAIN_CamExtB_OVERALL_BEST_None| () Bool
+    true)
+  (define-fun |0_SLICE-CamExtB_CONTROL-FORWARDING_CamExtA_null_interface| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamB6B_OSPF_IMPORT_GigabitEthernet6_permitted| () Bool
+    false)
+  (define-fun |0_192.1.122.0/24Stat-Conn-ExportRemoveSoft0_SLICE-MAIN_CamExtB_OVERALL_BEST_None| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamExtB_BGP_EXPORT_GigabitEthernet0/1_metric| () Int
+    0)
+  (define-fun |0_0_SLICE-MAIN__CamDataB_GigabitEthernet1_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamEdge_FastEthernet35_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_CamDataAOSPFExportAddSoft128.33.76.0/23| () Bool
+    false)
+  (define-fun |0_0_SLICE-MAIN__CamDmz_FastEthernet18_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_CamB6BOSPFExportAddSoft128.89.88.0/23| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamB2B_GigabitEthernet2| () Bool
+    false)
+  (define-fun |0_CamB6B-StaticRouteAddSoft-CamB6B,GigabitEthernet2 --> CamB6A,GigabitEthernet2| () Bool
+    false)
+  (define-fun |0_0_SLICE-MAIN__CamEdge_FastEthernet43_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamExtA_OVERALL_BEST_None_adminDist| () Int
+    0)
+  (define-fun |0_0_SLICE-MAIN__CamDataA_GigabitEthernet7_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamEdge_FastEthernet9_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamExtB_BGP_BEST_None_igpMetric| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamB2A_OSPF_IMPORT_GigabitEthernet5_adminDist| () Int
+    0)
+  (define-fun |0_SLICE-CamExtA_CamExtB_OVERALL_BEST_None_adminDist| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamB6A_OSPF_Redistributed_permitted| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB2A_OSPF_IMPORT_GigabitEthernet6_permitted| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_icmp-type| () Int
+    0)
+  (define-fun |0_CamB2B-StaticRouteAddSoft-CamB2B,GigabitEthernet7 --> CamB2A,GigabitEthernet7| () Bool
+    false)
+  (define-fun |0_0_SLICE-MAIN__CamB2A_GigabitEthernet8_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamEdge_FastEthernet13_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_mExtA_BGP_IMPORT_GigabitEthernet0/1AllowChoiceUseSoft| () Bool
+    false)
+  (define-fun |0_0_SLICE-MAIN__CamDmz_FastEthernet7_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_CamDmzStaticRouteRemoveSoft192.1.120.0/24| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamDataB_Loopback0_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamExtA_BGP_IMPORT_GigabitEthernet0/1_prefixLength| () Int
+    0)
+  (define-fun |0_192.1.102.0/24Stat-Conn-ExportRemoveSoft0_SLICE-MAIN_CamExtB_OVERALL_BEST_None| () Bool
+    true)
+  (define-fun |0_CamB2BOSPFExportAddSoft128.33.84.0/23| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamDataA_OSPF_IMPORT_GigabitEthernet2_permitted| () Bool
+    false)
+  (define-fun |0_0_SLICE-MAIN__CamB2B_GigabitEthernet5_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamDataA_GigabitEthernet2_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamExtB_BGP_EXPORT_GigabitEthernet0/1_prefixLength| () Int
+    0)
+  (define-fun |0_192.1.128.0/23Stat-Conn-ExportRemoveSoft0_SLICE-MAIN_CamExtA_OVERALL_BEST_None| () Bool
+    true)
+  (define-fun |0_SLICE-CamExtB_CONTROL-FORWARDING_CamExtA_GigabitEthernet0/0| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB2B_OSPF_Redistributed_adminDist| () Int
+    0)
+  (define-fun |0_CamDataBImportFilterAddSoft0_SLICE-MAIN_CamDataB_OSPF_IMPORT_GigabitEthernet2| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamB6B_GigabitEthernet5_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB2A_OSPF_SINGLE-EXPORT__adminDist| () Int
+    0)
+  (define-fun |0_0_SLICE-MAIN__CamEdge_GigabitEthernet49_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_CamB2AOSPFExportAddSoft128.33.72.0/23| () Bool
+    false)
+  (define-fun |0_CamB2AOSPFExportRemoveSoft128.33.64.0/27| () Bool
+    true)
+  (define-fun |0_CamB2AOSPFExportAddSoft128.33.80.0/23| () Bool
+    false)
+  (define-fun |0_0_SLICE-MAIN__CamB6B_GigabitEthernet2_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamB2B_GigabitEthernet3| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamB2A_OSPF_IMPORT_GigabitEthernet7_permitted| () Bool
+    false)
+  (define-fun |0_0_SLICE-MAIN__CamB6B_GigabitEthernet8_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamEdge_FastEthernet17_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamB2B_GigabitEthernet6| () Bool
+    false)
+  (define-fun |0_0_SLICE-MAIN__CamB6A_GigabitEthernet8_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB6A_OSPF_Redistributed_prefixLength| () Int
+    27)
+  (define-fun |0_0_SLICE-CamExtB__CamExtA_GigabitEthernet0/1_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB6A_OSPF_SINGLE-EXPORT__prefixLength| () Int
+    27)
+  (define-fun |0_SLICE-MAIN_CamExtA_BGP_BEST_None_metric| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamDataB_OSPF_IMPORT_GigabitEthernet2_prefixLength| () Int
+    0)
+  (define-fun |0_mB2A_OSPF_IMPORT_GigabitEthernet5AllowChoiceUseSoft| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamExtA_BGP_EXPORT_GigabitEthernet0/0_bgpInternal| () Bool
+    false)
+  (define-fun |0_0_SLICE-MAIN__CamEdge_GigabitEthernet50_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB2A_OSPF_IMPORT_GigabitEthernet2_prefixLength| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamB6B_OSPF_IMPORT_GigabitEthernet6_ospfType| () (_ BitVec 2)
+    #b00)
+  (define-fun |0_SLICE-CamExtA_CamExtB_STATIC_IMPORT_null_interface_prefixLength| () Int
+    24)
+  (define-fun |0_SLICE-MAIN_CamB6A_OSPF_IMPORT_GigabitEthernet5_metric| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamExtB_BGP_EXPORT_FastEthernet0/0/0_metric| () Int
+    0)
+  (define-fun |0_0_SLICE-MAIN__CamEdge_FastEthernet47_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-CamExtA_CONTROL-FORWARDING_CamExtB_GigabitEthernet0/1| () Bool
+    true)
+  (define-fun |0_0_SLICE-MAIN__CamDataB_GigabitEthernet2_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_icmp-code| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamB6B_OSPF_IMPORT_GigabitEthernet2_adminDist| () Int
+    0)
+  (define-fun |0_0_SLICE-MAIN__CamB6B_GigabitEthernet4_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_CamDataA-StaticRouteAddSoft-CamDataA,GigabitEthernet6 --> CamDataB,GigabitEthernet6| () Bool
+    false)
+  (define-fun |0_0_SLICE-MAIN__CamDmz_FastEthernet29_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_CamB6AImportFilterAddSoft0_SLICE-MAIN_CamB6A_OSPF_IMPORT_GigabitEthernet6| () Bool
+    true)
+  (define-fun |0_0_SLICE-CamExtA__CamExtB_GigabitEthernet0/0_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_0_SLICE-CamExtB__CamExtA_Serial1/0_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_192.1.144.0/23Stat-Conn-ExportRemoveSoft0_SLICE-MAIN_CamExtB_OVERALL_BEST_None| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamB2A_GigabitEthernet6| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamDataB_OSPF_SINGLE-EXPORT__permitted| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB6A_CONNECTED_IMPORT_GigabitEthernet8_prefixLength| () Int
+    27)
+  (define-fun |0_SLICE-MAIN_CamB6B_CONNECTED_IMPORT_GigabitEthernet8_prefixLength| () Int
+    27)
+  (define-fun |0_SLICE-MAIN_CamEdge_CONNECTED_IMPORT_GigabitEthernet50_prefixLength| () Int
+    27)
+  (define-fun |0_SLICE-MAIN_CamB2A_CONNECTED_IMPORT_GigabitEthernet8_prefixLength| () Int
+    27)
+  (define-fun |0_SLICE-MAIN_CamB2B_CONNECTED_IMPORT_GigabitEthernet8_prefixLength| () Int
+    27)
+  (define-fun |0_SLICE-MAIN_CamDataB_CONNECTED_IMPORT_GigabitEthernet8_prefixLength| () Int
+    27)
+  (define-fun |0_SLICE-MAIN_CamDataA_CONNECTED_IMPORT_GigabitEthernet8_prefixLength| () Int
+    27)
+  (define-fun |0_SLICE-CamExtB_CamExtA_CONNECTED_IMPORT_GigabitEthernet0/0_prefixLength| () Int
+    29)
+  (define-fun |0_SLICE-CamExtB_CamExtB_CONNECTED_IMPORT_GigabitEthernet0/1_prefixLength| () Int
+    29)
+  (define-fun |0_SLICE-CamExtA_CamExtA_CONNECTED_IMPORT_GigabitEthernet0/0_prefixLength| () Int
+    29)
+  (define-fun |0_SLICE-CamExtA_CamExtB_CONNECTED_IMPORT_GigabitEthernet0/1_prefixLength| () Int
+    29)
+  (define-fun |0_SLICE-MAIN__path-length_CamDmz| () Int
+    (- 1))
+  (define-fun |0_SLICE-MAIN__path-length_CamEdge| () Int
+    0)
+  (define-fun |0_SLICE-CamExtA_ip-protocol| () Int
+    6)
+  (define-fun |0_SLICE-CamExtA_dst-port| () Int
+    179)
+  (define-fun |0_SLICE-CamExtA_dst-ip| () (_ BitVec 32)
+    #xc0016601)
+  (define-fun |0_SLICE-CamExtA_DATA-FORWARDING_CamExtB_GigabitEthernet0/0| () Bool
+    false)
+  (define-fun |0_SLICE-CamExtA_DATA-FORWARDING_CamExtA_null_interface| () Bool
+    false)
+  (define-fun |0_SLICE-CamExtA_DATA-FORWARDING_CamExtA_GigabitEthernet0/1| () Bool
+    false)
+  (define-fun |0_SLICE-CamExtA_DATA-FORWARDING_CamExtA_Serial1/0| () Bool
+    false)
+  (define-fun |0_SLICE-CamExtA_CONTROL-FORWARDING_CamExtB_iBGP-CamExtA| () Bool
+    false)
+  (define-fun |0_SLICE-CamExtA_CONTROL-FORWARDING_CamExtB_GigabitEthernet0/0| () Bool
+    false)
+  (define-fun |0_SLICE-CamExtA_CONTROL-FORWARDING_CamExtB_FastEthernet0/0/0| () Bool
+    false)
+  (define-fun |0_SLICE-CamExtA_CONTROL-FORWARDING_CamExtA_GigabitEthernet0/0| () Bool
+    false)
+  (define-fun |0_SLICE-CamExtA_CONTROL-FORWARDING_CamExtA_iBGP-CamExtB| () Bool
+    false)
+  (define-fun |0_SLICE-CamExtA_CONTROL-FORWARDING_CamExtA_GigabitEthernet0/1| () Bool
+    false)
+  (define-fun |0_SLICE-CamExtA_CONTROL-FORWARDING_CamExtA_Serial1/0| () Bool
+    false)
+  (define-fun |0_SLICE-CamExtA_CamExtB_OVERALL_BEST_None_permitted| () Bool
+    true)
+  (define-fun |0_SLICE-CamExtA_CamExtA_OVERALL_BEST_None_permitted| () Bool
+    true)
+  (define-fun |0_SLICE-CamExtA_CamExtB_STATIC_IMPORT_null_interface_choice| () Bool
+    true)
+  (define-fun |0_SLICE-CamExtA_CamExtB_CONNECTED_IMPORT_GigabitEthernet0/1_choice| () Bool
+    true)
+  (define-fun |0_SLICE-CamExtA_CamExtA_STATIC_IMPORT_null_interface_choice| () Bool
+    true)
+  (define-fun |0_SLICE-CamExtA_CamExtA_CONNECTED_IMPORT_GigabitEthernet0/0_choice| () Bool
+    true)
+  (define-fun |0_SLICE-CamExtA_CamExtB_STATIC_IMPORT_null_interface_permitted| () Bool
+    true)
+  (define-fun |0_SLICE-CamExtA_CamExtB_CONNECTED_BEST_None_permitted| () Bool
+    true)
+  (define-fun |0_SLICE-CamExtA_CamExtB_CONNECTED_BEST_None_prefixLength| () Int
+    29)
+  (define-fun |0_SLICE-CamExtA_CamExtA_STATIC_IMPORT_null_interface_permitted| () Bool
+    true)
+  (define-fun |0_SLICE-CamExtA_CamExtA_CONNECTED_BEST_None_permitted| () Bool
+    true)
+  (define-fun |0_SLICE-CamExtA_CamExtA_CONNECTED_BEST_None_prefixLength| () Int
+    29)
+  (define-fun |0_SLICE-CamExtA_CamExtB_CONNECTED_IMPORT_GigabitEthernet0/1_permitted| () Bool
+    true)
+  (define-fun |0_SLICE-CamExtA_CamExtA_CONNECTED_IMPORT_GigabitEthernet0/0_permitted| () Bool
+    true)
+  (define-fun |0_SLICE-CamExtB_ip-protocol| () Int
+    6)
+  (define-fun |0_SLICE-CamExtB_dst-port| () Int
+    179)
+  (define-fun |0_SLICE-CamExtB_dst-ip| () (_ BitVec 32)
+    #xc0016602)
+  (define-fun |0_SLICE-CamExtB_DATA-FORWARDING_CamExtB_null_interface| () Bool
+    false)
+  (define-fun |0_SLICE-CamExtB_DATA-FORWARDING_CamExtB_GigabitEthernet0/0| () Bool
+    false)
+  (define-fun |0_SLICE-CamExtB_DATA-FORWARDING_CamExtA_Serial1/0| () Bool
+    false)
+  (define-fun |0_SLICE-CamExtB_CONTROL-FORWARDING_CamExtB_GigabitEthernet0/1| () Bool
+    false)
+  (define-fun |0_SLICE-CamExtB_CONTROL-FORWARDING_CamExtB_iBGP-CamExtA| () Bool
+    false)
+  (define-fun |0_SLICE-CamExtB_CONTROL-FORWARDING_CamExtB_GigabitEthernet0/0| () Bool
+    false)
+  (define-fun |0_SLICE-CamExtB_CONTROL-FORWARDING_CamExtB_FastEthernet0/0/0| () Bool
+    false)
+  (define-fun |0_SLICE-CamExtB_CONTROL-FORWARDING_CamExtA_iBGP-CamExtB| () Bool
+    false)
+  (define-fun |0_SLICE-CamExtB_CONTROL-FORWARDING_CamExtA_GigabitEthernet0/1| () Bool
+    false)
+  (define-fun |0_SLICE-CamExtB_CONTROL-FORWARDING_CamExtA_Serial1/0| () Bool
+    false)
+  (define-fun |0_SLICE-CamExtB_CamExtB_OVERALL_BEST_None_permitted| () Bool
+    true)
+  (define-fun |0_SLICE-CamExtB_CamExtA_OVERALL_BEST_None_permitted| () Bool
+    true)
+  (define-fun |0_SLICE-CamExtB_CamExtB_STATIC_IMPORT_null_interface_choice| () Bool
+    true)
+  (define-fun |0_SLICE-CamExtB_CamExtB_CONNECTED_IMPORT_GigabitEthernet0/1_choice| () Bool
+    true)
+  (define-fun |0_SLICE-CamExtB_CamExtA_STATIC_IMPORT_null_interface_choice| () Bool
+    true)
+  (define-fun |0_SLICE-CamExtB_CamExtA_CONNECTED_IMPORT_GigabitEthernet0/0_choice| () Bool
+    true)
+  (define-fun |0_SLICE-CamExtB_CamExtB_STATIC_IMPORT_null_interface_permitted| () Bool
+    true)
+  (define-fun |0_SLICE-CamExtB_CamExtB_CONNECTED_BEST_None_permitted| () Bool
+    true)
+  (define-fun |0_SLICE-CamExtB_CamExtB_CONNECTED_BEST_None_prefixLength| () Int
+    29)
+  (define-fun |0_SLICE-CamExtB_CamExtA_STATIC_IMPORT_null_interface_permitted| () Bool
+    true)
+  (define-fun |0_SLICE-CamExtB_CamExtA_CONNECTED_BEST_None_permitted| () Bool
+    true)
+  (define-fun |0_SLICE-CamExtB_CamExtA_CONNECTED_BEST_None_prefixLength| () Int
+    29)
+  (define-fun |0_SLICE-CamExtB_CamExtB_CONNECTED_IMPORT_GigabitEthernet0/1_permitted| () Bool
+    true)
+  (define-fun |0_SLICE-CamExtB_CamExtA_CONNECTED_IMPORT_GigabitEthernet0/0_permitted| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamExtB_BGP_EXPORT_ENV-64.119.128.41_bgpInternal| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamExtA_BGP_EXPORT_ENV-68.236.83.41_bgpInternal| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamExtB_BGP_IMPORT_GigabitEthernet0/0_bgpInternal| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamExtB_BGP_IMPORT_GigabitEthernet0/0_metric| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamExtB_BGP_IMPORT_GigabitEthernet0/0_prefixLength| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamExtB_BGP_IMPORT_GigabitEthernet0/0_adminDist| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamExtA_BGP_IMPORT_Serial1/0_bgpInternal| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamExtA_BGP_IMPORT_Serial1/0_metric| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamExtA_BGP_IMPORT_Serial1/0_prefixLength| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamExtA_BGP_IMPORT_Serial1/0_adminDist| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamEdge_OSPF_BEST_None_ospfType| () (_ BitVec 2)
+    #b00)
+  (define-fun |0_SLICE-MAIN_CamEdge_OSPF_BEST_None_metric| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamEdge_OSPF_BEST_None_prefixLength| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_CamEdge_OSPF_BEST_None_adminDist| () Int
+    0)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamDataA_GigabitEthernet6| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamDataA_Loopback0| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamDataA_GigabitEthernet8| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamDataA_GigabitEthernet3| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamDataA_GigabitEthernet1| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamDataA_GigabitEthernet2| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamDataA_GigabitEthernet7| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamDataB_GigabitEthernet7| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamDataB_GigabitEthernet2| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamDataB_GigabitEthernet3| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamDataB_GigabitEthernet8| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamDataB_Loopback0| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamDataB_GigabitEthernet1| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamDataB_GigabitEthernet6| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamDataB_GigabitEthernet4| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamB2B_GigabitEthernet3| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamB2B_GigabitEthernet4| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamB2B_Loopback0| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamB2B_GigabitEthernet5| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamB2B_GigabitEthernet6| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamB2B_GigabitEthernet8| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamB2B_GigabitEthernet1| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamB2B_GigabitEthernet7| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamB2B_GigabitEthernet2| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamDmz_null_interface| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamDmz_FastEthernet18| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamDmz_Loopback0| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamDmz_FastEthernet7| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamDmz_FastEthernet31| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamDmz_FastEthernet12| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamDmz_FastEthernet1| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamDmz_FastEthernet2| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamDmz_FastEthernet5| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamDmz_FastEthernet11| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamDmz_FastEthernet3| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamDmz_FastEthernet29| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamB2A_GigabitEthernet2| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamB2A_GigabitEthernet7| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamB2A_GigabitEthernet6| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamB2A_GigabitEthernet8| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamB2A_Loopback0| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamB2A_GigabitEthernet5| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamB2A_GigabitEthernet4| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamB2A_GigabitEthernet1| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamB2A_GigabitEthernet3| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamExtB_null_interface| () Bool
+    false)
+  (define-fun |0_SLICE-CamExtA_DATA-FORWARDING_CamExtB_null_interface| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamExtB_GigabitEthernet0/0| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamExtB_FastEthernet0/0/0| () Bool
+    false)
+  (define-fun |0_SLICE-CamExtA_DATA-FORWARDING_CamExtB_FastEthernet0/0/0| () Bool
+    false)
+  (define-fun |0_CamExtB-StaticRouteAddSoft-CamExtB,FastEthernet0/0/0 --> CamExtA,GigabitEthernet0/1| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamExtB_GigabitEthernet0/1| () Bool
+    false)
+  (define-fun |0_SLICE-CamExtA_DATA-FORWARDING_CamExtB_GigabitEthernet0/1| () Bool
+    true)
+  (define-fun |0_CamExtB-StaticRouteAddSoft-CamExtB,GigabitEthernet0/1 --> CamExtA,GigabitEthernet0/0| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamExtA_null_interface| () Bool
+    false)
+  (define-fun |0_SLICE-CamExtB_DATA-FORWARDING_CamExtA_null_interface| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamExtA_GigabitEthernet0/1| () Bool
+    false)
+  (define-fun |0_CamExtA-StaticRouteAddSoft-CamExtA,GigabitEthernet0/1 --> CamExtB,FastEthernet0/0/0| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamExtA_GigabitEthernet0/0| () Bool
+    false)
+  (define-fun |0_SLICE-CamExtB_DATA-FORWARDING_CamExtA_GigabitEthernet0/0| () Bool
+    true)
+  (define-fun |0_CamExtA-StaticRouteAddSoft-CamExtA,GigabitEthernet0/0 --> CamExtB,GigabitEthernet0/1| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamExtA_Serial1/0| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamEdge_null_interface| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamEdge_FastEthernet12| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamEdge_GigabitEthernet49| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamEdge_Loopback0| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamEdge_FastEthernet46| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamEdge_FastEthernet38| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamEdge_FastEthernet35| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamEdge_FastEthernet19| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamEdge_GigabitEthernet50| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamEdge_FastEthernet45| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamEdge_FastEthernet13| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamEdge_FastEthernet42| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamEdge_FastEthernet47| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamEdge_FastEthernet36| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamEdge_FastEthernet7| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamEdge_FastEthernet41| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamEdge_FastEthernet17| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamEdge_FastEthernet5| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamEdge_FastEthernet44| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamEdge_FastEthernet9| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamEdge_FastEthernet10| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamEdge_FastEthernet48| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamEdge_FastEthernet21| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamEdge_FastEthernet37| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamEdge_FastEthernet3| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamEdge_FastEthernet15| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamEdge_FastEthernet43| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamEdge_FastEthernet40| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamB6B_GigabitEthernet5| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamB6B_GigabitEthernet4| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamB6B_GigabitEthernet6| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamB6B_GigabitEthernet1| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamB6B_GigabitEthernet7| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamB6B_GigabitEthernet2| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamB6B_Loopback0| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamB6B_GigabitEthernet3| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamB6B_GigabitEthernet8| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamB6A_GigabitEthernet3| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamB6A_GigabitEthernet2| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamB6A_GigabitEthernet4| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamB6A_GigabitEthernet1| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamB6A_GigabitEthernet7| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamB6A_GigabitEthernet6| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamB6A_Loopback0| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamB6A_GigabitEthernet8| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamB6A_GigabitEthernet5| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamDataA_Loopback0| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamDataA_GigabitEthernet1| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamDataB_Loopback0| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamDataB_GigabitEthernet1| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamDataB_GigabitEthernet4| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamB2B_Loopback0| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamB2B_GigabitEthernet1| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamDmz_FastEthernet18| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamDmz_Loopback0| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamDmz_FastEthernet7| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamDmz_FastEthernet31| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamDmz_FastEthernet12| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamDmz_FastEthernet1| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamDmz_FastEthernet2| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamDmz_FastEthernet5| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamDmz_FastEthernet11| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamDmz_FastEthernet3| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamDmz_FastEthernet29| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamB2A_Loopback0| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamB2A_GigabitEthernet1| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamExtB_GigabitEthernet0/0| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamExtA_Serial1/0| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamEdge_FastEthernet12| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamEdge_GigabitEthernet49| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamEdge_Loopback0| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamEdge_FastEthernet46| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamEdge_FastEthernet38| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamEdge_FastEthernet35| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamEdge_FastEthernet19| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamEdge_FastEthernet45| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamEdge_FastEthernet13| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamEdge_FastEthernet42| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamEdge_FastEthernet47| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamEdge_FastEthernet36| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamEdge_FastEthernet7| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamEdge_FastEthernet41| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamEdge_FastEthernet17| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamEdge_FastEthernet5| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamEdge_FastEthernet44| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamEdge_FastEthernet9| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamEdge_FastEthernet10| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamEdge_FastEthernet48| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamEdge_FastEthernet21| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamEdge_FastEthernet37| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamEdge_FastEthernet3| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamEdge_FastEthernet15| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamEdge_FastEthernet43| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamEdge_FastEthernet40| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamB6B_GigabitEthernet4| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamB6B_GigabitEthernet1| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamB6B_Loopback0| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamB6A_GigabitEthernet4| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamB6A_GigabitEthernet1| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CONTROL-FORWARDING_CamB6A_Loopback0| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamDataA_OVERALL_BEST_None_permitted| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamDataB_OVERALL_BEST_None_permitted| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB2B_OVERALL_BEST_None_permitted| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB2A_OVERALL_BEST_None_permitted| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamExtB_OVERALL_BEST_None_permitted| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamExtA_OVERALL_BEST_None_permitted| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamEdge_OVERALL_BEST_None_permitted| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB6B_OVERALL_BEST_None_permitted| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB6A_OVERALL_BEST_None_permitted| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamDataA_CONNECTED_IMPORT_GigabitEthernet8_choice| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamDataA_OSPF_IMPORT_GigabitEthernet2_choice| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamDataA_OSPF_IMPORT_GigabitEthernet7_choice| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamDataA_OSPF_IMPORT_GigabitEthernet3_choice| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamDataA_OSPF_IMPORT_GigabitEthernet6_choice| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamDataB_CONNECTED_IMPORT_GigabitEthernet8_choice| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamDataB_OSPF_IMPORT_GigabitEthernet6_choice| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamDataB_OSPF_IMPORT_GigabitEthernet7_choice| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamDataB_OSPF_IMPORT_GigabitEthernet3_choice| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamDataB_OSPF_IMPORT_GigabitEthernet2_choice| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamB2B_CONNECTED_IMPORT_GigabitEthernet8_choice| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB2B_OSPF_IMPORT_GigabitEthernet7_choice| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamB2B_OSPF_IMPORT_GigabitEthernet5_choice| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamB2B_OSPF_IMPORT_GigabitEthernet4_choice| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamB2B_OSPF_IMPORT_GigabitEthernet6_choice| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamB2B_OSPF_IMPORT_GigabitEthernet2_choice| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamB2B_OSPF_IMPORT_GigabitEthernet3_choice| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamDmz_STATIC_IMPORT_null_interface_choice| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamB2A_CONNECTED_IMPORT_GigabitEthernet8_choice| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB2A_OSPF_IMPORT_GigabitEthernet7_choice| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamB2A_OSPF_IMPORT_GigabitEthernet3_choice| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamB2A_OSPF_IMPORT_GigabitEthernet5_choice| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamB2A_OSPF_IMPORT_GigabitEthernet6_choice| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamB2A_OSPF_IMPORT_GigabitEthernet2_choice| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamB2A_OSPF_IMPORT_GigabitEthernet4_choice| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamExtB_STATIC_IMPORT_null_interface_choice| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamExtB_BGP_IMPORT_iBGP-CamExtA_choice| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamExtB_BGP_IMPORT_GigabitEthernet0/0_choice| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamExtB_BGP_IMPORT_FastEthernet0/0/0_choice| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamExtB_BGP_IMPORT_GigabitEthernet0/1_choice| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamExtA_STATIC_IMPORT_null_interface_choice| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamExtA_BGP_IMPORT_GigabitEthernet0/0_choice| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamExtA_BGP_IMPORT_Serial1/0_choice| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamExtA_BGP_IMPORT_iBGP-CamExtB_choice| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamExtA_BGP_IMPORT_GigabitEthernet0/1_choice| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamEdge_STATIC_IMPORT_null_interface_choice| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamEdge_CONNECTED_IMPORT_GigabitEthernet50_choice| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB6B_CONNECTED_IMPORT_GigabitEthernet8_choice| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB6B_OSPF_IMPORT_GigabitEthernet3_choice| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamB6B_OSPF_IMPORT_GigabitEthernet7_choice| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamB6B_OSPF_IMPORT_GigabitEthernet5_choice| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamB6B_OSPF_IMPORT_GigabitEthernet2_choice| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamB6B_OSPF_IMPORT_GigabitEthernet6_choice| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamB6A_CONNECTED_IMPORT_GigabitEthernet8_choice| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB6A_OSPF_IMPORT_GigabitEthernet3_choice| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamB6A_OSPF_IMPORT_GigabitEthernet5_choice| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamB6A_OSPF_IMPORT_GigabitEthernet6_choice| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamB6A_OSPF_IMPORT_GigabitEthernet2_choice| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamB6A_OSPF_IMPORT_GigabitEthernet7_choice| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamDataA_CONNECTED_BEST_None_permitted| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamDataA_CONNECTED_BEST_None_prefixLength| () Int
+    27)
+  (define-fun |0_SLICE-MAIN_CamDataA_OSPF_BEST_None_permitted| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamDataB_CONNECTED_BEST_None_permitted| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamDataB_CONNECTED_BEST_None_prefixLength| () Int
+    27)
+  (define-fun |0_SLICE-MAIN_CamDataB_OSPF_BEST_None_permitted| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamB2B_CONNECTED_BEST_None_permitted| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB2B_CONNECTED_BEST_None_prefixLength| () Int
+    27)
+  (define-fun |0_SLICE-MAIN_CamB2B_OSPF_BEST_None_permitted| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamDmz_STATIC_IMPORT_null_interface_permitted| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamB2A_CONNECTED_BEST_None_permitted| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB2A_CONNECTED_BEST_None_prefixLength| () Int
+    27)
+  (define-fun |0_SLICE-MAIN_CamB2A_OSPF_BEST_None_permitted| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamExtB_STATIC_IMPORT_null_interface_permitted| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamExtB_BGP_BEST_None_permitted| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamExtA_STATIC_IMPORT_null_interface_permitted| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamExtA_BGP_BEST_None_permitted| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamEdge_STATIC_IMPORT_null_interface_permitted| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamEdge_CONNECTED_BEST_None_permitted| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamEdge_CONNECTED_BEST_None_prefixLength| () Int
+    27)
+  (define-fun |0_SLICE-MAIN_CamB6B_CONNECTED_BEST_None_permitted| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB6B_CONNECTED_BEST_None_prefixLength| () Int
+    27)
+  (define-fun |0_SLICE-MAIN_CamB6B_OSPF_BEST_None_permitted| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamB6A_CONNECTED_BEST_None_permitted| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB6A_CONNECTED_BEST_None_prefixLength| () Int
+    27)
+  (define-fun |0_SLICE-MAIN_CamB6A_OSPF_BEST_None_permitted| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamDataA_CONNECTED_IMPORT_GigabitEthernet8_permitted| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamDataB_CONNECTED_IMPORT_GigabitEthernet8_permitted| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB2B_CONNECTED_IMPORT_GigabitEthernet8_permitted| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB2A_CONNECTED_IMPORT_GigabitEthernet8_permitted| () Bool
+    true)
+  (define-fun SSA_RETURN281 () Bool
+    true)
+  (define-fun SSA_ASSIGNED280 () Bool
+    true)
+  (define-fun SSA_RETURN279 () Bool
+    true)
+  (define-fun SSA_ASSIGNED278 () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamExtB_BGP_IMPORT_GigabitEthernet0/0_permitted| () Bool
+    false)
+  (define-fun SSA_RETURN277 () Bool
+    true)
+  (define-fun SSA_ASSIGNED276 () Bool
+    true)
+  (define-fun SSA_RETURN275 () Bool
+    true)
+  (define-fun SSA_ASSIGNED274 () Bool
+    true)
+  (define-fun SSA_RETURN273 () Bool
+    true)
+  (define-fun SSA_ASSIGNED272 () Bool
+    true)
+  (define-fun SSA_RETURN271 () Bool
+    true)
+  (define-fun SSA_ASSIGNED270 () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamExtA_BGP_IMPORT_Serial1/0_permitted| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamEdge_CONNECTED_IMPORT_GigabitEthernet50_permitted| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamEdge_OSPF_BEST_None_permitted| () Bool
+    false)
+  (define-fun |0_SLICE-MAIN_CamB6B_CONNECTED_IMPORT_GigabitEthernet8_permitted| () Bool
+    true)
+  (define-fun |0_SLICE-MAIN_CamB6A_CONNECTED_IMPORT_GigabitEthernet8_permitted| () Bool
+    true)
+  (define-fun |0_FAILED-EDGE_CamEdge_FastEthernet43| () Int
+    0)
+  (define-fun |0_FAILED-EDGE_CamB2B_GigabitEthernet1| () Int
+    0)
+  (define-fun |0_FAILED-EDGE_CamEdge_FastEthernet42| () Int
+    0)
+  (define-fun |0_FAILED-EDGE_CamExtA_CamExtB| () Int
+    0)
+  (define-fun |0_FAILED-EDGE_CamEdge_FastEthernet3| () Int
+    0)
+  (define-fun |0_FAILED-EDGE_CamEdge_FastEthernet47| () Int
+    0)
+  (define-fun |0_FAILED-EDGE_CamB2A_Loopback0| () Int
+    0)
+  (define-fun |0_FAILED-EDGE_CamDmz_FastEthernet11| () Int
+    0)
+  (define-fun |0_FAILED-EDGE_CamB6A_GigabitEthernet4| () Int
+    0)
+  (define-fun |0_FAILED-EDGE_CamEdge_FastEthernet10| () Int
+    0)
+  (define-fun |0_FAILED-EDGE_CamB2A_GigabitEthernet1| () Int
+    0)
+  (define-fun |0_FAILED-EDGE_CamDmz_FastEthernet5| () Int
+    0)
+  (define-fun |0_FAILED-EDGE_CamEdge_GigabitEthernet50| () Int
+    0)
+  (define-fun |0_FAILED-EDGE_CamEdge_FastEthernet19| () Int
+    0)
+  (define-fun |0_FAILED-EDGE_CamDataB_GigabitEthernet4| () Int
+    0)
+  (define-fun |0_FAILED-EDGE_CamB6B_Loopback0| () Int
+    0)
+  (define-fun |0_FAILED-EDGE_CamEdge_FastEthernet15| () Int
+    0)
+  (define-fun |0_FAILED-EDGE_CamEdge_FastEthernet17| () Int
+    0)
+  (define-fun |0_FAILED-EDGE_CamEdge_FastEthernet35| () Int
+    0)
+  (define-fun |0_FAILED-EDGE_CamExtB_GigabitEthernet0/0| () Int
+    0)
+  (define-fun |0_FAILED-EDGE_CamEdge_FastEthernet45| () Int
+    0)
+  (define-fun |0_FAILED-EDGE_CamB6A_CamB6B| () Int
+    0)
+  (define-fun |0_FAILED-EDGE_CamEdge_FastEthernet41| () Int
+    0)
+  (define-fun |0_FAILED-EDGE_CamDmz_FastEthernet1| () Int
+    0)
+  (define-fun |0_FAILED-EDGE_CamDmz_FastEthernet7| () Int
+    0)
+  (define-fun |0_FAILED-EDGE_CamEdge_FastEthernet48| () Int
+    0)
+  (define-fun |0_FAILED-EDGE_CamB2B_GigabitEthernet8| () Int
+    0)
+  (define-fun |0_FAILED-EDGE_CamEdge_FastEthernet21| () Int
+    0)
+  (define-fun |0_FAILED-EDGE_CamB6B_GigabitEthernet4| () Int
+    0)
+  (define-fun |0_FAILED-EDGE_CamExtB_null_interface| () Int
+    0)
+  (define-fun |0_FAILED-EDGE_CamEdge_FastEthernet7| () Int
+    0)
+  (define-fun |0_FAILED-EDGE_CamDataA_Loopback0| () Int
+    0)
+  (define-fun |0_FAILED-EDGE_CamDmz_null_interface| () Int
+    0)
+  (define-fun |0_FAILED-EDGE_CamEdge_null_interface| () Int
+    0)
+  (define-fun |0_FAILED-EDGE_CamB6A_Loopback0| () Int
+    0)
+  (define-fun |0_FAILED-EDGE_CamExtA_Serial1/0| () Int
+    0)
+  (define-fun |0_FAILED-EDGE_CamEdge_FastEthernet44| () Int
+    0)
+  (define-fun |0_FAILED-EDGE_CamEdge_FastEthernet37| () Int
+    0)
+  (define-fun |0_FAILED-EDGE_CamDmz_FastEthernet12| () Int
+    0)
+  (define-fun |0_FAILED-EDGE_CamEdge_FastEthernet46| () Int
+    0)
+  (define-fun |0_FAILED-EDGE_CamEdge_FastEthernet5| () Int
+    0)
+  (define-fun |0_FAILED-EDGE_CamDataA_CamDataB| () Int
+    0)
+  (define-fun |0_FAILED-EDGE_CamDmz_FastEthernet29| () Int
+    0)
+  (define-fun |0_FAILED-EDGE_CamDataB_Loopback0| () Int
+    0)
+  (define-fun |0_FAILED-EDGE_CamEdge_GigabitEthernet49| () Int
+    0)
+  (define-fun |0_FAILED-EDGE_CamEdge_FastEthernet36| () Int
+    0)
+  (define-fun |0_FAILED-EDGE_CamEdge_FastEthernet13| () Int
+    0)
+  (define-fun |0_FAILED-EDGE_CamEdge_FastEthernet40| () Int
+    0)
+  (define-fun |0_FAILED-EDGE_CamEdge_FastEthernet12| () Int
+    0)
+  (define-fun |0_FAILED-EDGE_CamB2A_GigabitEthernet8| () Int
+    0)
+  (define-fun |0_FAILED-EDGE_CamDataA_GigabitEthernet8| () Int
+    0)
+  (define-fun |0_FAILED-EDGE_CamEdge_FastEthernet9| () Int
+    0)
+  (define-fun |0_FAILED-EDGE_CamDmz_FastEthernet18| () Int
+    0)
+  (define-fun |0_FAILED-EDGE_CamB6B_GigabitEthernet1| () Int
+    0)
+  (define-fun |0_FAILED-EDGE_CamExtA_null_interface| () Int
+    0)
+  (define-fun |0_FAILED-EDGE_CamB6A_GigabitEthernet1| () Int
+    0)
+  (define-fun |0_FAILED-EDGE_CamDmz_FastEthernet2| () Int
+    0)
+  (define-fun |0_FAILED-EDGE_CamDataA_GigabitEthernet1| () Int
+    0)
+  (define-fun |0_FAILED-EDGE_CamDmz_Loopback0| () Int
+    0)
+  (define-fun |0_FAILED-EDGE_CamB2B_Loopback0| () Int
+    0)
+  (define-fun |0_FAILED-EDGE_CamB6B_GigabitEthernet8| () Int
+    0)
+  (define-fun |0_FAILED-EDGE_CamDmz_FastEthernet31| () Int
+    0)
+  (define-fun |0_FAILED-EDGE_CamDataB_GigabitEthernet1| () Int
+    0)
+  (define-fun |0_FAILED-EDGE_CamEdge_FastEthernet38| () Int
+    0)
+  (define-fun |0_FAILED-EDGE_CamEdge_Loopback0| () Int
+    0)
+  (define-fun |0_FAILED-EDGE_CamDmz_FastEthernet3| () Int
+    0)
+  (define-fun |0_FAILED-EDGE_CamB6A_GigabitEthernet8| () Int
+    0)
+  (define-fun |0_FAILED-EDGE_CamDataB_GigabitEthernet8| () Int
+    0)
+  (define-fun |0_FAILED-EDGE_CamB2A_CamB2B| () Int
+    0)
+  (define-fun |0_SLICE-CamExtB__reachable_CamExtB| () Bool
+    true)
+  (define-fun |0_SLICE-CamExtB__reachable-id_CamExtB| () Int
+    1)
+  (define-fun |0_SLICE-CamExtB__reachable_CamExtA| () Bool
+    true)
+  (define-fun |0_SLICE-CamExtA__reachable-id_CamExtA| () Int
+    1)
+  (define-fun |0_SLICE-CamExtA__reachable_CamExtB| () Bool
+    true)
+  (define-fun |0_SLICE-CamExtA__reachable_CamExtA| () Bool
+    true)
+)

@@ -6,7 +6,7 @@ rm -rf pathModel/$policies
 rm -rf pathModelOut/$policies
 mkdir -p pathModel/$policies
 mkdir -p pathModelOut/$policies
-
+rm sumobjective
 for entry in "$policies"/*
 do
   echo "$entry"
@@ -36,5 +36,6 @@ echo "Waiting"
 wait
 echo "All edgeprops Z3 done"
 end=`date +%s`
+objective=`awk '{ sum += $1 } END { print sum }' sumobjective`
 runtime=$((end-start))
-echo "unbroken,$configs,$runtime" >> runoutput
+echo "unbroken,$configs,$runtime,$objective" >> runoutput

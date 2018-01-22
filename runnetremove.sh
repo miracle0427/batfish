@@ -3,6 +3,7 @@ start=`date +%s`
 configs="$1/unbroken"
 policies="$configs/policies/path"
 configs="$1/rm-network_half"
+rm sumobjective
 rm -rf pathModelNet/$policies
 rm -rf pathModelNetOut/$policies
 mkdir -p pathModelNet/$policies
@@ -38,4 +39,5 @@ wait
 echo "All edgeprops Z3 done"
 end=`date +%s`
 runtime=$((end-start))
-echo "net,$configs,$runtime" >> runoutput
+objective=`awk '{ sum += $1 } END { print sum }' sumobjective`
+echo "net,$configs,$runtime,$objective" >> runoutput

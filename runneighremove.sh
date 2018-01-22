@@ -3,6 +3,7 @@ start=`date +%s`
 configs="$1/unbroken"
 policies="$configs/policies/path"
 configs="$1/rm-neighbor_one"
+rm sumobjective
 rm -rf pathModelNeigh/$policies
 rm -rf pathModelNeighOut/$policies
 mkdir -p pathModelNeigh/$policies
@@ -38,4 +39,5 @@ wait
 echo "All edgeprops Z3 done"
 end=`date +%s`
 runtime=$((end-start))
-echo "neigh,$configs,$runtime" >> runoutput
+objective=`awk '{ sum += $1 } END { print sum }' sumobjective`
+echo "neigh,$configs,$runtime,$objective" >> runoutput
