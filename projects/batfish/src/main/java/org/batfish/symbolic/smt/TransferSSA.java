@@ -280,11 +280,13 @@ class TransferSSA {
                   _enc.addSoft(shouldRemove, _enc.bgpWeight, "SCExportRemove");
                   _enc._routerConsMap.put(router, _enc.mkAnd(_enc._routerConsMap.get(router), shouldRemove));
                   return result.setReturnValue(_enc.mkAnd(directRoute, shouldRemove));*/
-                  System.out.println("Only req Stat " + pfx);
+                  //System.out.println("Only req Stat " + pfx);
                 }
                 BoolExpr shouldRemove = _enc.getCtx().mkBoolConst(_enc.getEncoder().getId() + "_"
                  + pfx + "Stat-Conn-ExportRemoveSoft" + other.getName());
-                _enc.addSoft(shouldRemove, _enc.bgpWeight, "SCExportRemove");
+                if (_enc.getEncoder()._repairObjective != 1) {
+                  _enc.addSoft(shouldRemove, _enc.bgpWeight, "SCExportRemove");
+                }
                 _enc._routerConsMap.put(router, _enc.mkAnd(_enc._routerConsMap.get(router), shouldRemove));
                 return result.setReturnValue(_enc.mkAnd(directRoute, shouldRemove));
                 //return result.setReturnValue(directRoute);
@@ -300,11 +302,13 @@ class TransferSSA {
                     _enc._routerConsMap.put(router, _enc.mkAnd(_enc._routerConsMap.get(router), shouldRemove));
                     BoolExpr ospfRelevant = _enc.mkAnd(_enc.isRelevantFor(rec.getPrefixLength(), r),
                      shouldRemove);*/
-                    System.out.println("Only req Export" + pfx);
+                    //System.out.println("Only req Export" + pfx);
                   }
                   BoolExpr shouldRemove = _enc.getCtx().mkBoolConst(_enc.getEncoder().getId() + "_"
                    + pfx + "ExportRemoveSoft" + other.getName());
-                  _enc.addSoft(shouldRemove, _enc.bgpWeight, "ExportRemove");
+                  if (_enc.getEncoder()._repairObjective != 1) {
+                    _enc.addSoft(shouldRemove, _enc.bgpWeight, "ExportRemove");
+                  }
                   _enc._routerConsMap.put(router, _enc.mkAnd(_enc._routerConsMap.get(router), shouldRemove));
                   BoolExpr ospfRelevant = _enc.mkAnd(_enc.isRelevantFor(rec.getPrefixLength(), r),
                    shouldRemove);
@@ -333,7 +337,7 @@ class TransferSSA {
       NamedPrefixSet x = (NamedPrefixSet) e;
       String name = x.getName();
       RouteFilterList fl = conf.getRouteFilterLists().get(name);
-      System.out.println("\nRoute Filter\n");
+      //System.out.println("\nRoute Filter\n");
       return result.setReturnValue(matchFilterList(fl, other));
 
     } else {
@@ -442,7 +446,9 @@ class TransferSSA {
       }
       BoolExpr shouldAdd = _enc.getCtx().mkBoolConst(_enc.getEncoder().getId() + "_" + 
         p.getData().getName() + "BGPExportAddSoft");
-      _enc.addSoft(_enc.mkNot(shouldAdd), _enc.bgpWeight, "BGPExportAdd");
+      if (_enc.getEncoder()._repairObjective != 1) {
+        _enc.addSoft(_enc.mkNot(shouldAdd), _enc.bgpWeight, "BGPExportAdd");
+      }
       _enc._routerConsMap.put(_conf.getName(), _enc.mkAnd(_enc._routerConsMap.get(_conf.getName()), _enc.mkNot(shouldAdd)));
 
       acc = _enc.mkOr(acc, shouldAdd);
@@ -1048,7 +1054,9 @@ class TransferSSA {
       //_enc.addSoft(_enc.mkNot(lp1), 2, "localpref");
       val = _enc.mkIf(lp2, _enc.getCtx().mkInt(intval), val);
       if (actualVal == intval) {
-        _enc.addSoft(lp2, _enc.localprefWeight, "localpref");
+        if (_enc.getEncoder()._repairObjective != 1) {
+          _enc.addSoft(lp2, _enc.localprefWeight, "localpref");
+        }
         _enc._routerConsMap.put(_conf.getName(), _enc.mkAnd(_enc._routerConsMap.get(_conf.getName()), lp2));
         doesChange = _enc.mkOr(doesChange, lp1, _enc.mkNot(lp2));
       } else {
@@ -1059,7 +1067,9 @@ class TransferSSA {
     }
     BoolExpr lp = _enc.getCtx().mkBoolConst(_currentName + "_localpref_" + highestVal);
     lp =_enc.mkNot(exists);
-    _enc.addSoft(_enc.mkAnd(_enc.mkNot(doesChange), exists), _enc.localprefWeight, "localpref");
+    if (_enc.getEncoder()._repairObjective != 1) {
+      _enc.addSoft(_enc.mkAnd(_enc.mkNot(doesChange), exists), _enc.localprefWeight, "localpref");
+    }
     _enc._routerConsMap.put(_conf.getName(), _enc.mkAnd(_enc._routerConsMap.get(_conf.getName()),
      _enc.mkNot(doesChange)));
     //System.out.println("\nExists: " + lp + "\nVal:  " + val);
