@@ -1,4 +1,3 @@
-neigh,test_rigs/repair-examples/ring/ring20/rm-neighbor_one,24
-neigh,test_rigs/repair-examples/ring/ring20/rm-neighbor_one,24,27
-neigh,test_rigs/repair-examples/ring/ring20/rm-neighbor_one,24,9
-neigh,test_rigs/repair-examples/ring/ring20/rm-neighbor_one,25,9
+/after_inst.sh/unbroken,0,
+/after_inst.sh/rm-neighbor_one,0,
+test_rigs/ring/ring10/unbroken,1,0
