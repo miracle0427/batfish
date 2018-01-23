@@ -1181,7 +1181,7 @@ class EncoderSlice {
            && e.getStart()!=null && e.getEnd()!=null) {
             //System.out.println(" Edge without OSPF or BGP: " + e);
             /////////////////////////////////////////////////////////////////////////
-
+            
 
             ArrayList<LogicalEdge> importEdgeList = new ArrayList<>();
             ArrayList<LogicalEdge> exportEdgeList = new ArrayList<>();
