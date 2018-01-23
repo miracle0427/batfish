@@ -13,11 +13,11 @@ with open(filename, 'r') as infile:
        dstIp[args].append(data.replace(",",", "))
 
 for ip in dstIp:
-    dirf = "reach/" + ip
+    dirf = "reachpols/reach1600/" + ip
     outfile = open(dirf, "w+")
     for line in dstIp[ip]:
 	outfile.write(line)
-
+'''
 filename = "pathlength.txt"
 dstIp = dict()
 with open(filename, 'r') as infile:
@@ -34,3 +34,4 @@ for ip in dstIp:
     outfile = open(dirf, "w+")
     for line in dstIp[ip]:
        outfile.write(line)
+'''
