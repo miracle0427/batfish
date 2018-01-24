@@ -119,6 +119,8 @@ public class Encoder {
 
   public int _repairObjective = 0;
 
+  public int _isBool = 0;
+
   private List<Symbol> _allFailList;
   /**
    * @archie created this variable. optsolve will use same constraints as solver, but can support soft
@@ -434,6 +436,7 @@ public class Encoder {
     try {
       String weightPath = "weights.txt";
       String objPath = "obj.txt";
+      String isBoolPath = "isbool.txt";
       String line;
       File f = new File(weightPath);
       if(f.exists() && !f.isDirectory()) { 
@@ -456,6 +459,18 @@ public class Encoder {
           String[] split = line.split(" ");
           int s1 = Integer.parseInt(split[0]);
           _repairObjective = s1;
+        }
+        reader.close();
+      }
+
+      f = new File(isBoolPath);
+      if(f.exists() && !f.isDirectory()) { 
+        //System.out.println("\nRead obj.txt\n");
+        BufferedReader reader = new BufferedReader(new FileReader(isBoolPath));
+        while((line = reader.readLine()) != null) {
+          String[] split = line.split(" ");
+          int s1 = Integer.parseInt(split[0]);
+          _isBool = s1;
         }
         reader.close();
       }
