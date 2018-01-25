@@ -1,5 +1,7 @@
 #!/bin/bash
 
+trap "kill -$$" SIGTERM
+
 source $BASEDIR/tools/batfish_functions.sh
 
 TESTRIG_DIR="$BASEDIR/test_rigs"

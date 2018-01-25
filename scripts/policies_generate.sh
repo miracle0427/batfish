@@ -14,7 +14,7 @@ ARCDIR="$BASEDIR/../arc"
 
 MINGROUP=3 # For fattree
 MINGROUP=64 # For uwmadison
-MINGROUP=4 # For bbn
+MINGROUP=4 # For all others
 
 $ARCDIR/projects/arc/scripts/minesweeper_tocheck.sh -c minesweeper/$TESTRIG -m $MINGROUP
 
@@ -22,3 +22,4 @@ POLICIESDIR="$TESTRIG_DIR/policies"
 mkdir -p $POLICIESDIR
 
 cp $ARCDIR/output/logs/minesweeper/$TESTRIG/minesweeper_tocheck.txt $POLICIESDIR/tocheck.txt
+cp $ARCDIR/output/logs/minesweeper/$TESTRIG/minesweeper_tocheck.log $POLICIESDIR/policies_generate.log
