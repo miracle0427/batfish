@@ -815,7 +815,7 @@ class EncoderSlice {
       if (!(lowerBitsMatch.toString().equals("true") || lowerBitsMatch.toString().equals("false"))) {
         //System.out.println("Lower bits match: " + lowerBitsMatch);
         BoolExpr shouldRemove = getCtx().mkBoolConst(_encoder.getId() + "_"
-         + prefixLen + "BGPRemoveFilterSoft");
+         + p + "BGPRemoveFilterSoft");
         if (_encoder._repairObjective != 1) {
           addSoft(shouldRemove, importWeight, "BGPRemoveFilter");
         }
