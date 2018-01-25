@@ -13,7 +13,7 @@ with open(filename, 'r') as infile:
        dstIp[args].append(data.replace(",",", "))
 
 for ip in dstIp:
-    dirf = "reachpols/reach1600/" + ip
+    dirf = "reachpols/reach100/" + ip
     outfile = open(dirf, "w+")
     for line in dstIp[ip]:
 	outfile.write(line)

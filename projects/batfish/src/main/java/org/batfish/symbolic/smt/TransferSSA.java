@@ -1018,6 +1018,10 @@ class TransferSSA {
 
 
   private ArithExpr getVarLocalPref(int actualVal) {
+    if (_enc.getEncoder()._isBool == 0) {
+      ArithExpr localprefvar = _enc.getCtx().mkIntConst(_currentName + "_localpref");
+      return localprefvar;
+    }
     Map<String, ArithExpr> prefMap = _enc.getLocalPrefMap();
     if (prefMap.containsKey(_currentName)) {
       return prefMap.get(_currentName);
