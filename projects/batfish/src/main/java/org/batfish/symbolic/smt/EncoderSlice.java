@@ -2357,7 +2357,7 @@ private void addSymbolicPacketBoundConstraints() {
     }
     return false;
   }
-
+  /*
   private boolean shouldAddACL(Set<IpWildcard> wcs, IpWildcard addr) {
     for (IpWildcard wc : wcs) {
       if(matchIp(addr, wc)) {
@@ -2366,7 +2366,7 @@ private void addSymbolicPacketBoundConstraints() {
     }
     return false;
   }
-
+  */
 
   /*
    * Convert a set of wildcards and a packet field to a symbolic boolean expression
@@ -2463,7 +2463,7 @@ private void addSymbolicPacketBoundConstraints() {
     }
     return false;
   }
-
+  /*
   private boolean existsACL(IpAccessList acl) {
     if (acl == null) {
       return false;
@@ -2501,6 +2501,7 @@ private void addSymbolicPacketBoundConstraints() {
     }
     return false;
   }
+  */
   /*
    * Convert an Access Control List (ACL) to a symbolic boolean expression.
    * The default action in an ACL is to deny all traffic.
