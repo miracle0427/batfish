@@ -580,7 +580,7 @@ class EncoderSlice {
         Interface i = ge.getStart();
         //System.out.println(ge.toString() + " *");
         IpAccessList outbound = i.getOutgoingFilter();
-        if (outbound != null && existsACL(outbound)) {
+        if (outbound != null) {// && existsACL(outbound)) {
           //System.out.println("Outbound ACL " + outbound.toString());
           String outName =
               String.format(
@@ -629,7 +629,7 @@ class EncoderSlice {
         }
 
         IpAccessList inbound = i.getIncomingFilter();
-        if (inbound != null && existsACL(inbound)) {
+        if (inbound != null) {// && existsACL(inbound)) {
           //System.out.println("Inbound ACL " + inbound.toString());
           String inName =
               String.format(
@@ -2517,7 +2517,7 @@ private void addSymbolicPacketBoundConstraints() {
     Collections.reverse(lines);
     for (IpAccessListLine l : lines) {
       BoolExpr local = null;
-
+      /*
       boolean individualExists = true;
       if (l.getDstIps() != null  && _encoder._dstIp != null) {
         individualExists = individualExists & shouldAddACL(l.getDstIps(), _encoder._dstIp);
@@ -2527,14 +2527,14 @@ private void addSymbolicPacketBoundConstraints() {
       }
       if (individualExists == false) {
         continue;
-      }
-
+      }*/
+      /*
       if (_encoder._dstIp != null) {
-        if (l.getDstIps() != null && shouldAddACL(l.getDstIps(), _encoder._dstIp)) {
-          BoolExpr val = computeWildcardMatch(l.getDstIps(), _symbolicPacket.getDstIp());
-          val = l.getDstIps().isEmpty() ? mkTrue() : val;
-          local = val;
-        }
+        //if (l.getDstIps() != null && shouldAddACL(l.getDstIps(), _encoder._dstIp)) {
+        BoolExpr val = computeWildcardMatch(l.getDstIps(), _symbolicPacket.getDstIp());
+        val = l.getDstIps().isEmpty() ? mkTrue() : val;
+        local = val;
+        //}
       } else {
         if (l.getDstIps() != null) {
           BoolExpr val = computeWildcardMatch(l.getDstIps(), _symbolicPacket.getDstIp());
@@ -2555,7 +2555,20 @@ private void addSymbolicPacketBoundConstraints() {
           val = l.getDstIps().isEmpty() ? mkTrue() : val;
           local = (local == null ? val : mkAnd(local, val));
         }
+      }*/
+      if (l.getDstIps() != null) {
+        BoolExpr val = computeWildcardMatch(l.getDstIps(), _symbolicPacket.getDstIp());
+        val = l.getDstIps().isEmpty() ? mkTrue() : val;
+        local = val;
       }
+
+      if (l.getSrcIps() != null) {
+        BoolExpr val = computeWildcardMatch(l.getSrcIps(), _symbolicPacket.getSrcIp());
+        val = l.getDstIps().isEmpty() ? mkTrue() : val;
+        local = (local == null ? val : mkAnd(local, val));
+      }
+
+
       if (l.getDscps() != null && !l.getDscps().isEmpty()) {
         throw new BatfishException("detected dscps");
       }
