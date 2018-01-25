@@ -559,7 +559,7 @@ class EncoderSlice {
         Interface i = ge.getStart();
         //System.out.println(ge.toString() + " *");
         IpAccessList outbound = i.getOutgoingFilter();
-        if (outbound != null && existsACL(outbound)) {
+        if (outbound != null) {// && existsACL(outbound)) {
           //System.out.println("Outbound ACL " + outbound.toString());
           String outName =
               String.format(
@@ -608,7 +608,7 @@ class EncoderSlice {
         }
 
         IpAccessList inbound = i.getIncomingFilter();
-        if (inbound != null && existsACL(inbound)) {
+        if (inbound != null) {// && existsACL(inbound)) {
           //System.out.println("Inbound ACL " + inbound.toString());
           String inName =
               String.format(
@@ -2474,7 +2474,6 @@ private void addSymbolicPacketBoundConstraints() {
     return false;
   }
   /*
->>>>>>> accurate
    * Convert an Access Control List (ACL) to a symbolic boolean expression.
    * The default action in an ACL is to deny all traffic.
    */
