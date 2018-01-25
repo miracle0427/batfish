@@ -1,12 +1,9 @@
 sat
-(objectives
- (a 1)
-)
 (model 
   (define-fun |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel13| () Bool
     true)
-  (define-fun |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-05_Port-Channel1| () Bool
-    true)
+  (define-fun |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel9| () Bool
+    false)
   (define-fun |0_0__am2-x3hl-xcg-5-19_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_am2-x3hl-xcg-5-07_BGP_SINGLE-EXPORT__prefixLength| () Int
@@ -129,9 +126,9 @@ sat
     false)
   (define-fun |0_0__am2-x3hl-xcg-5-13_Loopback0_INBOUND_SOFTAdd| () Bool
     true)
-  (define-fun |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-01_Port-Channel2| () Bool
-    true)
   (define-fun |0_\\\|0_am2-x3sb-xcg-5-1a_OVERALL_BEST_None_prefixLength\\\|BGPRemoveFilterSoft| () Bool
+    true)
+  (define-fun |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-01_Port-Channel2| () Bool
     true)
   (define-fun |0_0__am2-x3hl-xcg-5-01_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
@@ -185,17 +182,17 @@ sat
     true)
   (define-fun |0_0__am2-x3sb-xcg-5-1b_Port-Channel20_OUTBOUND_SOFTAdd| () Bool
     true)
+  (define-fun |0_25.148.4.16/32Stat-Conn-ExportRemoveSoft0_am2-x3hl-xcg-5-13_OVERALL_BEST_None| () Bool
+    true)
   (define-fun |0_191.234.225.128/29ExportRemoveSoft0_am2-x3hl-xcg-5-09_OVERALL_BEST_None| () Bool
     true)
-  (define-fun |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel20 --> am2-x3hl-xcg-5-20,Port-Channel1| () Bool
-    false)
   (define-fun |0_am2-x3sb-xcg-5-1aImportFilterAddSoft0_am2-x3sb-xcg-5-1a_BGP_IMPORT_Ethernet1/47| () Bool
     true)
   (define-fun |0_0__am2-x3hl-xcg-5-14_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
+  (define-fun |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel20 --> am2-x3hl-xcg-5-20,Port-Channel1| () Bool
+    false)
   (define-fun |0_25.163.147.128/25ExportRemoveSoft0_am2-x3hl-xcg-5-16_OVERALL_BEST_None| () Bool
-    true)
-  (define-fun |0_25.148.4.16/32Stat-Conn-ExportRemoveSoft0_am2-x3hl-xcg-5-13_OVERALL_BEST_None| () Bool
     true)
   (define-fun |0_0__am2-x3sb-xcg-5-1b_Ethernet1/47_INBOUND_SOFTAdd| () Bool
     true)
@@ -210,7 +207,7 @@ sat
   (define-fun |0_am2-x3hl-xcg-5-03_BGP_SINGLE-EXPORT__prefixLength| () Int
     25)
   (define-fun |0_am2-x3sb-xcg-5-1a_BGP_IMPORT_Ethernet1/47_metric| () Int
-    0)
+    1)
   (define-fun |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-15_Port-Channel2| () Bool
     true)
   (define-fun |0_0__am2-x3hl-xcg-5-15_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
@@ -248,11 +245,11 @@ sat
   (define-fun |0_am2-x3hl-xcg-5-21_BGP_SINGLE-EXPORT__metric| () Int
     3)
   (define-fun |0_am2-x3sb-xcg-5-1b_BGP_IMPORT_Ethernet1/48_metric| () Int
-    1)
+    0)
   (define-fun |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_history| () (_ BitVec 1)
     #b1)
   (define-fun |0_am2-x3sb-xcg-5-1b_BGP_IMPORT_Ethernet1/48_permitted| () Bool
-    true)
+    false)
   (define-fun |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel15| () Bool
     false)
   (define-fun |0_0__am2-x3sb-xcg-5-1b_Port-Channel14_INBOUND_SOFTAdd| () Bool
@@ -286,7 +283,7 @@ sat
   (define-fun |0_0__am2-x3hl-xcg-5-10_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_am2-x3sb-xcg-5-1b_BGP_EXPORT_ENV-10.22.181.244_prefixLength| () Int
-    0)
+    1)
   (define-fun |0_0__am2-x3hl-xcg-5-15_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_0__am2-x3hl-xcg-5-08_Vlan101_INBOUND_SOFTAdd| () Bool
@@ -333,9 +330,9 @@ sat
     false)
   (define-fun |0_0__am2-x3sb-xcg-5-1a_Port-Channel9_OUTBOUND_SOFTAdd| () Bool
     true)
-  (define-fun |0_0__am2-x3sb-xcg-5-1b_Port-Channel17_OUTBOUND_SOFTAdd| () Bool
-    true)
   (define-fun |0_191.234.225.152/29ExportRemoveSoft0_am2-x3hl-xcg-5-12_OVERALL_BEST_None| () Bool
+    true)
+  (define-fun |0_0__am2-x3sb-xcg-5-1b_Port-Channel17_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_0__am2-x3hl-xcg-5-03_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
     false)
@@ -425,11 +422,11 @@ sat
     true)
   (define-fun |0_am2-x3hl-xcg-5-06_BGP_SINGLE-EXPORT__prefixLength| () Int
     25)
+  (define-fun |0_191.234.225.144/29ExportRemoveSoft0_am2-x3hl-xcg-5-11_OVERALL_BEST_None| () Bool
+    true)
   (define-fun |0_am2-x3hl-xcg-5-01-StaticRouteAddSoft-am2-x3hl-xcg-5-01,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel1| () Bool
     false)
   (define-fun |0_0__am2-x3hl-xcg-5-03_Port-Channel1_INBOUND_SOFTAdd| () Bool
-    true)
-  (define-fun |0_191.234.225.144/29ExportRemoveSoft0_am2-x3hl-xcg-5-11_OVERALL_BEST_None| () Bool
     true)
   (define-fun |0_am2-x3hl-xcg-5-19_OVERALL_BEST_None_metric| () Int
     2)
@@ -523,10 +520,10 @@ sat
     true)
   (define-fun |0_0__am2-x3hl-xcg-5-03_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
-  (define-fun |0_am2-x3hl-xcg-5-21-StaticRouteAddSoft-am2-x3hl-xcg-5-21,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel21| () Bool
-    false)
   (define-fun |0_191.234.225.240/29ExportRemoveSoft0_am2-x3hl-xcg-5-19_OVERALL_BEST_None| () Bool
     true)
+  (define-fun |0_am2-x3hl-xcg-5-21-StaticRouteAddSoft-am2-x3hl-xcg-5-21,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel21| () Bool
+    false)
   (define-fun |0_am2-x3hl-xcg-5-12-StaticRouteAddSoft-am2-x3hl-xcg-5-12,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel12| () Bool
     false)
   (define-fun |0_\\\|0_am2-x3sb-xcg-5-1b_OVERALL_BEST_None_prefixLength\\\|BGPRemoveFilterSoft| () Bool
@@ -556,7 +553,7 @@ sat
   (define-fun |0_0_am2-x3hl-xcg-5-15_OVERALL_BEST_NoneBGPExportAddSoft| () Bool
     false)
   (define-fun |0_am2-x3sb-xcg-5-1a_BGP_EXPORT_ENV-10.22.181.240_prefixLength| () Int
-    1)
+    0)
   (define-fun |0_am2-x3hl-xcg-5-20_BGP_SINGLE-EXPORT__permitted| () Bool
     true)
   (define-fun |0_0__am2-x3sb-xcg-5-1a_Port-Channel18_INBOUND_SOFTAdd| () Bool
@@ -612,16 +609,16 @@ sat
   (define-fun |0_0__am2-x3sb-xcg-5-1b_Port-Channel10_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_am2-x3sb-xcg-5-1b_BGP_IMPORT_Ethernet1/47_metric| () Int
-    1)
+    0)
   (define-fun |0_0__am2-x3hl-xcg-5-13_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
   (define-fun |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel19 --> am2-x3hl-xcg-5-19,Port-Channel2| () Bool
     false)
   (define-fun |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-10_Port-Channel2| () Bool
     true)
-  (define-fun |0_0__am2-x3sb-xcg-5-1b_Port-Channel12_OUTBOUND_SOFTAdd| () Bool
-    true)
   (define-fun |0_191.234.225.88/29ExportRemoveSoft0_am2-x3hl-xcg-5-03_OVERALL_BEST_None| () Bool
+    true)
+  (define-fun |0_0__am2-x3sb-xcg-5-1b_Port-Channel12_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_0__am2-x3hl-xcg-5-15_Loopback0_OUTBOUND_SOFTAdd| () Bool
     true)
@@ -634,7 +631,7 @@ sat
   (define-fun |0_0__am2-x3hl-xcg-5-21_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_am2-x3sb-xcg-5-1b_BGP_EXPORT_ENV-10.22.181.246_prefixLength| () Int
-    0)
+    1)
   (define-fun |0_0_am2-x3hl-xcg-5-13_OVERALL_BEST_NoneBGPExportAddSoft| () Bool
     false)
   (define-fun |0_am2-x3hl-xcg-5-17-StaticRouteAddSoft-am2-x3hl-xcg-5-17,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel17| () Bool
@@ -642,7 +639,7 @@ sat
   (define-fun |0_0__am2-x3hl-xcg-5-05_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
     false)
   (define-fun |0_am2-x3sb-xcg-5-1a_BGP_EXPORT_ENV-10.22.181.242_metric| () Int
-    0)
+    1)
   (define-fun |0_0__am2-x3hl-xcg-5-18_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_am2-x3hl-xcg-5-01_BGP_SINGLE-EXPORT__metric| () Int
@@ -663,9 +660,9 @@ sat
     3)
   (define-fun |0_0__am2-x3sb-xcg-5-1a_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
-  (define-fun |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-10_Port-Channel1| () Bool
-    true)
   (define-fun |0_191.234.225.96/29ExportRemoveSoft0_am2-x3hl-xcg-5-05_OVERALL_BEST_None| () Bool
+    true)
+  (define-fun |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-10_Port-Channel1| () Bool
     true)
   (define-fun |0_0__am2-x3hl-xcg-5-18_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
@@ -763,20 +760,20 @@ sat
     3)
   (define-fun |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel21| () Bool
     false)
+  (define-fun |0_191.234.224.160/28ExportRemoveSoft0_am2-x3hl-xcg-5-01_OVERALL_BEST_None| () Bool
+    true)
   (define-fun |0_am2-x3hl-xcg-5-07-StaticRouteAddSoft-am2-x3hl-xcg-5-07,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel7| () Bool
     false)
   (define-fun |0_0__am2-x3sb-xcg-5-1a_Port-Channel20_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_25.163.149.128/25ExportRemoveSoft0_am2-x3hl-xcg-5-20_OVERALL_BEST_None| () Bool
     true)
-  (define-fun |0_191.234.224.160/28ExportRemoveSoft0_am2-x3hl-xcg-5-01_OVERALL_BEST_None| () Bool
-    true)
   (define-fun |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel3| () Bool
     false)
   (define-fun |0_0__am2-x3hl-xcg-5-17_Loopback0_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_am2-x3sb-xcg-5-1a_BGP_IMPORT_Ethernet1/48_metric| () Int
-    0)
+    1)
   (define-fun |0__reachable-id_am2-x3hl-xcg-5-13| () Int
     1)
   (define-fun |0_0__am2-x3sb-xcg-5-1a_Port-Channel18_OUTBOUND_SOFTAdd| () Bool
@@ -826,18 +823,18 @@ sat
   (define-fun |0_0__am2-x3sb-xcg-5-1a_Port-Channel21_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_am2-x3sb-xcg-5-1b_BGP_IMPORT_Ethernet1/47_permitted| () Bool
-    true)
+    false)
   (define-fun |0_0__am2-x3sb-xcg-5-1b_Port-Channel15_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_0__am2-x3hl-xcg-5-15_Port-Channel2_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel10 --> am2-x3hl-xcg-5-10,Port-Channel1| () Bool
     false)
-  (define-fun |0_25.162.32.0/25ExportRemoveSoft0_am2-x3hl-xcg-5-21_OVERALL_BEST_None| () Bool
-    true)
   (define-fun |0_25.148.5.86/32ExportRemoveSoft0_am2-x3hl-xcg-5-03_OVERALL_BEST_None| () Bool
     true)
   (define-fun |0_25.161.232.128/25ExportRemoveSoft0_am2-x3hl-xcg-5-03_OVERALL_BEST_None| () Bool
+    true)
+  (define-fun |0_25.162.32.0/25ExportRemoveSoft0_am2-x3hl-xcg-5-21_OVERALL_BEST_None| () Bool
     true)
   (define-fun |0_0_am2-x3hl-xcg-5-18_OVERALL_BEST_NoneBGPExportAddSoft| () Bool
     false)
@@ -888,7 +885,7 @@ sat
   (define-fun |0_am2-x3hl-xcg-5-07-StaticRouteAddSoft-am2-x3hl-xcg-5-07,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel7| () Bool
     false)
   (define-fun |0_am2-x3sb-xcg-5-1a_BGP_EXPORT_ENV-10.22.181.242_permitted| () Bool
-    false)
+    true)
   (define-fun |0_0__am2-x3sb-xcg-5-1a_Port-Channel13_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel11| () Bool
@@ -1017,10 +1014,10 @@ sat
     true)
   (define-fun |0_25.160.228.128/25ExportRemoveSoft0_am2-x3hl-xcg-5-01_OVERALL_BEST_None| () Bool
     true)
-  (define-fun |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel12 --> am2-x3hl-xcg-5-12,Port-Channel1| () Bool
-    false)
   (define-fun |0_191.234.225.224/29ExportRemoveSoft0_am2-x3hl-xcg-5-17_OVERALL_BEST_None| () Bool
     true)
+  (define-fun |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel12 --> am2-x3hl-xcg-5-12,Port-Channel1| () Bool
+    false)
   (define-fun |0_am2-x3hl-xcg-5-02-StaticRouteAddSoft-am2-x3hl-xcg-5-02,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel2| () Bool
     false)
   (define-fun |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel6| () Bool
@@ -1033,13 +1030,13 @@ sat
     true)
   (define-fun |0_0__am2-x3hl-xcg-5-17_Port-Channel1_INBOUND_SOFTAdd| () Bool
     true)
-  (define-fun |0_25.148.4.22/32ExportRemoveSoft0_am2-x3hl-xcg-5-19_OVERALL_BEST_None| () Bool
+  (define-fun |0_25.148.1.150/32ExportRemoveSoft0_am2-x3hl-xcg-5-08_OVERALL_BEST_None| () Bool
     true)
   (define-fun |0_am2-x3sb-xcg-5-1a_BGP_IMPORT_Ethernet1/47_permitted| () Bool
-    false)
+    true)
   (define-fun |0_0__am2-x3hl-xcg-5-08_Port-Channel2_INBOUND_SOFTAdd| () Bool
     true)
-  (define-fun |0_25.148.1.150/32ExportRemoveSoft0_am2-x3hl-xcg-5-08_OVERALL_BEST_None| () Bool
+  (define-fun |0_25.148.4.22/32ExportRemoveSoft0_am2-x3hl-xcg-5-19_OVERALL_BEST_None| () Bool
     true)
   (define-fun |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel3 --> am2-x3hl-xcg-5-03,Port-Channel1| () Bool
     false)
@@ -1106,7 +1103,7 @@ sat
   (define-fun |0_am2-x3hl-xcg-5-05_BGP_SINGLE-EXPORT__metric| () Int
     3)
   (define-fun |0_0__am2-x3hl-xcg-5-13_Vlan102_OUTBOUND_vlan102-xcg-outRemove| () Bool
-    true)
+    false)
   (define-fun |0_am2-x3hl-xcg-5-09_OVERALL_BEST_None_prefixLength| () Int
     25)
   (define-fun |0_25.148.4.18/32ExportRemoveSoft0_am2-x3hl-xcg-5-15_OVERALL_BEST_None| () Bool
@@ -1127,6 +1124,8 @@ sat
     true)
   (define-fun |0_0__am2-x3hl-xcg-5-18_Loopback0_OUTBOUND_SOFTAdd| () Bool
     true)
+  (define-fun |0_src-ip| () (_ BitVec 32)
+    #xbfeae1c0)
   (define-fun |0_0__am2-x3sb-xcg-5-1b_Port-Channel2_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_0__am2-x3hl-xcg-5-19_Loopback0_OUTBOUND_SOFTAdd| () Bool
@@ -1139,6 +1138,8 @@ sat
     true)
   (define-fun |0_src-port| () Int
     0)
+  (define-fun |0_dst-ip| () (_ BitVec 32)
+    #x19a39201)
   (define-fun |0_0__am2-x3hl-xcg-5-12_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
   (define-fun |0_25.148.4.17/32ExportRemoveSoft0_am2-x3hl-xcg-5-14_OVERALL_BEST_None| () Bool
@@ -1178,7 +1179,7 @@ sat
   (define-fun |0_0__am2-x3hl-xcg-5-10_Vlan102_OUTBOUND_vlan102-xcg-outRemove| () Bool
     false)
   (define-fun |0_am2-x3sb-xcg-5-1a_BGP_IMPORT_Ethernet1/48_permitted| () Bool
-    false)
+    true)
   (define-fun |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-11_Port-Channel1| () Bool
     true)
   (define-fun |0_0__am2-x3hl-xcg-5-21_Port-Channel2_INBOUND_SOFTAdd| () Bool
@@ -1193,11 +1194,11 @@ sat
     false)
   (define-fun |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-12_Port-Channel2| () Bool
     true)
-  (define-fun |0_25.163.146.128/25ExportRemoveSoft0_am2-x3hl-xcg-5-14_OVERALL_BEST_None| () Bool
+  (define-fun |0_25.161.233.0/25ExportRemoveSoft0_am2-x3hl-xcg-5-05_OVERALL_BEST_None| () Bool
     true)
   (define-fun |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel9 --> am2-x3hl-xcg-5-09,Port-Channel1| () Bool
     false)
-  (define-fun |0_25.161.233.0/25ExportRemoveSoft0_am2-x3hl-xcg-5-05_OVERALL_BEST_None| () Bool
+  (define-fun |0_25.163.146.128/25ExportRemoveSoft0_am2-x3hl-xcg-5-14_OVERALL_BEST_None| () Bool
     true)
   (define-fun |0_0__am2-x3hl-xcg-5-13_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
@@ -1247,13 +1248,13 @@ sat
     true)
   (define-fun |0_0__am2-x3hl-xcg-5-05_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
-  (define-fun |0_0__am2-x3hl-xcg-5-10_Loopback0_OUTBOUND_SOFTAdd| () Bool
+  (define-fun |0_0__am2-x3sb-xcg-5-1b_Ethernet1/47_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel12| () Bool
     false)
   (define-fun |0_0__am2-x3sb-xcg-5-1b_Port-Channel14_OUTBOUND_SOFTAdd| () Bool
     true)
-  (define-fun |0_0__am2-x3sb-xcg-5-1b_Ethernet1/47_OUTBOUND_SOFTAdd| () Bool
+  (define-fun |0_0__am2-x3hl-xcg-5-10_Loopback0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_am2-x3hl-xcg-5-07_BGP_SINGLE-EXPORT__permitted| () Bool
     true)
@@ -1275,14 +1276,14 @@ sat
     true)
   (define-fun |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel15| () Bool
     false)
-  (define-fun |0_0__am2-x3hl-xcg-5-09_Vlan102_INBOUND_SOFTAdd| () Bool
-    true)
-  (define-fun |0_0__am2-x3hl-xcg-5-03_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
-    false)
   (define-fun |0_0__am2-x3hl-xcg-5-19_Vlan102_OUTBOUND_vlan102-xcg-outRemove| () Bool
     false)
   (define-fun |0_0__am2-x3hl-xcg-5-21_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
     false)
+  (define-fun |0_0__am2-x3hl-xcg-5-03_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
+    false)
+  (define-fun |0_0__am2-x3hl-xcg-5-09_Vlan102_INBOUND_SOFTAdd| () Bool
+    true)
   (define-fun |0_am2-x3hl-xcg-5-13_BGP_SINGLE-EXPORT__prefixLength| () Int
     25)
   (define-fun |0_am2-x3hl-xcg-5-16_OVERALL_BEST_None_prefixLength| () Int
@@ -1360,14 +1361,14 @@ sat
   (define-fun |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-15_Port-Channel1| () Bool
     true)
   (define-fun |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-13_Vlan102| () Bool
-    true)
+    false)
   (define-fun |0_0__am2-x3sb-xcg-5-1a_Port-Channel6_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_25.148.4.20/32ExportRemoveSoft0_am2-x3hl-xcg-5-17_OVERALL_BEST_None| () Bool
     true)
-  (define-fun |0_0__am2-x3hl-xcg-5-06_Loopback0_OUTBOUND_SOFTAdd| () Bool
-    true)
   (define-fun |0_0__am2-x3hl-xcg-5-15_mgmt0_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_0__am2-x3hl-xcg-5-06_Loopback0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_0__am2-x3sb-xcg-5-1a_Port-Channel16_OUTBOUND_SOFTAdd| () Bool
     true)
@@ -1395,13 +1396,13 @@ sat
     true)
   (define-fun |0_191.234.225.120/29ExportRemoveSoft0_am2-x3hl-xcg-5-08_OVERALL_BEST_None| () Bool
     true)
-  (define-fun |0_0_am2-x3hl-xcg-5-06_OVERALL_BEST_NoneBGPExportAddSoft| () Bool
+  (define-fun |0_0_am2-x3hl-xcg-5-11_OVERALL_BEST_NoneBGPExportAddSoft| () Bool
     false)
   (define-fun |0_0__am2-x3sb-xcg-5-1b_Port-Channel18_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel12 --> am2-x3hl-xcg-5-12,Port-Channel2| () Bool
     false)
-  (define-fun |0_0_am2-x3hl-xcg-5-11_OVERALL_BEST_NoneBGPExportAddSoft| () Bool
+  (define-fun |0_0_am2-x3hl-xcg-5-06_OVERALL_BEST_NoneBGPExportAddSoft| () Bool
     false)
   (define-fun |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel19| () Bool
     false)
@@ -1455,12 +1456,12 @@ sat
     true)
   (define-fun |0_0__am2-x3sb-xcg-5-1a_Port-Channel10_INBOUND_SOFTAdd| () Bool
     true)
+  (define-fun |0_191.234.225.112/29ExportRemoveSoft0_am2-x3hl-xcg-5-07_OVERALL_BEST_None| () Bool
+    true)
   (define-fun |0_0__am2-x3hl-xcg-5-18_Port-Channel1_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_0_am2-x3hl-xcg-5-08_OVERALL_BEST_NoneBGPExportAddSoft| () Bool
     false)
-  (define-fun |0_191.234.225.112/29ExportRemoveSoft0_am2-x3hl-xcg-5-07_OVERALL_BEST_None| () Bool
-    true)
   (define-fun |0_am2-x3hl-xcg-5-06-StaticRouteAddSoft-am2-x3hl-xcg-5-06,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel6| () Bool
     false)
   (define-fun |0_am2-x3sb-xcg-5-1a_BGP_EXPORT_ENV-10.22.181.240_permitted| () Bool
@@ -1513,8 +1514,8 @@ sat
     true)
   (define-fun |0_25.148.5.85/32ExportRemoveSoft0_am2-x3hl-xcg-5-02_OVERALL_BEST_None| () Bool
     true)
-  (define-fun |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel9| () Bool
-    false)
+  (define-fun |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-05_Port-Channel1| () Bool
+    true)
   (define-fun |0_am2-x3hl-xcg-5-13_CONNECTED_IMPORT_Vlan102_prefixLength| () Int
     25)
   (define-fun |0__reachable_am2-x3hl-xcg-5-13| () Bool
@@ -1561,10 +1562,6 @@ sat
     true)
   (define-fun |0__reachable_am2-x3hl-xcg-5-06| () Bool
     true)
-  (define-fun |0_src-ip| () (_ BitVec 32)
-    #xbfeae1c0)
-  (define-fun |0_dst-ip| () (_ BitVec 32)
-    #x19a39200)
   (define-fun |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Loopback0| () Bool
     false)
   (define-fun |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel1| () Bool
@@ -1804,7 +1801,7 @@ sat
   (define-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-13_Loopback0| () Bool
     false)
   (define-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-13_Vlan102| () Bool
-    true)
+    false)
   (define-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-02_Port-Channel1| () Bool
     true)
   (define-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-02_Port-Channel2| () Bool
