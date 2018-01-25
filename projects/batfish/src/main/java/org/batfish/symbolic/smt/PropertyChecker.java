@@ -312,6 +312,7 @@ public class PropertyChecker {
     Graph graph = new Graph(_batfish);
     Set<GraphEdge> destPorts = findFinalInterfaces(graph, p);
     List<String> sourceRouters = PatternUtils.findMatchingSourceNodes(graph, p);
+    //System.out.println(graph.toString());
 
     if (destPorts.isEmpty()) {
       throw new BatfishException("Set of valid destination interfaces is empty");

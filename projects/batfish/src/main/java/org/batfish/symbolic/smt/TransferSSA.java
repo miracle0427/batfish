@@ -747,13 +747,13 @@ class TransferSSA {
       boolean hasType = p.getData().getOspfType() != null;
       boolean areaPossiblyChanged = hasType && hasArea && hasAreaIface;
       // Check if area changed
-      if (areaPossiblyChanged) {
+      /*if (areaPossiblyChanged) {
         BoolExpr internal = p.getData().getOspfType().isInternal();
         BoolExpr same = p.getData().getOspfArea().checkIfValue(_iface.getOspfAreaName());
         BoolExpr update = _enc.mkAnd(internal, _enc.mkNot(same));
         BoolExpr copyOld = _enc.safeEqEnum(_current.getOspfType(), p.getData().getOspfType());
         type = _enc.mkIf(update, _current.getOspfType().checkIfValue(OspfType.OIA), copyOld);
-      } else {
+      } else*/ {
         type = _enc.safeEqEnum(_current.getOspfType(), p.getData().getOspfType());
       }
     }
