@@ -24,6 +24,10 @@ echo "*** CHECKING POLICIES ***"
 LOGFILE="$TESTRIG_DIR/policies/policies_check.log"
 
 $BATFISH_PROG $BATFISH_ARGS -runmode batch -cmdfile $CMDFILE | tee "$LOGFILE"
+BATFISHEXIT=${PIPESTATUS[0]}
+if [[ $BATFISHEXIT -ne 0 ]]; then
+    exit $BATFISHEXIT
+fi
 
 # Filter checked policies to only include satisfied policies
 VERIFIEDFILE="$TESTRIG_DIR/policies/verified.txt"
