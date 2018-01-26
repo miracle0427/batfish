@@ -12,7 +12,7 @@ source $BASEDIR/scripts/common_preamble.sh
 
 # Get policies to check
 CHECKFILE="$TESTRIG_DIR/policies/tocheck.txt"
-CMDFILE="/tmp/policies_check.batfish"
+CMDFILE="$TESTRIG_DIR/policies/tocheck.cmd"
 rm -f $CMDFILE
 
 cat $CHECKFILE | while read POLICY; do
