@@ -10,6 +10,7 @@ if [ $# -lt 2 ]; then
 fi
 SNAPSHOTS_ROOT=$1
 TESTRIGS_TARGET=$2
+mkdir -p $TESTRIGS_TARGET
 
 \ls $SNAPSHOTS_ROOT | while read NETWORK; do
     \ls $SNAPSHOTS_ROOT/$NETWORK | while read SNAPSHOT; do
