@@ -315,157 +315,65 @@
              ()
              Int)
 (declare-fun |0_am2-x3hl-xcg-5-06_BGP_SINGLE-EXPORT__permitted| () Bool)
-(declare-fun |0_191.234.225.104/29ExportRemoveSoft0_am2-x3hl-xcg-5-06_OVERALL_BEST_None|
-             ()
-             Bool)
 (declare-fun |0_am2-x3hl-xcg-5-06_OVERALL_BEST_None_permitted| () Bool)
 (declare-fun |0_am2-x3hl-xcg-5-17_BGP_SINGLE-EXPORT__permitted| () Bool)
-(declare-fun |0_191.234.225.224/29ExportRemoveSoft0_am2-x3hl-xcg-5-17_OVERALL_BEST_None|
-             ()
-             Bool)
 (declare-fun |0_am2-x3hl-xcg-5-17_OVERALL_BEST_None_permitted| () Bool)
 (declare-fun |0_am2-x3hl-xcg-5-07_BGP_SINGLE-EXPORT__permitted| () Bool)
-(declare-fun |0_191.234.225.112/29ExportRemoveSoft0_am2-x3hl-xcg-5-07_OVERALL_BEST_None|
-             ()
-             Bool)
 (declare-fun |0_am2-x3hl-xcg-5-07_OVERALL_BEST_None_permitted| () Bool)
 (declare-fun |0_am2-x3hl-xcg-5-18_BGP_SINGLE-EXPORT__permitted| () Bool)
-(declare-fun |0_191.234.225.232/29ExportRemoveSoft0_am2-x3hl-xcg-5-18_OVERALL_BEST_None|
-             ()
-             Bool)
 (declare-fun |0_am2-x3hl-xcg-5-18_OVERALL_BEST_None_permitted| () Bool)
 (declare-fun |0_am2-x3hl-xcg-5-15_BGP_SINGLE-EXPORT__permitted| () Bool)
-(declare-fun |0_191.234.225.208/29ExportRemoveSoft0_am2-x3hl-xcg-5-15_OVERALL_BEST_None|
-             ()
-             Bool)
 (declare-fun |0_am2-x3hl-xcg-5-15_OVERALL_BEST_None_permitted| () Bool)
 (declare-fun |0_am2-x3hl-xcg-5-05_BGP_SINGLE-EXPORT__permitted| () Bool)
-(declare-fun |0_191.234.225.96/29ExportRemoveSoft0_am2-x3hl-xcg-5-05_OVERALL_BEST_None|
-             ()
-             Bool)
 (declare-fun |0_am2-x3hl-xcg-5-05_OVERALL_BEST_None_permitted| () Bool)
 (declare-fun |0_am2-x3hl-xcg-5-16_BGP_SINGLE-EXPORT__permitted| () Bool)
-(declare-fun |0_191.234.225.216/29ExportRemoveSoft0_am2-x3hl-xcg-5-16_OVERALL_BEST_None|
-             ()
-             Bool)
 (declare-fun |0_am2-x3hl-xcg-5-16_OVERALL_BEST_None_permitted| () Bool)
 (declare-fun |0_am2-x3hl-xcg-5-02_BGP_SINGLE-EXPORT__permitted| () Bool)
-(declare-fun |0_191.234.225.80/29ExportRemoveSoft0_am2-x3hl-xcg-5-02_OVERALL_BEST_None|
-             ()
-             Bool)
 (declare-fun |0_am2-x3hl-xcg-5-02_OVERALL_BEST_None_permitted| () Bool)
 (declare-fun |0_am2-x3hl-xcg-5-13_BGP_SINGLE-EXPORT__permitted| () Bool)
-(declare-fun |0_191.234.225.192/29ExportRemoveSoft0_am2-x3hl-xcg-5-13_OVERALL_BEST_None|
-             ()
-             Bool)
 (declare-fun |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_permitted| () Bool)
 (declare-fun |0_am2-x3hl-xcg-5-03_BGP_SINGLE-EXPORT__permitted| () Bool)
-(declare-fun |0_191.234.225.88/29ExportRemoveSoft0_am2-x3hl-xcg-5-03_OVERALL_BEST_None|
-             ()
-             Bool)
 (declare-fun |0_am2-x3hl-xcg-5-03_OVERALL_BEST_None_permitted| () Bool)
 (declare-fun |0_am2-x3hl-xcg-5-14_BGP_SINGLE-EXPORT__permitted| () Bool)
-(declare-fun |0_191.234.225.200/29ExportRemoveSoft0_am2-x3hl-xcg-5-14_OVERALL_BEST_None|
-             ()
-             Bool)
 (declare-fun |0_am2-x3hl-xcg-5-14_OVERALL_BEST_None_permitted| () Bool)
 (declare-fun |0_am2-x3hl-xcg-5-11_BGP_SINGLE-EXPORT__permitted| () Bool)
-(declare-fun |0_191.234.225.144/29ExportRemoveSoft0_am2-x3hl-xcg-5-11_OVERALL_BEST_None|
-             ()
-             Bool)
 (declare-fun |0_am2-x3hl-xcg-5-11_OVERALL_BEST_None_permitted| () Bool)
 (declare-fun |0_am2-x3hl-xcg-5-01_BGP_SINGLE-EXPORT__permitted| () Bool)
-(declare-fun |0_191.234.224.160/28ExportRemoveSoft0_am2-x3hl-xcg-5-01_OVERALL_BEST_None|
-             ()
-             Bool)
 (declare-fun |0_am2-x3hl-xcg-5-01_OVERALL_BEST_None_permitted| () Bool)
 (declare-fun |0_am2-x3hl-xcg-5-12_BGP_SINGLE-EXPORT__permitted| () Bool)
-(declare-fun |0_191.234.225.152/29ExportRemoveSoft0_am2-x3hl-xcg-5-12_OVERALL_BEST_None|
-             ()
-             Bool)
 (declare-fun |0_am2-x3hl-xcg-5-12_OVERALL_BEST_None_permitted| () Bool)
 (declare-fun |0_am2-x3hl-xcg-5-08_BGP_SINGLE-EXPORT__permitted| () Bool)
-(declare-fun |0_191.234.225.120/29ExportRemoveSoft0_am2-x3hl-xcg-5-08_OVERALL_BEST_None|
-             ()
-             Bool)
 (declare-fun |0_am2-x3hl-xcg-5-08_OVERALL_BEST_None_permitted| () Bool)
 (declare-fun |0_am2-x3hl-xcg-5-19_BGP_SINGLE-EXPORT__permitted| () Bool)
-(declare-fun |0_191.234.225.240/29ExportRemoveSoft0_am2-x3hl-xcg-5-19_OVERALL_BEST_None|
-             ()
-             Bool)
 (declare-fun |0_am2-x3hl-xcg-5-19_OVERALL_BEST_None_permitted| () Bool)
 (declare-fun |0_am2-x3hl-xcg-5-09_BGP_SINGLE-EXPORT__permitted| () Bool)
-(declare-fun |0_191.234.225.128/29ExportRemoveSoft0_am2-x3hl-xcg-5-09_OVERALL_BEST_None|
-             ()
-             Bool)
 (declare-fun |0_am2-x3hl-xcg-5-09_OVERALL_BEST_None_permitted| () Bool)
 (declare-fun |0_am2-x3hl-xcg-5-20_BGP_SINGLE-EXPORT__permitted| () Bool)
 (declare-fun |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_history| () (_ BitVec 1))
 (declare-fun |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_permitted| () Bool)
-(declare-fun |0_0_am2-x3hl-xcg-5-20_OVERALL_BEST_NoneBGPExportAddSoft| () Bool)
-(declare-fun |0_191.234.225.248/29Stat-Conn-ExportRemoveSoft0_am2-x3hl-xcg-5-20_OVERALL_BEST_None|
-             ()
-             Bool)
-(declare-fun |0_25.163.149.128/25Stat-Conn-ExportRemoveSoft0_am2-x3hl-xcg-5-20_OVERALL_BEST_None|
-             ()
-             Bool)
-(declare-fun |0_25.148.4.23/32Stat-Conn-ExportRemoveSoft0_am2-x3hl-xcg-5-20_OVERALL_BEST_None|
-             ()
-             Bool)
 (declare-fun |0_am2-x3hl-xcg-5-20_CONNECTED_IMPORT_Vlan102_permitted| () Bool)
 (declare-fun |0_am2-x3hl-xcg-5-10_BGP_SINGLE-EXPORT__permitted| () Bool)
-(declare-fun |0_191.234.225.136/29ExportRemoveSoft0_am2-x3hl-xcg-5-10_OVERALL_BEST_None|
-             ()
-             Bool)
 (declare-fun |0_am2-x3hl-xcg-5-10_OVERALL_BEST_None_permitted| () Bool)
 (declare-fun |0_am2-x3hl-xcg-5-21_BGP_SINGLE-EXPORT__permitted| () Bool)
-(declare-fun |0_191.234.225.160/28ExportRemoveSoft0_am2-x3hl-xcg-5-21_OVERALL_BEST_None|
-             ()
-             Bool)
 (declare-fun |0_am2-x3hl-xcg-5-21_OVERALL_BEST_None_permitted| () Bool)
 (declare-fun |0_am2-x3sb-xcg-5-1b_BGP_SINGLE-EXPORT__permitted| () Bool)
-(declare-fun |0_25.148.2.40/32ExportRemoveSoft0_am2-x3sb-xcg-5-1b_OVERALL_BEST_None|
-             ()
-             Bool)
 (declare-fun |0_am2-x3sb-xcg-5-1b_OVERALL_BEST_None_permitted| () Bool)
-(declare-fun |0_10.22.181.144/29BGPRemoveFilterSoft| () Bool)
-(declare-fun |0_10.22.181.136/29BGPRemoveFilterSoft| () Bool)
-(declare-fun |0_10.1.177.16/28BGPRemoveFilterSoft| () Bool)
-(declare-fun |0_10.22.181.132/30BGPRemoveFilterSoft| () Bool)
 (declare-fun |0_am2-x3sb-xcg-5-1b_BGP_IMPORT_Ethernet1/48_permitted| () Bool)
 (declare-fun |0_am2-x3sb-xcg-5-1b_BGP_EXPORT_ENV-10.22.181.246_permitted|
-             ()
-             Bool)
-(declare-fun |0_am2-x3sb-xcg-5-1bImportFilterAddSoft0_am2-x3sb-xcg-5-1b_BGP_IMPORT_Ethernet1/48|
              ()
              Bool)
 (declare-fun |0_am2-x3sb-xcg-5-1b_BGP_IMPORT_Ethernet1/47_permitted| () Bool)
 (declare-fun |0_am2-x3sb-xcg-5-1b_BGP_EXPORT_ENV-10.22.181.244_permitted|
              ()
              Bool)
-(declare-fun |0_am2-x3sb-xcg-5-1bImportFilterAddSoft0_am2-x3sb-xcg-5-1b_BGP_IMPORT_Ethernet1/47|
-             ()
-             Bool)
 (declare-fun |0_am2-x3sb-xcg-5-1a_BGP_SINGLE-EXPORT__permitted| () Bool)
-(declare-fun |0_25.148.2.39/32ExportRemoveSoft0_am2-x3sb-xcg-5-1a_OVERALL_BEST_None|
-             ()
-             Bool)
 (declare-fun |0_am2-x3sb-xcg-5-1a_OVERALL_BEST_None_permitted| () Bool)
-(declare-fun |0_10.1.177.0/28BGPRemoveFilterSoft| () Bool)
-(declare-fun |0_10.22.181.112/28BGPRemoveFilterSoft| () Bool)
-(declare-fun |0_10.22.181.128/30BGPRemoveFilterSoft| () Bool)
 (declare-fun |0_am2-x3sb-xcg-5-1a_BGP_IMPORT_Ethernet1/48_permitted| () Bool)
 (declare-fun |0_am2-x3sb-xcg-5-1a_BGP_EXPORT_ENV-10.22.181.242_permitted|
              ()
              Bool)
-(declare-fun |0_am2-x3sb-xcg-5-1aImportFilterAddSoft0_am2-x3sb-xcg-5-1a_BGP_IMPORT_Ethernet1/48|
-             ()
-             Bool)
 (declare-fun |0_am2-x3sb-xcg-5-1a_BGP_IMPORT_Ethernet1/47_permitted| () Bool)
 (declare-fun |0_am2-x3sb-xcg-5-1a_BGP_EXPORT_ENV-10.22.181.240_permitted|
-             ()
-             Bool)
-(declare-fun |0_am2-x3sb-xcg-5-1aImportFilterAddSoft0_am2-x3sb-xcg-5-1a_BGP_IMPORT_Ethernet1/47|
              ()
              Bool)
 (declare-fun |0_am2-x3hl-xcg-5-20_BGP_BEST_None_permitted| () Bool)
@@ -724,661 +632,173 @@
 (declare-fun |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1a_mgmt0| () Bool)
 (declare-fun |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1a_Loopback0| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-06_mgmt0| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-06_mgmt0_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-06_Port-Channel1| () Bool)
-(declare-fun |0_am2-x3hl-xcg-5-06-StaticRouteAddSoft-am2-x3hl-xcg-5-06,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel6|
-             ()
-             Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-06_Port-Channel1_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-06_Vlan101| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-06_Vlan101_OUTBOUND_vlan101-xcg-outRemove|
-             ()
-             Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-06_Loopback0| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-06_Loopback0_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-06_Vlan102| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-06_Vlan102_OUTBOUND_vlan102-xcg-outRemove|
-             ()
-             Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-06_Port-Channel2| () Bool)
-(declare-fun |0_am2-x3hl-xcg-5-06-StaticRouteAddSoft-am2-x3hl-xcg-5-06,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel6|
-             ()
-             Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-06_Port-Channel2_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-17_mgmt0| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-17_mgmt0_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-17_Port-Channel1| () Bool)
-(declare-fun |0_am2-x3hl-xcg-5-17-StaticRouteAddSoft-am2-x3hl-xcg-5-17,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel17|
-             ()
-             Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-17_Port-Channel1_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-17_Loopback0| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-17_Loopback0_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-17_Vlan102| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-17_Vlan102_OUTBOUND_vlan102-xcg-outRemove|
-             ()
-             Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-17_Port-Channel2| () Bool)
-(declare-fun |0_am2-x3hl-xcg-5-17-StaticRouteAddSoft-am2-x3hl-xcg-5-17,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel17|
-             ()
-             Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-17_Port-Channel2_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-17_Vlan101| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-17_Vlan101_OUTBOUND_vlan101-xcg-outRemove|
-             ()
-             Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-07_Vlan101| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-07_Vlan101_OUTBOUND_vlan101-xcg-outRemove|
-             ()
-             Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-07_mgmt0| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-07_mgmt0_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-07_Loopback0| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-07_Loopback0_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-07_Vlan102| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-07_Vlan102_OUTBOUND_vlan102-xcg-outRemove|
-             ()
-             Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-07_Port-Channel1| () Bool)
-(declare-fun |0_am2-x3hl-xcg-5-07-StaticRouteAddSoft-am2-x3hl-xcg-5-07,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel7|
-             ()
-             Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-07_Port-Channel1_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-07_Port-Channel2| () Bool)
-(declare-fun |0_am2-x3hl-xcg-5-07-StaticRouteAddSoft-am2-x3hl-xcg-5-07,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel7|
-             ()
-             Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-07_Port-Channel2_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-18_mgmt0| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-18_mgmt0_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-18_Port-Channel2| () Bool)
-(declare-fun |0_am2-x3hl-xcg-5-18-StaticRouteAddSoft-am2-x3hl-xcg-5-18,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel18|
-             ()
-             Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-18_Port-Channel2_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-18_Vlan101| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-18_Vlan101_OUTBOUND_vlan101-xcg-outRemove|
-             ()
-             Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-18_Loopback0| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-18_Loopback0_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-18_Vlan102| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-18_Vlan102_OUTBOUND_vlan102-xcg-outRemove|
-             ()
-             Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-18_Port-Channel1| () Bool)
-(declare-fun |0_am2-x3hl-xcg-5-18-StaticRouteAddSoft-am2-x3hl-xcg-5-18,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel18|
-             ()
-             Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-18_Port-Channel1_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-15_Port-Channel1| () Bool)
-(declare-fun |0_am2-x3hl-xcg-5-15-StaticRouteAddSoft-am2-x3hl-xcg-5-15,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel15|
-             ()
-             Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-15_Port-Channel1_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-15_mgmt0| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-15_mgmt0_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-15_Port-Channel2| () Bool)
-(declare-fun |0_am2-x3hl-xcg-5-15-StaticRouteAddSoft-am2-x3hl-xcg-5-15,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel15|
-             ()
-             Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-15_Port-Channel2_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-15_Vlan102| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-15_Vlan102_OUTBOUND_vlan102-xcg-outRemove|
-             ()
-             Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-15_Loopback0| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-15_Loopback0_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-15_Vlan101| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-15_Vlan101_OUTBOUND_vlan101-xcg-outRemove|
-             ()
-             Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-05_Port-Channel1| () Bool)
-(declare-fun |0_am2-x3hl-xcg-5-05-StaticRouteAddSoft-am2-x3hl-xcg-5-05,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel5|
-             ()
-             Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-05_Port-Channel1_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-05_Vlan101| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-05_Vlan101_OUTBOUND_vlan101-xcg-outRemove|
-             ()
-             Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-05_Vlan102| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-05_Vlan102_OUTBOUND_vlan102-xcg-outRemove|
-             ()
-             Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-05_Loopback0| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-05_Loopback0_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-05_mgmt0| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-05_mgmt0_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-05_Port-Channel2| () Bool)
-(declare-fun |0_am2-x3hl-xcg-5-05-StaticRouteAddSoft-am2-x3hl-xcg-5-05,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel5|
-             ()
-             Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-05_Port-Channel2_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-16_Vlan102| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-16_Vlan102_OUTBOUND_vlan102-xcg-outRemove|
-             ()
-             Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-16_Port-Channel1| () Bool)
-(declare-fun |0_am2-x3hl-xcg-5-16-StaticRouteAddSoft-am2-x3hl-xcg-5-16,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel16|
-             ()
-             Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-16_Port-Channel1_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-16_Port-Channel2| () Bool)
-(declare-fun |0_am2-x3hl-xcg-5-16-StaticRouteAddSoft-am2-x3hl-xcg-5-16,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel16|
-             ()
-             Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-16_Port-Channel2_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-16_mgmt0| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-16_mgmt0_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-16_Loopback0| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-16_Loopback0_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-16_Vlan101| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-16_Vlan101_OUTBOUND_vlan101-xcg-outRemove|
-             ()
-             Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-02_Vlan102| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-02_Vlan102_OUTBOUND_vlan102-xcg-outRemove|
-             ()
-             Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-02_mgmt0| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-02_mgmt0_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-02_Vlan101| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-02_Vlan101_OUTBOUND_vlan101-xcg-outRemove|
-             ()
-             Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-02_Loopback0| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-02_Loopback0_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-02_Port-Channel2| () Bool)
-(declare-fun |0_am2-x3hl-xcg-5-02-StaticRouteAddSoft-am2-x3hl-xcg-5-02,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel2|
-             ()
-             Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-02_Port-Channel2_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-02_Port-Channel1| () Bool)
-(declare-fun |0_am2-x3hl-xcg-5-02-StaticRouteAddSoft-am2-x3hl-xcg-5-02,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel2|
-             ()
-             Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-02_Port-Channel1_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-13_Vlan102| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-13_Vlan102_OUTBOUND_vlan102-xcg-outRemove|
-             ()
-             Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-13_Loopback0| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-13_Loopback0_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-13_mgmt0| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-13_mgmt0_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-13_Port-Channel1| () Bool)
-(declare-fun |0_am2-x3hl-xcg-5-13-StaticRouteAddSoft-am2-x3hl-xcg-5-13,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel13|
-             ()
-             Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-13_Port-Channel1_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-13_Port-Channel2| () Bool)
-(declare-fun |0_am2-x3hl-xcg-5-13-StaticRouteAddSoft-am2-x3hl-xcg-5-13,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel13|
-             ()
-             Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-13_Port-Channel2_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-13_Vlan101| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-13_Vlan101_OUTBOUND_vlan101-xcg-outRemove|
-             ()
-             Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-03_Vlan102| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-03_Vlan102_OUTBOUND_vlan102-xcg-outRemove|
-             ()
-             Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-03_mgmt0| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-03_mgmt0_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-03_Loopback0| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-03_Loopback0_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-03_Vlan101| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-03_Vlan101_OUTBOUND_vlan101-xcg-outRemove|
-             ()
-             Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-03_Port-Channel2| () Bool)
-(declare-fun |0_am2-x3hl-xcg-5-03-StaticRouteAddSoft-am2-x3hl-xcg-5-03,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel3|
-             ()
-             Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-03_Port-Channel2_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-03_Port-Channel1| () Bool)
-(declare-fun |0_am2-x3hl-xcg-5-03-StaticRouteAddSoft-am2-x3hl-xcg-5-03,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel3|
-             ()
-             Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-03_Port-Channel1_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-14_mgmt0| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-14_mgmt0_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-14_Vlan102| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-14_Vlan102_OUTBOUND_vlan102-xcg-outRemove|
-             ()
-             Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-14_Port-Channel1| () Bool)
-(declare-fun |0_am2-x3hl-xcg-5-14-StaticRouteAddSoft-am2-x3hl-xcg-5-14,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel14|
-             ()
-             Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-14_Port-Channel1_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-14_Loopback0| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-14_Loopback0_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-14_Vlan101| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-14_Vlan101_OUTBOUND_vlan101-xcg-outRemove|
-             ()
-             Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-14_Port-Channel2| () Bool)
-(declare-fun |0_am2-x3hl-xcg-5-14-StaticRouteAddSoft-am2-x3hl-xcg-5-14,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel14|
-             ()
-             Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-14_Port-Channel2_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-11_Vlan101| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-11_Vlan101_OUTBOUND_vlan101-xcg-outRemove|
-             ()
-             Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-11_Loopback0| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-11_Loopback0_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-11_mgmt0| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-11_mgmt0_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-11_Vlan102| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-11_Vlan102_OUTBOUND_vlan102-xcg-outRemove|
-             ()
-             Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-11_Port-Channel1| () Bool)
-(declare-fun |0_am2-x3hl-xcg-5-11-StaticRouteAddSoft-am2-x3hl-xcg-5-11,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel11|
-             ()
-             Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-11_Port-Channel1_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-11_Port-Channel2| () Bool)
-(declare-fun |0_am2-x3hl-xcg-5-11-StaticRouteAddSoft-am2-x3hl-xcg-5-11,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel11|
-             ()
-             Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-11_Port-Channel2_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-01_Vlan102| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-01_Vlan102_OUTBOUND_vlan102-xcg-outRemove|
-             ()
-             Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-01_Loopback0| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-01_Loopback0_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-01_Port-Channel2| () Bool)
-(declare-fun |0_am2-x3hl-xcg-5-01-StaticRouteAddSoft-am2-x3hl-xcg-5-01,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel1|
-             ()
-             Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-01_Port-Channel2_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-01_Vlan101| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-01_Vlan101_OUTBOUND_vlan101-xcg-outRemove|
-             ()
-             Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-01_Port-Channel1| () Bool)
-(declare-fun |0_am2-x3hl-xcg-5-01-StaticRouteAddSoft-am2-x3hl-xcg-5-01,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel1|
-             ()
-             Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-01_Port-Channel1_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-01_mgmt0| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-01_mgmt0_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-12_Loopback0| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-12_Loopback0_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-12_Port-Channel1| () Bool)
-(declare-fun |0_am2-x3hl-xcg-5-12-StaticRouteAddSoft-am2-x3hl-xcg-5-12,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel12|
-             ()
-             Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-12_Port-Channel1_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-12_Vlan101| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-12_Vlan101_OUTBOUND_vlan101-xcg-outRemove|
-             ()
-             Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-12_Vlan102| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-12_Vlan102_OUTBOUND_vlan102-xcg-outRemove|
-             ()
-             Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-12_mgmt0| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-12_mgmt0_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-12_Port-Channel2| () Bool)
-(declare-fun |0_am2-x3hl-xcg-5-12-StaticRouteAddSoft-am2-x3hl-xcg-5-12,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel12|
-             ()
-             Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-12_Port-Channel2_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-08_Vlan101| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-08_Vlan101_OUTBOUND_vlan101-xcg-outRemove|
-             ()
-             Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-08_Loopback0| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-08_Loopback0_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-08_Port-Channel2| () Bool)
-(declare-fun |0_am2-x3hl-xcg-5-08-StaticRouteAddSoft-am2-x3hl-xcg-5-08,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel8|
-             ()
-             Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-08_Port-Channel2_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-08_mgmt0| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-08_mgmt0_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-08_Port-Channel1| () Bool)
-(declare-fun |0_am2-x3hl-xcg-5-08-StaticRouteAddSoft-am2-x3hl-xcg-5-08,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel8|
-             ()
-             Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-08_Port-Channel1_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-08_Vlan102| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-08_Vlan102_OUTBOUND_vlan102-xcg-outRemove|
-             ()
-             Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-19_Port-Channel2| () Bool)
-(declare-fun |0_am2-x3hl-xcg-5-19-StaticRouteAddSoft-am2-x3hl-xcg-5-19,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel19|
-             ()
-             Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-19_Port-Channel2_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-19_Vlan101| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-19_Vlan101_OUTBOUND_vlan101-xcg-outRemove|
-             ()
-             Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-19_mgmt0| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-19_mgmt0_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-19_Loopback0| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-19_Loopback0_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-19_Vlan102| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-19_Vlan102_OUTBOUND_vlan102-xcg-outRemove|
-             ()
-             Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-19_Port-Channel1| () Bool)
-(declare-fun |0_am2-x3hl-xcg-5-19-StaticRouteAddSoft-am2-x3hl-xcg-5-19,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel19|
-             ()
-             Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-19_Port-Channel1_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-09_Loopback0| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-09_Loopback0_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-09_Port-Channel2| () Bool)
-(declare-fun |0_am2-x3hl-xcg-5-09-StaticRouteAddSoft-am2-x3hl-xcg-5-09,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel9|
-             ()
-             Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-09_Port-Channel2_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-09_Vlan101| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-09_Vlan101_OUTBOUND_vlan101-xcg-outRemove|
-             ()
-             Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-09_Port-Channel1| () Bool)
-(declare-fun |0_am2-x3hl-xcg-5-09-StaticRouteAddSoft-am2-x3hl-xcg-5-09,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel9|
-             ()
-             Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-09_Port-Channel1_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-09_mgmt0| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-09_mgmt0_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-09_Vlan102| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-09_Vlan102_OUTBOUND_vlan102-xcg-outRemove|
-             ()
-             Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-20_Port-Channel2| () Bool)
-(declare-fun |0_am2-x3hl-xcg-5-20-StaticRouteAddSoft-am2-x3hl-xcg-5-20,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel20|
-             ()
-             Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-20_Port-Channel2_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-20_Vlan101| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-20_Vlan101_OUTBOUND_vlan101-xcg-outRemove|
-             ()
-             Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-20_Vlan102| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-20_Vlan102_OUTBOUND_vlan102-xcg-outRemove|
-             ()
-             Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-20_mgmt0| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-20_mgmt0_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-20_Loopback0| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-20_Loopback0_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-20_Port-Channel1| () Bool)
-(declare-fun |0_am2-x3hl-xcg-5-20-StaticRouteAddSoft-am2-x3hl-xcg-5-20,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel20|
-             ()
-             Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-20_Port-Channel1_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-10_Loopback0| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-10_Loopback0_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-10_mgmt0| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-10_mgmt0_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-10_Vlan101| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-10_Vlan101_OUTBOUND_vlan101-xcg-outRemove|
-             ()
-             Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-10_Vlan102| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-10_Vlan102_OUTBOUND_vlan102-xcg-outRemove|
-             ()
-             Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-10_Port-Channel1| () Bool)
-(declare-fun |0_am2-x3hl-xcg-5-10-StaticRouteAddSoft-am2-x3hl-xcg-5-10,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel10|
-             ()
-             Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-10_Port-Channel1_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-10_Port-Channel2| () Bool)
-(declare-fun |0_am2-x3hl-xcg-5-10-StaticRouteAddSoft-am2-x3hl-xcg-5-10,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel10|
-             ()
-             Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-10_Port-Channel2_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-21_Vlan101| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-21_Vlan101_OUTBOUND_vlan101-xcg-outRemove|
-             ()
-             Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-21_Port-Channel2| () Bool)
-(declare-fun |0_am2-x3hl-xcg-5-21-StaticRouteAddSoft-am2-x3hl-xcg-5-21,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel21|
-             ()
-             Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-21_Port-Channel2_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-21_Vlan102| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-21_Vlan102_OUTBOUND_vlan102-xcg-outRemove|
-             ()
-             Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-21_Loopback0| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-21_Loopback0_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-21_mgmt0| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-21_mgmt0_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3hl-xcg-5-21_Port-Channel1| () Bool)
-(declare-fun |0_am2-x3hl-xcg-5-21-StaticRouteAddSoft-am2-x3hl-xcg-5-21,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel21|
-             ()
-             Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-21_Port-Channel1_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel21| () Bool)
-(declare-fun |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel21 --> am2-x3hl-xcg-5-21,Port-Channel2|
-             ()
-             Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1b_Port-Channel21_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel19| () Bool)
-(declare-fun |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel19 --> am2-x3hl-xcg-5-19,Port-Channel2|
-             ()
-             Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1b_Port-Channel19_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel9| () Bool)
-(declare-fun |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel9 --> am2-x3hl-xcg-5-09,Port-Channel2|
-             ()
-             Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1b_Port-Channel9_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel6| () Bool)
-(declare-fun |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel6 --> am2-x3hl-xcg-5-06,Port-Channel2|
-             ()
-             Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1b_Port-Channel6_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel3| () Bool)
-(declare-fun |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel3 --> am2-x3hl-xcg-5-03,Port-Channel2|
-             ()
-             Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1b_Port-Channel3_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Ethernet1/48| () Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1b_Ethernet1/48_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel14| () Bool)
-(declare-fun |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel14 --> am2-x3hl-xcg-5-14,Port-Channel2|
-             ()
-             Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1b_Port-Channel14_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel11| () Bool)
-(declare-fun |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel11 --> am2-x3hl-xcg-5-11,Port-Channel2|
-             ()
-             Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1b_Port-Channel11_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel1| () Bool)
-(declare-fun |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel1 --> am2-x3hl-xcg-5-01,Port-Channel2|
-             ()
-             Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1b_Port-Channel1_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel17| () Bool)
-(declare-fun |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel17 --> am2-x3hl-xcg-5-17,Port-Channel2|
-             ()
-             Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1b_Port-Channel17_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel7| () Bool)
-(declare-fun |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel7 --> am2-x3hl-xcg-5-07,Port-Channel2|
-             ()
-             Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1b_Port-Channel7_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel12| () Bool)
-(declare-fun |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel12 --> am2-x3hl-xcg-5-12,Port-Channel2|
-             ()
-             Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1b_Port-Channel12_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Ethernet1/47| () Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1b_Ethernet1/47_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel8| () Bool)
-(declare-fun |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel8 --> am2-x3hl-xcg-5-08,Port-Channel2|
-             ()
-             Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1b_Port-Channel8_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel15| () Bool)
-(declare-fun |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel15 --> am2-x3hl-xcg-5-15,Port-Channel2|
-             ()
-             Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1b_Port-Channel15_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel5| () Bool)
-(declare-fun |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel5 --> am2-x3hl-xcg-5-05,Port-Channel2|
-             ()
-             Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1b_Port-Channel5_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel2| () Bool)
-(declare-fun |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel2 --> am2-x3hl-xcg-5-02,Port-Channel2|
-             ()
-             Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1b_Port-Channel2_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel20| () Bool)
-(declare-fun |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel20 --> am2-x3hl-xcg-5-20,Port-Channel2|
-             ()
-             Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1b_Port-Channel20_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel18| () Bool)
-(declare-fun |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel18 --> am2-x3hl-xcg-5-18,Port-Channel2|
-             ()
-             Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1b_Port-Channel18_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Loopback0| () Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1b_Loopback0_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_mgmt0| () Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1b_mgmt0_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel10| () Bool)
-(declare-fun |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel10 --> am2-x3hl-xcg-5-10,Port-Channel2|
-             ()
-             Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1b_Port-Channel10_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel16| () Bool)
-(declare-fun |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel16 --> am2-x3hl-xcg-5-16,Port-Channel2|
-             ()
-             Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1b_Port-Channel16_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel13| () Bool)
-(declare-fun |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel13 --> am2-x3hl-xcg-5-13,Port-Channel2|
-             ()
-             Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1b_Port-Channel13_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel2| () Bool)
-(declare-fun |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel2 --> am2-x3hl-xcg-5-02,Port-Channel1|
-             ()
-             Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1a_Port-Channel2_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel12| () Bool)
-(declare-fun |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel12 --> am2-x3hl-xcg-5-12,Port-Channel1|
-             ()
-             Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1a_Port-Channel12_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel15| () Bool)
-(declare-fun |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel15 --> am2-x3hl-xcg-5-15,Port-Channel1|
-             ()
-             Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1a_Port-Channel15_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Ethernet1/48| () Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1a_Ethernet1/48_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel8| () Bool)
-(declare-fun |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel8 --> am2-x3hl-xcg-5-08,Port-Channel1|
-             ()
-             Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1a_Port-Channel8_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel20| () Bool)
-(declare-fun |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel20 --> am2-x3hl-xcg-5-20,Port-Channel1|
-             ()
-             Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1a_Port-Channel20_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel18| () Bool)
-(declare-fun |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel18 --> am2-x3hl-xcg-5-18,Port-Channel1|
-             ()
-             Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1a_Port-Channel18_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel5| () Bool)
-(declare-fun |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel5 --> am2-x3hl-xcg-5-05,Port-Channel1|
-             ()
-             Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1a_Port-Channel5_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel10| () Bool)
-(declare-fun |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel10 --> am2-x3hl-xcg-5-10,Port-Channel1|
-             ()
-             Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1a_Port-Channel10_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel3| () Bool)
-(declare-fun |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel3 --> am2-x3hl-xcg-5-03,Port-Channel1|
-             ()
-             Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1a_Port-Channel3_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel13| () Bool)
-(declare-fun |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel13 --> am2-x3hl-xcg-5-13,Port-Channel1|
-             ()
-             Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1a_Port-Channel13_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel21| () Bool)
-(declare-fun |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel21 --> am2-x3hl-xcg-5-21,Port-Channel1|
-             ()
-             Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1a_Port-Channel21_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel19| () Bool)
-(declare-fun |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel19 --> am2-x3hl-xcg-5-19,Port-Channel1|
-             ()
-             Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1a_Port-Channel19_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel16| () Bool)
-(declare-fun |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel16 --> am2-x3hl-xcg-5-16,Port-Channel1|
-             ()
-             Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1a_Port-Channel16_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel9| () Bool)
-(declare-fun |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel9 --> am2-x3hl-xcg-5-09,Port-Channel1|
-             ()
-             Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1a_Port-Channel9_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Ethernet1/47| () Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1a_Ethernet1/47_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel6| () Bool)
-(declare-fun |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel6 --> am2-x3hl-xcg-5-06,Port-Channel1|
-             ()
-             Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1a_Port-Channel6_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel11| () Bool)
-(declare-fun |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel11 --> am2-x3hl-xcg-5-11,Port-Channel1|
-             ()
-             Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1a_Port-Channel11_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel7| () Bool)
-(declare-fun |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel7 --> am2-x3hl-xcg-5-07,Port-Channel1|
-             ()
-             Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1a_Port-Channel7_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel17| () Bool)
-(declare-fun |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel17 --> am2-x3hl-xcg-5-17,Port-Channel1|
-             ()
-             Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1a_Port-Channel17_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel14| () Bool)
-(declare-fun |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel14 --> am2-x3hl-xcg-5-14,Port-Channel1|
-             ()
-             Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1a_Port-Channel14_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_mgmt0| () Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1a_mgmt0_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel1| () Bool)
-(declare-fun |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel1 --> am2-x3hl-xcg-5-01,Port-Channel1|
-             ()
-             Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1a_Port-Channel1_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Loopback0| () Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1a_Loopback0_OUTBOUND_SOFTAdd| () Bool)
 (declare-fun |0__reachable-id_am2-x3hl-xcg-5-06| () Int)
 (declare-fun |0__reachable_am2-x3hl-xcg-5-06| () Bool)
 (declare-fun |0__reachable-id_am2-x3hl-xcg-5-17| () Int)
@@ -1423,309 +843,6 @@
 (declare-fun |0__reachable_am2-x3sb-xcg-5-1b| () Bool)
 (declare-fun |0__reachable-id_am2-x3sb-xcg-5-1a| () Int)
 (declare-fun |0__reachable_am2-x3sb-xcg-5-1a| () Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1b_Port-Channel6_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1a_Port-Channel6_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1b_Port-Channel17_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1a_Port-Channel17_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1b_Port-Channel7_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1a_Port-Channel7_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1a_Port-Channel18_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1b_Port-Channel18_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1b_Port-Channel15_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1a_Port-Channel15_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1b_Port-Channel5_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1a_Port-Channel5_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1b_Port-Channel16_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1a_Port-Channel16_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1a_Port-Channel2_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1b_Port-Channel2_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1b_Port-Channel13_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1a_Port-Channel13_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1a_Port-Channel3_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1b_Port-Channel3_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1b_Port-Channel14_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1a_Port-Channel14_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1b_Port-Channel11_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1a_Port-Channel11_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1a_Port-Channel1_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1b_Port-Channel1_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1b_Port-Channel12_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1a_Port-Channel12_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1a_Port-Channel8_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1b_Port-Channel8_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1a_Port-Channel19_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1b_Port-Channel19_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1a_Port-Channel9_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1b_Port-Channel9_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1a_Port-Channel20_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1b_Port-Channel20_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1b_Port-Channel10_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1a_Port-Channel10_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1a_Port-Channel21_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1b_Port-Channel21_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-13_Port-Channel2_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-16_Port-Channel2_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-10_Port-Channel2_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-18_Port-Channel2_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-20_Port-Channel2_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-02_Port-Channel2_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-05_Port-Channel2_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-15_Port-Channel2_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-08_Port-Channel2_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-12_Port-Channel2_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-07_Port-Channel2_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-17_Port-Channel2_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-01_Port-Channel2_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-11_Port-Channel2_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-14_Port-Channel2_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-03_Port-Channel2_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-06_Port-Channel2_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-09_Port-Channel2_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-19_Port-Channel2_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-21_Port-Channel2_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-01_Port-Channel1_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-14_Port-Channel1_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-17_Port-Channel1_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-07_Port-Channel1_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-11_Port-Channel1_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-06_Port-Channel1_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-09_Port-Channel1_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-16_Port-Channel1_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-19_Port-Channel1_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-21_Port-Channel1_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-13_Port-Channel1_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-03_Port-Channel1_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-10_Port-Channel1_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-05_Port-Channel1_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-18_Port-Channel1_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-20_Port-Channel1_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-08_Port-Channel1_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-15_Port-Channel1_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-12_Port-Channel1_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-02_Port-Channel1_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-06_mgmt0_INBOUND_mgmt-onlyRemove| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-06_Vlan101_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-06_Loopback0_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-06_Vlan102_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-17_mgmt0_INBOUND_mgmt-onlyRemove| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-17_Loopback0_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-17_Vlan102_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-17_Vlan101_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-07_Vlan101_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-07_mgmt0_INBOUND_mgmt-onlyRemove| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-07_Loopback0_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-07_Vlan102_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-18_mgmt0_INBOUND_mgmt-onlyRemove| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-18_Vlan101_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-18_Loopback0_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-18_Vlan102_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-15_mgmt0_INBOUND_mgmt-onlyRemove| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-15_Vlan102_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-15_Loopback0_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-15_Vlan101_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-05_Vlan101_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-05_Vlan102_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-05_Loopback0_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-05_mgmt0_INBOUND_mgmt-onlyRemove| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-16_Vlan102_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-16_mgmt0_INBOUND_mgmt-onlyRemove| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-16_Loopback0_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-16_Vlan101_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-02_Vlan102_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-02_mgmt0_INBOUND_mgmt-onlyRemove| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-02_Vlan101_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-02_Loopback0_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-13_Vlan102_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-13_Loopback0_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-13_mgmt0_INBOUND_mgmt-onlyRemove| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-13_Vlan101_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-03_Vlan102_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-03_mgmt0_INBOUND_mgmt-onlyRemove| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-03_Loopback0_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-03_Vlan101_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-14_mgmt0_INBOUND_mgmt-onlyRemove| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-14_Vlan102_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-14_Loopback0_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-14_Vlan101_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-11_Vlan101_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-11_Loopback0_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-11_mgmt0_INBOUND_mgmt-onlyRemove| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-11_Vlan102_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-01_Vlan102_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-01_Loopback0_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-01_Vlan101_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-01_mgmt0_INBOUND_mgmt-onlyRemove| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-12_Loopback0_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-12_Vlan101_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-12_Vlan102_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-12_mgmt0_INBOUND_mgmt-onlyRemove| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-08_Vlan101_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-08_Loopback0_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-08_mgmt0_INBOUND_mgmt-onlyRemove| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-08_Vlan102_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-19_Vlan101_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-19_mgmt0_INBOUND_mgmt-onlyRemove| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-19_Loopback0_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-19_Vlan102_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-09_Loopback0_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-09_Vlan101_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-09_mgmt0_INBOUND_mgmt-onlyRemove| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-09_Vlan102_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-20_Vlan101_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-20_Vlan102_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-20_mgmt0_INBOUND_mgmt-onlyRemove| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-20_Loopback0_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-10_Loopback0_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-10_mgmt0_INBOUND_mgmt-onlyRemove| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-10_Vlan101_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-10_Vlan102_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-21_Vlan101_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-21_Vlan102_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-21_Loopback0_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3hl-xcg-5-21_mgmt0_INBOUND_mgmt-onlyRemove| () Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1b_Ethernet1/48_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1b_Ethernet1/47_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1b_Loopback0_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1b_mgmt0_INBOUND_mgmt-onlyRemove| () Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1a_Ethernet1/48_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1a_Ethernet1/47_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1a_mgmt0_INBOUND_mgmt-onlyRemove| () Bool)
-(declare-fun |0_0__am2-x3sb-xcg-5-1a_Loopback0_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_25.148.1.148/32ExportRemoveSoft0_am2-x3hl-xcg-5-06_OVERALL_BEST_None|
-             ()
-             Bool)
-(declare-fun |0_25.161.233.128/25ExportRemoveSoft0_am2-x3hl-xcg-5-06_OVERALL_BEST_None|
-             ()
-             Bool)
-(declare-fun |0_0_am2-x3hl-xcg-5-06_OVERALL_BEST_NoneBGPExportAddSoft| () Bool)
-(declare-fun |0_25.148.4.20/32ExportRemoveSoft0_am2-x3hl-xcg-5-17_OVERALL_BEST_None|
-             ()
-             Bool)
-(declare-fun |0_25.163.148.0/25ExportRemoveSoft0_am2-x3hl-xcg-5-17_OVERALL_BEST_None|
-             ()
-             Bool)
-(declare-fun |0_0_am2-x3hl-xcg-5-17_OVERALL_BEST_NoneBGPExportAddSoft| () Bool)
-(declare-fun |0_25.148.1.149/32ExportRemoveSoft0_am2-x3hl-xcg-5-07_OVERALL_BEST_None|
-             ()
-             Bool)
-(declare-fun |0_25.161.234.0/25ExportRemoveSoft0_am2-x3hl-xcg-5-07_OVERALL_BEST_None|
-             ()
-             Bool)
-(declare-fun |0_0_am2-x3hl-xcg-5-07_OVERALL_BEST_NoneBGPExportAddSoft| () Bool)
-(declare-fun |0_25.148.4.21/32ExportRemoveSoft0_am2-x3hl-xcg-5-18_OVERALL_BEST_None|
-             ()
-             Bool)
-(declare-fun |0_25.163.148.128/25ExportRemoveSoft0_am2-x3hl-xcg-5-18_OVERALL_BEST_None|
-             ()
-             Bool)
-(declare-fun |0_0_am2-x3hl-xcg-5-18_OVERALL_BEST_NoneBGPExportAddSoft| () Bool)
-(declare-fun |0_25.148.4.18/32ExportRemoveSoft0_am2-x3hl-xcg-5-15_OVERALL_BEST_None|
-             ()
-             Bool)
-(declare-fun |0_25.163.147.0/25ExportRemoveSoft0_am2-x3hl-xcg-5-15_OVERALL_BEST_None|
-             ()
-             Bool)
-(declare-fun |0_0_am2-x3hl-xcg-5-15_OVERALL_BEST_NoneBGPExportAddSoft| () Bool)
-(declare-fun |0_25.148.1.147/32ExportRemoveSoft0_am2-x3hl-xcg-5-05_OVERALL_BEST_None|
-             ()
-             Bool)
-(declare-fun |0_25.161.233.0/25ExportRemoveSoft0_am2-x3hl-xcg-5-05_OVERALL_BEST_None|
-             ()
-             Bool)
-(declare-fun |0_0_am2-x3hl-xcg-5-05_OVERALL_BEST_NoneBGPExportAddSoft| () Bool)
-(declare-fun |0_25.148.4.19/32ExportRemoveSoft0_am2-x3hl-xcg-5-16_OVERALL_BEST_None|
-             ()
-             Bool)
-(declare-fun |0_25.163.147.128/25ExportRemoveSoft0_am2-x3hl-xcg-5-16_OVERALL_BEST_None|
-             ()
-             Bool)
-(declare-fun |0_0_am2-x3hl-xcg-5-16_OVERALL_BEST_NoneBGPExportAddSoft| () Bool)
-(declare-fun |0_25.148.5.85/32ExportRemoveSoft0_am2-x3hl-xcg-5-02_OVERALL_BEST_None|
-             ()
-             Bool)
-(declare-fun |0_25.161.232.0/25ExportRemoveSoft0_am2-x3hl-xcg-5-02_OVERALL_BEST_None|
-             ()
-             Bool)
-(declare-fun |0_0_am2-x3hl-xcg-5-02_OVERALL_BEST_NoneBGPExportAddSoft| () Bool)
-(declare-fun |0_25.148.4.16/32ExportRemoveSoft0_am2-x3hl-xcg-5-13_OVERALL_BEST_None|
-             ()
-             Bool)
-(declare-fun |0_25.163.146.0/25ExportRemoveSoft0_am2-x3hl-xcg-5-13_OVERALL_BEST_None|
-             ()
-             Bool)
-(declare-fun |0_0_am2-x3hl-xcg-5-13_OVERALL_BEST_NoneBGPExportAddSoft| () Bool)
-(declare-fun |0_25.148.5.86/32ExportRemoveSoft0_am2-x3hl-xcg-5-03_OVERALL_BEST_None|
-             ()
-             Bool)
-(declare-fun |0_25.161.232.128/25ExportRemoveSoft0_am2-x3hl-xcg-5-03_OVERALL_BEST_None|
-             ()
-             Bool)
-(declare-fun |0_0_am2-x3hl-xcg-5-03_OVERALL_BEST_NoneBGPExportAddSoft| () Bool)
-(declare-fun |0_25.148.4.17/32ExportRemoveSoft0_am2-x3hl-xcg-5-14_OVERALL_BEST_None|
-             ()
-             Bool)
-(declare-fun |0_25.163.146.128/25ExportRemoveSoft0_am2-x3hl-xcg-5-14_OVERALL_BEST_None|
-             ()
-             Bool)
-(declare-fun |0_0_am2-x3hl-xcg-5-14_OVERALL_BEST_NoneBGPExportAddSoft| () Bool)
-(declare-fun |0_25.148.1.153/32ExportRemoveSoft0_am2-x3hl-xcg-5-11_OVERALL_BEST_None|
-             ()
-             Bool)
-(declare-fun |0_25.161.236.0/25ExportRemoveSoft0_am2-x3hl-xcg-5-11_OVERALL_BEST_None|
-             ()
-             Bool)
-(declare-fun |0_0_am2-x3hl-xcg-5-11_OVERALL_BEST_NoneBGPExportAddSoft| () Bool)
-(declare-fun |0_25.148.2.41/32ExportRemoveSoft0_am2-x3hl-xcg-5-01_OVERALL_BEST_None|
-             ()
-             Bool)
-(declare-fun |0_25.160.228.128/25ExportRemoveSoft0_am2-x3hl-xcg-5-01_OVERALL_BEST_None|
-             ()
-             Bool)
-(declare-fun |0_0_am2-x3hl-xcg-5-01_OVERALL_BEST_NoneBGPExportAddSoft| () Bool)
-(declare-fun |0_25.148.1.154/32ExportRemoveSoft0_am2-x3hl-xcg-5-12_OVERALL_BEST_None|
-             ()
-             Bool)
-(declare-fun |0_25.161.236.128/25ExportRemoveSoft0_am2-x3hl-xcg-5-12_OVERALL_BEST_None|
-             ()
-             Bool)
-(declare-fun |0_0_am2-x3hl-xcg-5-12_OVERALL_BEST_NoneBGPExportAddSoft| () Bool)
-(declare-fun |0_25.148.1.150/32ExportRemoveSoft0_am2-x3hl-xcg-5-08_OVERALL_BEST_None|
-             ()
-             Bool)
-(declare-fun |0_25.161.234.128/25ExportRemoveSoft0_am2-x3hl-xcg-5-08_OVERALL_BEST_None|
-             ()
-             Bool)
-(declare-fun |0_0_am2-x3hl-xcg-5-08_OVERALL_BEST_NoneBGPExportAddSoft| () Bool)
-(declare-fun |0_25.148.4.22/32ExportRemoveSoft0_am2-x3hl-xcg-5-19_OVERALL_BEST_None|
-             ()
-             Bool)
-(declare-fun |0_25.163.149.0/25ExportRemoveSoft0_am2-x3hl-xcg-5-19_OVERALL_BEST_None|
-             ()
-             Bool)
-(declare-fun |0_0_am2-x3hl-xcg-5-19_OVERALL_BEST_NoneBGPExportAddSoft| () Bool)
-(declare-fun |0_25.148.1.151/32ExportRemoveSoft0_am2-x3hl-xcg-5-09_OVERALL_BEST_None|
-             ()
-             Bool)
-(declare-fun |0_25.161.235.0/25ExportRemoveSoft0_am2-x3hl-xcg-5-09_OVERALL_BEST_None|
-             ()
-             Bool)
-(declare-fun |0_0_am2-x3hl-xcg-5-09_OVERALL_BEST_NoneBGPExportAddSoft| () Bool)
-(declare-fun |0_25.148.1.152/32ExportRemoveSoft0_am2-x3hl-xcg-5-10_OVERALL_BEST_None|
-             ()
-             Bool)
-(declare-fun |0_25.161.235.128/25ExportRemoveSoft0_am2-x3hl-xcg-5-10_OVERALL_BEST_None|
-             ()
-             Bool)
-(declare-fun |0_0_am2-x3hl-xcg-5-10_OVERALL_BEST_NoneBGPExportAddSoft| () Bool)
-(declare-fun |0_25.148.4.112/32ExportRemoveSoft0_am2-x3hl-xcg-5-21_OVERALL_BEST_None|
-             ()
-             Bool)
-(declare-fun |0_25.162.32.0/25ExportRemoveSoft0_am2-x3hl-xcg-5-21_OVERALL_BEST_None|
-             ()
-             Bool)
-(declare-fun |0_0_am2-x3hl-xcg-5-21_OVERALL_BEST_NoneBGPExportAddSoft| () Bool)
-(declare-fun |0_0_am2-x3sb-xcg-5-1b_OVERALL_BEST_NoneBGPExportAddSoft| () Bool)
-(declare-fun |0_0_am2-x3sb-xcg-5-1a_OVERALL_BEST_NoneBGPExportAddSoft| () Bool)
 (assert (let ((a!1 (and (and true
                      (= ((_ extract 31 14) |0_src-ip|) #b000010100001010000))
                 (= |0_dst-port| 22)
@@ -18600,8 +17717,7 @@
 (assert (<= |0_am2-x3sb-xcg-5-1a_BGP_EXPORT_ENV-10.22.181.240_prefixLength| 32))
 (assert (let ((a!1 (ite (and (= |0_am2-x3hl-xcg-5-06_OVERALL_BEST_None_prefixLength| 29)
                      (= (bvand |0_dst-ip| #xfffffff8)
-                        (bvand #xbfeae168 #xfffffff8))
-                     |0_191.234.225.104/29ExportRemoveSoft0_am2-x3hl-xcg-5-06_OVERALL_BEST_None|)
+                        (bvand #xbfeae168 #xfffffff8)))
                 29
                 |0_am2-x3hl-xcg-5-06_OVERALL_BEST_None_prefixLength|)))
 (let ((a!2 (and (= |0_am2-x3hl-xcg-5-06_BGP_SINGLE-EXPORT__permitted|
@@ -18636,8 +17752,7 @@
        (not |0_am2-x3hl-xcg-5-06_BGP_SINGLE-EXPORT__permitted|))))))
 (assert (let ((a!1 (ite (and (= |0_am2-x3hl-xcg-5-17_OVERALL_BEST_None_prefixLength| 29)
                      (= (bvand |0_dst-ip| #xfffffff8)
-                        (bvand #xbfeae1e0 #xfffffff8))
-                     |0_191.234.225.224/29ExportRemoveSoft0_am2-x3hl-xcg-5-17_OVERALL_BEST_None|)
+                        (bvand #xbfeae1e0 #xfffffff8)))
                 29
                 |0_am2-x3hl-xcg-5-17_OVERALL_BEST_None_prefixLength|)))
 (let ((a!2 (and (= |0_am2-x3hl-xcg-5-17_BGP_SINGLE-EXPORT__permitted|
@@ -18672,8 +17787,7 @@
        (not |0_am2-x3hl-xcg-5-17_BGP_SINGLE-EXPORT__permitted|))))))
 (assert (let ((a!1 (ite (and (= |0_am2-x3hl-xcg-5-07_OVERALL_BEST_None_prefixLength| 29)
                      (= (bvand |0_dst-ip| #xfffffff8)
-                        (bvand #xbfeae170 #xfffffff8))
-                     |0_191.234.225.112/29ExportRemoveSoft0_am2-x3hl-xcg-5-07_OVERALL_BEST_None|)
+                        (bvand #xbfeae170 #xfffffff8)))
                 29
                 |0_am2-x3hl-xcg-5-07_OVERALL_BEST_None_prefixLength|)))
 (let ((a!2 (and (= |0_am2-x3hl-xcg-5-07_BGP_SINGLE-EXPORT__permitted|
@@ -18708,8 +17822,7 @@
        (not |0_am2-x3hl-xcg-5-07_BGP_SINGLE-EXPORT__permitted|))))))
 (assert (let ((a!1 (ite (and (= |0_am2-x3hl-xcg-5-18_OVERALL_BEST_None_prefixLength| 29)
                      (= (bvand |0_dst-ip| #xfffffff8)
-                        (bvand #xbfeae1e8 #xfffffff8))
-                     |0_191.234.225.232/29ExportRemoveSoft0_am2-x3hl-xcg-5-18_OVERALL_BEST_None|)
+                        (bvand #xbfeae1e8 #xfffffff8)))
                 29
                 |0_am2-x3hl-xcg-5-18_OVERALL_BEST_None_prefixLength|)))
 (let ((a!2 (and (= |0_am2-x3hl-xcg-5-18_BGP_SINGLE-EXPORT__permitted|
@@ -18744,8 +17857,7 @@
        (not |0_am2-x3hl-xcg-5-18_BGP_SINGLE-EXPORT__permitted|))))))
 (assert (let ((a!1 (ite (and (= |0_am2-x3hl-xcg-5-15_OVERALL_BEST_None_prefixLength| 29)
                      (= (bvand |0_dst-ip| #xfffffff8)
-                        (bvand #xbfeae1d0 #xfffffff8))
-                     |0_191.234.225.208/29ExportRemoveSoft0_am2-x3hl-xcg-5-15_OVERALL_BEST_None|)
+                        (bvand #xbfeae1d0 #xfffffff8)))
                 29
                 |0_am2-x3hl-xcg-5-15_OVERALL_BEST_None_prefixLength|)))
 (let ((a!2 (and (= |0_am2-x3hl-xcg-5-15_BGP_SINGLE-EXPORT__permitted|
@@ -18780,8 +17892,7 @@
        (not |0_am2-x3hl-xcg-5-15_BGP_SINGLE-EXPORT__permitted|))))))
 (assert (let ((a!1 (ite (and (= |0_am2-x3hl-xcg-5-05_OVERALL_BEST_None_prefixLength| 29)
                      (= (bvand |0_dst-ip| #xfffffff8)
-                        (bvand #xbfeae160 #xfffffff8))
-                     |0_191.234.225.96/29ExportRemoveSoft0_am2-x3hl-xcg-5-05_OVERALL_BEST_None|)
+                        (bvand #xbfeae160 #xfffffff8)))
                 29
                 |0_am2-x3hl-xcg-5-05_OVERALL_BEST_None_prefixLength|)))
 (let ((a!2 (and (= |0_am2-x3hl-xcg-5-05_BGP_SINGLE-EXPORT__permitted|
@@ -18816,8 +17927,7 @@
        (not |0_am2-x3hl-xcg-5-05_BGP_SINGLE-EXPORT__permitted|))))))
 (assert (let ((a!1 (ite (and (= |0_am2-x3hl-xcg-5-16_OVERALL_BEST_None_prefixLength| 29)
                      (= (bvand |0_dst-ip| #xfffffff8)
-                        (bvand #xbfeae1d8 #xfffffff8))
-                     |0_191.234.225.216/29ExportRemoveSoft0_am2-x3hl-xcg-5-16_OVERALL_BEST_None|)
+                        (bvand #xbfeae1d8 #xfffffff8)))
                 29
                 |0_am2-x3hl-xcg-5-16_OVERALL_BEST_None_prefixLength|)))
 (let ((a!2 (and (= |0_am2-x3hl-xcg-5-16_BGP_SINGLE-EXPORT__permitted|
@@ -18852,8 +17962,7 @@
        (not |0_am2-x3hl-xcg-5-16_BGP_SINGLE-EXPORT__permitted|))))))
 (assert (let ((a!1 (ite (and (= |0_am2-x3hl-xcg-5-02_OVERALL_BEST_None_prefixLength| 29)
                      (= (bvand |0_dst-ip| #xfffffff8)
-                        (bvand #xbfeae150 #xfffffff8))
-                     |0_191.234.225.80/29ExportRemoveSoft0_am2-x3hl-xcg-5-02_OVERALL_BEST_None|)
+                        (bvand #xbfeae150 #xfffffff8)))
                 29
                 |0_am2-x3hl-xcg-5-02_OVERALL_BEST_None_prefixLength|)))
 (let ((a!2 (and (= |0_am2-x3hl-xcg-5-02_BGP_SINGLE-EXPORT__permitted|
@@ -18888,8 +17997,7 @@
        (not |0_am2-x3hl-xcg-5-02_BGP_SINGLE-EXPORT__permitted|))))))
 (assert (let ((a!1 (ite (and (= |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_prefixLength| 29)
                      (= (bvand |0_dst-ip| #xfffffff8)
-                        (bvand #xbfeae1c0 #xfffffff8))
-                     |0_191.234.225.192/29ExportRemoveSoft0_am2-x3hl-xcg-5-13_OVERALL_BEST_None|)
+                        (bvand #xbfeae1c0 #xfffffff8)))
                 29
                 |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_prefixLength|)))
 (let ((a!2 (and (= |0_am2-x3hl-xcg-5-13_BGP_SINGLE-EXPORT__permitted|
@@ -18924,8 +18032,7 @@
        (not |0_am2-x3hl-xcg-5-13_BGP_SINGLE-EXPORT__permitted|))))))
 (assert (let ((a!1 (ite (and (= |0_am2-x3hl-xcg-5-03_OVERALL_BEST_None_prefixLength| 29)
                      (= (bvand |0_dst-ip| #xfffffff8)
-                        (bvand #xbfeae158 #xfffffff8))
-                     |0_191.234.225.88/29ExportRemoveSoft0_am2-x3hl-xcg-5-03_OVERALL_BEST_None|)
+                        (bvand #xbfeae158 #xfffffff8)))
                 29
                 |0_am2-x3hl-xcg-5-03_OVERALL_BEST_None_prefixLength|)))
 (let ((a!2 (and (= |0_am2-x3hl-xcg-5-03_BGP_SINGLE-EXPORT__permitted|
@@ -18960,8 +18067,7 @@
        (not |0_am2-x3hl-xcg-5-03_BGP_SINGLE-EXPORT__permitted|))))))
 (assert (let ((a!1 (ite (and (= |0_am2-x3hl-xcg-5-14_OVERALL_BEST_None_prefixLength| 29)
                      (= (bvand |0_dst-ip| #xfffffff8)
-                        (bvand #xbfeae1c8 #xfffffff8))
-                     |0_191.234.225.200/29ExportRemoveSoft0_am2-x3hl-xcg-5-14_OVERALL_BEST_None|)
+                        (bvand #xbfeae1c8 #xfffffff8)))
                 29
                 |0_am2-x3hl-xcg-5-14_OVERALL_BEST_None_prefixLength|)))
 (let ((a!2 (and (= |0_am2-x3hl-xcg-5-14_BGP_SINGLE-EXPORT__permitted|
@@ -18996,8 +18102,7 @@
        (not |0_am2-x3hl-xcg-5-14_BGP_SINGLE-EXPORT__permitted|))))))
 (assert (let ((a!1 (ite (and (= |0_am2-x3hl-xcg-5-11_OVERALL_BEST_None_prefixLength| 29)
                      (= (bvand |0_dst-ip| #xfffffff8)
-                        (bvand #xbfeae190 #xfffffff8))
-                     |0_191.234.225.144/29ExportRemoveSoft0_am2-x3hl-xcg-5-11_OVERALL_BEST_None|)
+                        (bvand #xbfeae190 #xfffffff8)))
                 29
                 |0_am2-x3hl-xcg-5-11_OVERALL_BEST_None_prefixLength|)))
 (let ((a!2 (and (= |0_am2-x3hl-xcg-5-11_BGP_SINGLE-EXPORT__permitted|
@@ -19032,8 +18137,7 @@
        (not |0_am2-x3hl-xcg-5-11_BGP_SINGLE-EXPORT__permitted|))))))
 (assert (let ((a!1 (ite (and (= |0_am2-x3hl-xcg-5-01_OVERALL_BEST_None_prefixLength| 28)
                      (= (bvand |0_dst-ip| #xfffffff0)
-                        (bvand #xbfeae0a0 #xfffffff0))
-                     |0_191.234.224.160/28ExportRemoveSoft0_am2-x3hl-xcg-5-01_OVERALL_BEST_None|)
+                        (bvand #xbfeae0a0 #xfffffff0)))
                 28
                 |0_am2-x3hl-xcg-5-01_OVERALL_BEST_None_prefixLength|)))
 (let ((a!2 (and (= |0_am2-x3hl-xcg-5-01_BGP_SINGLE-EXPORT__permitted|
@@ -19068,8 +18172,7 @@
        (not |0_am2-x3hl-xcg-5-01_BGP_SINGLE-EXPORT__permitted|))))))
 (assert (let ((a!1 (ite (and (= |0_am2-x3hl-xcg-5-12_OVERALL_BEST_None_prefixLength| 29)
                      (= (bvand |0_dst-ip| #xfffffff8)
-                        (bvand #xbfeae198 #xfffffff8))
-                     |0_191.234.225.152/29ExportRemoveSoft0_am2-x3hl-xcg-5-12_OVERALL_BEST_None|)
+                        (bvand #xbfeae198 #xfffffff8)))
                 29
                 |0_am2-x3hl-xcg-5-12_OVERALL_BEST_None_prefixLength|)))
 (let ((a!2 (and (= |0_am2-x3hl-xcg-5-12_BGP_SINGLE-EXPORT__permitted|
@@ -19104,8 +18207,7 @@
        (not |0_am2-x3hl-xcg-5-12_BGP_SINGLE-EXPORT__permitted|))))))
 (assert (let ((a!1 (ite (and (= |0_am2-x3hl-xcg-5-08_OVERALL_BEST_None_prefixLength| 29)
                      (= (bvand |0_dst-ip| #xfffffff8)
-                        (bvand #xbfeae178 #xfffffff8))
-                     |0_191.234.225.120/29ExportRemoveSoft0_am2-x3hl-xcg-5-08_OVERALL_BEST_None|)
+                        (bvand #xbfeae178 #xfffffff8)))
                 29
                 |0_am2-x3hl-xcg-5-08_OVERALL_BEST_None_prefixLength|)))
 (let ((a!2 (and (= |0_am2-x3hl-xcg-5-08_BGP_SINGLE-EXPORT__permitted|
@@ -19140,8 +18242,7 @@
        (not |0_am2-x3hl-xcg-5-08_BGP_SINGLE-EXPORT__permitted|))))))
 (assert (let ((a!1 (ite (and (= |0_am2-x3hl-xcg-5-19_OVERALL_BEST_None_prefixLength| 29)
                      (= (bvand |0_dst-ip| #xfffffff8)
-                        (bvand #xbfeae1f0 #xfffffff8))
-                     |0_191.234.225.240/29ExportRemoveSoft0_am2-x3hl-xcg-5-19_OVERALL_BEST_None|)
+                        (bvand #xbfeae1f0 #xfffffff8)))
                 29
                 |0_am2-x3hl-xcg-5-19_OVERALL_BEST_None_prefixLength|)))
 (let ((a!2 (and (= |0_am2-x3hl-xcg-5-19_BGP_SINGLE-EXPORT__permitted|
@@ -19176,8 +18277,7 @@
        (not |0_am2-x3hl-xcg-5-19_BGP_SINGLE-EXPORT__permitted|))))))
 (assert (let ((a!1 (ite (and (= |0_am2-x3hl-xcg-5-09_OVERALL_BEST_None_prefixLength| 29)
                      (= (bvand |0_dst-ip| #xfffffff8)
-                        (bvand #xbfeae180 #xfffffff8))
-                     |0_191.234.225.128/29ExportRemoveSoft0_am2-x3hl-xcg-5-09_OVERALL_BEST_None|)
+                        (bvand #xbfeae180 #xfffffff8)))
                 29
                 |0_am2-x3hl-xcg-5-09_OVERALL_BEST_None_prefixLength|)))
 (let ((a!2 (and (= |0_am2-x3hl-xcg-5-09_BGP_SINGLE-EXPORT__permitted|
@@ -19211,18 +18311,14 @@
        (ite true a!3 (not |0_am2-x3hl-xcg-5-09_BGP_SINGLE-EXPORT__permitted|))
        (not |0_am2-x3hl-xcg-5-09_BGP_SINGLE-EXPORT__permitted|))))))
 (assert (let ((a!1 (or (and (= |0_dst-ip| #x19940417)
-                    |0_25.148.4.23/32Stat-Conn-ExportRemoveSoft0_am2-x3hl-xcg-5-20_OVERALL_BEST_None|
                     (not (= |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_history| #b0)))
                (and (= ((_ extract 31 7) |0_dst-ip|)
                        #b0001100110100011100101011)
-                    |0_25.163.149.128/25Stat-Conn-ExportRemoveSoft0_am2-x3hl-xcg-5-20_OVERALL_BEST_None|
                     (not (= |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_history| #b0)))
                (and (= ((_ extract 31 3) |0_dst-ip|)
                        #b10111111111010101110000111111)
-                    |0_191.234.225.248/29Stat-Conn-ExportRemoveSoft0_am2-x3hl-xcg-5-20_OVERALL_BEST_None|
                     (not (= |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_history| #b0)))
-               (= |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_history| #b0)
-               |0_0_am2-x3hl-xcg-5-20_OVERALL_BEST_NoneBGPExportAddSoft|))
+               (= |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_history| #b0)))
       (a!2 (ite (and (= 29 29)
                      (= (bvand |0_dst-ip| #xfffffff8)
                         (bvand #xbfeae1f8 #xfffffff8)))
@@ -19269,8 +18365,7 @@
      (not |0_am2-x3hl-xcg-5-20_CONNECTED_IMPORT_Vlan102_permitted|)))
 (assert (let ((a!1 (ite (and (= |0_am2-x3hl-xcg-5-10_OVERALL_BEST_None_prefixLength| 29)
                      (= (bvand |0_dst-ip| #xfffffff8)
-                        (bvand #xbfeae188 #xfffffff8))
-                     |0_191.234.225.136/29ExportRemoveSoft0_am2-x3hl-xcg-5-10_OVERALL_BEST_None|)
+                        (bvand #xbfeae188 #xfffffff8)))
                 29
                 |0_am2-x3hl-xcg-5-10_OVERALL_BEST_None_prefixLength|)))
 (let ((a!2 (and (= |0_am2-x3hl-xcg-5-10_BGP_SINGLE-EXPORT__permitted|
@@ -19305,8 +18400,7 @@
        (not |0_am2-x3hl-xcg-5-10_BGP_SINGLE-EXPORT__permitted|))))))
 (assert (let ((a!1 (ite (and (= |0_am2-x3hl-xcg-5-21_OVERALL_BEST_None_prefixLength| 28)
                      (= (bvand |0_dst-ip| #xfffffff0)
-                        (bvand #xbfeae1a0 #xfffffff0))
-                     |0_191.234.225.160/28ExportRemoveSoft0_am2-x3hl-xcg-5-21_OVERALL_BEST_None|)
+                        (bvand #xbfeae1a0 #xfffffff0)))
                 28
                 |0_am2-x3hl-xcg-5-21_OVERALL_BEST_None_prefixLength|)))
 (let ((a!2 (and (= |0_am2-x3hl-xcg-5-21_BGP_SINGLE-EXPORT__permitted|
@@ -19342,8 +18436,7 @@
 (assert (let ((a!1 (or (and (>= |0_am2-x3sb-xcg-5-1b_OVERALL_BEST_None_prefixLength| 31)
                     (<= |0_am2-x3sb-xcg-5-1b_OVERALL_BEST_None_prefixLength| 32)
                     (= ((_ extract 31 2) |0_dst-ip|)
-                       #b000010100001011010110101100001)
-                    |0_10.22.181.132/30BGPRemoveFilterSoft|)
+                       #b000010100001011010110101100001))
                (and (= |0_am2-x3sb-xcg-5-1b_OVERALL_BEST_None_prefixLength| 32)
                     (= ((_ extract 31 1) |0_dst-ip|)
                        #b0000101000010110101101011110110))
@@ -19352,22 +18445,18 @@
                        #b0000101000010110101101011010101))
                (and (>= |0_am2-x3sb-xcg-5-1b_OVERALL_BEST_None_prefixLength| 29)
                     (<= |0_am2-x3sb-xcg-5-1b_OVERALL_BEST_None_prefixLength| 32)
-                    (= ((_ extract 31 4) |0_dst-ip|) #x0a01b11)
-                    |0_10.1.177.16/28BGPRemoveFilterSoft|)
+                    (= ((_ extract 31 4) |0_dst-ip|) #x0a01b11))
                (and (>= |0_am2-x3sb-xcg-5-1b_OVERALL_BEST_None_prefixLength| 30)
                     (<= |0_am2-x3sb-xcg-5-1b_OVERALL_BEST_None_prefixLength| 32)
                     (= ((_ extract 31 3) |0_dst-ip|)
-                       #b00001010000101101011010110001)
-                    |0_10.22.181.136/29BGPRemoveFilterSoft|)
+                       #b00001010000101101011010110001))
                (and (>= |0_am2-x3sb-xcg-5-1b_OVERALL_BEST_None_prefixLength| 30)
                     (<= |0_am2-x3sb-xcg-5-1b_OVERALL_BEST_None_prefixLength| 32)
                     (= ((_ extract 31 3) |0_dst-ip|)
-                       #b00001010000101101011010110010)
-                    |0_10.22.181.144/29BGPRemoveFilterSoft|)))
+                       #b00001010000101101011010110010))))
       (a!2 (ite (and (= |0_am2-x3sb-xcg-5-1b_OVERALL_BEST_None_prefixLength| 32)
                      (= (bvand |0_dst-ip| #xffffffff)
-                        (bvand #x19940228 #xffffffff))
-                     |0_25.148.2.40/32ExportRemoveSoft0_am2-x3sb-xcg-5-1b_OVERALL_BEST_None|)
+                        (bvand #x19940228 #xffffffff)))
                 32
                 |0_am2-x3sb-xcg-5-1b_OVERALL_BEST_None_prefixLength|)))
 (let ((a!3 (and (= |0_am2-x3sb-xcg-5-1b_BGP_SINGLE-EXPORT__permitted|
@@ -19428,8 +18517,7 @@
   (ite (and (not false)
             true
             |0_am2-x3sb-xcg-5-1b_BGP_EXPORT_ENV-10.22.181.246_permitted|
-            (= |0_FAILED-EDGE_am2-x3sb-xcg-5-1b_Ethernet1/48| 0)
-            |0_am2-x3sb-xcg-5-1bImportFilterAddSoft0_am2-x3sb-xcg-5-1b_BGP_IMPORT_Ethernet1/48|)
+            (= |0_FAILED-EDGE_am2-x3sb-xcg-5-1b_Ethernet1/48| 0))
        a!1
        (not |0_am2-x3sb-xcg-5-1b_BGP_IMPORT_Ethernet1/48_permitted|))))
 (assert (let ((a!1 (ite (= |0_am2-x3sb-xcg-5-1b_BGP_EXPORT_ENV-10.22.181.244_prefixLength|
@@ -19458,19 +18546,16 @@
   (ite (and (not false)
             true
             |0_am2-x3sb-xcg-5-1b_BGP_EXPORT_ENV-10.22.181.244_permitted|
-            (= |0_FAILED-EDGE_am2-x3sb-xcg-5-1b_Ethernet1/47| 0)
-            |0_am2-x3sb-xcg-5-1bImportFilterAddSoft0_am2-x3sb-xcg-5-1b_BGP_IMPORT_Ethernet1/47|)
+            (= |0_FAILED-EDGE_am2-x3sb-xcg-5-1b_Ethernet1/47| 0))
        a!1
        (not |0_am2-x3sb-xcg-5-1b_BGP_IMPORT_Ethernet1/47_permitted|))))
 (assert (let ((a!1 (or (and (>= |0_am2-x3sb-xcg-5-1a_OVERALL_BEST_None_prefixLength| 31)
                     (<= |0_am2-x3sb-xcg-5-1a_OVERALL_BEST_None_prefixLength| 32)
                     (= ((_ extract 31 2) |0_dst-ip|)
-                       #b000010100001011010110101100000)
-                    |0_10.22.181.128/30BGPRemoveFilterSoft|)
+                       #b000010100001011010110101100000))
                (and (>= |0_am2-x3sb-xcg-5-1a_OVERALL_BEST_None_prefixLength| 29)
                     (<= |0_am2-x3sb-xcg-5-1a_OVERALL_BEST_None_prefixLength| 32)
-                    (= ((_ extract 31 4) |0_dst-ip|) #x0a16b57)
-                    |0_10.22.181.112/28BGPRemoveFilterSoft|)
+                    (= ((_ extract 31 4) |0_dst-ip|) #x0a16b57))
                (and (= |0_am2-x3sb-xcg-5-1a_OVERALL_BEST_None_prefixLength| 32)
                     (= ((_ extract 31 1) |0_dst-ip|)
                        #b0000101000010110101101011110101))
@@ -19479,12 +18564,10 @@
                        #b0000101000010110101101011010100))
                (and (>= |0_am2-x3sb-xcg-5-1a_OVERALL_BEST_None_prefixLength| 29)
                     (<= |0_am2-x3sb-xcg-5-1a_OVERALL_BEST_None_prefixLength| 32)
-                    (= ((_ extract 31 4) |0_dst-ip|) #x0a01b10)
-                    |0_10.1.177.0/28BGPRemoveFilterSoft|)))
+                    (= ((_ extract 31 4) |0_dst-ip|) #x0a01b10))))
       (a!2 (ite (and (= |0_am2-x3sb-xcg-5-1a_OVERALL_BEST_None_prefixLength| 32)
                      (= (bvand |0_dst-ip| #xffffffff)
-                        (bvand #x19940227 #xffffffff))
-                     |0_25.148.2.39/32ExportRemoveSoft0_am2-x3sb-xcg-5-1a_OVERALL_BEST_None|)
+                        (bvand #x19940227 #xffffffff)))
                 32
                 |0_am2-x3sb-xcg-5-1a_OVERALL_BEST_None_prefixLength|)))
 (let ((a!3 (and (= |0_am2-x3sb-xcg-5-1a_BGP_SINGLE-EXPORT__permitted|
@@ -19545,8 +18628,7 @@
   (ite (and (not false)
             true
             |0_am2-x3sb-xcg-5-1a_BGP_EXPORT_ENV-10.22.181.242_permitted|
-            (= |0_FAILED-EDGE_am2-x3sb-xcg-5-1a_Ethernet1/48| 0)
-            |0_am2-x3sb-xcg-5-1aImportFilterAddSoft0_am2-x3sb-xcg-5-1a_BGP_IMPORT_Ethernet1/48|)
+            (= |0_FAILED-EDGE_am2-x3sb-xcg-5-1a_Ethernet1/48| 0))
        a!1
        (not |0_am2-x3sb-xcg-5-1a_BGP_IMPORT_Ethernet1/48_permitted|))))
 (assert (let ((a!1 (ite (= |0_am2-x3sb-xcg-5-1a_BGP_EXPORT_ENV-10.22.181.240_prefixLength|
@@ -19575,8 +18657,7 @@
   (ite (and (not false)
             true
             |0_am2-x3sb-xcg-5-1a_BGP_EXPORT_ENV-10.22.181.240_permitted|
-            (= |0_FAILED-EDGE_am2-x3sb-xcg-5-1a_Ethernet1/47| 0)
-            |0_am2-x3sb-xcg-5-1aImportFilterAddSoft0_am2-x3sb-xcg-5-1a_BGP_IMPORT_Ethernet1/47|)
+            (= |0_FAILED-EDGE_am2-x3sb-xcg-5-1a_Ethernet1/47| 0))
        a!1
        (not |0_am2-x3sb-xcg-5-1a_BGP_IMPORT_Ethernet1/47_permitted|))))
 (assert (=> |0_am2-x3hl-xcg-5-06_OVERALL_BEST_None_permitted| true))
@@ -27075,877 +26156,381 @@
               true
               true))
     (not |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel1|)))
-(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-06_mgmt0|)
-        |0_0__am2-x3hl-xcg-5-06_mgmt0_OUTBOUND_SOFTAdd|
-        (= |0_FAILED-EDGE_am2-x3hl-xcg-5-06_mgmt0| 0))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-06_mgmt0|) true)
    |0_DATA-FORWARDING_am2-x3hl-xcg-5-06_mgmt0|))
-(assert (let ((a!1 (and (or (and (or false
-                             |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-06_Port-Channel1|)
-                         |0_0__am2-x3hl-xcg-5-06_Port-Channel1_OUTBOUND_SOFTAdd|)
-                    |0_am2-x3hl-xcg-5-06-StaticRouteAddSoft-am2-x3hl-xcg-5-06,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel6|)
-                (= |0_FAILED-EDGE_am2-x3hl-xcg-5-06_am2-x3sb-xcg-5-1a| 0))))
-  (= a!1 |0_DATA-FORWARDING_am2-x3hl-xcg-5-06_Port-Channel1|)))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-06_Port-Channel1|) true)
+   |0_DATA-FORWARDING_am2-x3hl-xcg-5-06_Port-Channel1|))
 (assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-06_Vlan101|)
-        (or |0__am2-x3hl-xcg-5-06_Vlan101_OUTBOUND_vlan101-xcg-out|
-            |0_0__am2-x3hl-xcg-5-06_Vlan101_OUTBOUND_vlan101-xcg-outRemove|)
-        (= |0_FAILED-EDGE_am2-x3hl-xcg-5-06_Vlan101| 0))
+        |0__am2-x3hl-xcg-5-06_Vlan101_OUTBOUND_vlan101-xcg-out|)
    |0_DATA-FORWARDING_am2-x3hl-xcg-5-06_Vlan101|))
-(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-06_Loopback0|)
-        |0_0__am2-x3hl-xcg-5-06_Loopback0_OUTBOUND_SOFTAdd|
-        (= |0_FAILED-EDGE_am2-x3hl-xcg-5-06_Loopback0| 0))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-06_Loopback0|) true)
    |0_DATA-FORWARDING_am2-x3hl-xcg-5-06_Loopback0|))
 (assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-06_Vlan102|)
-        (or |0__am2-x3hl-xcg-5-06_Vlan102_OUTBOUND_vlan102-xcg-out|
-            |0_0__am2-x3hl-xcg-5-06_Vlan102_OUTBOUND_vlan102-xcg-outRemove|)
-        (= |0_FAILED-EDGE_am2-x3hl-xcg-5-06_Vlan102| 0))
+        |0__am2-x3hl-xcg-5-06_Vlan102_OUTBOUND_vlan102-xcg-out|)
    |0_DATA-FORWARDING_am2-x3hl-xcg-5-06_Vlan102|))
-(assert (let ((a!1 (and (or (and (or false
-                             |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-06_Port-Channel2|)
-                         |0_0__am2-x3hl-xcg-5-06_Port-Channel2_OUTBOUND_SOFTAdd|)
-                    |0_am2-x3hl-xcg-5-06-StaticRouteAddSoft-am2-x3hl-xcg-5-06,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel6|)
-                (= |0_FAILED-EDGE_am2-x3hl-xcg-5-06_am2-x3sb-xcg-5-1b| 0))))
-  (= a!1 |0_DATA-FORWARDING_am2-x3hl-xcg-5-06_Port-Channel2|)))
-(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-17_mgmt0|)
-        |0_0__am2-x3hl-xcg-5-17_mgmt0_OUTBOUND_SOFTAdd|
-        (= |0_FAILED-EDGE_am2-x3hl-xcg-5-17_mgmt0| 0))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-06_Port-Channel2|) true)
+   |0_DATA-FORWARDING_am2-x3hl-xcg-5-06_Port-Channel2|))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-17_mgmt0|) true)
    |0_DATA-FORWARDING_am2-x3hl-xcg-5-17_mgmt0|))
-(assert (let ((a!1 (and (or (and (or false
-                             |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-17_Port-Channel1|)
-                         |0_0__am2-x3hl-xcg-5-17_Port-Channel1_OUTBOUND_SOFTAdd|)
-                    |0_am2-x3hl-xcg-5-17-StaticRouteAddSoft-am2-x3hl-xcg-5-17,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel17|)
-                (= |0_FAILED-EDGE_am2-x3hl-xcg-5-17_am2-x3sb-xcg-5-1a| 0))))
-  (= a!1 |0_DATA-FORWARDING_am2-x3hl-xcg-5-17_Port-Channel1|)))
-(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-17_Loopback0|)
-        |0_0__am2-x3hl-xcg-5-17_Loopback0_OUTBOUND_SOFTAdd|
-        (= |0_FAILED-EDGE_am2-x3hl-xcg-5-17_Loopback0| 0))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-17_Port-Channel1|) true)
+   |0_DATA-FORWARDING_am2-x3hl-xcg-5-17_Port-Channel1|))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-17_Loopback0|) true)
    |0_DATA-FORWARDING_am2-x3hl-xcg-5-17_Loopback0|))
 (assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-17_Vlan102|)
-        (or |0__am2-x3hl-xcg-5-17_Vlan102_OUTBOUND_vlan102-xcg-out|
-            |0_0__am2-x3hl-xcg-5-17_Vlan102_OUTBOUND_vlan102-xcg-outRemove|)
-        (= |0_FAILED-EDGE_am2-x3hl-xcg-5-17_Vlan102| 0))
+        |0__am2-x3hl-xcg-5-17_Vlan102_OUTBOUND_vlan102-xcg-out|)
    |0_DATA-FORWARDING_am2-x3hl-xcg-5-17_Vlan102|))
-(assert (let ((a!1 (and (or (and (or false
-                             |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-17_Port-Channel2|)
-                         |0_0__am2-x3hl-xcg-5-17_Port-Channel2_OUTBOUND_SOFTAdd|)
-                    |0_am2-x3hl-xcg-5-17-StaticRouteAddSoft-am2-x3hl-xcg-5-17,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel17|)
-                (= |0_FAILED-EDGE_am2-x3hl-xcg-5-17_am2-x3sb-xcg-5-1b| 0))))
-  (= a!1 |0_DATA-FORWARDING_am2-x3hl-xcg-5-17_Port-Channel2|)))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-17_Port-Channel2|) true)
+   |0_DATA-FORWARDING_am2-x3hl-xcg-5-17_Port-Channel2|))
 (assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-17_Vlan101|)
-        (or |0__am2-x3hl-xcg-5-17_Vlan101_OUTBOUND_vlan101-xcg-out|
-            |0_0__am2-x3hl-xcg-5-17_Vlan101_OUTBOUND_vlan101-xcg-outRemove|)
-        (= |0_FAILED-EDGE_am2-x3hl-xcg-5-17_Vlan101| 0))
+        |0__am2-x3hl-xcg-5-17_Vlan101_OUTBOUND_vlan101-xcg-out|)
    |0_DATA-FORWARDING_am2-x3hl-xcg-5-17_Vlan101|))
 (assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-07_Vlan101|)
-        (or |0__am2-x3hl-xcg-5-07_Vlan101_OUTBOUND_vlan101-xcg-out|
-            |0_0__am2-x3hl-xcg-5-07_Vlan101_OUTBOUND_vlan101-xcg-outRemove|)
-        (= |0_FAILED-EDGE_am2-x3hl-xcg-5-07_Vlan101| 0))
+        |0__am2-x3hl-xcg-5-07_Vlan101_OUTBOUND_vlan101-xcg-out|)
    |0_DATA-FORWARDING_am2-x3hl-xcg-5-07_Vlan101|))
-(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-07_mgmt0|)
-        |0_0__am2-x3hl-xcg-5-07_mgmt0_OUTBOUND_SOFTAdd|
-        (= |0_FAILED-EDGE_am2-x3hl-xcg-5-07_mgmt0| 0))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-07_mgmt0|) true)
    |0_DATA-FORWARDING_am2-x3hl-xcg-5-07_mgmt0|))
-(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-07_Loopback0|)
-        |0_0__am2-x3hl-xcg-5-07_Loopback0_OUTBOUND_SOFTAdd|
-        (= |0_FAILED-EDGE_am2-x3hl-xcg-5-07_Loopback0| 0))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-07_Loopback0|) true)
    |0_DATA-FORWARDING_am2-x3hl-xcg-5-07_Loopback0|))
 (assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-07_Vlan102|)
-        (or |0__am2-x3hl-xcg-5-07_Vlan102_OUTBOUND_vlan102-xcg-out|
-            |0_0__am2-x3hl-xcg-5-07_Vlan102_OUTBOUND_vlan102-xcg-outRemove|)
-        (= |0_FAILED-EDGE_am2-x3hl-xcg-5-07_Vlan102| 0))
+        |0__am2-x3hl-xcg-5-07_Vlan102_OUTBOUND_vlan102-xcg-out|)
    |0_DATA-FORWARDING_am2-x3hl-xcg-5-07_Vlan102|))
-(assert (let ((a!1 (and (or (and (or false
-                             |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-07_Port-Channel1|)
-                         |0_0__am2-x3hl-xcg-5-07_Port-Channel1_OUTBOUND_SOFTAdd|)
-                    |0_am2-x3hl-xcg-5-07-StaticRouteAddSoft-am2-x3hl-xcg-5-07,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel7|)
-                (= |0_FAILED-EDGE_am2-x3hl-xcg-5-07_am2-x3sb-xcg-5-1a| 0))))
-  (= a!1 |0_DATA-FORWARDING_am2-x3hl-xcg-5-07_Port-Channel1|)))
-(assert (let ((a!1 (and (or (and (or false
-                             |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-07_Port-Channel2|)
-                         |0_0__am2-x3hl-xcg-5-07_Port-Channel2_OUTBOUND_SOFTAdd|)
-                    |0_am2-x3hl-xcg-5-07-StaticRouteAddSoft-am2-x3hl-xcg-5-07,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel7|)
-                (= |0_FAILED-EDGE_am2-x3hl-xcg-5-07_am2-x3sb-xcg-5-1b| 0))))
-  (= a!1 |0_DATA-FORWARDING_am2-x3hl-xcg-5-07_Port-Channel2|)))
-(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-18_mgmt0|)
-        |0_0__am2-x3hl-xcg-5-18_mgmt0_OUTBOUND_SOFTAdd|
-        (= |0_FAILED-EDGE_am2-x3hl-xcg-5-18_mgmt0| 0))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-07_Port-Channel1|) true)
+   |0_DATA-FORWARDING_am2-x3hl-xcg-5-07_Port-Channel1|))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-07_Port-Channel2|) true)
+   |0_DATA-FORWARDING_am2-x3hl-xcg-5-07_Port-Channel2|))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-18_mgmt0|) true)
    |0_DATA-FORWARDING_am2-x3hl-xcg-5-18_mgmt0|))
-(assert (let ((a!1 (and (or (and (or false
-                             |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-18_Port-Channel2|)
-                         |0_0__am2-x3hl-xcg-5-18_Port-Channel2_OUTBOUND_SOFTAdd|)
-                    |0_am2-x3hl-xcg-5-18-StaticRouteAddSoft-am2-x3hl-xcg-5-18,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel18|)
-                (= |0_FAILED-EDGE_am2-x3hl-xcg-5-18_am2-x3sb-xcg-5-1b| 0))))
-  (= a!1 |0_DATA-FORWARDING_am2-x3hl-xcg-5-18_Port-Channel2|)))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-18_Port-Channel2|) true)
+   |0_DATA-FORWARDING_am2-x3hl-xcg-5-18_Port-Channel2|))
 (assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-18_Vlan101|)
-        (or |0__am2-x3hl-xcg-5-18_Vlan101_OUTBOUND_vlan101-xcg-out|
-            |0_0__am2-x3hl-xcg-5-18_Vlan101_OUTBOUND_vlan101-xcg-outRemove|)
-        (= |0_FAILED-EDGE_am2-x3hl-xcg-5-18_Vlan101| 0))
+        |0__am2-x3hl-xcg-5-18_Vlan101_OUTBOUND_vlan101-xcg-out|)
    |0_DATA-FORWARDING_am2-x3hl-xcg-5-18_Vlan101|))
-(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-18_Loopback0|)
-        |0_0__am2-x3hl-xcg-5-18_Loopback0_OUTBOUND_SOFTAdd|
-        (= |0_FAILED-EDGE_am2-x3hl-xcg-5-18_Loopback0| 0))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-18_Loopback0|) true)
    |0_DATA-FORWARDING_am2-x3hl-xcg-5-18_Loopback0|))
 (assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-18_Vlan102|)
-        (or |0__am2-x3hl-xcg-5-18_Vlan102_OUTBOUND_vlan102-xcg-out|
-            |0_0__am2-x3hl-xcg-5-18_Vlan102_OUTBOUND_vlan102-xcg-outRemove|)
-        (= |0_FAILED-EDGE_am2-x3hl-xcg-5-18_Vlan102| 0))
+        |0__am2-x3hl-xcg-5-18_Vlan102_OUTBOUND_vlan102-xcg-out|)
    |0_DATA-FORWARDING_am2-x3hl-xcg-5-18_Vlan102|))
-(assert (let ((a!1 (and (or (and (or false
-                             |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-18_Port-Channel1|)
-                         |0_0__am2-x3hl-xcg-5-18_Port-Channel1_OUTBOUND_SOFTAdd|)
-                    |0_am2-x3hl-xcg-5-18-StaticRouteAddSoft-am2-x3hl-xcg-5-18,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel18|)
-                (= |0_FAILED-EDGE_am2-x3hl-xcg-5-18_am2-x3sb-xcg-5-1a| 0))))
-  (= a!1 |0_DATA-FORWARDING_am2-x3hl-xcg-5-18_Port-Channel1|)))
-(assert (let ((a!1 (and (or (and (or false
-                             |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-15_Port-Channel1|)
-                         |0_0__am2-x3hl-xcg-5-15_Port-Channel1_OUTBOUND_SOFTAdd|)
-                    |0_am2-x3hl-xcg-5-15-StaticRouteAddSoft-am2-x3hl-xcg-5-15,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel15|)
-                (= |0_FAILED-EDGE_am2-x3hl-xcg-5-15_am2-x3sb-xcg-5-1a| 0))))
-  (= a!1 |0_DATA-FORWARDING_am2-x3hl-xcg-5-15_Port-Channel1|)))
-(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-15_mgmt0|)
-        |0_0__am2-x3hl-xcg-5-15_mgmt0_OUTBOUND_SOFTAdd|
-        (= |0_FAILED-EDGE_am2-x3hl-xcg-5-15_mgmt0| 0))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-18_Port-Channel1|) true)
+   |0_DATA-FORWARDING_am2-x3hl-xcg-5-18_Port-Channel1|))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-15_Port-Channel1|) true)
+   |0_DATA-FORWARDING_am2-x3hl-xcg-5-15_Port-Channel1|))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-15_mgmt0|) true)
    |0_DATA-FORWARDING_am2-x3hl-xcg-5-15_mgmt0|))
-(assert (let ((a!1 (and (or (and (or false
-                             |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-15_Port-Channel2|)
-                         |0_0__am2-x3hl-xcg-5-15_Port-Channel2_OUTBOUND_SOFTAdd|)
-                    |0_am2-x3hl-xcg-5-15-StaticRouteAddSoft-am2-x3hl-xcg-5-15,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel15|)
-                (= |0_FAILED-EDGE_am2-x3hl-xcg-5-15_am2-x3sb-xcg-5-1b| 0))))
-  (= a!1 |0_DATA-FORWARDING_am2-x3hl-xcg-5-15_Port-Channel2|)))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-15_Port-Channel2|) true)
+   |0_DATA-FORWARDING_am2-x3hl-xcg-5-15_Port-Channel2|))
 (assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-15_Vlan102|)
-        (or |0__am2-x3hl-xcg-5-15_Vlan102_OUTBOUND_vlan102-xcg-out|
-            |0_0__am2-x3hl-xcg-5-15_Vlan102_OUTBOUND_vlan102-xcg-outRemove|)
-        (= |0_FAILED-EDGE_am2-x3hl-xcg-5-15_Vlan102| 0))
+        |0__am2-x3hl-xcg-5-15_Vlan102_OUTBOUND_vlan102-xcg-out|)
    |0_DATA-FORWARDING_am2-x3hl-xcg-5-15_Vlan102|))
-(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-15_Loopback0|)
-        |0_0__am2-x3hl-xcg-5-15_Loopback0_OUTBOUND_SOFTAdd|
-        (= |0_FAILED-EDGE_am2-x3hl-xcg-5-15_Loopback0| 0))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-15_Loopback0|) true)
    |0_DATA-FORWARDING_am2-x3hl-xcg-5-15_Loopback0|))
 (assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-15_Vlan101|)
-        (or |0__am2-x3hl-xcg-5-15_Vlan101_OUTBOUND_vlan101-xcg-out|
-            |0_0__am2-x3hl-xcg-5-15_Vlan101_OUTBOUND_vlan101-xcg-outRemove|)
-        (= |0_FAILED-EDGE_am2-x3hl-xcg-5-15_Vlan101| 0))
+        |0__am2-x3hl-xcg-5-15_Vlan101_OUTBOUND_vlan101-xcg-out|)
    |0_DATA-FORWARDING_am2-x3hl-xcg-5-15_Vlan101|))
-(assert (let ((a!1 (and (or (and (or false
-                             |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-05_Port-Channel1|)
-                         |0_0__am2-x3hl-xcg-5-05_Port-Channel1_OUTBOUND_SOFTAdd|)
-                    |0_am2-x3hl-xcg-5-05-StaticRouteAddSoft-am2-x3hl-xcg-5-05,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel5|)
-                (= |0_FAILED-EDGE_am2-x3hl-xcg-5-05_am2-x3sb-xcg-5-1a| 0))))
-  (= a!1 |0_DATA-FORWARDING_am2-x3hl-xcg-5-05_Port-Channel1|)))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-05_Port-Channel1|) true)
+   |0_DATA-FORWARDING_am2-x3hl-xcg-5-05_Port-Channel1|))
 (assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-05_Vlan101|)
-        (or |0__am2-x3hl-xcg-5-05_Vlan101_OUTBOUND_vlan101-xcg-out|
-            |0_0__am2-x3hl-xcg-5-05_Vlan101_OUTBOUND_vlan101-xcg-outRemove|)
-        (= |0_FAILED-EDGE_am2-x3hl-xcg-5-05_Vlan101| 0))
+        |0__am2-x3hl-xcg-5-05_Vlan101_OUTBOUND_vlan101-xcg-out|)
    |0_DATA-FORWARDING_am2-x3hl-xcg-5-05_Vlan101|))
 (assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-05_Vlan102|)
-        (or |0__am2-x3hl-xcg-5-05_Vlan102_OUTBOUND_vlan102-xcg-out|
-            |0_0__am2-x3hl-xcg-5-05_Vlan102_OUTBOUND_vlan102-xcg-outRemove|)
-        (= |0_FAILED-EDGE_am2-x3hl-xcg-5-05_Vlan102| 0))
+        |0__am2-x3hl-xcg-5-05_Vlan102_OUTBOUND_vlan102-xcg-out|)
    |0_DATA-FORWARDING_am2-x3hl-xcg-5-05_Vlan102|))
-(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-05_Loopback0|)
-        |0_0__am2-x3hl-xcg-5-05_Loopback0_OUTBOUND_SOFTAdd|
-        (= |0_FAILED-EDGE_am2-x3hl-xcg-5-05_Loopback0| 0))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-05_Loopback0|) true)
    |0_DATA-FORWARDING_am2-x3hl-xcg-5-05_Loopback0|))
-(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-05_mgmt0|)
-        |0_0__am2-x3hl-xcg-5-05_mgmt0_OUTBOUND_SOFTAdd|
-        (= |0_FAILED-EDGE_am2-x3hl-xcg-5-05_mgmt0| 0))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-05_mgmt0|) true)
    |0_DATA-FORWARDING_am2-x3hl-xcg-5-05_mgmt0|))
-(assert (let ((a!1 (and (or (and (or false
-                             |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-05_Port-Channel2|)
-                         |0_0__am2-x3hl-xcg-5-05_Port-Channel2_OUTBOUND_SOFTAdd|)
-                    |0_am2-x3hl-xcg-5-05-StaticRouteAddSoft-am2-x3hl-xcg-5-05,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel5|)
-                (= |0_FAILED-EDGE_am2-x3hl-xcg-5-05_am2-x3sb-xcg-5-1b| 0))))
-  (= a!1 |0_DATA-FORWARDING_am2-x3hl-xcg-5-05_Port-Channel2|)))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-05_Port-Channel2|) true)
+   |0_DATA-FORWARDING_am2-x3hl-xcg-5-05_Port-Channel2|))
 (assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-16_Vlan102|)
-        (or |0__am2-x3hl-xcg-5-16_Vlan102_OUTBOUND_vlan102-xcg-out|
-            |0_0__am2-x3hl-xcg-5-16_Vlan102_OUTBOUND_vlan102-xcg-outRemove|)
-        (= |0_FAILED-EDGE_am2-x3hl-xcg-5-16_Vlan102| 0))
+        |0__am2-x3hl-xcg-5-16_Vlan102_OUTBOUND_vlan102-xcg-out|)
    |0_DATA-FORWARDING_am2-x3hl-xcg-5-16_Vlan102|))
-(assert (let ((a!1 (and (or (and (or false
-                             |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-16_Port-Channel1|)
-                         |0_0__am2-x3hl-xcg-5-16_Port-Channel1_OUTBOUND_SOFTAdd|)
-                    |0_am2-x3hl-xcg-5-16-StaticRouteAddSoft-am2-x3hl-xcg-5-16,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel16|)
-                (= |0_FAILED-EDGE_am2-x3hl-xcg-5-16_am2-x3sb-xcg-5-1a| 0))))
-  (= a!1 |0_DATA-FORWARDING_am2-x3hl-xcg-5-16_Port-Channel1|)))
-(assert (let ((a!1 (and (or (and (or false
-                             |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-16_Port-Channel2|)
-                         |0_0__am2-x3hl-xcg-5-16_Port-Channel2_OUTBOUND_SOFTAdd|)
-                    |0_am2-x3hl-xcg-5-16-StaticRouteAddSoft-am2-x3hl-xcg-5-16,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel16|)
-                (= |0_FAILED-EDGE_am2-x3hl-xcg-5-16_am2-x3sb-xcg-5-1b| 0))))
-  (= a!1 |0_DATA-FORWARDING_am2-x3hl-xcg-5-16_Port-Channel2|)))
-(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-16_mgmt0|)
-        |0_0__am2-x3hl-xcg-5-16_mgmt0_OUTBOUND_SOFTAdd|
-        (= |0_FAILED-EDGE_am2-x3hl-xcg-5-16_mgmt0| 0))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-16_Port-Channel1|) true)
+   |0_DATA-FORWARDING_am2-x3hl-xcg-5-16_Port-Channel1|))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-16_Port-Channel2|) true)
+   |0_DATA-FORWARDING_am2-x3hl-xcg-5-16_Port-Channel2|))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-16_mgmt0|) true)
    |0_DATA-FORWARDING_am2-x3hl-xcg-5-16_mgmt0|))
-(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-16_Loopback0|)
-        |0_0__am2-x3hl-xcg-5-16_Loopback0_OUTBOUND_SOFTAdd|
-        (= |0_FAILED-EDGE_am2-x3hl-xcg-5-16_Loopback0| 0))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-16_Loopback0|) true)
    |0_DATA-FORWARDING_am2-x3hl-xcg-5-16_Loopback0|))
 (assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-16_Vlan101|)
-        (or |0__am2-x3hl-xcg-5-16_Vlan101_OUTBOUND_vlan101-xcg-out|
-            |0_0__am2-x3hl-xcg-5-16_Vlan101_OUTBOUND_vlan101-xcg-outRemove|)
-        (= |0_FAILED-EDGE_am2-x3hl-xcg-5-16_Vlan101| 0))
+        |0__am2-x3hl-xcg-5-16_Vlan101_OUTBOUND_vlan101-xcg-out|)
    |0_DATA-FORWARDING_am2-x3hl-xcg-5-16_Vlan101|))
 (assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-02_Vlan102|)
-        (or |0__am2-x3hl-xcg-5-02_Vlan102_OUTBOUND_vlan102-xcg-out|
-            |0_0__am2-x3hl-xcg-5-02_Vlan102_OUTBOUND_vlan102-xcg-outRemove|)
-        (= |0_FAILED-EDGE_am2-x3hl-xcg-5-02_Vlan102| 0))
+        |0__am2-x3hl-xcg-5-02_Vlan102_OUTBOUND_vlan102-xcg-out|)
    |0_DATA-FORWARDING_am2-x3hl-xcg-5-02_Vlan102|))
-(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-02_mgmt0|)
-        |0_0__am2-x3hl-xcg-5-02_mgmt0_OUTBOUND_SOFTAdd|
-        (= |0_FAILED-EDGE_am2-x3hl-xcg-5-02_mgmt0| 0))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-02_mgmt0|) true)
    |0_DATA-FORWARDING_am2-x3hl-xcg-5-02_mgmt0|))
 (assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-02_Vlan101|)
-        (or |0__am2-x3hl-xcg-5-02_Vlan101_OUTBOUND_vlan101-xcg-out|
-            |0_0__am2-x3hl-xcg-5-02_Vlan101_OUTBOUND_vlan101-xcg-outRemove|)
-        (= |0_FAILED-EDGE_am2-x3hl-xcg-5-02_Vlan101| 0))
+        |0__am2-x3hl-xcg-5-02_Vlan101_OUTBOUND_vlan101-xcg-out|)
    |0_DATA-FORWARDING_am2-x3hl-xcg-5-02_Vlan101|))
-(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-02_Loopback0|)
-        |0_0__am2-x3hl-xcg-5-02_Loopback0_OUTBOUND_SOFTAdd|
-        (= |0_FAILED-EDGE_am2-x3hl-xcg-5-02_Loopback0| 0))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-02_Loopback0|) true)
    |0_DATA-FORWARDING_am2-x3hl-xcg-5-02_Loopback0|))
-(assert (let ((a!1 (and (or (and (or false
-                             |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-02_Port-Channel2|)
-                         |0_0__am2-x3hl-xcg-5-02_Port-Channel2_OUTBOUND_SOFTAdd|)
-                    |0_am2-x3hl-xcg-5-02-StaticRouteAddSoft-am2-x3hl-xcg-5-02,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel2|)
-                (= |0_FAILED-EDGE_am2-x3hl-xcg-5-02_am2-x3sb-xcg-5-1b| 0))))
-  (= a!1 |0_DATA-FORWARDING_am2-x3hl-xcg-5-02_Port-Channel2|)))
-(assert (let ((a!1 (and (or (and (or false
-                             |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-02_Port-Channel1|)
-                         |0_0__am2-x3hl-xcg-5-02_Port-Channel1_OUTBOUND_SOFTAdd|)
-                    |0_am2-x3hl-xcg-5-02-StaticRouteAddSoft-am2-x3hl-xcg-5-02,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel2|)
-                (= |0_FAILED-EDGE_am2-x3hl-xcg-5-02_am2-x3sb-xcg-5-1a| 0))))
-  (= a!1 |0_DATA-FORWARDING_am2-x3hl-xcg-5-02_Port-Channel1|)))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-02_Port-Channel2|) true)
+   |0_DATA-FORWARDING_am2-x3hl-xcg-5-02_Port-Channel2|))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-02_Port-Channel1|) true)
+   |0_DATA-FORWARDING_am2-x3hl-xcg-5-02_Port-Channel1|))
 (assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-13_Vlan102|)
-        (or |0__am2-x3hl-xcg-5-13_Vlan102_OUTBOUND_vlan102-xcg-out|
-            |0_0__am2-x3hl-xcg-5-13_Vlan102_OUTBOUND_vlan102-xcg-outRemove|)
-        (= |0_FAILED-EDGE_am2-x3hl-xcg-5-13_Vlan102| 0))
+        |0__am2-x3hl-xcg-5-13_Vlan102_OUTBOUND_vlan102-xcg-out|)
    |0_DATA-FORWARDING_am2-x3hl-xcg-5-13_Vlan102|))
-(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-13_Loopback0|)
-        |0_0__am2-x3hl-xcg-5-13_Loopback0_OUTBOUND_SOFTAdd|
-        (= |0_FAILED-EDGE_am2-x3hl-xcg-5-13_Loopback0| 0))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-13_Loopback0|) true)
    |0_DATA-FORWARDING_am2-x3hl-xcg-5-13_Loopback0|))
-(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-13_mgmt0|)
-        |0_0__am2-x3hl-xcg-5-13_mgmt0_OUTBOUND_SOFTAdd|
-        (= |0_FAILED-EDGE_am2-x3hl-xcg-5-13_mgmt0| 0))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-13_mgmt0|) true)
    |0_DATA-FORWARDING_am2-x3hl-xcg-5-13_mgmt0|))
-(assert (let ((a!1 (and (or (and (or false
-                             |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-13_Port-Channel1|)
-                         |0_0__am2-x3hl-xcg-5-13_Port-Channel1_OUTBOUND_SOFTAdd|)
-                    |0_am2-x3hl-xcg-5-13-StaticRouteAddSoft-am2-x3hl-xcg-5-13,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel13|)
-                (= |0_FAILED-EDGE_am2-x3hl-xcg-5-13_am2-x3sb-xcg-5-1a| 0))))
-  (= a!1 |0_DATA-FORWARDING_am2-x3hl-xcg-5-13_Port-Channel1|)))
-(assert (let ((a!1 (and (or (and (or false
-                             |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-13_Port-Channel2|)
-                         |0_0__am2-x3hl-xcg-5-13_Port-Channel2_OUTBOUND_SOFTAdd|)
-                    |0_am2-x3hl-xcg-5-13-StaticRouteAddSoft-am2-x3hl-xcg-5-13,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel13|)
-                (= |0_FAILED-EDGE_am2-x3hl-xcg-5-13_am2-x3sb-xcg-5-1b| 0))))
-  (= a!1 |0_DATA-FORWARDING_am2-x3hl-xcg-5-13_Port-Channel2|)))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-13_Port-Channel1|) true)
+   |0_DATA-FORWARDING_am2-x3hl-xcg-5-13_Port-Channel1|))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-13_Port-Channel2|) true)
+   |0_DATA-FORWARDING_am2-x3hl-xcg-5-13_Port-Channel2|))
 (assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-13_Vlan101|)
-        (or |0__am2-x3hl-xcg-5-13_Vlan101_OUTBOUND_vlan101-xcg-out|
-            |0_0__am2-x3hl-xcg-5-13_Vlan101_OUTBOUND_vlan101-xcg-outRemove|)
-        (= |0_FAILED-EDGE_am2-x3hl-xcg-5-13_Vlan101| 0))
+        |0__am2-x3hl-xcg-5-13_Vlan101_OUTBOUND_vlan101-xcg-out|)
    |0_DATA-FORWARDING_am2-x3hl-xcg-5-13_Vlan101|))
 (assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-03_Vlan102|)
-        (or |0__am2-x3hl-xcg-5-03_Vlan102_OUTBOUND_vlan102-xcg-out|
-            |0_0__am2-x3hl-xcg-5-03_Vlan102_OUTBOUND_vlan102-xcg-outRemove|)
-        (= |0_FAILED-EDGE_am2-x3hl-xcg-5-03_Vlan102| 0))
+        |0__am2-x3hl-xcg-5-03_Vlan102_OUTBOUND_vlan102-xcg-out|)
    |0_DATA-FORWARDING_am2-x3hl-xcg-5-03_Vlan102|))
-(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-03_mgmt0|)
-        |0_0__am2-x3hl-xcg-5-03_mgmt0_OUTBOUND_SOFTAdd|
-        (= |0_FAILED-EDGE_am2-x3hl-xcg-5-03_mgmt0| 0))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-03_mgmt0|) true)
    |0_DATA-FORWARDING_am2-x3hl-xcg-5-03_mgmt0|))
-(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-03_Loopback0|)
-        |0_0__am2-x3hl-xcg-5-03_Loopback0_OUTBOUND_SOFTAdd|
-        (= |0_FAILED-EDGE_am2-x3hl-xcg-5-03_Loopback0| 0))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-03_Loopback0|) true)
    |0_DATA-FORWARDING_am2-x3hl-xcg-5-03_Loopback0|))
 (assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-03_Vlan101|)
-        (or |0__am2-x3hl-xcg-5-03_Vlan101_OUTBOUND_vlan101-xcg-out|
-            |0_0__am2-x3hl-xcg-5-03_Vlan101_OUTBOUND_vlan101-xcg-outRemove|)
-        (= |0_FAILED-EDGE_am2-x3hl-xcg-5-03_Vlan101| 0))
+        |0__am2-x3hl-xcg-5-03_Vlan101_OUTBOUND_vlan101-xcg-out|)
    |0_DATA-FORWARDING_am2-x3hl-xcg-5-03_Vlan101|))
-(assert (let ((a!1 (and (or (and (or false
-                             |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-03_Port-Channel2|)
-                         |0_0__am2-x3hl-xcg-5-03_Port-Channel2_OUTBOUND_SOFTAdd|)
-                    |0_am2-x3hl-xcg-5-03-StaticRouteAddSoft-am2-x3hl-xcg-5-03,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel3|)
-                (= |0_FAILED-EDGE_am2-x3hl-xcg-5-03_am2-x3sb-xcg-5-1b| 0))))
-  (= a!1 |0_DATA-FORWARDING_am2-x3hl-xcg-5-03_Port-Channel2|)))
-(assert (let ((a!1 (and (or (and (or false
-                             |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-03_Port-Channel1|)
-                         |0_0__am2-x3hl-xcg-5-03_Port-Channel1_OUTBOUND_SOFTAdd|)
-                    |0_am2-x3hl-xcg-5-03-StaticRouteAddSoft-am2-x3hl-xcg-5-03,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel3|)
-                (= |0_FAILED-EDGE_am2-x3hl-xcg-5-03_am2-x3sb-xcg-5-1a| 0))))
-  (= a!1 |0_DATA-FORWARDING_am2-x3hl-xcg-5-03_Port-Channel1|)))
-(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-14_mgmt0|)
-        |0_0__am2-x3hl-xcg-5-14_mgmt0_OUTBOUND_SOFTAdd|
-        (= |0_FAILED-EDGE_am2-x3hl-xcg-5-14_mgmt0| 0))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-03_Port-Channel2|) true)
+   |0_DATA-FORWARDING_am2-x3hl-xcg-5-03_Port-Channel2|))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-03_Port-Channel1|) true)
+   |0_DATA-FORWARDING_am2-x3hl-xcg-5-03_Port-Channel1|))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-14_mgmt0|) true)
    |0_DATA-FORWARDING_am2-x3hl-xcg-5-14_mgmt0|))
 (assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-14_Vlan102|)
-        (or |0__am2-x3hl-xcg-5-14_Vlan102_OUTBOUND_vlan102-xcg-out|
-            |0_0__am2-x3hl-xcg-5-14_Vlan102_OUTBOUND_vlan102-xcg-outRemove|)
-        (= |0_FAILED-EDGE_am2-x3hl-xcg-5-14_Vlan102| 0))
+        |0__am2-x3hl-xcg-5-14_Vlan102_OUTBOUND_vlan102-xcg-out|)
    |0_DATA-FORWARDING_am2-x3hl-xcg-5-14_Vlan102|))
-(assert (let ((a!1 (and (or (and (or false
-                             |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-14_Port-Channel1|)
-                         |0_0__am2-x3hl-xcg-5-14_Port-Channel1_OUTBOUND_SOFTAdd|)
-                    |0_am2-x3hl-xcg-5-14-StaticRouteAddSoft-am2-x3hl-xcg-5-14,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel14|)
-                (= |0_FAILED-EDGE_am2-x3hl-xcg-5-14_am2-x3sb-xcg-5-1a| 0))))
-  (= a!1 |0_DATA-FORWARDING_am2-x3hl-xcg-5-14_Port-Channel1|)))
-(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-14_Loopback0|)
-        |0_0__am2-x3hl-xcg-5-14_Loopback0_OUTBOUND_SOFTAdd|
-        (= |0_FAILED-EDGE_am2-x3hl-xcg-5-14_Loopback0| 0))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-14_Port-Channel1|) true)
+   |0_DATA-FORWARDING_am2-x3hl-xcg-5-14_Port-Channel1|))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-14_Loopback0|) true)
    |0_DATA-FORWARDING_am2-x3hl-xcg-5-14_Loopback0|))
 (assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-14_Vlan101|)
-        (or |0__am2-x3hl-xcg-5-14_Vlan101_OUTBOUND_vlan101-xcg-out|
-            |0_0__am2-x3hl-xcg-5-14_Vlan101_OUTBOUND_vlan101-xcg-outRemove|)
-        (= |0_FAILED-EDGE_am2-x3hl-xcg-5-14_Vlan101| 0))
+        |0__am2-x3hl-xcg-5-14_Vlan101_OUTBOUND_vlan101-xcg-out|)
    |0_DATA-FORWARDING_am2-x3hl-xcg-5-14_Vlan101|))
-(assert (let ((a!1 (and (or (and (or false
-                             |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-14_Port-Channel2|)
-                         |0_0__am2-x3hl-xcg-5-14_Port-Channel2_OUTBOUND_SOFTAdd|)
-                    |0_am2-x3hl-xcg-5-14-StaticRouteAddSoft-am2-x3hl-xcg-5-14,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel14|)
-                (= |0_FAILED-EDGE_am2-x3hl-xcg-5-14_am2-x3sb-xcg-5-1b| 0))))
-  (= a!1 |0_DATA-FORWARDING_am2-x3hl-xcg-5-14_Port-Channel2|)))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-14_Port-Channel2|) true)
+   |0_DATA-FORWARDING_am2-x3hl-xcg-5-14_Port-Channel2|))
 (assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-11_Vlan101|)
-        (or |0__am2-x3hl-xcg-5-11_Vlan101_OUTBOUND_vlan101-xcg-out|
-            |0_0__am2-x3hl-xcg-5-11_Vlan101_OUTBOUND_vlan101-xcg-outRemove|)
-        (= |0_FAILED-EDGE_am2-x3hl-xcg-5-11_Vlan101| 0))
+        |0__am2-x3hl-xcg-5-11_Vlan101_OUTBOUND_vlan101-xcg-out|)
    |0_DATA-FORWARDING_am2-x3hl-xcg-5-11_Vlan101|))
-(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-11_Loopback0|)
-        |0_0__am2-x3hl-xcg-5-11_Loopback0_OUTBOUND_SOFTAdd|
-        (= |0_FAILED-EDGE_am2-x3hl-xcg-5-11_Loopback0| 0))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-11_Loopback0|) true)
    |0_DATA-FORWARDING_am2-x3hl-xcg-5-11_Loopback0|))
-(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-11_mgmt0|)
-        |0_0__am2-x3hl-xcg-5-11_mgmt0_OUTBOUND_SOFTAdd|
-        (= |0_FAILED-EDGE_am2-x3hl-xcg-5-11_mgmt0| 0))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-11_mgmt0|) true)
    |0_DATA-FORWARDING_am2-x3hl-xcg-5-11_mgmt0|))
 (assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-11_Vlan102|)
-        (or |0__am2-x3hl-xcg-5-11_Vlan102_OUTBOUND_vlan102-xcg-out|
-            |0_0__am2-x3hl-xcg-5-11_Vlan102_OUTBOUND_vlan102-xcg-outRemove|)
-        (= |0_FAILED-EDGE_am2-x3hl-xcg-5-11_Vlan102| 0))
+        |0__am2-x3hl-xcg-5-11_Vlan102_OUTBOUND_vlan102-xcg-out|)
    |0_DATA-FORWARDING_am2-x3hl-xcg-5-11_Vlan102|))
-(assert (let ((a!1 (and (or (and (or false
-                             |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-11_Port-Channel1|)
-                         |0_0__am2-x3hl-xcg-5-11_Port-Channel1_OUTBOUND_SOFTAdd|)
-                    |0_am2-x3hl-xcg-5-11-StaticRouteAddSoft-am2-x3hl-xcg-5-11,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel11|)
-                (= |0_FAILED-EDGE_am2-x3hl-xcg-5-11_am2-x3sb-xcg-5-1a| 0))))
-  (= a!1 |0_DATA-FORWARDING_am2-x3hl-xcg-5-11_Port-Channel1|)))
-(assert (let ((a!1 (and (or (and (or false
-                             |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-11_Port-Channel2|)
-                         |0_0__am2-x3hl-xcg-5-11_Port-Channel2_OUTBOUND_SOFTAdd|)
-                    |0_am2-x3hl-xcg-5-11-StaticRouteAddSoft-am2-x3hl-xcg-5-11,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel11|)
-                (= |0_FAILED-EDGE_am2-x3hl-xcg-5-11_am2-x3sb-xcg-5-1b| 0))))
-  (= a!1 |0_DATA-FORWARDING_am2-x3hl-xcg-5-11_Port-Channel2|)))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-11_Port-Channel1|) true)
+   |0_DATA-FORWARDING_am2-x3hl-xcg-5-11_Port-Channel1|))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-11_Port-Channel2|) true)
+   |0_DATA-FORWARDING_am2-x3hl-xcg-5-11_Port-Channel2|))
 (assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-01_Vlan102|)
-        (or |0__am2-x3hl-xcg-5-01_Vlan102_OUTBOUND_vlan102-xcg-out|
-            |0_0__am2-x3hl-xcg-5-01_Vlan102_OUTBOUND_vlan102-xcg-outRemove|)
-        (= |0_FAILED-EDGE_am2-x3hl-xcg-5-01_Vlan102| 0))
+        |0__am2-x3hl-xcg-5-01_Vlan102_OUTBOUND_vlan102-xcg-out|)
    |0_DATA-FORWARDING_am2-x3hl-xcg-5-01_Vlan102|))
-(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-01_Loopback0|)
-        |0_0__am2-x3hl-xcg-5-01_Loopback0_OUTBOUND_SOFTAdd|
-        (= |0_FAILED-EDGE_am2-x3hl-xcg-5-01_Loopback0| 0))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-01_Loopback0|) true)
    |0_DATA-FORWARDING_am2-x3hl-xcg-5-01_Loopback0|))
-(assert (let ((a!1 (and (or (and (or false
-                             |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-01_Port-Channel2|)
-                         |0_0__am2-x3hl-xcg-5-01_Port-Channel2_OUTBOUND_SOFTAdd|)
-                    |0_am2-x3hl-xcg-5-01-StaticRouteAddSoft-am2-x3hl-xcg-5-01,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel1|)
-                (= |0_FAILED-EDGE_am2-x3hl-xcg-5-01_am2-x3sb-xcg-5-1b| 0))))
-  (= a!1 |0_DATA-FORWARDING_am2-x3hl-xcg-5-01_Port-Channel2|)))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-01_Port-Channel2|) true)
+   |0_DATA-FORWARDING_am2-x3hl-xcg-5-01_Port-Channel2|))
 (assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-01_Vlan101|)
-        (or |0__am2-x3hl-xcg-5-01_Vlan101_OUTBOUND_vlan101-xcg-out|
-            |0_0__am2-x3hl-xcg-5-01_Vlan101_OUTBOUND_vlan101-xcg-outRemove|)
-        (= |0_FAILED-EDGE_am2-x3hl-xcg-5-01_Vlan101| 0))
+        |0__am2-x3hl-xcg-5-01_Vlan101_OUTBOUND_vlan101-xcg-out|)
    |0_DATA-FORWARDING_am2-x3hl-xcg-5-01_Vlan101|))
-(assert (let ((a!1 (and (or (and (or false
-                             |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-01_Port-Channel1|)
-                         |0_0__am2-x3hl-xcg-5-01_Port-Channel1_OUTBOUND_SOFTAdd|)
-                    |0_am2-x3hl-xcg-5-01-StaticRouteAddSoft-am2-x3hl-xcg-5-01,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel1|)
-                (= |0_FAILED-EDGE_am2-x3hl-xcg-5-01_am2-x3sb-xcg-5-1a| 0))))
-  (= a!1 |0_DATA-FORWARDING_am2-x3hl-xcg-5-01_Port-Channel1|)))
-(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-01_mgmt0|)
-        |0_0__am2-x3hl-xcg-5-01_mgmt0_OUTBOUND_SOFTAdd|
-        (= |0_FAILED-EDGE_am2-x3hl-xcg-5-01_mgmt0| 0))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-01_Port-Channel1|) true)
+   |0_DATA-FORWARDING_am2-x3hl-xcg-5-01_Port-Channel1|))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-01_mgmt0|) true)
    |0_DATA-FORWARDING_am2-x3hl-xcg-5-01_mgmt0|))
-(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-12_Loopback0|)
-        |0_0__am2-x3hl-xcg-5-12_Loopback0_OUTBOUND_SOFTAdd|
-        (= |0_FAILED-EDGE_am2-x3hl-xcg-5-12_Loopback0| 0))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-12_Loopback0|) true)
    |0_DATA-FORWARDING_am2-x3hl-xcg-5-12_Loopback0|))
-(assert (let ((a!1 (and (or (and (or false
-                             |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-12_Port-Channel1|)
-                         |0_0__am2-x3hl-xcg-5-12_Port-Channel1_OUTBOUND_SOFTAdd|)
-                    |0_am2-x3hl-xcg-5-12-StaticRouteAddSoft-am2-x3hl-xcg-5-12,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel12|)
-                (= |0_FAILED-EDGE_am2-x3hl-xcg-5-12_am2-x3sb-xcg-5-1a| 0))))
-  (= a!1 |0_DATA-FORWARDING_am2-x3hl-xcg-5-12_Port-Channel1|)))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-12_Port-Channel1|) true)
+   |0_DATA-FORWARDING_am2-x3hl-xcg-5-12_Port-Channel1|))
 (assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-12_Vlan101|)
-        (or |0__am2-x3hl-xcg-5-12_Vlan101_OUTBOUND_vlan101-xcg-out|
-            |0_0__am2-x3hl-xcg-5-12_Vlan101_OUTBOUND_vlan101-xcg-outRemove|)
-        (= |0_FAILED-EDGE_am2-x3hl-xcg-5-12_Vlan101| 0))
+        |0__am2-x3hl-xcg-5-12_Vlan101_OUTBOUND_vlan101-xcg-out|)
    |0_DATA-FORWARDING_am2-x3hl-xcg-5-12_Vlan101|))
 (assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-12_Vlan102|)
-        (or |0__am2-x3hl-xcg-5-12_Vlan102_OUTBOUND_vlan102-xcg-out|
-            |0_0__am2-x3hl-xcg-5-12_Vlan102_OUTBOUND_vlan102-xcg-outRemove|)
-        (= |0_FAILED-EDGE_am2-x3hl-xcg-5-12_Vlan102| 0))
+        |0__am2-x3hl-xcg-5-12_Vlan102_OUTBOUND_vlan102-xcg-out|)
    |0_DATA-FORWARDING_am2-x3hl-xcg-5-12_Vlan102|))
-(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-12_mgmt0|)
-        |0_0__am2-x3hl-xcg-5-12_mgmt0_OUTBOUND_SOFTAdd|
-        (= |0_FAILED-EDGE_am2-x3hl-xcg-5-12_mgmt0| 0))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-12_mgmt0|) true)
    |0_DATA-FORWARDING_am2-x3hl-xcg-5-12_mgmt0|))
-(assert (let ((a!1 (and (or (and (or false
-                             |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-12_Port-Channel2|)
-                         |0_0__am2-x3hl-xcg-5-12_Port-Channel2_OUTBOUND_SOFTAdd|)
-                    |0_am2-x3hl-xcg-5-12-StaticRouteAddSoft-am2-x3hl-xcg-5-12,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel12|)
-                (= |0_FAILED-EDGE_am2-x3hl-xcg-5-12_am2-x3sb-xcg-5-1b| 0))))
-  (= a!1 |0_DATA-FORWARDING_am2-x3hl-xcg-5-12_Port-Channel2|)))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-12_Port-Channel2|) true)
+   |0_DATA-FORWARDING_am2-x3hl-xcg-5-12_Port-Channel2|))
 (assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-08_Vlan101|)
-        (or |0__am2-x3hl-xcg-5-08_Vlan101_OUTBOUND_vlan101-xcg-out|
-            |0_0__am2-x3hl-xcg-5-08_Vlan101_OUTBOUND_vlan101-xcg-outRemove|)
-        (= |0_FAILED-EDGE_am2-x3hl-xcg-5-08_Vlan101| 0))
+        |0__am2-x3hl-xcg-5-08_Vlan101_OUTBOUND_vlan101-xcg-out|)
    |0_DATA-FORWARDING_am2-x3hl-xcg-5-08_Vlan101|))
-(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-08_Loopback0|)
-        |0_0__am2-x3hl-xcg-5-08_Loopback0_OUTBOUND_SOFTAdd|
-        (= |0_FAILED-EDGE_am2-x3hl-xcg-5-08_Loopback0| 0))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-08_Loopback0|) true)
    |0_DATA-FORWARDING_am2-x3hl-xcg-5-08_Loopback0|))
-(assert (let ((a!1 (and (or (and (or false
-                             |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-08_Port-Channel2|)
-                         |0_0__am2-x3hl-xcg-5-08_Port-Channel2_OUTBOUND_SOFTAdd|)
-                    |0_am2-x3hl-xcg-5-08-StaticRouteAddSoft-am2-x3hl-xcg-5-08,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel8|)
-                (= |0_FAILED-EDGE_am2-x3hl-xcg-5-08_am2-x3sb-xcg-5-1b| 0))))
-  (= a!1 |0_DATA-FORWARDING_am2-x3hl-xcg-5-08_Port-Channel2|)))
-(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-08_mgmt0|)
-        |0_0__am2-x3hl-xcg-5-08_mgmt0_OUTBOUND_SOFTAdd|
-        (= |0_FAILED-EDGE_am2-x3hl-xcg-5-08_mgmt0| 0))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-08_Port-Channel2|) true)
+   |0_DATA-FORWARDING_am2-x3hl-xcg-5-08_Port-Channel2|))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-08_mgmt0|) true)
    |0_DATA-FORWARDING_am2-x3hl-xcg-5-08_mgmt0|))
-(assert (let ((a!1 (and (or (and (or false
-                             |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-08_Port-Channel1|)
-                         |0_0__am2-x3hl-xcg-5-08_Port-Channel1_OUTBOUND_SOFTAdd|)
-                    |0_am2-x3hl-xcg-5-08-StaticRouteAddSoft-am2-x3hl-xcg-5-08,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel8|)
-                (= |0_FAILED-EDGE_am2-x3hl-xcg-5-08_am2-x3sb-xcg-5-1a| 0))))
-  (= a!1 |0_DATA-FORWARDING_am2-x3hl-xcg-5-08_Port-Channel1|)))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-08_Port-Channel1|) true)
+   |0_DATA-FORWARDING_am2-x3hl-xcg-5-08_Port-Channel1|))
 (assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-08_Vlan102|)
-        (or |0__am2-x3hl-xcg-5-08_Vlan102_OUTBOUND_vlan102-xcg-out|
-            |0_0__am2-x3hl-xcg-5-08_Vlan102_OUTBOUND_vlan102-xcg-outRemove|)
-        (= |0_FAILED-EDGE_am2-x3hl-xcg-5-08_Vlan102| 0))
+        |0__am2-x3hl-xcg-5-08_Vlan102_OUTBOUND_vlan102-xcg-out|)
    |0_DATA-FORWARDING_am2-x3hl-xcg-5-08_Vlan102|))
-(assert (let ((a!1 (and (or (and (or false
-                             |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-19_Port-Channel2|)
-                         |0_0__am2-x3hl-xcg-5-19_Port-Channel2_OUTBOUND_SOFTAdd|)
-                    |0_am2-x3hl-xcg-5-19-StaticRouteAddSoft-am2-x3hl-xcg-5-19,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel19|)
-                (= |0_FAILED-EDGE_am2-x3hl-xcg-5-19_am2-x3sb-xcg-5-1b| 0))))
-  (= a!1 |0_DATA-FORWARDING_am2-x3hl-xcg-5-19_Port-Channel2|)))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-19_Port-Channel2|) true)
+   |0_DATA-FORWARDING_am2-x3hl-xcg-5-19_Port-Channel2|))
 (assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-19_Vlan101|)
-        (or |0__am2-x3hl-xcg-5-19_Vlan101_OUTBOUND_vlan101-xcg-out|
-            |0_0__am2-x3hl-xcg-5-19_Vlan101_OUTBOUND_vlan101-xcg-outRemove|)
-        (= |0_FAILED-EDGE_am2-x3hl-xcg-5-19_Vlan101| 0))
+        |0__am2-x3hl-xcg-5-19_Vlan101_OUTBOUND_vlan101-xcg-out|)
    |0_DATA-FORWARDING_am2-x3hl-xcg-5-19_Vlan101|))
-(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-19_mgmt0|)
-        |0_0__am2-x3hl-xcg-5-19_mgmt0_OUTBOUND_SOFTAdd|
-        (= |0_FAILED-EDGE_am2-x3hl-xcg-5-19_mgmt0| 0))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-19_mgmt0|) true)
    |0_DATA-FORWARDING_am2-x3hl-xcg-5-19_mgmt0|))
-(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-19_Loopback0|)
-        |0_0__am2-x3hl-xcg-5-19_Loopback0_OUTBOUND_SOFTAdd|
-        (= |0_FAILED-EDGE_am2-x3hl-xcg-5-19_Loopback0| 0))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-19_Loopback0|) true)
    |0_DATA-FORWARDING_am2-x3hl-xcg-5-19_Loopback0|))
 (assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-19_Vlan102|)
-        (or |0__am2-x3hl-xcg-5-19_Vlan102_OUTBOUND_vlan102-xcg-out|
-            |0_0__am2-x3hl-xcg-5-19_Vlan102_OUTBOUND_vlan102-xcg-outRemove|)
-        (= |0_FAILED-EDGE_am2-x3hl-xcg-5-19_Vlan102| 0))
+        |0__am2-x3hl-xcg-5-19_Vlan102_OUTBOUND_vlan102-xcg-out|)
    |0_DATA-FORWARDING_am2-x3hl-xcg-5-19_Vlan102|))
-(assert (let ((a!1 (and (or (and (or false
-                             |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-19_Port-Channel1|)
-                         |0_0__am2-x3hl-xcg-5-19_Port-Channel1_OUTBOUND_SOFTAdd|)
-                    |0_am2-x3hl-xcg-5-19-StaticRouteAddSoft-am2-x3hl-xcg-5-19,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel19|)
-                (= |0_FAILED-EDGE_am2-x3hl-xcg-5-19_am2-x3sb-xcg-5-1a| 0))))
-  (= a!1 |0_DATA-FORWARDING_am2-x3hl-xcg-5-19_Port-Channel1|)))
-(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-09_Loopback0|)
-        |0_0__am2-x3hl-xcg-5-09_Loopback0_OUTBOUND_SOFTAdd|
-        (= |0_FAILED-EDGE_am2-x3hl-xcg-5-09_Loopback0| 0))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-19_Port-Channel1|) true)
+   |0_DATA-FORWARDING_am2-x3hl-xcg-5-19_Port-Channel1|))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-09_Loopback0|) true)
    |0_DATA-FORWARDING_am2-x3hl-xcg-5-09_Loopback0|))
-(assert (let ((a!1 (and (or (and (or false
-                             |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-09_Port-Channel2|)
-                         |0_0__am2-x3hl-xcg-5-09_Port-Channel2_OUTBOUND_SOFTAdd|)
-                    |0_am2-x3hl-xcg-5-09-StaticRouteAddSoft-am2-x3hl-xcg-5-09,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel9|)
-                (= |0_FAILED-EDGE_am2-x3hl-xcg-5-09_am2-x3sb-xcg-5-1b| 0))))
-  (= a!1 |0_DATA-FORWARDING_am2-x3hl-xcg-5-09_Port-Channel2|)))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-09_Port-Channel2|) true)
+   |0_DATA-FORWARDING_am2-x3hl-xcg-5-09_Port-Channel2|))
 (assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-09_Vlan101|)
-        (or |0__am2-x3hl-xcg-5-09_Vlan101_OUTBOUND_vlan101-xcg-out|
-            |0_0__am2-x3hl-xcg-5-09_Vlan101_OUTBOUND_vlan101-xcg-outRemove|)
-        (= |0_FAILED-EDGE_am2-x3hl-xcg-5-09_Vlan101| 0))
+        |0__am2-x3hl-xcg-5-09_Vlan101_OUTBOUND_vlan101-xcg-out|)
    |0_DATA-FORWARDING_am2-x3hl-xcg-5-09_Vlan101|))
-(assert (let ((a!1 (and (or (and (or false
-                             |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-09_Port-Channel1|)
-                         |0_0__am2-x3hl-xcg-5-09_Port-Channel1_OUTBOUND_SOFTAdd|)
-                    |0_am2-x3hl-xcg-5-09-StaticRouteAddSoft-am2-x3hl-xcg-5-09,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel9|)
-                (= |0_FAILED-EDGE_am2-x3hl-xcg-5-09_am2-x3sb-xcg-5-1a| 0))))
-  (= a!1 |0_DATA-FORWARDING_am2-x3hl-xcg-5-09_Port-Channel1|)))
-(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-09_mgmt0|)
-        |0_0__am2-x3hl-xcg-5-09_mgmt0_OUTBOUND_SOFTAdd|
-        (= |0_FAILED-EDGE_am2-x3hl-xcg-5-09_mgmt0| 0))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-09_Port-Channel1|) true)
+   |0_DATA-FORWARDING_am2-x3hl-xcg-5-09_Port-Channel1|))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-09_mgmt0|) true)
    |0_DATA-FORWARDING_am2-x3hl-xcg-5-09_mgmt0|))
 (assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-09_Vlan102|)
-        (or |0__am2-x3hl-xcg-5-09_Vlan102_OUTBOUND_vlan102-xcg-out|
-            |0_0__am2-x3hl-xcg-5-09_Vlan102_OUTBOUND_vlan102-xcg-outRemove|)
-        (= |0_FAILED-EDGE_am2-x3hl-xcg-5-09_Vlan102| 0))
+        |0__am2-x3hl-xcg-5-09_Vlan102_OUTBOUND_vlan102-xcg-out|)
    |0_DATA-FORWARDING_am2-x3hl-xcg-5-09_Vlan102|))
-(assert (let ((a!1 (and (or (and (or false
-                             |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-20_Port-Channel2|)
-                         |0_0__am2-x3hl-xcg-5-20_Port-Channel2_OUTBOUND_SOFTAdd|)
-                    |0_am2-x3hl-xcg-5-20-StaticRouteAddSoft-am2-x3hl-xcg-5-20,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel20|)
-                (= |0_FAILED-EDGE_am2-x3hl-xcg-5-20_am2-x3sb-xcg-5-1b| 0))))
-  (= a!1 |0_DATA-FORWARDING_am2-x3hl-xcg-5-20_Port-Channel2|)))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-20_Port-Channel2|) true)
+   |0_DATA-FORWARDING_am2-x3hl-xcg-5-20_Port-Channel2|))
 (assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-20_Vlan101|)
-        (or |0__am2-x3hl-xcg-5-20_Vlan101_OUTBOUND_vlan101-xcg-out|
-            |0_0__am2-x3hl-xcg-5-20_Vlan101_OUTBOUND_vlan101-xcg-outRemove|)
-        (= |0_FAILED-EDGE_am2-x3hl-xcg-5-20_Vlan101| 0))
+        |0__am2-x3hl-xcg-5-20_Vlan101_OUTBOUND_vlan101-xcg-out|)
    |0_DATA-FORWARDING_am2-x3hl-xcg-5-20_Vlan101|))
 (assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-20_Vlan102|)
-        (or |0__am2-x3hl-xcg-5-20_Vlan102_OUTBOUND_vlan102-xcg-out|
-            |0_0__am2-x3hl-xcg-5-20_Vlan102_OUTBOUND_vlan102-xcg-outRemove|)
-        (= |0_FAILED-EDGE_am2-x3hl-xcg-5-20_Vlan102| 0))
+        |0__am2-x3hl-xcg-5-20_Vlan102_OUTBOUND_vlan102-xcg-out|)
    |0_DATA-FORWARDING_am2-x3hl-xcg-5-20_Vlan102|))
-(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-20_mgmt0|)
-        |0_0__am2-x3hl-xcg-5-20_mgmt0_OUTBOUND_SOFTAdd|
-        (= |0_FAILED-EDGE_am2-x3hl-xcg-5-20_mgmt0| 0))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-20_mgmt0|) true)
    |0_DATA-FORWARDING_am2-x3hl-xcg-5-20_mgmt0|))
-(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-20_Loopback0|)
-        |0_0__am2-x3hl-xcg-5-20_Loopback0_OUTBOUND_SOFTAdd|
-        (= |0_FAILED-EDGE_am2-x3hl-xcg-5-20_Loopback0| 0))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-20_Loopback0|) true)
    |0_DATA-FORWARDING_am2-x3hl-xcg-5-20_Loopback0|))
-(assert (let ((a!1 (and (or (and (or false
-                             |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-20_Port-Channel1|)
-                         |0_0__am2-x3hl-xcg-5-20_Port-Channel1_OUTBOUND_SOFTAdd|)
-                    |0_am2-x3hl-xcg-5-20-StaticRouteAddSoft-am2-x3hl-xcg-5-20,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel20|)
-                (= |0_FAILED-EDGE_am2-x3hl-xcg-5-20_am2-x3sb-xcg-5-1a| 0))))
-  (= a!1 |0_DATA-FORWARDING_am2-x3hl-xcg-5-20_Port-Channel1|)))
-(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-10_Loopback0|)
-        |0_0__am2-x3hl-xcg-5-10_Loopback0_OUTBOUND_SOFTAdd|
-        (= |0_FAILED-EDGE_am2-x3hl-xcg-5-10_Loopback0| 0))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-20_Port-Channel1|) true)
+   |0_DATA-FORWARDING_am2-x3hl-xcg-5-20_Port-Channel1|))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-10_Loopback0|) true)
    |0_DATA-FORWARDING_am2-x3hl-xcg-5-10_Loopback0|))
-(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-10_mgmt0|)
-        |0_0__am2-x3hl-xcg-5-10_mgmt0_OUTBOUND_SOFTAdd|
-        (= |0_FAILED-EDGE_am2-x3hl-xcg-5-10_mgmt0| 0))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-10_mgmt0|) true)
    |0_DATA-FORWARDING_am2-x3hl-xcg-5-10_mgmt0|))
 (assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-10_Vlan101|)
-        (or |0__am2-x3hl-xcg-5-10_Vlan101_OUTBOUND_vlan101-xcg-out|
-            |0_0__am2-x3hl-xcg-5-10_Vlan101_OUTBOUND_vlan101-xcg-outRemove|)
-        (= |0_FAILED-EDGE_am2-x3hl-xcg-5-10_Vlan101| 0))
+        |0__am2-x3hl-xcg-5-10_Vlan101_OUTBOUND_vlan101-xcg-out|)
    |0_DATA-FORWARDING_am2-x3hl-xcg-5-10_Vlan101|))
 (assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-10_Vlan102|)
-        (or |0__am2-x3hl-xcg-5-10_Vlan102_OUTBOUND_vlan102-xcg-out|
-            |0_0__am2-x3hl-xcg-5-10_Vlan102_OUTBOUND_vlan102-xcg-outRemove|)
-        (= |0_FAILED-EDGE_am2-x3hl-xcg-5-10_Vlan102| 0))
+        |0__am2-x3hl-xcg-5-10_Vlan102_OUTBOUND_vlan102-xcg-out|)
    |0_DATA-FORWARDING_am2-x3hl-xcg-5-10_Vlan102|))
-(assert (let ((a!1 (and (or (and (or false
-                             |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-10_Port-Channel1|)
-                         |0_0__am2-x3hl-xcg-5-10_Port-Channel1_OUTBOUND_SOFTAdd|)
-                    |0_am2-x3hl-xcg-5-10-StaticRouteAddSoft-am2-x3hl-xcg-5-10,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel10|)
-                (= |0_FAILED-EDGE_am2-x3hl-xcg-5-10_am2-x3sb-xcg-5-1a| 0))))
-  (= a!1 |0_DATA-FORWARDING_am2-x3hl-xcg-5-10_Port-Channel1|)))
-(assert (let ((a!1 (and (or (and (or false
-                             |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-10_Port-Channel2|)
-                         |0_0__am2-x3hl-xcg-5-10_Port-Channel2_OUTBOUND_SOFTAdd|)
-                    |0_am2-x3hl-xcg-5-10-StaticRouteAddSoft-am2-x3hl-xcg-5-10,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel10|)
-                (= |0_FAILED-EDGE_am2-x3hl-xcg-5-10_am2-x3sb-xcg-5-1b| 0))))
-  (= a!1 |0_DATA-FORWARDING_am2-x3hl-xcg-5-10_Port-Channel2|)))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-10_Port-Channel1|) true)
+   |0_DATA-FORWARDING_am2-x3hl-xcg-5-10_Port-Channel1|))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-10_Port-Channel2|) true)
+   |0_DATA-FORWARDING_am2-x3hl-xcg-5-10_Port-Channel2|))
 (assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-21_Vlan101|)
-        (or |0__am2-x3hl-xcg-5-21_Vlan101_OUTBOUND_vlan101-xcg-out|
-            |0_0__am2-x3hl-xcg-5-21_Vlan101_OUTBOUND_vlan101-xcg-outRemove|)
-        (= |0_FAILED-EDGE_am2-x3hl-xcg-5-21_Vlan101| 0))
+        |0__am2-x3hl-xcg-5-21_Vlan101_OUTBOUND_vlan101-xcg-out|)
    |0_DATA-FORWARDING_am2-x3hl-xcg-5-21_Vlan101|))
-(assert (let ((a!1 (and (or (and (or false
-                             |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-21_Port-Channel2|)
-                         |0_0__am2-x3hl-xcg-5-21_Port-Channel2_OUTBOUND_SOFTAdd|)
-                    |0_am2-x3hl-xcg-5-21-StaticRouteAddSoft-am2-x3hl-xcg-5-21,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel21|)
-                (= |0_FAILED-EDGE_am2-x3hl-xcg-5-21_am2-x3sb-xcg-5-1b| 0))))
-  (= a!1 |0_DATA-FORWARDING_am2-x3hl-xcg-5-21_Port-Channel2|)))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-21_Port-Channel2|) true)
+   |0_DATA-FORWARDING_am2-x3hl-xcg-5-21_Port-Channel2|))
 (assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-21_Vlan102|)
-        (or |0__am2-x3hl-xcg-5-21_Vlan102_OUTBOUND_vlan102-xcg-out|
-            |0_0__am2-x3hl-xcg-5-21_Vlan102_OUTBOUND_vlan102-xcg-outRemove|)
-        (= |0_FAILED-EDGE_am2-x3hl-xcg-5-21_Vlan102| 0))
+        |0__am2-x3hl-xcg-5-21_Vlan102_OUTBOUND_vlan102-xcg-out|)
    |0_DATA-FORWARDING_am2-x3hl-xcg-5-21_Vlan102|))
-(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-21_Loopback0|)
-        |0_0__am2-x3hl-xcg-5-21_Loopback0_OUTBOUND_SOFTAdd|
-        (= |0_FAILED-EDGE_am2-x3hl-xcg-5-21_Loopback0| 0))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-21_Loopback0|) true)
    |0_DATA-FORWARDING_am2-x3hl-xcg-5-21_Loopback0|))
-(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-21_mgmt0|)
-        |0_0__am2-x3hl-xcg-5-21_mgmt0_OUTBOUND_SOFTAdd|
-        (= |0_FAILED-EDGE_am2-x3hl-xcg-5-21_mgmt0| 0))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-21_mgmt0|) true)
    |0_DATA-FORWARDING_am2-x3hl-xcg-5-21_mgmt0|))
-(assert (let ((a!1 (and (or (and (or false
-                             |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-21_Port-Channel1|)
-                         |0_0__am2-x3hl-xcg-5-21_Port-Channel1_OUTBOUND_SOFTAdd|)
-                    |0_am2-x3hl-xcg-5-21-StaticRouteAddSoft-am2-x3hl-xcg-5-21,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel21|)
-                (= |0_FAILED-EDGE_am2-x3hl-xcg-5-21_am2-x3sb-xcg-5-1a| 0))))
-  (= a!1 |0_DATA-FORWARDING_am2-x3hl-xcg-5-21_Port-Channel1|)))
-(assert (let ((a!1 (and (or (and (or false
-                             |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel21|)
-                         |0_0__am2-x3sb-xcg-5-1b_Port-Channel21_OUTBOUND_SOFTAdd|)
-                    |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel21 --> am2-x3hl-xcg-5-21,Port-Channel2|)
-                (= |0_FAILED-EDGE_am2-x3hl-xcg-5-21_am2-x3sb-xcg-5-1b| 0))))
-  (= a!1 |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel21|)))
-(assert (let ((a!1 (and (or (and (or false
-                             |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel19|)
-                         |0_0__am2-x3sb-xcg-5-1b_Port-Channel19_OUTBOUND_SOFTAdd|)
-                    |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel19 --> am2-x3hl-xcg-5-19,Port-Channel2|)
-                (= |0_FAILED-EDGE_am2-x3hl-xcg-5-19_am2-x3sb-xcg-5-1b| 0))))
-  (= a!1 |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel19|)))
-(assert (let ((a!1 (and (or (and (or false
-                             |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel9|)
-                         |0_0__am2-x3sb-xcg-5-1b_Port-Channel9_OUTBOUND_SOFTAdd|)
-                    |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel9 --> am2-x3hl-xcg-5-09,Port-Channel2|)
-                (= |0_FAILED-EDGE_am2-x3hl-xcg-5-09_am2-x3sb-xcg-5-1b| 0))))
-  (= a!1 |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel9|)))
-(assert (let ((a!1 (and (or (and (or false
-                             |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel6|)
-                         |0_0__am2-x3sb-xcg-5-1b_Port-Channel6_OUTBOUND_SOFTAdd|)
-                    |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel6 --> am2-x3hl-xcg-5-06,Port-Channel2|)
-                (= |0_FAILED-EDGE_am2-x3hl-xcg-5-06_am2-x3sb-xcg-5-1b| 0))))
-  (= a!1 |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel6|)))
-(assert (let ((a!1 (and (or (and (or false
-                             |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel3|)
-                         |0_0__am2-x3sb-xcg-5-1b_Port-Channel3_OUTBOUND_SOFTAdd|)
-                    |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel3 --> am2-x3hl-xcg-5-03,Port-Channel2|)
-                (= |0_FAILED-EDGE_am2-x3hl-xcg-5-03_am2-x3sb-xcg-5-1b| 0))))
-  (= a!1 |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel3|)))
-(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1b_Ethernet1/48|)
-        |0_0__am2-x3sb-xcg-5-1b_Ethernet1/48_OUTBOUND_SOFTAdd|
-        (= |0_FAILED-EDGE_am2-x3sb-xcg-5-1b_Ethernet1/48| 0))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-21_Port-Channel1|) true)
+   |0_DATA-FORWARDING_am2-x3hl-xcg-5-21_Port-Channel1|))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel21|) true)
+   |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel21|))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel19|) true)
+   |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel19|))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel9|) true)
+   |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel9|))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel6|) true)
+   |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel6|))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel3|) true)
+   |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel3|))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1b_Ethernet1/48|) true)
    |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Ethernet1/48|))
-(assert (let ((a!1 (and (or (and (or false
-                             |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel14|)
-                         |0_0__am2-x3sb-xcg-5-1b_Port-Channel14_OUTBOUND_SOFTAdd|)
-                    |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel14 --> am2-x3hl-xcg-5-14,Port-Channel2|)
-                (= |0_FAILED-EDGE_am2-x3hl-xcg-5-14_am2-x3sb-xcg-5-1b| 0))))
-  (= a!1 |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel14|)))
-(assert (let ((a!1 (and (or (and (or false
-                             |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel11|)
-                         |0_0__am2-x3sb-xcg-5-1b_Port-Channel11_OUTBOUND_SOFTAdd|)
-                    |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel11 --> am2-x3hl-xcg-5-11,Port-Channel2|)
-                (= |0_FAILED-EDGE_am2-x3hl-xcg-5-11_am2-x3sb-xcg-5-1b| 0))))
-  (= a!1 |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel11|)))
-(assert (let ((a!1 (and (or (and (or false
-                             |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel1|)
-                         |0_0__am2-x3sb-xcg-5-1b_Port-Channel1_OUTBOUND_SOFTAdd|)
-                    |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel1 --> am2-x3hl-xcg-5-01,Port-Channel2|)
-                (= |0_FAILED-EDGE_am2-x3hl-xcg-5-01_am2-x3sb-xcg-5-1b| 0))))
-  (= a!1 |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel1|)))
-(assert (let ((a!1 (and (or (and (or false
-                             |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel17|)
-                         |0_0__am2-x3sb-xcg-5-1b_Port-Channel17_OUTBOUND_SOFTAdd|)
-                    |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel17 --> am2-x3hl-xcg-5-17,Port-Channel2|)
-                (= |0_FAILED-EDGE_am2-x3hl-xcg-5-17_am2-x3sb-xcg-5-1b| 0))))
-  (= a!1 |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel17|)))
-(assert (let ((a!1 (and (or (and (or false
-                             |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel7|)
-                         |0_0__am2-x3sb-xcg-5-1b_Port-Channel7_OUTBOUND_SOFTAdd|)
-                    |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel7 --> am2-x3hl-xcg-5-07,Port-Channel2|)
-                (= |0_FAILED-EDGE_am2-x3hl-xcg-5-07_am2-x3sb-xcg-5-1b| 0))))
-  (= a!1 |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel7|)))
-(assert (let ((a!1 (and (or (and (or false
-                             |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel12|)
-                         |0_0__am2-x3sb-xcg-5-1b_Port-Channel12_OUTBOUND_SOFTAdd|)
-                    |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel12 --> am2-x3hl-xcg-5-12,Port-Channel2|)
-                (= |0_FAILED-EDGE_am2-x3hl-xcg-5-12_am2-x3sb-xcg-5-1b| 0))))
-  (= a!1 |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel12|)))
-(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1b_Ethernet1/47|)
-        |0_0__am2-x3sb-xcg-5-1b_Ethernet1/47_OUTBOUND_SOFTAdd|
-        (= |0_FAILED-EDGE_am2-x3sb-xcg-5-1b_Ethernet1/47| 0))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel14|) true)
+   |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel14|))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel11|) true)
+   |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel11|))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel1|) true)
+   |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel1|))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel17|) true)
+   |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel17|))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel7|) true)
+   |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel7|))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel12|) true)
+   |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel12|))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1b_Ethernet1/47|) true)
    |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Ethernet1/47|))
-(assert (let ((a!1 (and (or (and (or false
-                             |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel8|)
-                         |0_0__am2-x3sb-xcg-5-1b_Port-Channel8_OUTBOUND_SOFTAdd|)
-                    |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel8 --> am2-x3hl-xcg-5-08,Port-Channel2|)
-                (= |0_FAILED-EDGE_am2-x3hl-xcg-5-08_am2-x3sb-xcg-5-1b| 0))))
-  (= a!1 |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel8|)))
-(assert (let ((a!1 (and (or (and (or false
-                             |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel15|)
-                         |0_0__am2-x3sb-xcg-5-1b_Port-Channel15_OUTBOUND_SOFTAdd|)
-                    |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel15 --> am2-x3hl-xcg-5-15,Port-Channel2|)
-                (= |0_FAILED-EDGE_am2-x3hl-xcg-5-15_am2-x3sb-xcg-5-1b| 0))))
-  (= a!1 |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel15|)))
-(assert (let ((a!1 (and (or (and (or false
-                             |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel5|)
-                         |0_0__am2-x3sb-xcg-5-1b_Port-Channel5_OUTBOUND_SOFTAdd|)
-                    |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel5 --> am2-x3hl-xcg-5-05,Port-Channel2|)
-                (= |0_FAILED-EDGE_am2-x3hl-xcg-5-05_am2-x3sb-xcg-5-1b| 0))))
-  (= a!1 |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel5|)))
-(assert (let ((a!1 (and (or (and (or false
-                             |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel2|)
-                         |0_0__am2-x3sb-xcg-5-1b_Port-Channel2_OUTBOUND_SOFTAdd|)
-                    |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel2 --> am2-x3hl-xcg-5-02,Port-Channel2|)
-                (= |0_FAILED-EDGE_am2-x3hl-xcg-5-02_am2-x3sb-xcg-5-1b| 0))))
-  (= a!1 |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel2|)))
-(assert (let ((a!1 (and (or (and (or false
-                             |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel20|)
-                         |0_0__am2-x3sb-xcg-5-1b_Port-Channel20_OUTBOUND_SOFTAdd|)
-                    |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel20 --> am2-x3hl-xcg-5-20,Port-Channel2|)
-                (= |0_FAILED-EDGE_am2-x3hl-xcg-5-20_am2-x3sb-xcg-5-1b| 0))))
-  (= a!1 |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel20|)))
-(assert (let ((a!1 (and (or (and (or false
-                             |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel18|)
-                         |0_0__am2-x3sb-xcg-5-1b_Port-Channel18_OUTBOUND_SOFTAdd|)
-                    |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel18 --> am2-x3hl-xcg-5-18,Port-Channel2|)
-                (= |0_FAILED-EDGE_am2-x3hl-xcg-5-18_am2-x3sb-xcg-5-1b| 0))))
-  (= a!1 |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel18|)))
-(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1b_Loopback0|)
-        |0_0__am2-x3sb-xcg-5-1b_Loopback0_OUTBOUND_SOFTAdd|
-        (= |0_FAILED-EDGE_am2-x3sb-xcg-5-1b_Loopback0| 0))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel8|) true)
+   |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel8|))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel15|) true)
+   |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel15|))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel5|) true)
+   |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel5|))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel2|) true)
+   |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel2|))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel20|) true)
+   |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel20|))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel18|) true)
+   |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel18|))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1b_Loopback0|) true)
    |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Loopback0|))
-(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1b_mgmt0|)
-        |0_0__am2-x3sb-xcg-5-1b_mgmt0_OUTBOUND_SOFTAdd|
-        (= |0_FAILED-EDGE_am2-x3sb-xcg-5-1b_mgmt0| 0))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1b_mgmt0|) true)
    |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_mgmt0|))
-(assert (let ((a!1 (and (or (and (or false
-                             |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel10|)
-                         |0_0__am2-x3sb-xcg-5-1b_Port-Channel10_OUTBOUND_SOFTAdd|)
-                    |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel10 --> am2-x3hl-xcg-5-10,Port-Channel2|)
-                (= |0_FAILED-EDGE_am2-x3hl-xcg-5-10_am2-x3sb-xcg-5-1b| 0))))
-  (= a!1 |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel10|)))
-(assert (let ((a!1 (and (or (and (or false
-                             |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel16|)
-                         |0_0__am2-x3sb-xcg-5-1b_Port-Channel16_OUTBOUND_SOFTAdd|)
-                    |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel16 --> am2-x3hl-xcg-5-16,Port-Channel2|)
-                (= |0_FAILED-EDGE_am2-x3hl-xcg-5-16_am2-x3sb-xcg-5-1b| 0))))
-  (= a!1 |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel16|)))
-(assert (let ((a!1 (and (or (and (or false
-                             |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel13|)
-                         |0_0__am2-x3sb-xcg-5-1b_Port-Channel13_OUTBOUND_SOFTAdd|)
-                    |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel13 --> am2-x3hl-xcg-5-13,Port-Channel2|)
-                (= |0_FAILED-EDGE_am2-x3hl-xcg-5-13_am2-x3sb-xcg-5-1b| 0))))
-  (= a!1 |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel13|)))
-(assert (let ((a!1 (and (or (and (or false
-                             |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel2|)
-                         |0_0__am2-x3sb-xcg-5-1a_Port-Channel2_OUTBOUND_SOFTAdd|)
-                    |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel2 --> am2-x3hl-xcg-5-02,Port-Channel1|)
-                (= |0_FAILED-EDGE_am2-x3hl-xcg-5-02_am2-x3sb-xcg-5-1a| 0))))
-  (= a!1 |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel2|)))
-(assert (let ((a!1 (and (or (and (or false
-                             |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel12|)
-                         |0_0__am2-x3sb-xcg-5-1a_Port-Channel12_OUTBOUND_SOFTAdd|)
-                    |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel12 --> am2-x3hl-xcg-5-12,Port-Channel1|)
-                (= |0_FAILED-EDGE_am2-x3hl-xcg-5-12_am2-x3sb-xcg-5-1a| 0))))
-  (= a!1 |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel12|)))
-(assert (let ((a!1 (and (or (and (or false
-                             |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel15|)
-                         |0_0__am2-x3sb-xcg-5-1a_Port-Channel15_OUTBOUND_SOFTAdd|)
-                    |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel15 --> am2-x3hl-xcg-5-15,Port-Channel1|)
-                (= |0_FAILED-EDGE_am2-x3hl-xcg-5-15_am2-x3sb-xcg-5-1a| 0))))
-  (= a!1 |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel15|)))
-(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1a_Ethernet1/48|)
-        |0_0__am2-x3sb-xcg-5-1a_Ethernet1/48_OUTBOUND_SOFTAdd|
-        (= |0_FAILED-EDGE_am2-x3sb-xcg-5-1a_Ethernet1/48| 0))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel10|) true)
+   |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel10|))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel16|) true)
+   |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel16|))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel13|) true)
+   |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel13|))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel2|) true)
+   |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel2|))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel12|) true)
+   |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel12|))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel15|) true)
+   |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel15|))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1a_Ethernet1/48|) true)
    |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Ethernet1/48|))
-(assert (let ((a!1 (and (or (and (or false
-                             |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel8|)
-                         |0_0__am2-x3sb-xcg-5-1a_Port-Channel8_OUTBOUND_SOFTAdd|)
-                    |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel8 --> am2-x3hl-xcg-5-08,Port-Channel1|)
-                (= |0_FAILED-EDGE_am2-x3hl-xcg-5-08_am2-x3sb-xcg-5-1a| 0))))
-  (= a!1 |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel8|)))
-(assert (let ((a!1 (and (or (and (or false
-                             |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel20|)
-                         |0_0__am2-x3sb-xcg-5-1a_Port-Channel20_OUTBOUND_SOFTAdd|)
-                    |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel20 --> am2-x3hl-xcg-5-20,Port-Channel1|)
-                (= |0_FAILED-EDGE_am2-x3hl-xcg-5-20_am2-x3sb-xcg-5-1a| 0))))
-  (= a!1 |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel20|)))
-(assert (let ((a!1 (and (or (and (or false
-                             |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel18|)
-                         |0_0__am2-x3sb-xcg-5-1a_Port-Channel18_OUTBOUND_SOFTAdd|)
-                    |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel18 --> am2-x3hl-xcg-5-18,Port-Channel1|)
-                (= |0_FAILED-EDGE_am2-x3hl-xcg-5-18_am2-x3sb-xcg-5-1a| 0))))
-  (= a!1 |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel18|)))
-(assert (let ((a!1 (and (or (and (or false
-                             |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel5|)
-                         |0_0__am2-x3sb-xcg-5-1a_Port-Channel5_OUTBOUND_SOFTAdd|)
-                    |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel5 --> am2-x3hl-xcg-5-05,Port-Channel1|)
-                (= |0_FAILED-EDGE_am2-x3hl-xcg-5-05_am2-x3sb-xcg-5-1a| 0))))
-  (= a!1 |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel5|)))
-(assert (let ((a!1 (and (or (and (or false
-                             |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel10|)
-                         |0_0__am2-x3sb-xcg-5-1a_Port-Channel10_OUTBOUND_SOFTAdd|)
-                    |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel10 --> am2-x3hl-xcg-5-10,Port-Channel1|)
-                (= |0_FAILED-EDGE_am2-x3hl-xcg-5-10_am2-x3sb-xcg-5-1a| 0))))
-  (= a!1 |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel10|)))
-(assert (let ((a!1 (and (or (and (or false
-                             |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel3|)
-                         |0_0__am2-x3sb-xcg-5-1a_Port-Channel3_OUTBOUND_SOFTAdd|)
-                    |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel3 --> am2-x3hl-xcg-5-03,Port-Channel1|)
-                (= |0_FAILED-EDGE_am2-x3hl-xcg-5-03_am2-x3sb-xcg-5-1a| 0))))
-  (= a!1 |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel3|)))
-(assert (let ((a!1 (and (or (and (or false
-                             |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel13|)
-                         |0_0__am2-x3sb-xcg-5-1a_Port-Channel13_OUTBOUND_SOFTAdd|)
-                    |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel13 --> am2-x3hl-xcg-5-13,Port-Channel1|)
-                (= |0_FAILED-EDGE_am2-x3hl-xcg-5-13_am2-x3sb-xcg-5-1a| 0))))
-  (= a!1 |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel13|)))
-(assert (let ((a!1 (and (or (and (or false
-                             |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel21|)
-                         |0_0__am2-x3sb-xcg-5-1a_Port-Channel21_OUTBOUND_SOFTAdd|)
-                    |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel21 --> am2-x3hl-xcg-5-21,Port-Channel1|)
-                (= |0_FAILED-EDGE_am2-x3hl-xcg-5-21_am2-x3sb-xcg-5-1a| 0))))
-  (= a!1 |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel21|)))
-(assert (let ((a!1 (and (or (and (or false
-                             |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel19|)
-                         |0_0__am2-x3sb-xcg-5-1a_Port-Channel19_OUTBOUND_SOFTAdd|)
-                    |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel19 --> am2-x3hl-xcg-5-19,Port-Channel1|)
-                (= |0_FAILED-EDGE_am2-x3hl-xcg-5-19_am2-x3sb-xcg-5-1a| 0))))
-  (= a!1 |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel19|)))
-(assert (let ((a!1 (and (or (and (or false
-                             |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel16|)
-                         |0_0__am2-x3sb-xcg-5-1a_Port-Channel16_OUTBOUND_SOFTAdd|)
-                    |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel16 --> am2-x3hl-xcg-5-16,Port-Channel1|)
-                (= |0_FAILED-EDGE_am2-x3hl-xcg-5-16_am2-x3sb-xcg-5-1a| 0))))
-  (= a!1 |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel16|)))
-(assert (let ((a!1 (and (or (and (or false
-                             |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel9|)
-                         |0_0__am2-x3sb-xcg-5-1a_Port-Channel9_OUTBOUND_SOFTAdd|)
-                    |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel9 --> am2-x3hl-xcg-5-09,Port-Channel1|)
-                (= |0_FAILED-EDGE_am2-x3hl-xcg-5-09_am2-x3sb-xcg-5-1a| 0))))
-  (= a!1 |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel9|)))
-(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1a_Ethernet1/47|)
-        |0_0__am2-x3sb-xcg-5-1a_Ethernet1/47_OUTBOUND_SOFTAdd|
-        (= |0_FAILED-EDGE_am2-x3sb-xcg-5-1a_Ethernet1/47| 0))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel8|) true)
+   |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel8|))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel20|) true)
+   |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel20|))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel18|) true)
+   |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel18|))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel5|) true)
+   |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel5|))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel10|) true)
+   |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel10|))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel3|) true)
+   |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel3|))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel13|) true)
+   |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel13|))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel21|) true)
+   |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel21|))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel19|) true)
+   |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel19|))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel16|) true)
+   |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel16|))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel9|) true)
+   |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel9|))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1a_Ethernet1/47|) true)
    |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Ethernet1/47|))
-(assert (let ((a!1 (and (or (and (or false
-                             |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel6|)
-                         |0_0__am2-x3sb-xcg-5-1a_Port-Channel6_OUTBOUND_SOFTAdd|)
-                    |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel6 --> am2-x3hl-xcg-5-06,Port-Channel1|)
-                (= |0_FAILED-EDGE_am2-x3hl-xcg-5-06_am2-x3sb-xcg-5-1a| 0))))
-  (= a!1 |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel6|)))
-(assert (let ((a!1 (and (or (and (or false
-                             |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel11|)
-                         |0_0__am2-x3sb-xcg-5-1a_Port-Channel11_OUTBOUND_SOFTAdd|)
-                    |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel11 --> am2-x3hl-xcg-5-11,Port-Channel1|)
-                (= |0_FAILED-EDGE_am2-x3hl-xcg-5-11_am2-x3sb-xcg-5-1a| 0))))
-  (= a!1 |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel11|)))
-(assert (let ((a!1 (and (or (and (or false
-                             |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel7|)
-                         |0_0__am2-x3sb-xcg-5-1a_Port-Channel7_OUTBOUND_SOFTAdd|)
-                    |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel7 --> am2-x3hl-xcg-5-07,Port-Channel1|)
-                (= |0_FAILED-EDGE_am2-x3hl-xcg-5-07_am2-x3sb-xcg-5-1a| 0))))
-  (= a!1 |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel7|)))
-(assert (let ((a!1 (and (or (and (or false
-                             |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel17|)
-                         |0_0__am2-x3sb-xcg-5-1a_Port-Channel17_OUTBOUND_SOFTAdd|)
-                    |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel17 --> am2-x3hl-xcg-5-17,Port-Channel1|)
-                (= |0_FAILED-EDGE_am2-x3hl-xcg-5-17_am2-x3sb-xcg-5-1a| 0))))
-  (= a!1 |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel17|)))
-(assert (let ((a!1 (and (or (and (or false
-                             |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel14|)
-                         |0_0__am2-x3sb-xcg-5-1a_Port-Channel14_OUTBOUND_SOFTAdd|)
-                    |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel14 --> am2-x3hl-xcg-5-14,Port-Channel1|)
-                (= |0_FAILED-EDGE_am2-x3hl-xcg-5-14_am2-x3sb-xcg-5-1a| 0))))
-  (= a!1 |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel14|)))
-(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1a_mgmt0|)
-        |0_0__am2-x3sb-xcg-5-1a_mgmt0_OUTBOUND_SOFTAdd|
-        (= |0_FAILED-EDGE_am2-x3sb-xcg-5-1a_mgmt0| 0))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel6|) true)
+   |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel6|))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel11|) true)
+   |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel11|))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel7|) true)
+   |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel7|))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel17|) true)
+   |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel17|))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel14|) true)
+   |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel14|))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1a_mgmt0|) true)
    |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_mgmt0|))
-(assert (let ((a!1 (and (or (and (or false
-                             |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel1|)
-                         |0_0__am2-x3sb-xcg-5-1a_Port-Channel1_OUTBOUND_SOFTAdd|)
-                    |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel1 --> am2-x3hl-xcg-5-01,Port-Channel1|)
-                (= |0_FAILED-EDGE_am2-x3hl-xcg-5-01_am2-x3sb-xcg-5-1a| 0))))
-  (= a!1 |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel1|)))
-(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1a_Loopback0|)
-        |0_0__am2-x3sb-xcg-5-1a_Loopback0_OUTBOUND_SOFTAdd|
-        (= |0_FAILED-EDGE_am2-x3sb-xcg-5-1a_Loopback0| 0))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel1|) true)
+   |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel1|))
+(assert (= (and (or false |0_CONTROL-FORWARDING_am2-x3sb-xcg-5-1a_Loopback0|) true)
    |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Loopback0|))
 (assert (=> (not |0_am2-x3hl-xcg-5-06_OVERALL_BEST_None_permitted|)
     (= |0_am2-x3hl-xcg-5-06_OVERALL_BEST_None_prefixLength| 0)))
@@ -28236,378 +26821,378 @@
 (assert (>= |0__reachable-id_am2-x3sb-xcg-5-1a| 0))
 (assert (let ((a!1 (and true
                 (=> (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-06_Port-Channel1|
-                         |0_0__am2-x3sb-xcg-5-1a_Port-Channel6_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3sb-xcg-5-1a| 0))
                     (> |0__reachable-id_am2-x3hl-xcg-5-06|
                        |0__reachable-id_am2-x3sb-xcg-5-1a|))
                 (=> (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-06_Port-Channel2|
-                         |0_0__am2-x3sb-xcg-5-1b_Port-Channel6_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3sb-xcg-5-1b| 0))
                     (> |0__reachable-id_am2-x3hl-xcg-5-06|
                        |0__reachable-id_am2-x3sb-xcg-5-1b|)))))
 (let ((a!2 (ite (or false
                     (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-06_Port-Channel1|
-                         |0_0__am2-x3sb-xcg-5-1a_Port-Channel6_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3sb-xcg-5-1a| 0))
                     (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-06_Port-Channel2|
-                         |0_0__am2-x3sb-xcg-5-1b_Port-Channel6_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3sb-xcg-5-1b| 0)))
                 a!1
                 (= |0__reachable-id_am2-x3hl-xcg-5-06| 0))))
   (ite (or false false) (= |0__reachable-id_am2-x3hl-xcg-5-06| 1) a!2))))
 (assert (let ((a!1 (and true
                 (=> (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-17_Port-Channel1|
-                         |0_0__am2-x3sb-xcg-5-1a_Port-Channel17_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3sb-xcg-5-1a| 0))
                     (> |0__reachable-id_am2-x3hl-xcg-5-17|
                        |0__reachable-id_am2-x3sb-xcg-5-1a|))
                 (=> (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-17_Port-Channel2|
-                         |0_0__am2-x3sb-xcg-5-1b_Port-Channel17_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3sb-xcg-5-1b| 0))
                     (> |0__reachable-id_am2-x3hl-xcg-5-17|
                        |0__reachable-id_am2-x3sb-xcg-5-1b|)))))
 (let ((a!2 (ite (or false
                     (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-17_Port-Channel1|
-                         |0_0__am2-x3sb-xcg-5-1a_Port-Channel17_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3sb-xcg-5-1a| 0))
                     (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-17_Port-Channel2|
-                         |0_0__am2-x3sb-xcg-5-1b_Port-Channel17_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3sb-xcg-5-1b| 0)))
                 a!1
                 (= |0__reachable-id_am2-x3hl-xcg-5-17| 0))))
   (ite (or false false) (= |0__reachable-id_am2-x3hl-xcg-5-17| 1) a!2))))
 (assert (let ((a!1 (and true
                 (=> (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-07_Port-Channel1|
-                         |0_0__am2-x3sb-xcg-5-1a_Port-Channel7_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3sb-xcg-5-1a| 0))
                     (> |0__reachable-id_am2-x3hl-xcg-5-07|
                        |0__reachable-id_am2-x3sb-xcg-5-1a|))
                 (=> (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-07_Port-Channel2|
-                         |0_0__am2-x3sb-xcg-5-1b_Port-Channel7_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3sb-xcg-5-1b| 0))
                     (> |0__reachable-id_am2-x3hl-xcg-5-07|
                        |0__reachable-id_am2-x3sb-xcg-5-1b|)))))
 (let ((a!2 (ite (or false
                     (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-07_Port-Channel1|
-                         |0_0__am2-x3sb-xcg-5-1a_Port-Channel7_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3sb-xcg-5-1a| 0))
                     (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-07_Port-Channel2|
-                         |0_0__am2-x3sb-xcg-5-1b_Port-Channel7_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3sb-xcg-5-1b| 0)))
                 a!1
                 (= |0__reachable-id_am2-x3hl-xcg-5-07| 0))))
   (ite (or false false) (= |0__reachable-id_am2-x3hl-xcg-5-07| 1) a!2))))
 (assert (let ((a!1 (and true
                 (=> (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-18_Port-Channel2|
-                         |0_0__am2-x3sb-xcg-5-1b_Port-Channel18_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3sb-xcg-5-1b| 0))
                     (> |0__reachable-id_am2-x3hl-xcg-5-18|
                        |0__reachable-id_am2-x3sb-xcg-5-1b|))
                 (=> (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-18_Port-Channel1|
-                         |0_0__am2-x3sb-xcg-5-1a_Port-Channel18_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3sb-xcg-5-1a| 0))
                     (> |0__reachable-id_am2-x3hl-xcg-5-18|
                        |0__reachable-id_am2-x3sb-xcg-5-1a|)))))
 (let ((a!2 (ite (or false
                     (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-18_Port-Channel2|
-                         |0_0__am2-x3sb-xcg-5-1b_Port-Channel18_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3sb-xcg-5-1b| 0))
                     (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-18_Port-Channel1|
-                         |0_0__am2-x3sb-xcg-5-1a_Port-Channel18_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3sb-xcg-5-1a| 0)))
                 a!1
                 (= |0__reachable-id_am2-x3hl-xcg-5-18| 0))))
   (ite (or false false) (= |0__reachable-id_am2-x3hl-xcg-5-18| 1) a!2))))
 (assert (let ((a!1 (and true
                 (=> (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-15_Port-Channel1|
-                         |0_0__am2-x3sb-xcg-5-1a_Port-Channel15_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3sb-xcg-5-1a| 0))
                     (> |0__reachable-id_am2-x3hl-xcg-5-15|
                        |0__reachable-id_am2-x3sb-xcg-5-1a|))
                 (=> (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-15_Port-Channel2|
-                         |0_0__am2-x3sb-xcg-5-1b_Port-Channel15_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3sb-xcg-5-1b| 0))
                     (> |0__reachable-id_am2-x3hl-xcg-5-15|
                        |0__reachable-id_am2-x3sb-xcg-5-1b|)))))
 (let ((a!2 (ite (or false
                     (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-15_Port-Channel1|
-                         |0_0__am2-x3sb-xcg-5-1a_Port-Channel15_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3sb-xcg-5-1a| 0))
                     (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-15_Port-Channel2|
-                         |0_0__am2-x3sb-xcg-5-1b_Port-Channel15_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3sb-xcg-5-1b| 0)))
                 a!1
                 (= |0__reachable-id_am2-x3hl-xcg-5-15| 0))))
   (ite (or false false) (= |0__reachable-id_am2-x3hl-xcg-5-15| 1) a!2))))
 (assert (let ((a!1 (and true
                 (=> (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-05_Port-Channel1|
-                         |0_0__am2-x3sb-xcg-5-1a_Port-Channel5_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3sb-xcg-5-1a| 0))
                     (> |0__reachable-id_am2-x3hl-xcg-5-05|
                        |0__reachable-id_am2-x3sb-xcg-5-1a|))
                 (=> (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-05_Port-Channel2|
-                         |0_0__am2-x3sb-xcg-5-1b_Port-Channel5_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3sb-xcg-5-1b| 0))
                     (> |0__reachable-id_am2-x3hl-xcg-5-05|
                        |0__reachable-id_am2-x3sb-xcg-5-1b|)))))
 (let ((a!2 (ite (or false
                     (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-05_Port-Channel1|
-                         |0_0__am2-x3sb-xcg-5-1a_Port-Channel5_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3sb-xcg-5-1a| 0))
                     (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-05_Port-Channel2|
-                         |0_0__am2-x3sb-xcg-5-1b_Port-Channel5_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3sb-xcg-5-1b| 0)))
                 a!1
                 (= |0__reachable-id_am2-x3hl-xcg-5-05| 0))))
   (ite (or false false) (= |0__reachable-id_am2-x3hl-xcg-5-05| 1) a!2))))
 (assert (let ((a!1 (and true
                 (=> (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-16_Port-Channel1|
-                         |0_0__am2-x3sb-xcg-5-1a_Port-Channel16_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3sb-xcg-5-1a| 0))
                     (> |0__reachable-id_am2-x3hl-xcg-5-16|
                        |0__reachable-id_am2-x3sb-xcg-5-1a|))
                 (=> (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-16_Port-Channel2|
-                         |0_0__am2-x3sb-xcg-5-1b_Port-Channel16_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3sb-xcg-5-1b| 0))
                     (> |0__reachable-id_am2-x3hl-xcg-5-16|
                        |0__reachable-id_am2-x3sb-xcg-5-1b|)))))
 (let ((a!2 (ite (or false
                     (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-16_Port-Channel1|
-                         |0_0__am2-x3sb-xcg-5-1a_Port-Channel16_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3sb-xcg-5-1a| 0))
                     (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-16_Port-Channel2|
-                         |0_0__am2-x3sb-xcg-5-1b_Port-Channel16_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3sb-xcg-5-1b| 0)))
                 a!1
                 (= |0__reachable-id_am2-x3hl-xcg-5-16| 0))))
   (ite (or false false) (= |0__reachable-id_am2-x3hl-xcg-5-16| 1) a!2))))
 (assert (let ((a!1 (and true
                 (=> (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-02_Port-Channel2|
-                         |0_0__am2-x3sb-xcg-5-1b_Port-Channel2_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3sb-xcg-5-1b| 0))
                     (> |0__reachable-id_am2-x3hl-xcg-5-02|
                        |0__reachable-id_am2-x3sb-xcg-5-1b|))
                 (=> (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-02_Port-Channel1|
-                         |0_0__am2-x3sb-xcg-5-1a_Port-Channel2_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3sb-xcg-5-1a| 0))
                     (> |0__reachable-id_am2-x3hl-xcg-5-02|
                        |0__reachable-id_am2-x3sb-xcg-5-1a|)))))
 (let ((a!2 (ite (or false
                     (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-02_Port-Channel2|
-                         |0_0__am2-x3sb-xcg-5-1b_Port-Channel2_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3sb-xcg-5-1b| 0))
                     (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-02_Port-Channel1|
-                         |0_0__am2-x3sb-xcg-5-1a_Port-Channel2_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3sb-xcg-5-1a| 0)))
                 a!1
                 (= |0__reachable-id_am2-x3hl-xcg-5-02| 0))))
   (ite (or false false) (= |0__reachable-id_am2-x3hl-xcg-5-02| 1) a!2))))
 (assert (let ((a!1 (and true
                 (=> (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-13_Port-Channel1|
-                         |0_0__am2-x3sb-xcg-5-1a_Port-Channel13_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3sb-xcg-5-1a| 0))
                     (> |0__reachable-id_am2-x3hl-xcg-5-13|
                        |0__reachable-id_am2-x3sb-xcg-5-1a|))
                 (=> (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-13_Port-Channel2|
-                         |0_0__am2-x3sb-xcg-5-1b_Port-Channel13_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3sb-xcg-5-1b| 0))
                     (> |0__reachable-id_am2-x3hl-xcg-5-13|
                        |0__reachable-id_am2-x3sb-xcg-5-1b|)))))
 (let ((a!2 (ite (or false
                     (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-13_Port-Channel1|
-                         |0_0__am2-x3sb-xcg-5-1a_Port-Channel13_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3sb-xcg-5-1a| 0))
                     (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-13_Port-Channel2|
-                         |0_0__am2-x3sb-xcg-5-1b_Port-Channel13_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3sb-xcg-5-1b| 0)))
                 a!1
                 (= |0__reachable-id_am2-x3hl-xcg-5-13| 0))))
   (ite (or false false) (= |0__reachable-id_am2-x3hl-xcg-5-13| 1) a!2))))
 (assert (let ((a!1 (and true
                 (=> (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-03_Port-Channel2|
-                         |0_0__am2-x3sb-xcg-5-1b_Port-Channel3_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3sb-xcg-5-1b| 0))
                     (> |0__reachable-id_am2-x3hl-xcg-5-03|
                        |0__reachable-id_am2-x3sb-xcg-5-1b|))
                 (=> (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-03_Port-Channel1|
-                         |0_0__am2-x3sb-xcg-5-1a_Port-Channel3_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3sb-xcg-5-1a| 0))
                     (> |0__reachable-id_am2-x3hl-xcg-5-03|
                        |0__reachable-id_am2-x3sb-xcg-5-1a|)))))
 (let ((a!2 (ite (or false
                     (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-03_Port-Channel2|
-                         |0_0__am2-x3sb-xcg-5-1b_Port-Channel3_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3sb-xcg-5-1b| 0))
                     (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-03_Port-Channel1|
-                         |0_0__am2-x3sb-xcg-5-1a_Port-Channel3_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3sb-xcg-5-1a| 0)))
                 a!1
                 (= |0__reachable-id_am2-x3hl-xcg-5-03| 0))))
   (ite (or false false) (= |0__reachable-id_am2-x3hl-xcg-5-03| 1) a!2))))
 (assert (let ((a!1 (and true
                 (=> (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-14_Port-Channel1|
-                         |0_0__am2-x3sb-xcg-5-1a_Port-Channel14_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3sb-xcg-5-1a| 0))
                     (> |0__reachable-id_am2-x3hl-xcg-5-14|
                        |0__reachable-id_am2-x3sb-xcg-5-1a|))
                 (=> (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-14_Port-Channel2|
-                         |0_0__am2-x3sb-xcg-5-1b_Port-Channel14_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3sb-xcg-5-1b| 0))
                     (> |0__reachable-id_am2-x3hl-xcg-5-14|
                        |0__reachable-id_am2-x3sb-xcg-5-1b|)))))
 (let ((a!2 (ite (or false
                     (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-14_Port-Channel1|
-                         |0_0__am2-x3sb-xcg-5-1a_Port-Channel14_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3sb-xcg-5-1a| 0))
                     (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-14_Port-Channel2|
-                         |0_0__am2-x3sb-xcg-5-1b_Port-Channel14_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3sb-xcg-5-1b| 0)))
                 a!1
                 (= |0__reachable-id_am2-x3hl-xcg-5-14| 0))))
   (ite (or false false) (= |0__reachable-id_am2-x3hl-xcg-5-14| 1) a!2))))
 (assert (let ((a!1 (and true
                 (=> (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-11_Port-Channel1|
-                         |0_0__am2-x3sb-xcg-5-1a_Port-Channel11_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3sb-xcg-5-1a| 0))
                     (> |0__reachable-id_am2-x3hl-xcg-5-11|
                        |0__reachable-id_am2-x3sb-xcg-5-1a|))
                 (=> (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-11_Port-Channel2|
-                         |0_0__am2-x3sb-xcg-5-1b_Port-Channel11_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3sb-xcg-5-1b| 0))
                     (> |0__reachable-id_am2-x3hl-xcg-5-11|
                        |0__reachable-id_am2-x3sb-xcg-5-1b|)))))
 (let ((a!2 (ite (or false
                     (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-11_Port-Channel1|
-                         |0_0__am2-x3sb-xcg-5-1a_Port-Channel11_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3sb-xcg-5-1a| 0))
                     (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-11_Port-Channel2|
-                         |0_0__am2-x3sb-xcg-5-1b_Port-Channel11_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3sb-xcg-5-1b| 0)))
                 a!1
                 (= |0__reachable-id_am2-x3hl-xcg-5-11| 0))))
   (ite (or false false) (= |0__reachable-id_am2-x3hl-xcg-5-11| 1) a!2))))
 (assert (let ((a!1 (and true
                 (=> (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-01_Port-Channel2|
-                         |0_0__am2-x3sb-xcg-5-1b_Port-Channel1_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3sb-xcg-5-1b| 0))
                     (> |0__reachable-id_am2-x3hl-xcg-5-01|
                        |0__reachable-id_am2-x3sb-xcg-5-1b|))
                 (=> (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-01_Port-Channel1|
-                         |0_0__am2-x3sb-xcg-5-1a_Port-Channel1_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3sb-xcg-5-1a| 0))
                     (> |0__reachable-id_am2-x3hl-xcg-5-01|
                        |0__reachable-id_am2-x3sb-xcg-5-1a|)))))
 (let ((a!2 (ite (or false
                     (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-01_Port-Channel2|
-                         |0_0__am2-x3sb-xcg-5-1b_Port-Channel1_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3sb-xcg-5-1b| 0))
                     (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-01_Port-Channel1|
-                         |0_0__am2-x3sb-xcg-5-1a_Port-Channel1_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3sb-xcg-5-1a| 0)))
                 a!1
                 (= |0__reachable-id_am2-x3hl-xcg-5-01| 0))))
   (ite (or false false) (= |0__reachable-id_am2-x3hl-xcg-5-01| 1) a!2))))
 (assert (let ((a!1 (and true
                 (=> (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-12_Port-Channel1|
-                         |0_0__am2-x3sb-xcg-5-1a_Port-Channel12_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3sb-xcg-5-1a| 0))
                     (> |0__reachable-id_am2-x3hl-xcg-5-12|
                        |0__reachable-id_am2-x3sb-xcg-5-1a|))
                 (=> (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-12_Port-Channel2|
-                         |0_0__am2-x3sb-xcg-5-1b_Port-Channel12_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3sb-xcg-5-1b| 0))
                     (> |0__reachable-id_am2-x3hl-xcg-5-12|
                        |0__reachable-id_am2-x3sb-xcg-5-1b|)))))
 (let ((a!2 (ite (or false
                     (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-12_Port-Channel1|
-                         |0_0__am2-x3sb-xcg-5-1a_Port-Channel12_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3sb-xcg-5-1a| 0))
                     (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-12_Port-Channel2|
-                         |0_0__am2-x3sb-xcg-5-1b_Port-Channel12_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3sb-xcg-5-1b| 0)))
                 a!1
                 (= |0__reachable-id_am2-x3hl-xcg-5-12| 0))))
   (ite (or false false) (= |0__reachable-id_am2-x3hl-xcg-5-12| 1) a!2))))
 (assert (let ((a!1 (and true
                 (=> (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-08_Port-Channel2|
-                         |0_0__am2-x3sb-xcg-5-1b_Port-Channel8_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3sb-xcg-5-1b| 0))
                     (> |0__reachable-id_am2-x3hl-xcg-5-08|
                        |0__reachable-id_am2-x3sb-xcg-5-1b|))
                 (=> (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-08_Port-Channel1|
-                         |0_0__am2-x3sb-xcg-5-1a_Port-Channel8_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3sb-xcg-5-1a| 0))
                     (> |0__reachable-id_am2-x3hl-xcg-5-08|
                        |0__reachable-id_am2-x3sb-xcg-5-1a|)))))
 (let ((a!2 (ite (or false
                     (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-08_Port-Channel2|
-                         |0_0__am2-x3sb-xcg-5-1b_Port-Channel8_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3sb-xcg-5-1b| 0))
                     (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-08_Port-Channel1|
-                         |0_0__am2-x3sb-xcg-5-1a_Port-Channel8_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3sb-xcg-5-1a| 0)))
                 a!1
                 (= |0__reachable-id_am2-x3hl-xcg-5-08| 0))))
   (ite (or false false) (= |0__reachable-id_am2-x3hl-xcg-5-08| 1) a!2))))
 (assert (let ((a!1 (and true
                 (=> (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-19_Port-Channel2|
-                         |0_0__am2-x3sb-xcg-5-1b_Port-Channel19_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3sb-xcg-5-1b| 0))
                     (> |0__reachable-id_am2-x3hl-xcg-5-19|
                        |0__reachable-id_am2-x3sb-xcg-5-1b|))
                 (=> (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-19_Port-Channel1|
-                         |0_0__am2-x3sb-xcg-5-1a_Port-Channel19_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3sb-xcg-5-1a| 0))
                     (> |0__reachable-id_am2-x3hl-xcg-5-19|
                        |0__reachable-id_am2-x3sb-xcg-5-1a|)))))
 (let ((a!2 (ite (or false
                     (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-19_Port-Channel2|
-                         |0_0__am2-x3sb-xcg-5-1b_Port-Channel19_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3sb-xcg-5-1b| 0))
                     (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-19_Port-Channel1|
-                         |0_0__am2-x3sb-xcg-5-1a_Port-Channel19_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3sb-xcg-5-1a| 0)))
                 a!1
                 (= |0__reachable-id_am2-x3hl-xcg-5-19| 0))))
   (ite (or false false) (= |0__reachable-id_am2-x3hl-xcg-5-19| 1) a!2))))
 (assert (let ((a!1 (and true
                 (=> (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-09_Port-Channel2|
-                         |0_0__am2-x3sb-xcg-5-1b_Port-Channel9_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3sb-xcg-5-1b| 0))
                     (> |0__reachable-id_am2-x3hl-xcg-5-09|
                        |0__reachable-id_am2-x3sb-xcg-5-1b|))
                 (=> (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-09_Port-Channel1|
-                         |0_0__am2-x3sb-xcg-5-1a_Port-Channel9_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3sb-xcg-5-1a| 0))
                     (> |0__reachable-id_am2-x3hl-xcg-5-09|
                        |0__reachable-id_am2-x3sb-xcg-5-1a|)))))
 (let ((a!2 (ite (or false
                     (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-09_Port-Channel2|
-                         |0_0__am2-x3sb-xcg-5-1b_Port-Channel9_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3sb-xcg-5-1b| 0))
                     (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-09_Port-Channel1|
-                         |0_0__am2-x3sb-xcg-5-1a_Port-Channel9_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3sb-xcg-5-1a| 0)))
                 a!1
                 (= |0__reachable-id_am2-x3hl-xcg-5-09| 0))))
   (ite (or false false) (= |0__reachable-id_am2-x3hl-xcg-5-09| 1) a!2))))
 (assert (let ((a!1 (and true
                 (=> (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-20_Port-Channel2|
-                         |0_0__am2-x3sb-xcg-5-1b_Port-Channel20_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3sb-xcg-5-1b| 0))
                     (> |0__reachable-id_am2-x3hl-xcg-5-20|
                        |0__reachable-id_am2-x3sb-xcg-5-1b|))
                 (=> (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-20_Port-Channel1|
-                         |0_0__am2-x3sb-xcg-5-1a_Port-Channel20_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3sb-xcg-5-1a| 0))
                     (> |0__reachable-id_am2-x3hl-xcg-5-20|
                        |0__reachable-id_am2-x3sb-xcg-5-1a|)))))
 (let ((a!2 (ite (or false
                     (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-20_Port-Channel2|
-                         |0_0__am2-x3sb-xcg-5-1b_Port-Channel20_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3sb-xcg-5-1b| 0))
                     (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-20_Port-Channel1|
-                         |0_0__am2-x3sb-xcg-5-1a_Port-Channel20_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3sb-xcg-5-1a| 0)))
                 a!1
                 (= |0__reachable-id_am2-x3hl-xcg-5-20| 0))))
@@ -28633,377 +27218,377 @@
        a!2))))
 (assert (let ((a!1 (and true
                 (=> (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-10_Port-Channel1|
-                         |0_0__am2-x3sb-xcg-5-1a_Port-Channel10_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3sb-xcg-5-1a| 0))
                     (> |0__reachable-id_am2-x3hl-xcg-5-10|
                        |0__reachable-id_am2-x3sb-xcg-5-1a|))
                 (=> (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-10_Port-Channel2|
-                         |0_0__am2-x3sb-xcg-5-1b_Port-Channel10_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3sb-xcg-5-1b| 0))
                     (> |0__reachable-id_am2-x3hl-xcg-5-10|
                        |0__reachable-id_am2-x3sb-xcg-5-1b|)))))
 (let ((a!2 (ite (or false
                     (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-10_Port-Channel1|
-                         |0_0__am2-x3sb-xcg-5-1a_Port-Channel10_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3sb-xcg-5-1a| 0))
                     (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-10_Port-Channel2|
-                         |0_0__am2-x3sb-xcg-5-1b_Port-Channel10_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3sb-xcg-5-1b| 0)))
                 a!1
                 (= |0__reachable-id_am2-x3hl-xcg-5-10| 0))))
   (ite (or false false) (= |0__reachable-id_am2-x3hl-xcg-5-10| 1) a!2))))
 (assert (let ((a!1 (and true
                 (=> (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-21_Port-Channel2|
-                         |0_0__am2-x3sb-xcg-5-1b_Port-Channel21_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3sb-xcg-5-1b| 0))
                     (> |0__reachable-id_am2-x3hl-xcg-5-21|
                        |0__reachable-id_am2-x3sb-xcg-5-1b|))
                 (=> (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-21_Port-Channel1|
-                         |0_0__am2-x3sb-xcg-5-1a_Port-Channel21_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3sb-xcg-5-1a| 0))
                     (> |0__reachable-id_am2-x3hl-xcg-5-21|
                        |0__reachable-id_am2-x3sb-xcg-5-1a|)))))
 (let ((a!2 (ite (or false
                     (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-21_Port-Channel2|
-                         |0_0__am2-x3sb-xcg-5-1b_Port-Channel21_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3sb-xcg-5-1b| 0))
                     (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-21_Port-Channel1|
-                         |0_0__am2-x3sb-xcg-5-1a_Port-Channel21_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3sb-xcg-5-1a| 0)))
                 a!1
                 (= |0__reachable-id_am2-x3hl-xcg-5-21| 0))))
   (ite (or false false) (= |0__reachable-id_am2-x3hl-xcg-5-21| 1) a!2))))
 (assert (let ((a!1 (and true
                 (=> (and |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel21|
-                         |0_0__am2-x3hl-xcg-5-21_Port-Channel2_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3hl-xcg-5-21| 0))
                     (> |0__reachable-id_am2-x3sb-xcg-5-1b|
                        |0__reachable-id_am2-x3hl-xcg-5-21|))
                 (=> (and |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel19|
-                         |0_0__am2-x3hl-xcg-5-19_Port-Channel2_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3hl-xcg-5-19| 0))
                     (> |0__reachable-id_am2-x3sb-xcg-5-1b|
                        |0__reachable-id_am2-x3hl-xcg-5-19|))
                 (=> (and |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel9|
-                         |0_0__am2-x3hl-xcg-5-09_Port-Channel2_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3hl-xcg-5-09| 0))
                     (> |0__reachable-id_am2-x3sb-xcg-5-1b|
                        |0__reachable-id_am2-x3hl-xcg-5-09|))
                 (=> (and |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel6|
-                         |0_0__am2-x3hl-xcg-5-06_Port-Channel2_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3hl-xcg-5-06| 0))
                     (> |0__reachable-id_am2-x3sb-xcg-5-1b|
                        |0__reachable-id_am2-x3hl-xcg-5-06|))
                 (=> (and |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel3|
-                         |0_0__am2-x3hl-xcg-5-03_Port-Channel2_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3hl-xcg-5-03| 0))
                     (> |0__reachable-id_am2-x3sb-xcg-5-1b|
                        |0__reachable-id_am2-x3hl-xcg-5-03|))
                 (=> (and |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel14|
-                         |0_0__am2-x3hl-xcg-5-14_Port-Channel2_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3hl-xcg-5-14| 0))
                     (> |0__reachable-id_am2-x3sb-xcg-5-1b|
                        |0__reachable-id_am2-x3hl-xcg-5-14|))
                 (=> (and |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel11|
-                         |0_0__am2-x3hl-xcg-5-11_Port-Channel2_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3hl-xcg-5-11| 0))
                     (> |0__reachable-id_am2-x3sb-xcg-5-1b|
                        |0__reachable-id_am2-x3hl-xcg-5-11|))
                 (=> (and |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel1|
-                         |0_0__am2-x3hl-xcg-5-01_Port-Channel2_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3hl-xcg-5-01| 0))
                     (> |0__reachable-id_am2-x3sb-xcg-5-1b|
                        |0__reachable-id_am2-x3hl-xcg-5-01|))
                 (=> (and |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel17|
-                         |0_0__am2-x3hl-xcg-5-17_Port-Channel2_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3hl-xcg-5-17| 0))
                     (> |0__reachable-id_am2-x3sb-xcg-5-1b|
                        |0__reachable-id_am2-x3hl-xcg-5-17|))
                 (=> (and |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel7|
-                         |0_0__am2-x3hl-xcg-5-07_Port-Channel2_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3hl-xcg-5-07| 0))
                     (> |0__reachable-id_am2-x3sb-xcg-5-1b|
                        |0__reachable-id_am2-x3hl-xcg-5-07|))
                 (=> (and |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel12|
-                         |0_0__am2-x3hl-xcg-5-12_Port-Channel2_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3hl-xcg-5-12| 0))
                     (> |0__reachable-id_am2-x3sb-xcg-5-1b|
                        |0__reachable-id_am2-x3hl-xcg-5-12|))
                 (=> (and |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel8|
-                         |0_0__am2-x3hl-xcg-5-08_Port-Channel2_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3hl-xcg-5-08| 0))
                     (> |0__reachable-id_am2-x3sb-xcg-5-1b|
                        |0__reachable-id_am2-x3hl-xcg-5-08|))
                 (=> (and |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel15|
-                         |0_0__am2-x3hl-xcg-5-15_Port-Channel2_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3hl-xcg-5-15| 0))
                     (> |0__reachable-id_am2-x3sb-xcg-5-1b|
                        |0__reachable-id_am2-x3hl-xcg-5-15|))
                 (=> (and |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel5|
-                         |0_0__am2-x3hl-xcg-5-05_Port-Channel2_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3hl-xcg-5-05| 0))
                     (> |0__reachable-id_am2-x3sb-xcg-5-1b|
                        |0__reachable-id_am2-x3hl-xcg-5-05|))
                 (=> (and |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel2|
-                         |0_0__am2-x3hl-xcg-5-02_Port-Channel2_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3hl-xcg-5-02| 0))
                     (> |0__reachable-id_am2-x3sb-xcg-5-1b|
                        |0__reachable-id_am2-x3hl-xcg-5-02|))
                 (=> (and |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel20|
-                         |0_0__am2-x3hl-xcg-5-20_Port-Channel2_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3hl-xcg-5-20| 0))
                     (> |0__reachable-id_am2-x3sb-xcg-5-1b|
                        |0__reachable-id_am2-x3hl-xcg-5-20|))
                 (=> (and |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel18|
-                         |0_0__am2-x3hl-xcg-5-18_Port-Channel2_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3hl-xcg-5-18| 0))
                     (> |0__reachable-id_am2-x3sb-xcg-5-1b|
                        |0__reachable-id_am2-x3hl-xcg-5-18|))
                 (=> (and |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel10|
-                         |0_0__am2-x3hl-xcg-5-10_Port-Channel2_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3hl-xcg-5-10| 0))
                     (> |0__reachable-id_am2-x3sb-xcg-5-1b|
                        |0__reachable-id_am2-x3hl-xcg-5-10|))
                 (=> (and |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel16|
-                         |0_0__am2-x3hl-xcg-5-16_Port-Channel2_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3hl-xcg-5-16| 0))
                     (> |0__reachable-id_am2-x3sb-xcg-5-1b|
                        |0__reachable-id_am2-x3hl-xcg-5-16|))
                 (=> (and |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel13|
-                         |0_0__am2-x3hl-xcg-5-13_Port-Channel2_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3hl-xcg-5-13| 0))
                     (> |0__reachable-id_am2-x3sb-xcg-5-1b|
                        |0__reachable-id_am2-x3hl-xcg-5-13|)))))
 (let ((a!2 (ite (or false
                     (and |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel21|
-                         |0_0__am2-x3hl-xcg-5-21_Port-Channel2_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3hl-xcg-5-21| 0))
                     (and |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel19|
-                         |0_0__am2-x3hl-xcg-5-19_Port-Channel2_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3hl-xcg-5-19| 0))
                     (and |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel9|
-                         |0_0__am2-x3hl-xcg-5-09_Port-Channel2_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3hl-xcg-5-09| 0))
                     (and |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel6|
-                         |0_0__am2-x3hl-xcg-5-06_Port-Channel2_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3hl-xcg-5-06| 0))
                     (and |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel3|
-                         |0_0__am2-x3hl-xcg-5-03_Port-Channel2_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3hl-xcg-5-03| 0))
                     (and |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel14|
-                         |0_0__am2-x3hl-xcg-5-14_Port-Channel2_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3hl-xcg-5-14| 0))
                     (and |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel11|
-                         |0_0__am2-x3hl-xcg-5-11_Port-Channel2_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3hl-xcg-5-11| 0))
                     (and |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel1|
-                         |0_0__am2-x3hl-xcg-5-01_Port-Channel2_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3hl-xcg-5-01| 0))
                     (and |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel17|
-                         |0_0__am2-x3hl-xcg-5-17_Port-Channel2_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3hl-xcg-5-17| 0))
                     (and |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel7|
-                         |0_0__am2-x3hl-xcg-5-07_Port-Channel2_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3hl-xcg-5-07| 0))
                     (and |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel12|
-                         |0_0__am2-x3hl-xcg-5-12_Port-Channel2_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3hl-xcg-5-12| 0))
                     (and |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel8|
-                         |0_0__am2-x3hl-xcg-5-08_Port-Channel2_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3hl-xcg-5-08| 0))
                     (and |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel15|
-                         |0_0__am2-x3hl-xcg-5-15_Port-Channel2_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3hl-xcg-5-15| 0))
                     (and |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel5|
-                         |0_0__am2-x3hl-xcg-5-05_Port-Channel2_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3hl-xcg-5-05| 0))
                     (and |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel2|
-                         |0_0__am2-x3hl-xcg-5-02_Port-Channel2_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3hl-xcg-5-02| 0))
                     (and |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel20|
-                         |0_0__am2-x3hl-xcg-5-20_Port-Channel2_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3hl-xcg-5-20| 0))
                     (and |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel18|
-                         |0_0__am2-x3hl-xcg-5-18_Port-Channel2_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3hl-xcg-5-18| 0))
                     (and |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel10|
-                         |0_0__am2-x3hl-xcg-5-10_Port-Channel2_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3hl-xcg-5-10| 0))
                     (and |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel16|
-                         |0_0__am2-x3hl-xcg-5-16_Port-Channel2_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3hl-xcg-5-16| 0))
                     (and |0_DATA-FORWARDING_am2-x3sb-xcg-5-1b_Port-Channel13|
-                         |0_0__am2-x3hl-xcg-5-13_Port-Channel2_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3hl-xcg-5-13| 0)))
                 a!1
                 (= |0__reachable-id_am2-x3sb-xcg-5-1b| 0))))
   (ite (or false false) (= |0__reachable-id_am2-x3sb-xcg-5-1b| 1) a!2))))
 (assert (let ((a!1 (and true
                 (=> (and |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel2|
-                         |0_0__am2-x3hl-xcg-5-02_Port-Channel1_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3hl-xcg-5-02| 0))
                     (> |0__reachable-id_am2-x3sb-xcg-5-1a|
                        |0__reachable-id_am2-x3hl-xcg-5-02|))
                 (=> (and |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel12|
-                         |0_0__am2-x3hl-xcg-5-12_Port-Channel1_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3hl-xcg-5-12| 0))
                     (> |0__reachable-id_am2-x3sb-xcg-5-1a|
                        |0__reachable-id_am2-x3hl-xcg-5-12|))
                 (=> (and |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel15|
-                         |0_0__am2-x3hl-xcg-5-15_Port-Channel1_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3hl-xcg-5-15| 0))
                     (> |0__reachable-id_am2-x3sb-xcg-5-1a|
                        |0__reachable-id_am2-x3hl-xcg-5-15|))
                 (=> (and |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel8|
-                         |0_0__am2-x3hl-xcg-5-08_Port-Channel1_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3hl-xcg-5-08| 0))
                     (> |0__reachable-id_am2-x3sb-xcg-5-1a|
                        |0__reachable-id_am2-x3hl-xcg-5-08|))
                 (=> (and |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel20|
-                         |0_0__am2-x3hl-xcg-5-20_Port-Channel1_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3hl-xcg-5-20| 0))
                     (> |0__reachable-id_am2-x3sb-xcg-5-1a|
                        |0__reachable-id_am2-x3hl-xcg-5-20|))
                 (=> (and |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel18|
-                         |0_0__am2-x3hl-xcg-5-18_Port-Channel1_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3hl-xcg-5-18| 0))
                     (> |0__reachable-id_am2-x3sb-xcg-5-1a|
                        |0__reachable-id_am2-x3hl-xcg-5-18|))
                 (=> (and |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel5|
-                         |0_0__am2-x3hl-xcg-5-05_Port-Channel1_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3hl-xcg-5-05| 0))
                     (> |0__reachable-id_am2-x3sb-xcg-5-1a|
                        |0__reachable-id_am2-x3hl-xcg-5-05|))
                 (=> (and |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel10|
-                         |0_0__am2-x3hl-xcg-5-10_Port-Channel1_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3hl-xcg-5-10| 0))
                     (> |0__reachable-id_am2-x3sb-xcg-5-1a|
                        |0__reachable-id_am2-x3hl-xcg-5-10|))
                 (=> (and |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel3|
-                         |0_0__am2-x3hl-xcg-5-03_Port-Channel1_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3hl-xcg-5-03| 0))
                     (> |0__reachable-id_am2-x3sb-xcg-5-1a|
                        |0__reachable-id_am2-x3hl-xcg-5-03|))
                 (=> (and |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel13|
-                         |0_0__am2-x3hl-xcg-5-13_Port-Channel1_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3hl-xcg-5-13| 0))
                     (> |0__reachable-id_am2-x3sb-xcg-5-1a|
                        |0__reachable-id_am2-x3hl-xcg-5-13|))
                 (=> (and |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel21|
-                         |0_0__am2-x3hl-xcg-5-21_Port-Channel1_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3hl-xcg-5-21| 0))
                     (> |0__reachable-id_am2-x3sb-xcg-5-1a|
                        |0__reachable-id_am2-x3hl-xcg-5-21|))
                 (=> (and |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel19|
-                         |0_0__am2-x3hl-xcg-5-19_Port-Channel1_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3hl-xcg-5-19| 0))
                     (> |0__reachable-id_am2-x3sb-xcg-5-1a|
                        |0__reachable-id_am2-x3hl-xcg-5-19|))
                 (=> (and |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel16|
-                         |0_0__am2-x3hl-xcg-5-16_Port-Channel1_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3hl-xcg-5-16| 0))
                     (> |0__reachable-id_am2-x3sb-xcg-5-1a|
                        |0__reachable-id_am2-x3hl-xcg-5-16|))
                 (=> (and |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel9|
-                         |0_0__am2-x3hl-xcg-5-09_Port-Channel1_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3hl-xcg-5-09| 0))
                     (> |0__reachable-id_am2-x3sb-xcg-5-1a|
                        |0__reachable-id_am2-x3hl-xcg-5-09|))
                 (=> (and |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel6|
-                         |0_0__am2-x3hl-xcg-5-06_Port-Channel1_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3hl-xcg-5-06| 0))
                     (> |0__reachable-id_am2-x3sb-xcg-5-1a|
                        |0__reachable-id_am2-x3hl-xcg-5-06|))
                 (=> (and |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel11|
-                         |0_0__am2-x3hl-xcg-5-11_Port-Channel1_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3hl-xcg-5-11| 0))
                     (> |0__reachable-id_am2-x3sb-xcg-5-1a|
                        |0__reachable-id_am2-x3hl-xcg-5-11|))
                 (=> (and |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel7|
-                         |0_0__am2-x3hl-xcg-5-07_Port-Channel1_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3hl-xcg-5-07| 0))
                     (> |0__reachable-id_am2-x3sb-xcg-5-1a|
                        |0__reachable-id_am2-x3hl-xcg-5-07|))
                 (=> (and |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel17|
-                         |0_0__am2-x3hl-xcg-5-17_Port-Channel1_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3hl-xcg-5-17| 0))
                     (> |0__reachable-id_am2-x3sb-xcg-5-1a|
                        |0__reachable-id_am2-x3hl-xcg-5-17|))
                 (=> (and |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel14|
-                         |0_0__am2-x3hl-xcg-5-14_Port-Channel1_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3hl-xcg-5-14| 0))
                     (> |0__reachable-id_am2-x3sb-xcg-5-1a|
                        |0__reachable-id_am2-x3hl-xcg-5-14|))
                 (=> (and |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel1|
-                         |0_0__am2-x3hl-xcg-5-01_Port-Channel1_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3hl-xcg-5-01| 0))
                     (> |0__reachable-id_am2-x3sb-xcg-5-1a|
                        |0__reachable-id_am2-x3hl-xcg-5-01|)))))
 (let ((a!2 (ite (or false
                     (and |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel2|
-                         |0_0__am2-x3hl-xcg-5-02_Port-Channel1_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3hl-xcg-5-02| 0))
                     (and |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel12|
-                         |0_0__am2-x3hl-xcg-5-12_Port-Channel1_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3hl-xcg-5-12| 0))
                     (and |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel15|
-                         |0_0__am2-x3hl-xcg-5-15_Port-Channel1_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3hl-xcg-5-15| 0))
                     (and |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel8|
-                         |0_0__am2-x3hl-xcg-5-08_Port-Channel1_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3hl-xcg-5-08| 0))
                     (and |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel20|
-                         |0_0__am2-x3hl-xcg-5-20_Port-Channel1_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3hl-xcg-5-20| 0))
                     (and |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel18|
-                         |0_0__am2-x3hl-xcg-5-18_Port-Channel1_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3hl-xcg-5-18| 0))
                     (and |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel5|
-                         |0_0__am2-x3hl-xcg-5-05_Port-Channel1_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3hl-xcg-5-05| 0))
                     (and |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel10|
-                         |0_0__am2-x3hl-xcg-5-10_Port-Channel1_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3hl-xcg-5-10| 0))
                     (and |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel3|
-                         |0_0__am2-x3hl-xcg-5-03_Port-Channel1_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3hl-xcg-5-03| 0))
                     (and |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel13|
-                         |0_0__am2-x3hl-xcg-5-13_Port-Channel1_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3hl-xcg-5-13| 0))
                     (and |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel21|
-                         |0_0__am2-x3hl-xcg-5-21_Port-Channel1_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3hl-xcg-5-21| 0))
                     (and |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel19|
-                         |0_0__am2-x3hl-xcg-5-19_Port-Channel1_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3hl-xcg-5-19| 0))
                     (and |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel16|
-                         |0_0__am2-x3hl-xcg-5-16_Port-Channel1_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3hl-xcg-5-16| 0))
                     (and |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel9|
-                         |0_0__am2-x3hl-xcg-5-09_Port-Channel1_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3hl-xcg-5-09| 0))
                     (and |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel6|
-                         |0_0__am2-x3hl-xcg-5-06_Port-Channel1_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3hl-xcg-5-06| 0))
                     (and |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel11|
-                         |0_0__am2-x3hl-xcg-5-11_Port-Channel1_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3hl-xcg-5-11| 0))
                     (and |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel7|
-                         |0_0__am2-x3hl-xcg-5-07_Port-Channel1_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3hl-xcg-5-07| 0))
                     (and |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel17|
-                         |0_0__am2-x3hl-xcg-5-17_Port-Channel1_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3hl-xcg-5-17| 0))
                     (and |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel14|
-                         |0_0__am2-x3hl-xcg-5-14_Port-Channel1_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3hl-xcg-5-14| 0))
                     (and |0_DATA-FORWARDING_am2-x3sb-xcg-5-1a_Port-Channel1|
-                         |0_0__am2-x3hl-xcg-5-01_Port-Channel1_INBOUND_SOFTAdd|
+                         true
                          (> |0__reachable-id_am2-x3hl-xcg-5-01| 0)))
                 a!1
                 (= |0__reachable-id_am2-x3sb-xcg-5-1a| 0))))
   (ite (or false false) (= |0__reachable-id_am2-x3sb-xcg-5-1a| 1) a!2))))
-(assert (and true |0__reachable_am2-x3hl-xcg-5-12|))
+(assert (not (and true |0__reachable_am2-x3hl-xcg-5-12|)))
 (assert (= |0_FAILED-EDGE_am2-x3hl-xcg-5-06_mgmt0| 0))
 (assert (= |0_FAILED-EDGE_am2-x3hl-xcg-5-06_Vlan101| 0))
 (assert (= |0_FAILED-EDGE_am2-x3hl-xcg-5-06_Loopback0| 0))
@@ -29096,524 +27681,3 @@
 (assert (= |0_FAILED-EDGE_am2-x3sb-xcg-5-1a_Ethernet1/47| 0))
 (assert (= |0_FAILED-EDGE_am2-x3sb-xcg-5-1a_mgmt0| 0))
 (assert (= |0_FAILED-EDGE_am2-x3sb-xcg-5-1a_Loopback0| 0))
-(assert-soft |0_0__am2-x3hl-xcg-5-06_mgmt0_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft (not |0_0__am2-x3hl-xcg-5-06_mgmt0_INBOUND_mgmt-onlyRemove|) :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-06_Port-Channel1_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-06_Port-Channel1_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft (not |0_0__am2-x3hl-xcg-5-06_Vlan101_OUTBOUND_vlan101-xcg-outRemove|) :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-06_Vlan101_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-06_Loopback0_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-06_Loopback0_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft (not |0_0__am2-x3hl-xcg-5-06_Vlan102_OUTBOUND_vlan102-xcg-outRemove|) :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-06_Vlan102_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-06_Port-Channel2_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-06_Port-Channel2_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-17_mgmt0_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft (not |0_0__am2-x3hl-xcg-5-17_mgmt0_INBOUND_mgmt-onlyRemove|) :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-17_Port-Channel1_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-17_Port-Channel1_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-17_Loopback0_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-17_Loopback0_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft (not |0_0__am2-x3hl-xcg-5-17_Vlan102_OUTBOUND_vlan102-xcg-outRemove|) :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-17_Vlan102_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-17_Port-Channel2_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-17_Port-Channel2_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft (not |0_0__am2-x3hl-xcg-5-17_Vlan101_OUTBOUND_vlan101-xcg-outRemove|) :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-17_Vlan101_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft (not |0_0__am2-x3hl-xcg-5-07_Vlan101_OUTBOUND_vlan101-xcg-outRemove|) :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-07_Vlan101_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-07_mgmt0_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft (not |0_0__am2-x3hl-xcg-5-07_mgmt0_INBOUND_mgmt-onlyRemove|) :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-07_Loopback0_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-07_Loopback0_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft (not |0_0__am2-x3hl-xcg-5-07_Vlan102_OUTBOUND_vlan102-xcg-outRemove|) :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-07_Vlan102_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-07_Port-Channel1_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-07_Port-Channel1_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-07_Port-Channel2_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-07_Port-Channel2_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-18_mgmt0_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft (not |0_0__am2-x3hl-xcg-5-18_mgmt0_INBOUND_mgmt-onlyRemove|) :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-18_Port-Channel2_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-18_Port-Channel2_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft (not |0_0__am2-x3hl-xcg-5-18_Vlan101_OUTBOUND_vlan101-xcg-outRemove|) :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-18_Vlan101_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-18_Loopback0_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-18_Loopback0_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft (not |0_0__am2-x3hl-xcg-5-18_Vlan102_OUTBOUND_vlan102-xcg-outRemove|) :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-18_Vlan102_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-18_Port-Channel1_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-18_Port-Channel1_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-15_Port-Channel1_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-15_Port-Channel1_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-15_mgmt0_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft (not |0_0__am2-x3hl-xcg-5-15_mgmt0_INBOUND_mgmt-onlyRemove|) :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-15_Port-Channel2_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-15_Port-Channel2_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft (not |0_0__am2-x3hl-xcg-5-15_Vlan102_OUTBOUND_vlan102-xcg-outRemove|) :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-15_Vlan102_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-15_Loopback0_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-15_Loopback0_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft (not |0_0__am2-x3hl-xcg-5-15_Vlan101_OUTBOUND_vlan101-xcg-outRemove|) :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-15_Vlan101_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-05_Port-Channel1_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-05_Port-Channel1_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft (not |0_0__am2-x3hl-xcg-5-05_Vlan101_OUTBOUND_vlan101-xcg-outRemove|) :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-05_Vlan101_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft (not |0_0__am2-x3hl-xcg-5-05_Vlan102_OUTBOUND_vlan102-xcg-outRemove|) :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-05_Vlan102_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-05_Loopback0_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-05_Loopback0_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-05_mgmt0_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft (not |0_0__am2-x3hl-xcg-5-05_mgmt0_INBOUND_mgmt-onlyRemove|) :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-05_Port-Channel2_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-05_Port-Channel2_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft (not |0_0__am2-x3hl-xcg-5-16_Vlan102_OUTBOUND_vlan102-xcg-outRemove|) :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-16_Vlan102_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-16_Port-Channel1_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-16_Port-Channel1_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-16_Port-Channel2_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-16_Port-Channel2_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-16_mgmt0_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft (not |0_0__am2-x3hl-xcg-5-16_mgmt0_INBOUND_mgmt-onlyRemove|) :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-16_Loopback0_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-16_Loopback0_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft (not |0_0__am2-x3hl-xcg-5-16_Vlan101_OUTBOUND_vlan101-xcg-outRemove|) :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-16_Vlan101_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft (not |0_0__am2-x3hl-xcg-5-02_Vlan102_OUTBOUND_vlan102-xcg-outRemove|) :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-02_Vlan102_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-02_mgmt0_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft (not |0_0__am2-x3hl-xcg-5-02_mgmt0_INBOUND_mgmt-onlyRemove|) :weight 1 :id a)
-(assert-soft (not |0_0__am2-x3hl-xcg-5-02_Vlan101_OUTBOUND_vlan101-xcg-outRemove|) :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-02_Vlan101_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-02_Loopback0_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-02_Loopback0_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-02_Port-Channel2_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-02_Port-Channel2_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-02_Port-Channel1_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-02_Port-Channel1_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft (not |0_0__am2-x3hl-xcg-5-13_Vlan102_OUTBOUND_vlan102-xcg-outRemove|) :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-13_Vlan102_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-13_Loopback0_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-13_Loopback0_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-13_mgmt0_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft (not |0_0__am2-x3hl-xcg-5-13_mgmt0_INBOUND_mgmt-onlyRemove|) :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-13_Port-Channel1_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-13_Port-Channel1_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-13_Port-Channel2_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-13_Port-Channel2_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft (not |0_0__am2-x3hl-xcg-5-13_Vlan101_OUTBOUND_vlan101-xcg-outRemove|) :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-13_Vlan101_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft (not |0_0__am2-x3hl-xcg-5-03_Vlan102_OUTBOUND_vlan102-xcg-outRemove|) :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-03_Vlan102_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-03_mgmt0_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft (not |0_0__am2-x3hl-xcg-5-03_mgmt0_INBOUND_mgmt-onlyRemove|) :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-03_Loopback0_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-03_Loopback0_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft (not |0_0__am2-x3hl-xcg-5-03_Vlan101_OUTBOUND_vlan101-xcg-outRemove|) :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-03_Vlan101_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-03_Port-Channel2_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-03_Port-Channel2_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-03_Port-Channel1_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-03_Port-Channel1_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-14_mgmt0_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft (not |0_0__am2-x3hl-xcg-5-14_mgmt0_INBOUND_mgmt-onlyRemove|) :weight 1 :id a)
-(assert-soft (not |0_0__am2-x3hl-xcg-5-14_Vlan102_OUTBOUND_vlan102-xcg-outRemove|) :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-14_Vlan102_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-14_Port-Channel1_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-14_Port-Channel1_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-14_Loopback0_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-14_Loopback0_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft (not |0_0__am2-x3hl-xcg-5-14_Vlan101_OUTBOUND_vlan101-xcg-outRemove|) :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-14_Vlan101_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-14_Port-Channel2_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-14_Port-Channel2_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft (not |0_0__am2-x3hl-xcg-5-11_Vlan101_OUTBOUND_vlan101-xcg-outRemove|) :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-11_Vlan101_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-11_Loopback0_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-11_Loopback0_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-11_mgmt0_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft (not |0_0__am2-x3hl-xcg-5-11_mgmt0_INBOUND_mgmt-onlyRemove|) :weight 1 :id a)
-(assert-soft (not |0_0__am2-x3hl-xcg-5-11_Vlan102_OUTBOUND_vlan102-xcg-outRemove|) :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-11_Vlan102_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-11_Port-Channel1_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-11_Port-Channel1_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-11_Port-Channel2_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-11_Port-Channel2_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft (not |0_0__am2-x3hl-xcg-5-01_Vlan102_OUTBOUND_vlan102-xcg-outRemove|) :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-01_Vlan102_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-01_Loopback0_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-01_Loopback0_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-01_Port-Channel2_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-01_Port-Channel2_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft (not |0_0__am2-x3hl-xcg-5-01_Vlan101_OUTBOUND_vlan101-xcg-outRemove|) :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-01_Vlan101_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-01_Port-Channel1_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-01_Port-Channel1_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-01_mgmt0_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft (not |0_0__am2-x3hl-xcg-5-01_mgmt0_INBOUND_mgmt-onlyRemove|) :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-12_Loopback0_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-12_Loopback0_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-12_Port-Channel1_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-12_Port-Channel1_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft (not |0_0__am2-x3hl-xcg-5-12_Vlan101_OUTBOUND_vlan101-xcg-outRemove|) :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-12_Vlan101_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft (not |0_0__am2-x3hl-xcg-5-12_Vlan102_OUTBOUND_vlan102-xcg-outRemove|) :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-12_Vlan102_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-12_mgmt0_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft (not |0_0__am2-x3hl-xcg-5-12_mgmt0_INBOUND_mgmt-onlyRemove|) :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-12_Port-Channel2_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-12_Port-Channel2_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft (not |0_0__am2-x3hl-xcg-5-08_Vlan101_OUTBOUND_vlan101-xcg-outRemove|) :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-08_Vlan101_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-08_Loopback0_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-08_Loopback0_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-08_Port-Channel2_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-08_Port-Channel2_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-08_mgmt0_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft (not |0_0__am2-x3hl-xcg-5-08_mgmt0_INBOUND_mgmt-onlyRemove|) :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-08_Port-Channel1_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-08_Port-Channel1_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft (not |0_0__am2-x3hl-xcg-5-08_Vlan102_OUTBOUND_vlan102-xcg-outRemove|) :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-08_Vlan102_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-19_Port-Channel2_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-19_Port-Channel2_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft (not |0_0__am2-x3hl-xcg-5-19_Vlan101_OUTBOUND_vlan101-xcg-outRemove|) :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-19_Vlan101_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-19_mgmt0_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft (not |0_0__am2-x3hl-xcg-5-19_mgmt0_INBOUND_mgmt-onlyRemove|) :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-19_Loopback0_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-19_Loopback0_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft (not |0_0__am2-x3hl-xcg-5-19_Vlan102_OUTBOUND_vlan102-xcg-outRemove|) :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-19_Vlan102_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-19_Port-Channel1_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-19_Port-Channel1_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-09_Loopback0_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-09_Loopback0_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-09_Port-Channel2_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-09_Port-Channel2_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft (not |0_0__am2-x3hl-xcg-5-09_Vlan101_OUTBOUND_vlan101-xcg-outRemove|) :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-09_Vlan101_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-09_Port-Channel1_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-09_Port-Channel1_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-09_mgmt0_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft (not |0_0__am2-x3hl-xcg-5-09_mgmt0_INBOUND_mgmt-onlyRemove|) :weight 1 :id a)
-(assert-soft (not |0_0__am2-x3hl-xcg-5-09_Vlan102_OUTBOUND_vlan102-xcg-outRemove|) :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-09_Vlan102_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-20_Port-Channel2_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-20_Port-Channel2_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft (not |0_0__am2-x3hl-xcg-5-20_Vlan101_OUTBOUND_vlan101-xcg-outRemove|) :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-20_Vlan101_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft (not |0_0__am2-x3hl-xcg-5-20_Vlan102_OUTBOUND_vlan102-xcg-outRemove|) :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-20_Vlan102_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-20_mgmt0_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft (not |0_0__am2-x3hl-xcg-5-20_mgmt0_INBOUND_mgmt-onlyRemove|) :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-20_Loopback0_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-20_Loopback0_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-20_Port-Channel1_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-20_Port-Channel1_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-10_Loopback0_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-10_Loopback0_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-10_mgmt0_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft (not |0_0__am2-x3hl-xcg-5-10_mgmt0_INBOUND_mgmt-onlyRemove|) :weight 1 :id a)
-(assert-soft (not |0_0__am2-x3hl-xcg-5-10_Vlan101_OUTBOUND_vlan101-xcg-outRemove|) :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-10_Vlan101_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft (not |0_0__am2-x3hl-xcg-5-10_Vlan102_OUTBOUND_vlan102-xcg-outRemove|) :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-10_Vlan102_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-10_Port-Channel1_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-10_Port-Channel1_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-10_Port-Channel2_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-10_Port-Channel2_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft (not |0_0__am2-x3hl-xcg-5-21_Vlan101_OUTBOUND_vlan101-xcg-outRemove|) :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-21_Vlan101_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-21_Port-Channel2_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-21_Port-Channel2_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft (not |0_0__am2-x3hl-xcg-5-21_Vlan102_OUTBOUND_vlan102-xcg-outRemove|) :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-21_Vlan102_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-21_Loopback0_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-21_Loopback0_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-21_mgmt0_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft (not |0_0__am2-x3hl-xcg-5-21_mgmt0_INBOUND_mgmt-onlyRemove|) :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-21_Port-Channel1_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3hl-xcg-5-21_Port-Channel1_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1b_Port-Channel21_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1b_Port-Channel21_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1b_Port-Channel19_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1b_Port-Channel19_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1b_Port-Channel9_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1b_Port-Channel9_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1b_Port-Channel6_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1b_Port-Channel6_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1b_Port-Channel3_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1b_Port-Channel3_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1b_Ethernet1/48_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1b_Ethernet1/48_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1b_Port-Channel14_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1b_Port-Channel14_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1b_Port-Channel11_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1b_Port-Channel11_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1b_Port-Channel1_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1b_Port-Channel1_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1b_Port-Channel17_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1b_Port-Channel17_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1b_Port-Channel7_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1b_Port-Channel7_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1b_Port-Channel12_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1b_Port-Channel12_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1b_Ethernet1/47_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1b_Ethernet1/47_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1b_Port-Channel8_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1b_Port-Channel8_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1b_Port-Channel15_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1b_Port-Channel15_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1b_Port-Channel5_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1b_Port-Channel5_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1b_Port-Channel2_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1b_Port-Channel2_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1b_Port-Channel20_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1b_Port-Channel20_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1b_Port-Channel18_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1b_Port-Channel18_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1b_Loopback0_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1b_Loopback0_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1b_mgmt0_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft (not |0_0__am2-x3sb-xcg-5-1b_mgmt0_INBOUND_mgmt-onlyRemove|) :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1b_Port-Channel10_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1b_Port-Channel10_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1b_Port-Channel16_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1b_Port-Channel16_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1b_Port-Channel13_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1b_Port-Channel13_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1a_Port-Channel2_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1a_Port-Channel2_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1a_Port-Channel12_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1a_Port-Channel12_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1a_Port-Channel15_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1a_Port-Channel15_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1a_Ethernet1/48_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1a_Ethernet1/48_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1a_Port-Channel8_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1a_Port-Channel8_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1a_Port-Channel20_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1a_Port-Channel20_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1a_Port-Channel18_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1a_Port-Channel18_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1a_Port-Channel5_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1a_Port-Channel5_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1a_Port-Channel10_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1a_Port-Channel10_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1a_Port-Channel3_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1a_Port-Channel3_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1a_Port-Channel13_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1a_Port-Channel13_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1a_Port-Channel21_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1a_Port-Channel21_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1a_Port-Channel19_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1a_Port-Channel19_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1a_Port-Channel16_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1a_Port-Channel16_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1a_Port-Channel9_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1a_Port-Channel9_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1a_Ethernet1/47_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1a_Ethernet1/47_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1a_Port-Channel6_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1a_Port-Channel6_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1a_Port-Channel11_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1a_Port-Channel11_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1a_Port-Channel7_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1a_Port-Channel7_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1a_Port-Channel17_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1a_Port-Channel17_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1a_Port-Channel14_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1a_Port-Channel14_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1a_mgmt0_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft (not |0_0__am2-x3sb-xcg-5-1a_mgmt0_INBOUND_mgmt-onlyRemove|) :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1a_Port-Channel1_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1a_Port-Channel1_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1a_Loopback0_OUTBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_0__am2-x3sb-xcg-5-1a_Loopback0_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_25.148.1.148/32ExportRemoveSoft0_am2-x3hl-xcg-5-06_OVERALL_BEST_None| :weight 1 :id a)
-(assert-soft |0_25.161.233.128/25ExportRemoveSoft0_am2-x3hl-xcg-5-06_OVERALL_BEST_None| :weight 1 :id a)
-(assert-soft |0_191.234.225.104/29ExportRemoveSoft0_am2-x3hl-xcg-5-06_OVERALL_BEST_None| :weight 1 :id a)
-(assert-soft (not |0_0_am2-x3hl-xcg-5-06_OVERALL_BEST_NoneBGPExportAddSoft|) :weight 1 :id a)
-(assert-soft |0_25.148.4.20/32ExportRemoveSoft0_am2-x3hl-xcg-5-17_OVERALL_BEST_None| :weight 1 :id a)
-(assert-soft |0_25.163.148.0/25ExportRemoveSoft0_am2-x3hl-xcg-5-17_OVERALL_BEST_None| :weight 1 :id a)
-(assert-soft |0_191.234.225.224/29ExportRemoveSoft0_am2-x3hl-xcg-5-17_OVERALL_BEST_None| :weight 1 :id a)
-(assert-soft (not |0_0_am2-x3hl-xcg-5-17_OVERALL_BEST_NoneBGPExportAddSoft|) :weight 1 :id a)
-(assert-soft |0_25.148.1.149/32ExportRemoveSoft0_am2-x3hl-xcg-5-07_OVERALL_BEST_None| :weight 1 :id a)
-(assert-soft |0_25.161.234.0/25ExportRemoveSoft0_am2-x3hl-xcg-5-07_OVERALL_BEST_None| :weight 1 :id a)
-(assert-soft |0_191.234.225.112/29ExportRemoveSoft0_am2-x3hl-xcg-5-07_OVERALL_BEST_None| :weight 1 :id a)
-(assert-soft (not |0_0_am2-x3hl-xcg-5-07_OVERALL_BEST_NoneBGPExportAddSoft|) :weight 1 :id a)
-(assert-soft |0_25.148.4.21/32ExportRemoveSoft0_am2-x3hl-xcg-5-18_OVERALL_BEST_None| :weight 1 :id a)
-(assert-soft |0_25.163.148.128/25ExportRemoveSoft0_am2-x3hl-xcg-5-18_OVERALL_BEST_None| :weight 1 :id a)
-(assert-soft |0_191.234.225.232/29ExportRemoveSoft0_am2-x3hl-xcg-5-18_OVERALL_BEST_None| :weight 1 :id a)
-(assert-soft (not |0_0_am2-x3hl-xcg-5-18_OVERALL_BEST_NoneBGPExportAddSoft|) :weight 1 :id a)
-(assert-soft |0_25.148.4.18/32ExportRemoveSoft0_am2-x3hl-xcg-5-15_OVERALL_BEST_None| :weight 1 :id a)
-(assert-soft |0_25.163.147.0/25ExportRemoveSoft0_am2-x3hl-xcg-5-15_OVERALL_BEST_None| :weight 1 :id a)
-(assert-soft |0_191.234.225.208/29ExportRemoveSoft0_am2-x3hl-xcg-5-15_OVERALL_BEST_None| :weight 1 :id a)
-(assert-soft (not |0_0_am2-x3hl-xcg-5-15_OVERALL_BEST_NoneBGPExportAddSoft|) :weight 1 :id a)
-(assert-soft |0_25.148.1.147/32ExportRemoveSoft0_am2-x3hl-xcg-5-05_OVERALL_BEST_None| :weight 1 :id a)
-(assert-soft |0_25.161.233.0/25ExportRemoveSoft0_am2-x3hl-xcg-5-05_OVERALL_BEST_None| :weight 1 :id a)
-(assert-soft |0_191.234.225.96/29ExportRemoveSoft0_am2-x3hl-xcg-5-05_OVERALL_BEST_None| :weight 1 :id a)
-(assert-soft (not |0_0_am2-x3hl-xcg-5-05_OVERALL_BEST_NoneBGPExportAddSoft|) :weight 1 :id a)
-(assert-soft |0_25.148.4.19/32ExportRemoveSoft0_am2-x3hl-xcg-5-16_OVERALL_BEST_None| :weight 1 :id a)
-(assert-soft |0_25.163.147.128/25ExportRemoveSoft0_am2-x3hl-xcg-5-16_OVERALL_BEST_None| :weight 1 :id a)
-(assert-soft |0_191.234.225.216/29ExportRemoveSoft0_am2-x3hl-xcg-5-16_OVERALL_BEST_None| :weight 1 :id a)
-(assert-soft (not |0_0_am2-x3hl-xcg-5-16_OVERALL_BEST_NoneBGPExportAddSoft|) :weight 1 :id a)
-(assert-soft |0_25.148.5.85/32ExportRemoveSoft0_am2-x3hl-xcg-5-02_OVERALL_BEST_None| :weight 1 :id a)
-(assert-soft |0_25.161.232.0/25ExportRemoveSoft0_am2-x3hl-xcg-5-02_OVERALL_BEST_None| :weight 1 :id a)
-(assert-soft |0_191.234.225.80/29ExportRemoveSoft0_am2-x3hl-xcg-5-02_OVERALL_BEST_None| :weight 1 :id a)
-(assert-soft (not |0_0_am2-x3hl-xcg-5-02_OVERALL_BEST_NoneBGPExportAddSoft|) :weight 1 :id a)
-(assert-soft |0_25.148.4.16/32ExportRemoveSoft0_am2-x3hl-xcg-5-13_OVERALL_BEST_None| :weight 1 :id a)
-(assert-soft |0_25.163.146.0/25ExportRemoveSoft0_am2-x3hl-xcg-5-13_OVERALL_BEST_None| :weight 1 :id a)
-(assert-soft |0_191.234.225.192/29ExportRemoveSoft0_am2-x3hl-xcg-5-13_OVERALL_BEST_None| :weight 1 :id a)
-(assert-soft (not |0_0_am2-x3hl-xcg-5-13_OVERALL_BEST_NoneBGPExportAddSoft|) :weight 1 :id a)
-(assert-soft |0_25.148.5.86/32ExportRemoveSoft0_am2-x3hl-xcg-5-03_OVERALL_BEST_None| :weight 1 :id a)
-(assert-soft |0_25.161.232.128/25ExportRemoveSoft0_am2-x3hl-xcg-5-03_OVERALL_BEST_None| :weight 1 :id a)
-(assert-soft |0_191.234.225.88/29ExportRemoveSoft0_am2-x3hl-xcg-5-03_OVERALL_BEST_None| :weight 1 :id a)
-(assert-soft (not |0_0_am2-x3hl-xcg-5-03_OVERALL_BEST_NoneBGPExportAddSoft|) :weight 1 :id a)
-(assert-soft |0_25.148.4.17/32ExportRemoveSoft0_am2-x3hl-xcg-5-14_OVERALL_BEST_None| :weight 1 :id a)
-(assert-soft |0_25.163.146.128/25ExportRemoveSoft0_am2-x3hl-xcg-5-14_OVERALL_BEST_None| :weight 1 :id a)
-(assert-soft |0_191.234.225.200/29ExportRemoveSoft0_am2-x3hl-xcg-5-14_OVERALL_BEST_None| :weight 1 :id a)
-(assert-soft (not |0_0_am2-x3hl-xcg-5-14_OVERALL_BEST_NoneBGPExportAddSoft|) :weight 1 :id a)
-(assert-soft |0_25.148.1.153/32ExportRemoveSoft0_am2-x3hl-xcg-5-11_OVERALL_BEST_None| :weight 1 :id a)
-(assert-soft |0_25.161.236.0/25ExportRemoveSoft0_am2-x3hl-xcg-5-11_OVERALL_BEST_None| :weight 1 :id a)
-(assert-soft |0_191.234.225.144/29ExportRemoveSoft0_am2-x3hl-xcg-5-11_OVERALL_BEST_None| :weight 1 :id a)
-(assert-soft (not |0_0_am2-x3hl-xcg-5-11_OVERALL_BEST_NoneBGPExportAddSoft|) :weight 1 :id a)
-(assert-soft |0_25.148.2.41/32ExportRemoveSoft0_am2-x3hl-xcg-5-01_OVERALL_BEST_None| :weight 1 :id a)
-(assert-soft |0_25.160.228.128/25ExportRemoveSoft0_am2-x3hl-xcg-5-01_OVERALL_BEST_None| :weight 1 :id a)
-(assert-soft |0_191.234.224.160/28ExportRemoveSoft0_am2-x3hl-xcg-5-01_OVERALL_BEST_None| :weight 1 :id a)
-(assert-soft (not |0_0_am2-x3hl-xcg-5-01_OVERALL_BEST_NoneBGPExportAddSoft|) :weight 1 :id a)
-(assert-soft |0_25.148.1.154/32ExportRemoveSoft0_am2-x3hl-xcg-5-12_OVERALL_BEST_None| :weight 1 :id a)
-(assert-soft |0_25.161.236.128/25ExportRemoveSoft0_am2-x3hl-xcg-5-12_OVERALL_BEST_None| :weight 1 :id a)
-(assert-soft |0_191.234.225.152/29ExportRemoveSoft0_am2-x3hl-xcg-5-12_OVERALL_BEST_None| :weight 1 :id a)
-(assert-soft (not |0_0_am2-x3hl-xcg-5-12_OVERALL_BEST_NoneBGPExportAddSoft|) :weight 1 :id a)
-(assert-soft |0_25.148.1.150/32ExportRemoveSoft0_am2-x3hl-xcg-5-08_OVERALL_BEST_None| :weight 1 :id a)
-(assert-soft |0_25.161.234.128/25ExportRemoveSoft0_am2-x3hl-xcg-5-08_OVERALL_BEST_None| :weight 1 :id a)
-(assert-soft |0_191.234.225.120/29ExportRemoveSoft0_am2-x3hl-xcg-5-08_OVERALL_BEST_None| :weight 1 :id a)
-(assert-soft (not |0_0_am2-x3hl-xcg-5-08_OVERALL_BEST_NoneBGPExportAddSoft|) :weight 1 :id a)
-(assert-soft |0_25.148.4.22/32ExportRemoveSoft0_am2-x3hl-xcg-5-19_OVERALL_BEST_None| :weight 1 :id a)
-(assert-soft |0_25.163.149.0/25ExportRemoveSoft0_am2-x3hl-xcg-5-19_OVERALL_BEST_None| :weight 1 :id a)
-(assert-soft |0_191.234.225.240/29ExportRemoveSoft0_am2-x3hl-xcg-5-19_OVERALL_BEST_None| :weight 1 :id a)
-(assert-soft (not |0_0_am2-x3hl-xcg-5-19_OVERALL_BEST_NoneBGPExportAddSoft|) :weight 1 :id a)
-(assert-soft |0_25.148.1.151/32ExportRemoveSoft0_am2-x3hl-xcg-5-09_OVERALL_BEST_None| :weight 1 :id a)
-(assert-soft |0_25.161.235.0/25ExportRemoveSoft0_am2-x3hl-xcg-5-09_OVERALL_BEST_None| :weight 1 :id a)
-(assert-soft |0_191.234.225.128/29ExportRemoveSoft0_am2-x3hl-xcg-5-09_OVERALL_BEST_None| :weight 1 :id a)
-(assert-soft (not |0_0_am2-x3hl-xcg-5-09_OVERALL_BEST_NoneBGPExportAddSoft|) :weight 1 :id a)
-(assert-soft |0_25.148.4.23/32Stat-Conn-ExportRemoveSoft0_am2-x3hl-xcg-5-20_OVERALL_BEST_None| :weight 1 :id a)
-(assert-soft |0_25.163.149.128/25Stat-Conn-ExportRemoveSoft0_am2-x3hl-xcg-5-20_OVERALL_BEST_None| :weight 1 :id a)
-(assert-soft |0_191.234.225.248/29Stat-Conn-ExportRemoveSoft0_am2-x3hl-xcg-5-20_OVERALL_BEST_None| :weight 1 :id a)
-(assert-soft (not |0_0_am2-x3hl-xcg-5-20_OVERALL_BEST_NoneBGPExportAddSoft|) :weight 1 :id a)
-(assert-soft |0_25.148.1.152/32ExportRemoveSoft0_am2-x3hl-xcg-5-10_OVERALL_BEST_None| :weight 1 :id a)
-(assert-soft |0_25.161.235.128/25ExportRemoveSoft0_am2-x3hl-xcg-5-10_OVERALL_BEST_None| :weight 1 :id a)
-(assert-soft |0_191.234.225.136/29ExportRemoveSoft0_am2-x3hl-xcg-5-10_OVERALL_BEST_None| :weight 1 :id a)
-(assert-soft (not |0_0_am2-x3hl-xcg-5-10_OVERALL_BEST_NoneBGPExportAddSoft|) :weight 1 :id a)
-(assert-soft |0_25.148.4.112/32ExportRemoveSoft0_am2-x3hl-xcg-5-21_OVERALL_BEST_None| :weight 1 :id a)
-(assert-soft |0_25.162.32.0/25ExportRemoveSoft0_am2-x3hl-xcg-5-21_OVERALL_BEST_None| :weight 1 :id a)
-(assert-soft |0_191.234.225.160/28ExportRemoveSoft0_am2-x3hl-xcg-5-21_OVERALL_BEST_None| :weight 1 :id a)
-(assert-soft (not |0_0_am2-x3hl-xcg-5-21_OVERALL_BEST_NoneBGPExportAddSoft|) :weight 1 :id a)
-(assert-soft |0_10.22.181.144/29BGPRemoveFilterSoft| :weight 1 :id a)
-(assert-soft |0_10.22.181.136/29BGPRemoveFilterSoft| :weight 1 :id a)
-(assert-soft |0_10.1.177.16/28BGPRemoveFilterSoft| :weight 1 :id a)
-(assert-soft |0_10.22.181.132/30BGPRemoveFilterSoft| :weight 1 :id a)
-(assert-soft |0_10.1.177.16/28BGPRemoveFilterSoft| :weight 1 :id a)
-(assert-soft |0_10.22.181.144/29BGPRemoveFilterSoft| :weight 1 :id a)
-(assert-soft |0_10.22.181.136/29BGPRemoveFilterSoft| :weight 1 :id a)
-(assert-soft |0_10.22.181.132/30BGPRemoveFilterSoft| :weight 1 :id a)
-(assert-soft |0_25.148.2.40/32ExportRemoveSoft0_am2-x3sb-xcg-5-1b_OVERALL_BEST_None| :weight 1 :id a)
-(assert-soft (not |0_0_am2-x3sb-xcg-5-1b_OVERALL_BEST_NoneBGPExportAddSoft|) :weight 1 :id a)
-(assert-soft |0_am2-x3sb-xcg-5-1bImportFilterAddSoft0_am2-x3sb-xcg-5-1b_BGP_IMPORT_Ethernet1/48| :weight 1 :id a)
-(assert-soft |0_am2-x3sb-xcg-5-1bImportFilterAddSoft0_am2-x3sb-xcg-5-1b_BGP_IMPORT_Ethernet1/47| :weight 1 :id a)
-(assert-soft |0_10.1.177.0/28BGPRemoveFilterSoft| :weight 1 :id a)
-(assert-soft |0_10.22.181.112/28BGPRemoveFilterSoft| :weight 1 :id a)
-(assert-soft |0_10.22.181.128/30BGPRemoveFilterSoft| :weight 1 :id a)
-(assert-soft |0_10.1.177.0/28BGPRemoveFilterSoft| :weight 1 :id a)
-(assert-soft |0_10.22.181.128/30BGPRemoveFilterSoft| :weight 1 :id a)
-(assert-soft |0_10.22.181.112/28BGPRemoveFilterSoft| :weight 1 :id a)
-(assert-soft |0_25.148.2.39/32ExportRemoveSoft0_am2-x3sb-xcg-5-1a_OVERALL_BEST_None| :weight 1 :id a)
-(assert-soft (not |0_0_am2-x3sb-xcg-5-1a_OVERALL_BEST_NoneBGPExportAddSoft|) :weight 1 :id a)
-(assert-soft |0_am2-x3sb-xcg-5-1aImportFilterAddSoft0_am2-x3sb-xcg-5-1a_BGP_IMPORT_Ethernet1/48| :weight 1 :id a)
-(assert-soft |0_am2-x3sb-xcg-5-1aImportFilterAddSoft0_am2-x3sb-xcg-5-1a_BGP_IMPORT_Ethernet1/47| :weight 1 :id a)
-(assert-soft (not |0_am2-x3hl-xcg-5-06-StaticRouteAddSoft-am2-x3hl-xcg-5-06,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel6|) :weight 1 :id a)
-(assert-soft (not |0_am2-x3hl-xcg-5-06-StaticRouteAddSoft-am2-x3hl-xcg-5-06,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel6|) :weight 1 :id a)
-(assert-soft (not |0_am2-x3hl-xcg-5-17-StaticRouteAddSoft-am2-x3hl-xcg-5-17,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel17|) :weight 1 :id a)
-(assert-soft (not |0_am2-x3hl-xcg-5-17-StaticRouteAddSoft-am2-x3hl-xcg-5-17,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel17|) :weight 1 :id a)
-(assert-soft (not |0_am2-x3hl-xcg-5-07-StaticRouteAddSoft-am2-x3hl-xcg-5-07,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel7|) :weight 1 :id a)
-(assert-soft (not |0_am2-x3hl-xcg-5-07-StaticRouteAddSoft-am2-x3hl-xcg-5-07,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel7|) :weight 1 :id a)
-(assert-soft (not |0_am2-x3hl-xcg-5-18-StaticRouteAddSoft-am2-x3hl-xcg-5-18,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel18|) :weight 1 :id a)
-(assert-soft (not |0_am2-x3hl-xcg-5-18-StaticRouteAddSoft-am2-x3hl-xcg-5-18,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel18|) :weight 1 :id a)
-(assert-soft (not |0_am2-x3hl-xcg-5-15-StaticRouteAddSoft-am2-x3hl-xcg-5-15,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel15|) :weight 1 :id a)
-(assert-soft (not |0_am2-x3hl-xcg-5-15-StaticRouteAddSoft-am2-x3hl-xcg-5-15,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel15|) :weight 1 :id a)
-(assert-soft (not |0_am2-x3hl-xcg-5-05-StaticRouteAddSoft-am2-x3hl-xcg-5-05,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel5|) :weight 1 :id a)
-(assert-soft (not |0_am2-x3hl-xcg-5-05-StaticRouteAddSoft-am2-x3hl-xcg-5-05,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel5|) :weight 1 :id a)
-(assert-soft (not |0_am2-x3hl-xcg-5-16-StaticRouteAddSoft-am2-x3hl-xcg-5-16,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel16|) :weight 1 :id a)
-(assert-soft (not |0_am2-x3hl-xcg-5-16-StaticRouteAddSoft-am2-x3hl-xcg-5-16,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel16|) :weight 1 :id a)
-(assert-soft (not |0_am2-x3hl-xcg-5-02-StaticRouteAddSoft-am2-x3hl-xcg-5-02,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel2|) :weight 1 :id a)
-(assert-soft (not |0_am2-x3hl-xcg-5-02-StaticRouteAddSoft-am2-x3hl-xcg-5-02,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel2|) :weight 1 :id a)
-(assert-soft (not |0_am2-x3hl-xcg-5-13-StaticRouteAddSoft-am2-x3hl-xcg-5-13,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel13|) :weight 1 :id a)
-(assert-soft (not |0_am2-x3hl-xcg-5-13-StaticRouteAddSoft-am2-x3hl-xcg-5-13,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel13|) :weight 1 :id a)
-(assert-soft (not |0_am2-x3hl-xcg-5-03-StaticRouteAddSoft-am2-x3hl-xcg-5-03,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel3|) :weight 1 :id a)
-(assert-soft (not |0_am2-x3hl-xcg-5-03-StaticRouteAddSoft-am2-x3hl-xcg-5-03,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel3|) :weight 1 :id a)
-(assert-soft (not |0_am2-x3hl-xcg-5-14-StaticRouteAddSoft-am2-x3hl-xcg-5-14,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel14|) :weight 1 :id a)
-(assert-soft (not |0_am2-x3hl-xcg-5-14-StaticRouteAddSoft-am2-x3hl-xcg-5-14,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel14|) :weight 1 :id a)
-(assert-soft (not |0_am2-x3hl-xcg-5-11-StaticRouteAddSoft-am2-x3hl-xcg-5-11,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel11|) :weight 1 :id a)
-(assert-soft (not |0_am2-x3hl-xcg-5-11-StaticRouteAddSoft-am2-x3hl-xcg-5-11,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel11|) :weight 1 :id a)
-(assert-soft (not |0_am2-x3hl-xcg-5-01-StaticRouteAddSoft-am2-x3hl-xcg-5-01,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel1|) :weight 1 :id a)
-(assert-soft (not |0_am2-x3hl-xcg-5-01-StaticRouteAddSoft-am2-x3hl-xcg-5-01,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel1|) :weight 1 :id a)
-(assert-soft (not |0_am2-x3hl-xcg-5-12-StaticRouteAddSoft-am2-x3hl-xcg-5-12,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel12|) :weight 1 :id a)
-(assert-soft (not |0_am2-x3hl-xcg-5-12-StaticRouteAddSoft-am2-x3hl-xcg-5-12,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel12|) :weight 1 :id a)
-(assert-soft (not |0_am2-x3hl-xcg-5-08-StaticRouteAddSoft-am2-x3hl-xcg-5-08,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel8|) :weight 1 :id a)
-(assert-soft (not |0_am2-x3hl-xcg-5-08-StaticRouteAddSoft-am2-x3hl-xcg-5-08,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel8|) :weight 1 :id a)
-(assert-soft (not |0_am2-x3hl-xcg-5-19-StaticRouteAddSoft-am2-x3hl-xcg-5-19,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel19|) :weight 1 :id a)
-(assert-soft (not |0_am2-x3hl-xcg-5-19-StaticRouteAddSoft-am2-x3hl-xcg-5-19,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel19|) :weight 1 :id a)
-(assert-soft (not |0_am2-x3hl-xcg-5-09-StaticRouteAddSoft-am2-x3hl-xcg-5-09,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel9|) :weight 1 :id a)
-(assert-soft (not |0_am2-x3hl-xcg-5-09-StaticRouteAddSoft-am2-x3hl-xcg-5-09,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel9|) :weight 1 :id a)
-(assert-soft (not |0_am2-x3hl-xcg-5-20-StaticRouteAddSoft-am2-x3hl-xcg-5-20,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel20|) :weight 1 :id a)
-(assert-soft (not |0_am2-x3hl-xcg-5-20-StaticRouteAddSoft-am2-x3hl-xcg-5-20,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel20|) :weight 1 :id a)
-(assert-soft (not |0_am2-x3hl-xcg-5-10-StaticRouteAddSoft-am2-x3hl-xcg-5-10,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel10|) :weight 1 :id a)
-(assert-soft (not |0_am2-x3hl-xcg-5-10-StaticRouteAddSoft-am2-x3hl-xcg-5-10,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel10|) :weight 1 :id a)
-(assert-soft (not |0_am2-x3hl-xcg-5-21-StaticRouteAddSoft-am2-x3hl-xcg-5-21,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel21|) :weight 1 :id a)
-(assert-soft (not |0_am2-x3hl-xcg-5-21-StaticRouteAddSoft-am2-x3hl-xcg-5-21,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel21|) :weight 1 :id a)
-(assert-soft (not |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel21 --> am2-x3hl-xcg-5-21,Port-Channel2|) :weight 1 :id a)
-(assert-soft (not |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel19 --> am2-x3hl-xcg-5-19,Port-Channel2|) :weight 1 :id a)
-(assert-soft (not |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel9 --> am2-x3hl-xcg-5-09,Port-Channel2|) :weight 1 :id a)
-(assert-soft (not |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel6 --> am2-x3hl-xcg-5-06,Port-Channel2|) :weight 1 :id a)
-(assert-soft (not |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel3 --> am2-x3hl-xcg-5-03,Port-Channel2|) :weight 1 :id a)
-(assert-soft (not |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel14 --> am2-x3hl-xcg-5-14,Port-Channel2|) :weight 1 :id a)
-(assert-soft (not |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel11 --> am2-x3hl-xcg-5-11,Port-Channel2|) :weight 1 :id a)
-(assert-soft (not |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel1 --> am2-x3hl-xcg-5-01,Port-Channel2|) :weight 1 :id a)
-(assert-soft (not |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel17 --> am2-x3hl-xcg-5-17,Port-Channel2|) :weight 1 :id a)
-(assert-soft (not |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel7 --> am2-x3hl-xcg-5-07,Port-Channel2|) :weight 1 :id a)
-(assert-soft (not |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel12 --> am2-x3hl-xcg-5-12,Port-Channel2|) :weight 1 :id a)
-(assert-soft (not |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel8 --> am2-x3hl-xcg-5-08,Port-Channel2|) :weight 1 :id a)
-(assert-soft (not |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel15 --> am2-x3hl-xcg-5-15,Port-Channel2|) :weight 1 :id a)
-(assert-soft (not |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel5 --> am2-x3hl-xcg-5-05,Port-Channel2|) :weight 1 :id a)
-(assert-soft (not |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel2 --> am2-x3hl-xcg-5-02,Port-Channel2|) :weight 1 :id a)
-(assert-soft (not |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel20 --> am2-x3hl-xcg-5-20,Port-Channel2|) :weight 1 :id a)
-(assert-soft (not |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel18 --> am2-x3hl-xcg-5-18,Port-Channel2|) :weight 1 :id a)
-(assert-soft (not |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel10 --> am2-x3hl-xcg-5-10,Port-Channel2|) :weight 1 :id a)
-(assert-soft (not |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel16 --> am2-x3hl-xcg-5-16,Port-Channel2|) :weight 1 :id a)
-(assert-soft (not |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel13 --> am2-x3hl-xcg-5-13,Port-Channel2|) :weight 1 :id a)
-(assert-soft (not |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel2 --> am2-x3hl-xcg-5-02,Port-Channel1|) :weight 1 :id a)
-(assert-soft (not |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel12 --> am2-x3hl-xcg-5-12,Port-Channel1|) :weight 1 :id a)
-(assert-soft (not |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel15 --> am2-x3hl-xcg-5-15,Port-Channel1|) :weight 1 :id a)
-(assert-soft (not |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel8 --> am2-x3hl-xcg-5-08,Port-Channel1|) :weight 1 :id a)
-(assert-soft (not |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel20 --> am2-x3hl-xcg-5-20,Port-Channel1|) :weight 1 :id a)
-(assert-soft (not |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel18 --> am2-x3hl-xcg-5-18,Port-Channel1|) :weight 1 :id a)
-(assert-soft (not |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel5 --> am2-x3hl-xcg-5-05,Port-Channel1|) :weight 1 :id a)
-(assert-soft (not |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel10 --> am2-x3hl-xcg-5-10,Port-Channel1|) :weight 1 :id a)
-(assert-soft (not |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel3 --> am2-x3hl-xcg-5-03,Port-Channel1|) :weight 1 :id a)
-(assert-soft (not |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel13 --> am2-x3hl-xcg-5-13,Port-Channel1|) :weight 1 :id a)
-(assert-soft (not |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel21 --> am2-x3hl-xcg-5-21,Port-Channel1|) :weight 1 :id a)
-(assert-soft (not |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel19 --> am2-x3hl-xcg-5-19,Port-Channel1|) :weight 1 :id a)
-(assert-soft (not |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel16 --> am2-x3hl-xcg-5-16,Port-Channel1|) :weight 1 :id a)
-(assert-soft (not |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel9 --> am2-x3hl-xcg-5-09,Port-Channel1|) :weight 1 :id a)
-(assert-soft (not |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel6 --> am2-x3hl-xcg-5-06,Port-Channel1|) :weight 1 :id a)
-(assert-soft (not |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel11 --> am2-x3hl-xcg-5-11,Port-Channel1|) :weight 1 :id a)
-(assert-soft (not |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel7 --> am2-x3hl-xcg-5-07,Port-Channel1|) :weight 1 :id a)
-(assert-soft (not |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel17 --> am2-x3hl-xcg-5-17,Port-Channel1|) :weight 1 :id a)
-(assert-soft (not |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel14 --> am2-x3hl-xcg-5-14,Port-Channel1|) :weight 1 :id a)
-(assert-soft (not |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel1 --> am2-x3hl-xcg-5-01,Port-Channel1|) :weight 1 :id a)
-(check-sat)
-(get-objectives)
-(get-model)
