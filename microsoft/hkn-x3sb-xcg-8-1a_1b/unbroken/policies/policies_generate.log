@@ -1,0 +1,167 @@
+*** Settings ***
+Log level: INFO
+Configs directory: /home/aaron/research/arc/projects/arc/scripts/../../../configs/minesweeper/microsoft_totry//hkn-x3sb-xcg-8-1a_1b/2014-04-24-05-56-12/configs
+Warn assumptions: false
+Routers Only: false
+Waypoints file: null
+Minimum policy group size: 4
+Include entire flowspace: false
+Exclude external policy groups: true
+Generate per-flow ETGs: false
+Generate per-destination ETGs: false
+Use interface descriptions to generate device-based ETG: false
+Parallelize: false
+Graphs directory: null
+Test files: null
+Serialized ETGs file: null
+Minesweeper policies file: /home/aaron/research/arc/projects/arc/scripts/../../../output/logs/minesweeper/microsoft_totry//hkn-x3sb-xcg-8-1a_1b/2014-04-24-05-56-12/minesweeper_tocheck.txt
+Verify currently blocked: false
+Verify always blocked: false
+Verify always reachable: false K=-1
+Verify always traverse waypoint: false
+Verify always isolated: false
+Verify primary path: false
+Verify path equivalence: false VIRL-log=null
+Verify equivalence: false Comparison ETGs=null
+Fault Localize Method: null
+Check Polcies File: null
+Save policies file: null
+Edit policies file: null
+Repair: false Policies=null
+Modifier: null
+Objective: null
+Compare ETGs file: null
+Only repair broken ETGs: false
+Compare configs file: null
+*** Reading configuration files ***
+*** Extract Policy Groups ***
+Parsing hkn-x3hl-xcg-8-01...OK
+Parsing hkn-x3hl-xcg-8-02...OK
+Parsing hkn-x3hl-xcg-8-03...OK
+Parsing hkn-x3hl-xcg-8-04...OK
+Parsing hkn-x3hl-xcg-8-05...OK
+Parsing hkn-x3hl-xcg-8-06...OK
+Parsing hkn-x3hl-xcg-8-07...OK
+Parsing hkn-x3hl-xcg-8-08...OK
+Parsing hkn-x3hl-xcg-8-09...OK
+Parsing hkn-x3hl-xcg-8-10...OK
+Parsing hkn-x3hl-xcg-8-11...OK
+Parsing hkn-x3hl-xcg-8-12...OK
+Parsing hkn-x3hl-xcg-8-13...OK
+Parsing hkn-x3hl-xcg-8-14...OK
+Parsing hkn-x3hl-xcg-8-15...OK
+Parsing hkn-x3hl-xcg-8-16...OK
+Parsing hkn-x3hl-xcg-8-17...OK
+Parsing hkn-x3hl-xcg-8-18...OK
+Parsing hkn-x3hl-xcg-8-19...OK
+Parsing hkn-x3hl-xcg-8-20...OK
+Parsing hkn-x3sb-xcg-8-1a...OK
+Parsing hkn-x3sb-xcg-8-1b...OK
+RESULTS_START: PolicyGroups
+	10.20.142.0-10.20.142.255 INTERNAL
+	10.56.9.0-10.56.9.255 INTERNAL
+	10.141.129.0-10.141.129.127 INTERNAL
+	10.141.129.128-10.141.129.255 INTERNAL
+	10.141.130.0-10.141.130.127 INTERNAL
+	10.141.130.128-10.141.130.255 INTERNAL
+	10.141.131.0-10.141.131.127 INTERNAL
+	10.141.131.128-10.141.131.255 INTERNAL
+	10.141.132.0-10.141.132.127 INTERNAL
+	10.141.132.128-10.141.132.255 INTERNAL
+	10.141.133.0-10.141.133.127 INTERNAL
+	10.141.133.128-10.141.133.255 INTERNAL
+	10.141.134.0-10.141.134.127 INTERNAL
+	10.141.134.128-10.141.134.255 INTERNAL
+	10.141.135.0-10.141.135.127 INTERNAL
+	10.141.135.128-10.141.135.255 INTERNAL
+	10.141.136.0-10.141.136.127 INTERNAL
+	10.141.136.128-10.141.136.255 INTERNAL
+	10.141.137.0-10.141.137.127 INTERNAL
+	10.141.137.128-10.141.137.255 INTERNAL
+	10.141.138.0-10.141.138.127 INTERNAL
+	10.141.138.128-10.141.138.255 INTERNAL
+	132.245.129.128-132.245.129.143 INTERNAL
+	132.245.129.144-132.245.129.151 INTERNAL
+	132.245.129.152-132.245.129.159 INTERNAL
+	132.245.129.160-132.245.129.167 INTERNAL
+	132.245.129.168-132.245.129.175 INTERNAL
+	132.245.129.176-132.245.129.183 INTERNAL
+	132.245.129.184-132.245.129.191 INTERNAL
+	132.245.129.192-132.245.129.199 INTERNAL
+	132.245.129.200-132.245.129.207 INTERNAL
+	132.245.129.208-132.245.129.215 INTERNAL
+	132.245.129.216-132.245.129.223 INTERNAL
+	132.245.129.224-132.245.129.231 INTERNAL
+	132.245.129.232-132.245.129.239 INTERNAL
+	132.245.129.240-132.245.129.247 INTERNAL
+	132.245.129.248-132.245.129.255 INTERNAL
+	132.245.130.0-132.245.130.7 INTERNAL
+	132.245.130.8-132.245.130.15 INTERNAL
+	132.245.130.16-132.245.130.23 INTERNAL
+	132.245.130.24-132.245.130.31 INTERNAL
+	132.245.130.32-132.245.130.39 INTERNAL
+RESULTS_END: PolicyGroups
+COUNT: policyGroups 42
+hkn-x3hl-xcg-8-01 does not have the interface dynamic specified as the next hop for the static route StaticRoute<0.0.0.0/0,nhip:10.56.9.1,nhint:dynamic>
+hkn-x3hl-xcg-8-02 does not have the interface dynamic specified as the next hop for the static route StaticRoute<0.0.0.0/0,nhip:10.56.9.1,nhint:dynamic>
+hkn-x3hl-xcg-8-03 does not have the interface dynamic specified as the next hop for the static route StaticRoute<0.0.0.0/0,nhip:10.20.142.1,nhint:dynamic>
+hkn-x3hl-xcg-8-04 does not have the interface dynamic specified as the next hop for the static route StaticRoute<0.0.0.0/0,nhip:10.20.142.1,nhint:dynamic>
+hkn-x3hl-xcg-8-05 does not have the interface dynamic specified as the next hop for the static route StaticRoute<0.0.0.0/0,nhip:10.56.9.1,nhint:dynamic>
+hkn-x3hl-xcg-8-06 does not have the interface dynamic specified as the next hop for the static route StaticRoute<0.0.0.0/0,nhip:10.56.9.1,nhint:dynamic>
+hkn-x3hl-xcg-8-07 does not have the interface dynamic specified as the next hop for the static route StaticRoute<0.0.0.0/0,nhip:10.56.9.1,nhint:dynamic>
+hkn-x3hl-xcg-8-08 does not have the interface dynamic specified as the next hop for the static route StaticRoute<0.0.0.0/0,nhip:10.56.9.1,nhint:dynamic>
+hkn-x3hl-xcg-8-09 does not have the interface dynamic specified as the next hop for the static route StaticRoute<0.0.0.0/0,nhip:10.20.142.1,nhint:dynamic>
+hkn-x3hl-xcg-8-10 does not have the interface dynamic specified as the next hop for the static route StaticRoute<0.0.0.0/0,nhip:10.20.142.1,nhint:dynamic>
+hkn-x3hl-xcg-8-11 does not have the interface dynamic specified as the next hop for the static route StaticRoute<0.0.0.0/0,nhip:10.56.9.1,nhint:dynamic>
+hkn-x3hl-xcg-8-12 does not have the interface dynamic specified as the next hop for the static route StaticRoute<0.0.0.0/0,nhip:10.56.9.1,nhint:dynamic>
+hkn-x3hl-xcg-8-13 does not have the interface dynamic specified as the next hop for the static route StaticRoute<0.0.0.0/0,nhip:10.56.9.1,nhint:dynamic>
+hkn-x3hl-xcg-8-14 does not have the interface dynamic specified as the next hop for the static route StaticRoute<0.0.0.0/0,nhip:10.56.9.1,nhint:dynamic>
+hkn-x3hl-xcg-8-15 does not have the interface dynamic specified as the next hop for the static route StaticRoute<0.0.0.0/0,nhip:10.56.9.1,nhint:dynamic>
+hkn-x3hl-xcg-8-16 does not have the interface dynamic specified as the next hop for the static route StaticRoute<0.0.0.0/0,nhip:10.56.9.1,nhint:dynamic>
+hkn-x3hl-xcg-8-17 does not have the interface dynamic specified as the next hop for the static route StaticRoute<0.0.0.0/0,nhip:10.20.142.1,nhint:dynamic>
+hkn-x3hl-xcg-8-18 does not have the interface dynamic specified as the next hop for the static route StaticRoute<0.0.0.0/0,nhip:10.20.142.1,nhint:dynamic>
+hkn-x3hl-xcg-8-19 does not have the interface dynamic specified as the next hop for the static route StaticRoute<0.0.0.0/0,nhip:10.20.142.1,nhint:dynamic>
+hkn-x3hl-xcg-8-20 does not have the interface dynamic specified as the next hop for the static route StaticRoute<0.0.0.0/0,nhip:10.20.142.1,nhint:dynamic>
+hkn-x3sb-xcg-8-1a does not have the interface dynamic specified as the next hop for the static route StaticRoute<0.0.0.0/0,nhip:10.56.9.1,nhint:dynamic>
+hkn-x3sb-xcg-8-1b does not have the interface dynamic specified as the next hop for the static route StaticRoute<0.0.0.0/0,nhip:10.56.9.1,nhint:dynamic>
+COUNT: devices 22
+Devices:
+	hkn-x3hl-xcg-8-01
+	hkn-x3hl-xcg-8-02
+	hkn-x3hl-xcg-8-03
+	hkn-x3hl-xcg-8-04
+	hkn-x3hl-xcg-8-05
+	hkn-x3hl-xcg-8-06
+	hkn-x3hl-xcg-8-07
+	hkn-x3hl-xcg-8-08
+	hkn-x3hl-xcg-8-09
+	hkn-x3hl-xcg-8-10
+	hkn-x3hl-xcg-8-11
+	hkn-x3hl-xcg-8-12
+	hkn-x3hl-xcg-8-13
+	hkn-x3hl-xcg-8-14
+	hkn-x3hl-xcg-8-15
+	hkn-x3hl-xcg-8-16
+	hkn-x3hl-xcg-8-17
+	hkn-x3hl-xcg-8-18
+	hkn-x3hl-xcg-8-19
+	hkn-x3hl-xcg-8-20
+	hkn-x3sb-xcg-8-1a
+	hkn-x3sb-xcg-8-1b
+*** Generate Minesweeper policy list ***
+*** Generate device-based ETG ***
+COUNT: deviceETGVertices 22
+COUNT: deviceETGEdges 0
+*** Generate process-based ETG ***
+COUNT: baseETGVertices 88
+COUNT: baseETGEdges 44
+COUNT: ospfProcesses 0
+COUNT: bgpProcesses 22
+COUNT: staticProcesses 22
+*** Generate instance-based ETG ***
+COUNT: instanceETGVertices 44
+COUNT: instanceETGEdges 0
+COUNT: ospfInstances 0
+COUNT: bgpInstances 22
+COUNT: staticInstances 22
+PROP: instanceIsDag true
