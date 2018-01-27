@@ -213,12 +213,8 @@
 (declare-fun |0_am2-x3hl-xcg-5-16_OVERALL_BEST_None_prefixLength| () Int)
 (declare-fun |0_am2-x3hl-xcg-5-02_OVERALL_BEST_None_metric| () Int)
 (declare-fun |0_am2-x3hl-xcg-5-02_OVERALL_BEST_None_prefixLength| () Int)
-(declare-fun |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_adminDist| () Int)
 (declare-fun |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_metric| () Int)
 (declare-fun |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_prefixLength| () Int)
-(declare-fun |0_am2-x3hl-xcg-5-13_BGP_BEST_None_metric| () Int)
-(declare-fun |0_am2-x3hl-xcg-5-13_BGP_BEST_None_prefixLength| () Int)
-(declare-fun |0_am2-x3hl-xcg-5-13_CONNECTED_BEST_None_prefixLength| () Int)
 (declare-fun |0_am2-x3hl-xcg-5-03_OVERALL_BEST_None_metric| () Int)
 (declare-fun |0_am2-x3hl-xcg-5-03_OVERALL_BEST_None_prefixLength| () Int)
 (declare-fun |0_am2-x3hl-xcg-5-14_OVERALL_BEST_None_metric| () Int)
@@ -235,8 +231,12 @@
 (declare-fun |0_am2-x3hl-xcg-5-19_OVERALL_BEST_None_prefixLength| () Int)
 (declare-fun |0_am2-x3hl-xcg-5-09_OVERALL_BEST_None_metric| () Int)
 (declare-fun |0_am2-x3hl-xcg-5-09_OVERALL_BEST_None_prefixLength| () Int)
+(declare-fun |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_adminDist| () Int)
 (declare-fun |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_metric| () Int)
 (declare-fun |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_prefixLength| () Int)
+(declare-fun |0_am2-x3hl-xcg-5-20_BGP_BEST_None_metric| () Int)
+(declare-fun |0_am2-x3hl-xcg-5-20_BGP_BEST_None_prefixLength| () Int)
+(declare-fun |0_am2-x3hl-xcg-5-20_CONNECTED_BEST_None_prefixLength| () Int)
 (declare-fun |0_am2-x3hl-xcg-5-10_OVERALL_BEST_None_metric| () Int)
 (declare-fun |0_am2-x3hl-xcg-5-10_OVERALL_BEST_None_prefixLength| () Int)
 (declare-fun |0_am2-x3hl-xcg-5-21_OVERALL_BEST_None_metric| () Int)
@@ -263,7 +263,6 @@
 (declare-fun |0_am2-x3hl-xcg-5-02_BGP_SINGLE-EXPORT__prefixLength| () Int)
 (declare-fun |0_am2-x3hl-xcg-5-13_BGP_SINGLE-EXPORT__metric| () Int)
 (declare-fun |0_am2-x3hl-xcg-5-13_BGP_SINGLE-EXPORT__prefixLength| () Int)
-(declare-fun |0_am2-x3hl-xcg-5-13_CONNECTED_IMPORT_Vlan102_prefixLength| () Int)
 (declare-fun |0_am2-x3hl-xcg-5-03_BGP_SINGLE-EXPORT__metric| () Int)
 (declare-fun |0_am2-x3hl-xcg-5-03_BGP_SINGLE-EXPORT__prefixLength| () Int)
 (declare-fun |0_am2-x3hl-xcg-5-14_BGP_SINGLE-EXPORT__metric| () Int)
@@ -282,6 +281,7 @@
 (declare-fun |0_am2-x3hl-xcg-5-09_BGP_SINGLE-EXPORT__prefixLength| () Int)
 (declare-fun |0_am2-x3hl-xcg-5-20_BGP_SINGLE-EXPORT__metric| () Int)
 (declare-fun |0_am2-x3hl-xcg-5-20_BGP_SINGLE-EXPORT__prefixLength| () Int)
+(declare-fun |0_am2-x3hl-xcg-5-20_CONNECTED_IMPORT_Vlan102_prefixLength| () Int)
 (declare-fun |0_am2-x3hl-xcg-5-10_BGP_SINGLE-EXPORT__metric| () Int)
 (declare-fun |0_am2-x3hl-xcg-5-10_BGP_SINGLE-EXPORT__prefixLength| () Int)
 (declare-fun |0_am2-x3hl-xcg-5-21_BGP_SINGLE-EXPORT__metric| () Int)
@@ -355,19 +355,10 @@
              Bool)
 (declare-fun |0_am2-x3hl-xcg-5-02_OVERALL_BEST_None_permitted| () Bool)
 (declare-fun |0_am2-x3hl-xcg-5-13_BGP_SINGLE-EXPORT__permitted| () Bool)
-(declare-fun |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_history| () (_ BitVec 1))
+(declare-fun |0_191.234.225.192/29ExportRemoveSoft0_am2-x3hl-xcg-5-13_OVERALL_BEST_None|
+             ()
+             Bool)
 (declare-fun |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_permitted| () Bool)
-(declare-fun |0_0_am2-x3hl-xcg-5-13_OVERALL_BEST_NoneBGPExportAddSoft| () Bool)
-(declare-fun |0_191.234.225.192/29Stat-Conn-ExportRemoveSoft0_am2-x3hl-xcg-5-13_OVERALL_BEST_None|
-             ()
-             Bool)
-(declare-fun |0_25.163.146.0/25Stat-Conn-ExportRemoveSoft0_am2-x3hl-xcg-5-13_OVERALL_BEST_None|
-             ()
-             Bool)
-(declare-fun |0_25.148.4.16/32Stat-Conn-ExportRemoveSoft0_am2-x3hl-xcg-5-13_OVERALL_BEST_None|
-             ()
-             Bool)
-(declare-fun |0_am2-x3hl-xcg-5-13_CONNECTED_IMPORT_Vlan102_permitted| () Bool)
 (declare-fun |0_am2-x3hl-xcg-5-03_BGP_SINGLE-EXPORT__permitted| () Bool)
 (declare-fun |0_191.234.225.88/29ExportRemoveSoft0_am2-x3hl-xcg-5-03_OVERALL_BEST_None|
              ()
@@ -409,10 +400,19 @@
              Bool)
 (declare-fun |0_am2-x3hl-xcg-5-09_OVERALL_BEST_None_permitted| () Bool)
 (declare-fun |0_am2-x3hl-xcg-5-20_BGP_SINGLE-EXPORT__permitted| () Bool)
-(declare-fun |0_191.234.225.248/29ExportRemoveSoft0_am2-x3hl-xcg-5-20_OVERALL_BEST_None|
+(declare-fun |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_history| () (_ BitVec 1))
+(declare-fun |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_permitted| () Bool)
+(declare-fun |0_0_am2-x3hl-xcg-5-20_OVERALL_BEST_NoneBGPExportAddSoft| () Bool)
+(declare-fun |0_191.234.225.248/29Stat-Conn-ExportRemoveSoft0_am2-x3hl-xcg-5-20_OVERALL_BEST_None|
              ()
              Bool)
-(declare-fun |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_permitted| () Bool)
+(declare-fun |0_25.163.149.128/25Stat-Conn-ExportRemoveSoft0_am2-x3hl-xcg-5-20_OVERALL_BEST_None|
+             ()
+             Bool)
+(declare-fun |0_25.148.4.23/32Stat-Conn-ExportRemoveSoft0_am2-x3hl-xcg-5-20_OVERALL_BEST_None|
+             ()
+             Bool)
+(declare-fun |0_am2-x3hl-xcg-5-20_CONNECTED_IMPORT_Vlan102_permitted| () Bool)
 (declare-fun |0_am2-x3hl-xcg-5-10_BGP_SINGLE-EXPORT__permitted| () Bool)
 (declare-fun |0_191.234.225.136/29ExportRemoveSoft0_am2-x3hl-xcg-5-10_OVERALL_BEST_None|
              ()
@@ -468,8 +468,8 @@
 (declare-fun |0_am2-x3sb-xcg-5-1aImportFilterAddSoft0_am2-x3sb-xcg-5-1a_BGP_IMPORT_Ethernet1/47|
              ()
              Bool)
-(declare-fun |0_am2-x3hl-xcg-5-13_BGP_BEST_None_permitted| () Bool)
-(declare-fun |0_am2-x3hl-xcg-5-13_CONNECTED_BEST_None_permitted| () Bool)
+(declare-fun |0_am2-x3hl-xcg-5-20_BGP_BEST_None_permitted| () Bool)
+(declare-fun |0_am2-x3hl-xcg-5-20_CONNECTED_BEST_None_permitted| () Bool)
 (declare-fun |0_am2-x3hl-xcg-5-06_BGP_IMPORT_Port-Channel1_choice| () Bool)
 (declare-fun |0_am2-x3hl-xcg-5-06_BGP_IMPORT_Port-Channel2_choice| () Bool)
 (declare-fun |0_am2-x3hl-xcg-5-17_BGP_IMPORT_Port-Channel1_choice| () Bool)
@@ -488,7 +488,6 @@
 (declare-fun |0_am2-x3hl-xcg-5-02_BGP_IMPORT_Port-Channel1_choice| () Bool)
 (declare-fun |0_am2-x3hl-xcg-5-13_BGP_IMPORT_Port-Channel2_choice| () Bool)
 (declare-fun |0_am2-x3hl-xcg-5-13_BGP_IMPORT_Port-Channel1_choice| () Bool)
-(declare-fun |0_am2-x3hl-xcg-5-13_CONNECTED_IMPORT_Vlan102_choice| () Bool)
 (declare-fun |0_am2-x3hl-xcg-5-03_BGP_IMPORT_Port-Channel2_choice| () Bool)
 (declare-fun |0_am2-x3hl-xcg-5-03_BGP_IMPORT_Port-Channel1_choice| () Bool)
 (declare-fun |0_am2-x3hl-xcg-5-14_BGP_IMPORT_Port-Channel1_choice| () Bool)
@@ -507,6 +506,7 @@
 (declare-fun |0_am2-x3hl-xcg-5-09_BGP_IMPORT_Port-Channel2_choice| () Bool)
 (declare-fun |0_am2-x3hl-xcg-5-20_BGP_IMPORT_Port-Channel2_choice| () Bool)
 (declare-fun |0_am2-x3hl-xcg-5-20_BGP_IMPORT_Port-Channel1_choice| () Bool)
+(declare-fun |0_am2-x3hl-xcg-5-20_CONNECTED_IMPORT_Vlan102_choice| () Bool)
 (declare-fun |0_am2-x3hl-xcg-5-10_BGP_IMPORT_Port-Channel2_choice| () Bool)
 (declare-fun |0_am2-x3hl-xcg-5-10_BGP_IMPORT_Port-Channel1_choice| () Bool)
 (declare-fun |0_am2-x3hl-xcg-5-21_BGP_IMPORT_Port-Channel2_choice| () Bool)
@@ -659,8 +659,8 @@
 (declare-fun |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-09_Vlan102| () Bool)
 (declare-fun |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-20_Port-Channel2| () Bool)
 (declare-fun |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-20_Port-Channel1| () Bool)
-(declare-fun |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-20_Vlan101| () Bool)
 (declare-fun |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-20_Vlan102| () Bool)
+(declare-fun |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-20_Vlan101| () Bool)
 (declare-fun |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-20_mgmt0| () Bool)
 (declare-fun |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-20_Loopback0| () Bool)
 (declare-fun |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-10_Port-Channel2| () Bool)
@@ -1647,6 +1647,13 @@
              ()
              Bool)
 (declare-fun |0_0_am2-x3hl-xcg-5-02_OVERALL_BEST_NoneBGPExportAddSoft| () Bool)
+(declare-fun |0_25.148.4.16/32ExportRemoveSoft0_am2-x3hl-xcg-5-13_OVERALL_BEST_None|
+             ()
+             Bool)
+(declare-fun |0_25.163.146.0/25ExportRemoveSoft0_am2-x3hl-xcg-5-13_OVERALL_BEST_None|
+             ()
+             Bool)
+(declare-fun |0_0_am2-x3hl-xcg-5-13_OVERALL_BEST_NoneBGPExportAddSoft| () Bool)
 (declare-fun |0_25.148.5.86/32ExportRemoveSoft0_am2-x3hl-xcg-5-03_OVERALL_BEST_None|
              ()
              Bool)
@@ -1703,13 +1710,6 @@
              ()
              Bool)
 (declare-fun |0_0_am2-x3hl-xcg-5-09_OVERALL_BEST_NoneBGPExportAddSoft| () Bool)
-(declare-fun |0_25.148.4.23/32ExportRemoveSoft0_am2-x3hl-xcg-5-20_OVERALL_BEST_None|
-             ()
-             Bool)
-(declare-fun |0_25.163.149.128/25ExportRemoveSoft0_am2-x3hl-xcg-5-20_OVERALL_BEST_None|
-             ()
-             Bool)
-(declare-fun |0_0_am2-x3hl-xcg-5-20_OVERALL_BEST_NoneBGPExportAddSoft| () Bool)
 (declare-fun |0_25.148.1.152/32ExportRemoveSoft0_am2-x3hl-xcg-5-10_OVERALL_BEST_None|
              ()
              Bool)
@@ -18408,18 +18408,10 @@
 (assert (< |0_am2-x3hl-xcg-5-02_OVERALL_BEST_None_metric| 65536))
 (assert (>= |0_am2-x3hl-xcg-5-02_OVERALL_BEST_None_prefixLength| 0))
 (assert (<= |0_am2-x3hl-xcg-5-02_OVERALL_BEST_None_prefixLength| 32))
-(assert (>= |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_adminDist| 0))
-(assert (< |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_adminDist| 256))
 (assert (>= |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_metric| 0))
 (assert (< |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_metric| 65536))
 (assert (>= |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_prefixLength| 0))
 (assert (<= |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_prefixLength| 32))
-(assert (>= |0_am2-x3hl-xcg-5-13_BGP_BEST_None_metric| 0))
-(assert (< |0_am2-x3hl-xcg-5-13_BGP_BEST_None_metric| 65536))
-(assert (>= |0_am2-x3hl-xcg-5-13_BGP_BEST_None_prefixLength| 0))
-(assert (<= |0_am2-x3hl-xcg-5-13_BGP_BEST_None_prefixLength| 32))
-(assert (>= |0_am2-x3hl-xcg-5-13_CONNECTED_BEST_None_prefixLength| 0))
-(assert (<= |0_am2-x3hl-xcg-5-13_CONNECTED_BEST_None_prefixLength| 32))
 (assert (>= |0_am2-x3hl-xcg-5-03_OVERALL_BEST_None_metric| 0))
 (assert (< |0_am2-x3hl-xcg-5-03_OVERALL_BEST_None_metric| 65536))
 (assert (>= |0_am2-x3hl-xcg-5-03_OVERALL_BEST_None_prefixLength| 0))
@@ -18452,10 +18444,18 @@
 (assert (< |0_am2-x3hl-xcg-5-09_OVERALL_BEST_None_metric| 65536))
 (assert (>= |0_am2-x3hl-xcg-5-09_OVERALL_BEST_None_prefixLength| 0))
 (assert (<= |0_am2-x3hl-xcg-5-09_OVERALL_BEST_None_prefixLength| 32))
+(assert (>= |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_adminDist| 0))
+(assert (< |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_adminDist| 256))
 (assert (>= |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_metric| 0))
 (assert (< |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_metric| 65536))
 (assert (>= |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_prefixLength| 0))
 (assert (<= |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_prefixLength| 32))
+(assert (>= |0_am2-x3hl-xcg-5-20_BGP_BEST_None_metric| 0))
+(assert (< |0_am2-x3hl-xcg-5-20_BGP_BEST_None_metric| 65536))
+(assert (>= |0_am2-x3hl-xcg-5-20_BGP_BEST_None_prefixLength| 0))
+(assert (<= |0_am2-x3hl-xcg-5-20_BGP_BEST_None_prefixLength| 32))
+(assert (>= |0_am2-x3hl-xcg-5-20_CONNECTED_BEST_None_prefixLength| 0))
+(assert (<= |0_am2-x3hl-xcg-5-20_CONNECTED_BEST_None_prefixLength| 32))
 (assert (>= |0_am2-x3hl-xcg-5-10_OVERALL_BEST_None_metric| 0))
 (assert (< |0_am2-x3hl-xcg-5-10_OVERALL_BEST_None_metric| 65536))
 (assert (>= |0_am2-x3hl-xcg-5-10_OVERALL_BEST_None_prefixLength| 0))
@@ -18508,8 +18508,6 @@
 (assert (< |0_am2-x3hl-xcg-5-13_BGP_SINGLE-EXPORT__metric| 65536))
 (assert (>= |0_am2-x3hl-xcg-5-13_BGP_SINGLE-EXPORT__prefixLength| 0))
 (assert (<= |0_am2-x3hl-xcg-5-13_BGP_SINGLE-EXPORT__prefixLength| 32))
-(assert (>= |0_am2-x3hl-xcg-5-13_CONNECTED_IMPORT_Vlan102_prefixLength| 0))
-(assert (<= |0_am2-x3hl-xcg-5-13_CONNECTED_IMPORT_Vlan102_prefixLength| 32))
 (assert (>= |0_am2-x3hl-xcg-5-03_BGP_SINGLE-EXPORT__metric| 0))
 (assert (< |0_am2-x3hl-xcg-5-03_BGP_SINGLE-EXPORT__metric| 65536))
 (assert (>= |0_am2-x3hl-xcg-5-03_BGP_SINGLE-EXPORT__prefixLength| 0))
@@ -18546,6 +18544,8 @@
 (assert (< |0_am2-x3hl-xcg-5-20_BGP_SINGLE-EXPORT__metric| 65536))
 (assert (>= |0_am2-x3hl-xcg-5-20_BGP_SINGLE-EXPORT__prefixLength| 0))
 (assert (<= |0_am2-x3hl-xcg-5-20_BGP_SINGLE-EXPORT__prefixLength| 32))
+(assert (>= |0_am2-x3hl-xcg-5-20_CONNECTED_IMPORT_Vlan102_prefixLength| 0))
+(assert (<= |0_am2-x3hl-xcg-5-20_CONNECTED_IMPORT_Vlan102_prefixLength| 32))
 (assert (>= |0_am2-x3hl-xcg-5-10_BGP_SINGLE-EXPORT__metric| 0))
 (assert (< |0_am2-x3hl-xcg-5-10_BGP_SINGLE-EXPORT__metric| 65536))
 (assert (>= |0_am2-x3hl-xcg-5-10_BGP_SINGLE-EXPORT__prefixLength| 0))
@@ -18886,32 +18886,20 @@
             (= |0_FAILED-EDGE_am2-x3hl-xcg-5-02_am2-x3sb-xcg-5-1b| 0))
        (ite true a!3 (not |0_am2-x3hl-xcg-5-02_BGP_SINGLE-EXPORT__permitted|))
        (not |0_am2-x3hl-xcg-5-02_BGP_SINGLE-EXPORT__permitted|))))))
-(assert (let ((a!1 (or (and (= |0_dst-ip| #x19940410)
-                    |0_25.148.4.16/32Stat-Conn-ExportRemoveSoft0_am2-x3hl-xcg-5-13_OVERALL_BEST_None|
-                    (not (= |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_history| #b0)))
-               (and (= ((_ extract 31 7) |0_dst-ip|)
-                       #b0001100110100011100100100)
-                    |0_25.163.146.0/25Stat-Conn-ExportRemoveSoft0_am2-x3hl-xcg-5-13_OVERALL_BEST_None|
-                    (not (= |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_history| #b0)))
-               (and (= ((_ extract 31 3) |0_dst-ip|)
-                       #b10111111111010101110000111000)
-                    |0_191.234.225.192/29Stat-Conn-ExportRemoveSoft0_am2-x3hl-xcg-5-13_OVERALL_BEST_None|
-                    (not (= |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_history| #b0)))
-               (= |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_history| #b0)
-               |0_0_am2-x3hl-xcg-5-13_OVERALL_BEST_NoneBGPExportAddSoft|))
-      (a!2 (ite (and (= 29 29)
+(assert (let ((a!1 (ite (and (= |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_prefixLength| 29)
                      (= (bvand |0_dst-ip| #xfffffff8)
-                        (bvand #xbfeae1c0 #xfffffff8)))
+                        (bvand #xbfeae1c0 #xfffffff8))
+                     |0_191.234.225.192/29ExportRemoveSoft0_am2-x3hl-xcg-5-13_OVERALL_BEST_None|)
                 29
                 |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_prefixLength|)))
-(let ((a!3 (and (= |0_am2-x3hl-xcg-5-13_BGP_SINGLE-EXPORT__permitted|
+(let ((a!2 (and (= |0_am2-x3hl-xcg-5-13_BGP_SINGLE-EXPORT__permitted|
                    |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_permitted|)
-                (= |0_am2-x3hl-xcg-5-13_BGP_SINGLE-EXPORT__prefixLength| a!2)
+                (= |0_am2-x3hl-xcg-5-13_BGP_SINGLE-EXPORT__prefixLength| a!1)
                 true
                 true
                 true
                 (= |0_am2-x3hl-xcg-5-13_BGP_SINGLE-EXPORT__metric|
-                   (ite (= |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_history| #b0)
+                   (ite true
                         (+ |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_metric| 1)
                         1))
                 true
@@ -18922,27 +18910,18 @@
                 true
                 true
                 true)))
-(let ((a!4 (ite (<= (ite (= |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_history| #b0)
+(let ((a!3 (ite (<= (ite true
                          (+ |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_metric| 1)
                          1)
                     255)
-                a!3
+                a!2
                 (not |0_am2-x3hl-xcg-5-13_BGP_SINGLE-EXPORT__permitted|))))
   (ite (and true
             true
             |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_permitted|
             (= |0_FAILED-EDGE_am2-x3hl-xcg-5-13_am2-x3sb-xcg-5-1a| 0))
-       (ite a!1 a!4 (not |0_am2-x3hl-xcg-5-13_BGP_SINGLE-EXPORT__permitted|))
+       (ite true a!3 (not |0_am2-x3hl-xcg-5-13_BGP_SINGLE-EXPORT__permitted|))
        (not |0_am2-x3hl-xcg-5-13_BGP_SINGLE-EXPORT__permitted|))))))
-(assert (ite (and true
-          (= (bvand |0_dst-ip| #xffffff80) (bvand #x19a39200 #xffffff80))
-          (= |0_FAILED-EDGE_am2-x3hl-xcg-5-13_Vlan102| 0))
-     (and |0_am2-x3hl-xcg-5-13_CONNECTED_IMPORT_Vlan102_permitted|
-          (= |0_am2-x3hl-xcg-5-13_CONNECTED_IMPORT_Vlan102_prefixLength| 25)
-          true
-          true
-          true)
-     (not |0_am2-x3hl-xcg-5-13_CONNECTED_IMPORT_Vlan102_permitted|)))
 (assert (let ((a!1 (ite (and (= |0_am2-x3hl-xcg-5-03_OVERALL_BEST_None_prefixLength| 29)
                      (= (bvand |0_dst-ip| #xfffffff8)
                         (bvand #xbfeae158 #xfffffff8))
@@ -19231,20 +19210,32 @@
             (= |0_FAILED-EDGE_am2-x3hl-xcg-5-09_am2-x3sb-xcg-5-1b| 0))
        (ite true a!3 (not |0_am2-x3hl-xcg-5-09_BGP_SINGLE-EXPORT__permitted|))
        (not |0_am2-x3hl-xcg-5-09_BGP_SINGLE-EXPORT__permitted|))))))
-(assert (let ((a!1 (ite (and (= |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_prefixLength| 29)
+(assert (let ((a!1 (or (and (= |0_dst-ip| #x19940417)
+                    |0_25.148.4.23/32Stat-Conn-ExportRemoveSoft0_am2-x3hl-xcg-5-20_OVERALL_BEST_None|
+                    (not (= |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_history| #b0)))
+               (and (= ((_ extract 31 7) |0_dst-ip|)
+                       #b0001100110100011100101011)
+                    |0_25.163.149.128/25Stat-Conn-ExportRemoveSoft0_am2-x3hl-xcg-5-20_OVERALL_BEST_None|
+                    (not (= |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_history| #b0)))
+               (and (= ((_ extract 31 3) |0_dst-ip|)
+                       #b10111111111010101110000111111)
+                    |0_191.234.225.248/29Stat-Conn-ExportRemoveSoft0_am2-x3hl-xcg-5-20_OVERALL_BEST_None|
+                    (not (= |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_history| #b0)))
+               (= |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_history| #b0)
+               |0_0_am2-x3hl-xcg-5-20_OVERALL_BEST_NoneBGPExportAddSoft|))
+      (a!2 (ite (and (= 29 29)
                      (= (bvand |0_dst-ip| #xfffffff8)
-                        (bvand #xbfeae1f8 #xfffffff8))
-                     |0_191.234.225.248/29ExportRemoveSoft0_am2-x3hl-xcg-5-20_OVERALL_BEST_None|)
+                        (bvand #xbfeae1f8 #xfffffff8)))
                 29
                 |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_prefixLength|)))
-(let ((a!2 (and (= |0_am2-x3hl-xcg-5-20_BGP_SINGLE-EXPORT__permitted|
+(let ((a!3 (and (= |0_am2-x3hl-xcg-5-20_BGP_SINGLE-EXPORT__permitted|
                    |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_permitted|)
-                (= |0_am2-x3hl-xcg-5-20_BGP_SINGLE-EXPORT__prefixLength| a!1)
+                (= |0_am2-x3hl-xcg-5-20_BGP_SINGLE-EXPORT__prefixLength| a!2)
                 true
                 true
                 true
                 (= |0_am2-x3hl-xcg-5-20_BGP_SINGLE-EXPORT__metric|
-                   (ite true
+                   (ite (= |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_history| #b0)
                         (+ |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_metric| 1)
                         1))
                 true
@@ -19255,18 +19246,27 @@
                 true
                 true
                 true)))
-(let ((a!3 (ite (<= (ite true
+(let ((a!4 (ite (<= (ite (= |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_history| #b0)
                          (+ |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_metric| 1)
                          1)
                     255)
-                a!2
+                a!3
                 (not |0_am2-x3hl-xcg-5-20_BGP_SINGLE-EXPORT__permitted|))))
   (ite (and true
             true
             |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_permitted|
             (= |0_FAILED-EDGE_am2-x3hl-xcg-5-20_am2-x3sb-xcg-5-1b| 0))
-       (ite true a!3 (not |0_am2-x3hl-xcg-5-20_BGP_SINGLE-EXPORT__permitted|))
+       (ite a!1 a!4 (not |0_am2-x3hl-xcg-5-20_BGP_SINGLE-EXPORT__permitted|))
        (not |0_am2-x3hl-xcg-5-20_BGP_SINGLE-EXPORT__permitted|))))))
+(assert (ite (and true
+          (= (bvand |0_dst-ip| #xffffff80) (bvand #x19a39580 #xffffff80))
+          (= |0_FAILED-EDGE_am2-x3hl-xcg-5-20_Vlan102| 0))
+     (and |0_am2-x3hl-xcg-5-20_CONNECTED_IMPORT_Vlan102_permitted|
+          (= |0_am2-x3hl-xcg-5-20_CONNECTED_IMPORT_Vlan102_prefixLength| 25)
+          true
+          true
+          true)
+     (not |0_am2-x3hl-xcg-5-20_CONNECTED_IMPORT_Vlan102_permitted|)))
 (assert (let ((a!1 (ite (and (= |0_am2-x3hl-xcg-5-10_OVERALL_BEST_None_prefixLength| 29)
                      (= (bvand |0_dst-ip| #xfffffff8)
                         (bvand #xbfeae188 #xfffffff8))
@@ -19587,6 +19587,7 @@
 (assert (=> |0_am2-x3hl-xcg-5-05_OVERALL_BEST_None_permitted| true))
 (assert (=> |0_am2-x3hl-xcg-5-16_OVERALL_BEST_None_permitted| true))
 (assert (=> |0_am2-x3hl-xcg-5-02_OVERALL_BEST_None_permitted| true))
+(assert (=> |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_permitted| true))
 (assert (=> |0_am2-x3hl-xcg-5-03_OVERALL_BEST_None_permitted| true))
 (assert (=> |0_am2-x3hl-xcg-5-14_OVERALL_BEST_None_permitted| true))
 (assert (=> |0_am2-x3hl-xcg-5-11_OVERALL_BEST_None_permitted| true))
@@ -19595,7 +19596,6 @@
 (assert (=> |0_am2-x3hl-xcg-5-08_OVERALL_BEST_None_permitted| true))
 (assert (=> |0_am2-x3hl-xcg-5-19_OVERALL_BEST_None_permitted| true))
 (assert (=> |0_am2-x3hl-xcg-5-09_OVERALL_BEST_None_permitted| true))
-(assert (=> |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_permitted| true))
 (assert (=> |0_am2-x3hl-xcg-5-10_OVERALL_BEST_None_permitted| true))
 (assert (=> |0_am2-x3hl-xcg-5-21_OVERALL_BEST_None_permitted| true))
 (assert (=> |0_am2-x3sb-xcg-5-1b_OVERALL_BEST_None_permitted| true))
@@ -20139,44 +20139,44 @@
 (assert (let ((a!1 (or false (and true (or false (and true true))))))
 (let ((a!2 (or false (and true (or false (and true a!1))))))
 (let ((a!3 (and true
-                (or (< |0_am2-x3hl-xcg-5-13_BGP_BEST_None_metric|
+                (or (< |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_metric|
                        |0_am2-x3sb-xcg-5-1b_BGP_SINGLE-EXPORT__metric|)
-                    (and (= |0_am2-x3hl-xcg-5-13_BGP_BEST_None_metric|
+                    (and (= |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_metric|
                             |0_am2-x3sb-xcg-5-1b_BGP_SINGLE-EXPORT__metric|)
                          a!2)))))
-(let ((a!4 (and (= |0_am2-x3hl-xcg-5-13_BGP_BEST_None_prefixLength|
+(let ((a!4 (and (= |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_prefixLength|
                    |0_am2-x3sb-xcg-5-1b_BGP_SINGLE-EXPORT__prefixLength|)
                 (or false (and true (or false a!3))))))
   (=> |0_am2-x3sb-xcg-5-1b_BGP_SINGLE-EXPORT__permitted|
-      (or (> |0_am2-x3hl-xcg-5-13_BGP_BEST_None_prefixLength|
+      (or (> |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_prefixLength|
              |0_am2-x3sb-xcg-5-1b_BGP_SINGLE-EXPORT__prefixLength|)
           a!4)))))))
 (assert (let ((a!1 (or false (and true (or false (and true true))))))
 (let ((a!2 (or false (and true (or false (and true a!1))))))
 (let ((a!3 (and true
-                (or (< |0_am2-x3hl-xcg-5-13_BGP_BEST_None_metric|
+                (or (< |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_metric|
                        |0_am2-x3sb-xcg-5-1a_BGP_SINGLE-EXPORT__metric|)
-                    (and (= |0_am2-x3hl-xcg-5-13_BGP_BEST_None_metric|
+                    (and (= |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_metric|
                             |0_am2-x3sb-xcg-5-1a_BGP_SINGLE-EXPORT__metric|)
                          a!2)))))
-(let ((a!4 (and (= |0_am2-x3hl-xcg-5-13_BGP_BEST_None_prefixLength|
+(let ((a!4 (and (= |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_prefixLength|
                    |0_am2-x3sb-xcg-5-1a_BGP_SINGLE-EXPORT__prefixLength|)
                 (or false (and true (or false a!3))))))
   (=> |0_am2-x3sb-xcg-5-1a_BGP_SINGLE-EXPORT__permitted|
-      (or (> |0_am2-x3hl-xcg-5-13_BGP_BEST_None_prefixLength|
+      (or (> |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_prefixLength|
              |0_am2-x3sb-xcg-5-1a_BGP_SINGLE-EXPORT__prefixLength|)
           a!4)))))))
 (assert (= (or |0_am2-x3sb-xcg-5-1b_BGP_SINGLE-EXPORT__permitted|
        |0_am2-x3sb-xcg-5-1a_BGP_SINGLE-EXPORT__permitted|)
-   |0_am2-x3hl-xcg-5-13_BGP_BEST_None_permitted|))
+   |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_permitted|))
 (assert (=> (or |0_am2-x3sb-xcg-5-1b_BGP_SINGLE-EXPORT__permitted|
         |0_am2-x3sb-xcg-5-1a_BGP_SINGLE-EXPORT__permitted|)
     (or (and |0_am2-x3sb-xcg-5-1b_BGP_SINGLE-EXPORT__permitted|
-             (= |0_am2-x3hl-xcg-5-13_BGP_BEST_None_prefixLength|
+             (= |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_prefixLength|
                 |0_am2-x3sb-xcg-5-1b_BGP_SINGLE-EXPORT__prefixLength|)
              true
              true
-             (= |0_am2-x3hl-xcg-5-13_BGP_BEST_None_metric|
+             (= |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_metric|
                 |0_am2-x3sb-xcg-5-1b_BGP_SINGLE-EXPORT__metric|)
              true
              true
@@ -20188,11 +20188,11 @@
              true
              true)
         (and |0_am2-x3sb-xcg-5-1a_BGP_SINGLE-EXPORT__permitted|
-             (= |0_am2-x3hl-xcg-5-13_BGP_BEST_None_prefixLength|
+             (= |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_prefixLength|
                 |0_am2-x3sb-xcg-5-1a_BGP_SINGLE-EXPORT__prefixLength|)
              true
              true
-             (= |0_am2-x3hl-xcg-5-13_BGP_BEST_None_metric|
+             (= |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_metric|
                 |0_am2-x3sb-xcg-5-1a_BGP_SINGLE-EXPORT__metric|)
              true
              true
@@ -20203,33 +20203,6 @@
              true
              true
              true))))
-(assert (let ((a!1 (or false (and true (or false (and true true))))))
-(let ((a!2 (or false (and true (or false (and true a!1))))))
-(let ((a!3 (or false (and true (or false (and true a!2))))))
-(let ((a!4 (or (> |0_am2-x3hl-xcg-5-13_CONNECTED_BEST_None_prefixLength|
-                  |0_am2-x3hl-xcg-5-13_CONNECTED_IMPORT_Vlan102_prefixLength|)
-               (and (= |0_am2-x3hl-xcg-5-13_CONNECTED_BEST_None_prefixLength|
-                       |0_am2-x3hl-xcg-5-13_CONNECTED_IMPORT_Vlan102_prefixLength|)
-                    (or false (and true a!3))))))
-  (=> |0_am2-x3hl-xcg-5-13_CONNECTED_IMPORT_Vlan102_permitted| a!4))))))
-(assert (= |0_am2-x3hl-xcg-5-13_CONNECTED_IMPORT_Vlan102_permitted|
-   |0_am2-x3hl-xcg-5-13_CONNECTED_BEST_None_permitted|))
-(assert (=> |0_am2-x3hl-xcg-5-13_CONNECTED_IMPORT_Vlan102_permitted|
-    (and |0_am2-x3hl-xcg-5-13_CONNECTED_IMPORT_Vlan102_permitted|
-         (= |0_am2-x3hl-xcg-5-13_CONNECTED_BEST_None_prefixLength|
-            |0_am2-x3hl-xcg-5-13_CONNECTED_IMPORT_Vlan102_prefixLength|)
-         true
-         true
-         true
-         true
-         true
-         true
-         true
-         true
-         true
-         true
-         true
-         true)))
 (assert (let ((a!1 (or false (and true (or false (and true true))))))
 (let ((a!2 (or false (and true (or false (and true a!1))))))
 (let ((a!3 (and true
@@ -20769,44 +20742,44 @@
 (assert (let ((a!1 (or false (and true (or false (and true true))))))
 (let ((a!2 (or false (and true (or false (and true a!1))))))
 (let ((a!3 (and true
-                (or (< |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_metric|
+                (or (< |0_am2-x3hl-xcg-5-20_BGP_BEST_None_metric|
                        |0_am2-x3sb-xcg-5-1b_BGP_SINGLE-EXPORT__metric|)
-                    (and (= |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_metric|
+                    (and (= |0_am2-x3hl-xcg-5-20_BGP_BEST_None_metric|
                             |0_am2-x3sb-xcg-5-1b_BGP_SINGLE-EXPORT__metric|)
                          a!2)))))
-(let ((a!4 (and (= |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_prefixLength|
+(let ((a!4 (and (= |0_am2-x3hl-xcg-5-20_BGP_BEST_None_prefixLength|
                    |0_am2-x3sb-xcg-5-1b_BGP_SINGLE-EXPORT__prefixLength|)
                 (or false (and true (or false a!3))))))
   (=> |0_am2-x3sb-xcg-5-1b_BGP_SINGLE-EXPORT__permitted|
-      (or (> |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_prefixLength|
+      (or (> |0_am2-x3hl-xcg-5-20_BGP_BEST_None_prefixLength|
              |0_am2-x3sb-xcg-5-1b_BGP_SINGLE-EXPORT__prefixLength|)
           a!4)))))))
 (assert (let ((a!1 (or false (and true (or false (and true true))))))
 (let ((a!2 (or false (and true (or false (and true a!1))))))
 (let ((a!3 (and true
-                (or (< |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_metric|
+                (or (< |0_am2-x3hl-xcg-5-20_BGP_BEST_None_metric|
                        |0_am2-x3sb-xcg-5-1a_BGP_SINGLE-EXPORT__metric|)
-                    (and (= |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_metric|
+                    (and (= |0_am2-x3hl-xcg-5-20_BGP_BEST_None_metric|
                             |0_am2-x3sb-xcg-5-1a_BGP_SINGLE-EXPORT__metric|)
                          a!2)))))
-(let ((a!4 (and (= |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_prefixLength|
+(let ((a!4 (and (= |0_am2-x3hl-xcg-5-20_BGP_BEST_None_prefixLength|
                    |0_am2-x3sb-xcg-5-1a_BGP_SINGLE-EXPORT__prefixLength|)
                 (or false (and true (or false a!3))))))
   (=> |0_am2-x3sb-xcg-5-1a_BGP_SINGLE-EXPORT__permitted|
-      (or (> |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_prefixLength|
+      (or (> |0_am2-x3hl-xcg-5-20_BGP_BEST_None_prefixLength|
              |0_am2-x3sb-xcg-5-1a_BGP_SINGLE-EXPORT__prefixLength|)
           a!4)))))))
 (assert (= (or |0_am2-x3sb-xcg-5-1b_BGP_SINGLE-EXPORT__permitted|
        |0_am2-x3sb-xcg-5-1a_BGP_SINGLE-EXPORT__permitted|)
-   |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_permitted|))
+   |0_am2-x3hl-xcg-5-20_BGP_BEST_None_permitted|))
 (assert (=> (or |0_am2-x3sb-xcg-5-1b_BGP_SINGLE-EXPORT__permitted|
         |0_am2-x3sb-xcg-5-1a_BGP_SINGLE-EXPORT__permitted|)
     (or (and |0_am2-x3sb-xcg-5-1b_BGP_SINGLE-EXPORT__permitted|
-             (= |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_prefixLength|
+             (= |0_am2-x3hl-xcg-5-20_BGP_BEST_None_prefixLength|
                 |0_am2-x3sb-xcg-5-1b_BGP_SINGLE-EXPORT__prefixLength|)
              true
              true
-             (= |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_metric|
+             (= |0_am2-x3hl-xcg-5-20_BGP_BEST_None_metric|
                 |0_am2-x3sb-xcg-5-1b_BGP_SINGLE-EXPORT__metric|)
              true
              true
@@ -20818,11 +20791,11 @@
              true
              true)
         (and |0_am2-x3sb-xcg-5-1a_BGP_SINGLE-EXPORT__permitted|
-             (= |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_prefixLength|
+             (= |0_am2-x3hl-xcg-5-20_BGP_BEST_None_prefixLength|
                 |0_am2-x3sb-xcg-5-1a_BGP_SINGLE-EXPORT__prefixLength|)
              true
              true
-             (= |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_metric|
+             (= |0_am2-x3hl-xcg-5-20_BGP_BEST_None_metric|
                 |0_am2-x3sb-xcg-5-1a_BGP_SINGLE-EXPORT__metric|)
              true
              true
@@ -20833,6 +20806,33 @@
              true
              true
              true))))
+(assert (let ((a!1 (or false (and true (or false (and true true))))))
+(let ((a!2 (or false (and true (or false (and true a!1))))))
+(let ((a!3 (or false (and true (or false (and true a!2))))))
+(let ((a!4 (or (> |0_am2-x3hl-xcg-5-20_CONNECTED_BEST_None_prefixLength|
+                  |0_am2-x3hl-xcg-5-20_CONNECTED_IMPORT_Vlan102_prefixLength|)
+               (and (= |0_am2-x3hl-xcg-5-20_CONNECTED_BEST_None_prefixLength|
+                       |0_am2-x3hl-xcg-5-20_CONNECTED_IMPORT_Vlan102_prefixLength|)
+                    (or false (and true a!3))))))
+  (=> |0_am2-x3hl-xcg-5-20_CONNECTED_IMPORT_Vlan102_permitted| a!4))))))
+(assert (= |0_am2-x3hl-xcg-5-20_CONNECTED_IMPORT_Vlan102_permitted|
+   |0_am2-x3hl-xcg-5-20_CONNECTED_BEST_None_permitted|))
+(assert (=> |0_am2-x3hl-xcg-5-20_CONNECTED_IMPORT_Vlan102_permitted|
+    (and |0_am2-x3hl-xcg-5-20_CONNECTED_IMPORT_Vlan102_permitted|
+         (= |0_am2-x3hl-xcg-5-20_CONNECTED_BEST_None_prefixLength|
+            |0_am2-x3hl-xcg-5-20_CONNECTED_IMPORT_Vlan102_prefixLength|)
+         true
+         true
+         true
+         true
+         true
+         true
+         true
+         true
+         true
+         true
+         true
+         true)))
 (assert (let ((a!1 (or false (and true (or false (and true true))))))
 (let ((a!2 (or false (and true (or false (and true a!1))))))
 (let ((a!3 (and true
@@ -22695,11 +22695,11 @@
         true)))
 (assert (= |0_am2-x3hl-xcg-5-13_BGP_IMPORT_Port-Channel2_choice|
    (and |0_am2-x3sb-xcg-5-1b_BGP_SINGLE-EXPORT__permitted|
-        (= |0_am2-x3hl-xcg-5-13_BGP_BEST_None_prefixLength|
+        (= |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_prefixLength|
            |0_am2-x3sb-xcg-5-1b_BGP_SINGLE-EXPORT__prefixLength|)
         true
         true
-        (= |0_am2-x3hl-xcg-5-13_BGP_BEST_None_metric|
+        (= |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_metric|
            |0_am2-x3sb-xcg-5-1b_BGP_SINGLE-EXPORT__metric|)
         true
         true
@@ -22712,28 +22712,12 @@
         true)))
 (assert (= |0_am2-x3hl-xcg-5-13_BGP_IMPORT_Port-Channel1_choice|
    (and |0_am2-x3sb-xcg-5-1a_BGP_SINGLE-EXPORT__permitted|
-        (= |0_am2-x3hl-xcg-5-13_BGP_BEST_None_prefixLength|
+        (= |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_prefixLength|
            |0_am2-x3sb-xcg-5-1a_BGP_SINGLE-EXPORT__prefixLength|)
         true
         true
-        (= |0_am2-x3hl-xcg-5-13_BGP_BEST_None_metric|
+        (= |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_metric|
            |0_am2-x3sb-xcg-5-1a_BGP_SINGLE-EXPORT__metric|)
-        true
-        true
-        true
-        true
-        true
-        true
-        true
-        true
-        true)))
-(assert (= |0_am2-x3hl-xcg-5-13_CONNECTED_IMPORT_Vlan102_choice|
-   (and |0_am2-x3hl-xcg-5-13_CONNECTED_IMPORT_Vlan102_permitted|
-        (= |0_am2-x3hl-xcg-5-13_CONNECTED_BEST_None_prefixLength|
-           |0_am2-x3hl-xcg-5-13_CONNECTED_IMPORT_Vlan102_prefixLength|)
-        true
-        true
-        true
         true
         true
         true
@@ -23017,11 +23001,11 @@
         true)))
 (assert (= |0_am2-x3hl-xcg-5-20_BGP_IMPORT_Port-Channel2_choice|
    (and |0_am2-x3sb-xcg-5-1b_BGP_SINGLE-EXPORT__permitted|
-        (= |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_prefixLength|
+        (= |0_am2-x3hl-xcg-5-20_BGP_BEST_None_prefixLength|
            |0_am2-x3sb-xcg-5-1b_BGP_SINGLE-EXPORT__prefixLength|)
         true
         true
-        (= |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_metric|
+        (= |0_am2-x3hl-xcg-5-20_BGP_BEST_None_metric|
            |0_am2-x3sb-xcg-5-1b_BGP_SINGLE-EXPORT__metric|)
         true
         true
@@ -23034,12 +23018,28 @@
         true)))
 (assert (= |0_am2-x3hl-xcg-5-20_BGP_IMPORT_Port-Channel1_choice|
    (and |0_am2-x3sb-xcg-5-1a_BGP_SINGLE-EXPORT__permitted|
-        (= |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_prefixLength|
+        (= |0_am2-x3hl-xcg-5-20_BGP_BEST_None_prefixLength|
            |0_am2-x3sb-xcg-5-1a_BGP_SINGLE-EXPORT__prefixLength|)
         true
         true
-        (= |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_metric|
+        (= |0_am2-x3hl-xcg-5-20_BGP_BEST_None_metric|
            |0_am2-x3sb-xcg-5-1a_BGP_SINGLE-EXPORT__metric|)
+        true
+        true
+        true
+        true
+        true
+        true
+        true
+        true
+        true)))
+(assert (= |0_am2-x3hl-xcg-5-20_CONNECTED_IMPORT_Vlan102_choice|
+   (and |0_am2-x3hl-xcg-5-20_CONNECTED_IMPORT_Vlan102_permitted|
+        (= |0_am2-x3hl-xcg-5-20_CONNECTED_BEST_None_prefixLength|
+           |0_am2-x3hl-xcg-5-20_CONNECTED_IMPORT_Vlan102_prefixLength|)
+        true
+        true
+        true
         true
         true
         true
@@ -23868,68 +23868,68 @@
 (assert (let ((a!1 (or false (and true (or false (and true true))))))
 (let ((a!2 (or false (and true (or false (and true a!1))))))
 (let ((a!3 (and true
-                (or (< |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_metric|
-                       |0_am2-x3hl-xcg-5-13_BGP_BEST_None_metric|)
-                    (and (= |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_metric|
-                            |0_am2-x3hl-xcg-5-13_BGP_BEST_None_metric|)
+                (or (< |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_metric|
+                       |0_am2-x3hl-xcg-5-20_BGP_BEST_None_metric|)
+                    (and (= |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_metric|
+                            |0_am2-x3hl-xcg-5-20_BGP_BEST_None_metric|)
                          a!2)))))
-(let ((a!4 (and (= |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_prefixLength|
-                   |0_am2-x3hl-xcg-5-13_BGP_BEST_None_prefixLength|)
-                (or (< |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_adminDist| 20)
-                    (and (= |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_adminDist|
+(let ((a!4 (and (= |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_prefixLength|
+                   |0_am2-x3hl-xcg-5-20_BGP_BEST_None_prefixLength|)
+                (or (< |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_adminDist| 20)
+                    (and (= |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_adminDist|
                             20)
                          (or false a!3))))))
-  (=> |0_am2-x3hl-xcg-5-13_BGP_BEST_None_permitted|
-      (or (> |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_prefixLength|
-             |0_am2-x3hl-xcg-5-13_BGP_BEST_None_prefixLength|)
+  (=> |0_am2-x3hl-xcg-5-20_BGP_BEST_None_permitted|
+      (or (> |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_prefixLength|
+             |0_am2-x3hl-xcg-5-20_BGP_BEST_None_prefixLength|)
           a!4)))))))
 (assert (let ((a!1 (or false (and true (or false (and true true))))))
 (let ((a!2 (or false (and true (or false (and true a!1))))))
 (let ((a!3 (and true
-                (or (< |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_metric| 0)
-                    (and (= |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_metric| 0)
+                (or (< |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_metric| 0)
+                    (and (= |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_metric| 0)
                          a!2)))))
-(let ((a!4 (and (= |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_prefixLength|
-                   |0_am2-x3hl-xcg-5-13_CONNECTED_BEST_None_prefixLength|)
-                (or (< |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_adminDist| 0)
-                    (and (= |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_adminDist| 0)
+(let ((a!4 (and (= |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_prefixLength|
+                   |0_am2-x3hl-xcg-5-20_CONNECTED_BEST_None_prefixLength|)
+                (or (< |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_adminDist| 0)
+                    (and (= |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_adminDist| 0)
                          (or false a!3))))))
-  (=> |0_am2-x3hl-xcg-5-13_CONNECTED_BEST_None_permitted|
-      (or (> |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_prefixLength|
-             |0_am2-x3hl-xcg-5-13_CONNECTED_BEST_None_prefixLength|)
+  (=> |0_am2-x3hl-xcg-5-20_CONNECTED_BEST_None_permitted|
+      (or (> |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_prefixLength|
+             |0_am2-x3hl-xcg-5-20_CONNECTED_BEST_None_prefixLength|)
           a!4)))))))
-(assert (= (or |0_am2-x3hl-xcg-5-13_BGP_BEST_None_permitted|
-       |0_am2-x3hl-xcg-5-13_CONNECTED_BEST_None_permitted|)
-   |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_permitted|))
-(assert (=> (or |0_am2-x3hl-xcg-5-13_BGP_BEST_None_permitted|
-        |0_am2-x3hl-xcg-5-13_CONNECTED_BEST_None_permitted|)
-    (or (and |0_am2-x3hl-xcg-5-13_BGP_BEST_None_permitted|
-             (= |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_prefixLength|
-                |0_am2-x3hl-xcg-5-13_BGP_BEST_None_prefixLength|)
-             (= |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_adminDist| 20)
+(assert (= (or |0_am2-x3hl-xcg-5-20_BGP_BEST_None_permitted|
+       |0_am2-x3hl-xcg-5-20_CONNECTED_BEST_None_permitted|)
+   |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_permitted|))
+(assert (=> (or |0_am2-x3hl-xcg-5-20_BGP_BEST_None_permitted|
+        |0_am2-x3hl-xcg-5-20_CONNECTED_BEST_None_permitted|)
+    (or (and |0_am2-x3hl-xcg-5-20_BGP_BEST_None_permitted|
+             (= |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_prefixLength|
+                |0_am2-x3hl-xcg-5-20_BGP_BEST_None_prefixLength|)
+             (= |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_adminDist| 20)
              true
-             (= |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_metric|
-                |0_am2-x3hl-xcg-5-13_BGP_BEST_None_metric|)
-             true
-             true
+             (= |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_metric|
+                |0_am2-x3hl-xcg-5-20_BGP_BEST_None_metric|)
              true
              true
-             (= |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_history| #b0)
+             true
+             true
+             (= |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_history| #b0)
              true
              true
              true
              true)
-        (and |0_am2-x3hl-xcg-5-13_CONNECTED_BEST_None_permitted|
-             (= |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_prefixLength|
-                |0_am2-x3hl-xcg-5-13_CONNECTED_BEST_None_prefixLength|)
-             (= |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_adminDist| 0)
+        (and |0_am2-x3hl-xcg-5-20_CONNECTED_BEST_None_permitted|
+             (= |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_prefixLength|
+                |0_am2-x3hl-xcg-5-20_CONNECTED_BEST_None_prefixLength|)
+             (= |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_adminDist| 0)
              true
-             (= |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_metric| 0)
-             true
-             true
+             (= |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_metric| 0)
              true
              true
-             (= |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_history| #b1)
+             true
+             true
+             (= |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_history| #b1)
              true
              true
              true
@@ -24546,7 +24546,7 @@
          |0_am2-x3hl-xcg-5-13_BGP_IMPORT_Port-Channel2_choice|
          (= |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_prefixLength|
             |0_am2-x3sb-xcg-5-1b_BGP_SINGLE-EXPORT__prefixLength|)
-         (= |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_adminDist| 20)
+         true
          true
          (= |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_metric|
             |0_am2-x3sb-xcg-5-1b_BGP_SINGLE-EXPORT__metric|)
@@ -24554,7 +24554,7 @@
          true
          true
          true
-         (= |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_history| #b0)
+         true
          true
          true
          true
@@ -24564,7 +24564,7 @@
          |0_am2-x3hl-xcg-5-13_BGP_IMPORT_Port-Channel1_choice|
          (= |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_prefixLength|
             |0_am2-x3sb-xcg-5-1a_BGP_SINGLE-EXPORT__prefixLength|)
-         (= |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_adminDist| 20)
+         true
          true
          (= |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_metric|
             |0_am2-x3sb-xcg-5-1a_BGP_SINGLE-EXPORT__metric|)
@@ -24572,29 +24572,13 @@
          true
          true
          true
-         (= |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_history| #b0)
+         true
          true
          true
          true
          true)
     |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-13_Port-Channel1|))
-(assert (=> (and (not (= |0_dst-ip| #x19a39201))
-         |0_am2-x3hl-xcg-5-13_CONNECTED_IMPORT_Vlan102_choice|
-         (= |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_prefixLength|
-            |0_am2-x3hl-xcg-5-13_CONNECTED_IMPORT_Vlan102_prefixLength|)
-         (= |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_adminDist| 0)
-         true
-         (= |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_metric| 0)
-         true
-         true
-         true
-         true
-         (= |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_history| #b1)
-         true
-         true
-         true
-         true)
-    |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-13_Vlan102|))
+(assert (not |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-13_Vlan102|))
 (assert (not |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-13_Loopback0|))
 (assert (not |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-13_mgmt0|))
 (assert (not |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-13_Vlan101|))
@@ -24602,7 +24586,7 @@
               |0_am2-x3hl-xcg-5-13_BGP_IMPORT_Port-Channel1_choice|
               (= |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_prefixLength|
                  |0_am2-x3sb-xcg-5-1a_BGP_SINGLE-EXPORT__prefixLength|)
-              (= |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_adminDist| 20)
+              true
               true
               (= |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_metric|
                  |0_am2-x3sb-xcg-5-1a_BGP_SINGLE-EXPORT__metric|)
@@ -24610,7 +24594,7 @@
               true
               true
               true
-              (= |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_history| #b0)
+              true
               true
               true
               true
@@ -24620,7 +24604,7 @@
               |0_am2-x3hl-xcg-5-13_BGP_IMPORT_Port-Channel2_choice|
               (= |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_prefixLength|
                  |0_am2-x3sb-xcg-5-1b_BGP_SINGLE-EXPORT__prefixLength|)
-              (= |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_adminDist| 20)
+              true
               true
               (= |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_metric|
                  |0_am2-x3sb-xcg-5-1b_BGP_SINGLE-EXPORT__metric|)
@@ -24628,29 +24612,12 @@
               true
               true
               true
-              (= |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_history| #b0)
+              true
               true
               true
               true
               true))
     (not |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-13_Port-Channel2|)))
-(assert (let ((a!1 (not (and (not (= |0_dst-ip| #x19a39201))
-                     |0_am2-x3hl-xcg-5-13_CONNECTED_IMPORT_Vlan102_choice|
-                     (= |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_prefixLength|
-                        |0_am2-x3hl-xcg-5-13_CONNECTED_IMPORT_Vlan102_prefixLength|)
-                     (= |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_adminDist| 0)
-                     true
-                     (= |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_metric| 0)
-                     true
-                     true
-                     true
-                     true
-                     (= |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_history| #b1)
-                     true
-                     true
-                     true
-                     true))))
-  (=> a!1 (not |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-13_Vlan102|))))
 (assert (=> (and true
          |0_am2-x3hl-xcg-5-03_BGP_IMPORT_Port-Channel2_choice|
          (= |0_am2-x3hl-xcg-5-03_OVERALL_BEST_None_prefixLength|
@@ -25263,7 +25230,7 @@
          |0_am2-x3hl-xcg-5-20_BGP_IMPORT_Port-Channel2_choice|
          (= |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_prefixLength|
             |0_am2-x3sb-xcg-5-1b_BGP_SINGLE-EXPORT__prefixLength|)
-         true
+         (= |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_adminDist| 20)
          true
          (= |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_metric|
             |0_am2-x3sb-xcg-5-1b_BGP_SINGLE-EXPORT__metric|)
@@ -25271,7 +25238,7 @@
          true
          true
          true
-         true
+         (= |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_history| #b0)
          true
          true
          true
@@ -25281,7 +25248,7 @@
          |0_am2-x3hl-xcg-5-20_BGP_IMPORT_Port-Channel1_choice|
          (= |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_prefixLength|
             |0_am2-x3sb-xcg-5-1a_BGP_SINGLE-EXPORT__prefixLength|)
-         true
+         (= |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_adminDist| 20)
          true
          (= |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_metric|
             |0_am2-x3sb-xcg-5-1a_BGP_SINGLE-EXPORT__metric|)
@@ -25289,21 +25256,37 @@
          true
          true
          true
-         true
+         (= |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_history| #b0)
          true
          true
          true
          true)
     |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-20_Port-Channel1|))
+(assert (=> (and (not (= |0_dst-ip| #x19a39581))
+         |0_am2-x3hl-xcg-5-20_CONNECTED_IMPORT_Vlan102_choice|
+         (= |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_prefixLength|
+            |0_am2-x3hl-xcg-5-20_CONNECTED_IMPORT_Vlan102_prefixLength|)
+         (= |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_adminDist| 0)
+         true
+         (= |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_metric| 0)
+         true
+         true
+         true
+         true
+         (= |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_history| #b1)
+         true
+         true
+         true
+         true)
+    |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-20_Vlan102|))
 (assert (not |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-20_Vlan101|))
-(assert (not |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-20_Vlan102|))
 (assert (not |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-20_mgmt0|))
 (assert (not |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-20_Loopback0|))
 (assert (=> (not (and true
               |0_am2-x3hl-xcg-5-20_BGP_IMPORT_Port-Channel2_choice|
               (= |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_prefixLength|
                  |0_am2-x3sb-xcg-5-1b_BGP_SINGLE-EXPORT__prefixLength|)
-              true
+              (= |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_adminDist| 20)
               true
               (= |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_metric|
                  |0_am2-x3sb-xcg-5-1b_BGP_SINGLE-EXPORT__metric|)
@@ -25311,7 +25294,7 @@
               true
               true
               true
-              true
+              (= |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_history| #b0)
               true
               true
               true
@@ -25321,7 +25304,7 @@
               |0_am2-x3hl-xcg-5-20_BGP_IMPORT_Port-Channel1_choice|
               (= |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_prefixLength|
                  |0_am2-x3sb-xcg-5-1a_BGP_SINGLE-EXPORT__prefixLength|)
-              true
+              (= |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_adminDist| 20)
               true
               (= |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_metric|
                  |0_am2-x3sb-xcg-5-1a_BGP_SINGLE-EXPORT__metric|)
@@ -25329,12 +25312,29 @@
               true
               true
               true
-              true
+              (= |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_history| #b0)
               true
               true
               true
               true))
     (not |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-20_Port-Channel1|)))
+(assert (let ((a!1 (not (and (not (= |0_dst-ip| #x19a39581))
+                     |0_am2-x3hl-xcg-5-20_CONNECTED_IMPORT_Vlan102_choice|
+                     (= |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_prefixLength|
+                        |0_am2-x3hl-xcg-5-20_CONNECTED_IMPORT_Vlan102_prefixLength|)
+                     (= |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_adminDist| 0)
+                     true
+                     (= |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_metric| 0)
+                     true
+                     true
+                     true
+                     true
+                     (= |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_history| #b1)
+                     true
+                     true
+                     true
+                     true))))
+  (=> a!1 (not |0_CONTROL-FORWARDING_am2-x3hl-xcg-5-20_Vlan102|))))
 (assert (=> (and true
          |0_am2-x3hl-xcg-5-10_BGP_IMPORT_Port-Channel2_choice|
          (= |0_am2-x3hl-xcg-5-10_OVERALL_BEST_None_prefixLength|
@@ -27988,19 +27988,10 @@
     (= |0_am2-x3hl-xcg-5-02_OVERALL_BEST_None_metric| 0)))
 (assert (=> (not |0_am2-x3hl-xcg-5-02_OVERALL_BEST_None_permitted|) true))
 (assert (=> (not |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_permitted|)
-    (= |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_adminDist| 0)))
-(assert (=> (not |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_permitted|)
     (= |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_prefixLength| 0)))
 (assert (=> (not |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_permitted|)
     (= |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_metric| 0)))
-(assert (=> (not |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_permitted|)
-    (= |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_history| #b0)))
-(assert (=> (not |0_am2-x3hl-xcg-5-13_BGP_BEST_None_permitted|)
-    (= |0_am2-x3hl-xcg-5-13_BGP_BEST_None_prefixLength| 0)))
-(assert (=> (not |0_am2-x3hl-xcg-5-13_BGP_BEST_None_permitted|)
-    (= |0_am2-x3hl-xcg-5-13_BGP_BEST_None_metric| 0)))
-(assert (=> (not |0_am2-x3hl-xcg-5-13_CONNECTED_BEST_None_permitted|)
-    (= |0_am2-x3hl-xcg-5-13_CONNECTED_BEST_None_prefixLength| 0)))
+(assert (=> (not |0_am2-x3hl-xcg-5-13_OVERALL_BEST_None_permitted|) true))
 (assert (=> (not |0_am2-x3hl-xcg-5-03_OVERALL_BEST_None_permitted|)
     (= |0_am2-x3hl-xcg-5-03_OVERALL_BEST_None_prefixLength| 0)))
 (assert (=> (not |0_am2-x3hl-xcg-5-03_OVERALL_BEST_None_permitted|)
@@ -28042,10 +28033,19 @@
     (= |0_am2-x3hl-xcg-5-09_OVERALL_BEST_None_metric| 0)))
 (assert (=> (not |0_am2-x3hl-xcg-5-09_OVERALL_BEST_None_permitted|) true))
 (assert (=> (not |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_permitted|)
+    (= |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_adminDist| 0)))
+(assert (=> (not |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_permitted|)
     (= |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_prefixLength| 0)))
 (assert (=> (not |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_permitted|)
     (= |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_metric| 0)))
-(assert (=> (not |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_permitted|) true))
+(assert (=> (not |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_permitted|)
+    (= |0_am2-x3hl-xcg-5-20_OVERALL_BEST_None_history| #b0)))
+(assert (=> (not |0_am2-x3hl-xcg-5-20_BGP_BEST_None_permitted|)
+    (= |0_am2-x3hl-xcg-5-20_BGP_BEST_None_prefixLength| 0)))
+(assert (=> (not |0_am2-x3hl-xcg-5-20_BGP_BEST_None_permitted|)
+    (= |0_am2-x3hl-xcg-5-20_BGP_BEST_None_metric| 0)))
+(assert (=> (not |0_am2-x3hl-xcg-5-20_CONNECTED_BEST_None_permitted|)
+    (= |0_am2-x3hl-xcg-5-20_CONNECTED_BEST_None_prefixLength| 0)))
 (assert (=> (not |0_am2-x3hl-xcg-5-10_OVERALL_BEST_None_permitted|)
     (= |0_am2-x3hl-xcg-5-10_OVERALL_BEST_None_prefixLength| 0)))
 (assert (=> (not |0_am2-x3hl-xcg-5-10_OVERALL_BEST_None_permitted|)
@@ -28102,8 +28102,6 @@
     (= |0_am2-x3hl-xcg-5-13_BGP_SINGLE-EXPORT__prefixLength| 0)))
 (assert (=> (not |0_am2-x3hl-xcg-5-13_BGP_SINGLE-EXPORT__permitted|)
     (= |0_am2-x3hl-xcg-5-13_BGP_SINGLE-EXPORT__metric| 0)))
-(assert (=> (not |0_am2-x3hl-xcg-5-13_CONNECTED_IMPORT_Vlan102_permitted|)
-    (= |0_am2-x3hl-xcg-5-13_CONNECTED_IMPORT_Vlan102_prefixLength| 0)))
 (assert (=> (not |0_am2-x3hl-xcg-5-03_BGP_SINGLE-EXPORT__permitted|)
     (= |0_am2-x3hl-xcg-5-03_BGP_SINGLE-EXPORT__prefixLength| 0)))
 (assert (=> (not |0_am2-x3hl-xcg-5-03_BGP_SINGLE-EXPORT__permitted|)
@@ -28140,6 +28138,8 @@
     (= |0_am2-x3hl-xcg-5-20_BGP_SINGLE-EXPORT__prefixLength| 0)))
 (assert (=> (not |0_am2-x3hl-xcg-5-20_BGP_SINGLE-EXPORT__permitted|)
     (= |0_am2-x3hl-xcg-5-20_BGP_SINGLE-EXPORT__metric| 0)))
+(assert (=> (not |0_am2-x3hl-xcg-5-20_CONNECTED_IMPORT_Vlan102_permitted|)
+    (= |0_am2-x3hl-xcg-5-20_CONNECTED_IMPORT_Vlan102_prefixLength| 0)))
 (assert (=> (not |0_am2-x3hl-xcg-5-10_BGP_SINGLE-EXPORT__permitted|)
     (= |0_am2-x3hl-xcg-5-10_BGP_SINGLE-EXPORT__prefixLength| 0)))
 (assert (=> (not |0_am2-x3hl-xcg-5-10_BGP_SINGLE-EXPORT__permitted|)
@@ -28188,8 +28188,8 @@
     (= |0_am2-x3sb-xcg-5-1a_BGP_EXPORT_ENV-10.22.181.240_prefixLength| 0)))
 (assert (=> (not |0_am2-x3sb-xcg-5-1a_BGP_EXPORT_ENV-10.22.181.240_permitted|)
     (= |0_am2-x3sb-xcg-5-1a_BGP_EXPORT_ENV-10.22.181.240_metric| 0)))
-(assert (or false (= (bvand |0_dst-ip| #xffffff80) (bvand #x19a39200 #xffffff80))))
-(assert (or false (= (bvand |0_src-ip| #xfffffff8) (bvand #xbfeae1c0 #xfffffff8))))
+(assert (or false (= (bvand |0_dst-ip| #xffffff80) (bvand #x19a39581 #xffffff80))))
+(assert (or false (= (bvand |0_src-ip| #xffffff80) (bvand #x19a1ec81 #xffffff80))))
 (assert (= |0__reachable_am2-x3hl-xcg-5-06| (> |0__reachable-id_am2-x3hl-xcg-5-06| 0)))
 (assert (>= |0__reachable-id_am2-x3hl-xcg-5-06| 0))
 (assert (= |0__reachable_am2-x3hl-xcg-5-17| (> |0__reachable-id_am2-x3hl-xcg-5-17| 0)))
@@ -28422,26 +28422,7 @@
                          (> |0__reachable-id_am2-x3sb-xcg-5-1b| 0)))
                 a!1
                 (= |0__reachable-id_am2-x3hl-xcg-5-13| 0))))
-  (ite (or false
-           (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-13_Vlan102| true)
-           (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-13_Loopback0| true)
-           (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-13_mgmt0| true)
-           (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-13_Vlan101| true)
-           false
-           (and |0_am2-x3hl-xcg-5-13_CONNECTED_BEST_None_permitted|
-                (= |0_dst-ip| #x19a39201))
-           (and |0_am2-x3hl-xcg-5-13_CONNECTED_BEST_None_permitted|
-                (= |0_dst-ip| #x19940410))
-           (and |0_am2-x3hl-xcg-5-13_CONNECTED_BEST_None_permitted|
-                (= |0_dst-ip| #x0a09d6e9))
-           (and |0_am2-x3hl-xcg-5-13_CONNECTED_BEST_None_permitted|
-                (= |0_dst-ip| #x0a01b101))
-           (and |0_am2-x3hl-xcg-5-13_CONNECTED_BEST_None_permitted|
-                (= |0_dst-ip| #x0a01b111))
-           (and |0_am2-x3hl-xcg-5-13_CONNECTED_BEST_None_permitted|
-                (= |0_dst-ip| #xbfeae1c1)))
-       (= |0__reachable-id_am2-x3hl-xcg-5-13| 1)
-       a!2))))
+  (ite (or false false) (= |0__reachable-id_am2-x3hl-xcg-5-13| 1) a!2))))
 (assert (let ((a!1 (and true
                 (=> (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-03_Port-Channel2|
                          |0_0__am2-x3sb-xcg-5-1b_Port-Channel3_INBOUND_SOFTAdd|
@@ -28630,7 +28611,26 @@
                          (> |0__reachable-id_am2-x3sb-xcg-5-1a| 0)))
                 a!1
                 (= |0__reachable-id_am2-x3hl-xcg-5-20| 0))))
-  (ite (or false false) (= |0__reachable-id_am2-x3hl-xcg-5-20| 1) a!2))))
+  (ite (or false
+           (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-20_Vlan101| true)
+           (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-20_Vlan102| true)
+           (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-20_mgmt0| true)
+           (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-20_Loopback0| true)
+           false
+           (and |0_am2-x3hl-xcg-5-20_CONNECTED_BEST_None_permitted|
+                (= |0_dst-ip| #x0a01b11f))
+           (and |0_am2-x3hl-xcg-5-20_CONNECTED_BEST_None_permitted|
+                (= |0_dst-ip| #xbfeae1f9))
+           (and |0_am2-x3hl-xcg-5-20_CONNECTED_BEST_None_permitted|
+                (= |0_dst-ip| #x19a39581))
+           (and |0_am2-x3hl-xcg-5-20_CONNECTED_BEST_None_permitted|
+                (= |0_dst-ip| #x0a09d6f0))
+           (and |0_am2-x3hl-xcg-5-20_CONNECTED_BEST_None_permitted|
+                (= |0_dst-ip| #x19940417))
+           (and |0_am2-x3hl-xcg-5-20_CONNECTED_BEST_None_permitted|
+                (= |0_dst-ip| #x0a01b10f)))
+       (= |0__reachable-id_am2-x3hl-xcg-5-20| 1)
+       a!2))))
 (assert (let ((a!1 (and true
                 (=> (and |0_DATA-FORWARDING_am2-x3hl-xcg-5-10_Port-Channel1|
                          |0_0__am2-x3sb-xcg-5-1a_Port-Channel10_INBOUND_SOFTAdd|
@@ -29003,7 +29003,7 @@
                 a!1
                 (= |0__reachable-id_am2-x3sb-xcg-5-1a| 0))))
   (ite (or false false) (= |0__reachable-id_am2-x3sb-xcg-5-1a| 1) a!2))))
-(assert (and true |0__reachable_am2-x3hl-xcg-5-13|))
+(assert (and true |0__reachable_am2-x3hl-xcg-5-12|))
 (assert (= |0_FAILED-EDGE_am2-x3hl-xcg-5-06_mgmt0| 0))
 (assert (= |0_FAILED-EDGE_am2-x3hl-xcg-5-06_Vlan101| 0))
 (assert (= |0_FAILED-EDGE_am2-x3hl-xcg-5-06_Loopback0| 0))
@@ -29039,10 +29039,6 @@
 (assert (= |0_FAILED-EDGE_am2-x3hl-xcg-5-13_Vlan102| 0))
 (assert (= |0_FAILED-EDGE_am2-x3hl-xcg-5-13_Loopback0| 0))
 (assert (= |0_FAILED-EDGE_am2-x3hl-xcg-5-13_mgmt0| 0))
-(assert (=> (= (bvand |0_dst-ip| #xfffffffe) (bvand #x0a01b100 #xfffffffe))
-    (= |0_FAILED-EDGE_am2-x3hl-xcg-5-13_am2-x3sb-xcg-5-1a| 0)))
-(assert (=> (= (bvand |0_dst-ip| #xfffffffe) (bvand #x0a01b110 #xfffffffe))
-    (= |0_FAILED-EDGE_am2-x3hl-xcg-5-13_am2-x3sb-xcg-5-1b| 0)))
 (assert (= |0_FAILED-EDGE_am2-x3hl-xcg-5-13_Vlan101| 0))
 (assert (= |0_FAILED-EDGE_am2-x3hl-xcg-5-03_Vlan102| 0))
 (assert (= |0_FAILED-EDGE_am2-x3hl-xcg-5-03_mgmt0| 0))
@@ -29076,10 +29072,14 @@
 (assert (= |0_FAILED-EDGE_am2-x3hl-xcg-5-09_Vlan101| 0))
 (assert (= |0_FAILED-EDGE_am2-x3hl-xcg-5-09_mgmt0| 0))
 (assert (= |0_FAILED-EDGE_am2-x3hl-xcg-5-09_Vlan102| 0))
+(assert (=> (= (bvand |0_dst-ip| #xfffffffe) (bvand #x0a01b11e #xfffffffe))
+    (= |0_FAILED-EDGE_am2-x3hl-xcg-5-20_am2-x3sb-xcg-5-1b| 0)))
 (assert (= |0_FAILED-EDGE_am2-x3hl-xcg-5-20_Vlan101| 0))
 (assert (= |0_FAILED-EDGE_am2-x3hl-xcg-5-20_Vlan102| 0))
 (assert (= |0_FAILED-EDGE_am2-x3hl-xcg-5-20_mgmt0| 0))
 (assert (= |0_FAILED-EDGE_am2-x3hl-xcg-5-20_Loopback0| 0))
+(assert (=> (= (bvand |0_dst-ip| #xfffffffe) (bvand #x0a01b10e #xfffffffe))
+    (= |0_FAILED-EDGE_am2-x3hl-xcg-5-20_am2-x3sb-xcg-5-1a| 0)))
 (assert (= |0_FAILED-EDGE_am2-x3hl-xcg-5-10_Loopback0| 0))
 (assert (= |0_FAILED-EDGE_am2-x3hl-xcg-5-10_mgmt0| 0))
 (assert (= |0_FAILED-EDGE_am2-x3hl-xcg-5-10_Vlan101| 0))
@@ -29432,187 +29432,188 @@
 (assert-soft |0_0__am2-x3sb-xcg-5-1a_Port-Channel1_INBOUND_SOFTAdd| :weight 1 :id a)
 (assert-soft |0_0__am2-x3sb-xcg-5-1a_Loopback0_OUTBOUND_SOFTAdd| :weight 1 :id a)
 (assert-soft |0_0__am2-x3sb-xcg-5-1a_Loopback0_INBOUND_SOFTAdd| :weight 1 :id a)
-(assert-soft |0_25.148.1.148/32ExportRemoveSoft0_am2-x3hl-xcg-5-06_OVERALL_BEST_None| :weight 2 :id a)
-(assert-soft |0_25.161.233.128/25ExportRemoveSoft0_am2-x3hl-xcg-5-06_OVERALL_BEST_None| :weight 2 :id a)
-(assert-soft |0_191.234.225.104/29ExportRemoveSoft0_am2-x3hl-xcg-5-06_OVERALL_BEST_None| :weight 2 :id a)
-(assert-soft (not |0_0_am2-x3hl-xcg-5-06_OVERALL_BEST_NoneBGPExportAddSoft|) :weight 2 :id a)
-(assert-soft |0_25.148.4.20/32ExportRemoveSoft0_am2-x3hl-xcg-5-17_OVERALL_BEST_None| :weight 2 :id a)
-(assert-soft |0_25.163.148.0/25ExportRemoveSoft0_am2-x3hl-xcg-5-17_OVERALL_BEST_None| :weight 2 :id a)
-(assert-soft |0_191.234.225.224/29ExportRemoveSoft0_am2-x3hl-xcg-5-17_OVERALL_BEST_None| :weight 2 :id a)
-(assert-soft (not |0_0_am2-x3hl-xcg-5-17_OVERALL_BEST_NoneBGPExportAddSoft|) :weight 2 :id a)
-(assert-soft |0_25.148.1.149/32ExportRemoveSoft0_am2-x3hl-xcg-5-07_OVERALL_BEST_None| :weight 2 :id a)
-(assert-soft |0_25.161.234.0/25ExportRemoveSoft0_am2-x3hl-xcg-5-07_OVERALL_BEST_None| :weight 2 :id a)
-(assert-soft |0_191.234.225.112/29ExportRemoveSoft0_am2-x3hl-xcg-5-07_OVERALL_BEST_None| :weight 2 :id a)
-(assert-soft (not |0_0_am2-x3hl-xcg-5-07_OVERALL_BEST_NoneBGPExportAddSoft|) :weight 2 :id a)
-(assert-soft |0_25.148.4.21/32ExportRemoveSoft0_am2-x3hl-xcg-5-18_OVERALL_BEST_None| :weight 2 :id a)
-(assert-soft |0_25.163.148.128/25ExportRemoveSoft0_am2-x3hl-xcg-5-18_OVERALL_BEST_None| :weight 2 :id a)
-(assert-soft |0_191.234.225.232/29ExportRemoveSoft0_am2-x3hl-xcg-5-18_OVERALL_BEST_None| :weight 2 :id a)
-(assert-soft (not |0_0_am2-x3hl-xcg-5-18_OVERALL_BEST_NoneBGPExportAddSoft|) :weight 2 :id a)
-(assert-soft |0_25.148.4.18/32ExportRemoveSoft0_am2-x3hl-xcg-5-15_OVERALL_BEST_None| :weight 2 :id a)
-(assert-soft |0_25.163.147.0/25ExportRemoveSoft0_am2-x3hl-xcg-5-15_OVERALL_BEST_None| :weight 2 :id a)
-(assert-soft |0_191.234.225.208/29ExportRemoveSoft0_am2-x3hl-xcg-5-15_OVERALL_BEST_None| :weight 2 :id a)
-(assert-soft (not |0_0_am2-x3hl-xcg-5-15_OVERALL_BEST_NoneBGPExportAddSoft|) :weight 2 :id a)
-(assert-soft |0_25.148.1.147/32ExportRemoveSoft0_am2-x3hl-xcg-5-05_OVERALL_BEST_None| :weight 2 :id a)
-(assert-soft |0_25.161.233.0/25ExportRemoveSoft0_am2-x3hl-xcg-5-05_OVERALL_BEST_None| :weight 2 :id a)
-(assert-soft |0_191.234.225.96/29ExportRemoveSoft0_am2-x3hl-xcg-5-05_OVERALL_BEST_None| :weight 2 :id a)
-(assert-soft (not |0_0_am2-x3hl-xcg-5-05_OVERALL_BEST_NoneBGPExportAddSoft|) :weight 2 :id a)
-(assert-soft |0_25.148.4.19/32ExportRemoveSoft0_am2-x3hl-xcg-5-16_OVERALL_BEST_None| :weight 2 :id a)
-(assert-soft |0_25.163.147.128/25ExportRemoveSoft0_am2-x3hl-xcg-5-16_OVERALL_BEST_None| :weight 2 :id a)
-(assert-soft |0_191.234.225.216/29ExportRemoveSoft0_am2-x3hl-xcg-5-16_OVERALL_BEST_None| :weight 2 :id a)
-(assert-soft (not |0_0_am2-x3hl-xcg-5-16_OVERALL_BEST_NoneBGPExportAddSoft|) :weight 2 :id a)
-(assert-soft |0_25.148.5.85/32ExportRemoveSoft0_am2-x3hl-xcg-5-02_OVERALL_BEST_None| :weight 2 :id a)
-(assert-soft |0_25.161.232.0/25ExportRemoveSoft0_am2-x3hl-xcg-5-02_OVERALL_BEST_None| :weight 2 :id a)
-(assert-soft |0_191.234.225.80/29ExportRemoveSoft0_am2-x3hl-xcg-5-02_OVERALL_BEST_None| :weight 2 :id a)
-(assert-soft (not |0_0_am2-x3hl-xcg-5-02_OVERALL_BEST_NoneBGPExportAddSoft|) :weight 2 :id a)
-(assert-soft |0_25.148.4.16/32Stat-Conn-ExportRemoveSoft0_am2-x3hl-xcg-5-13_OVERALL_BEST_None| :weight 2 :id a)
-(assert-soft |0_25.163.146.0/25Stat-Conn-ExportRemoveSoft0_am2-x3hl-xcg-5-13_OVERALL_BEST_None| :weight 2 :id a)
-(assert-soft |0_191.234.225.192/29Stat-Conn-ExportRemoveSoft0_am2-x3hl-xcg-5-13_OVERALL_BEST_None| :weight 2 :id a)
-(assert-soft (not |0_0_am2-x3hl-xcg-5-13_OVERALL_BEST_NoneBGPExportAddSoft|) :weight 2 :id a)
-(assert-soft |0_25.148.5.86/32ExportRemoveSoft0_am2-x3hl-xcg-5-03_OVERALL_BEST_None| :weight 2 :id a)
-(assert-soft |0_25.161.232.128/25ExportRemoveSoft0_am2-x3hl-xcg-5-03_OVERALL_BEST_None| :weight 2 :id a)
-(assert-soft |0_191.234.225.88/29ExportRemoveSoft0_am2-x3hl-xcg-5-03_OVERALL_BEST_None| :weight 2 :id a)
-(assert-soft (not |0_0_am2-x3hl-xcg-5-03_OVERALL_BEST_NoneBGPExportAddSoft|) :weight 2 :id a)
-(assert-soft |0_25.148.4.17/32ExportRemoveSoft0_am2-x3hl-xcg-5-14_OVERALL_BEST_None| :weight 2 :id a)
-(assert-soft |0_25.163.146.128/25ExportRemoveSoft0_am2-x3hl-xcg-5-14_OVERALL_BEST_None| :weight 2 :id a)
-(assert-soft |0_191.234.225.200/29ExportRemoveSoft0_am2-x3hl-xcg-5-14_OVERALL_BEST_None| :weight 2 :id a)
-(assert-soft (not |0_0_am2-x3hl-xcg-5-14_OVERALL_BEST_NoneBGPExportAddSoft|) :weight 2 :id a)
-(assert-soft |0_25.148.1.153/32ExportRemoveSoft0_am2-x3hl-xcg-5-11_OVERALL_BEST_None| :weight 2 :id a)
-(assert-soft |0_25.161.236.0/25ExportRemoveSoft0_am2-x3hl-xcg-5-11_OVERALL_BEST_None| :weight 2 :id a)
-(assert-soft |0_191.234.225.144/29ExportRemoveSoft0_am2-x3hl-xcg-5-11_OVERALL_BEST_None| :weight 2 :id a)
-(assert-soft (not |0_0_am2-x3hl-xcg-5-11_OVERALL_BEST_NoneBGPExportAddSoft|) :weight 2 :id a)
-(assert-soft |0_25.148.2.41/32ExportRemoveSoft0_am2-x3hl-xcg-5-01_OVERALL_BEST_None| :weight 2 :id a)
-(assert-soft |0_25.160.228.128/25ExportRemoveSoft0_am2-x3hl-xcg-5-01_OVERALL_BEST_None| :weight 2 :id a)
-(assert-soft |0_191.234.224.160/28ExportRemoveSoft0_am2-x3hl-xcg-5-01_OVERALL_BEST_None| :weight 2 :id a)
-(assert-soft (not |0_0_am2-x3hl-xcg-5-01_OVERALL_BEST_NoneBGPExportAddSoft|) :weight 2 :id a)
-(assert-soft |0_25.148.1.154/32ExportRemoveSoft0_am2-x3hl-xcg-5-12_OVERALL_BEST_None| :weight 2 :id a)
-(assert-soft |0_25.161.236.128/25ExportRemoveSoft0_am2-x3hl-xcg-5-12_OVERALL_BEST_None| :weight 2 :id a)
-(assert-soft |0_191.234.225.152/29ExportRemoveSoft0_am2-x3hl-xcg-5-12_OVERALL_BEST_None| :weight 2 :id a)
-(assert-soft (not |0_0_am2-x3hl-xcg-5-12_OVERALL_BEST_NoneBGPExportAddSoft|) :weight 2 :id a)
-(assert-soft |0_25.148.1.150/32ExportRemoveSoft0_am2-x3hl-xcg-5-08_OVERALL_BEST_None| :weight 2 :id a)
-(assert-soft |0_25.161.234.128/25ExportRemoveSoft0_am2-x3hl-xcg-5-08_OVERALL_BEST_None| :weight 2 :id a)
-(assert-soft |0_191.234.225.120/29ExportRemoveSoft0_am2-x3hl-xcg-5-08_OVERALL_BEST_None| :weight 2 :id a)
-(assert-soft (not |0_0_am2-x3hl-xcg-5-08_OVERALL_BEST_NoneBGPExportAddSoft|) :weight 2 :id a)
-(assert-soft |0_25.148.4.22/32ExportRemoveSoft0_am2-x3hl-xcg-5-19_OVERALL_BEST_None| :weight 2 :id a)
-(assert-soft |0_25.163.149.0/25ExportRemoveSoft0_am2-x3hl-xcg-5-19_OVERALL_BEST_None| :weight 2 :id a)
-(assert-soft |0_191.234.225.240/29ExportRemoveSoft0_am2-x3hl-xcg-5-19_OVERALL_BEST_None| :weight 2 :id a)
-(assert-soft (not |0_0_am2-x3hl-xcg-5-19_OVERALL_BEST_NoneBGPExportAddSoft|) :weight 2 :id a)
-(assert-soft |0_25.148.1.151/32ExportRemoveSoft0_am2-x3hl-xcg-5-09_OVERALL_BEST_None| :weight 2 :id a)
-(assert-soft |0_25.161.235.0/25ExportRemoveSoft0_am2-x3hl-xcg-5-09_OVERALL_BEST_None| :weight 2 :id a)
-(assert-soft |0_191.234.225.128/29ExportRemoveSoft0_am2-x3hl-xcg-5-09_OVERALL_BEST_None| :weight 2 :id a)
-(assert-soft (not |0_0_am2-x3hl-xcg-5-09_OVERALL_BEST_NoneBGPExportAddSoft|) :weight 2 :id a)
-(assert-soft |0_25.148.4.23/32ExportRemoveSoft0_am2-x3hl-xcg-5-20_OVERALL_BEST_None| :weight 2 :id a)
-(assert-soft |0_25.163.149.128/25ExportRemoveSoft0_am2-x3hl-xcg-5-20_OVERALL_BEST_None| :weight 2 :id a)
-(assert-soft |0_191.234.225.248/29ExportRemoveSoft0_am2-x3hl-xcg-5-20_OVERALL_BEST_None| :weight 2 :id a)
-(assert-soft (not |0_0_am2-x3hl-xcg-5-20_OVERALL_BEST_NoneBGPExportAddSoft|) :weight 2 :id a)
-(assert-soft |0_25.148.1.152/32ExportRemoveSoft0_am2-x3hl-xcg-5-10_OVERALL_BEST_None| :weight 2 :id a)
-(assert-soft |0_25.161.235.128/25ExportRemoveSoft0_am2-x3hl-xcg-5-10_OVERALL_BEST_None| :weight 2 :id a)
-(assert-soft |0_191.234.225.136/29ExportRemoveSoft0_am2-x3hl-xcg-5-10_OVERALL_BEST_None| :weight 2 :id a)
-(assert-soft (not |0_0_am2-x3hl-xcg-5-10_OVERALL_BEST_NoneBGPExportAddSoft|) :weight 2 :id a)
-(assert-soft |0_25.148.4.112/32ExportRemoveSoft0_am2-x3hl-xcg-5-21_OVERALL_BEST_None| :weight 2 :id a)
-(assert-soft |0_25.162.32.0/25ExportRemoveSoft0_am2-x3hl-xcg-5-21_OVERALL_BEST_None| :weight 2 :id a)
-(assert-soft |0_191.234.225.160/28ExportRemoveSoft0_am2-x3hl-xcg-5-21_OVERALL_BEST_None| :weight 2 :id a)
-(assert-soft (not |0_0_am2-x3hl-xcg-5-21_OVERALL_BEST_NoneBGPExportAddSoft|) :weight 2 :id a)
-(assert-soft |0_10.22.181.144/29BGPRemoveFilterSoft| :weight 6 :id a)
-(assert-soft |0_10.22.181.136/29BGPRemoveFilterSoft| :weight 6 :id a)
-(assert-soft |0_10.1.177.16/28BGPRemoveFilterSoft| :weight 6 :id a)
-(assert-soft |0_10.22.181.132/30BGPRemoveFilterSoft| :weight 6 :id a)
-(assert-soft |0_10.1.177.16/28BGPRemoveFilterSoft| :weight 6 :id a)
-(assert-soft |0_10.22.181.144/29BGPRemoveFilterSoft| :weight 6 :id a)
-(assert-soft |0_10.22.181.136/29BGPRemoveFilterSoft| :weight 6 :id a)
-(assert-soft |0_10.22.181.132/30BGPRemoveFilterSoft| :weight 6 :id a)
-(assert-soft |0_25.148.2.40/32ExportRemoveSoft0_am2-x3sb-xcg-5-1b_OVERALL_BEST_None| :weight 2 :id a)
-(assert-soft (not |0_0_am2-x3sb-xcg-5-1b_OVERALL_BEST_NoneBGPExportAddSoft|) :weight 2 :id a)
-(assert-soft |0_am2-x3sb-xcg-5-1bImportFilterAddSoft0_am2-x3sb-xcg-5-1b_BGP_IMPORT_Ethernet1/48| :weight 6 :id a)
-(assert-soft |0_am2-x3sb-xcg-5-1bImportFilterAddSoft0_am2-x3sb-xcg-5-1b_BGP_IMPORT_Ethernet1/47| :weight 6 :id a)
-(assert-soft |0_10.1.177.0/28BGPRemoveFilterSoft| :weight 6 :id a)
-(assert-soft |0_10.22.181.112/28BGPRemoveFilterSoft| :weight 6 :id a)
-(assert-soft |0_10.22.181.128/30BGPRemoveFilterSoft| :weight 6 :id a)
-(assert-soft |0_10.1.177.0/28BGPRemoveFilterSoft| :weight 6 :id a)
-(assert-soft |0_10.22.181.128/30BGPRemoveFilterSoft| :weight 6 :id a)
-(assert-soft |0_10.22.181.112/28BGPRemoveFilterSoft| :weight 6 :id a)
-(assert-soft |0_25.148.2.39/32ExportRemoveSoft0_am2-x3sb-xcg-5-1a_OVERALL_BEST_None| :weight 2 :id a)
-(assert-soft (not |0_0_am2-x3sb-xcg-5-1a_OVERALL_BEST_NoneBGPExportAddSoft|) :weight 2 :id a)
-(assert-soft |0_am2-x3sb-xcg-5-1aImportFilterAddSoft0_am2-x3sb-xcg-5-1a_BGP_IMPORT_Ethernet1/48| :weight 6 :id a)
-(assert-soft |0_am2-x3sb-xcg-5-1aImportFilterAddSoft0_am2-x3sb-xcg-5-1a_BGP_IMPORT_Ethernet1/47| :weight 6 :id a)
-(assert-soft (not |0_am2-x3hl-xcg-5-06-StaticRouteAddSoft-am2-x3hl-xcg-5-06,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel6|) :weight 5 :id a)
-(assert-soft (not |0_am2-x3hl-xcg-5-06-StaticRouteAddSoft-am2-x3hl-xcg-5-06,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel6|) :weight 5 :id a)
-(assert-soft (not |0_am2-x3hl-xcg-5-17-StaticRouteAddSoft-am2-x3hl-xcg-5-17,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel17|) :weight 5 :id a)
-(assert-soft (not |0_am2-x3hl-xcg-5-17-StaticRouteAddSoft-am2-x3hl-xcg-5-17,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel17|) :weight 5 :id a)
-(assert-soft (not |0_am2-x3hl-xcg-5-07-StaticRouteAddSoft-am2-x3hl-xcg-5-07,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel7|) :weight 5 :id a)
-(assert-soft (not |0_am2-x3hl-xcg-5-07-StaticRouteAddSoft-am2-x3hl-xcg-5-07,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel7|) :weight 5 :id a)
-(assert-soft (not |0_am2-x3hl-xcg-5-18-StaticRouteAddSoft-am2-x3hl-xcg-5-18,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel18|) :weight 5 :id a)
-(assert-soft (not |0_am2-x3hl-xcg-5-18-StaticRouteAddSoft-am2-x3hl-xcg-5-18,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel18|) :weight 5 :id a)
-(assert-soft (not |0_am2-x3hl-xcg-5-15-StaticRouteAddSoft-am2-x3hl-xcg-5-15,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel15|) :weight 5 :id a)
-(assert-soft (not |0_am2-x3hl-xcg-5-15-StaticRouteAddSoft-am2-x3hl-xcg-5-15,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel15|) :weight 5 :id a)
-(assert-soft (not |0_am2-x3hl-xcg-5-05-StaticRouteAddSoft-am2-x3hl-xcg-5-05,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel5|) :weight 5 :id a)
-(assert-soft (not |0_am2-x3hl-xcg-5-05-StaticRouteAddSoft-am2-x3hl-xcg-5-05,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel5|) :weight 5 :id a)
-(assert-soft (not |0_am2-x3hl-xcg-5-16-StaticRouteAddSoft-am2-x3hl-xcg-5-16,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel16|) :weight 5 :id a)
-(assert-soft (not |0_am2-x3hl-xcg-5-16-StaticRouteAddSoft-am2-x3hl-xcg-5-16,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel16|) :weight 5 :id a)
-(assert-soft (not |0_am2-x3hl-xcg-5-02-StaticRouteAddSoft-am2-x3hl-xcg-5-02,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel2|) :weight 5 :id a)
-(assert-soft (not |0_am2-x3hl-xcg-5-02-StaticRouteAddSoft-am2-x3hl-xcg-5-02,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel2|) :weight 5 :id a)
-(assert-soft (not |0_am2-x3hl-xcg-5-13-StaticRouteAddSoft-am2-x3hl-xcg-5-13,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel13|) :weight 5 :id a)
-(assert-soft (not |0_am2-x3hl-xcg-5-13-StaticRouteAddSoft-am2-x3hl-xcg-5-13,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel13|) :weight 5 :id a)
-(assert-soft (not |0_am2-x3hl-xcg-5-03-StaticRouteAddSoft-am2-x3hl-xcg-5-03,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel3|) :weight 5 :id a)
-(assert-soft (not |0_am2-x3hl-xcg-5-03-StaticRouteAddSoft-am2-x3hl-xcg-5-03,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel3|) :weight 5 :id a)
-(assert-soft (not |0_am2-x3hl-xcg-5-14-StaticRouteAddSoft-am2-x3hl-xcg-5-14,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel14|) :weight 5 :id a)
-(assert-soft (not |0_am2-x3hl-xcg-5-14-StaticRouteAddSoft-am2-x3hl-xcg-5-14,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel14|) :weight 5 :id a)
-(assert-soft (not |0_am2-x3hl-xcg-5-11-StaticRouteAddSoft-am2-x3hl-xcg-5-11,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel11|) :weight 5 :id a)
-(assert-soft (not |0_am2-x3hl-xcg-5-11-StaticRouteAddSoft-am2-x3hl-xcg-5-11,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel11|) :weight 5 :id a)
-(assert-soft (not |0_am2-x3hl-xcg-5-01-StaticRouteAddSoft-am2-x3hl-xcg-5-01,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel1|) :weight 5 :id a)
-(assert-soft (not |0_am2-x3hl-xcg-5-01-StaticRouteAddSoft-am2-x3hl-xcg-5-01,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel1|) :weight 5 :id a)
-(assert-soft (not |0_am2-x3hl-xcg-5-12-StaticRouteAddSoft-am2-x3hl-xcg-5-12,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel12|) :weight 5 :id a)
-(assert-soft (not |0_am2-x3hl-xcg-5-12-StaticRouteAddSoft-am2-x3hl-xcg-5-12,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel12|) :weight 5 :id a)
-(assert-soft (not |0_am2-x3hl-xcg-5-08-StaticRouteAddSoft-am2-x3hl-xcg-5-08,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel8|) :weight 5 :id a)
-(assert-soft (not |0_am2-x3hl-xcg-5-08-StaticRouteAddSoft-am2-x3hl-xcg-5-08,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel8|) :weight 5 :id a)
-(assert-soft (not |0_am2-x3hl-xcg-5-19-StaticRouteAddSoft-am2-x3hl-xcg-5-19,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel19|) :weight 5 :id a)
-(assert-soft (not |0_am2-x3hl-xcg-5-19-StaticRouteAddSoft-am2-x3hl-xcg-5-19,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel19|) :weight 5 :id a)
-(assert-soft (not |0_am2-x3hl-xcg-5-09-StaticRouteAddSoft-am2-x3hl-xcg-5-09,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel9|) :weight 5 :id a)
-(assert-soft (not |0_am2-x3hl-xcg-5-09-StaticRouteAddSoft-am2-x3hl-xcg-5-09,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel9|) :weight 5 :id a)
-(assert-soft (not |0_am2-x3hl-xcg-5-20-StaticRouteAddSoft-am2-x3hl-xcg-5-20,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel20|) :weight 5 :id a)
-(assert-soft (not |0_am2-x3hl-xcg-5-20-StaticRouteAddSoft-am2-x3hl-xcg-5-20,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel20|) :weight 5 :id a)
-(assert-soft (not |0_am2-x3hl-xcg-5-10-StaticRouteAddSoft-am2-x3hl-xcg-5-10,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel10|) :weight 5 :id a)
-(assert-soft (not |0_am2-x3hl-xcg-5-10-StaticRouteAddSoft-am2-x3hl-xcg-5-10,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel10|) :weight 5 :id a)
-(assert-soft (not |0_am2-x3hl-xcg-5-21-StaticRouteAddSoft-am2-x3hl-xcg-5-21,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel21|) :weight 5 :id a)
-(assert-soft (not |0_am2-x3hl-xcg-5-21-StaticRouteAddSoft-am2-x3hl-xcg-5-21,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel21|) :weight 5 :id a)
-(assert-soft (not |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel21 --> am2-x3hl-xcg-5-21,Port-Channel2|) :weight 5 :id a)
-(assert-soft (not |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel19 --> am2-x3hl-xcg-5-19,Port-Channel2|) :weight 5 :id a)
-(assert-soft (not |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel9 --> am2-x3hl-xcg-5-09,Port-Channel2|) :weight 5 :id a)
-(assert-soft (not |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel6 --> am2-x3hl-xcg-5-06,Port-Channel2|) :weight 5 :id a)
-(assert-soft (not |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel3 --> am2-x3hl-xcg-5-03,Port-Channel2|) :weight 5 :id a)
-(assert-soft (not |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel14 --> am2-x3hl-xcg-5-14,Port-Channel2|) :weight 5 :id a)
-(assert-soft (not |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel11 --> am2-x3hl-xcg-5-11,Port-Channel2|) :weight 5 :id a)
-(assert-soft (not |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel1 --> am2-x3hl-xcg-5-01,Port-Channel2|) :weight 5 :id a)
-(assert-soft (not |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel17 --> am2-x3hl-xcg-5-17,Port-Channel2|) :weight 5 :id a)
-(assert-soft (not |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel7 --> am2-x3hl-xcg-5-07,Port-Channel2|) :weight 5 :id a)
-(assert-soft (not |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel12 --> am2-x3hl-xcg-5-12,Port-Channel2|) :weight 5 :id a)
-(assert-soft (not |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel8 --> am2-x3hl-xcg-5-08,Port-Channel2|) :weight 5 :id a)
-(assert-soft (not |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel15 --> am2-x3hl-xcg-5-15,Port-Channel2|) :weight 5 :id a)
-(assert-soft (not |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel5 --> am2-x3hl-xcg-5-05,Port-Channel2|) :weight 5 :id a)
-(assert-soft (not |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel2 --> am2-x3hl-xcg-5-02,Port-Channel2|) :weight 5 :id a)
-(assert-soft (not |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel20 --> am2-x3hl-xcg-5-20,Port-Channel2|) :weight 5 :id a)
-(assert-soft (not |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel18 --> am2-x3hl-xcg-5-18,Port-Channel2|) :weight 5 :id a)
-(assert-soft (not |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel10 --> am2-x3hl-xcg-5-10,Port-Channel2|) :weight 5 :id a)
-(assert-soft (not |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel16 --> am2-x3hl-xcg-5-16,Port-Channel2|) :weight 5 :id a)
-(assert-soft (not |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel13 --> am2-x3hl-xcg-5-13,Port-Channel2|) :weight 5 :id a)
-(assert-soft (not |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel2 --> am2-x3hl-xcg-5-02,Port-Channel1|) :weight 5 :id a)
-(assert-soft (not |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel12 --> am2-x3hl-xcg-5-12,Port-Channel1|) :weight 5 :id a)
-(assert-soft (not |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel15 --> am2-x3hl-xcg-5-15,Port-Channel1|) :weight 5 :id a)
-(assert-soft (not |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel8 --> am2-x3hl-xcg-5-08,Port-Channel1|) :weight 5 :id a)
-(assert-soft (not |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel20 --> am2-x3hl-xcg-5-20,Port-Channel1|) :weight 5 :id a)
-(assert-soft (not |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel18 --> am2-x3hl-xcg-5-18,Port-Channel1|) :weight 5 :id a)
-(assert-soft (not |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel5 --> am2-x3hl-xcg-5-05,Port-Channel1|) :weight 5 :id a)
-(assert-soft (not |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel10 --> am2-x3hl-xcg-5-10,Port-Channel1|) :weight 5 :id a)
-(assert-soft (not |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel3 --> am2-x3hl-xcg-5-03,Port-Channel1|) :weight 5 :id a)
-(assert-soft (not |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel13 --> am2-x3hl-xcg-5-13,Port-Channel1|) :weight 5 :id a)
-(assert-soft (not |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel21 --> am2-x3hl-xcg-5-21,Port-Channel1|) :weight 5 :id a)
-(assert-soft (not |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel19 --> am2-x3hl-xcg-5-19,Port-Channel1|) :weight 5 :id a)
-(assert-soft (not |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel16 --> am2-x3hl-xcg-5-16,Port-Channel1|) :weight 5 :id a)
-(assert-soft (not |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel9 --> am2-x3hl-xcg-5-09,Port-Channel1|) :weight 5 :id a)
-(assert-soft (not |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel6 --> am2-x3hl-xcg-5-06,Port-Channel1|) :weight 5 :id a)
-(assert-soft (not |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel11 --> am2-x3hl-xcg-5-11,Port-Channel1|) :weight 5 :id a)
-(assert-soft (not |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel7 --> am2-x3hl-xcg-5-07,Port-Channel1|) :weight 5 :id a)
-(assert-soft (not |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel17 --> am2-x3hl-xcg-5-17,Port-Channel1|) :weight 5 :id a)
-(assert-soft (not |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel14 --> am2-x3hl-xcg-5-14,Port-Channel1|) :weight 5 :id a)
-(assert-soft (not |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel1 --> am2-x3hl-xcg-5-01,Port-Channel1|) :weight 5 :id a)
+(assert-soft |0_25.148.1.148/32ExportRemoveSoft0_am2-x3hl-xcg-5-06_OVERALL_BEST_None| :weight 1 :id a)
+(assert-soft |0_25.161.233.128/25ExportRemoveSoft0_am2-x3hl-xcg-5-06_OVERALL_BEST_None| :weight 1 :id a)
+(assert-soft |0_191.234.225.104/29ExportRemoveSoft0_am2-x3hl-xcg-5-06_OVERALL_BEST_None| :weight 1 :id a)
+(assert-soft (not |0_0_am2-x3hl-xcg-5-06_OVERALL_BEST_NoneBGPExportAddSoft|) :weight 1 :id a)
+(assert-soft |0_25.148.4.20/32ExportRemoveSoft0_am2-x3hl-xcg-5-17_OVERALL_BEST_None| :weight 1 :id a)
+(assert-soft |0_25.163.148.0/25ExportRemoveSoft0_am2-x3hl-xcg-5-17_OVERALL_BEST_None| :weight 1 :id a)
+(assert-soft |0_191.234.225.224/29ExportRemoveSoft0_am2-x3hl-xcg-5-17_OVERALL_BEST_None| :weight 1 :id a)
+(assert-soft (not |0_0_am2-x3hl-xcg-5-17_OVERALL_BEST_NoneBGPExportAddSoft|) :weight 1 :id a)
+(assert-soft |0_25.148.1.149/32ExportRemoveSoft0_am2-x3hl-xcg-5-07_OVERALL_BEST_None| :weight 1 :id a)
+(assert-soft |0_25.161.234.0/25ExportRemoveSoft0_am2-x3hl-xcg-5-07_OVERALL_BEST_None| :weight 1 :id a)
+(assert-soft |0_191.234.225.112/29ExportRemoveSoft0_am2-x3hl-xcg-5-07_OVERALL_BEST_None| :weight 1 :id a)
+(assert-soft (not |0_0_am2-x3hl-xcg-5-07_OVERALL_BEST_NoneBGPExportAddSoft|) :weight 1 :id a)
+(assert-soft |0_25.148.4.21/32ExportRemoveSoft0_am2-x3hl-xcg-5-18_OVERALL_BEST_None| :weight 1 :id a)
+(assert-soft |0_25.163.148.128/25ExportRemoveSoft0_am2-x3hl-xcg-5-18_OVERALL_BEST_None| :weight 1 :id a)
+(assert-soft |0_191.234.225.232/29ExportRemoveSoft0_am2-x3hl-xcg-5-18_OVERALL_BEST_None| :weight 1 :id a)
+(assert-soft (not |0_0_am2-x3hl-xcg-5-18_OVERALL_BEST_NoneBGPExportAddSoft|) :weight 1 :id a)
+(assert-soft |0_25.148.4.18/32ExportRemoveSoft0_am2-x3hl-xcg-5-15_OVERALL_BEST_None| :weight 1 :id a)
+(assert-soft |0_25.163.147.0/25ExportRemoveSoft0_am2-x3hl-xcg-5-15_OVERALL_BEST_None| :weight 1 :id a)
+(assert-soft |0_191.234.225.208/29ExportRemoveSoft0_am2-x3hl-xcg-5-15_OVERALL_BEST_None| :weight 1 :id a)
+(assert-soft (not |0_0_am2-x3hl-xcg-5-15_OVERALL_BEST_NoneBGPExportAddSoft|) :weight 1 :id a)
+(assert-soft |0_25.148.1.147/32ExportRemoveSoft0_am2-x3hl-xcg-5-05_OVERALL_BEST_None| :weight 1 :id a)
+(assert-soft |0_25.161.233.0/25ExportRemoveSoft0_am2-x3hl-xcg-5-05_OVERALL_BEST_None| :weight 1 :id a)
+(assert-soft |0_191.234.225.96/29ExportRemoveSoft0_am2-x3hl-xcg-5-05_OVERALL_BEST_None| :weight 1 :id a)
+(assert-soft (not |0_0_am2-x3hl-xcg-5-05_OVERALL_BEST_NoneBGPExportAddSoft|) :weight 1 :id a)
+(assert-soft |0_25.148.4.19/32ExportRemoveSoft0_am2-x3hl-xcg-5-16_OVERALL_BEST_None| :weight 1 :id a)
+(assert-soft |0_25.163.147.128/25ExportRemoveSoft0_am2-x3hl-xcg-5-16_OVERALL_BEST_None| :weight 1 :id a)
+(assert-soft |0_191.234.225.216/29ExportRemoveSoft0_am2-x3hl-xcg-5-16_OVERALL_BEST_None| :weight 1 :id a)
+(assert-soft (not |0_0_am2-x3hl-xcg-5-16_OVERALL_BEST_NoneBGPExportAddSoft|) :weight 1 :id a)
+(assert-soft |0_25.148.5.85/32ExportRemoveSoft0_am2-x3hl-xcg-5-02_OVERALL_BEST_None| :weight 1 :id a)
+(assert-soft |0_25.161.232.0/25ExportRemoveSoft0_am2-x3hl-xcg-5-02_OVERALL_BEST_None| :weight 1 :id a)
+(assert-soft |0_191.234.225.80/29ExportRemoveSoft0_am2-x3hl-xcg-5-02_OVERALL_BEST_None| :weight 1 :id a)
+(assert-soft (not |0_0_am2-x3hl-xcg-5-02_OVERALL_BEST_NoneBGPExportAddSoft|) :weight 1 :id a)
+(assert-soft |0_25.148.4.16/32ExportRemoveSoft0_am2-x3hl-xcg-5-13_OVERALL_BEST_None| :weight 1 :id a)
+(assert-soft |0_25.163.146.0/25ExportRemoveSoft0_am2-x3hl-xcg-5-13_OVERALL_BEST_None| :weight 1 :id a)
+(assert-soft |0_191.234.225.192/29ExportRemoveSoft0_am2-x3hl-xcg-5-13_OVERALL_BEST_None| :weight 1 :id a)
+(assert-soft (not |0_0_am2-x3hl-xcg-5-13_OVERALL_BEST_NoneBGPExportAddSoft|) :weight 1 :id a)
+(assert-soft |0_25.148.5.86/32ExportRemoveSoft0_am2-x3hl-xcg-5-03_OVERALL_BEST_None| :weight 1 :id a)
+(assert-soft |0_25.161.232.128/25ExportRemoveSoft0_am2-x3hl-xcg-5-03_OVERALL_BEST_None| :weight 1 :id a)
+(assert-soft |0_191.234.225.88/29ExportRemoveSoft0_am2-x3hl-xcg-5-03_OVERALL_BEST_None| :weight 1 :id a)
+(assert-soft (not |0_0_am2-x3hl-xcg-5-03_OVERALL_BEST_NoneBGPExportAddSoft|) :weight 1 :id a)
+(assert-soft |0_25.148.4.17/32ExportRemoveSoft0_am2-x3hl-xcg-5-14_OVERALL_BEST_None| :weight 1 :id a)
+(assert-soft |0_25.163.146.128/25ExportRemoveSoft0_am2-x3hl-xcg-5-14_OVERALL_BEST_None| :weight 1 :id a)
+(assert-soft |0_191.234.225.200/29ExportRemoveSoft0_am2-x3hl-xcg-5-14_OVERALL_BEST_None| :weight 1 :id a)
+(assert-soft (not |0_0_am2-x3hl-xcg-5-14_OVERALL_BEST_NoneBGPExportAddSoft|) :weight 1 :id a)
+(assert-soft |0_25.148.1.153/32ExportRemoveSoft0_am2-x3hl-xcg-5-11_OVERALL_BEST_None| :weight 1 :id a)
+(assert-soft |0_25.161.236.0/25ExportRemoveSoft0_am2-x3hl-xcg-5-11_OVERALL_BEST_None| :weight 1 :id a)
+(assert-soft |0_191.234.225.144/29ExportRemoveSoft0_am2-x3hl-xcg-5-11_OVERALL_BEST_None| :weight 1 :id a)
+(assert-soft (not |0_0_am2-x3hl-xcg-5-11_OVERALL_BEST_NoneBGPExportAddSoft|) :weight 1 :id a)
+(assert-soft |0_25.148.2.41/32ExportRemoveSoft0_am2-x3hl-xcg-5-01_OVERALL_BEST_None| :weight 1 :id a)
+(assert-soft |0_25.160.228.128/25ExportRemoveSoft0_am2-x3hl-xcg-5-01_OVERALL_BEST_None| :weight 1 :id a)
+(assert-soft |0_191.234.224.160/28ExportRemoveSoft0_am2-x3hl-xcg-5-01_OVERALL_BEST_None| :weight 1 :id a)
+(assert-soft (not |0_0_am2-x3hl-xcg-5-01_OVERALL_BEST_NoneBGPExportAddSoft|) :weight 1 :id a)
+(assert-soft |0_25.148.1.154/32ExportRemoveSoft0_am2-x3hl-xcg-5-12_OVERALL_BEST_None| :weight 1 :id a)
+(assert-soft |0_25.161.236.128/25ExportRemoveSoft0_am2-x3hl-xcg-5-12_OVERALL_BEST_None| :weight 1 :id a)
+(assert-soft |0_191.234.225.152/29ExportRemoveSoft0_am2-x3hl-xcg-5-12_OVERALL_BEST_None| :weight 1 :id a)
+(assert-soft (not |0_0_am2-x3hl-xcg-5-12_OVERALL_BEST_NoneBGPExportAddSoft|) :weight 1 :id a)
+(assert-soft |0_25.148.1.150/32ExportRemoveSoft0_am2-x3hl-xcg-5-08_OVERALL_BEST_None| :weight 1 :id a)
+(assert-soft |0_25.161.234.128/25ExportRemoveSoft0_am2-x3hl-xcg-5-08_OVERALL_BEST_None| :weight 1 :id a)
+(assert-soft |0_191.234.225.120/29ExportRemoveSoft0_am2-x3hl-xcg-5-08_OVERALL_BEST_None| :weight 1 :id a)
+(assert-soft (not |0_0_am2-x3hl-xcg-5-08_OVERALL_BEST_NoneBGPExportAddSoft|) :weight 1 :id a)
+(assert-soft |0_25.148.4.22/32ExportRemoveSoft0_am2-x3hl-xcg-5-19_OVERALL_BEST_None| :weight 1 :id a)
+(assert-soft |0_25.163.149.0/25ExportRemoveSoft0_am2-x3hl-xcg-5-19_OVERALL_BEST_None| :weight 1 :id a)
+(assert-soft |0_191.234.225.240/29ExportRemoveSoft0_am2-x3hl-xcg-5-19_OVERALL_BEST_None| :weight 1 :id a)
+(assert-soft (not |0_0_am2-x3hl-xcg-5-19_OVERALL_BEST_NoneBGPExportAddSoft|) :weight 1 :id a)
+(assert-soft |0_25.148.1.151/32ExportRemoveSoft0_am2-x3hl-xcg-5-09_OVERALL_BEST_None| :weight 1 :id a)
+(assert-soft |0_25.161.235.0/25ExportRemoveSoft0_am2-x3hl-xcg-5-09_OVERALL_BEST_None| :weight 1 :id a)
+(assert-soft |0_191.234.225.128/29ExportRemoveSoft0_am2-x3hl-xcg-5-09_OVERALL_BEST_None| :weight 1 :id a)
+(assert-soft (not |0_0_am2-x3hl-xcg-5-09_OVERALL_BEST_NoneBGPExportAddSoft|) :weight 1 :id a)
+(assert-soft |0_25.148.4.23/32Stat-Conn-ExportRemoveSoft0_am2-x3hl-xcg-5-20_OVERALL_BEST_None| :weight 1 :id a)
+(assert-soft |0_25.163.149.128/25Stat-Conn-ExportRemoveSoft0_am2-x3hl-xcg-5-20_OVERALL_BEST_None| :weight 1 :id a)
+(assert-soft |0_191.234.225.248/29Stat-Conn-ExportRemoveSoft0_am2-x3hl-xcg-5-20_OVERALL_BEST_None| :weight 1 :id a)
+(assert-soft (not |0_0_am2-x3hl-xcg-5-20_OVERALL_BEST_NoneBGPExportAddSoft|) :weight 1 :id a)
+(assert-soft |0_25.148.1.152/32ExportRemoveSoft0_am2-x3hl-xcg-5-10_OVERALL_BEST_None| :weight 1 :id a)
+(assert-soft |0_25.161.235.128/25ExportRemoveSoft0_am2-x3hl-xcg-5-10_OVERALL_BEST_None| :weight 1 :id a)
+(assert-soft |0_191.234.225.136/29ExportRemoveSoft0_am2-x3hl-xcg-5-10_OVERALL_BEST_None| :weight 1 :id a)
+(assert-soft (not |0_0_am2-x3hl-xcg-5-10_OVERALL_BEST_NoneBGPExportAddSoft|) :weight 1 :id a)
+(assert-soft |0_25.148.4.112/32ExportRemoveSoft0_am2-x3hl-xcg-5-21_OVERALL_BEST_None| :weight 1 :id a)
+(assert-soft |0_25.162.32.0/25ExportRemoveSoft0_am2-x3hl-xcg-5-21_OVERALL_BEST_None| :weight 1 :id a)
+(assert-soft |0_191.234.225.160/28ExportRemoveSoft0_am2-x3hl-xcg-5-21_OVERALL_BEST_None| :weight 1 :id a)
+(assert-soft (not |0_0_am2-x3hl-xcg-5-21_OVERALL_BEST_NoneBGPExportAddSoft|) :weight 1 :id a)
+(assert-soft |0_10.22.181.144/29BGPRemoveFilterSoft| :weight 1 :id a)
+(assert-soft |0_10.22.181.136/29BGPRemoveFilterSoft| :weight 1 :id a)
+(assert-soft |0_10.1.177.16/28BGPRemoveFilterSoft| :weight 1 :id a)
+(assert-soft |0_10.22.181.132/30BGPRemoveFilterSoft| :weight 1 :id a)
+(assert-soft |0_10.1.177.16/28BGPRemoveFilterSoft| :weight 1 :id a)
+(assert-soft |0_10.22.181.144/29BGPRemoveFilterSoft| :weight 1 :id a)
+(assert-soft |0_10.22.181.136/29BGPRemoveFilterSoft| :weight 1 :id a)
+(assert-soft |0_10.22.181.132/30BGPRemoveFilterSoft| :weight 1 :id a)
+(assert-soft |0_25.148.2.40/32ExportRemoveSoft0_am2-x3sb-xcg-5-1b_OVERALL_BEST_None| :weight 1 :id a)
+(assert-soft (not |0_0_am2-x3sb-xcg-5-1b_OVERALL_BEST_NoneBGPExportAddSoft|) :weight 1 :id a)
+(assert-soft |0_am2-x3sb-xcg-5-1bImportFilterAddSoft0_am2-x3sb-xcg-5-1b_BGP_IMPORT_Ethernet1/48| :weight 1 :id a)
+(assert-soft |0_am2-x3sb-xcg-5-1bImportFilterAddSoft0_am2-x3sb-xcg-5-1b_BGP_IMPORT_Ethernet1/47| :weight 1 :id a)
+(assert-soft |0_10.1.177.0/28BGPRemoveFilterSoft| :weight 1 :id a)
+(assert-soft |0_10.22.181.112/28BGPRemoveFilterSoft| :weight 1 :id a)
+(assert-soft |0_10.22.181.128/30BGPRemoveFilterSoft| :weight 1 :id a)
+(assert-soft |0_10.1.177.0/28BGPRemoveFilterSoft| :weight 1 :id a)
+(assert-soft |0_10.22.181.128/30BGPRemoveFilterSoft| :weight 1 :id a)
+(assert-soft |0_10.22.181.112/28BGPRemoveFilterSoft| :weight 1 :id a)
+(assert-soft |0_25.148.2.39/32ExportRemoveSoft0_am2-x3sb-xcg-5-1a_OVERALL_BEST_None| :weight 1 :id a)
+(assert-soft (not |0_0_am2-x3sb-xcg-5-1a_OVERALL_BEST_NoneBGPExportAddSoft|) :weight 1 :id a)
+(assert-soft |0_am2-x3sb-xcg-5-1aImportFilterAddSoft0_am2-x3sb-xcg-5-1a_BGP_IMPORT_Ethernet1/48| :weight 1 :id a)
+(assert-soft |0_am2-x3sb-xcg-5-1aImportFilterAddSoft0_am2-x3sb-xcg-5-1a_BGP_IMPORT_Ethernet1/47| :weight 1 :id a)
+(assert-soft (not |0_am2-x3hl-xcg-5-06-StaticRouteAddSoft-am2-x3hl-xcg-5-06,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel6|) :weight 1 :id a)
+(assert-soft (not |0_am2-x3hl-xcg-5-06-StaticRouteAddSoft-am2-x3hl-xcg-5-06,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel6|) :weight 1 :id a)
+(assert-soft (not |0_am2-x3hl-xcg-5-17-StaticRouteAddSoft-am2-x3hl-xcg-5-17,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel17|) :weight 1 :id a)
+(assert-soft (not |0_am2-x3hl-xcg-5-17-StaticRouteAddSoft-am2-x3hl-xcg-5-17,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel17|) :weight 1 :id a)
+(assert-soft (not |0_am2-x3hl-xcg-5-07-StaticRouteAddSoft-am2-x3hl-xcg-5-07,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel7|) :weight 1 :id a)
+(assert-soft (not |0_am2-x3hl-xcg-5-07-StaticRouteAddSoft-am2-x3hl-xcg-5-07,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel7|) :weight 1 :id a)
+(assert-soft (not |0_am2-x3hl-xcg-5-18-StaticRouteAddSoft-am2-x3hl-xcg-5-18,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel18|) :weight 1 :id a)
+(assert-soft (not |0_am2-x3hl-xcg-5-18-StaticRouteAddSoft-am2-x3hl-xcg-5-18,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel18|) :weight 1 :id a)
+(assert-soft (not |0_am2-x3hl-xcg-5-15-StaticRouteAddSoft-am2-x3hl-xcg-5-15,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel15|) :weight 1 :id a)
+(assert-soft (not |0_am2-x3hl-xcg-5-15-StaticRouteAddSoft-am2-x3hl-xcg-5-15,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel15|) :weight 1 :id a)
+(assert-soft (not |0_am2-x3hl-xcg-5-05-StaticRouteAddSoft-am2-x3hl-xcg-5-05,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel5|) :weight 1 :id a)
+(assert-soft (not |0_am2-x3hl-xcg-5-05-StaticRouteAddSoft-am2-x3hl-xcg-5-05,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel5|) :weight 1 :id a)
+(assert-soft (not |0_am2-x3hl-xcg-5-16-StaticRouteAddSoft-am2-x3hl-xcg-5-16,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel16|) :weight 1 :id a)
+(assert-soft (not |0_am2-x3hl-xcg-5-16-StaticRouteAddSoft-am2-x3hl-xcg-5-16,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel16|) :weight 1 :id a)
+(assert-soft (not |0_am2-x3hl-xcg-5-02-StaticRouteAddSoft-am2-x3hl-xcg-5-02,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel2|) :weight 1 :id a)
+(assert-soft (not |0_am2-x3hl-xcg-5-02-StaticRouteAddSoft-am2-x3hl-xcg-5-02,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel2|) :weight 1 :id a)
+(assert-soft (not |0_am2-x3hl-xcg-5-13-StaticRouteAddSoft-am2-x3hl-xcg-5-13,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel13|) :weight 1 :id a)
+(assert-soft (not |0_am2-x3hl-xcg-5-13-StaticRouteAddSoft-am2-x3hl-xcg-5-13,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel13|) :weight 1 :id a)
+(assert-soft (not |0_am2-x3hl-xcg-5-03-StaticRouteAddSoft-am2-x3hl-xcg-5-03,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel3|) :weight 1 :id a)
+(assert-soft (not |0_am2-x3hl-xcg-5-03-StaticRouteAddSoft-am2-x3hl-xcg-5-03,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel3|) :weight 1 :id a)
+(assert-soft (not |0_am2-x3hl-xcg-5-14-StaticRouteAddSoft-am2-x3hl-xcg-5-14,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel14|) :weight 1 :id a)
+(assert-soft (not |0_am2-x3hl-xcg-5-14-StaticRouteAddSoft-am2-x3hl-xcg-5-14,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel14|) :weight 1 :id a)
+(assert-soft (not |0_am2-x3hl-xcg-5-11-StaticRouteAddSoft-am2-x3hl-xcg-5-11,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel11|) :weight 1 :id a)
+(assert-soft (not |0_am2-x3hl-xcg-5-11-StaticRouteAddSoft-am2-x3hl-xcg-5-11,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel11|) :weight 1 :id a)
+(assert-soft (not |0_am2-x3hl-xcg-5-01-StaticRouteAddSoft-am2-x3hl-xcg-5-01,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel1|) :weight 1 :id a)
+(assert-soft (not |0_am2-x3hl-xcg-5-01-StaticRouteAddSoft-am2-x3hl-xcg-5-01,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel1|) :weight 1 :id a)
+(assert-soft (not |0_am2-x3hl-xcg-5-12-StaticRouteAddSoft-am2-x3hl-xcg-5-12,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel12|) :weight 1 :id a)
+(assert-soft (not |0_am2-x3hl-xcg-5-12-StaticRouteAddSoft-am2-x3hl-xcg-5-12,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel12|) :weight 1 :id a)
+(assert-soft (not |0_am2-x3hl-xcg-5-08-StaticRouteAddSoft-am2-x3hl-xcg-5-08,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel8|) :weight 1 :id a)
+(assert-soft (not |0_am2-x3hl-xcg-5-08-StaticRouteAddSoft-am2-x3hl-xcg-5-08,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel8|) :weight 1 :id a)
+(assert-soft (not |0_am2-x3hl-xcg-5-19-StaticRouteAddSoft-am2-x3hl-xcg-5-19,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel19|) :weight 1 :id a)
+(assert-soft (not |0_am2-x3hl-xcg-5-19-StaticRouteAddSoft-am2-x3hl-xcg-5-19,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel19|) :weight 1 :id a)
+(assert-soft (not |0_am2-x3hl-xcg-5-09-StaticRouteAddSoft-am2-x3hl-xcg-5-09,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel9|) :weight 1 :id a)
+(assert-soft (not |0_am2-x3hl-xcg-5-09-StaticRouteAddSoft-am2-x3hl-xcg-5-09,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel9|) :weight 1 :id a)
+(assert-soft (not |0_am2-x3hl-xcg-5-20-StaticRouteAddSoft-am2-x3hl-xcg-5-20,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel20|) :weight 1 :id a)
+(assert-soft (not |0_am2-x3hl-xcg-5-20-StaticRouteAddSoft-am2-x3hl-xcg-5-20,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel20|) :weight 1 :id a)
+(assert-soft (not |0_am2-x3hl-xcg-5-10-StaticRouteAddSoft-am2-x3hl-xcg-5-10,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel10|) :weight 1 :id a)
+(assert-soft (not |0_am2-x3hl-xcg-5-10-StaticRouteAddSoft-am2-x3hl-xcg-5-10,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel10|) :weight 1 :id a)
+(assert-soft (not |0_am2-x3hl-xcg-5-21-StaticRouteAddSoft-am2-x3hl-xcg-5-21,Port-Channel2 --> am2-x3sb-xcg-5-1b,Port-Channel21|) :weight 1 :id a)
+(assert-soft (not |0_am2-x3hl-xcg-5-21-StaticRouteAddSoft-am2-x3hl-xcg-5-21,Port-Channel1 --> am2-x3sb-xcg-5-1a,Port-Channel21|) :weight 1 :id a)
+(assert-soft (not |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel21 --> am2-x3hl-xcg-5-21,Port-Channel2|) :weight 1 :id a)
+(assert-soft (not |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel19 --> am2-x3hl-xcg-5-19,Port-Channel2|) :weight 1 :id a)
+(assert-soft (not |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel9 --> am2-x3hl-xcg-5-09,Port-Channel2|) :weight 1 :id a)
+(assert-soft (not |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel6 --> am2-x3hl-xcg-5-06,Port-Channel2|) :weight 1 :id a)
+(assert-soft (not |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel3 --> am2-x3hl-xcg-5-03,Port-Channel2|) :weight 1 :id a)
+(assert-soft (not |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel14 --> am2-x3hl-xcg-5-14,Port-Channel2|) :weight 1 :id a)
+(assert-soft (not |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel11 --> am2-x3hl-xcg-5-11,Port-Channel2|) :weight 1 :id a)
+(assert-soft (not |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel1 --> am2-x3hl-xcg-5-01,Port-Channel2|) :weight 1 :id a)
+(assert-soft (not |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel17 --> am2-x3hl-xcg-5-17,Port-Channel2|) :weight 1 :id a)
+(assert-soft (not |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel7 --> am2-x3hl-xcg-5-07,Port-Channel2|) :weight 1 :id a)
+(assert-soft (not |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel12 --> am2-x3hl-xcg-5-12,Port-Channel2|) :weight 1 :id a)
+(assert-soft (not |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel8 --> am2-x3hl-xcg-5-08,Port-Channel2|) :weight 1 :id a)
+(assert-soft (not |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel15 --> am2-x3hl-xcg-5-15,Port-Channel2|) :weight 1 :id a)
+(assert-soft (not |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel5 --> am2-x3hl-xcg-5-05,Port-Channel2|) :weight 1 :id a)
+(assert-soft (not |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel2 --> am2-x3hl-xcg-5-02,Port-Channel2|) :weight 1 :id a)
+(assert-soft (not |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel20 --> am2-x3hl-xcg-5-20,Port-Channel2|) :weight 1 :id a)
+(assert-soft (not |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel18 --> am2-x3hl-xcg-5-18,Port-Channel2|) :weight 1 :id a)
+(assert-soft (not |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel10 --> am2-x3hl-xcg-5-10,Port-Channel2|) :weight 1 :id a)
+(assert-soft (not |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel16 --> am2-x3hl-xcg-5-16,Port-Channel2|) :weight 1 :id a)
+(assert-soft (not |0_am2-x3sb-xcg-5-1b-StaticRouteAddSoft-am2-x3sb-xcg-5-1b,Port-Channel13 --> am2-x3hl-xcg-5-13,Port-Channel2|) :weight 1 :id a)
+(assert-soft (not |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel2 --> am2-x3hl-xcg-5-02,Port-Channel1|) :weight 1 :id a)
+(assert-soft (not |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel12 --> am2-x3hl-xcg-5-12,Port-Channel1|) :weight 1 :id a)
+(assert-soft (not |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel15 --> am2-x3hl-xcg-5-15,Port-Channel1|) :weight 1 :id a)
+(assert-soft (not |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel8 --> am2-x3hl-xcg-5-08,Port-Channel1|) :weight 1 :id a)
+(assert-soft (not |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel20 --> am2-x3hl-xcg-5-20,Port-Channel1|) :weight 1 :id a)
+(assert-soft (not |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel18 --> am2-x3hl-xcg-5-18,Port-Channel1|) :weight 1 :id a)
+(assert-soft (not |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel5 --> am2-x3hl-xcg-5-05,Port-Channel1|) :weight 1 :id a)
+(assert-soft (not |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel10 --> am2-x3hl-xcg-5-10,Port-Channel1|) :weight 1 :id a)
+(assert-soft (not |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel3 --> am2-x3hl-xcg-5-03,Port-Channel1|) :weight 1 :id a)
+(assert-soft (not |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel13 --> am2-x3hl-xcg-5-13,Port-Channel1|) :weight 1 :id a)
+(assert-soft (not |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel21 --> am2-x3hl-xcg-5-21,Port-Channel1|) :weight 1 :id a)
+(assert-soft (not |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel19 --> am2-x3hl-xcg-5-19,Port-Channel1|) :weight 1 :id a)
+(assert-soft (not |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel16 --> am2-x3hl-xcg-5-16,Port-Channel1|) :weight 1 :id a)
+(assert-soft (not |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel9 --> am2-x3hl-xcg-5-09,Port-Channel1|) :weight 1 :id a)
+(assert-soft (not |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel6 --> am2-x3hl-xcg-5-06,Port-Channel1|) :weight 1 :id a)
+(assert-soft (not |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel11 --> am2-x3hl-xcg-5-11,Port-Channel1|) :weight 1 :id a)
+(assert-soft (not |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel7 --> am2-x3hl-xcg-5-07,Port-Channel1|) :weight 1 :id a)
+(assert-soft (not |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel17 --> am2-x3hl-xcg-5-17,Port-Channel1|) :weight 1 :id a)
+(assert-soft (not |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel14 --> am2-x3hl-xcg-5-14,Port-Channel1|) :weight 1 :id a)
+(assert-soft (not |0_am2-x3sb-xcg-5-1a-StaticRouteAddSoft-am2-x3sb-xcg-5-1a,Port-Channel1 --> am2-x3hl-xcg-5-01,Port-Channel1|) :weight 1 :id a)
 (check-sat)
 (get-objectives)
+(get-model)
