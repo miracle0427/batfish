@@ -277,6 +277,8 @@ public class Encoder {
       _routerConsMap = enc._routerConsMap;
       _weightMap = enc._weightMap;
       _routerConsMap = enc._routerConsMap;
+      _repairObjective = enc._repairObjective;
+      _isBool = enc._isBool;
     }
 
     if (ENABLE_DEBUGGING) {
@@ -385,6 +387,8 @@ public class Encoder {
       _routerConsMap = enc._routerConsMap;
       _weightMap = enc._weightMap;
       _routerConsMap = enc._routerConsMap;
+      _repairObjective = enc._repairObjective;
+      _isBool = enc._isBool;
     }
 
     if (ENABLE_DEBUGGING) {
