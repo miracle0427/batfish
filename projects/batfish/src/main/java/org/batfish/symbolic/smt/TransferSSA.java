@@ -4,6 +4,7 @@ import com.microsoft.z3.ArithExpr;
 import com.microsoft.z3.BitVecExpr;
 import com.microsoft.z3.BoolExpr;
 import com.microsoft.z3.Expr;
+import com.microsoft.z3.Symbol;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -444,9 +445,10 @@ class TransferSSA {
         result = result.addChangedVariables(r);
         acc = _enc.mkOr(acc, r.getReturnValue());
       }
-      //BoolExpr shouldAdd = _enc.getCtx().mkBoolConst(_enc.getEncoder().getId() + "_" + 
-      //p.getData().getName() + "BGPExportAddSoft");
+      BoolExpr shouldAdd = _enc.getCtx().mkBoolConst(_enc.getEncoder().getId() + "_" + 
+        p.getData().getName() + "BGPExportAddSoft");
       //temp
+      /*
       BoolExpr shouldAdd = _enc.mkAnd(
         _enc.mkEq(
           _enc.getSymbolicPacket().getDstIp(), _enc.getCtx().mkBVConst(
@@ -455,7 +457,15 @@ class TransferSSA {
           _enc.getSymbolicPacket().getSrcIp(), _enc.getCtx().mkBVConst(
             _enc.getEncoder().getId() + "_" +  p.getData().getName() + "DstBGPExportAddSoft", 32)));
       //shouldAdd = _enc.mkNot(shouldAdd);
-
+      */
+      ArithExpr simply = _enc.getCtx().mkIntConst(_enc.getEncoder().getId() + "_" + 
+        p.getData().getName() + "SimplyBGPExportAddSoft");
+      ArithExpr simply1 = _enc.getCtx().mkIntConst(_enc.getEncoder().getId() + "_" + 
+        p.getData().getName() + "Simply1BGPExportAddSoft");
+      shouldAdd = _enc.mkAnd(_enc.mkEq(simply, _enc.mkInt(100)), shouldAdd);
+      shouldAdd = _enc.mkAnd(_enc.mkEq(simply1, _enc.mkInt(100)), shouldAdd);
+      _enc.addSoft(_enc.mkEq(simply, _enc.mkInt(100)), _enc.staticWeight, "StaticAdd");
+      _enc.addSoft(_enc.mkEq(simply1, _enc.mkInt(100)), _enc.staticWeight, "StaticAdd");
 
       if (_enc.getEncoder()._repairObjective != 1) {
         _enc.addSoft(_enc.mkNot(shouldAdd), _enc.bgpWeight, "BGPExportAdd");
@@ -1470,6 +1480,10 @@ class TransferSSA {
     String s = "SSA_" + name + generateId();
     BoolExpr x = _enc.getCtx().mkBoolConst(s);
     // _enc.getAllVariables().add(x);
+    _enc.getAllBoolVars().add(x);
+    Symbol temp = _enc.getCtx().mkSymbol(s);
+    _enc.getAllBoolVarsList().add(temp);
+
     BoolExpr eq = _enc.mkEq(x, e);
     _enc.add(eq);
     p.debug(eq.toString());
