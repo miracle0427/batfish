@@ -2566,8 +2566,18 @@ private void addSymbolicPacketBoundConstraints() {
             BoolExpr shouldAdd;
             if (!_isTCE)
             {
-              shouldAdd = getCtx().mkBoolConst(_encoder.getId() + "_" + router +
-               "-StaticRouteAddSoft-" + ge);
+              //shouldAdd = getCtx().mkBoolConst(_encoder.getId() + "_" + router +
+              //"-StaticRouteAddSoft-" + ge);
+              //temp
+              shouldAdd = mkAnd(
+                mkEq(
+                  _symbolicPacket.getDstIp(), getCtx().mkBVConst(
+                    _encoder.getId() + "_SRC_" + router + "-StaticRouteAddSoft-" + ge, 32)),
+                mkEq(
+                  _symbolicPacket.getSrcIp(), getCtx().mkBVConst(
+                    _encoder.getId() + "_DST_" + router + "-StaticRouteAddSoft-" + ge, 32)));
+              //shouldAdd = mkNot(shouldAdd);
+
               if (_encoder._repairObjective != 1) {
                 addSoft(mkNot(shouldAdd), staticWeight, "StaticAdd");
               }

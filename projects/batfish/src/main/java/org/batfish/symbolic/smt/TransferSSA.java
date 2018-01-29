@@ -444,8 +444,19 @@ class TransferSSA {
         result = result.addChangedVariables(r);
         acc = _enc.mkOr(acc, r.getReturnValue());
       }
-      BoolExpr shouldAdd = _enc.getCtx().mkBoolConst(_enc.getEncoder().getId() + "_" + 
-        p.getData().getName() + "BGPExportAddSoft");
+      //BoolExpr shouldAdd = _enc.getCtx().mkBoolConst(_enc.getEncoder().getId() + "_" + 
+      //p.getData().getName() + "BGPExportAddSoft");
+      //temp
+      BoolExpr shouldAdd = _enc.mkAnd(
+        _enc.mkEq(
+          _enc.getSymbolicPacket().getDstIp(), _enc.getCtx().mkBVConst(
+            _enc.getEncoder().getId() + "_" + p.getData().getName() + "SrcBGPExportAddSoft", 32)), 
+        _enc.mkEq(
+          _enc.getSymbolicPacket().getSrcIp(), _enc.getCtx().mkBVConst(
+            _enc.getEncoder().getId() + "_" +  p.getData().getName() + "DstBGPExportAddSoft", 32)));
+      //shouldAdd = _enc.mkNot(shouldAdd);
+
+
       if (_enc.getEncoder()._repairObjective != 1) {
         _enc.addSoft(_enc.mkNot(shouldAdd), _enc.bgpWeight, "BGPExportAdd");
       }
@@ -1031,7 +1042,14 @@ class TransferSSA {
 
   private ArithExpr getVarLocalPref(int actualVal) {
     if (_enc.getEncoder()._isBool == 0) {
+      Map<String, ArithExpr> prefMap = _enc.getLocalPrefMap();
+      if (prefMap.containsKey(_currentName)) {
+        return prefMap.get(_currentName);
+      }
+
       ArithExpr localprefvar = _enc.getCtx().mkIntConst(_currentName + "_localpref");
+      _enc.addSoft(_enc.mkEq(localprefvar, _enc.mkInt(actualVal)) ,_enc.localprefWeight, "localpref");
+      prefMap.put(_currentName, localprefvar);
       return localprefvar;
     }
     Map<String, ArithExpr> prefMap = _enc.getLocalPrefMap();
