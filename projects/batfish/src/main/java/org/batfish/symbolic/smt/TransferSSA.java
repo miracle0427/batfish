@@ -462,10 +462,15 @@ class TransferSSA {
         p.getData().getName() + "SimplyBGPExportAddSoft");
       ArithExpr simply1 = _enc.getCtx().mkIntConst(_enc.getEncoder().getId() + "_" + 
         p.getData().getName() + "Simply1BGPExportAddSoft");
-      shouldAdd = _enc.mkAnd(_enc.mkEq(simply, _enc.mkInt(100)), shouldAdd);
+      /*shouldAdd = _enc.mkAnd(_enc.mkEq(simply, _enc.mkInt(100)), shouldAdd);
       shouldAdd = _enc.mkAnd(_enc.mkEq(simply1, _enc.mkInt(100)), shouldAdd);
       _enc.addSoft(_enc.mkEq(simply, _enc.mkInt(100)), _enc.staticWeight, "StaticAdd");
       _enc.addSoft(_enc.mkEq(simply1, _enc.mkInt(100)), _enc.staticWeight, "StaticAdd");
+      */
+      _enc.addSoft(_enc.mkEq(simply, _enc.mkInt(100)), _enc.staticWeight, "StaticAdd");
+      _enc.add(_enc.mkIf(_enc.mkGt(simply, _enc.mkInt(150)), _enc.mkNot(shouldAdd), shouldAdd));
+      _enc.addSoft(_enc.mkEq(simply1, _enc.mkInt(100)), _enc.staticWeight, "StaticAdd");
+      _enc.add(_enc.mkIf(_enc.mkGt(simply1, _enc.mkInt(150)), _enc.mkNot(shouldAdd), shouldAdd));
 
       if (_enc.getEncoder()._repairObjective != 1) {
         _enc.addSoft(_enc.mkNot(shouldAdd), _enc.bgpWeight, "BGPExportAdd");
