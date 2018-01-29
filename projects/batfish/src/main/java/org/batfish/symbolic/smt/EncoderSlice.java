@@ -2795,10 +2795,10 @@ private void addSymbolicPacketBoundConstraints() {
                 "-SimplyStaticRouteAddSoft-" + ge);
               ArithExpr simply1 = getCtx().mkIntConst(_encoder.getId() + "_" + router +
                 "-Simply1StaticRouteAddSoft-" + ge);
-              shouldAdd = mkAnd(mkEq(simply, mkInt(100)), shouldAdd);
-              shouldAdd = mkAnd(mkEq(simply1, mkInt(100)), shouldAdd);
               addSoft(mkEq(simply, mkInt(100)), staticWeight, "StaticAdd");
+              add(mkIf(mkGt(simply, mkInt(150)), mkNot(shouldAdd), shouldAdd));
               addSoft(mkEq(simply1, mkInt(100)), staticWeight, "StaticAdd");
+              add(mkIf(mkGt(simply1, mkInt(150)), mkNot(shouldAdd), shouldAdd));
 
               if (_encoder._repairObjective != 1) {
                 addSoft(mkNot(shouldAdd), staticWeight, "StaticAdd");
