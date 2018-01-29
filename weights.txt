@@ -1,8 +1,8 @@
 acl 1
-bgp 2
-ospf 3
-enable 4
-static 5
-filter 6
-redis 7
-localpref 8
+bgp 1
+ospf 1
+enable 1
+static 1
+filter 1
+redis 1
+localpref 1
