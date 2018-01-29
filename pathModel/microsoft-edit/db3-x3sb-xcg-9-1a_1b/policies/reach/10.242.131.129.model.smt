@@ -32,7 +32,7 @@ sat
   (define-fun |7_7__db3-x3sb-xcg-9-1b_Port-Channel13_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |24__reachable-id_db3-x3hl-xcg-9-18| () Int
-    3)
+    5)
   (define-fun |28_28__db3-x3hl-xcg-9-10_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |15_15__db3-x3sb-xcg-9-1a_Port-Channel20_OUTBOUND_SOFTAdd| () Bool
@@ -76,7 +76,7 @@ sat
   (define-fun |19_19__db3-x3sb-xcg-9-1a_Ethernet1/48_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |24__reachable-id_db3-x3hl-xcg-9-02| () Int
-    3)
+    5)
   (define-fun |14_14__db3-x3hl-xcg-9-15_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
     false)
   (define-fun |16_16__db3-x3hl-xcg-9-09_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
@@ -92,7 +92,7 @@ sat
   (define-fun |41_41__db3-x3hl-xcg-9-09_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |16__reachable-id_db3-x3hl-xcg-9-18| () Int
-    3)
+    5)
   (define-fun |0_db3-x3sb-xcg-9-1bImportFilterAddSoft0_db3-x3sb-xcg-9-1b_BGP_IMPORT_Port-Channel14| () Bool
     true)
   (define-fun |9_9__db3-x3hl-xcg-9-13_Vlan101_INBOUND_SOFTAdd| () Bool
@@ -122,7 +122,7 @@ sat
   (define-fun |38_38__db3-x3hl-xcg-9-07_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_db3-x3hl-xcg-9-11_BGP_SINGLE-EXPORT__metric| () Int
-    0)
+    3)
   (define-fun |17_17__db3-x3sb-xcg-9-1a_Port-Channel3_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |13_13__db3-x3hl-xcg-9-01_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
@@ -160,7 +160,7 @@ sat
   (define-fun |0_db3-x3hl-xcg-9-10ImportFilterAddSoft0_db3-x3hl-xcg-9-10_BGP_IMPORT_Port-Channel2| () Bool
     true)
   (define-fun |33__reachable-id_db3-x3hl-xcg-9-04| () Int
-    3)
+    5)
   (define-fun |34_34__db3-x3hl-xcg-9-20_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |7_7__db3-x3sb-xcg-9-1b_Port-Channel17_INBOUND_SOFTAdd| () Bool
@@ -200,13 +200,13 @@ sat
   (define-fun |35_35__db3-x3hl-xcg-9-14_Port-Channel2_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |27__reachable-id_db3-x3hl-xcg-9-18| () Int
-    3)
+    7)
   (define-fun |8_8__db3-x3sb-xcg-9-1a_Port-Channel4_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |21_21__db3-x3hl-xcg-9-14_Loopback0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0__reachable-id_db3-x3hl-xcg-9-10| () Int
-    5)
+    9)
   (define-fun |32_32__db3-x3hl-xcg-9-19_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |19_19__db3-x3sb-xcg-9-1a_Port-Channel2_INBOUND_SOFTAdd| () Bool
@@ -218,17 +218,17 @@ sat
   (define-fun |5_icmp-code| () Int
     0)
   (define-fun |27__reachable-id_db3-x3sb-xcg-9-1b| () Int
-    2)
+    6)
   (define-fun |12_12__db3-x3hl-xcg-9-15_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |32_32__db3-x3sb-xcg-9-1a_Port-Channel7_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |39__reachable-id_db3-x3hl-xcg-9-11| () Int
-    3)
+    5)
   (define-fun |23_23__db3-x3hl-xcg-9-14_Port-Channel2_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_db3-x3hl-xcg-9-20_BGP_SINGLE-EXPORT__permitted| () Bool
-    false)
+    true)
   (define-fun |38_38__db3-x3hl-xcg-9-20_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |3_3__db3-x3hl-xcg-9-17_Vlan101_INBOUND_SOFTAdd| () Bool
@@ -271,19 +271,17 @@ sat
     true)
   (define-fun |41_41__db3-x3sb-xcg-9-1a_Port-Channel5_INBOUND_SOFTAdd| () Bool
     true)
-  (define-fun |0_10.22.173.200/29BGPRemoveFilterSoft| () Bool
-    true)
   (define-fun |13_13__db3-x3hl-xcg-9-13_Port-Channel1_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |27_27__db3-x3hl-xcg-9-11_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |19_19__db3-x3hl-xcg-9-15_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
     true)
-  (define-fun |27_27__db3-x3hl-xcg-9-11_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
+  (define-fun |18_18__db3-x3hl-xcg-9-02_Loopback0_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |36_36__db3-x3hl-xcg-9-19_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |31_31__db3-x3sb-xcg-9-1b_Ethernet1/48_OUTBOUND_SOFTAdd| () Bool
-    true)
-  (define-fun |18_18__db3-x3hl-xcg-9-02_Loopback0_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |36_36__db3-x3hl-xcg-9-12_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
@@ -336,7 +334,7 @@ sat
   (define-fun |35_35__db3-x3hl-xcg-9-20_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
   (define-fun |28__reachable-id_db3-x3sb-xcg-9-1a| () Int
-    7)
+    4)
   (define-fun |8_8__db3-x3sb-xcg-9-1b_Port-Channel12_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |18_18__db3-x3hl-xcg-9-15_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
@@ -380,7 +378,7 @@ sat
   (define-fun |30_30__db3-x3hl-xcg-9-09_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |6__reachable-id_db3-x3hl-xcg-9-04| () Int
-    8)
+    5)
   (define-fun |26_26__db3-x3hl-xcg-9-05_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |31_31__db3-x3hl-xcg-9-15_Vlan102_OUTBOUND_SOFTAdd| () Bool
@@ -468,7 +466,7 @@ sat
   (define-fun |13_13__db3-x3hl-xcg-9-03_Port-Channel2_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |19__reachable-id_db3-x3hl-xcg-9-20| () Int
-    5)
+    7)
   (define-fun |0_10.242.132.128/25ExportRemoveSoft0_db3-x3hl-xcg-9-19_OVERALL_BEST_None| () Bool
     true)
   (define-fun |32_32__db3-x3hl-xcg-9-19_Vlan102_OUTBOUND_SOFTAdd| () Bool
@@ -500,7 +498,7 @@ sat
   (define-fun |26_26__db3-x3sb-xcg-9-1a_Port-Channel4_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |3__reachable-id_db3-x3hl-xcg-9-05| () Int
-    5)
+    3)
   (define-fun |1_1__db3-x3sb-xcg-9-1a_Port-Channel17_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |33_33__db3-x3hl-xcg-9-13_mgmt0_OUTBOUND_SOFTAdd| () Bool
@@ -518,7 +516,7 @@ sat
   (define-fun |0_0__db3-x3hl-xcg-9-04_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |31__reachable-id_db3-x3hl-xcg-9-09| () Int
-    3)
+    5)
   (define-fun |5_5__db3-x3sb-xcg-9-1a_Port-Channel15_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |4_4__db3-x3hl-xcg-9-04_Port-Channel2_INBOUND_SOFTAdd| () Bool
@@ -526,7 +524,7 @@ sat
   (define-fun |30_30__db3-x3hl-xcg-9-09_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |3__reachable-id_db3-x3hl-xcg-9-04| () Int
-    5)
+    3)
   (define-fun |24_24__db3-x3hl-xcg-9-16_Vlan102_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |28_ip-protocol| () Int
@@ -542,7 +540,7 @@ sat
   (define-fun |19_19__db3-x3sb-xcg-9-1a_Ethernet1/47_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_db3-x3hl-xcg-9-11_OVERALL_BEST_None_prefixLength| () Int
-    0)
+    25)
   (define-fun |31_31__db3-x3sb-xcg-9-1a_Port-Channel12_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |34_34__db3-x3hl-xcg-9-11_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
@@ -568,11 +566,11 @@ sat
   (define-fun |40_40__db3-x3hl-xcg-9-13_Loopback0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |15__reachable-id_db3-x3hl-xcg-9-15| () Int
-    5)
+    3)
   (define-fun |0_0__db3-x3hl-xcg-9-10_Port-Channel2_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |29__reachable-id_db3-x3hl-xcg-9-01| () Int
-    3)
+    5)
   (define-fun |37_37__db3-x3hl-xcg-9-16_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |6_6__db3-x3hl-xcg-9-03_Loopback0_OUTBOUND_SOFTAdd| () Bool
@@ -600,7 +598,7 @@ sat
   (define-fun |0_db3-x3sb-xcg-9-1b_BGP_EXPORT_ENV-10.22.173.218_metric| () Int
     1)
   (define-fun |17__reachable-id_db3-x3hl-xcg-9-11| () Int
-    3)
+    5)
   (define-fun |29_29__db3-x3hl-xcg-9-03_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |34_34__db3-x3hl-xcg-9-06_Vlan101_INBOUND_SOFTAdd| () Bool
@@ -680,7 +678,7 @@ sat
   (define-fun |38_38__db3-x3hl-xcg-9-03_Vlan102_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |23__reachable-id_db3-x3hl-xcg-9-13| () Int
-    9)
+    5)
   (define-fun |0_db3-x3sb-xcg-9-1a_BGP_IMPORT_Port-Channel12_metric| () Int
     0)
   (define-fun |19_19__db3-x3sb-xcg-9-1b_Loopback0_INBOUND_SOFTAdd| () Bool
@@ -718,7 +716,7 @@ sat
   (define-fun |22_22__db3-x3hl-xcg-9-04_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_db3-x3sb-xcg-9-1b_BGP_EXPORT_ENV-10.22.173.218_prefixLength| () Int
-    0)
+    1)
   (define-fun |21_21__db3-x3sb-xcg-9-1a_Port-Channel16_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |6_6__db3-x3hl-xcg-9-12_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
@@ -772,7 +770,7 @@ sat
   (define-fun |34__reachable-id_db3-x3hl-xcg-9-10| () Int
     5)
   (define-fun |6__reachable-id_db3-x3hl-xcg-9-12| () Int
-    3)
+    5)
   (define-fun |7_7__db3-x3sb-xcg-9-1b_Port-Channel18_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |19_19__db3-x3hl-xcg-9-03_Loopback0_OUTBOUND_SOFTAdd| () Bool
@@ -806,7 +804,7 @@ sat
   (define-fun |10_10__db3-x3hl-xcg-9-11_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0__reachable-id_db3-x3hl-xcg-9-02| () Int
-    3)
+    11)
   (define-fun |40_40__db3-x3sb-xcg-9-1b_Port-Channel16_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |2_2__db3-x3hl-xcg-9-02_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
@@ -838,11 +836,11 @@ sat
   (define-fun |38_38__db3-x3hl-xcg-9-02_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |29__reachable-id_db3-x3hl-xcg-9-18| () Int
-    3)
+    5)
   (define-fun |11_11__db3-x3hl-xcg-9-09_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |35__reachable-id_db3-x3hl-xcg-9-15| () Int
-    3)
+    5)
   (define-fun |0_db3-x3hl-xcg-9-15ImportFilterAddSoft0_db3-x3hl-xcg-9-15_BGP_IMPORT_Port-Channel1| () Bool
     true)
   (define-fun |4_4__db3-x3hl-xcg-9-15_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
@@ -854,7 +852,7 @@ sat
   (define-fun |6_6__db3-x3sb-xcg-9-1a_Port-Channel1_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_db3-x3sb-xcg-9-1b_BGP_IMPORT_Ethernet1/48_metric| () Int
-    1)
+    0)
   (define-fun |26_26__db3-x3sb-xcg-9-1b_Port-Channel14_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_0__db3-x3sb-xcg-9-1b_Port-Channel5_INBOUND_SOFTAdd| () Bool
@@ -884,7 +882,7 @@ sat
   (define-fun |41_41__db3-x3hl-xcg-9-08_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |6__reachable-id_db3-x3hl-xcg-9-10| () Int
-    6)
+    5)
   (define-fun |15_15__db3-x3sb-xcg-9-1b_Ethernet1/48_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_db3-x3hl-xcg-9-03_OVERALL_BEST_None_prefixLength| () Int
@@ -898,7 +896,7 @@ sat
   (define-fun |31_31__db3-x3hl-xcg-9-15_Loopback0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |7__reachable-id_db3-x3hl-xcg-9-09| () Int
-    3)
+    5)
   (define-fun |37_37__db3-x3hl-xcg-9-12_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |19_19__db3-x3hl-xcg-9-08_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
@@ -1034,7 +1032,7 @@ sat
   (define-fun |33_33__db3-x3hl-xcg-9-07_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |32__reachable-id_db3-x3sb-xcg-9-1a| () Int
-    4)
+    2)
   (define-fun |22_22__db3-x3hl-xcg-9-10_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |41_41__db3-x3hl-xcg-9-08_Port-Channel2_INBOUND_SOFTAdd| () Bool
@@ -1058,7 +1056,7 @@ sat
   (define-fun |32_32__db3-x3hl-xcg-9-05_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |40__reachable-id_db3-x3hl-xcg-9-03| () Int
-    4)
+    5)
   (define-fun |36__reachable-id_db3-x3hl-xcg-9-17| () Int
     1)
   (define-fun |23_23__db3-x3hl-xcg-9-14_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
@@ -1102,7 +1100,7 @@ sat
   (define-fun |15_15__db3-x3hl-xcg-9-18_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
     false)
   (define-fun |41__reachable-id_db3-x3hl-xcg-9-19| () Int
-    3)
+    5)
   (define-fun |8_8__db3-x3hl-xcg-9-01_Port-Channel2_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |31_31__db3-x3sb-xcg-9-1b_Port-Channel20_OUTBOUND_SOFTAdd| () Bool
@@ -1112,7 +1110,7 @@ sat
   (define-fun |24_24__db3-x3sb-xcg-9-1a_Port-Channel3_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |3__reachable-id_db3-x3hl-xcg-9-10| () Int
-    5)
+    3)
   (define-fun |5_5__db3-x3hl-xcg-9-11_Vlan102_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |11_11__db3-x3sb-xcg-9-1b_Port-Channel6_OUTBOUND_SOFTAdd| () Bool
@@ -1238,7 +1236,7 @@ sat
   (define-fun |0_db3-x3sb-xcg-9-1a_BGP_IMPORT_Port-Channel15_permitted| () Bool
     false)
   (define-fun |32__reachable-id_db3-x3hl-xcg-9-15| () Int
-    3)
+    5)
   (define-fun |6_6__db3-x3hl-xcg-9-10_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |3_3__db3-x3sb-xcg-9-1b_Port-Channel17_OUTBOUND_SOFTAdd| () Bool
@@ -1248,7 +1246,7 @@ sat
   (define-fun |35_35__db3-x3hl-xcg-9-08_Port-Channel1_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |18__reachable-id_db3-x3sb-xcg-9-1b| () Int
-    2)
+    4)
   (define-fun |6_6__db3-x3sb-xcg-9-1a_Port-Channel9_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |30_30__db3-x3sb-xcg-9-1b_Port-Channel8_INBOUND_SOFTAdd| () Bool
@@ -1262,7 +1260,7 @@ sat
   (define-fun |33_33__db3-x3sb-xcg-9-1b_Port-Channel4_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |39__reachable-id_db3-x3hl-xcg-9-03| () Int
-    3)
+    5)
   (define-fun |32_32__db3-x3sb-xcg-9-1a_Port-Channel10_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |27_27__db3-x3hl-xcg-9-10_Vlan101_INBOUND_SOFTAdd| () Bool
@@ -1274,7 +1272,7 @@ sat
   (define-fun |34_34__db3-x3hl-xcg-9-09_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |20__reachable-id_db3-x3hl-xcg-9-08| () Int
-    3)
+    5)
   (define-fun |35_35__db3-x3hl-xcg-9-06_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |7_7__db3-x3hl-xcg-9-09_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
@@ -1356,7 +1354,7 @@ sat
   (define-fun |34_34__db3-x3hl-xcg-9-07_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
     false)
   (define-fun |29__reachable-id_db3-x3hl-xcg-9-04| () Int
-    8)
+    5)
   (define-fun |11_11__db3-x3hl-xcg-9-01_Loopback0_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |19_19__db3-x3hl-xcg-9-06_Port-Channel2_INBOUND_SOFTAdd| () Bool
@@ -1368,7 +1366,7 @@ sat
   (define-fun |41_41__db3-x3hl-xcg-9-14_Loopback0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |32__reachable-id_db3-x3hl-xcg-9-06| () Int
-    3)
+    5)
   (define-fun |11_11__db3-x3sb-xcg-9-1b_Port-Channel11_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |16_16__db3-x3hl-xcg-9-03_Port-Channel1_INBOUND_SOFTAdd| () Bool
@@ -1412,7 +1410,7 @@ sat
   (define-fun |41_41__db3-x3sb-xcg-9-1a_Port-Channel11_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |5__reachable-id_db3-x3hl-xcg-9-12| () Int
-    5)
+    3)
   (define-fun |0_db3-x3sb-xcg-9-1b_BGP_SINGLE-EXPORT__permitted| () Bool
     true)
   (define-fun |16_16__db3-x3sb-xcg-9-1a_Port-Channel7_INBOUND_SOFTAdd| () Bool
@@ -1452,7 +1450,7 @@ sat
   (define-fun |26_26__db3-x3sb-xcg-9-1a_Port-Channel20_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_db3-x3hl-xcg-9-14_OVERALL_BEST_None_metric| () Int
-    2)
+    0)
   (define-fun |35_35__db3-x3hl-xcg-9-04_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |17_17__db3-x3sb-xcg-9-1a_Ethernet1/47_OUTBOUND_SOFTAdd| () Bool
@@ -1478,7 +1476,7 @@ sat
   (define-fun |26_26__db3-x3sb-xcg-9-1b_Port-Channel19_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |2__reachable-id_db3-x3hl-xcg-9-13| () Int
-    3)
+    5)
   (define-fun |37_dst-port| () Int
     0)
   (define-fun |21_21__db3-x3hl-xcg-9-13_Port-Channel2_INBOUND_SOFTAdd| () Bool
@@ -1580,7 +1578,7 @@ sat
   (define-fun |21_21__db3-x3hl-xcg-9-11_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
   (define-fun |17__reachable-id_db3-x3hl-xcg-9-09| () Int
-    7)
+    5)
   (define-fun |0_icmp-type| () Int
     0)
   (define-fun |15_15__db3-x3hl-xcg-9-12_Vlan101_INBOUND_SOFTAdd| () Bool
@@ -1720,7 +1718,7 @@ sat
   (define-fun |0_10.243.182.72/32ExportRemoveSoft0_db3-x3hl-xcg-9-15_OVERALL_BEST_None| () Bool
     true)
   (define-fun |0__reachable-id_db3-x3hl-xcg-9-06| () Int
-    3)
+    11)
   (define-fun |33_33__db3-x3sb-xcg-9-1b_Ethernet1/48_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |34_dst-ip| () (_ BitVec 32)
@@ -1758,7 +1756,7 @@ sat
   (define-fun |38_38__db3-x3hl-xcg-9-08_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |27__reachable-id_db3-x3hl-xcg-9-10| () Int
-    5)
+    7)
   (define-fun |28_28__db3-x3hl-xcg-9-12_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
   (define-fun |16_16__db3-x3hl-xcg-9-16_Loopback0_OUTBOUND_SOFTAdd| () Bool
@@ -1822,7 +1820,7 @@ sat
   (define-fun |5_5__db3-x3hl-xcg-9-13_Loopback0_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |6__reachable-id_db3-x3hl-xcg-9-15| () Int
-    3)
+    5)
   (define-fun |0_db3-x3hl-xcg-9-17ImportFilterAddSoft0_db3-x3hl-xcg-9-17_BGP_IMPORT_Port-Channel1| () Bool
     true)
   (define-fun |16_16__db3-x3hl-xcg-9-16_Port-Channel2_INBOUND_SOFTAdd| () Bool
@@ -1850,7 +1848,7 @@ sat
   (define-fun |25_25__db3-x3hl-xcg-9-17_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
     false)
   (define-fun |27__reachable-id_db3-x3hl-xcg-9-01| () Int
-    5)
+    7)
   (define-fun |14_14__db3-x3hl-xcg-9-03_Port-Channel2_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |40_40__db3-x3hl-xcg-9-12_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
@@ -1936,13 +1934,13 @@ sat
   (define-fun |22_22__db3-x3sb-xcg-9-1b_Port-Channel4_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |12__reachable-id_db3-x3hl-xcg-9-14| () Int
-    3)
+    5)
   (define-fun |26_26__db3-x3sb-xcg-9-1b_Port-Channel9_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |4_4__db3-x3sb-xcg-9-1b_Port-Channel19_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |36__reachable-id_db3-x3hl-xcg-9-13| () Int
-    3)
+    5)
   (define-fun |39_39__db3-x3hl-xcg-9-07_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |41_41__db3-x3sb-xcg-9-1b_Ethernet1/48_OUTBOUND_SOFTAdd| () Bool
@@ -2044,7 +2042,7 @@ sat
   (define-fun |4_4__db3-x3hl-xcg-9-13_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |32__reachable-id_db3-x3hl-xcg-9-10| () Int
-    3)
+    5)
   (define-fun |11_11__db3-x3hl-xcg-9-16_Port-Channel2_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |30__reachable-id_db3-x3hl-xcg-9-06| () Int
@@ -2052,7 +2050,7 @@ sat
   (define-fun |22_22__db3-x3hl-xcg-9-04_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
   (define-fun |12__reachable-id_db3-x3hl-xcg-9-15| () Int
-    3)
+    5)
   (define-fun |10_10__db3-x3hl-xcg-9-11_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |19_19__db3-x3hl-xcg-9-17_Port-Channel1_INBOUND_SOFTAdd| () Bool
@@ -2114,7 +2112,7 @@ sat
   (define-fun |0_db3-x3sb-xcg-9-1b_OVERALL_BEST_None_metric| () Int
     1)
   (define-fun |32__reachable-id_db3-x3hl-xcg-9-03| () Int
-    3)
+    5)
   (define-fun |11_11__db3-x3hl-xcg-9-18_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |41_41__db3-x3sb-xcg-9-1a_Port-Channel6_INBOUND_SOFTAdd| () Bool
@@ -2196,7 +2194,7 @@ sat
   (define-fun |10_10__db3-x3hl-xcg-9-15_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
   (define-fun |22__reachable-id_db3-x3hl-xcg-9-18| () Int
-    3)
+    5)
   (define-fun |37_37__db3-x3hl-xcg-9-05_Loopback0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_0__db3-x3sb-xcg-9-1a_Port-Channel7_OUTBOUND_SOFTAdd| () Bool
@@ -2290,11 +2288,11 @@ sat
   (define-fun |19_19__db3-x3hl-xcg-9-15_Port-Channel2_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |36__reachable-id_db3-x3hl-xcg-9-02| () Int
-    3)
+    5)
   (define-fun |35_35__db3-x3hl-xcg-9-11_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |25__reachable-id_db3-x3hl-xcg-9-14| () Int
-    3)
+    5)
   (define-fun |0_10.243.182.66/32ExportRemoveSoft0_db3-x3hl-xcg-9-09_OVERALL_BEST_None| () Bool
     true)
   (define-fun |2_2__db3-x3sb-xcg-9-1a_Port-Channel8_OUTBOUND_SOFTAdd| () Bool
@@ -2396,9 +2394,9 @@ sat
   (define-fun |19_19__db3-x3hl-xcg-9-02_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |3__reachable-id_db3-x3hl-xcg-9-15| () Int
-    5)
+    3)
   (define-fun |2__reachable-id_db3-x3hl-xcg-9-02| () Int
-    5)
+    3)
   (define-fun |29_29__db3-x3sb-xcg-9-1a_Port-Channel3_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |14_14__db3-x3hl-xcg-9-16_mgmt0_OUTBOUND_SOFTAdd| () Bool
@@ -2514,7 +2512,7 @@ sat
   (define-fun |11_11__db3-x3hl-xcg-9-12_Port-Channel2_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_db3-x3hl-xcg-9-14_BGP_IMPORT_Port-Channel2_prefixLength| () Int
-    25)
+    0)
   (define-fun |17_17__db3-x3sb-xcg-9-1b_Port-Channel16_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |12_12__db3-x3hl-xcg-9-01_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
@@ -2544,7 +2542,7 @@ sat
   (define-fun |12_12__db3-x3hl-xcg-9-05_Loopback0_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |17__reachable-id_db3-x3hl-xcg-9-10| () Int
-    5)
+    3)
   (define-fun |9_9__db3-x3sb-xcg-9-1a_Loopback0_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |26_26__db3-x3sb-xcg-9-1a_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
@@ -2656,7 +2654,7 @@ sat
   (define-fun |34_34__db3-x3hl-xcg-9-15_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |10__reachable-id_db3-x3hl-xcg-9-12| () Int
-    5)
+    3)
   (define-fun |8_8__db3-x3hl-xcg-9-19_Loopback0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |26_26__db3-x3hl-xcg-9-15_Loopback0_INBOUND_SOFTAdd| () Bool
@@ -2718,7 +2716,7 @@ sat
   (define-fun |29_29__db3-x3sb-xcg-9-1b_Ethernet1/48_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |15__reachable-id_db3-x3hl-xcg-9-16| () Int
-    3)
+    5)
   (define-fun |21_21__db3-x3hl-xcg-9-16_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |1_1__db3-x3sb-xcg-9-1b_Port-Channel19_INBOUND_SOFTAdd| () Bool
@@ -2730,7 +2728,7 @@ sat
   (define-fun |33_33__db3-x3hl-xcg-9-20_Port-Channel1_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |33__reachable-id_db3-x3hl-xcg-9-16| () Int
-    5)
+    3)
   (define-fun |28_28__db3-x3hl-xcg-9-06_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |26_26__db3-x3hl-xcg-9-06_Loopback0_INBOUND_SOFTAdd| () Bool
@@ -2842,7 +2840,7 @@ sat
   (define-fun |29_29__db3-x3sb-xcg-9-1b_Port-Channel16_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |8__reachable-id_db3-x3hl-xcg-9-18| () Int
-    3)
+    5)
   (define-fun |7_7__db3-x3hl-xcg-9-17_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
     false)
   (define-fun |31_31__db3-x3sb-xcg-9-1a_Port-Channel10_INBOUND_SOFTAdd| () Bool
@@ -3090,7 +3088,7 @@ sat
   (define-fun |41_41__db3-x3hl-xcg-9-03_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_db3-x3sb-xcg-9-1a-StaticRouteAddSoft-db3-x3sb-xcg-9-1a,Port-Channel17 --> db3-x3hl-xcg-9-17,Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |12_12__db3-x3hl-xcg-9-16_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |27_27__db3-x3hl-xcg-9-07_Vlan102_INBOUND_SOFTAdd| () Bool
@@ -3124,27 +3122,27 @@ sat
   (define-fun |31_31__db3-x3sb-xcg-9-1a_Port-Channel17_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |27__reachable-id_db3-x3hl-xcg-9-16| () Int
-    5)
+    7)
   (define-fun |16_16__db3-x3sb-xcg-9-1b_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |34_34__db3-x3hl-xcg-9-07_Loopback0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |10_10__db3-x3sb-xcg-9-1a_Port-Channel11_OUTBOUND_SOFTAdd| () Bool
     true)
+  (define-fun |0_10.22.173.168/29db3-x3sb-xcg-9-1bBGPRemoveFilterSoft| () Bool
+    true)
   (define-fun |13_13__db3-x3hl-xcg-9-18_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_0__db3-x3hl-xcg-9-04_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
-  (define-fun |30_30__db3-x3hl-xcg-9-04_Vlan101_INBOUND_SOFTAdd| () Bool
-    true)
   (define-fun |36_36__db3-x3hl-xcg-9-20_Port-Channel1_INBOUND_SOFTAdd| () Bool
     true)
-  (define-fun |35_35__db3-x3hl-xcg-9-09_Vlan101_INBOUND_SOFTAdd| () Bool
+  (define-fun |30_30__db3-x3hl-xcg-9-04_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |23_23__db3-x3sb-xcg-9-1a_Port-Channel3_OUTBOUND_SOFTAdd| () Bool
     true)
-  (define-fun |21__reachable-id_db3-x3hl-xcg-9-06| () Int
-    3)
+  (define-fun |35_35__db3-x3hl-xcg-9-09_Vlan101_INBOUND_SOFTAdd| () Bool
+    true)
   (define-fun |1_1__db3-x3hl-xcg-9-01_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |33_33__db3-x3sb-xcg-9-1a_Port-Channel12_OUTBOUND_SOFTAdd| () Bool
@@ -3157,6 +3155,8 @@ sat
     true)
   (define-fun |29_29__db3-x3sb-xcg-9-1a_Port-Channel5_INBOUND_SOFTAdd| () Bool
     true)
+  (define-fun |21__reachable-id_db3-x3hl-xcg-9-06| () Int
+    5)
   (define-fun |3_3__db3-x3hl-xcg-9-06_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |16_16__db3-x3hl-xcg-9-20_mgmt0_OUTBOUND_SOFTAdd| () Bool
@@ -3202,7 +3202,7 @@ sat
   (define-fun |37_37__db3-x3sb-xcg-9-1a_Ethernet1/48_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |39__reachable-id_db3-x3hl-xcg-9-09| () Int
-    3)
+    5)
   (define-fun |37_37__db3-x3hl-xcg-9-14_Loopback0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |9_9__db3-x3hl-xcg-9-04_Port-Channel1_INBOUND_SOFTAdd| () Bool
@@ -3234,7 +3234,7 @@ sat
   (define-fun |7_7__db3-x3hl-xcg-9-10_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
     false)
   (define-fun |0_CONTROL-FORWARDING_db3-x3hl-xcg-9-11_Port-Channel2| () Bool
-    false)
+    true)
   (define-fun |38_38__db3-x3hl-xcg-9-08_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |18__reachable-id_db3-x3hl-xcg-9-06| () Int
@@ -3298,7 +3298,7 @@ sat
   (define-fun |18_18__db3-x3hl-xcg-9-01_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |34__reachable-id_db3-x3hl-xcg-9-04| () Int
-    3)
+    5)
   (define-fun |34_34__db3-x3hl-xcg-9-13_Vlan102_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |25_25__db3-x3hl-xcg-9-20_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
@@ -3354,7 +3354,7 @@ sat
   (define-fun |3_3__db3-x3hl-xcg-9-18_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
   (define-fun |21__reachable-id_db3-x3hl-xcg-9-20| () Int
-    3)
+    5)
   (define-fun |9_9__db3-x3hl-xcg-9-03_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
   (define-fun |21_21__db3-x3hl-xcg-9-04_Loopback0_INBOUND_SOFTAdd| () Bool
@@ -3376,7 +3376,7 @@ sat
   (define-fun |37_37__db3-x3sb-xcg-9-1b_Port-Channel16_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |30__reachable-id_db3-x3hl-xcg-9-07| () Int
-    5)
+    7)
   (define-fun |30_30__db3-x3hl-xcg-9-17_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
     false)
   (define-fun |37_37__db3-x3hl-xcg-9-16_Port-Channel2_INBOUND_SOFTAdd| () Bool
@@ -3388,7 +3388,7 @@ sat
   (define-fun |36_36__db3-x3sb-xcg-9-1b_Port-Channel12_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |1__reachable-id_db3-x3hl-xcg-9-04| () Int
-    5)
+    3)
   (define-fun |30_30__db3-x3sb-xcg-9-1b_Port-Channel10_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |22_22__db3-x3hl-xcg-9-20_Vlan102_OUTBOUND_SOFTAdd| () Bool
@@ -3514,7 +3514,7 @@ sat
   (define-fun |37_37__db3-x3sb-xcg-9-1a_Loopback0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |39__reachable-id_db3-x3hl-xcg-9-06| () Int
-    3)
+    6)
   (define-fun |23_23__db3-x3hl-xcg-9-06_Port-Channel2_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |40_40__db3-x3hl-xcg-9-14_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
@@ -3540,11 +3540,11 @@ sat
   (define-fun |17_17__db3-x3hl-xcg-9-14_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
     false)
   (define-fun |16__reachable-id_db3-x3hl-xcg-9-12| () Int
-    3)
+    5)
   (define-fun |36_36__db3-x3hl-xcg-9-20_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0__reachable-id_db3-x3hl-xcg-9-01| () Int
-    5)
+    9)
   (define-fun |35_35__db3-x3hl-xcg-9-08_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |4_4__db3-x3sb-xcg-9-1b_Port-Channel10_INBOUND_SOFTAdd| () Bool
@@ -3638,7 +3638,7 @@ sat
   (define-fun |33_33__db3-x3hl-xcg-9-07_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |7__reachable-id_db3-x3hl-xcg-9-13| () Int
-    3)
+    5)
   (define-fun |33_33__db3-x3hl-xcg-9-18_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |29_29__db3-x3hl-xcg-9-14_Loopback0_INBOUND_SOFTAdd| () Bool
@@ -3734,7 +3734,7 @@ sat
   (define-fun |33_33__db3-x3hl-xcg-9-12_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |23__reachable-id_db3-x3hl-xcg-9-05| () Int
-    7)
+    3)
   (define-fun |27_27__db3-x3sb-xcg-9-1a_Port-Channel14_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |39_39__db3-x3sb-xcg-9-1b_Port-Channel4_OUTBOUND_SOFTAdd| () Bool
@@ -3770,7 +3770,7 @@ sat
   (define-fun |5_5__db3-x3hl-xcg-9-12_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |20__reachable-id_db3-x3hl-xcg-9-09| () Int
-    5)
+    3)
   (define-fun |27_27__db3-x3hl-xcg-9-19_Port-Channel2_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |9_icmp-type| () Int
@@ -3784,7 +3784,7 @@ sat
   (define-fun |10_10__db3-x3hl-xcg-9-11_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |12__reachable-id_db3-x3hl-xcg-9-16| () Int
-    3)
+    5)
   (define-fun |19_19__db3-x3hl-xcg-9-10_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
     false)
   (define-fun |29_29__db3-x3hl-xcg-9-17_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
@@ -3794,7 +3794,7 @@ sat
   (define-fun |20__reachable-id_db3-x3hl-xcg-9-19| () Int
     3)
   (define-fun |9__reachable-id_db3-x3hl-xcg-9-07| () Int
-    3)
+    5)
   (define-fun |17_17__db3-x3sb-xcg-9-1a_Port-Channel20_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |18_18__db3-x3sb-xcg-9-1b_Port-Channel17_OUTBOUND_SOFTAdd| () Bool
@@ -3826,13 +3826,13 @@ sat
   (define-fun |10_10__db3-x3sb-xcg-9-1b_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
   (define-fun |33__reachable-id_db3-x3hl-xcg-9-12| () Int
-    3)
+    5)
   (define-fun |24_24__db3-x3hl-xcg-9-14_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |40_40__db3-x3hl-xcg-9-07_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
     false)
   (define-fun |29__reachable-id_db3-x3hl-xcg-9-12| () Int
-    8)
+    5)
   (define-fun |5_5__db3-x3hl-xcg-9-18_Port-Channel1_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |16_16__db3-x3hl-xcg-9-11_Vlan101_INBOUND_SOFTAdd| () Bool
@@ -3856,7 +3856,7 @@ sat
   (define-fun |4_4__db3-x3hl-xcg-9-03_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
     false)
   (define-fun |5__reachable-id_db3-x3hl-xcg-9-18| () Int
-    5)
+    3)
   (define-fun |24_24__db3-x3hl-xcg-9-19_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |39_39__db3-x3sb-xcg-9-1a_Port-Channel1_INBOUND_SOFTAdd| () Bool
@@ -3902,7 +3902,7 @@ sat
   (define-fun |19_19__db3-x3hl-xcg-9-17_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |36_dst-ip| () (_ BitVec 32)
-    #x0af28382)
+    #x0af28380)
   (define-fun |9_9__db3-x3sb-xcg-9-1b_Port-Channel17_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |15_15__db3-x3hl-xcg-9-09_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
@@ -3914,13 +3914,13 @@ sat
   (define-fun |5_5__db3-x3hl-xcg-9-03_Port-Channel2_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_db3-x3hl-xcg-9-11_BGP_SINGLE-EXPORT__prefixLength| () Int
-    0)
+    25)
   (define-fun |8_8__db3-x3hl-xcg-9-06_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
   (define-fun |18_18__db3-x3sb-xcg-9-1a_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |2__reachable-id_db3-x3sb-xcg-9-1a| () Int
-    4)
+    2)
   (define-fun |27_27__db3-x3hl-xcg-9-05_Loopback0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |18__reachable-id_db3-x3hl-xcg-9-05| () Int
@@ -3974,7 +3974,7 @@ sat
   (define-fun |14_14__db3-x3hl-xcg-9-20_Port-Channel2_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_db3-x3hl-xcg-9-20_OVERALL_BEST_None_metric| () Int
-    0)
+    2)
   (define-fun |27_27__db3-x3hl-xcg-9-03_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |34_34__db3-x3hl-xcg-9-03_Port-Channel2_INBOUND_SOFTAdd| () Bool
@@ -3992,7 +3992,7 @@ sat
   (define-fun |11_11__db3-x3hl-xcg-9-04_Port-Channel1_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |2__reachable-id_db3-x3hl-xcg-9-04| () Int
-    3)
+    5)
   (define-fun |18_18__db3-x3hl-xcg-9-07_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
     false)
   (define-fun |20_20__db3-x3hl-xcg-9-02_Port-Channel1_INBOUND_SOFTAdd| () Bool
@@ -4048,7 +4048,7 @@ sat
   (define-fun |8_8__db3-x3sb-xcg-9-1a_Loopback0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0__reachable-id_db3-x3sb-xcg-9-1a| () Int
-    4)
+    10)
   (define-fun |34_34__db3-x3hl-xcg-9-17_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |3_3__db3-x3hl-xcg-9-20_Port-Channel1_INBOUND_SOFTAdd| () Bool
@@ -4056,7 +4056,7 @@ sat
   (define-fun |22_22__db3-x3hl-xcg-9-18_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |32__reachable-id_db3-x3hl-xcg-9-20| () Int
-    3)
+    5)
   (define-fun |6_6__db3-x3hl-xcg-9-13_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |15_15__db3-x3sb-xcg-9-1a_Port-Channel17_OUTBOUND_SOFTAdd| () Bool
@@ -4102,7 +4102,7 @@ sat
   (define-fun |17__reachable-id_db3-x3hl-xcg-9-13| () Int
     5)
   (define-fun |19__reachable-id_db3-x3sb-xcg-9-1b| () Int
-    2)
+    6)
   (define-fun |1_1__db3-x3sb-xcg-9-1a_Port-Channel14_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |41_41__db3-x3sb-xcg-9-1b_Port-Channel9_OUTBOUND_SOFTAdd| () Bool
@@ -4116,7 +4116,7 @@ sat
   (define-fun |15_15__db3-x3hl-xcg-9-20_Port-Channel1_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |39__reachable-id_db3-x3hl-xcg-9-05| () Int
-    3)
+    5)
   (define-fun |29_29__db3-x3sb-xcg-9-1a_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |40_40__db3-x3sb-xcg-9-1a_Ethernet1/47_OUTBOUND_SOFTAdd| () Bool
@@ -4212,7 +4212,7 @@ sat
   (define-fun |9_9__db3-x3hl-xcg-9-09_Vlan102_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_db3-x3hl-xcg-9-20_BGP_IMPORT_Port-Channel2_prefixLength| () Int
-    0)
+    25)
   (define-fun |29_29__db3-x3hl-xcg-9-08_Port-Channel2_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |19_19__db3-x3sb-xcg-9-1b_Port-Channel14_INBOUND_SOFTAdd| () Bool
@@ -4244,7 +4244,7 @@ sat
   (define-fun |7_7__db3-x3hl-xcg-9-10_Port-Channel2_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |14__reachable-id_db3-x3hl-xcg-9-08| () Int
-    5)
+    3)
   (define-fun |10_10__db3-x3sb-xcg-9-1b_Port-Channel12_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |20_20__db3-x3sb-xcg-9-1b_Ethernet1/47_INBOUND_SOFTAdd| () Bool
@@ -4312,7 +4312,7 @@ sat
   (define-fun |41_41__db3-x3hl-xcg-9-16_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |5__reachable-id_db3-x3hl-xcg-9-10| () Int
-    5)
+    3)
   (define-fun |35_ip-protocol| () Int
     0)
   (define-fun |39_39__db3-x3hl-xcg-9-12_Port-Channel2_INBOUND_SOFTAdd| () Bool
@@ -4330,7 +4330,7 @@ sat
   (define-fun |21_21__db3-x3hl-xcg-9-02_Loopback0_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0__reachable-id_db3-x3hl-xcg-9-14| () Int
-    3)
+    11)
   (define-fun |40_40__db3-x3hl-xcg-9-01_Port-Channel2_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |7_7__db3-x3hl-xcg-9-12_mgmt0_OUTBOUND_SOFTAdd| () Bool
@@ -4348,7 +4348,7 @@ sat
   (define-fun |12_12__db3-x3hl-xcg-9-05_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |39__reachable-id_db3-x3sb-xcg-9-1b| () Int
-    2)
+    4)
   (define-fun |28_28__db3-x3sb-xcg-9-1b_Port-Channel9_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |23_23__db3-x3hl-xcg-9-10_Port-Channel1_INBOUND_SOFTAdd| () Bool
@@ -4496,7 +4496,7 @@ sat
   (define-fun |9_9__db3-x3hl-xcg-9-03_Port-Channel2_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |4__reachable-id_db3-x3hl-xcg-9-19| () Int
-    9)
+    5)
   (define-fun |31_31__db3-x3hl-xcg-9-04_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |8_8__db3-x3hl-xcg-9-01_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
@@ -4614,7 +4614,7 @@ sat
   (define-fun |10_10__db3-x3sb-xcg-9-1a_Port-Channel19_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |29__reachable-id_db3-x3hl-xcg-9-11| () Int
-    3)
+    5)
   (define-fun |36_36__db3-x3hl-xcg-9-02_Port-Channel1_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |33_33__db3-x3hl-xcg-9-20_Vlan102_INBOUND_SOFTAdd| () Bool
@@ -4630,7 +4630,7 @@ sat
   (define-fun |0_0__db3-x3sb-xcg-9-1a_Port-Channel1_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |4__reachable-id_db3-x3hl-xcg-9-09| () Int
-    9)
+    3)
   (define-fun |10_10__db3-x3sb-xcg-9-1b_Port-Channel6_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |5_5__db3-x3hl-xcg-9-13_Vlan101_INBOUND_SOFTAdd| () Bool
@@ -4680,7 +4680,7 @@ sat
   (define-fun |33_33__db3-x3hl-xcg-9-11_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
   (define-fun |33__reachable-id_db3-x3hl-xcg-9-20| () Int
-    3)
+    5)
   (define-fun |26_26__db3-x3sb-xcg-9-1a_Port-Channel15_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |34_34__db3-x3sb-xcg-9-1a_Port-Channel12_INBOUND_SOFTAdd| () Bool
@@ -4806,7 +4806,7 @@ sat
   (define-fun |30_30__db3-x3sb-xcg-9-1b_Port-Channel20_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |6__reachable-id_db3-x3hl-xcg-9-03| () Int
-    3)
+    5)
   (define-fun |15_15__db3-x3sb-xcg-9-1b_Port-Channel8_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |21_21__db3-x3sb-xcg-9-1a_Port-Channel11_OUTBOUND_SOFTAdd| () Bool
@@ -4822,7 +4822,7 @@ sat
   (define-fun |36_36__db3-x3sb-xcg-9-1b_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |34__reachable-id_db3-x3hl-xcg-9-09| () Int
-    3)
+    5)
   (define-fun |30_30__db3-x3hl-xcg-9-02_Loopback0_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |24_24__db3-x3hl-xcg-9-04_Loopback0_OUTBOUND_SOFTAdd| () Bool
@@ -4888,7 +4888,7 @@ sat
   (define-fun |37_37__db3-x3hl-xcg-9-05_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |22__reachable-id_db3-x3hl-xcg-9-04| () Int
-    5)
+    3)
   (define-fun |0_db3-x3hl-xcg-9-09_BGP_SINGLE-EXPORT__permitted| () Bool
     true)
   (define-fun |15_15__db3-x3sb-xcg-9-1a_Port-Channel8_INBOUND_SOFTAdd| () Bool
@@ -4904,7 +4904,7 @@ sat
   (define-fun |13_13__db3-x3sb-xcg-9-1b_Port-Channel15_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |30__reachable-id_db3-x3hl-xcg-9-15| () Int
-    5)
+    7)
   (define-fun |33_33__db3-x3hl-xcg-9-17_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |33_33__db3-x3hl-xcg-9-02_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
@@ -5010,7 +5010,7 @@ sat
   (define-fun |19_19__db3-x3hl-xcg-9-09_Loopback0_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |19__reachable-id_db3-x3hl-xcg-9-07| () Int
-    3)
+    7)
   (define-fun |18_18__db3-x3sb-xcg-9-1b_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
   (define-fun |25_25__db3-x3hl-xcg-9-07_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
@@ -5018,7 +5018,7 @@ sat
   (define-fun |7_7__db3-x3hl-xcg-9-03_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
   (define-fun |18__reachable-id_db3-x3hl-xcg-9-12| () Int
-    3)
+    5)
   (define-fun |17_17__db3-x3hl-xcg-9-06_Loopback0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |30_icmp-code| () Int
@@ -5122,7 +5122,7 @@ sat
   (define-fun |35_35__db3-x3hl-xcg-9-20_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |27__reachable-id_db3-x3hl-xcg-9-12| () Int
-    3)
+    7)
   (define-fun |15_15__db3-x3hl-xcg-9-09_Loopback0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |1_1__db3-x3sb-xcg-9-1b_Port-Channel17_OUTBOUND_SOFTAdd| () Bool
@@ -5180,7 +5180,7 @@ sat
   (define-fun |40_40__db3-x3hl-xcg-9-18_Loopback0_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |23__reachable-id_db3-x3sb-xcg-9-1a| () Int
-    8)
+    4)
   (define-fun |14_14__db3-x3hl-xcg-9-19_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |35_35__db3-x3sb-xcg-9-1a_Port-Channel4_OUTBOUND_SOFTAdd| () Bool
@@ -5222,7 +5222,7 @@ sat
   (define-fun |38_38__db3-x3hl-xcg-9-02_Loopback0_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |20__reachable-id_db3-x3hl-xcg-9-15| () Int
-    5)
+    3)
   (define-fun |28_28__db3-x3sb-xcg-9-1a_Port-Channel6_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |12_12__db3-x3sb-xcg-9-1a_Port-Channel9_OUTBOUND_SOFTAdd| () Bool
@@ -5306,7 +5306,7 @@ sat
   (define-fun |6_6__db3-x3sb-xcg-9-1a_Port-Channel11_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |23__reachable-id_db3-x3hl-xcg-9-06| () Int
-    7)
+    3)
   (define-fun |13_13__db3-x3sb-xcg-9-1a_Port-Channel18_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |22_22__db3-x3hl-xcg-9-14_Vlan101_INBOUND_SOFTAdd| () Bool
@@ -5330,7 +5330,7 @@ sat
   (define-fun |19_19__db3-x3hl-xcg-9-07_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |32__reachable-id_db3-x3hl-xcg-9-09| () Int
-    3)
+    5)
   (define-fun |0_db3-x3hl-xcg-9-08_BGP_IMPORT_Port-Channel1AllowChoiceUseSoft| () Bool
     false)
   (define-fun |14_14__db3-x3hl-xcg-9-16_Loopback0_INBOUND_SOFTAdd| () Bool
@@ -5342,7 +5342,7 @@ sat
   (define-fun |0_db3-x3sb-xcg-9-1b_BGP_IMPORT_Port-Channel14_prefixLength| () Int
     0)
   (define-fun |32__reachable-id_db3-x3hl-xcg-9-08| () Int
-    3)
+    5)
   (define-fun |19_19__db3-x3hl-xcg-9-02_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |13_src-port| () Int
@@ -5350,7 +5350,7 @@ sat
   (define-fun |0_db3-x3hl-xcg-9-19_BGP_IMPORT_Port-Channel1_permitted| () Bool
     false)
   (define-fun |20__reachable-id_db3-x3hl-xcg-9-14| () Int
-    3)
+    5)
   (define-fun |17_17__db3-x3hl-xcg-9-02_Vlan102_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |12_12__db3-x3sb-xcg-9-1b_Port-Channel13_OUTBOUND_SOFTAdd| () Bool
@@ -5426,7 +5426,7 @@ sat
   (define-fun |32_32__db3-x3hl-xcg-9-12_Loopback0_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |35__reachable-id_db3-x3hl-xcg-9-03| () Int
-    5)
+    3)
   (define-fun |24_24__db3-x3hl-xcg-9-20_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
   (define-fun |0_0__db3-x3sb-xcg-9-1b_Port-Channel9_OUTBOUND_SOFTAdd| () Bool
@@ -5458,7 +5458,7 @@ sat
   (define-fun |27_27__db3-x3hl-xcg-9-15_Loopback0_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0__reachable-id_db3-x3hl-xcg-9-11| () Int
-    3)
+    11)
   (define-fun |27_27__db3-x3sb-xcg-9-1a_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |37_37__db3-x3hl-xcg-9-20_mgmt0_OUTBOUND_SOFTAdd| () Bool
@@ -5560,7 +5560,7 @@ sat
   (define-fun |36_36__db3-x3hl-xcg-9-08_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |27__reachable-id_db3-x3hl-xcg-9-20| () Int
-    3)
+    7)
   (define-fun |5_5__db3-x3sb-xcg-9-1b_Port-Channel4_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_0__db3-x3hl-xcg-9-07_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
@@ -5642,7 +5642,7 @@ sat
   (define-fun |25_25__db3-x3sb-xcg-9-1a_Port-Channel3_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |8__reachable-id_db3-x3hl-xcg-9-03| () Int
-    3)
+    5)
   (define-fun |27_27__db3-x3sb-xcg-9-1a_Port-Channel6_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |3_3__db3-x3hl-xcg-9-09_Vlan102_OUTBOUND_SOFTAdd| () Bool
@@ -5654,7 +5654,7 @@ sat
   (define-fun |0_db3-x3sb-xcg-9-1a_BGP_IMPORT_Port-Channel9_prefixLength| () Int
     0)
   (define-fun |35__reachable-id_db3-x3hl-xcg-9-10| () Int
-    3)
+    5)
   (define-fun |21_21__db3-x3hl-xcg-9-02_Port-Channel2_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |26_26__db3-x3hl-xcg-9-09_Vlan102_OUTBOUND_SOFTAdd| () Bool
@@ -5668,9 +5668,9 @@ sat
   (define-fun |23_23__db3-x3hl-xcg-9-09_Loopback0_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_db3-x3hl-xcg-9-14_BGP_SINGLE-EXPORT__prefixLength| () Int
-    25)
+    0)
   (define-fun |8__reachable-id_db3-x3hl-xcg-9-16| () Int
-    3)
+    5)
   (define-fun |23_ip-protocol| () Int
     0)
   (define-fun |12_12__db3-x3hl-xcg-9-09_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
@@ -5738,7 +5738,7 @@ sat
   (define-fun |32_32__db3-x3hl-xcg-9-08_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0__reachable-id_db3-x3hl-xcg-9-16| () Int
-    5)
+    11)
   (define-fun |17_17__db3-x3sb-xcg-9-1a_Port-Channel18_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |19_19__db3-x3sb-xcg-9-1b_Port-Channel16_OUTBOUND_SOFTAdd| () Bool
@@ -5766,7 +5766,7 @@ sat
   (define-fun |34_34__db3-x3hl-xcg-9-06_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |36__reachable-id_db3-x3sb-xcg-9-1a| () Int
-    4)
+    2)
   (define-fun |41__reachable-id_db3-x3hl-xcg-9-08| () Int
     5)
   (define-fun |19_19__db3-x3hl-xcg-9-11_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
@@ -5778,7 +5778,7 @@ sat
   (define-fun |37_37__db3-x3hl-xcg-9-19_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |16__reachable-id_db3-x3hl-xcg-9-20| () Int
-    3)
+    5)
   (define-fun |21_21__db3-x3hl-xcg-9-10_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |3_3__db3-x3sb-xcg-9-1b_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
@@ -5826,7 +5826,7 @@ sat
   (define-fun |6_6__db3-x3hl-xcg-9-17_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |39__reachable-id_db3-x3sb-xcg-9-1a| () Int
-    4)
+    2)
   (define-fun |22_22__db3-x3hl-xcg-9-16_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |2_dst-ip| () (_ BitVec 32)
@@ -5978,7 +5978,7 @@ sat
   (define-fun |5_5__db3-x3hl-xcg-9-12_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_db3-x3hl-xcg-9-20_OVERALL_BEST_None_prefixLength| () Int
-    0)
+    25)
   (define-fun |24_24__db3-x3hl-xcg-9-10_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
   (define-fun |28_28__db3-x3hl-xcg-9-14_Loopback0_OUTBOUND_SOFTAdd| () Bool
@@ -5998,7 +5998,7 @@ sat
   (define-fun |34_34__db3-x3hl-xcg-9-19_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |34__reachable-id_db3-x3hl-xcg-9-06| () Int
-    5)
+    3)
   (define-fun |20_20__db3-x3hl-xcg-9-17_Loopback0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |38_38__db3-x3hl-xcg-9-04_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
@@ -6040,7 +6040,7 @@ sat
   (define-fun |31_31__db3-x3sb-xcg-9-1a_Ethernet1/48_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |19__reachable-id_db3-x3hl-xcg-9-11| () Int
-    3)
+    7)
   (define-fun |7_7__db3-x3hl-xcg-9-08_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |9_9__db3-x3hl-xcg-9-17_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
@@ -6172,7 +6172,7 @@ sat
   (define-fun |7__reachable-id_db3-x3hl-xcg-9-06| () Int
     5)
   (define-fun |37__reachable-id_db3-x3hl-xcg-9-18| () Int
-    3)
+    5)
   (define-fun |20_20__db3-x3sb-xcg-9-1a_Port-Channel12_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |3_3__db3-x3hl-xcg-9-07_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
@@ -6192,7 +6192,7 @@ sat
   (define-fun |41_41__db3-x3hl-xcg-9-11_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |39__reachable-id_db3-x3hl-xcg-9-18| () Int
-    5)
+    8)
   (define-fun |8_8__db3-x3sb-xcg-9-1b_Port-Channel12_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |8_8__db3-x3hl-xcg-9-09_Vlan101_INBOUND_SOFTAdd| () Bool
@@ -6226,13 +6226,13 @@ sat
   (define-fun |41_41__db3-x3hl-xcg-9-13_Loopback0_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_db3-x3hl-xcg-9-20_BGP_SINGLE-EXPORT__metric| () Int
-    0)
+    3)
   (define-fun |12_12__db3-x3hl-xcg-9-02_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |26_26__db3-x3hl-xcg-9-12_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |27__reachable-id_db3-x3hl-xcg-9-13| () Int
-    3)
+    7)
   (define-fun |40_40__db3-x3hl-xcg-9-02_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |10_10__db3-x3hl-xcg-9-17_Port-Channel1_INBOUND_SOFTAdd| () Bool
@@ -6278,15 +6278,15 @@ sat
   (define-fun |21_21__db3-x3sb-xcg-9-1a_Port-Channel5_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |21__reachable-id_db3-x3hl-xcg-9-05| () Int
-    3)
+    5)
   (define-fun |3_3__db3-x3hl-xcg-9-12_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |26_src-ip| () (_ BitVec 32)
     #x9d38ffa0)
   (define-fun |26__reachable-id_db3-x3hl-xcg-9-04| () Int
-    5)
+    3)
   (define-fun |40__reachable-id_db3-x3hl-xcg-9-16| () Int
-    4)
+    3)
   (define-fun |1_1__db3-x3hl-xcg-9-17_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |7_7__db3-x3hl-xcg-9-02_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
@@ -6470,7 +6470,7 @@ sat
   (define-fun |8_8__db3-x3hl-xcg-9-16_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
   (define-fun |29__reachable-id_db3-x3hl-xcg-9-03| () Int
-    8)
+    5)
   (define-fun |26_26__db3-x3hl-xcg-9-17_Port-Channel2_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |10_10__db3-x3sb-xcg-9-1a_Ethernet1/47_INBOUND_SOFTAdd| () Bool
@@ -6535,18 +6535,16 @@ sat
     true)
   (define-fun |1_1__db3-x3hl-xcg-9-09_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
-  (define-fun |0_10.22.173.176/29BGPRemoveFilterSoft| () Bool
+  (define-fun |5_5__db3-x3sb-xcg-9-1a_Ethernet1/47_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |22_22__db3-x3hl-xcg-9-13_Port-Channel2_INBOUND_SOFTAdd| () Bool
     true)
-  (define-fun |5_5__db3-x3sb-xcg-9-1a_Ethernet1/47_OUTBOUND_SOFTAdd| () Bool
-    true)
   (define-fun |31_31__db3-x3hl-xcg-9-19_Loopback0_OUTBOUND_SOFTAdd| () Bool
     true)
+  (define-fun |11__reachable-id_db3-x3hl-xcg-9-08| () Int
+    5)
   (define-fun |13_13__db3-x3sb-xcg-9-1b_Port-Channel7_OUTBOUND_SOFTAdd| () Bool
     true)
-  (define-fun |11__reachable-id_db3-x3hl-xcg-9-08| () Int
-    3)
   (define-fun |18_18__db3-x3hl-xcg-9-12_Vlan102_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |24_24__db3-x3sb-xcg-9-1a_Port-Channel15_OUTBOUND_SOFTAdd| () Bool
@@ -6624,7 +6622,7 @@ sat
   (define-fun |28_28__db3-x3hl-xcg-9-13_Loopback0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |3_dst-ip| () (_ BitVec 32)
-    #x0af28380)
+    #x0af283c0)
   (define-fun |8_8__db3-x3sb-xcg-9-1a_Port-Channel13_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |18_18__db3-x3hl-xcg-9-05_Port-Channel2_INBOUND_SOFTAdd| () Bool
@@ -6650,7 +6648,7 @@ sat
   (define-fun |8_8__db3-x3hl-xcg-9-16_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |8__reachable-id_db3-x3hl-xcg-9-11| () Int
-    3)
+    5)
   (define-fun |34_34__db3-x3hl-xcg-9-07_Port-Channel2_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |2_2__db3-x3sb-xcg-9-1a_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
@@ -6692,7 +6690,7 @@ sat
   (define-fun |20_20__db3-x3hl-xcg-9-09_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |7__reachable-id_db3-x3sb-xcg-9-1b| () Int
-    2)
+    4)
   (define-fun |21_21__db3-x3sb-xcg-9-1b_Port-Channel14_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |39_dst-port| () Int
@@ -6720,9 +6718,9 @@ sat
   (define-fun |25_25__db3-x3sb-xcg-9-1b_Port-Channel6_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |33__reachable-id_db3-x3hl-xcg-9-15| () Int
-    3)
+    5)
   (define-fun |38__reachable-id_db3-x3sb-xcg-9-1a| () Int
-    4)
+    2)
   (define-fun |7_7__db3-x3hl-xcg-9-10_Vlan102_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |41_41__db3-x3sb-xcg-9-1a_Port-Channel18_INBOUND_SOFTAdd| () Bool
@@ -6760,7 +6758,7 @@ sat
   (define-fun |8_8__db3-x3hl-xcg-9-14_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |29__reachable-id_db3-x3hl-xcg-9-13| () Int
-    8)
+    5)
   (define-fun |40_40__db3-x3hl-xcg-9-14_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
   (define-fun |33_33__db3-x3hl-xcg-9-05_Port-Channel2_INBOUND_SOFTAdd| () Bool
@@ -6776,7 +6774,7 @@ sat
   (define-fun |1_1__db3-x3hl-xcg-9-04_Port-Channel2_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |21__reachable-id_db3-x3hl-xcg-9-14| () Int
-    3)
+    5)
   (define-fun |34_34__db3-x3hl-xcg-9-04_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |18_18__db3-x3hl-xcg-9-17_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
@@ -6804,7 +6802,7 @@ sat
   (define-fun |41_41__db3-x3hl-xcg-9-02_Loopback0_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |11__reachable-id_db3-x3hl-xcg-9-05| () Int
-    3)
+    5)
   (define-fun |22_22__db3-x3hl-xcg-9-07_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |5_5__db3-x3hl-xcg-9-13_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
@@ -6872,7 +6870,7 @@ sat
   (define-fun |37_37__db3-x3hl-xcg-9-13_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |3__reachable-id_db3-x3hl-xcg-9-19| () Int
-    5)
+    3)
   (define-fun |39_39__db3-x3hl-xcg-9-06_Port-Channel1_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |34_34__db3-x3hl-xcg-9-08_Loopback0_OUTBOUND_SOFTAdd| () Bool
@@ -6946,7 +6944,7 @@ sat
   (define-fun |19_19__db3-x3sb-xcg-9-1b_Ethernet1/47_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |29__reachable-id_db3-x3hl-xcg-9-07| () Int
-    3)
+    5)
   (define-fun |14_14__db3-x3hl-xcg-9-18_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |36_36__db3-x3hl-xcg-9-05_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
@@ -7014,7 +7012,7 @@ sat
   (define-fun |10_10__db3-x3hl-xcg-9-18_Loopback0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |25__reachable-id_db3-x3hl-xcg-9-13| () Int
-    7)
+    5)
   (define-fun |31_31__db3-x3sb-xcg-9-1b_Port-Channel15_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |37_37__db3-x3hl-xcg-9-19_Port-Channel2_INBOUND_SOFTAdd| () Bool
@@ -7026,7 +7024,7 @@ sat
   (define-fun |29_29__db3-x3hl-xcg-9-10_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |19__reachable-id_db3-x3hl-xcg-9-12| () Int
-    3)
+    7)
   (define-fun |37__reachable-id_db3-x3hl-xcg-9-16| () Int
     5)
   (define-fun |11_11__db3-x3hl-xcg-9-17_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
@@ -7044,7 +7042,7 @@ sat
   (define-fun |25_25__db3-x3hl-xcg-9-17_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |19__reachable-id_db3-x3hl-xcg-9-09| () Int
-    5)
+    7)
   (define-fun |35_35__db3-x3sb-xcg-9-1a_Port-Channel12_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |40_40__db3-x3hl-xcg-9-17_Vlan102_OUTBOUND_SOFTAdd| () Bool
@@ -7104,7 +7102,7 @@ sat
   (define-fun |15_15__db3-x3hl-xcg-9-18_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |40__reachable-id_db3-x3hl-xcg-9-19| () Int
-    4)
+    5)
   (define-fun |36_36__db3-x3sb-xcg-9-1b_Port-Channel15_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |4_4__db3-x3sb-xcg-9-1b_Port-Channel8_OUTBOUND_SOFTAdd| () Bool
@@ -7178,7 +7176,7 @@ sat
   (define-fun |15_15__db3-x3sb-xcg-9-1a_Port-Channel12_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |18__reachable-id_db3-x3sb-xcg-9-1a| () Int
-    4)
+    2)
   (define-fun |36_36__db3-x3sb-xcg-9-1a_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |6_6__db3-x3hl-xcg-9-14_Loopback0_INBOUND_SOFTAdd| () Bool
@@ -7280,7 +7278,7 @@ sat
   (define-fun |29_29__db3-x3hl-xcg-9-13_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
     false)
   (define-fun |9__reachable-id_db3-x3hl-xcg-9-02| () Int
-    3)
+    5)
   (define-fun |5_5__db3-x3hl-xcg-9-10_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |1__reachable-id_db3-x3sb-xcg-9-1b| () Int
@@ -7364,7 +7362,7 @@ sat
   (define-fun |37_37__db3-x3hl-xcg-9-03_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
     false)
   (define-fun |7__reachable-id_db3-x3sb-xcg-9-1a| () Int
-    4)
+    2)
   (define-fun |16_16__db3-x3sb-xcg-9-1b_Port-Channel19_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |36_36__db3-x3sb-xcg-9-1b_Port-Channel11_INBOUND_SOFTAdd| () Bool
@@ -7376,7 +7374,7 @@ sat
   (define-fun |31_31__db3-x3sb-xcg-9-1b_Port-Channel10_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |32__reachable-id_db3-x3hl-xcg-9-14| () Int
-    3)
+    5)
   (define-fun |26_26__db3-x3hl-xcg-9-12_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |19_19__db3-x3sb-xcg-9-1b_Port-Channel10_OUTBOUND_SOFTAdd| () Bool
@@ -7406,7 +7404,7 @@ sat
   (define-fun |33_33__db3-x3hl-xcg-9-02_Loopback0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |30__reachable-id_db3-x3hl-xcg-9-09| () Int
-    3)
+    7)
   (define-fun |11__reachable-id_db3-x3hl-xcg-9-15| () Int
     5)
   (define-fun |9_9__db3-x3hl-xcg-9-13_Vlan102_INBOUND_SOFTAdd| () Bool
@@ -7444,7 +7442,7 @@ sat
   (define-fun |10_10__db3-x3hl-xcg-9-07_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |13__reachable-id_db3-x3hl-xcg-9-15| () Int
-    7)
+    5)
   (define-fun |29_29__db3-x3hl-xcg-9-19_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
     false)
   (define-fun |5__reachable-id_db3-x3hl-xcg-9-08| () Int
@@ -7454,7 +7452,7 @@ sat
   (define-fun |19_19__db3-x3hl-xcg-9-08_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |21__reachable-id_db3-x3hl-xcg-9-12| () Int
-    3)
+    5)
   (define-fun |18_18__db3-x3hl-xcg-9-14_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |21_21__db3-x3hl-xcg-9-02_mgmt0_OUTBOUND_SOFTAdd| () Bool
@@ -7572,7 +7570,7 @@ sat
   (define-fun |21_21__db3-x3hl-xcg-9-11_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |8__reachable-id_db3-x3hl-xcg-9-09| () Int
-    3)
+    5)
   (define-fun |16_16__db3-x3sb-xcg-9-1b_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
   (define-fun |29_29__db3-x3hl-xcg-9-02_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
@@ -7696,7 +7694,7 @@ sat
   (define-fun |30_30__db3-x3sb-xcg-9-1b_Port-Channel1_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |41__reachable-id_db3-x3hl-xcg-9-01| () Int
-    3)
+    5)
   (define-fun |34_34__db3-x3hl-xcg-9-06_Vlan102_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |5_5__db3-x3sb-xcg-9-1a_Port-Channel5_OUTBOUND_SOFTAdd| () Bool
@@ -7720,11 +7718,11 @@ sat
   (define-fun |7_7__db3-x3hl-xcg-9-09_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |22__reachable-id_db3-x3hl-xcg-9-15| () Int
-    5)
+    3)
   (define-fun |20_20__db3-x3hl-xcg-9-15_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |26__reachable-id_db3-x3hl-xcg-9-09| () Int
-    5)
+    3)
   (define-fun |13_13__db3-x3sb-xcg-9-1b_Port-Channel1_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |23_23__db3-x3hl-xcg-9-04_Port-Channel1_INBOUND_SOFTAdd| () Bool
@@ -7832,7 +7830,7 @@ sat
   (define-fun |28_28__db3-x3hl-xcg-9-04_Loopback0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |28__reachable-id_db3-x3hl-xcg-9-15| () Int
-    8)
+    5)
   (define-fun |20_20__db3-x3sb-xcg-9-1b_Loopback0_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |8_8__db3-x3hl-xcg-9-12_mgmt0_OUTBOUND_SOFTAdd| () Bool
@@ -7926,7 +7924,7 @@ sat
   (define-fun |29_29__db3-x3hl-xcg-9-12_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |27_dst-ip| () (_ BitVec 32)
-    #x0af28381)
+    #x0af28380)
   (define-fun |19_19__db3-x3sb-xcg-9-1a_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |24_24__db3-x3hl-xcg-9-10_Loopback0_INBOUND_SOFTAdd| () Bool
@@ -7966,7 +7964,7 @@ sat
   (define-fun |8_8__db3-x3hl-xcg-9-03_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
   (define-fun |22__reachable-id_db3-x3hl-xcg-9-16| () Int
-    3)
+    5)
   (define-fun |24_24__db3-x3hl-xcg-9-06_Loopback0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |31_31__db3-x3hl-xcg-9-06_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
@@ -7982,7 +7980,7 @@ sat
   (define-fun |24_24__db3-x3hl-xcg-9-08_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |1__reachable-id_db3-x3hl-xcg-9-13| () Int
-    5)
+    3)
   (define-fun |26_dst-port| () Int
     0)
   (define-fun |13_13__db3-x3hl-xcg-9-11_Port-Channel2_INBOUND_SOFTAdd| () Bool
@@ -7990,7 +7988,7 @@ sat
   (define-fun |28_28__db3-x3hl-xcg-9-04_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |15__reachable-id_db3-x3hl-xcg-9-09| () Int
-    5)
+    3)
   (define-fun |32_32__db3-x3hl-xcg-9-05_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |34_34__db3-x3hl-xcg-9-15_Port-Channel2_INBOUND_SOFTAdd| () Bool
@@ -8062,9 +8060,9 @@ sat
   (define-fun |23_23__db3-x3sb-xcg-9-1a_Ethernet1/48_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |5__reachable-id_db3-x3hl-xcg-9-05| () Int
-    5)
-  (define-fun |14__reachable-id_db3-x3hl-xcg-9-03| () Int
     3)
+  (define-fun |14__reachable-id_db3-x3hl-xcg-9-03| () Int
+    5)
   (define-fun |30_30__db3-x3sb-xcg-9-1a_Port-Channel19_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |39_39__db3-x3hl-xcg-9-17_Vlan102_OUTBOUND_SOFTAdd| () Bool
@@ -8098,7 +8096,7 @@ sat
   (define-fun |1_1__db3-x3hl-xcg-9-19_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
   (define-fun |27__reachable-id_db3-x3hl-xcg-9-07| () Int
-    5)
+    7)
   (define-fun |7_7__db3-x3hl-xcg-9-15_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
   (define-fun |12_12__db3-x3hl-xcg-9-20_Port-Channel1_INBOUND_SOFTAdd| () Bool
@@ -8146,9 +8144,9 @@ sat
   (define-fun |15_15__db3-x3sb-xcg-9-1b_Ethernet1/47_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |29__reachable-id_db3-x3hl-xcg-9-15| () Int
-    8)
+    5)
   (define-fun |38__reachable-id_db3-x3hl-xcg-9-01| () Int
-    3)
+    5)
   (define-fun |8_8__db3-x3hl-xcg-9-12_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |2_2__db3-x3hl-xcg-9-07_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
@@ -8284,7 +8282,7 @@ sat
   (define-fun |12_12__db3-x3sb-xcg-9-1a_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |39__reachable-id_db3-x3hl-xcg-9-20| () Int
-    3)
+    5)
   (define-fun |25_25__db3-x3hl-xcg-9-10_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |14_14__db3-x3hl-xcg-9-12_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
@@ -8352,7 +8350,7 @@ sat
   (define-fun |25_25__db3-x3hl-xcg-9-16_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |13__reachable-id_db3-x3hl-xcg-9-07| () Int
-    7)
+    5)
   (define-fun |12_12__db3-x3hl-xcg-9-03_Port-Channel2_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |30_30__db3-x3sb-xcg-9-1a_Port-Channel16_INBOUND_SOFTAdd| () Bool
@@ -8374,7 +8372,7 @@ sat
   (define-fun |13_13__db3-x3hl-xcg-9-17_Port-Channel1_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |13__reachable-id_db3-x3hl-xcg-9-13| () Int
-    7)
+    5)
   (define-fun |41_41__db3-x3hl-xcg-9-16_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
     false)
   (define-fun |20_20__db3-x3hl-xcg-9-06_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
@@ -8488,7 +8486,7 @@ sat
   (define-fun |4_4__db3-x3hl-xcg-9-16_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
   (define-fun |37__reachable-id_db3-x3hl-xcg-9-04| () Int
-    3)
+    5)
   (define-fun |3_3__db3-x3hl-xcg-9-01_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
     false)
   (define-fun |0_0__db3-x3sb-xcg-9-1b_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
@@ -8546,7 +8544,7 @@ sat
   (define-fun |20_20__db3-x3hl-xcg-9-04_Port-Channel1_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |28__reachable-id_db3-x3hl-xcg-9-14| () Int
-    3)
+    5)
   (define-fun |15_15__db3-x3hl-xcg-9-13_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |38_38__db3-x3hl-xcg-9-01_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
@@ -8694,7 +8692,7 @@ sat
   (define-fun |27_27__db3-x3hl-xcg-9-19_Loopback0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |18__reachable-id_db3-x3hl-xcg-9-20| () Int
-    3)
+    5)
   (define-fun |24_24__db3-x3sb-xcg-9-1a_Port-Channel17_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |14_14__db3-x3hl-xcg-9-20_Loopback0_INBOUND_SOFTAdd| () Bool
@@ -8714,7 +8712,7 @@ sat
   (define-fun |7_7__db3-x3sb-xcg-9-1a_Port-Channel13_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |19__reachable-id_db3-x3hl-xcg-9-15| () Int
-    3)
+    7)
   (define-fun |18_18__db3-x3hl-xcg-9-02_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |37_37__db3-x3sb-xcg-9-1a_Port-Channel13_OUTBOUND_SOFTAdd| () Bool
@@ -8772,7 +8770,7 @@ sat
   (define-fun |7_7__db3-x3hl-xcg-9-18_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |31_dst-ip| () (_ BitVec 32)
-    #x0af28391)
+    #x0af28380)
   (define-fun |32_32__db3-x3sb-xcg-9-1a_Ethernet1/48_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |10_10__db3-x3hl-xcg-9-07_Port-Channel2_INBOUND_SOFTAdd| () Bool
@@ -8840,7 +8838,7 @@ sat
   (define-fun |10_10__db3-x3hl-xcg-9-20_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |24__reachable-id_db3-x3hl-xcg-9-06| () Int
-    3)
+    5)
   (define-fun |10_10__db3-x3hl-xcg-9-02_Port-Channel1_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |31_31__db3-x3hl-xcg-9-09_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
@@ -8892,7 +8890,7 @@ sat
   (define-fun |2_2__db3-x3sb-xcg-9-1b_Port-Channel2_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |30__reachable-id_db3-x3hl-xcg-9-13| () Int
-    5)
+    7)
   (define-fun |28_28__db3-x3hl-xcg-9-02_Vlan102_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |35_35__db3-x3sb-xcg-9-1b_Port-Channel14_INBOUND_SOFTAdd| () Bool
@@ -9000,7 +8998,7 @@ sat
   (define-fun |34_34__db3-x3hl-xcg-9-02_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |4__reachable-id_db3-x3sb-xcg-9-1b| () Int
-    4)
+    2)
   (define-fun |38_38__db3-x3hl-xcg-9-02_Loopback0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |25_25__db3-x3hl-xcg-9-01_Port-Channel2_INBOUND_SOFTAdd| () Bool
@@ -9114,9 +9112,9 @@ sat
   (define-fun |35_35__db3-x3hl-xcg-9-06_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |6__reachable-id_db3-x3hl-xcg-9-05| () Int
-    3)
+    5)
   (define-fun |29__reachable-id_db3-x3sb-xcg-9-1a| () Int
-    7)
+    2)
   (define-fun |11_11__db3-x3hl-xcg-9-01_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
     false)
   (define-fun |17_17__db3-x3hl-xcg-9-03_Loopback0_OUTBOUND_SOFTAdd| () Bool
@@ -9204,7 +9202,7 @@ sat
   (define-fun |2_2__db3-x3hl-xcg-9-09_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |7__reachable-id_db3-x3hl-xcg-9-19| () Int
-    3)
+    5)
   (define-fun |19_19__db3-x3hl-xcg-9-15_Vlan102_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |35_35__db3-x3sb-xcg-9-1b_Port-Channel7_OUTBOUND_SOFTAdd| () Bool
@@ -9290,7 +9288,7 @@ sat
   (define-fun |33_33__db3-x3hl-xcg-9-05_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |28__reachable-id_db3-x3hl-xcg-9-06| () Int
-    3)
+    5)
   (define-fun |34_34__db3-x3sb-xcg-9-1b_Port-Channel20_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |24_24__db3-x3hl-xcg-9-20_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
@@ -9300,7 +9298,7 @@ sat
   (define-fun |9_9__db3-x3sb-xcg-9-1b_Loopback0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |2__reachable-id_db3-x3hl-xcg-9-06| () Int
-    3)
+    5)
   (define-fun |29_29__db3-x3sb-xcg-9-1a_Loopback0_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |7_src-ip| () (_ BitVec 32)
@@ -9360,7 +9358,7 @@ sat
   (define-fun |28_28__db3-x3sb-xcg-9-1b_Port-Channel4_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |31__reachable-id_db3-x3hl-xcg-9-03| () Int
-    3)
+    5)
   (define-fun |19_19__db3-x3hl-xcg-9-04_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
     false)
   (define-fun |8_8__db3-x3sb-xcg-9-1a_Port-Channel2_INBOUND_SOFTAdd| () Bool
@@ -9384,7 +9382,7 @@ sat
   (define-fun |23_23__db3-x3hl-xcg-9-02_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |20__reachable-id_db3-x3hl-xcg-9-02| () Int
-    7)
+    5)
   (define-fun |4_4__db3-x3sb-xcg-9-1b_Port-Channel14_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |19_19__db3-x3sb-xcg-9-1b_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
@@ -9420,7 +9418,7 @@ sat
   (define-fun |33_33__db3-x3sb-xcg-9-1a_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |12__reachable-id_db3-x3hl-xcg-9-10| () Int
-    3)
+    5)
   (define-fun |17_17__db3-x3hl-xcg-9-14_Port-Channel1_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |18_18__db3-x3sb-xcg-9-1a_Port-Channel7_OUTBOUND_SOFTAdd| () Bool
@@ -9548,7 +9546,7 @@ sat
   (define-fun |14__reachable-id_db3-x3sb-xcg-9-1a| () Int
     4)
   (define-fun |0_CONTROL-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |1_1__db3-x3sb-xcg-9-1b_Port-Channel14_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |30_30__db3-x3hl-xcg-9-09_Vlan101_INBOUND_SOFTAdd| () Bool
@@ -9556,7 +9554,7 @@ sat
   (define-fun |20_20__db3-x3sb-xcg-9-1a_Port-Channel6_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |36__reachable-id_db3-x3hl-xcg-9-12| () Int
-    3)
+    5)
   (define-fun |3_3__db3-x3sb-xcg-9-1b_Port-Channel15_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |26_26__db3-x3hl-xcg-9-04_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
@@ -9594,7 +9592,7 @@ sat
   (define-fun |7_7__db3-x3hl-xcg-9-03_Port-Channel1_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |2__reachable-id_db3-x3hl-xcg-9-07| () Int
-    3)
+    5)
   (define-fun |23_23__db3-x3hl-xcg-9-07_Loopback0_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |10_10__db3-x3sb-xcg-9-1a_Port-Channel3_OUTBOUND_SOFTAdd| () Bool
@@ -9606,9 +9604,9 @@ sat
   (define-fun |24_24__db3-x3sb-xcg-9-1a_Port-Channel9_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_db3-x3hl-xcg-9-14-StaticRouteAddSoft-db3-x3hl-xcg-9-14,Port-Channel1 --> db3-x3sb-xcg-9-1a,Port-Channel14| () Bool
-    false)
+    true)
   (define-fun |34__reachable-id_db3-x3hl-xcg-9-14| () Int
-    3)
+    5)
   (define-fun |38_38__db3-x3hl-xcg-9-06_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |34_34__db3-x3sb-xcg-9-1a_Port-Channel9_OUTBOUND_SOFTAdd| () Bool
@@ -9646,7 +9644,7 @@ sat
   (define-fun |26_26__db3-x3hl-xcg-9-10_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |40__reachable-id_db3-x3hl-xcg-9-06| () Int
-    4)
+    5)
   (define-fun |21_21__db3-x3hl-xcg-9-12_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |31_31__db3-x3hl-xcg-9-02_Vlan102_OUTBOUND_SOFTAdd| () Bool
@@ -9660,7 +9658,7 @@ sat
   (define-fun |40_40__db3-x3hl-xcg-9-13_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
   (define-fun |35__reachable-id_db3-x3hl-xcg-9-02| () Int
-    3)
+    5)
   (define-fun |38_38__db3-x3hl-xcg-9-02_Port-Channel2_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |36_36__db3-x3sb-xcg-9-1a_Port-Channel5_INBOUND_SOFTAdd| () Bool
@@ -9718,7 +9716,7 @@ sat
   (define-fun |0_db3-x3hl-xcg-9-17_OVERALL_BEST_None_metric| () Int
     0)
   (define-fun |7__reachable-id_db3-x3hl-xcg-9-12| () Int
-    3)
+    5)
   (define-fun |29_29__db3-x3sb-xcg-9-1b_Port-Channel9_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |40_40__db3-x3sb-xcg-9-1a_Port-Channel14_OUTBOUND_SOFTAdd| () Bool
@@ -9818,7 +9816,7 @@ sat
   (define-fun |14_14__db3-x3hl-xcg-9-18_Loopback0_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |28__reachable-id_db3-x3hl-xcg-9-13| () Int
-    8)
+    3)
   (define-fun |18_18__db3-x3sb-xcg-9-1a_Port-Channel11_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |37_37__db3-x3hl-xcg-9-04_Port-Channel1_INBOUND_SOFTAdd| () Bool
@@ -9910,7 +9908,7 @@ sat
   (define-fun |34_34__db3-x3hl-xcg-9-01_Loopback0_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |38__reachable-id_db3-x3sb-xcg-9-1b| () Int
-    2)
+    4)
   (define-fun |36_36__db3-x3sb-xcg-9-1b_Port-Channel4_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |34_34__db3-x3hl-xcg-9-04_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
@@ -9938,7 +9936,7 @@ sat
   (define-fun |3_3__db3-x3hl-xcg-9-14_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
   (define-fun |1__reachable-id_db3-x3hl-xcg-9-14| () Int
-    3)
+    5)
   (define-fun |24_24__db3-x3sb-xcg-9-1a_Port-Channel6_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |3_3__db3-x3sb-xcg-9-1a_Port-Channel1_INBOUND_SOFTAdd| () Bool
@@ -9990,13 +9988,13 @@ sat
   (define-fun |10_10__db3-x3hl-xcg-9-13_Vlan102_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |1__reachable-id_db3-x3hl-xcg-9-07| () Int
-    3)
+    5)
   (define-fun |35_35__db3-x3sb-xcg-9-1b_Port-Channel19_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |10_10__db3-x3hl-xcg-9-12_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |33__reachable-id_db3-x3hl-xcg-9-08| () Int
-    8)
+    5)
   (define-fun |25_25__db3-x3hl-xcg-9-03_Port-Channel1_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |14_14__db3-x3hl-xcg-9-15_mgmt0_OUTBOUND_SOFTAdd| () Bool
@@ -10074,7 +10072,7 @@ sat
   (define-fun |32_32__db3-x3hl-xcg-9-17_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |4__reachable-id_db3-x3hl-xcg-9-14| () Int
-    7)
+    5)
   (define-fun |22_22__db3-x3hl-xcg-9-15_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |34_src-ip| () (_ BitVec 32)
@@ -10096,7 +10094,7 @@ sat
   (define-fun |16_16__db3-x3hl-xcg-9-09_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |24__reachable-id_db3-x3hl-xcg-9-09| () Int
-    3)
+    5)
   (define-fun |8_8__db3-x3sb-xcg-9-1b_Port-Channel10_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |29_29__db3-x3sb-xcg-9-1b_Port-Channel19_INBOUND_SOFTAdd| () Bool
@@ -10104,7 +10102,7 @@ sat
   (define-fun |1_1__db3-x3hl-xcg-9-10_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |21__reachable-id_db3-x3hl-xcg-9-02| () Int
-    3)
+    5)
   (define-fun |18_18__db3-x3hl-xcg-9-09_Loopback0_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |26_26__db3-x3hl-xcg-9-13_Loopback0_INBOUND_SOFTAdd| () Bool
@@ -10116,7 +10114,7 @@ sat
   (define-fun |26_26__db3-x3hl-xcg-9-09_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |28__reachable-id_db3-x3hl-xcg-9-07| () Int
-    3)
+    5)
   (define-fun |0_0__db3-x3hl-xcg-9-16_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |35_35__db3-x3sb-xcg-9-1a_Port-Channel3_OUTBOUND_SOFTAdd| () Bool
@@ -10140,13 +10138,13 @@ sat
   (define-fun |13_13__db3-x3hl-xcg-9-10_Loopback0_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |9__reachable-id_db3-x3hl-xcg-9-08| () Int
-    3)
+    5)
   (define-fun |23__reachable-id_db3-x3hl-xcg-9-18| () Int
-    7)
+    3)
   (define-fun |24_dst-port| () Int
     0)
   (define-fun |30__reachable-id_db3-x3hl-xcg-9-18| () Int
-    5)
+    7)
   (define-fun |3__reachable-id_db3-x3hl-xcg-9-13| () Int
     3)
   (define-fun |36_36__db3-x3hl-xcg-9-17_Loopback0_OUTBOUND_SOFTAdd| () Bool
@@ -10288,7 +10286,7 @@ sat
   (define-fun |6_6__db3-x3hl-xcg-9-08_Loopback0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |32__reachable-id_db3-x3hl-xcg-9-04| () Int
-    3)
+    5)
   (define-fun |1_1__db3-x3hl-xcg-9-04_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |8_8__db3-x3hl-xcg-9-02_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
@@ -10310,6 +10308,8 @@ sat
   (define-fun |3_3__db3-x3sb-xcg-9-1b_Port-Channel16_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |2_2__db3-x3hl-xcg-9-11_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_10.22.173.200/29db3-x3sb-xcg-9-1bBGPRemoveFilterSoft| () Bool
     true)
   (define-fun |18_18__db3-x3hl-xcg-9-12_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
@@ -10356,7 +10356,7 @@ sat
   (define-fun |15_15__db3-x3hl-xcg-9-07_Loopback0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |40__reachable-id_db3-x3hl-xcg-9-09| () Int
-    4)
+    5)
   (define-fun |7_7__db3-x3sb-xcg-9-1a_Port-Channel8_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |15_15__db3-x3hl-xcg-9-09_Vlan102_INBOUND_SOFTAdd| () Bool
@@ -10444,7 +10444,7 @@ sat
   (define-fun |16_16__db3-x3hl-xcg-9-04_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |18__reachable-id_db3-x3hl-xcg-9-09| () Int
-    3)
+    5)
   (define-fun |0_0__db3-x3hl-xcg-9-07_Port-Channel2_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |21_21__db3-x3hl-xcg-9-07_Vlan101_INBOUND_SOFTAdd| () Bool
@@ -10486,7 +10486,7 @@ sat
   (define-fun |8_8__db3-x3hl-xcg-9-16_Port-Channel2_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |25__reachable-id_db3-x3hl-xcg-9-19| () Int
-    7)
+    5)
   (define-fun |27_27__db3-x3hl-xcg-9-15_Port-Channel1_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |34_34__db3-x3sb-xcg-9-1a_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
@@ -10636,7 +10636,7 @@ sat
   (define-fun |8_8__db3-x3hl-xcg-9-19_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |14__reachable-id_db3-x3hl-xcg-9-06| () Int
-    3)
+    5)
   (define-fun |5_5__db3-x3sb-xcg-9-1a_Port-Channel6_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_CONTROL-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel18| () Bool
@@ -10664,7 +10664,7 @@ sat
   (define-fun |1_1__db3-x3hl-xcg-9-18_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |35__reachable-id_db3-x3hl-xcg-9-01| () Int
-    3)
+    5)
   (define-fun |37_37__db3-x3sb-xcg-9-1a_Port-Channel20_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |5__reachable-id_db3-x3hl-xcg-9-17| () Int
@@ -10728,7 +10728,7 @@ sat
   (define-fun |37_37__db3-x3hl-xcg-9-02_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |21__reachable-id_db3-x3hl-xcg-9-09| () Int
-    3)
+    5)
   (define-fun |4_4__db3-x3hl-xcg-9-09_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
     false)
   (define-fun |0_CONTROL-FORWARDING_db3-x3hl-xcg-9-18_Port-Channel2| () Bool
@@ -10766,7 +10766,7 @@ sat
   (define-fun |29_29__db3-x3hl-xcg-9-17_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |35__reachable-id_db3-x3hl-xcg-9-12| () Int
-    5)
+    3)
   (define-fun |16_16__db3-x3hl-xcg-9-03_Loopback0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |32_32__db3-x3sb-xcg-9-1b_Port-Channel8_OUTBOUND_SOFTAdd| () Bool
@@ -10796,7 +10796,7 @@ sat
   (define-fun |21_21__db3-x3hl-xcg-9-13_Loopback0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |16__reachable-id_db3-x3hl-xcg-9-02| () Int
-    5)
+    3)
   (define-fun |41_41__db3-x3hl-xcg-9-14_Vlan102_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |12_12__db3-x3sb-xcg-9-1b_Ethernet1/48_OUTBOUND_SOFTAdd| () Bool
@@ -10916,7 +10916,7 @@ sat
   (define-fun |19_19__db3-x3hl-xcg-9-18_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
   (define-fun |8__reachable-id_db3-x3hl-xcg-9-19| () Int
-    3)
+    5)
   (define-fun |11_11__db3-x3hl-xcg-9-12_Vlan102_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |27_27__db3-x3hl-xcg-9-07_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
@@ -10980,13 +10980,13 @@ sat
   (define-fun |24_24__db3-x3hl-xcg-9-09_Loopback0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |19__reachable-id_db3-x3hl-xcg-9-05| () Int
-    5)
+    7)
   (define-fun |20_20__db3-x3hl-xcg-9-09_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |24_dst-ip| () (_ BitVec 32)
-    #x0af28381)
+    #x0af28380)
   (define-fun |25__reachable-id_db3-x3sb-xcg-9-1b| () Int
-    2)
+    4)
   (define-fun |29_29__db3-x3hl-xcg-9-03_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
   (define-fun |38__reachable-id_db3-x3hl-xcg-9-10| () Int
@@ -11068,7 +11068,7 @@ sat
   (define-fun |33_33__db3-x3sb-xcg-9-1a_Port-Channel16_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_db3-x3hl-xcg-9-11_BGP_IMPORT_Port-Channel2_permitted| () Bool
-    false)
+    true)
   (define-fun |18_18__db3-x3sb-xcg-9-1b_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |1_1__db3-x3sb-xcg-9-1b_Port-Channel15_OUTBOUND_SOFTAdd| () Bool
@@ -11098,7 +11098,7 @@ sat
   (define-fun |32_32__db3-x3hl-xcg-9-14_Vlan102_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |17__reachable-id_db3-x3hl-xcg-9-07| () Int
-    5)
+    3)
   (define-fun |26_dst-ip| () (_ BitVec 32)
     #x0af28380)
   (define-fun |3_3__db3-x3hl-xcg-9-04_Port-Channel1_INBOUND_SOFTAdd| () Bool
@@ -11170,9 +11170,9 @@ sat
   (define-fun |18_18__db3-x3hl-xcg-9-01_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |5__reachable-id_db3-x3hl-xcg-9-01| () Int
-    5)
-  (define-fun |37__reachable-id_db3-x3hl-xcg-9-14| () Int
     3)
+  (define-fun |37__reachable-id_db3-x3hl-xcg-9-14| () Int
+    5)
   (define-fun |27_27__db3-x3hl-xcg-9-12_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
     false)
   (define-fun |12_12__db3-x3hl-xcg-9-17_Vlan101_INBOUND_SOFTAdd| () Bool
@@ -11190,7 +11190,7 @@ sat
   (define-fun |2_2__db3-x3hl-xcg-9-11_Loopback0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |17__reachable-id_db3-x3hl-xcg-9-16| () Int
-    3)
+    5)
   (define-fun |30_30__db3-x3sb-xcg-9-1a_Port-Channel9_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |11_11__db3-x3hl-xcg-9-16_Vlan102_OUTBOUND_SOFTAdd| () Bool
@@ -11272,7 +11272,7 @@ sat
   (define-fun |35_35__db3-x3hl-xcg-9-04_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
   (define-fun |2__reachable-id_db3-x3hl-xcg-9-19| () Int
-    3)
+    5)
   (define-fun |18_18__db3-x3hl-xcg-9-13_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
   (define-fun |9_9__db3-x3hl-xcg-9-19_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
@@ -11280,7 +11280,7 @@ sat
   (define-fun |15_dst-ip| () (_ BitVec 32)
     #x0af28380)
   (define-fun |1__reachable-id_db3-x3hl-xcg-9-03| () Int
-    5)
+    3)
   (define-fun |22_22__db3-x3hl-xcg-9-10_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |31_31__db3-x3hl-xcg-9-20_Loopback0_INBOUND_SOFTAdd| () Bool
@@ -11322,7 +11322,7 @@ sat
   (define-fun |1_1__db3-x3sb-xcg-9-1b_Port-Channel13_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |27__reachable-id_db3-x3hl-xcg-9-11| () Int
-    3)
+    7)
   (define-fun |9_9__db3-x3sb-xcg-9-1b_Port-Channel16_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |27_27__db3-x3sb-xcg-9-1a_Port-Channel18_OUTBOUND_SOFTAdd| () Bool
@@ -11338,7 +11338,7 @@ sat
   (define-fun |8_8__db3-x3hl-xcg-9-14_Port-Channel2_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |5__reachable-id_db3-x3hl-xcg-9-19| () Int
-    5)
+    3)
   (define-fun |9_9__db3-x3hl-xcg-9-07_Vlan102_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |31_31__db3-x3hl-xcg-9-18_Loopback0_INBOUND_SOFTAdd| () Bool
@@ -11442,7 +11442,7 @@ sat
   (define-fun |20_20__db3-x3sb-xcg-9-1b_Port-Channel5_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_db3-x3sb-xcg-9-1b_BGP_IMPORT_Ethernet1/48_permitted| () Bool
-    true)
+    false)
   (define-fun |14_14__db3-x3hl-xcg-9-15_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |7_7__db3-x3hl-xcg-9-02_Loopback0_INBOUND_SOFTAdd| () Bool
@@ -11458,7 +11458,7 @@ sat
   (define-fun |37_37__db3-x3hl-xcg-9-06_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |41__reachable-id_db3-x3hl-xcg-9-11| () Int
-    3)
+    5)
   (define-fun |35_35__db3-x3hl-xcg-9-12_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |8_8__db3-x3sb-xcg-9-1a_Port-Channel14_INBOUND_SOFTAdd| () Bool
@@ -11520,7 +11520,7 @@ sat
   (define-fun |36_36__db3-x3hl-xcg-9-08_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |32__reachable-id_db3-x3hl-xcg-9-13| () Int
-    3)
+    5)
   (define-fun |28_28__db3-x3hl-xcg-9-12_Vlan102_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |14_14__db3-x3hl-xcg-9-12_Port-Channel2_INBOUND_SOFTAdd| () Bool
@@ -11528,7 +11528,7 @@ sat
   (define-fun |17_17__db3-x3hl-xcg-9-12_Port-Channel1_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |34__reachable-id_db3-x3hl-xcg-9-15| () Int
-    3)
+    5)
   (define-fun |21_21__db3-x3hl-xcg-9-01_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
   (define-fun |29_29__db3-x3hl-xcg-9-05_Vlan101_INBOUND_SOFTAdd| () Bool
@@ -11568,7 +11568,7 @@ sat
   (define-fun |1_1__db3-x3sb-xcg-9-1a_Port-Channel11_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |23__reachable-id_db3-x3hl-xcg-9-03| () Int
-    9)
+    3)
   (define-fun |16_16__db3-x3sb-xcg-9-1a_Port-Channel12_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |35_35__db3-x3hl-xcg-9-03_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
@@ -11582,7 +11582,7 @@ sat
   (define-fun |3_3__db3-x3hl-xcg-9-15_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |15__reachable-id_db3-x3hl-xcg-9-10| () Int
-    3)
+    5)
   (define-fun |40_40__db3-x3sb-xcg-9-1a_Port-Channel20_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |37_37__db3-x3hl-xcg-9-13_mgmt0_OUTBOUND_SOFTAdd| () Bool
@@ -11594,7 +11594,7 @@ sat
   (define-fun |37_37__db3-x3hl-xcg-9-11_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |37__reachable-id_db3-x3hl-xcg-9-13| () Int
-    3)
+    5)
   (define-fun |9_9__db3-x3hl-xcg-9-17_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |39_39__db3-x3sb-xcg-9-1b_Port-Channel16_OUTBOUND_SOFTAdd| () Bool
@@ -11650,13 +11650,13 @@ sat
   (define-fun |37_37__db3-x3hl-xcg-9-07_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
   (define-fun |30__reachable-id_db3-x3hl-xcg-9-11| () Int
-    3)
+    7)
   (define-fun |25_25__db3-x3sb-xcg-9-1a_Port-Channel4_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |6_6__db3-x3hl-xcg-9-03_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |29_dst-ip| () (_ BitVec 32)
-    #x0af28381)
+    #x0af28380)
   (define-fun |0_0__db3-x3hl-xcg-9-14_Port-Channel2_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |24_24__db3-x3hl-xcg-9-14_Port-Channel1_INBOUND_SOFTAdd| () Bool
@@ -11664,7 +11664,7 @@ sat
   (define-fun |39_39__db3-x3sb-xcg-9-1a_Port-Channel13_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |31__reachable-id_db3-x3hl-xcg-9-04| () Int
-    3)
+    5)
   (define-fun |40_ip-protocol| () Int
     0)
   (define-fun |0_0__db3-x3hl-xcg-9-03_mgmt0_OUTBOUND_SOFTAdd| () Bool
@@ -11778,7 +11778,7 @@ sat
   (define-fun |17_17__db3-x3hl-xcg-9-01_Loopback0_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |6__reachable-id_db3-x3hl-xcg-9-11| () Int
-    6)
+    5)
   (define-fun |9_9__db3-x3sb-xcg-9-1a_Ethernet1/48_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |40_40__db3-x3hl-xcg-9-16_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
@@ -11864,7 +11864,7 @@ sat
   (define-fun |29_29__db3-x3hl-xcg-9-12_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |22__reachable-id_db3-x3hl-xcg-9-08| () Int
-    5)
+    3)
   (define-fun |2_2__db3-x3sb-xcg-9-1b_Port-Channel16_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |26_26__db3-x3hl-xcg-9-05_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
@@ -11974,7 +11974,7 @@ sat
   (define-fun |25_25__db3-x3hl-xcg-9-17_Vlan102_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_db3-x3hl-xcg-9-11_BGP_IMPORT_Port-Channel2_metric| () Int
-    0)
+    2)
   (define-fun |36_36__db3-x3hl-xcg-9-01_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |7_7__db3-x3sb-xcg-9-1a_Port-Channel20_INBOUND_SOFTAdd| () Bool
@@ -12058,7 +12058,7 @@ sat
   (define-fun |38_38__db3-x3hl-xcg-9-19_Port-Channel2_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_CONTROL-FORWARDING_db3-x3hl-xcg-9-20_Port-Channel2| () Bool
-    false)
+    true)
   (define-fun |1_1__db3-x3hl-xcg-9-16_Port-Channel2_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |5_5__db3-x3sb-xcg-9-1b_Port-Channel9_INBOUND_SOFTAdd| () Bool
@@ -12092,11 +12092,11 @@ sat
   (define-fun |26_26__db3-x3sb-xcg-9-1a_Port-Channel11_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |28__reachable-id_db3-x3hl-xcg-9-16| () Int
-    3)
+    5)
   (define-fun |39_39__db3-x3hl-xcg-9-02_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |24__reachable-id_db3-x3hl-xcg-9-11| () Int
-    8)
+    5)
   (define-fun |16_16__db3-x3hl-xcg-9-19_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |21_21__db3-x3hl-xcg-9-05_Loopback0_OUTBOUND_SOFTAdd| () Bool
@@ -12154,7 +12154,7 @@ sat
   (define-fun |4_4__db3-x3hl-xcg-9-12_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
   (define-fun |36__reachable-id_db3-x3sb-xcg-9-1b| () Int
-    2)
+    4)
   (define-fun |0_db3-x3sb-xcg-9-1b_BGP_IMPORT_Port-Channel13_prefixLength| () Int
     0)
   (define-fun |10_10__db3-x3sb-xcg-9-1b_Port-Channel8_INBOUND_SOFTAdd| () Bool
@@ -12176,7 +12176,7 @@ sat
   (define-fun |12_12__db3-x3sb-xcg-9-1b_Port-Channel6_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |7__reachable-id_db3-x3hl-xcg-9-14| () Int
-    3)
+    5)
   (define-fun |32_icmp-type| () Int
     0)
   (define-fun |21_21__db3-x3hl-xcg-9-16_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
@@ -12234,7 +12234,7 @@ sat
   (define-fun |19_19__db3-x3hl-xcg-9-12_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |26__reachable-id_db3-x3hl-xcg-9-10| () Int
-    5)
+    3)
   (define-fun |19_19__db3-x3hl-xcg-9-09_Port-Channel1_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |27_27__db3-x3sb-xcg-9-1b_Port-Channel8_INBOUND_SOFTAdd| () Bool
@@ -12254,7 +12254,7 @@ sat
   (define-fun |40_40__db3-x3hl-xcg-9-01_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |26__reachable-id_db3-x3hl-xcg-9-11| () Int
-    3)
+    5)
   (define-fun |27_27__db3-x3hl-xcg-9-09_Port-Channel1_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |11_11__db3-x3hl-xcg-9-13_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
@@ -12300,7 +12300,7 @@ sat
   (define-fun |19_19__db3-x3hl-xcg-9-13_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |29__reachable-id_db3-x3hl-xcg-9-05| () Int
-    3)
+    5)
   (define-fun |27_27__db3-x3hl-xcg-9-07_Port-Channel2_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |5_5__db3-x3hl-xcg-9-03_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
@@ -12382,7 +12382,7 @@ sat
   (define-fun |39_39__db3-x3hl-xcg-9-16_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
     false)
   (define-fun |28__reachable-id_db3-x3hl-xcg-9-08| () Int
-    8)
+    3)
   (define-fun |0_db3-x3sb-xcg-9-1a_BGP_IMPORT_Port-Channel6AllowChoiceUseSoft| () Bool
     false)
   (define-fun |41_41__db3-x3hl-xcg-9-19_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
@@ -12422,11 +12422,11 @@ sat
   (define-fun |33_33__db3-x3sb-xcg-9-1b_Port-Channel10_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |25__reachable-id_db3-x3hl-xcg-9-09| () Int
-    3)
+    5)
   (define-fun |31_31__db3-x3hl-xcg-9-17_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |7__reachable-id_db3-x3hl-xcg-9-01| () Int
-    3)
+    5)
   (define-fun |34_34__db3-x3sb-xcg-9-1b_Port-Channel20_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_db3-x3hl-xcg-9-05-StaticRouteAddSoft-db3-x3hl-xcg-9-05,Port-Channel2 --> db3-x3sb-xcg-9-1b,Port-Channel5| () Bool
@@ -12500,7 +12500,7 @@ sat
   (define-fun |27_27__db3-x3hl-xcg-9-16_Port-Channel1_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |31__reachable-id_db3-x3hl-xcg-9-07| () Int
-    3)
+    5)
   (define-fun |38_38__db3-x3sb-xcg-9-1a_Port-Channel18_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |9_9__db3-x3hl-xcg-9-15_Vlan101_INBOUND_SOFTAdd| () Bool
@@ -12598,7 +12598,7 @@ sat
   (define-fun |0_CONTROL-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel16| () Bool
     false)
   (define-fun |19__reachable-id_db3-x3hl-xcg-9-04| () Int
-    3)
+    7)
   (define-fun |32_32__db3-x3hl-xcg-9-06_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |3_3__db3-x3sb-xcg-9-1a_mgmt0_OUTBOUND_SOFTAdd| () Bool
@@ -12754,7 +12754,7 @@ sat
   (define-fun |7_7__db3-x3hl-xcg-9-18_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |15__reachable-id_db3-x3hl-xcg-9-13| () Int
-    3)
+    5)
   (define-fun |6_6__db3-x3hl-xcg-9-04_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |9_9__db3-x3hl-xcg-9-18_Loopback0_INBOUND_SOFTAdd| () Bool
@@ -12798,9 +12798,9 @@ sat
   (define-fun |37_37__db3-x3hl-xcg-9-20_Port-Channel2_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |20__reachable-id_db3-x3hl-xcg-9-20| () Int
-    3)
+    5)
   (define-fun |39__reachable-id_db3-x3hl-xcg-9-14| () Int
-    7)
+    5)
   (define-fun |41_41__db3-x3hl-xcg-9-04_Port-Channel1_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |9_9__db3-x3hl-xcg-9-12_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
@@ -12844,7 +12844,7 @@ sat
   (define-fun |14_14__db3-x3hl-xcg-9-18_Vlan102_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |39__reachable-id_db3-x3hl-xcg-9-16| () Int
-    8)
+    3)
   (define-fun |1_1__db3-x3hl-xcg-9-02_Port-Channel2_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |3_3__db3-x3hl-xcg-9-17_Port-Channel2_INBOUND_SOFTAdd| () Bool
@@ -12890,7 +12890,7 @@ sat
   (define-fun |9_9__db3-x3hl-xcg-9-03_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |32__reachable-id_db3-x3hl-xcg-9-01| () Int
-    3)
+    5)
   (define-fun |26_26__db3-x3hl-xcg-9-11_Loopback0_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_0__db3-x3hl-xcg-9-05_mgmt0_OUTBOUND_SOFTAdd| () Bool
@@ -13062,7 +13062,7 @@ sat
   (define-fun |35_35__db3-x3hl-xcg-9-01_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |35__reachable-id_db3-x3hl-xcg-9-11| () Int
-    3)
+    5)
   (define-fun |23_23__db3-x3sb-xcg-9-1a_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_db3-x3hl-xcg-9-16ImportFilterAddSoft0_db3-x3hl-xcg-9-16_BGP_IMPORT_Port-Channel2| () Bool
@@ -13106,7 +13106,7 @@ sat
   (define-fun |0_db3-x3hl-xcg-9-15-StaticRouteAddSoft-db3-x3hl-xcg-9-15,Port-Channel1 --> db3-x3sb-xcg-9-1a,Port-Channel15| () Bool
     false)
   (define-fun |35__reachable-id_db3-x3hl-xcg-9-14| () Int
-    3)
+    5)
   (define-fun |2_2__db3-x3hl-xcg-9-13_Vlan102_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |30_30__db3-x3hl-xcg-9-04_Port-Channel2_INBOUND_SOFTAdd| () Bool
@@ -13114,7 +13114,7 @@ sat
   (define-fun |23_23__db3-x3hl-xcg-9-12_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0__reachable-id_db3-x3hl-xcg-9-04| () Int
-    5)
+    11)
   (define-fun |4__reachable-id_db3-x3hl-xcg-9-01| () Int
     5)
   (define-fun |28_28__db3-x3hl-xcg-9-19_Vlan102_INBOUND_SOFTAdd| () Bool
@@ -13198,7 +13198,7 @@ sat
   (define-fun |33_33__db3-x3sb-xcg-9-1b_Port-Channel4_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |37__reachable-id_db3-x3hl-xcg-9-09| () Int
-    3)
+    5)
   (define-fun |0_0__db3-x3hl-xcg-9-02_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |25_25__db3-x3hl-xcg-9-09_mgmt0_OUTBOUND_SOFTAdd| () Bool
@@ -13224,7 +13224,7 @@ sat
   (define-fun |3_3__db3-x3hl-xcg-9-04_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
   (define-fun |4__reachable-id_db3-x3hl-xcg-9-05| () Int
-    5)
+    3)
   (define-fun |36_36__db3-x3sb-xcg-9-1b_Port-Channel13_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_db3-x3sb-xcg-9-1a_BGP_IMPORT_Port-Channel10AllowChoiceUseSoft| () Bool
@@ -13240,7 +13240,7 @@ sat
   (define-fun |8_8__db3-x3sb-xcg-9-1b_Port-Channel5_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |1__reachable-id_db3-x3hl-xcg-9-20| () Int
-    7)
+    3)
   (define-fun |2_2__db3-x3hl-xcg-9-15_Vlan102_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |38_38__db3-x3hl-xcg-9-16_Port-Channel1_INBOUND_SOFTAdd| () Bool
@@ -13252,7 +13252,7 @@ sat
   (define-fun |33_33__db3-x3hl-xcg-9-13_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |5__reachable-id_db3-x3hl-xcg-9-07| () Int
-    5)
+    3)
   (define-fun |31_31__db3-x3sb-xcg-9-1a_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |9_9__db3-x3sb-xcg-9-1a_Ethernet1/48_OUTBOUND_SOFTAdd| () Bool
@@ -13304,7 +13304,7 @@ sat
   (define-fun |0_db3-x3sb-xcg-9-1a_BGP_IMPORT_Port-Channel18_permitted| () Bool
     false)
   (define-fun |0_db3-x3hl-xcg-9-02-StaticRouteAddSoft-db3-x3hl-xcg-9-02,Port-Channel1 --> db3-x3sb-xcg-9-1a,Port-Channel2| () Bool
-    false)
+    true)
   (define-fun |15_15__db3-x3sb-xcg-9-1b_Port-Channel4_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |4_4__db3-x3hl-xcg-9-20_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
@@ -13324,7 +13324,7 @@ sat
   (define-fun |15__reachable-id_db3-x3hl-xcg-9-01| () Int
     5)
   (define-fun |30__reachable-id_db3-x3hl-xcg-9-14| () Int
-    5)
+    7)
   (define-fun |22__reachable-id_db3-x3hl-xcg-9-14| () Int
     5)
   (define-fun |3_3__db3-x3sb-xcg-9-1b_Port-Channel13_OUTBOUND_SOFTAdd| () Bool
@@ -13444,7 +13444,7 @@ sat
   (define-fun |35_35__db3-x3hl-xcg-9-19_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
     false)
   (define-fun |40__reachable-id_db3-x3hl-xcg-9-12| () Int
-    4)
+    5)
   (define-fun |28_28__db3-x3sb-xcg-9-1a_Port-Channel11_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |5_5__db3-x3hl-xcg-9-02_Port-Channel1_INBOUND_SOFTAdd| () Bool
@@ -13518,7 +13518,7 @@ sat
   (define-fun |19_19__db3-x3hl-xcg-9-19_Loopback0_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |6__reachable-id_db3-x3hl-xcg-9-06| () Int
-    3)
+    5)
   (define-fun |37_37__db3-x3hl-xcg-9-16_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |8_8__db3-x3sb-xcg-9-1b_Port-Channel20_OUTBOUND_SOFTAdd| () Bool
@@ -13546,7 +13546,7 @@ sat
   (define-fun |7_7__db3-x3hl-xcg-9-10_Loopback0_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |32_dst-ip| () (_ BitVec 32)
-    #x0af28381)
+    #x0af283c0)
   (define-fun |35_35__db3-x3hl-xcg-9-16_Port-Channel1_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |18_18__db3-x3sb-xcg-9-1b_Port-Channel15_OUTBOUND_SOFTAdd| () Bool
@@ -13604,7 +13604,7 @@ sat
   (define-fun |33_33__db3-x3sb-xcg-9-1b_Loopback0_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |40_dst-ip| () (_ BitVec 32)
-    #x0af28381)
+    #x0af28380)
   (define-fun |34_34__db3-x3hl-xcg-9-07_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |21_21__db3-x3hl-xcg-9-13_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
@@ -13614,7 +13614,7 @@ sat
   (define-fun |23_23__db3-x3hl-xcg-9-13_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
   (define-fun |8__reachable-id_db3-x3sb-xcg-9-1a| () Int
-    4)
+    2)
   (define-fun |12_12__db3-x3hl-xcg-9-12_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |20_20__db3-x3sb-xcg-9-1b_Port-Channel6_OUTBOUND_SOFTAdd| () Bool
@@ -13670,7 +13670,7 @@ sat
   (define-fun |28_28__db3-x3hl-xcg-9-20_Loopback0_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |23__reachable-id_db3-x3hl-xcg-9-15| () Int
-    7)
+    5)
   (define-fun |19_19__db3-x3hl-xcg-9-14_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
   (define-fun |0_CONTROL-FORWARDING_db3-x3sb-xcg-9-1b_Port-Channel18| () Bool
@@ -13682,7 +13682,7 @@ sat
   (define-fun |3_3__db3-x3hl-xcg-9-11_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |3__reachable-id_db3-x3hl-xcg-9-12| () Int
-    5)
+    3)
   (define-fun |14_14__db3-x3hl-xcg-9-11_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
     false)
   (define-fun |14_14__db3-x3sb-xcg-9-1a_Ethernet1/47_OUTBOUND_SOFTAdd| () Bool
@@ -13704,7 +13704,7 @@ sat
   (define-fun |40_40__db3-x3hl-xcg-9-02_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |31__reachable-id_db3-x3hl-xcg-9-14| () Int
-    3)
+    5)
   (define-fun |28_28__db3-x3hl-xcg-9-12_Loopback0_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |14_14__db3-x3hl-xcg-9-02_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
@@ -13836,7 +13836,7 @@ sat
   (define-fun |39_39__db3-x3hl-xcg-9-20_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |23__reachable-id_db3-x3hl-xcg-9-20| () Int
-    9)
+    3)
   (define-fun |3_3__db3-x3hl-xcg-9-07_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |25_25__db3-x3sb-xcg-9-1b_Port-Channel10_OUTBOUND_SOFTAdd| () Bool
@@ -13950,7 +13950,7 @@ sat
   (define-fun |22_22__db3-x3hl-xcg-9-07_Loopback0_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_db3-x3hl-xcg-9-20_BGP_IMPORT_Port-Channel2AllowChoiceUseSoft| () Bool
-    false)
+    true)
   (define-fun |12_12__db3-x3hl-xcg-9-02_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |36_36__db3-x3hl-xcg-9-06_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
@@ -14132,7 +14132,7 @@ sat
   (define-fun |0_db3-x3hl-xcg-9-01_BGP_SINGLE-EXPORT__permitted| () Bool
     true)
   (define-fun |0__reachable-id_db3-x3hl-xcg-9-08| () Int
-    5)
+    9)
   (define-fun |34_icmp-code| () Int
     0)
   (define-fun |20_20__db3-x3hl-xcg-9-18_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
@@ -14154,7 +14154,7 @@ sat
   (define-fun |13_13__db3-x3hl-xcg-9-04_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |25_dst-ip| () (_ BitVec 32)
-    #x0af28382)
+    #x0af28380)
   (define-fun |25_25__db3-x3sb-xcg-9-1b_Port-Channel16_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |30_30__db3-x3hl-xcg-9-03_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
@@ -14292,13 +14292,13 @@ sat
   (define-fun |1_1__db3-x3hl-xcg-9-12_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |35_dst-ip| () (_ BitVec 32)
-    #x0af28381)
+    #x0af28382)
   (define-fun |25__reachable-id_db3-x3hl-xcg-9-10| () Int
-    3)
+    5)
   (define-fun |7_7__db3-x3hl-xcg-9-05_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |40__reachable-id_db3-x3hl-xcg-9-14| () Int
-    5)
+    3)
   (define-fun |39_39__db3-x3hl-xcg-9-04_Port-Channel1_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |27_27__db3-x3sb-xcg-9-1a_Port-Channel13_INBOUND_SOFTAdd| () Bool
@@ -14546,7 +14546,7 @@ sat
   (define-fun |34_34__db3-x3sb-xcg-9-1a_Port-Channel1_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |19__reachable-id_db3-x3hl-xcg-9-01| () Int
-    5)
+    7)
   (define-fun |36__reachable-id_db3-x3hl-xcg-9-19| () Int
     5)
   (define-fun |5_5__db3-x3hl-xcg-9-15_Vlan101_INBOUND_SOFTAdd| () Bool
@@ -14590,7 +14590,7 @@ sat
   (define-fun |35_35__db3-x3hl-xcg-9-05_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |19__reachable-id_db3-x3hl-xcg-9-03| () Int
-    5)
+    7)
   (define-fun |11_11__db3-x3sb-xcg-9-1b_Loopback0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |36_36__db3-x3hl-xcg-9-09_Port-Channel1_INBOUND_SOFTAdd| () Bool
@@ -14672,15 +14672,15 @@ sat
   (define-fun |38_38__db3-x3hl-xcg-9-08_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |15__reachable-id_db3-x3hl-xcg-9-02| () Int
-    3)
+    5)
   (define-fun |38__reachable-id_db3-x3hl-xcg-9-13| () Int
-    3)
+    5)
   (define-fun |4_4__db3-x3hl-xcg-9-05_Vlan102_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |11_11__db3-x3sb-xcg-9-1b_Port-Channel18_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |23__reachable-id_db3-x3hl-xcg-9-08| () Int
-    7)
+    3)
   (define-fun |24_24__db3-x3hl-xcg-9-13_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
     false)
   (define-fun |0_0__db3-x3sb-xcg-9-1b_Loopback0_INBOUND_SOFTAdd| () Bool
@@ -14776,7 +14776,7 @@ sat
   (define-fun |23_23__db3-x3sb-xcg-9-1a_Loopback0_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |27__reachable-id_db3-x3hl-xcg-9-03| () Int
-    3)
+    7)
   (define-fun |28_28__db3-x3sb-xcg-9-1a_Port-Channel15_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |13_13__db3-x3hl-xcg-9-07_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
@@ -14896,7 +14896,7 @@ sat
   (define-fun |33_33__db3-x3hl-xcg-9-11_Loopback0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |17__reachable-id_db3-x3hl-xcg-9-04| () Int
-    7)
+    3)
   (define-fun |33_33__db3-x3sb-xcg-9-1a_Port-Channel14_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |15_15__db3-x3hl-xcg-9-20_mgmt0_OUTBOUND_SOFTAdd| () Bool
@@ -14940,7 +14940,7 @@ sat
   (define-fun |15_15__db3-x3hl-xcg-9-17_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |30__reachable-id_db3-x3hl-xcg-9-16| () Int
-    5)
+    7)
   (define-fun |26_26__db3-x3hl-xcg-9-17_Vlan102_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |2_2__db3-x3sb-xcg-9-1b_Port-Channel19_OUTBOUND_SOFTAdd| () Bool
@@ -14966,7 +14966,7 @@ sat
   (define-fun |11_11__db3-x3hl-xcg-9-15_Port-Channel1_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_db3-x3hl-xcg-9-02_BGP_IMPORT_Port-Channel2_metric| () Int
-    2)
+    0)
   (define-fun |24_24__db3-x3sb-xcg-9-1b_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |15_15__db3-x3hl-xcg-9-20_Loopback0_OUTBOUND_SOFTAdd| () Bool
@@ -15034,7 +15034,7 @@ sat
   (define-fun |24__reachable-id_db3-x3hl-xcg-9-19| () Int
     3)
   (define-fun |30__reachable-id_db3-x3hl-xcg-9-05| () Int
-    3)
+    7)
   (define-fun |1_1__db3-x3sb-xcg-9-1a_Port-Channel12_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |21_21__db3-x3hl-xcg-9-05_Port-Channel2_INBOUND_SOFTAdd| () Bool
@@ -15046,7 +15046,7 @@ sat
   (define-fun |18_18__db3-x3hl-xcg-9-15_Loopback0_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0__reachable-id_db3-x3hl-xcg-9-15| () Int
-    3)
+    9)
   (define-fun |14_14__db3-x3sb-xcg-9-1a_Port-Channel5_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |14_14__db3-x3hl-xcg-9-06_mgmt0_OUTBOUND_SOFTAdd| () Bool
@@ -15064,7 +15064,7 @@ sat
   (define-fun |27_27__db3-x3hl-xcg-9-05_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |4__reachable-id_db3-x3hl-xcg-9-10| () Int
-    7)
+    5)
   (define-fun |34_34__db3-x3hl-xcg-9-16_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
     false)
   (define-fun |31_31__db3-x3sb-xcg-9-1b_Port-Channel4_OUTBOUND_SOFTAdd| () Bool
@@ -15236,7 +15236,7 @@ sat
   (define-fun |19_19__db3-x3hl-xcg-9-04_Port-Channel2_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |39__reachable-id_db3-x3hl-xcg-9-12| () Int
-    3)
+    8)
   (define-fun |36_36__db3-x3sb-xcg-9-1b_Port-Channel17_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |22_22__db3-x3sb-xcg-9-1a_Port-Channel7_OUTBOUND_SOFTAdd| () Bool
@@ -15284,7 +15284,7 @@ sat
   (define-fun |36_36__db3-x3sb-xcg-9-1b_Port-Channel18_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |28__reachable-id_db3-x3hl-xcg-9-20| () Int
-    3)
+    5)
   (define-fun |10_10__db3-x3hl-xcg-9-16_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
   (define-fun |10_10__db3-x3sb-xcg-9-1b_Port-Channel20_INBOUND_SOFTAdd| () Bool
@@ -15306,7 +15306,7 @@ sat
   (define-fun |11_11__db3-x3sb-xcg-9-1a_Port-Channel8_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_db3-x3sb-xcg-9-1b_BGP_EXPORT_ENV-10.22.173.216_prefixLength| () Int
-    0)
+    1)
   (define-fun |31_31__db3-x3hl-xcg-9-14_Port-Channel1_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |39_39__db3-x3hl-xcg-9-19_Vlan102_INBOUND_SOFTAdd| () Bool
@@ -15406,7 +15406,7 @@ sat
   (define-fun |27_27__db3-x3hl-xcg-9-08_Loopback0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |29__reachable-id_db3-x3hl-xcg-9-10| () Int
-    8)
+    5)
   (define-fun |38_38__db3-x3hl-xcg-9-18_Loopback0_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |41_41__db3-x3hl-xcg-9-09_Loopback0_OUTBOUND_SOFTAdd| () Bool
@@ -15494,7 +15494,7 @@ sat
   (define-fun |21_21__db3-x3hl-xcg-9-18_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |23__reachable-id_db3-x3hl-xcg-9-11| () Int
-    7)
+    3)
   (define-fun |30_30__db3-x3hl-xcg-9-04_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |21_21__db3-x3sb-xcg-9-1a_Port-Channel8_INBOUND_SOFTAdd| () Bool
@@ -15692,7 +15692,7 @@ sat
   (define-fun |41_41__db3-x3sb-xcg-9-1b_Port-Channel4_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_db3-x3hl-xcg-9-11_BGP_SINGLE-EXPORT__permitted| () Bool
-    false)
+    true)
   (define-fun |3_3__db3-x3sb-xcg-9-1a_Ethernet1/48_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_db3-x3hl-xcg-9-18_OVERALL_BEST_None_metric| () Int
@@ -15802,7 +15802,7 @@ sat
   (define-fun |18_18__db3-x3hl-xcg-9-04_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
     false)
   (define-fun |0_db3-x3hl-xcg-9-02_BGP_IMPORT_Port-Channel2AllowChoiceUseSoft| () Bool
-    true)
+    false)
   (define-fun |2_2__db3-x3sb-xcg-9-1a_Loopback0_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |6_6__db3-x3hl-xcg-9-13_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
@@ -15828,7 +15828,7 @@ sat
   (define-fun |1_1__db3-x3hl-xcg-9-03_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |26__reachable-id_db3-x3hl-xcg-9-18| () Int
-    5)
+    3)
   (define-fun |0_0__db3-x3hl-xcg-9-15_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
     false)
   (define-fun |1_1__db3-x3hl-xcg-9-01_Vlan101_INBOUND_SOFTAdd| () Bool
@@ -15872,7 +15872,7 @@ sat
   (define-fun |29_29__db3-x3hl-xcg-9-10_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |19__reachable-id_db3-x3hl-xcg-9-06| () Int
-    5)
+    7)
   (define-fun |24_24__db3-x3hl-xcg-9-20_Vlan102_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |26_26__db3-x3hl-xcg-9-01_Vlan101_INBOUND_SOFTAdd| () Bool
@@ -16036,7 +16036,7 @@ sat
   (define-fun |16_16__db3-x3sb-xcg-9-1a_Port-Channel6_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_db3-x3hl-xcg-9-14_BGP_SINGLE-EXPORT__metric| () Int
-    3)
+    0)
   (define-fun |6_6__db3-x3sb-xcg-9-1b_Port-Channel17_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |21_21__db3-x3hl-xcg-9-19_Vlan102_OUTBOUND_SOFTAdd| () Bool
@@ -16072,7 +16072,7 @@ sat
   (define-fun |17_17__db3-x3hl-xcg-9-08_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
   (define-fun |17_dst-ip| () (_ BitVec 32)
-    #x0af28380)
+    #x0af283a0)
   (define-fun |22_22__db3-x3sb-xcg-9-1a_Port-Channel19_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |2_2__db3-x3hl-xcg-9-18_Port-Channel1_INBOUND_SOFTAdd| () Bool
@@ -16126,7 +16126,7 @@ sat
   (define-fun |41_41__db3-x3sb-xcg-9-1b_Port-Channel13_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |41__reachable-id_db3-x3sb-xcg-9-1b| () Int
-    2)
+    4)
   (define-fun |14_14__db3-x3hl-xcg-9-07_Vlan102_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |14_14__db3-x3sb-xcg-9-1b_Port-Channel19_INBOUND_SOFTAdd| () Bool
@@ -16236,7 +16236,7 @@ sat
   (define-fun |18_18__db3-x3hl-xcg-9-03_Vlan102_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |11__reachable-id_db3-x3hl-xcg-9-11| () Int
-    3)
+    5)
   (define-fun |13_13__db3-x3hl-xcg-9-05_Loopback0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |24_icmp-type| () Int
@@ -16344,7 +16344,7 @@ sat
   (define-fun |41_41__db3-x3hl-xcg-9-12_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
   (define-fun |12__reachable-id_db3-x3hl-xcg-9-09| () Int
-    3)
+    5)
   (define-fun |19_19__db3-x3hl-xcg-9-05_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
     false)
   (define-fun |24_24__db3-x3hl-xcg-9-11_Vlan102_INBOUND_SOFTAdd| () Bool
@@ -16370,7 +16370,7 @@ sat
   (define-fun |21_21__db3-x3hl-xcg-9-05_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |4__reachable-id_db3-x3hl-xcg-9-04| () Int
-    7)
+    5)
   (define-fun |35_35__db3-x3sb-xcg-9-1b_Ethernet1/47_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |32_32__db3-x3hl-xcg-9-04_Vlan101_INBOUND_SOFTAdd| () Bool
@@ -16390,7 +16390,7 @@ sat
   (define-fun |21_21__db3-x3sb-xcg-9-1b_Ethernet1/47_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |13__reachable-id_db3-x3hl-xcg-9-03| () Int
-    7)
+    5)
   (define-fun |32_32__db3-x3hl-xcg-9-10_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
   (define-fun |25_25__db3-x3hl-xcg-9-04_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
@@ -16406,7 +16406,7 @@ sat
   (define-fun |28_28__db3-x3sb-xcg-9-1a_Port-Channel20_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |34__reachable-id_db3-x3hl-xcg-9-20| () Int
-    3)
+    5)
   (define-fun |7_7__db3-x3hl-xcg-9-02_Port-Channel1_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |24_24__db3-x3hl-xcg-9-15_Vlan102_INBOUND_SOFTAdd| () Bool
@@ -16482,7 +16482,7 @@ sat
   (define-fun |6_6__db3-x3sb-xcg-9-1a_Port-Channel8_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_db3-x3hl-xcg-9-14_BGP_IMPORT_Port-Channel2_metric| () Int
-    2)
+    0)
   (define-fun |12_12__db3-x3hl-xcg-9-17_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |35_35__db3-x3sb-xcg-9-1a_Port-Channel11_INBOUND_SOFTAdd| () Bool
@@ -16518,7 +16518,7 @@ sat
   (define-fun |2_2__db3-x3hl-xcg-9-13_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |6__reachable-id_db3-x3hl-xcg-9-13| () Int
-    3)
+    5)
   (define-fun |31_31__db3-x3hl-xcg-9-05_Port-Channel1_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |23_23__db3-x3hl-xcg-9-09_Port-Channel1_INBOUND_SOFTAdd| () Bool
@@ -16526,7 +16526,7 @@ sat
   (define-fun |17_17__db3-x3hl-xcg-9-11_Port-Channel1_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |4__reachable-id_db3-x3hl-xcg-9-15| () Int
-    5)
+    3)
   (define-fun |32_32__db3-x3sb-xcg-9-1a_Port-Channel7_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |23_23__db3-x3hl-xcg-9-03_Loopback0_OUTBOUND_SOFTAdd| () Bool
@@ -16642,7 +16642,7 @@ sat
   (define-fun |12_12__db3-x3hl-xcg-9-07_Vlan102_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |30__reachable-id_db3-x3hl-xcg-9-12| () Int
-    3)
+    7)
   (define-fun |23_23__db3-x3sb-xcg-9-1a_Port-Channel13_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |1_1__db3-x3sb-xcg-9-1a_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
@@ -16668,7 +16668,7 @@ sat
   (define-fun |7_7__db3-x3hl-xcg-9-19_Port-Channel1_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_db3-x3sb-xcg-9-1b_BGP_IMPORT_Ethernet1/47_metric| () Int
-    1)
+    0)
   (define-fun |25_25__db3-x3hl-xcg-9-10_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |2_2__db3-x3hl-xcg-9-09_Port-Channel2_INBOUND_SOFTAdd| () Bool
@@ -16854,7 +16854,7 @@ sat
   (define-fun |41_41__db3-x3hl-xcg-9-14_Port-Channel2_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |25__reachable-id_db3-x3hl-xcg-9-20| () Int
-    3)
+    5)
   (define-fun |5_5__db3-x3hl-xcg-9-20_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |33_33__db3-x3hl-xcg-9-16_Port-Channel1_INBOUND_SOFTAdd| () Bool
@@ -16905,9 +16905,9 @@ sat
     true)
   (define-fun |41_41__db3-x3hl-xcg-9-05_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
-  (define-fun |15_15__db3-x3hl-xcg-9-06_Vlan101_INBOUND_SOFTAdd| () Bool
-    true)
   (define-fun |2_2__db3-x3hl-xcg-9-11_mgmt0_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |15_15__db3-x3hl-xcg-9-06_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |21_21__db3-x3sb-xcg-9-1a_Port-Channel20_OUTBOUND_SOFTAdd| () Bool
     true)
@@ -16920,7 +16920,7 @@ sat
   (define-fun |14_14__db3-x3sb-xcg-9-1a_Ethernet1/48_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |27__reachable-id_db3-x3hl-xcg-9-05| () Int
-    3)
+    7)
   (define-fun |16_16__db3-x3hl-xcg-9-08_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |9_9__db3-x3sb-xcg-9-1a_Loopback0_OUTBOUND_SOFTAdd| () Bool
@@ -17100,7 +17100,7 @@ sat
   (define-fun |14_14__db3-x3hl-xcg-9-16_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |13__reachable-id_db3-x3hl-xcg-9-18| () Int
-    7)
+    5)
   (define-fun |24_icmp-code| () Int
     0)
   (define-fun |19_19__db3-x3sb-xcg-9-1a_Port-Channel16_OUTBOUND_SOFTAdd| () Bool
@@ -17124,9 +17124,9 @@ sat
   (define-fun |2_2__db3-x3hl-xcg-9-17_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |31__reachable-id_db3-x3hl-xcg-9-15| () Int
-    3)
-  (define-fun |39__reachable-id_db3-x3hl-xcg-9-01| () Int
     5)
+  (define-fun |39__reachable-id_db3-x3hl-xcg-9-01| () Int
+    8)
   (define-fun |39_39__db3-x3sb-xcg-9-1b_Port-Channel8_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |13_13__db3-x3hl-xcg-9-03_Vlan101_INBOUND_SOFTAdd| () Bool
@@ -17142,7 +17142,7 @@ sat
   (define-fun |24_24__db3-x3hl-xcg-9-19_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
   (define-fun |37__reachable-id_db3-x3hl-xcg-9-12| () Int
-    3)
+    5)
   (define-fun |4_4__db3-x3hl-xcg-9-11_Port-Channel1_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |20_20__db3-x3hl-xcg-9-08_Loopback0_INBOUND_SOFTAdd| () Bool
@@ -17150,7 +17150,7 @@ sat
   (define-fun |27_27__db3-x3hl-xcg-9-10_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |41__reachable-id_db3-x3hl-xcg-9-20| () Int
-    3)
+    5)
   (define-fun |9_9__db3-x3hl-xcg-9-12_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |12_12__db3-x3hl-xcg-9-07_Port-Channel2_INBOUND_SOFTAdd| () Bool
@@ -17178,7 +17178,7 @@ sat
   (define-fun |3__reachable-id_db3-x3hl-xcg-9-16| () Int
     5)
   (define-fun |7__reachable-id_db3-x3hl-xcg-9-20| () Int
-    3)
+    5)
   (define-fun |24_24__db3-x3hl-xcg-9-17_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
   (define-fun |21_21__db3-x3hl-xcg-9-12_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
@@ -17194,7 +17194,7 @@ sat
   (define-fun |4_4__db3-x3hl-xcg-9-04_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |3__reachable-id_db3-x3hl-xcg-9-08| () Int
-    5)
+    3)
   (define-fun |15_ip-protocol| () Int
     0)
   (define-fun |15_15__db3-x3hl-xcg-9-10_Vlan102_OUTBOUND_SOFTAdd| () Bool
@@ -17270,11 +17270,11 @@ sat
   (define-fun |4_4__db3-x3hl-xcg-9-11_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
     false)
   (define-fun |41__reachable-id_db3-x3sb-xcg-9-1a| () Int
-    4)
+    2)
   (define-fun |10_10__db3-x3sb-xcg-9-1b_Port-Channel5_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_db3-x3hl-xcg-9-14_BGP_IMPORT_Port-Channel2_permitted| () Bool
-    true)
+    false)
   (define-fun |17_17__db3-x3hl-xcg-9-15_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |1_1__db3-x3hl-xcg-9-15_Port-Channel2_INBOUND_SOFTAdd| () Bool
@@ -17351,9 +17351,9 @@ sat
     true)
   (define-fun |38_38__db3-x3hl-xcg-9-09_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
-  (define-fun |13_13__db3-x3sb-xcg-9-1b_Ethernet1/48_OUTBOUND_SOFTAdd| () Bool
-    true)
   (define-fun |29_29__db3-x3hl-xcg-9-18_Vlan102_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |13_13__db3-x3sb-xcg-9-1b_Ethernet1/48_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |18_18__db3-x3hl-xcg-9-02_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
     false)
@@ -17392,7 +17392,7 @@ sat
   (define-fun |4_4__db3-x3hl-xcg-9-09_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
   (define-fun |30__reachable-id_db3-x3sb-xcg-9-1a| () Int
-    4)
+    6)
   (define-fun |0_0__db3-x3sb-xcg-9-1b_Port-Channel11_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |1_1__db3-x3sb-xcg-9-1a_Port-Channel10_INBOUND_SOFTAdd| () Bool
@@ -17408,7 +17408,7 @@ sat
   (define-fun |34_34__db3-x3sb-xcg-9-1a_Port-Channel6_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |26__reachable-id_db3-x3hl-xcg-9-20| () Int
-    3)
+    5)
   (define-fun |21_21__db3-x3hl-xcg-9-08_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |38_38__db3-x3hl-xcg-9-17_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
@@ -17416,7 +17416,7 @@ sat
   (define-fun |30_30__db3-x3hl-xcg-9-02_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_db3-x3hl-xcg-9-20-StaticRouteAddSoft-db3-x3hl-xcg-9-20,Port-Channel2 --> db3-x3sb-xcg-9-1b,Port-Channel20| () Bool
-    true)
+    false)
   (define-fun |6_6__db3-x3sb-xcg-9-1b_Port-Channel8_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |15_15__db3-x3hl-xcg-9-01_Loopback0_INBOUND_SOFTAdd| () Bool
@@ -17446,7 +17446,7 @@ sat
   (define-fun |29_29__db3-x3hl-xcg-9-13_Port-Channel2_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |13__reachable-id_db3-x3hl-xcg-9-16| () Int
-    5)
+    3)
   (define-fun |10_10__db3-x3hl-xcg-9-06_Loopback0_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |11_11__db3-x3hl-xcg-9-12_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
@@ -17460,7 +17460,7 @@ sat
   (define-fun |9_9__db3-x3hl-xcg-9-04_Loopback0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |14__reachable-id_db3-x3hl-xcg-9-15| () Int
-    5)
+    3)
   (define-fun |34_34__db3-x3hl-xcg-9-11_Port-Channel2_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |33_dst-ip| () (_ BitVec 32)
@@ -17474,7 +17474,7 @@ sat
   (define-fun |11_11__db3-x3sb-xcg-9-1b_Port-Channel3_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |4_dst-ip| () (_ BitVec 32)
-    #x0af28383)
+    #x0af28380)
   (define-fun |23_23__db3-x3hl-xcg-9-08_Port-Channel2_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |17_17__db3-x3sb-xcg-9-1a_Ethernet1/48_OUTBOUND_SOFTAdd| () Bool
@@ -17550,7 +17550,7 @@ sat
   (define-fun |14_14__db3-x3hl-xcg-9-12_Loopback0_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |39__reachable-id_db3-x3hl-xcg-9-15| () Int
-    3)
+    5)
   (define-fun |37__reachable-id_db3-x3hl-xcg-9-17| () Int
     1)
   (define-fun |6_6__db3-x3sb-xcg-9-1b_Port-Channel19_INBOUND_SOFTAdd| () Bool
@@ -17566,7 +17566,7 @@ sat
   (define-fun |35_35__db3-x3hl-xcg-9-11_Loopback0_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |34__reachable-id_db3-x3hl-xcg-9-03| () Int
-    3)
+    5)
   (define-fun |0_db3-x3hl-xcg-9-05_BGP_IMPORT_Port-Channel1_prefixLength| () Int
     0)
   (define-fun |1_1__db3-x3hl-xcg-9-09_Vlan102_OUTBOUND_SOFTAdd| () Bool
@@ -17604,7 +17604,7 @@ sat
   (define-fun |22_22__db3-x3hl-xcg-9-20_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |28__reachable-id_db3-x3hl-xcg-9-03| () Int
-    8)
+    3)
   (define-fun |30_30__db3-x3sb-xcg-9-1b_Port-Channel19_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |5_5__db3-x3hl-xcg-9-11_Vlan101_INBOUND_SOFTAdd| () Bool
@@ -17626,7 +17626,7 @@ sat
   (define-fun |18_18__db3-x3hl-xcg-9-18_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
   (define-fun |0__reachable-id_db3-x3hl-xcg-9-03| () Int
-    3)
+    11)
   (define-fun |0_db3-x3hl-xcg-9-19_BGP_IMPORT_Port-Channel1_metric| () Int
     0)
   (define-fun |24_24__db3-x3hl-xcg-9-10_mgmt0_OUTBOUND_SOFTAdd| () Bool
@@ -17644,7 +17644,7 @@ sat
   (define-fun |4_4__db3-x3hl-xcg-9-13_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |25__reachable-id_db3-x3sb-xcg-9-1a| () Int
-    4)
+    2)
   (define-fun |38_38__db3-x3hl-xcg-9-08_Loopback0_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |5_5__db3-x3hl-xcg-9-15_Vlan102_INBOUND_SOFTAdd| () Bool
@@ -17673,9 +17673,9 @@ sat
     true)
   (define-fun |8_8__db3-x3hl-xcg-9-05_Vlan102_OUTBOUND_SOFTAdd| () Bool
     true)
-  (define-fun |4_4__db3-x3hl-xcg-9-17_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
-    false)
   (define-fun |26_26__db3-x3hl-xcg-9-17_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
+    false)
+  (define-fun |4_4__db3-x3hl-xcg-9-17_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
     false)
   (define-fun |40_40__db3-x3hl-xcg-9-08_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
     false)
@@ -17718,7 +17718,7 @@ sat
   (define-fun |16_16__db3-x3sb-xcg-9-1b_Port-Channel5_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |3__reachable-id_db3-x3hl-xcg-9-01| () Int
-    5)
+    3)
   (define-fun |14_14__db3-x3hl-xcg-9-03_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |40_40__db3-x3hl-xcg-9-17_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
@@ -17778,9 +17778,9 @@ sat
   (define-fun |24_24__db3-x3hl-xcg-9-16_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
     false)
   (define-fun |10__reachable-id_db3-x3hl-xcg-9-11| () Int
-    3)
+    5)
   (define-fun |29__reachable-id_db3-x3hl-xcg-9-19| () Int
-    3)
+    5)
   (define-fun |8_8__db3-x3hl-xcg-9-14_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |29_29__db3-x3hl-xcg-9-19_mgmt0_OUTBOUND_SOFTAdd| () Bool
@@ -17828,7 +17828,7 @@ sat
   (define-fun |14_14__db3-x3hl-xcg-9-10_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |7__reachable-id_db3-x3hl-xcg-9-02| () Int
-    3)
+    5)
   (define-fun |15_15__db3-x3hl-xcg-9-06_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_db3-x3hl-xcg-9-10_OVERALL_BEST_None_prefixLength| () Int
@@ -18032,11 +18032,11 @@ sat
   (define-fun |1_1__db3-x3hl-xcg-9-10_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |5_dst-ip| () (_ BitVec 32)
-    #x0af28381)
+    #x0af28380)
   (define-fun |13_13__db3-x3hl-xcg-9-10_Port-Channel1_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |40__reachable-id_db3-x3hl-xcg-9-02| () Int
-    4)
+    5)
   (define-fun |18_18__db3-x3hl-xcg-9-08_Port-Channel2_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_db3-x3hl-xcg-9-19ImportFilterAddSoft0_db3-x3hl-xcg-9-19_BGP_IMPORT_Port-Channel1| () Bool
@@ -18050,9 +18050,9 @@ sat
   (define-fun |36_36__db3-x3sb-xcg-9-1a_Ethernet1/48_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |12__reachable-id_db3-x3hl-xcg-9-13| () Int
-    5)
-  (define-fun |7__reachable-id_db3-x3hl-xcg-9-05| () Int
     3)
+  (define-fun |7__reachable-id_db3-x3hl-xcg-9-05| () Int
+    5)
   (define-fun |31_31__db3-x3hl-xcg-9-15_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |7_7__db3-x3hl-xcg-9-16_Vlan102_OUTBOUND_SOFTAdd| () Bool
@@ -18078,11 +18078,11 @@ sat
   (define-fun |24_24__db3-x3sb-xcg-9-1b_Port-Channel3_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |7__reachable-id_db3-x3hl-xcg-9-04| () Int
-    9)
+    5)
   (define-fun |34_34__db3-x3sb-xcg-9-1a_Port-Channel9_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |16__reachable-id_db3-x3hl-xcg-9-13| () Int
-    3)
+    5)
   (define-fun |37__reachable-id_db3-x3hl-xcg-9-20| () Int
     5)
   (define-fun |26_26__db3-x3sb-xcg-9-1b_Port-Channel7_INBOUND_SOFTAdd| () Bool
@@ -18196,7 +18196,7 @@ sat
   (define-fun |13_13__db3-x3sb-xcg-9-1b_Port-Channel12_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |16__reachable-id_db3-x3hl-xcg-9-06| () Int
-    3)
+    5)
   (define-fun |9_9__db3-x3hl-xcg-9-10_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
   (define-fun |6_6__db3-x3hl-xcg-9-20_Port-Channel1_INBOUND_SOFTAdd| () Bool
@@ -18204,7 +18204,7 @@ sat
   (define-fun |17_17__db3-x3hl-xcg-9-15_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
   (define-fun |32__reachable-id_db3-x3hl-xcg-9-07| () Int
-    3)
+    5)
   (define-fun |29_29__db3-x3hl-xcg-9-10_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |28_28__db3-x3hl-xcg-9-15_Vlan102_INBOUND_SOFTAdd| () Bool
@@ -18264,7 +18264,7 @@ sat
   (define-fun |34_34__db3-x3sb-xcg-9-1a_Port-Channel16_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |14__reachable-id_db3-x3hl-xcg-9-19| () Int
-    3)
+    5)
   (define-fun |25_25__db3-x3hl-xcg-9-17_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |38_38__db3-x3hl-xcg-9-18_Port-Channel1_INBOUND_SOFTAdd| () Bool
@@ -18310,7 +18310,7 @@ sat
   (define-fun |35_35__db3-x3hl-xcg-9-10_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |25__reachable-id_db3-x3hl-xcg-9-05| () Int
-    3)
+    5)
   (define-fun |4_4__db3-x3hl-xcg-9-17_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |10_10__db3-x3sb-xcg-9-1b_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
@@ -18350,7 +18350,7 @@ sat
   (define-fun |0_db3-x3sb-xcg-9-1a_BGP_IMPORT_Port-Channel11_permitted| () Bool
     false)
   (define-fun |38__reachable-id_db3-x3hl-xcg-9-20| () Int
-    3)
+    5)
   (define-fun |7_7__db3-x3hl-xcg-9-13_Port-Channel1_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |41_41__db3-x3sb-xcg-9-1a_Port-Channel17_OUTBOUND_SOFTAdd| () Bool
@@ -18368,16 +18368,16 @@ sat
   (define-fun |22_22__db3-x3hl-xcg-9-20_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |11__reachable-id_db3-x3hl-xcg-9-04| () Int
-    3)
+    5)
   (define-fun |8_src-port| () Int
     0)
   (define-fun |35_35__db3-x3hl-xcg-9-19_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |2_2__db3-x3hl-xcg-9-15_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
     false)
-  (define-fun |30_30__db3-x3hl-xcg-9-15_Vlan102_INBOUND_SOFTAdd| () Bool
-    true)
   (define-fun |22_22__db3-x3hl-xcg-9-01_Vlan101_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |30_30__db3-x3hl-xcg-9-15_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |13_13__db3-x3sb-xcg-9-1a_Port-Channel1_INBOUND_SOFTAdd| () Bool
     true)
@@ -18396,7 +18396,7 @@ sat
   (define-fun |24_24__db3-x3hl-xcg-9-12_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
   (define-fun |41__reachable-id_db3-x3hl-xcg-9-04| () Int
-    3)
+    5)
   (define-fun |34_34__db3-x3sb-xcg-9-1b_Port-Channel18_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |19_19__db3-x3hl-xcg-9-01_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
@@ -18440,7 +18440,7 @@ sat
   (define-fun |8_8__db3-x3hl-xcg-9-05_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
     false)
   (define-fun |40__reachable-id_db3-x3hl-xcg-9-11| () Int
-    3)
+    5)
   (define-fun |33_33__db3-x3hl-xcg-9-19_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
   (define-fun |9_9__db3-x3hl-xcg-9-19_Loopback0_INBOUND_SOFTAdd| () Bool
@@ -18464,7 +18464,7 @@ sat
   (define-fun |7_7__db3-x3sb-xcg-9-1b_Port-Channel3_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |41__reachable-id_db3-x3hl-xcg-9-09| () Int
-    3)
+    5)
   (define-fun |26_26__db3-x3sb-xcg-9-1a_Port-Channel10_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |20_20__db3-x3hl-xcg-9-04_Port-Channel2_INBOUND_SOFTAdd| () Bool
@@ -18486,7 +18486,7 @@ sat
   (define-fun |13_13__db3-x3sb-xcg-9-1a_Port-Channel19_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |16__reachable-id_db3-x3hl-xcg-9-09| () Int
-    3)
+    5)
   (define-fun |39_39__db3-x3sb-xcg-9-1a_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
   (define-fun |19_19__db3-x3hl-xcg-9-18_Vlan102_INBOUND_SOFTAdd| () Bool
@@ -18496,7 +18496,7 @@ sat
   (define-fun |6_6__db3-x3hl-xcg-9-10_Loopback0_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |10__reachable-id_db3-x3hl-xcg-9-10| () Int
-    5)
+    3)
   (define-fun |21_ip-protocol| () Int
     0)
   (define-fun |39_39__db3-x3hl-xcg-9-13_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
@@ -18505,14 +18505,14 @@ sat
     false)
   (define-fun |33_33__db3-x3hl-xcg-9-09_Loopback0_OUTBOUND_SOFTAdd| () Bool
     true)
-  (define-fun |5_5__db3-x3hl-xcg-9-19_Vlan102_INBOUND_SOFTAdd| () Bool
+  (define-fun |37_37__db3-x3hl-xcg-9-02_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |28_28__db3-x3hl-xcg-9-13_Port-Channel2_INBOUND_SOFTAdd| () Bool
     true)
-  (define-fun |37_37__db3-x3hl-xcg-9-02_mgmt0_OUTBOUND_SOFTAdd| () Bool
+  (define-fun |5_5__db3-x3hl-xcg-9-19_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |9__reachable-id_db3-x3hl-xcg-9-18| () Int
-    3)
+    5)
   (define-fun |3_3__db3-x3hl-xcg-9-05_Port-Channel2_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |31_31__db3-x3sb-xcg-9-1a_Port-Channel1_INBOUND_SOFTAdd| () Bool
@@ -18548,7 +18548,7 @@ sat
   (define-fun |28_28__db3-x3hl-xcg-9-19_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
   (define-fun |25__reachable-id_db3-x3hl-xcg-9-04| () Int
-    3)
+    5)
   (define-fun |1_1__db3-x3hl-xcg-9-16_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |14_14__db3-x3hl-xcg-9-01_Port-Channel2_INBOUND_SOFTAdd| () Bool
@@ -18758,7 +18758,7 @@ sat
   (define-fun |20__reachable-id_db3-x3hl-xcg-9-03| () Int
     3)
   (define-fun |29__reachable-id_db3-x3hl-xcg-9-06| () Int
-    3)
+    5)
   (define-fun |28_28__db3-x3hl-xcg-9-03_Vlan102_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |30_30__db3-x3hl-xcg-9-01_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
@@ -18778,7 +18778,7 @@ sat
   (define-fun |9_9__db3-x3hl-xcg-9-01_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |32__reachable-id_db3-x3sb-xcg-9-1b| () Int
-    2)
+    4)
   (define-fun |41_41__db3-x3hl-xcg-9-06_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
     false)
   (define-fun |17_17__db3-x3hl-xcg-9-15_Vlan102_INBOUND_SOFTAdd| () Bool
@@ -18786,7 +18786,7 @@ sat
   (define-fun |0_db3-x3hl-xcg-9-03_BGP_SINGLE-EXPORT__metric| () Int
     3)
   (define-fun |0_db3-x3hl-xcg-9-14_OVERALL_BEST_None_prefixLength| () Int
-    25)
+    0)
   (define-fun |7_7__db3-x3hl-xcg-9-20_Port-Channel1_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |15__reachable-id_db3-x3hl-xcg-9-08| () Int
@@ -18808,7 +18808,7 @@ sat
   (define-fun |6_6__db3-x3sb-xcg-9-1b_Ethernet1/48_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |13__reachable-id_db3-x3hl-xcg-9-06| () Int
-    7)
+    5)
   (define-fun |29_29__db3-x3hl-xcg-9-09_Port-Channel2_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_db3-x3sb-xcg-9-1a_BGP_IMPORT_Port-Channel4_permitted| () Bool
@@ -18828,7 +18828,7 @@ sat
   (define-fun |13_13__db3-x3sb-xcg-9-1a_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
   (define-fun |40__reachable-id_db3-x3sb-xcg-9-1a| () Int
-    4)
+    2)
   (define-fun |39_39__db3-x3hl-xcg-9-20_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
     false)
   (define-fun |23_23__db3-x3hl-xcg-9-08_Vlan102_OUTBOUND_SOFTAdd| () Bool
@@ -18872,7 +18872,7 @@ sat
   (define-fun |37_37__db3-x3hl-xcg-9-19_Loopback0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |22__reachable-id_db3-x3hl-xcg-9-01| () Int
-    5)
+    3)
   (define-fun |23_23__db3-x3hl-xcg-9-14_Vlan102_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |37_37__db3-x3hl-xcg-9-18_Port-Channel1_INBOUND_SOFTAdd| () Bool
@@ -18952,7 +18952,7 @@ sat
   (define-fun |29_29__db3-x3sb-xcg-9-1b_Port-Channel3_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |37__reachable-id_db3-x3hl-xcg-9-05| () Int
-    5)
+    3)
   (define-fun |1_1__db3-x3sb-xcg-9-1a_Port-Channel16_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |29_29__db3-x3hl-xcg-9-06_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
@@ -18985,9 +18985,9 @@ sat
     true)
   (define-fun |31_31__db3-x3hl-xcg-9-13_Vlan102_OUTBOUND_SOFTAdd| () Bool
     true)
-  (define-fun |37_37__db3-x3sb-xcg-9-1b_Ethernet1/47_OUTBOUND_SOFTAdd| () Bool
-    true)
   (define-fun |33_33__db3-x3hl-xcg-9-02_Vlan101_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |37_37__db3-x3sb-xcg-9-1b_Ethernet1/47_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |19_19__db3-x3hl-xcg-9-15_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
@@ -19072,7 +19072,7 @@ sat
   (define-fun |15_15__db3-x3hl-xcg-9-12_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |23__reachable-id_db3-x3hl-xcg-9-16| () Int
-    9)
+    5)
   (define-fun |38_38__db3-x3sb-xcg-9-1a_Port-Channel13_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |41_41__db3-x3hl-xcg-9-09_Port-Channel1_INBOUND_SOFTAdd| () Bool
@@ -19096,7 +19096,7 @@ sat
   (define-fun |19_19__db3-x3hl-xcg-9-08_Loopback0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_db3-x3hl-xcg-9-20_BGP_IMPORT_Port-Channel2_metric| () Int
-    0)
+    2)
   (define-fun |39_39__db3-x3hl-xcg-9-01_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |5_5__db3-x3hl-xcg-9-09_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
@@ -19106,7 +19106,7 @@ sat
   (define-fun |10_10__db3-x3hl-xcg-9-20_Port-Channel1_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |7__reachable-id_db3-x3hl-xcg-9-16| () Int
-    5)
+    3)
   (define-fun |32_32__db3-x3hl-xcg-9-03_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
   (define-fun |32_32__db3-x3sb-xcg-9-1a_Port-Channel10_OUTBOUND_SOFTAdd| () Bool
@@ -19139,9 +19139,9 @@ sat
     true)
   (define-fun |15_15__db3-x3hl-xcg-9-11_Vlan102_OUTBOUND_SOFTAdd| () Bool
     true)
-  (define-fun |16_16__db3-x3hl-xcg-9-04_Loopback0_INBOUND_SOFTAdd| () Bool
-    true)
   (define-fun |17_17__db3-x3hl-xcg-9-12_Vlan102_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |16_16__db3-x3hl-xcg-9-04_Loopback0_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |6_6__db3-x3hl-xcg-9-04_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
     false)
@@ -19197,9 +19197,9 @@ sat
     true)
   (define-fun |6_6__db3-x3hl-xcg-9-02_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
     true)
-  (define-fun |20_20__db3-x3hl-xcg-9-16_Loopback0_OUTBOUND_SOFTAdd| () Bool
-    true)
   (define-fun |5_5__db3-x3hl-xcg-9-02_Vlan102_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |20_20__db3-x3hl-xcg-9-16_Loopback0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |40_40__db3-x3sb-xcg-9-1a_Port-Channel8_INBOUND_SOFTAdd| () Bool
     true)
@@ -19210,7 +19210,7 @@ sat
   (define-fun |35_35__db3-x3hl-xcg-9-02_Vlan102_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |27__reachable-id_db3-x3hl-xcg-9-06| () Int
-    3)
+    7)
   (define-fun |32_32__db3-x3sb-xcg-9-1b_Port-Channel18_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |10_10__db3-x3hl-xcg-9-01_Port-Channel2_INBOUND_SOFTAdd| () Bool
@@ -19234,7 +19234,7 @@ sat
   (define-fun |17_17__db3-x3hl-xcg-9-15_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
     false)
   (define-fun |2__reachable-id_db3-x3hl-xcg-9-05| () Int
-    3)
+    5)
   (define-fun |39_39__db3-x3hl-xcg-9-01_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |17_17__db3-x3hl-xcg-9-16_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
@@ -19316,7 +19316,7 @@ sat
   (define-fun |15_15__db3-x3hl-xcg-9-11_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |36__reachable-id_db3-x3hl-xcg-9-11| () Int
-    3)
+    5)
   (define-fun |0_db3-x3hl-xcg-9-17_BGP_BEST_None_prefixLength| () Int
     0)
   (define-fun |37_37__db3-x3sb-xcg-9-1a_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
@@ -19334,7 +19334,7 @@ sat
   (define-fun |9_9__db3-x3hl-xcg-9-15_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |35__reachable-id_db3-x3hl-xcg-9-13| () Int
-    5)
+    3)
   (define-fun |0_0__db3-x3sb-xcg-9-1b_Port-Channel17_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |16_16__db3-x3hl-xcg-9-20_Port-Channel2_INBOUND_SOFTAdd| () Bool
@@ -19366,7 +19366,7 @@ sat
   (define-fun |13_13__db3-x3sb-xcg-9-1a_Port-Channel9_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |13__reachable-id_db3-x3hl-xcg-9-12| () Int
-    7)
+    5)
   (define-fun |13_13__db3-x3sb-xcg-9-1a_Port-Channel16_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |7_7__db3-x3hl-xcg-9-16_Vlan101_INBOUND_SOFTAdd| () Bool
@@ -19528,7 +19528,7 @@ sat
   (define-fun |21_21__db3-x3sb-xcg-9-1b_Port-Channel5_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |16__reachable-id_db3-x3hl-xcg-9-11| () Int
-    3)
+    5)
   (define-fun |7_7__db3-x3sb-xcg-9-1b_Port-Channel17_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |26_26__db3-x3hl-xcg-9-12_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
@@ -19594,7 +19594,7 @@ sat
   (define-fun |20_20__db3-x3sb-xcg-9-1a_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
   (define-fun |25__reachable-id_db3-x3hl-xcg-9-11| () Int
-    3)
+    5)
   (define-fun |7_7__db3-x3hl-xcg-9-19_Vlan102_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |7_7__db3-x3hl-xcg-9-14_Vlan102_INBOUND_SOFTAdd| () Bool
@@ -19602,7 +19602,7 @@ sat
   (define-fun |26_26__db3-x3hl-xcg-9-18_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_db3-x3hl-xcg-9-02_BGP_SINGLE-EXPORT__prefixLength| () Int
-    25)
+    0)
   (define-fun |16_16__db3-x3sb-xcg-9-1a_Port-Channel5_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |37_37__db3-x3sb-xcg-9-1a_Port-Channel19_INBOUND_SOFTAdd| () Bool
@@ -19630,11 +19630,11 @@ sat
   (define-fun |27_27__db3-x3sb-xcg-9-1a_Port-Channel16_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |12__reachable-id_db3-x3hl-xcg-9-07| () Int
-    3)
+    5)
   (define-fun |33_33__db3-x3sb-xcg-9-1a_Port-Channel13_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |8__reachable-id_db3-x3hl-xcg-9-13| () Int
-    3)
+    5)
   (define-fun |29_29__db3-x3hl-xcg-9-08_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |19_19__db3-x3sb-xcg-9-1a_Port-Channel4_INBOUND_SOFTAdd| () Bool
@@ -19644,16 +19644,16 @@ sat
   (define-fun |3_3__db3-x3hl-xcg-9-04_Loopback0_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |16__reachable-id_db3-x3hl-xcg-9-16| () Int
-    5)
+    3)
   (define-fun |2_2__db3-x3sb-xcg-9-1a_Port-Channel13_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |2_2__db3-x3sb-xcg-9-1b_Port-Channel12_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |11_11__db3-x3hl-xcg-9-20_Vlan102_OUTBOUND_SOFTAdd| () Bool
     true)
-  (define-fun |23_23__db3-x3hl-xcg-9-19_Vlan101_INBOUND_SOFTAdd| () Bool
-    true)
   (define-fun |27_27__db3-x3hl-xcg-9-02_Vlan102_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |23_23__db3-x3hl-xcg-9-19_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |17_17__db3-x3hl-xcg-9-18_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
@@ -19694,7 +19694,7 @@ sat
   (define-fun |34_34__db3-x3hl-xcg-9-05_Port-Channel2_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |10__reachable-id_db3-x3hl-xcg-9-02| () Int
-    3)
+    5)
   (define-fun |15_15__db3-x3sb-xcg-9-1b_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |13_13__db3-x3hl-xcg-9-10_mgmt0_OUTBOUND_SOFTAdd| () Bool
@@ -19747,9 +19747,9 @@ sat
     true)
   (define-fun |40_40__db3-x3sb-xcg-9-1a_Ethernet1/48_INBOUND_SOFTAdd| () Bool
     true)
-  (define-fun |34_34__db3-x3hl-xcg-9-08_Vlan101_INBOUND_SOFTAdd| () Bool
-    true)
   (define-fun |33_33__db3-x3hl-xcg-9-10_mgmt0_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |34_34__db3-x3hl-xcg-9-08_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |19_19__db3-x3hl-xcg-9-08_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
@@ -19766,7 +19766,7 @@ sat
   (define-fun |10_10__db3-x3hl-xcg-9-18_Port-Channel1_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |1__reachable-id_db3-x3hl-xcg-9-02| () Int
-    3)
+    5)
   (define-fun |2_2__db3-x3hl-xcg-9-06_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
   (define-fun |20_20__db3-x3sb-xcg-9-1a_Port-Channel19_INBOUND_SOFTAdd| () Bool
@@ -19794,7 +19794,7 @@ sat
   (define-fun |7_7__db3-x3sb-xcg-9-1a_Port-Channel2_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |29__reachable-id_db3-x3sb-xcg-9-1b| () Int
-    2)
+    4)
   (define-fun |18_icmp-code| () Int
     0)
   (define-fun |13_13__db3-x3hl-xcg-9-17_Vlan102_OUTBOUND_SOFTAdd| () Bool
@@ -19804,7 +19804,7 @@ sat
   (define-fun |19_19__db3-x3hl-xcg-9-11_Port-Channel1_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |33__reachable-id_db3-x3hl-xcg-9-09| () Int
-    3)
+    5)
   (define-fun |22_22__db3-x3hl-xcg-9-13_Vlan102_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |39_39__db3-x3sb-xcg-9-1b_Ethernet1/47_INBOUND_SOFTAdd| () Bool
@@ -19848,7 +19848,7 @@ sat
   (define-fun |14_14__db3-x3hl-xcg-9-04_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
     false)
   (define-fun |19__reachable-id_db3-x3hl-xcg-9-08| () Int
-    5)
+    7)
   (define-fun |4_4__db3-x3hl-xcg-9-20_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |5_5__db3-x3hl-xcg-9-19_Port-Channel1_INBOUND_SOFTAdd| () Bool
@@ -19885,9 +19885,9 @@ sat
     true)
   (define-fun |1_1__db3-x3sb-xcg-9-1b_Port-Channel2_INBOUND_SOFTAdd| () Bool
     true)
-  (define-fun |32_32__db3-x3hl-xcg-9-09_mgmt0_OUTBOUND_SOFTAdd| () Bool
-    true)
   (define-fun |18_18__db3-x3hl-xcg-9-14_mgmt0_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |32_32__db3-x3hl-xcg-9-09_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |7_7__db3-x3hl-xcg-9-16_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
     true)
@@ -19907,9 +19907,9 @@ sat
     true)
   (define-fun |0_db3-x3hl-xcg-9-06_OVERALL_BEST_None_metric| () Int
     2)
-  (define-fun |35_35__db3-x3hl-xcg-9-05_Loopback0_OUTBOUND_SOFTAdd| () Bool
-    true)
   (define-fun |40_40__db3-x3hl-xcg-9-17_Loopback0_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |35_35__db3-x3hl-xcg-9-05_Loopback0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |9_9__db3-x3sb-xcg-9-1b_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
     true)
@@ -19934,7 +19934,7 @@ sat
   (define-fun |27_27__db3-x3hl-xcg-9-08_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |40__reachable-id_db3-x3sb-xcg-9-1b| () Int
-    2)
+    4)
   (define-fun |33_33__db3-x3sb-xcg-9-1a_Port-Channel15_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |12_12__db3-x3sb-xcg-9-1a_Port-Channel7_INBOUND_SOFTAdd| () Bool
@@ -19943,11 +19943,11 @@ sat
     true)
   (define-fun |31__reachable-id_db3-x3hl-xcg-9-19| () Int
     5)
-  (define-fun |23_23__db3-x3hl-xcg-9-13_Vlan101_INBOUND_SOFTAdd| () Bool
+  (define-fun |26_26__db3-x3sb-xcg-9-1a_Ethernet1/48_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |18_18__db3-x3hl-xcg-9-05_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
-  (define-fun |26_26__db3-x3sb-xcg-9-1a_Ethernet1/48_OUTBOUND_SOFTAdd| () Bool
+  (define-fun |23_23__db3-x3hl-xcg-9-13_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |19_19__db3-x3sb-xcg-9-1b_Port-Channel9_OUTBOUND_SOFTAdd| () Bool
     true)
@@ -20012,7 +20012,7 @@ sat
   (define-fun |24_24__db3-x3sb-xcg-9-1b_Port-Channel11_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |25__reachable-id_db3-x3hl-xcg-9-18| () Int
-    3)
+    5)
   (define-fun |24_24__db3-x3hl-xcg-9-12_Vlan102_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |3_3__db3-x3hl-xcg-9-07_Port-Channel1_INBOUND_SOFTAdd| () Bool
@@ -20028,7 +20028,7 @@ sat
   (define-fun |0_db3-x3sb-xcg-9-1a_BGP_IMPORT_Port-Channel20AllowChoiceUseSoft| () Bool
     false)
   (define-fun |18__reachable-id_db3-x3hl-xcg-9-16| () Int
-    5)
+    3)
   (define-fun |22__reachable-id_db3-x3hl-xcg-9-09| () Int
     5)
   (define-fun |32_32__db3-x3hl-xcg-9-12_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
@@ -20069,9 +20069,9 @@ sat
     true)
   (define-fun |19_19__db3-x3hl-xcg-9-17_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
     true)
-  (define-fun |39_39__db3-x3hl-xcg-9-13_Vlan101_INBOUND_SOFTAdd| () Bool
-    true)
   (define-fun |18_18__db3-x3hl-xcg-9-18_Vlan102_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |39_39__db3-x3hl-xcg-9-13_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |32_32__db3-x3sb-xcg-9-1b_Port-Channel5_INBOUND_SOFTAdd| () Bool
     true)
@@ -20086,7 +20086,7 @@ sat
   (define-fun |20_20__db3-x3hl-xcg-9-14_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |25__reachable-id_db3-x3hl-xcg-9-15| () Int
-    3)
+    5)
   (define-fun |39_39__db3-x3sb-xcg-9-1b_Port-Channel6_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |13_13__db3-x3hl-xcg-9-19_Vlan102_OUTBOUND_SOFTAdd| () Bool
@@ -20127,16 +20127,16 @@ sat
     true)
   (define-fun |9_9__db3-x3hl-xcg-9-16_Port-Channel2_INBOUND_SOFTAdd| () Bool
     true)
-  (define-fun |32_32__db3-x3hl-xcg-9-14_mgmt0_OUTBOUND_SOFTAdd| () Bool
-    true)
   (define-fun |33_33__db3-x3hl-xcg-9-02_Vlan102_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |32_32__db3-x3hl-xcg-9-14_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |18_18__db3-x3hl-xcg-9-13_Vlan102_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |26_26__db3-x3hl-xcg-9-06_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
     false)
   (define-fun |30__reachable-id_db3-x3hl-xcg-9-19| () Int
-    3)
+    7)
   (define-fun |41_41__db3-x3hl-xcg-9-13_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |5_5__db3-x3hl-xcg-9-13_Vlan102_INBOUND_SOFTAdd| () Bool
@@ -20154,7 +20154,7 @@ sat
   (define-fun |23_23__db3-x3hl-xcg-9-12_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
     false)
   (define-fun |23__reachable-id_db3-x3hl-xcg-9-01| () Int
-    7)
+    3)
   (define-fun |12_12__db3-x3hl-xcg-9-08_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |23_23__db3-x3sb-xcg-9-1a_Port-Channel12_INBOUND_SOFTAdd| () Bool
@@ -20168,7 +20168,7 @@ sat
   (define-fun |30_30__db3-x3hl-xcg-9-11_Port-Channel2_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |10__reachable-id_db3-x3hl-xcg-9-16| () Int
-    3)
+    5)
   (define-fun |29_29__db3-x3sb-xcg-9-1a_Port-Channel10_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |5_5__db3-x3hl-xcg-9-05_Vlan102_INBOUND_SOFTAdd| () Bool
@@ -20184,7 +20184,7 @@ sat
   (define-fun |30_30__db3-x3hl-xcg-9-09_Vlan102_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |28__reachable-id_db3-x3hl-xcg-9-10| () Int
-    8)
+    5)
   (define-fun |23_23__db3-x3hl-xcg-9-01_Vlan102_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |2_2__db3-x3sb-xcg-9-1a_Port-Channel4_INBOUND_SOFTAdd| () Bool
@@ -20196,7 +20196,7 @@ sat
   (define-fun |17_17__db3-x3hl-xcg-9-02_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |9__reachable-id_db3-x3hl-xcg-9-09| () Int
-    5)
+    3)
   (define-fun |36_36__db3-x3hl-xcg-9-04_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
   (define-fun |39_39__db3-x3hl-xcg-9-19_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
@@ -20239,9 +20239,9 @@ sat
     false)
   (define-fun |16_16__db3-x3hl-xcg-9-15_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
-  (define-fun |21_21__db3-x3hl-xcg-9-05_Vlan102_OUTBOUND_SOFTAdd| () Bool
-    true)
   (define-fun |5_5__db3-x3hl-xcg-9-06_Loopback0_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |21_21__db3-x3hl-xcg-9-05_Vlan102_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |12__reachable-id_db3-x3hl-xcg-9-17| () Int
     1)
@@ -20296,7 +20296,7 @@ sat
   (define-fun |16_16__db3-x3hl-xcg-9-05_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
   (define-fun |0_db3-x3hl-xcg-9-02_BGP_SINGLE-EXPORT__permitted| () Bool
-    true)
+    false)
   (define-fun |22_22__db3-x3hl-xcg-9-17_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |32_32__db3-x3sb-xcg-9-1b_Port-Channel16_INBOUND_SOFTAdd| () Bool
@@ -20304,7 +20304,7 @@ sat
   (define-fun |41_41__db3-x3hl-xcg-9-01_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |37__reachable-id_db3-x3hl-xcg-9-02| () Int
-    3)
+    5)
   (define-fun |33_33__db3-x3hl-xcg-9-08_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |31_31__db3-x3hl-xcg-9-10_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
@@ -20391,11 +20391,11 @@ sat
     true)
   (define-fun |32_32__db3-x3hl-xcg-9-02_Port-Channel2_INBOUND_SOFTAdd| () Bool
     true)
-  (define-fun |25_25__db3-x3sb-xcg-9-1a_Ethernet1/47_INBOUND_SOFTAdd| () Bool
+  (define-fun |29_29__db3-x3hl-xcg-9-12_Loopback0_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |27_27__db3-x3sb-xcg-9-1a_Port-Channel14_INBOUND_SOFTAdd| () Bool
     true)
-  (define-fun |29_29__db3-x3hl-xcg-9-12_Loopback0_INBOUND_SOFTAdd| () Bool
+  (define-fun |25_25__db3-x3sb-xcg-9-1a_Ethernet1/47_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |1__reachable-id_db3-x3hl-xcg-9-05| () Int
     3)
@@ -20404,13 +20404,13 @@ sat
   (define-fun |39_39__db3-x3sb-xcg-9-1b_Port-Channel15_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |2__reachable-id_db3-x3sb-xcg-9-1b| () Int
-    2)
+    4)
   (define-fun |8_8__db3-x3hl-xcg-9-03_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |29_29__db3-x3hl-xcg-9-11_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |16__reachable-id_db3-x3hl-xcg-9-07| () Int
-    3)
+    5)
   (define-fun |10_10__db3-x3hl-xcg-9-14_Port-Channel1_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |4_4__db3-x3sb-xcg-9-1a_Port-Channel15_INBOUND_SOFTAdd| () Bool
@@ -20480,7 +20480,7 @@ sat
   (define-fun |21_icmp-code| () Int
     0)
   (define-fun |22__reachable-id_db3-x3hl-xcg-9-12| () Int
-    5)
+    3)
   (define-fun |14_14__db3-x3hl-xcg-9-16_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |21_21__db3-x3sb-xcg-9-1b_Port-Channel16_OUTBOUND_SOFTAdd| () Bool
@@ -20540,7 +20540,7 @@ sat
   (define-fun |26_26__db3-x3hl-xcg-9-20_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |20__reachable-id_db3-x3hl-xcg-9-10| () Int
-    3)
+    5)
   (define-fun |1_1__db3-x3hl-xcg-9-05_Port-Channel2_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |7_dst-port| () Int
@@ -20722,9 +20722,9 @@ sat
   (define-fun |28_28__db3-x3hl-xcg-9-15_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |34__reachable-id_db3-x3hl-xcg-9-16| () Int
-    3)
+    5)
   (define-fun |40__reachable-id_db3-x3hl-xcg-9-08| () Int
-    4)
+    5)
   (define-fun |28__reachable-id_db3-x3hl-xcg-9-19| () Int
     3)
   (define-fun |1_1__db3-x3sb-xcg-9-1b_Port-Channel4_INBOUND_SOFTAdd| () Bool
@@ -20872,7 +20872,7 @@ sat
   (define-fun |35_35__db3-x3hl-xcg-9-15_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0__reachable-id_db3-x3hl-xcg-9-12| () Int
-    5)
+    9)
   (define-fun |15_15__db3-x3hl-xcg-9-01_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |7_7__db3-x3sb-xcg-9-1a_Loopback0_INBOUND_SOFTAdd| () Bool
@@ -20888,7 +20888,7 @@ sat
   (define-fun |5__reachable-id_db3-x3hl-xcg-9-03| () Int
     5)
   (define-fun |29__reachable-id_db3-x3hl-xcg-9-16| () Int
-    8)
+    5)
   (define-fun |0_db3-x3sb-xcg-9-1a_BGP_IMPORT_Port-Channel8_prefixLength| () Int
     0)
   (define-fun |35_35__db3-x3hl-xcg-9-16_Port-Channel2_INBOUND_SOFTAdd| () Bool
@@ -21010,11 +21010,11 @@ sat
   (define-fun |19_19__db3-x3hl-xcg-9-05_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |19__reachable-id_db3-x3hl-xcg-9-02| () Int
-    5)
+    7)
   (define-fun |38_38__db3-x3sb-xcg-9-1b_Port-Channel3_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |14_dst-ip| () (_ BitVec 32)
-    #x0af283a0)
+    #x0af28380)
   (define-fun |1_1__db3-x3sb-xcg-9-1b_Port-Channel7_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |34_34__db3-x3hl-xcg-9-01_Vlan102_OUTBOUND_SOFTAdd| () Bool
@@ -21102,7 +21102,7 @@ sat
   (define-fun |26_26__db3-x3hl-xcg-9-02_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_db3-x3hl-xcg-9-02_OVERALL_BEST_None_prefixLength| () Int
-    25)
+    0)
   (define-fun |41_41__db3-x3hl-xcg-9-14_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |1_1__db3-x3sb-xcg-9-1a_Port-Channel12_OUTBOUND_SOFTAdd| () Bool
@@ -21142,7 +21142,7 @@ sat
   (define-fun |11_11__db3-x3hl-xcg-9-14_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
     false)
   (define-fun |0__reachable-id_db3-x3sb-xcg-9-1b| () Int
-    2)
+    8)
   (define-fun |18_18__db3-x3hl-xcg-9-11_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |21_21__db3-x3hl-xcg-9-19_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
@@ -21156,7 +21156,7 @@ sat
   (define-fun |22_22__db3-x3hl-xcg-9-12_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |7__reachable-id_db3-x3hl-xcg-9-03| () Int
-    3)
+    5)
   (define-fun |1__reachable-id_db3-x3hl-xcg-9-08| () Int
     5)
   (define-fun |1_1__db3-x3hl-xcg-9-06_Vlan102_OUTBOUND_SOFTAdd| () Bool
@@ -21196,7 +21196,7 @@ sat
   (define-fun |13_13__db3-x3sb-xcg-9-1b_Port-Channel17_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |18__reachable-id_db3-x3hl-xcg-9-02| () Int
-    3)
+    5)
   (define-fun |39_39__db3-x3sb-xcg-9-1a_Port-Channel15_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |14_14__db3-x3sb-xcg-9-1b_Port-Channel2_INBOUND_SOFTAdd| () Bool
@@ -21234,7 +21234,7 @@ sat
   (define-fun |11_11__db3-x3hl-xcg-9-03_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
     false)
   (define-fun |6__reachable-id_db3-x3hl-xcg-9-16| () Int
-    8)
+    5)
   (define-fun |33_33__db3-x3hl-xcg-9-13_Loopback0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |8_dst-ip| () (_ BitVec 32)
@@ -21287,9 +21287,9 @@ sat
     true)
   (define-fun |32_32__db3-x3sb-xcg-9-1a_Port-Channel12_INBOUND_SOFTAdd| () Bool
     true)
-  (define-fun |20_20__db3-x3hl-xcg-9-13_Loopback0_INBOUND_SOFTAdd| () Bool
-    true)
   (define-fun |37_37__db3-x3hl-xcg-9-05_Vlan102_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |20_20__db3-x3hl-xcg-9-13_Loopback0_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |38_src-port| () Int
     0)
@@ -21305,9 +21305,9 @@ sat
     true)
   (define-fun |35_35__db3-x3hl-xcg-9-18_Loopback0_INBOUND_SOFTAdd| () Bool
     true)
-  (define-fun |13_13__db3-x3hl-xcg-9-16_Loopback0_INBOUND_SOFTAdd| () Bool
-    true)
   (define-fun |15_15__db3-x3hl-xcg-9-15_Vlan102_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |13_13__db3-x3hl-xcg-9-16_Loopback0_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |9_9__db3-x3hl-xcg-9-14_Port-Channel1_INBOUND_SOFTAdd| () Bool
     true)
@@ -21326,7 +21326,7 @@ sat
   (define-fun |15_15__db3-x3sb-xcg-9-1b_Port-Channel9_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |24__reachable-id_db3-x3hl-xcg-9-15| () Int
-    3)
+    5)
   (define-fun |0_0__db3-x3hl-xcg-9-09_Vlan102_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |35__reachable-id_db3-x3hl-xcg-9-20| () Int
@@ -21336,7 +21336,7 @@ sat
   (define-fun |21_21__db3-x3hl-xcg-9-14_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
   (define-fun |7__reachable-id_db3-x3hl-xcg-9-07| () Int
-    3)
+    5)
   (define-fun |24_24__db3-x3hl-xcg-9-15_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |28_28__db3-x3sb-xcg-9-1b_mgmt0_OUTBOUND_SOFTAdd| () Bool
@@ -21344,9 +21344,9 @@ sat
   (define-fun |0_0__db3-x3hl-xcg-9-19_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |36__reachable-id_db3-x3hl-xcg-9-16| () Int
-    5)
+    3)
   (define-fun |0_db3-x3hl-xcg-9-14_BGP_SINGLE-EXPORT__permitted| () Bool
-    true)
+    false)
   (define-fun |38_38__db3-x3sb-xcg-9-1a_Port-Channel11_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |32_32__db3-x3hl-xcg-9-04_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
@@ -21358,7 +21358,7 @@ sat
   (define-fun |34_34__db3-x3sb-xcg-9-1a_Port-Channel16_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |7__reachable-id_db3-x3hl-xcg-9-15| () Int
-    3)
+    5)
   (define-fun |29_29__db3-x3hl-xcg-9-02_Loopback0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |15_15__db3-x3sb-xcg-9-1a_Port-Channel7_OUTBOUND_SOFTAdd| () Bool
@@ -21374,7 +21374,7 @@ sat
   (define-fun |0_0_db3-x3hl-xcg-9-19_OVERALL_BEST_NoneBGPExportAddSoft| () Bool
     false)
   (define-fun |17__reachable-id_db3-x3hl-xcg-9-19| () Int
-    3)
+    5)
   (define-fun |13_13__db3-x3hl-xcg-9-17_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |14_14__db3-x3hl-xcg-9-03_Vlan102_INBOUND_SOFTAdd| () Bool
@@ -21384,7 +21384,7 @@ sat
   (define-fun |39_39__db3-x3sb-xcg-9-1a_Port-Channel4_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |1__reachable-id_db3-x3hl-xcg-9-01| () Int
-    7)
+    3)
   (define-fun |33_33__db3-x3hl-xcg-9-13_Vlan102_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |10_10__db3-x3hl-xcg-9-04_Vlan102_OUTBOUND_SOFTAdd| () Bool
@@ -21418,7 +21418,7 @@ sat
   (define-fun |7_7__db3-x3hl-xcg-9-17_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |23__reachable-id_db3-x3hl-xcg-9-09| () Int
-    9)
+    5)
   (define-fun |14_14__db3-x3hl-xcg-9-07_Loopback0_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |35_35__db3-x3hl-xcg-9-14_Vlan102_OUTBOUND_SOFTAdd| () Bool
@@ -21436,7 +21436,7 @@ sat
   (define-fun |13_13__db3-x3hl-xcg-9-08_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |23__reachable-id_db3-x3hl-xcg-9-14| () Int
-    11)
+    5)
   (define-fun |16_16__db3-x3sb-xcg-9-1b_Port-Channel8_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |26_26__db3-x3hl-xcg-9-13_Vlan101_INBOUND_SOFTAdd| () Bool
@@ -21470,10 +21470,10 @@ sat
   (define-fun |28_28__db3-x3sb-xcg-9-1a_Port-Channel5_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |10__reachable-id_db3-x3hl-xcg-9-01| () Int
-    5)
-  (define-fun |19_19__db3-x3hl-xcg-9-10_Vlan102_INBOUND_SOFTAdd| () Bool
-    true)
+    3)
   (define-fun |31_31__db3-x3hl-xcg-9-13_mgmt0_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |19_19__db3-x3hl-xcg-9-10_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |1_1__db3-x3hl-xcg-9-04_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
@@ -21542,11 +21542,11 @@ sat
   (define-fun |0_db3-x3hl-xcg-9-19_BGP_SINGLE-EXPORT__metric| () Int
     3)
   (define-fun |9__reachable-id_db3-x3hl-xcg-9-20| () Int
-    3)
+    5)
   (define-fun |6_6__db3-x3hl-xcg-9-09_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
     false)
   (define-fun |0_CONTROL-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |37_37__db3-x3hl-xcg-9-02_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |5_5__db3-x3hl-xcg-9-11_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
@@ -21560,7 +21560,7 @@ sat
   (define-fun |19_19__db3-x3hl-xcg-9-19_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |27__reachable-id_db3-x3hl-xcg-9-19| () Int
-    3)
+    7)
   (define-fun |2_2__db3-x3hl-xcg-9-20_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |27_27__db3-x3sb-xcg-9-1b_Port-Channel3_INBOUND_SOFTAdd| () Bool
@@ -21612,7 +21612,7 @@ sat
   (define-fun |0_db3-x3hl-xcg-9-07_OVERALL_BEST_None_prefixLength| () Int
     25)
   (define-fun |4__reachable-id_db3-x3hl-xcg-9-16| () Int
-    7)
+    5)
   (define-fun |0_0__db3-x3hl-xcg-9-15_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
   (define-fun |2_2__db3-x3hl-xcg-9-13_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
@@ -21632,7 +21632,7 @@ sat
   (define-fun |21_21__db3-x3hl-xcg-9-16_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |16__reachable-id_db3-x3sb-xcg-9-1a| () Int
-    4)
+    2)
   (define-fun |40_40__db3-x3sb-xcg-9-1a_Port-Channel4_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |12_12__db3-x3hl-xcg-9-16_Loopback0_INBOUND_SOFTAdd| () Bool
@@ -21650,7 +21650,7 @@ sat
   (define-fun |14_14__db3-x3hl-xcg-9-20_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_db3-x3hl-xcg-9-14_BGP_IMPORT_Port-Channel2AllowChoiceUseSoft| () Bool
-    true)
+    false)
   (define-fun |8_8__db3-x3hl-xcg-9-13_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |22_22__db3-x3hl-xcg-9-12_Loopback0_OUTBOUND_SOFTAdd| () Bool
@@ -21669,9 +21669,9 @@ sat
     true)
   (define-fun |18_18__db3-x3sb-xcg-9-1b_Port-Channel19_OUTBOUND_SOFTAdd| () Bool
     true)
-  (define-fun |3_3__db3-x3hl-xcg-9-13_Vlan102_OUTBOUND_SOFTAdd| () Bool
-    true)
   (define-fun |35_35__db3-x3hl-xcg-9-13_Loopback0_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |3_3__db3-x3hl-xcg-9-13_Vlan102_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |4_4__db3-x3hl-xcg-9-01_Vlan102_OUTBOUND_SOFTAdd| () Bool
     true)
@@ -21696,7 +21696,7 @@ sat
   (define-fun |27_27__db3-x3hl-xcg-9-20_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
   (define-fun |38__reachable-id_db3-x3hl-xcg-9-02| () Int
-    3)
+    5)
   (define-fun |19_19__db3-x3hl-xcg-9-16_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |34_34__db3-x3hl-xcg-9-02_Vlan102_INBOUND_SOFTAdd| () Bool
@@ -21724,9 +21724,9 @@ sat
   (define-fun |37_37__db3-x3hl-xcg-9-10_Loopback0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |9__reachable-id_db3-x3hl-xcg-9-06| () Int
-    3)
+    5)
   (define-fun |37__reachable-id_db3-x3hl-xcg-9-11| () Int
-    3)
+    5)
   (define-fun |26_26__db3-x3hl-xcg-9-11_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |10_10__db3-x3hl-xcg-9-06_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
@@ -21776,7 +21776,7 @@ sat
   (define-fun |10_10__db3-x3hl-xcg-9-17_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |10__reachable-id_db3-x3hl-xcg-9-19| () Int
-    3)
+    5)
   (define-fun |40_40__db3-x3sb-xcg-9-1a_Port-Channel11_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |8_8__db3-x3sb-xcg-9-1b_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
@@ -21882,7 +21882,7 @@ sat
   (define-fun |1_src-ip| () (_ BitVec 32)
     #x0affbf80)
   (define-fun |16__reachable-id_db3-x3hl-xcg-9-08| () Int
-    3)
+    5)
   (define-fun |32_32__db3-x3hl-xcg-9-13_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |22_22__db3-x3hl-xcg-9-06_Loopback0_INBOUND_SOFTAdd| () Bool
@@ -21966,7 +21966,7 @@ sat
   (define-fun |6_6__db3-x3sb-xcg-9-1a_Port-Channel18_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |36__reachable-id_db3-x3hl-xcg-9-15| () Int
-    3)
+    5)
   (define-fun |41_41__db3-x3sb-xcg-9-1b_Port-Channel3_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |34_34__db3-x3hl-xcg-9-11_Port-Channel1_INBOUND_SOFTAdd| () Bool
@@ -22005,11 +22005,11 @@ sat
     true)
   (define-fun |37_37__db3-x3sb-xcg-9-1b_Port-Channel4_OUTBOUND_SOFTAdd| () Bool
     true)
-  (define-fun |7_7__db3-x3hl-xcg-9-01_Loopback0_OUTBOUND_SOFTAdd| () Bool
+  (define-fun |23_23__db3-x3hl-xcg-9-17_Loopback0_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |16_16__db3-x3hl-xcg-9-17_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
-  (define-fun |23_23__db3-x3hl-xcg-9-17_Loopback0_INBOUND_SOFTAdd| () Bool
+  (define-fun |7_7__db3-x3hl-xcg-9-01_Loopback0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |22_22__db3-x3hl-xcg-9-14_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
@@ -22122,9 +22122,9 @@ sat
   (define-fun |0_db3-x3hl-xcg-9-15_OVERALL_BEST_None_metric| () Int
     2)
   (define-fun |11_dst-ip| () (_ BitVec 32)
-    #x0af28381)
+    #x0af28380)
   (define-fun |23__reachable-id_db3-x3hl-xcg-9-07| () Int
-    9)
+    5)
   (define-fun |5_5__db3-x3hl-xcg-9-11_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |12_12__db3-x3sb-xcg-9-1a_Port-Channel6_OUTBOUND_SOFTAdd| () Bool
@@ -22150,7 +22150,7 @@ sat
   (define-fun |3_3__db3-x3hl-xcg-9-15_Vlan102_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |15__reachable-id_db3-x3hl-xcg-9-07| () Int
-    3)
+    5)
   (define-fun |17_17__db3-x3hl-xcg-9-19_Vlan102_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |33_33__db3-x3hl-xcg-9-02_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
@@ -22178,7 +22178,7 @@ sat
   (define-fun |18_18__db3-x3sb-xcg-9-1a_Port-Channel5_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |13__reachable-id_db3-x3hl-xcg-9-01| () Int
-    7)
+    5)
   (define-fun |36_36__db3-x3hl-xcg-9-17_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
     false)
   (define-fun |3_3__db3-x3hl-xcg-9-10_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
@@ -22201,7 +22201,7 @@ sat
     true)
   (define-fun |40_40__db3-x3hl-xcg-9-06_Port-Channel1_INBOUND_SOFTAdd| () Bool
     true)
-  (define-fun |0_0__db3-x3hl-xcg-9-17_mgmt0_OUTBOUND_SOFTAdd| () Bool
+  (define-fun |7_7__db3-x3hl-xcg-9-01_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |20_20__db3-x3hl-xcg-9-07_Port-Channel1_INBOUND_SOFTAdd| () Bool
     true)
@@ -22209,7 +22209,7 @@ sat
     true)
   (define-fun |20_20__db3-x3hl-xcg-9-05_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
     false)
-  (define-fun |7_7__db3-x3hl-xcg-9-01_Vlan102_INBOUND_SOFTAdd| () Bool
+  (define-fun |0_0__db3-x3hl-xcg-9-17_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |3_3__db3-x3sb-xcg-9-1a_Port-Channel19_INBOUND_SOFTAdd| () Bool
     true)
@@ -22238,7 +22238,7 @@ sat
   (define-fun |39__reachable-id_db3-x3hl-xcg-9-13| () Int
     5)
   (define-fun |15__reachable-id_db3-x3hl-xcg-9-06| () Int
-    3)
+    5)
   (define-fun |16_16__db3-x3hl-xcg-9-08_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |35_35__db3-x3hl-xcg-9-17_Vlan102_INBOUND_SOFTAdd| () Bool
@@ -22364,7 +22364,7 @@ sat
   (define-fun |6_6__db3-x3sb-xcg-9-1a_Port-Channel10_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |24__reachable-id_db3-x3hl-xcg-9-07| () Int
-    3)
+    5)
   (define-fun |1_1__db3-x3hl-xcg-9-17_Port-Channel1_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |30_30__db3-x3hl-xcg-9-16_Loopback0_INBOUND_SOFTAdd| () Bool
@@ -22382,7 +22382,7 @@ sat
   (define-fun |40_40__db3-x3hl-xcg-9-10_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_db3-x3hl-xcg-9-02_BGP_IMPORT_Port-Channel2_permitted| () Bool
-    true)
+    false)
   (define-fun |37_37__db3-x3hl-xcg-9-10_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |10_10__db3-x3hl-xcg-9-17_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
@@ -22394,7 +22394,7 @@ sat
   (define-fun |0_db3-x3sb-xcg-9-1aImportFilterAddSoft0_db3-x3sb-xcg-9-1a_BGP_IMPORT_Port-Channel16| () Bool
     true)
   (define-fun |10__reachable-id_db3-x3hl-xcg-9-14| () Int
-    3)
+    5)
   (define-fun |29_29__db3-x3hl-xcg-9-20_Port-Channel2_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |18_18__db3-x3hl-xcg-9-12_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
@@ -22404,7 +22404,7 @@ sat
   (define-fun |39_39__db3-x3hl-xcg-9-02_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |14__reachable-id_db3-x3hl-xcg-9-18| () Int
-    5)
+    3)
   (define-fun |11_11__db3-x3hl-xcg-9-17_Vlan102_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |14_14__db3-x3hl-xcg-9-02_mgmt0_OUTBOUND_SOFTAdd| () Bool
@@ -22441,13 +22441,13 @@ sat
     true)
   (define-fun |12_12__db3-x3hl-xcg-9-14_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
     true)
-  (define-fun |15_15__db3-x3sb-xcg-9-1a_mgmt0_OUTBOUND_SOFTAdd| () Bool
+  (define-fun |9_9__db3-x3hl-xcg-9-01_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |36_36__db3-x3sb-xcg-9-1b_Port-Channel3_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |26_26__db3-x3sb-xcg-9-1a_Port-Channel3_INBOUND_SOFTAdd| () Bool
     true)
-  (define-fun |9_9__db3-x3hl-xcg-9-01_Vlan102_INBOUND_SOFTAdd| () Bool
+  (define-fun |15_15__db3-x3sb-xcg-9-1a_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |20_20__db3-x3hl-xcg-9-10_Loopback0_INBOUND_SOFTAdd| () Bool
     true)
@@ -22493,9 +22493,9 @@ sat
     true)
   (define-fun |40_40__db3-x3hl-xcg-9-10_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
     true)
-  (define-fun |13_13__db3-x3hl-xcg-9-12_Vlan102_OUTBOUND_SOFTAdd| () Bool
-    true)
   (define-fun |39_39__db3-x3hl-xcg-9-07_mgmt0_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |13_13__db3-x3hl-xcg-9-12_Vlan102_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_db3-x3sb-xcg-9-1a_BGP_IMPORT_Port-Channel4_metric| () Int
     0)
@@ -22508,7 +22508,7 @@ sat
   (define-fun |6_6__db3-x3hl-xcg-9-18_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |24__reachable-id_db3-x3hl-xcg-9-13| () Int
-    10)
+    5)
   (define-fun |32_32__db3-x3hl-xcg-9-03_Loopback0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |12_12__db3-x3hl-xcg-9-18_mgmt0_OUTBOUND_SOFTAdd| () Bool
@@ -22518,24 +22518,24 @@ sat
   (define-fun |41_41__db3-x3hl-xcg-9-20_Vlan102_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |31__reachable-id_db3-x3sb-xcg-9-1b| () Int
-    2)
+    4)
   (define-fun |1_1__db3-x3hl-xcg-9-15_Loopback0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |6_6__db3-x3sb-xcg-9-1b_Port-Channel13_INBOUND_SOFTAdd| () Bool
     true)
-  (define-fun |27_27__db3-x3hl-xcg-9-12_Loopback0_OUTBOUND_SOFTAdd| () Bool
+  (define-fun |41_41__db3-x3hl-xcg-9-14_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |4_4__db3-x3hl-xcg-9-18_Port-Channel1_INBOUND_SOFTAdd| () Bool
     true)
-  (define-fun |41_41__db3-x3hl-xcg-9-14_mgmt0_OUTBOUND_SOFTAdd| () Bool
+  (define-fun |27_27__db3-x3hl-xcg-9-12_Loopback0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |4_4__db3-x3hl-xcg-9-04_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |4_4__db3-x3hl-xcg-9-18_Vlan102_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |3_3__db3-x3hl-xcg-9-14_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |22_22__db3-x3hl-xcg-9-16_mgmt0_OUTBOUND_SOFTAdd| () Bool
-    true)
-  (define-fun |4_4__db3-x3hl-xcg-9-18_Vlan102_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |27_27__db3-x3hl-xcg-9-04_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
@@ -22554,9 +22554,9 @@ sat
   (define-fun |15_15__db3-x3hl-xcg-9-19_Loopback0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |27__reachable-id_db3-x3hl-xcg-9-08| () Int
-    3)
+    7)
   (define-fun |41__reachable-id_db3-x3hl-xcg-9-12| () Int
-    3)
+    5)
   (define-fun |30_30__db3-x3sb-xcg-9-1a_Port-Channel3_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |9_9__db3-x3hl-xcg-9-06_Vlan101_INBOUND_SOFTAdd| () Bool
@@ -22637,13 +22637,13 @@ sat
     true)
   (define-fun |38_38__db3-x3sb-xcg-9-1b_Port-Channel18_OUTBOUND_SOFTAdd| () Bool
     true)
-  (define-fun |21_21__db3-x3hl-xcg-9-15_Vlan102_OUTBOUND_SOFTAdd| () Bool
+  (define-fun |1_1__db3-x3hl-xcg-9-02_Vlan102_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |24_24__db3-x3sb-xcg-9-1a_Port-Channel12_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |40_40__db3-x3sb-xcg-9-1b_Port-Channel20_INBOUND_SOFTAdd| () Bool
     true)
-  (define-fun |1_1__db3-x3hl-xcg-9-02_Vlan102_OUTBOUND_SOFTAdd| () Bool
+  (define-fun |21_21__db3-x3hl-xcg-9-15_Vlan102_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |6_6__db3-x3hl-xcg-9-11_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
@@ -22670,7 +22670,7 @@ sat
   (define-fun |26_26__db3-x3hl-xcg-9-07_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
     false)
   (define-fun |19__reachable-id_db3-x3hl-xcg-9-19| () Int
-    3)
+    7)
   (define-fun |36_36__db3-x3hl-xcg-9-07_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |38_38__db3-x3hl-xcg-9-19_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
@@ -22688,7 +22688,7 @@ sat
   (define-fun |24_24__db3-x3sb-xcg-9-1a_Loopback0_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |17__reachable-id_db3-x3hl-xcg-9-14| () Int
-    3)
+    5)
   (define-fun |15_15__db3-x3sb-xcg-9-1a_Port-Channel4_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |34_34__db3-x3hl-xcg-9-13_Vlan101_INBOUND_SOFTAdd| () Bool
@@ -22754,7 +22754,7 @@ sat
   (define-fun |1_1__db3-x3hl-xcg-9-07_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |33__reachable-id_db3-x3hl-xcg-9-14| () Int
-    3)
+    5)
   (define-fun |8_8__db3-x3sb-xcg-9-1b_Port-Channel9_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |25_25__db3-x3hl-xcg-9-03_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
@@ -22864,7 +22864,7 @@ sat
   (define-fun |13_13__db3-x3sb-xcg-9-1a_Port-Channel10_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |33__reachable-id_db3-x3sb-xcg-9-1a| () Int
-    4)
+    2)
   (define-fun |13_13__db3-x3hl-xcg-9-12_Port-Channel1_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |39_39__db3-x3sb-xcg-9-1b_mgmt0_OUTBOUND_SOFTAdd| () Bool
@@ -22884,7 +22884,7 @@ sat
   (define-fun |28_28__db3-x3hl-xcg-9-16_Vlan102_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |33__reachable-id_db3-x3hl-xcg-9-11| () Int
-    3)
+    5)
   (define-fun |3_3__db3-x3hl-xcg-9-04_Port-Channel2_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |39_39__db3-x3sb-xcg-9-1a_Port-Channel6_OUTBOUND_SOFTAdd| () Bool
@@ -22958,7 +22958,7 @@ sat
   (define-fun |19_19__db3-x3hl-xcg-9-19_Loopback0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_db3-x3sb-xcg-9-1b_BGP_IMPORT_Ethernet1/47_permitted| () Bool
-    true)
+    false)
   (define-fun |37_37__db3-x3sb-xcg-9-1b_Port-Channel11_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |29_29__db3-x3sb-xcg-9-1a_Port-Channel8_OUTBOUND_SOFTAdd| () Bool
@@ -22990,7 +22990,7 @@ sat
   (define-fun |15_15__db3-x3hl-xcg-9-17_Port-Channel2_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |40__reachable-id_db3-x3hl-xcg-9-04| () Int
-    4)
+    5)
   (define-fun |21_21__db3-x3hl-xcg-9-09_Port-Channel1_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |9_9__db3-x3hl-xcg-9-19_mgmt0_OUTBOUND_SOFTAdd| () Bool
@@ -23052,7 +23052,7 @@ sat
   (define-fun |31_31__db3-x3hl-xcg-9-09_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |26__reachable-id_db3-x3hl-xcg-9-15| () Int
-    5)
+    3)
   (define-fun |13_13__db3-x3hl-xcg-9-19_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |5_5__db3-x3hl-xcg-9-12_Vlan102_OUTBOUND_SOFTAdd| () Bool
@@ -23112,7 +23112,7 @@ sat
   (define-fun |37_37__db3-x3hl-xcg-9-11_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
     false)
   (define-fun |21__reachable-id_db3-x3hl-xcg-9-07| () Int
-    3)
+    5)
   (define-fun |11_11__db3-x3hl-xcg-9-16_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
   (define-fun |13_13__db3-x3hl-xcg-9-19_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
@@ -23120,7 +23120,7 @@ sat
   (define-fun |27_27__db3-x3sb-xcg-9-1b_Port-Channel16_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |11__reachable-id_db3-x3hl-xcg-9-10| () Int
-    5)
+    3)
   (define-fun |12_12__db3-x3sb-xcg-9-1a_Ethernet1/47_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |8_8__db3-x3hl-xcg-9-09_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
@@ -23219,11 +23219,11 @@ sat
     true)
   (define-fun |0_db3-x3sb-xcg-9-1a_BGP_IMPORT_Port-Channel3AllowChoiceUseSoft| () Bool
     false)
-  (define-fun |34_34__db3-x3hl-xcg-9-01_Loopback0_OUTBOUND_SOFTAdd| () Bool
+  (define-fun |5_5__db3-x3hl-xcg-9-16_Vlan102_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |37_37__db3-x3sb-xcg-9-1b_Port-Channel17_OUTBOUND_SOFTAdd| () Bool
     true)
-  (define-fun |5_5__db3-x3hl-xcg-9-16_Vlan102_OUTBOUND_SOFTAdd| () Bool
+  (define-fun |34_34__db3-x3hl-xcg-9-01_Loopback0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |41_41__db3-x3hl-xcg-9-16_Vlan102_OUTBOUND_SOFTAdd| () Bool
     true)
@@ -23246,13 +23246,13 @@ sat
   (define-fun |29_29__db3-x3sb-xcg-9-1a_Port-Channel18_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |31__reachable-id_db3-x3hl-xcg-9-08| () Int
-    3)
+    5)
   (define-fun |12_12__db3-x3sb-xcg-9-1a_Port-Channel20_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |27_27__db3-x3hl-xcg-9-12_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |12__reachable-id_db3-x3hl-xcg-9-11| () Int
-    3)
+    5)
   (define-fun |6_6__db3-x3sb-xcg-9-1a_Port-Channel13_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |25_25__db3-x3hl-xcg-9-01_mgmt0_OUTBOUND_SOFTAdd| () Bool
@@ -23282,7 +23282,7 @@ sat
   (define-fun |13_13__db3-x3sb-xcg-9-1b_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |14__reachable-id_db3-x3hl-xcg-9-10| () Int
-    3)
+    5)
   (define-fun |13_13__db3-x3hl-xcg-9-15_Vlan102_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |18_18__db3-x3hl-xcg-9-11_Loopback0_OUTBOUND_SOFTAdd| () Bool
@@ -23318,7 +23318,7 @@ sat
   (define-fun |16_16__db3-x3hl-xcg-9-18_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
   (define-fun |3__reachable-id_db3-x3hl-xcg-9-03| () Int
-    5)
+    3)
   (define-fun |7_7__db3-x3hl-xcg-9-13_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |4_4__db3-x3sb-xcg-9-1b_Port-Channel13_OUTBOUND_SOFTAdd| () Bool
@@ -23386,7 +23386,7 @@ sat
   (define-fun |18_18__db3-x3sb-xcg-9-1b_Port-Channel18_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |11__reachable-id_db3-x3hl-xcg-9-01| () Int
-    3)
+    5)
   (define-fun |2_2__db3-x3hl-xcg-9-19_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |3_3__db3-x3hl-xcg-9-12_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
@@ -23442,7 +23442,7 @@ sat
   (define-fun |13_13__db3-x3hl-xcg-9-08_Loopback0_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |12_dst-ip| () (_ BitVec 32)
-    #x0af28381)
+    #x0af28380)
   (define-fun |29_29__db3-x3hl-xcg-9-08_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |22_22__db3-x3hl-xcg-9-06_Loopback0_OUTBOUND_SOFTAdd| () Bool
@@ -23480,7 +23480,7 @@ sat
   (define-fun |26_26__db3-x3hl-xcg-9-20_Loopback0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |17__reachable-id_db3-x3hl-xcg-9-02| () Int
-    3)
+    5)
   (define-fun |25_25__db3-x3hl-xcg-9-05_Vlan102_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |26_26__db3-x3hl-xcg-9-08_Loopback0_OUTBOUND_SOFTAdd| () Bool
@@ -23516,7 +23516,7 @@ sat
   (define-fun |38_38__db3-x3hl-xcg-9-15_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |33__reachable-id_db3-x3hl-xcg-9-19| () Int
-    3)
+    5)
   (define-fun |15_15__db3-x3hl-xcg-9-11_Loopback0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |26_26__db3-x3hl-xcg-9-02_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
@@ -23596,7 +23596,7 @@ sat
   (define-fun |33_33__db3-x3sb-xcg-9-1b_Ethernet1/47_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |13__reachable-id_db3-x3hl-xcg-9-04| () Int
-    7)
+    5)
   (define-fun |16_16__db3-x3sb-xcg-9-1b_Port-Channel6_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |29_29__db3-x3sb-xcg-9-1a_mgmt0_OUTBOUND_SOFTAdd| () Bool
@@ -23678,7 +23678,7 @@ sat
   (define-fun |9_9__db3-x3hl-xcg-9-03_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |4__reachable-id_db3-x3sb-xcg-9-1a| () Int
-    6)
+    4)
   (define-fun |0_0__db3-x3sb-xcg-9-1a_Port-Channel20_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |41_41__db3-x3hl-xcg-9-06_Loopback0_OUTBOUND_SOFTAdd| () Bool
@@ -23698,7 +23698,7 @@ sat
   (define-fun |37_37__db3-x3sb-xcg-9-1b_Port-Channel19_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |24__reachable-id_db3-x3hl-xcg-9-05| () Int
-    10)
+    5)
   (define-fun |24_24__db3-x3hl-xcg-9-20_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |23_23__db3-x3hl-xcg-9-04_Vlan102_OUTBOUND_SOFTAdd| () Bool
@@ -23776,7 +23776,7 @@ sat
   (define-fun |3_3__db3-x3hl-xcg-9-09_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |8__reachable-id_db3-x3hl-xcg-9-04| () Int
-    3)
+    5)
   (define-fun |6_6__db3-x3hl-xcg-9-02_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |24_24__db3-x3sb-xcg-9-1a_Ethernet1/48_OUTBOUND_SOFTAdd| () Bool
@@ -23830,7 +23830,7 @@ sat
   (define-fun |5_5__db3-x3sb-xcg-9-1a_Port-Channel10_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |41__reachable-id_db3-x3hl-xcg-9-07| () Int
-    3)
+    5)
   (define-fun |40_40__db3-x3hl-xcg-9-07_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |28_28__db3-x3sb-xcg-9-1a_Port-Channel13_OUTBOUND_SOFTAdd| () Bool
@@ -23862,7 +23862,7 @@ sat
   (define-fun |38_38__db3-x3sb-xcg-9-1a_Port-Channel7_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_db3-x3hl-xcg-9-11_OVERALL_BEST_None_metric| () Int
-    0)
+    2)
   (define-fun |37_37__db3-x3hl-xcg-9-02_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
   (define-fun |32_32__db3-x3hl-xcg-9-04_Port-Channel2_INBOUND_SOFTAdd| () Bool
@@ -23894,7 +23894,7 @@ sat
   (define-fun |21_21__db3-x3hl-xcg-9-09_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |11__reachable-id_db3-x3hl-xcg-9-18| () Int
-    5)
+    3)
   (define-fun |22_22__db3-x3hl-xcg-9-01_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |31_31__db3-x3hl-xcg-9-18_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
@@ -23998,7 +23998,7 @@ sat
   (define-fun |37_37__db3-x3hl-xcg-9-04_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |20__reachable-id_db3-x3hl-xcg-9-18| () Int
-    5)
+    3)
   (define-fun |38_38__db3-x3sb-xcg-9-1b_Port-Channel12_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |26_26__db3-x3sb-xcg-9-1a_mgmt0_OUTBOUND_SOFTAdd| () Bool
@@ -24016,13 +24016,13 @@ sat
   (define-fun |12_12__db3-x3hl-xcg-9-06_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
   (define-fun |0__reachable-id_db3-x3hl-xcg-9-13| () Int
-    5)
+    11)
   (define-fun |26_26__db3-x3sb-xcg-9-1b_Port-Channel5_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_db3-x3sb-xcg-9-1b_BGP_IMPORT_Port-Channel10_permitted| () Bool
     false)
   (define-fun |2__reachable-id_db3-x3hl-xcg-9-10| () Int
-    3)
+    5)
   (define-fun |8_8__db3-x3hl-xcg-9-15_Vlan102_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |35__reachable-id_db3-x3hl-xcg-9-16| () Int
@@ -24052,7 +24052,7 @@ sat
   (define-fun |8_8__db3-x3hl-xcg-9-09_Port-Channel2_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |37__reachable-id_db3-x3hl-xcg-9-06| () Int
-    3)
+    5)
   (define-fun |3_3__db3-x3hl-xcg-9-17_Vlan102_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |36_36__db3-x3hl-xcg-9-20_Loopback0_OUTBOUND_SOFTAdd| () Bool
@@ -24096,7 +24096,7 @@ sat
   (define-fun |40_40__db3-x3hl-xcg-9-18_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |23__reachable-id_db3-x3hl-xcg-9-04| () Int
-    9)
+    5)
   (define-fun |9_ip-protocol| () Int
     0)
   (define-fun |9_9__db3-x3hl-xcg-9-08_Vlan102_INBOUND_SOFTAdd| () Bool
@@ -24104,7 +24104,7 @@ sat
   (define-fun |25_25__db3-x3hl-xcg-9-03_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
   (define-fun |10__reachable-id_db3-x3hl-xcg-9-18| () Int
-    3)
+    5)
   (define-fun |0_0__db3-x3hl-xcg-9-09_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
   (define-fun |6_6__db3-x3hl-xcg-9-01_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
@@ -24114,7 +24114,7 @@ sat
   (define-fun |24_24__db3-x3hl-xcg-9-13_Loopback0_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |4__reachable-id_db3-x3hl-xcg-9-06| () Int
-    7)
+    3)
   (define-fun |0_db3-x3hl-xcg-9-08_BGP_IMPORT_Port-Channel2AllowChoiceUseSoft| () Bool
     false)
   (define-fun |12_12__db3-x3sb-xcg-9-1a_Port-Channel16_INBOUND_SOFTAdd| () Bool
@@ -24122,7 +24122,7 @@ sat
   (define-fun |32_32__db3-x3sb-xcg-9-1b_Port-Channel4_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |27__reachable-id_db3-x3hl-xcg-9-15| () Int
-    3)
+    7)
   (define-fun |18_icmp-type| () Int
     0)
   (define-fun |14_14__db3-x3hl-xcg-9-03_Vlan102_OUTBOUND_SOFTAdd| () Bool
@@ -24256,7 +24256,7 @@ sat
   (define-fun |40_40__db3-x3hl-xcg-9-03_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |30__reachable-id_db3-x3hl-xcg-9-02| () Int
-    3)
+    7)
   (define-fun |11_11__db3-x3sb-xcg-9-1a_Port-Channel3_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |25_25__db3-x3hl-xcg-9-08_Port-Channel2_INBOUND_SOFTAdd| () Bool
@@ -24308,13 +24308,13 @@ sat
   (define-fun |29_29__db3-x3hl-xcg-9-03_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
     false)
   (define-fun |32__reachable-id_db3-x3hl-xcg-9-02| () Int
-    5)
+    3)
   (define-fun |41_41__db3-x3hl-xcg-9-16_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |24_24__db3-x3hl-xcg-9-14_Port-Channel2_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |6_dst-ip| () (_ BitVec 32)
-    #x0af28380)
+    #x0af283d0)
   (define-fun |23_23__db3-x3hl-xcg-9-08_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |2_2__db3-x3sb-xcg-9-1a_Port-Channel5_OUTBOUND_SOFTAdd| () Bool
@@ -24324,7 +24324,7 @@ sat
   (define-fun |7_7__db3-x3sb-xcg-9-1b_Port-Channel11_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |21__reachable-id_db3-x3hl-xcg-9-10| () Int
-    3)
+    5)
   (define-fun |21_21__db3-x3hl-xcg-9-02_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
   (define-fun |40_40__db3-x3hl-xcg-9-19_Port-Channel1_INBOUND_SOFTAdd| () Bool
@@ -24392,7 +24392,7 @@ sat
   (define-fun |39_39__db3-x3hl-xcg-9-14_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_db3-x3hl-xcg-9-16-StaticRouteAddSoft-db3-x3hl-xcg-9-16,Port-Channel2 --> db3-x3sb-xcg-9-1b,Port-Channel16| () Bool
-    true)
+    false)
   (define-fun |28_28__db3-x3sb-xcg-9-1b_Port-Channel7_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |40_40__db3-x3hl-xcg-9-09_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
@@ -24408,7 +24408,7 @@ sat
   (define-fun |37_37__db3-x3sb-xcg-9-1a_Port-Channel2_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |23__reachable-id_db3-x3hl-xcg-9-12| () Int
-    9)
+    5)
   (define-fun |23_23__db3-x3hl-xcg-9-06_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |31_31__db3-x3hl-xcg-9-10_Loopback0_OUTBOUND_SOFTAdd| () Bool
@@ -24454,7 +24454,7 @@ sat
   (define-fun |35_35__db3-x3hl-xcg-9-04_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |36__reachable-id_db3-x3hl-xcg-9-20| () Int
-    3)
+    5)
   (define-fun |7_7__db3-x3hl-xcg-9-08_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |36_36__db3-x3hl-xcg-9-07_Loopback0_OUTBOUND_SOFTAdd| () Bool
@@ -24567,13 +24567,13 @@ sat
     true)
   (define-fun |37_37__db3-x3sb-xcg-9-1a_Port-Channel7_OUTBOUND_SOFTAdd| () Bool
     true)
-  (define-fun |7_7__db3-x3hl-xcg-9-16_Loopback0_INBOUND_SOFTAdd| () Bool
+  (define-fun |34_34__db3-x3hl-xcg-9-16_Vlan102_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_db3-x3hl-xcg-9-06ImportFilterAddSoft0_db3-x3hl-xcg-9-06_BGP_IMPORT_Port-Channel1| () Bool
     true)
   (define-fun |17_17__db3-x3hl-xcg-9-16_Port-Channel1_INBOUND_SOFTAdd| () Bool
     true)
-  (define-fun |9_9__db3-x3hl-xcg-9-08_Loopback0_INBOUND_SOFTAdd| () Bool
+  (define-fun |7_7__db3-x3hl-xcg-9-16_Loopback0_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |7_7__db3-x3hl-xcg-9-15_Port-Channel2_INBOUND_SOFTAdd| () Bool
     true)
@@ -24581,9 +24581,9 @@ sat
     true)
   (define-fun |26_26__db3-x3hl-xcg-9-20_Port-Channel1_INBOUND_SOFTAdd| () Bool
     true)
-  (define-fun |2_2__db3-x3hl-xcg-9-05_Vlan101_INBOUND_SOFTAdd| () Bool
+  (define-fun |9_9__db3-x3hl-xcg-9-08_Loopback0_INBOUND_SOFTAdd| () Bool
     true)
-  (define-fun |34_34__db3-x3hl-xcg-9-16_Vlan102_OUTBOUND_SOFTAdd| () Bool
+  (define-fun |2_2__db3-x3hl-xcg-9-05_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |7_7__db3-x3hl-xcg-9-18_Port-Channel1_INBOUND_SOFTAdd| () Bool
     true)
@@ -24591,9 +24591,9 @@ sat
     true)
   (define-fun |26_26__db3-x3hl-xcg-9-15_Port-Channel2_INBOUND_SOFTAdd| () Bool
     true)
-  (define-fun |39_39__db3-x3hl-xcg-9-09_Vlan102_OUTBOUND_SOFTAdd| () Bool
-    true)
   (define-fun |17_17__db3-x3hl-xcg-9-06_mgmt0_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |39_39__db3-x3hl-xcg-9-09_Vlan102_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |16_16__db3-x3hl-xcg-9-14_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
@@ -24668,7 +24668,7 @@ sat
   (define-fun |37_37__db3-x3sb-xcg-9-1a_Port-Channel19_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |35__reachable-id_db3-x3hl-xcg-9-06| () Int
-    3)
+    5)
   (define-fun |39__reachable-id_db3-x3hl-xcg-9-02| () Int
     3)
   (define-fun |27_27__db3-x3hl-xcg-9-18_Vlan101_INBOUND_SOFTAdd| () Bool
@@ -24688,7 +24688,7 @@ sat
   (define-fun |7_7__db3-x3hl-xcg-9-11_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |8__reachable-id_db3-x3hl-xcg-9-06| () Int
-    3)
+    5)
   (define-fun |24_24__db3-x3hl-xcg-9-07_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |37_37__db3-x3hl-xcg-9-09_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
@@ -24768,7 +24768,7 @@ sat
   (define-fun |16_16__db3-x3hl-xcg-9-10_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
     false)
   (define-fun |27__reachable-id_db3-x3hl-xcg-9-09| () Int
-    3)
+    7)
   (define-fun |40_40__db3-x3sb-xcg-9-1b_Port-Channel10_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |1_1__db3-x3hl-xcg-9-05_Vlan102_INBOUND_SOFTAdd| () Bool
@@ -24806,7 +24806,7 @@ sat
   (define-fun |33_33__db3-x3hl-xcg-9-19_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |11__reachable-id_db3-x3hl-xcg-9-09| () Int
-    3)
+    5)
   (define-fun |22_22__db3-x3hl-xcg-9-07_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |15_15__db3-x3sb-xcg-9-1b_Port-Channel5_INBOUND_SOFTAdd| () Bool
@@ -24854,15 +24854,15 @@ sat
   (define-fun |41_41__db3-x3hl-xcg-9-06_Port-Channel2_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |24__reachable-id_db3-x3hl-xcg-9-01| () Int
-    3)
+    5)
   (define-fun |4_4__db3-x3sb-xcg-9-1a_Port-Channel20_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |4__reachable-id_db3-x3hl-xcg-9-08| () Int
-    7)
+    3)
   (define-fun |30_30__db3-x3sb-xcg-9-1b_Ethernet1/47_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |25__reachable-id_db3-x3hl-xcg-9-08| () Int
-    3)
+    5)
   (define-fun |8_8__db3-x3sb-xcg-9-1b_Port-Channel8_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |17_17__db3-x3sb-xcg-9-1a_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
@@ -24940,7 +24940,7 @@ sat
   (define-fun |11_11__db3-x3hl-xcg-9-10_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |23__reachable-id_db3-x3hl-xcg-9-02| () Int
-    9)
+    5)
   (define-fun |11_11__db3-x3hl-xcg-9-16_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |37_37__db3-x3sb-xcg-9-1b_Port-Channel7_INBOUND_SOFTAdd| () Bool
@@ -25084,9 +25084,9 @@ sat
   (define-fun |24_24__db3-x3sb-xcg-9-1b_Ethernet1/47_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |25__reachable-id_db3-x3hl-xcg-9-07| () Int
-    3)
+    5)
   (define-fun |38__reachable-id_db3-x3hl-xcg-9-05| () Int
-    6)
+    5)
   (define-fun |39_39__db3-x3sb-xcg-9-1b_Port-Channel20_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |29_29__db3-x3sb-xcg-9-1b_Port-Channel14_INBOUND_SOFTAdd| () Bool
@@ -25104,7 +25104,7 @@ sat
   (define-fun |40_40__db3-x3hl-xcg-9-14_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
     false)
   (define-fun |41__reachable-id_db3-x3hl-xcg-9-16| () Int
-    3)
+    5)
   (define-fun |30_30__db3-x3hl-xcg-9-12_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |16_16__db3-x3hl-xcg-9-02_Port-Channel2_INBOUND_SOFTAdd| () Bool
@@ -25132,7 +25132,7 @@ sat
   (define-fun |24_24__db3-x3hl-xcg-9-15_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
     false)
   (define-fun |21__reachable-id_db3-x3hl-xcg-9-19| () Int
-    3)
+    5)
   (define-fun |15_15__db3-x3sb-xcg-9-1a_Port-Channel10_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |18_18__db3-x3sb-xcg-9-1a_Port-Channel10_INBOUND_SOFTAdd| () Bool
@@ -25186,7 +25186,7 @@ sat
   (define-fun |13_ip-protocol| () Int
     0)
   (define-fun |41__reachable-id_db3-x3hl-xcg-9-05| () Int
-    3)
+    5)
   (define-fun |39_39__db3-x3hl-xcg-9-03_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |19_19__db3-x3sb-xcg-9-1b_Port-Channel18_OUTBOUND_SOFTAdd| () Bool
@@ -25215,13 +25215,13 @@ sat
     true)
   (define-fun |0_CONTROL-FORWARDING_db3-x3sb-xcg-9-1b_Port-Channel8| () Bool
     false)
-  (define-fun |38_38__db3-x3hl-xcg-9-13_Vlan101_INBOUND_SOFTAdd| () Bool
+  (define-fun |35_35__db3-x3hl-xcg-9-03_Loopback0_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |21_21__db3-x3hl-xcg-9-19_Loopback0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |11_11__db3-x3sb-xcg-9-1b_Ethernet1/48_INBOUND_SOFTAdd| () Bool
     true)
-  (define-fun |35_35__db3-x3hl-xcg-9-03_Loopback0_INBOUND_SOFTAdd| () Bool
+  (define-fun |38_38__db3-x3hl-xcg-9-13_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |41_41__db3-x3hl-xcg-9-10_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
@@ -25230,9 +25230,9 @@ sat
   (define-fun |22_22__db3-x3hl-xcg-9-08_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
     false)
   (define-fun |22__reachable-id_db3-x3hl-xcg-9-13| () Int
-    3)
+    5)
   (define-fun |41__reachable-id_db3-x3hl-xcg-9-13| () Int
-    3)
+    5)
   (define-fun |0_db3-x3sb-xcg-9-1a-StaticRouteAddSoft-db3-x3sb-xcg-9-1a,Port-Channel2 --> db3-x3hl-xcg-9-02,Port-Channel1| () Bool
     false)
   (define-fun |13_13__db3-x3hl-xcg-9-07_Port-Channel2_INBOUND_SOFTAdd| () Bool
@@ -25254,7 +25254,7 @@ sat
   (define-fun |7_7__db3-x3sb-xcg-9-1b_Port-Channel12_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |33__reachable-id_db3-x3hl-xcg-9-05| () Int
-    3)
+    5)
   (define-fun |10_10__db3-x3sb-xcg-9-1a_Port-Channel11_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |18_18__db3-x3sb-xcg-9-1b_Port-Channel5_OUTBOUND_SOFTAdd| () Bool
@@ -25310,7 +25310,7 @@ sat
   (define-fun |19_19__db3-x3hl-xcg-9-07_Loopback0_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |2__reachable-id_db3-x3hl-xcg-9-20| () Int
-    3)
+    5)
   (define-fun |10__reachable-id_db3-x3hl-xcg-9-07| () Int
     5)
   (define-fun |3_3__db3-x3hl-xcg-9-14_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
@@ -25352,7 +25352,7 @@ sat
   (define-fun |30_30__db3-x3sb-xcg-9-1a_Port-Channel19_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |13__reachable-id_db3-x3sb-xcg-9-1a| () Int
-    6)
+    2)
   (define-fun |32_32__db3-x3hl-xcg-9-20_Port-Channel2_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |21_21__db3-x3hl-xcg-9-09_Port-Channel2_INBOUND_SOFTAdd| () Bool
@@ -25364,7 +25364,7 @@ sat
   (define-fun |20_20__db3-x3hl-xcg-9-09_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
     false)
   (define-fun |26__reachable-id_db3-x3hl-xcg-9-03| () Int
-    3)
+    5)
   (define-fun |9_9__db3-x3hl-xcg-9-03_Vlan102_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |25_25__db3-x3sb-xcg-9-1b_Port-Channel19_OUTBOUND_SOFTAdd| () Bool
@@ -25385,9 +25385,9 @@ sat
     true)
   (define-fun |1__reachable-id_db3-x3hl-xcg-9-18| () Int
     5)
-  (define-fun |8_8__db3-x3hl-xcg-9-18_Loopback0_INBOUND_SOFTAdd| () Bool
-    true)
   (define-fun |0_0__db3-x3hl-xcg-9-14_Vlan101_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |8_8__db3-x3hl-xcg-9-18_Loopback0_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |22_22__db3-x3hl-xcg-9-01_Vlan102_OUTBOUND_SOFTAdd| () Bool
     true)
@@ -25490,7 +25490,7 @@ sat
   (define-fun |7_7__db3-x3sb-xcg-9-1a_Ethernet1/48_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |16__reachable-id_db3-x3hl-xcg-9-03| () Int
-    3)
+    5)
   (define-fun |31_31__db3-x3sb-xcg-9-1b_Port-Channel13_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |11_11__db3-x3hl-xcg-9-20_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
@@ -25504,7 +25504,7 @@ sat
   (define-fun |37_37__db3-x3hl-xcg-9-14_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_db3-x3hl-xcg-9-16-StaticRouteAddSoft-db3-x3hl-xcg-9-16,Port-Channel1 --> db3-x3sb-xcg-9-1a,Port-Channel16| () Bool
-    false)
+    true)
   (define-fun |37_37__db3-x3sb-xcg-9-1a_Port-Channel17_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |23_23__db3-x3hl-xcg-9-06_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
@@ -25520,7 +25520,7 @@ sat
   (define-fun |13_13__db3-x3sb-xcg-9-1b_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
   (define-fun |10_dst-ip| () (_ BitVec 32)
-    #x0af28381)
+    #x0af28380)
   (define-fun |37_37__db3-x3sb-xcg-9-1a_Port-Channel3_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |15_15__db3-x3hl-xcg-9-09_Vlan102_OUTBOUND_SOFTAdd| () Bool
@@ -25584,7 +25584,7 @@ sat
   (define-fun |2_2__db3-x3hl-xcg-9-02_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |2__reachable-id_db3-x3hl-xcg-9-01| () Int
-    3)
+    5)
   (define-fun |37_37__db3-x3sb-xcg-9-1a_Port-Channel17_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |39_39__db3-x3hl-xcg-9-07_Vlan102_INBOUND_SOFTAdd| () Bool
@@ -25622,7 +25622,7 @@ sat
   (define-fun |22_22__db3-x3hl-xcg-9-15_Port-Channel2_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |16__reachable-id_db3-x3sb-xcg-9-1b| () Int
-    2)
+    4)
   (define-fun |15_15__db3-x3hl-xcg-9-05_Port-Channel1_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |17_17__db3-x3sb-xcg-9-1a_Port-Channel12_OUTBOUND_SOFTAdd| () Bool
@@ -25850,7 +25850,7 @@ sat
   (define-fun |2_2__db3-x3hl-xcg-9-01_Loopback0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |15__reachable-id_db3-x3hl-xcg-9-05| () Int
-    3)
+    5)
   (define-fun |19_19__db3-x3sb-xcg-9-1a_Ethernet1/47_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |36_36__db3-x3hl-xcg-9-02_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
@@ -25928,7 +25928,7 @@ sat
   (define-fun |22_22__db3-x3hl-xcg-9-18_Loopback0_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |23__reachable-id_db3-x3hl-xcg-9-19| () Int
-    7)
+    5)
   (define-fun |8_8__db3-x3hl-xcg-9-02_Port-Channel2_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |9_9__db3-x3hl-xcg-9-10_mgmt0_OUTBOUND_SOFTAdd| () Bool
@@ -25936,7 +25936,7 @@ sat
   (define-fun |22_22__db3-x3hl-xcg-9-17_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |4__reachable-id_db3-x3hl-xcg-9-12| () Int
-    9)
+    5)
   (define-fun |5_5__db3-x3hl-xcg-9-18_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_0__db3-x3hl-xcg-9-12_mgmt0_OUTBOUND_SOFTAdd| () Bool
@@ -25996,7 +25996,7 @@ sat
   (define-fun |15_15__db3-x3hl-xcg-9-10_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
     false)
   (define-fun |6__reachable-id_db3-x3hl-xcg-9-19| () Int
-    3)
+    5)
   (define-fun |38_38__db3-x3hl-xcg-9-07_Loopback0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |8_8__db3-x3hl-xcg-9-18_Port-Channel1_INBOUND_SOFTAdd| () Bool
@@ -26020,7 +26020,7 @@ sat
   (define-fun |5_5__db3-x3hl-xcg-9-02_Loopback0_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |19_dst-ip| () (_ BitVec 32)
-    #x0af28385)
+    #x0af28380)
   (define-fun |36_36__db3-x3hl-xcg-9-14_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_0__db3-x3sb-xcg-9-1b_Port-Channel18_INBOUND_SOFTAdd| () Bool
@@ -26063,11 +26063,11 @@ sat
     true)
   (define-fun |29_29__db3-x3hl-xcg-9-02_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
-  (define-fun |41_41__db3-x3hl-xcg-9-12_Vlan101_INBOUND_SOFTAdd| () Bool
+  (define-fun |36_36__db3-x3sb-xcg-9-1a_Ethernet1/47_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |32_32__db3-x3sb-xcg-9-1a_Port-Channel14_OUTBOUND_SOFTAdd| () Bool
     true)
-  (define-fun |36_36__db3-x3sb-xcg-9-1a_Ethernet1/47_OUTBOUND_SOFTAdd| () Bool
+  (define-fun |40_40__db3-x3hl-xcg-9-01_Loopback0_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_CONTROL-FORWARDING_db3-x3hl-xcg-9-05_Port-Channel1| () Bool
     false)
@@ -26075,7 +26075,7 @@ sat
     false)
   (define-fun |14_14__db3-x3sb-xcg-9-1b_Port-Channel6_OUTBOUND_SOFTAdd| () Bool
     true)
-  (define-fun |40_40__db3-x3hl-xcg-9-01_Loopback0_INBOUND_SOFTAdd| () Bool
+  (define-fun |41_41__db3-x3hl-xcg-9-12_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |31_31__db3-x3hl-xcg-9-02_Loopback0_INBOUND_SOFTAdd| () Bool
     true)
@@ -26116,7 +26116,7 @@ sat
   (define-fun |28_28__db3-x3sb-xcg-9-1b_Port-Channel20_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |6__reachable-id_db3-x3hl-xcg-9-08| () Int
-    8)
+    5)
   (define-fun |17_17__db3-x3sb-xcg-9-1a_Port-Channel7_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |40_40__db3-x3hl-xcg-9-07_Port-Channel2_INBOUND_SOFTAdd| () Bool
@@ -26134,9 +26134,9 @@ sat
   (define-fun |25_25__db3-x3hl-xcg-9-07_Port-Channel2_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |36__reachable-id_db3-x3hl-xcg-9-08| () Int
-    3)
+    5)
   (define-fun |28_dst-ip| () (_ BitVec 32)
-    #x0af28381)
+    #x0af28380)
   (define-fun |41_41__db3-x3hl-xcg-9-20_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
   (define-fun |30_30__db3-x3hl-xcg-9-03_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
@@ -26162,12 +26162,12 @@ sat
   (define-fun |21_21__db3-x3sb-xcg-9-1b_Port-Channel20_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |9__reachable-id_db3-x3hl-xcg-9-19| () Int
-    3)
+    5)
   (define-fun |32_32__db3-x3hl-xcg-9-18_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
-  (define-fun |30_30__db3-x3hl-xcg-9-16_Vlan102_INBOUND_SOFTAdd| () Bool
-    true)
   (define-fun |24_24__db3-x3hl-xcg-9-02_Loopback0_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |30_30__db3-x3hl-xcg-9-16_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_0__db3-x3hl-xcg-9-13_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
@@ -26193,11 +26193,11 @@ sat
     false)
   (define-fun |20_20__db3-x3sb-xcg-9-1a_Port-Channel11_OUTBOUND_SOFTAdd| () Bool
     true)
-  (define-fun |24_24__db3-x3hl-xcg-9-14_Vlan102_INBOUND_SOFTAdd| () Bool
+  (define-fun |31_31__db3-x3hl-xcg-9-14_Loopback0_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |35_35__db3-x3sb-xcg-9-1a_Port-Channel13_OUTBOUND_SOFTAdd| () Bool
     true)
-  (define-fun |31_31__db3-x3hl-xcg-9-14_Loopback0_INBOUND_SOFTAdd| () Bool
+  (define-fun |24_24__db3-x3hl-xcg-9-14_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |38_38__db3-x3hl-xcg-9-10_Vlan102_OUTBOUND_SOFTAdd| () Bool
     true)
@@ -26208,7 +26208,7 @@ sat
   (define-fun |28_28__db3-x3sb-xcg-9-1b_Port-Channel14_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |34__reachable-id_db3-x3hl-xcg-9-05| () Int
-    5)
+    3)
   (define-fun |14_14__db3-x3sb-xcg-9-1b_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
   (define-fun |0_db3-x3hl-xcg-9-13_OVERALL_BEST_None_metric| () Int
@@ -26256,9 +26256,9 @@ sat
   (define-fun |31_31__db3-x3hl-xcg-9-06_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
   (define-fun |0__reachable-id_db3-x3hl-xcg-9-18| () Int
-    5)
+    11)
   (define-fun |15__reachable-id_db3-x3hl-xcg-9-18| () Int
-    5)
+    3)
   (define-fun |5_5__db3-x3hl-xcg-9-14_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |40_40__db3-x3sb-xcg-9-1a_Port-Channel1_INBOUND_SOFTAdd| () Bool
@@ -26268,7 +26268,7 @@ sat
   (define-fun |40_40__db3-x3hl-xcg-9-06_Loopback0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |28__reachable-id_db3-x3hl-xcg-9-02| () Int
-    3)
+    5)
   (define-fun |39_39__db3-x3hl-xcg-9-04_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_0__db3-x3hl-xcg-9-01_Port-Channel2_INBOUND_SOFTAdd| () Bool
@@ -26322,7 +26322,7 @@ sat
   (define-fun |32_32__db3-x3hl-xcg-9-01_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |25__reachable-id_db3-x3hl-xcg-9-01| () Int
-    3)
+    5)
   (define-fun |38_38__db3-x3sb-xcg-9-1a_Port-Channel14_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |14_14__db3-x3hl-xcg-9-15_Port-Channel2_INBOUND_SOFTAdd| () Bool
@@ -26413,14 +26413,12 @@ sat
     true)
   (define-fun |27_27__db3-x3hl-xcg-9-03_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
-  (define-fun |0_10.22.173.184/29BGPRemoveFilterSoft| () Bool
-    true)
+  (define-fun |12__reachable-id_db3-x3hl-xcg-9-05| () Int
+    5)
   (define-fun |9_9__db3-x3hl-xcg-9-20_Port-Channel2_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |25_25__db3-x3hl-xcg-9-19_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
-  (define-fun |12__reachable-id_db3-x3hl-xcg-9-05| () Int
-    3)
   (define-fun |19_19__db3-x3hl-xcg-9-11_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |5_5__db3-x3sb-xcg-9-1a_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
@@ -26438,7 +26436,7 @@ sat
   (define-fun |20_20__db3-x3hl-xcg-9-04_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |17__reachable-id_db3-x3hl-xcg-9-01| () Int
-    7)
+    3)
   (define-fun |20_20__db3-x3sb-xcg-9-1b_Port-Channel3_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |34_34__db3-x3hl-xcg-9-06_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
@@ -26462,7 +26460,7 @@ sat
   (define-fun |17_17__db3-x3sb-xcg-9-1b_Port-Channel6_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |16__reachable-id_db3-x3hl-xcg-9-10| () Int
-    3)
+    5)
   (define-fun |23_23__db3-x3hl-xcg-9-15_Loopback0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |6_6__db3-x3sb-xcg-9-1a_Port-Channel11_INBOUND_SOFTAdd| () Bool
@@ -26487,8 +26485,6 @@ sat
     true)
   (define-fun |40__reachable-id_db3-x3hl-xcg-9-18| () Int
     5)
-  (define-fun |0_10.22.173.168/29BGPRemoveFilterSoft| () Bool
-    true)
   (define-fun |16_16__db3-x3sb-xcg-9-1b_Port-Channel10_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |39_39__db3-x3hl-xcg-9-13_Vlan102_OUTBOUND_SOFTAdd| () Bool
@@ -26496,7 +26492,7 @@ sat
   (define-fun |23_23__db3-x3hl-xcg-9-09_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |33__reachable-id_db3-x3hl-xcg-9-13| () Int
-    3)
+    5)
   (define-fun |19_19__db3-x3hl-xcg-9-14_Vlan102_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |18_18__db3-x3hl-xcg-9-05_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
@@ -26504,7 +26500,7 @@ sat
   (define-fun |19_19__db3-x3hl-xcg-9-18_Vlan102_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_db3-x3hl-xcg-9-20_BGP_IMPORT_Port-Channel2_permitted| () Bool
-    false)
+    true)
   (define-fun |25_25__db3-x3hl-xcg-9-17_Port-Channel2_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |5_5__db3-x3hl-xcg-9-14_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
@@ -26522,7 +26518,7 @@ sat
   (define-fun |39_39__db3-x3sb-xcg-9-1b_Port-Channel18_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |27__reachable-id_db3-x3hl-xcg-9-04| () Int
-    5)
+    7)
   (define-fun |20_20__db3-x3hl-xcg-9-11_Port-Channel1_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |5_5__db3-x3sb-xcg-9-1a_Loopback0_OUTBOUND_SOFTAdd| () Bool
@@ -26581,9 +26577,9 @@ sat
     true)
   (define-fun |6_6__db3-x3hl-xcg-9-04_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
-  (define-fun |7_7__db3-x3hl-xcg-9-13_Vlan101_INBOUND_SOFTAdd| () Bool
-    true)
   (define-fun |20_20__db3-x3hl-xcg-9-04_Loopback0_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |7_7__db3-x3hl-xcg-9-13_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |12_12__db3-x3hl-xcg-9-01_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
@@ -26642,7 +26638,7 @@ sat
   (define-fun |22_22__db3-x3hl-xcg-9-06_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |3__reachable-id_db3-x3hl-xcg-9-20| () Int
-    5)
+    3)
   (define-fun |14_14__db3-x3hl-xcg-9-15_Port-Channel1_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_0__db3-x3sb-xcg-9-1a_Port-Channel10_OUTBOUND_SOFTAdd| () Bool
@@ -26688,9 +26684,9 @@ sat
   (define-fun |28_28__db3-x3hl-xcg-9-14_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
   (define-fun |0_db3-x3hl-xcg-9-20_BGP_SINGLE-EXPORT__prefixLength| () Int
-    0)
+    25)
   (define-fun |21__reachable-id_db3-x3hl-xcg-9-03| () Int
-    5)
+    3)
   (define-fun |38__reachable-id_db3-x3hl-xcg-9-09| () Int
     5)
   (define-fun |35_35__db3-x3hl-xcg-9-10_Loopback0_INBOUND_SOFTAdd| () Bool
@@ -26740,7 +26736,7 @@ sat
   (define-fun |28_28__db3-x3hl-xcg-9-11_Port-Channel2_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_db3-x3hl-xcg-9-02_OVERALL_BEST_None_metric| () Int
-    2)
+    0)
   (define-fun |6_6__db3-x3hl-xcg-9-12_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |16_16__db3-x3sb-xcg-9-1b_Port-Channel9_OUTBOUND_SOFTAdd| () Bool
@@ -26892,7 +26888,7 @@ sat
   (define-fun |38_38__db3-x3hl-xcg-9-19_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |28__reachable-id_db3-x3hl-xcg-9-05| () Int
-    8)
+    5)
   (define-fun |35_35__db3-x3sb-xcg-9-1b_Port-Channel5_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |7_7__db3-x3hl-xcg-9-19_Loopback0_OUTBOUND_SOFTAdd| () Bool
@@ -27093,6 +27089,8 @@ sat
     true)
   (define-fun |0_db3-x3hl-xcg-9-18_BGP_IMPORT_Port-Channel1_permitted| () Bool
     false)
+  (define-fun |23_23__db3-x3hl-xcg-9-09_Vlan102_OUTBOUND_SOFTAdd| () Bool
+    true)
   (define-fun |18_18__db3-x3hl-xcg-9-04_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |35_35__db3-x3sb-xcg-9-1a_Loopback0_INBOUND_SOFTAdd| () Bool
@@ -27100,8 +27098,6 @@ sat
   (define-fun |24_24__db3-x3hl-xcg-9-09_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |39_39__db3-x3hl-xcg-9-03_mgmt0_OUTBOUND_SOFTAdd| () Bool
-    true)
-  (define-fun |23_23__db3-x3hl-xcg-9-09_Vlan102_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |31_dst-port| () Int
     0)
@@ -27222,7 +27218,7 @@ sat
   (define-fun |2_2__db3-x3hl-xcg-9-11_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |6__reachable-id_db3-x3hl-xcg-9-02| () Int
-    3)
+    5)
   (define-fun |30_30__db3-x3sb-xcg-9-1b_Loopback0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_0__db3-x3hl-xcg-9-02_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
@@ -27238,7 +27234,7 @@ sat
   (define-fun |27_27__db3-x3hl-xcg-9-15_Vlan102_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |1__reachable-id_db3-x3hl-xcg-9-06| () Int
-    3)
+    5)
   (define-fun |37_37__db3-x3hl-xcg-9-19_Port-Channel1_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |14_14__db3-x3sb-xcg-9-1a_Port-Channel2_INBOUND_SOFTAdd| () Bool
@@ -27302,7 +27298,7 @@ sat
   (define-fun |3_3__db3-x3sb-xcg-9-1a_Port-Channel5_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |10__reachable-id_db3-x3hl-xcg-9-03| () Int
-    3)
+    5)
   (define-fun |31_31__db3-x3sb-xcg-9-1a_Port-Channel13_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |19_19__db3-x3sb-xcg-9-1b_Port-Channel7_OUTBOUND_SOFTAdd| () Bool
@@ -27370,7 +27366,7 @@ sat
   (define-fun |16_16__db3-x3hl-xcg-9-04_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_db3-x3hl-xcg-9-11_BGP_IMPORT_Port-Channel2_prefixLength| () Int
-    0)
+    25)
   (define-fun |32_32__db3-x3sb-xcg-9-1a_Port-Channel18_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |31_31__db3-x3hl-xcg-9-05_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
@@ -27390,7 +27386,7 @@ sat
   (define-fun |16_16__db3-x3sb-xcg-9-1b_Port-Channel14_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |20__reachable-id_db3-x3hl-xcg-9-05| () Int
-    7)
+    5)
   (define-fun |1_1__db3-x3hl-xcg-9-02_Loopback0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |28_28__db3-x3hl-xcg-9-15_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
@@ -27410,7 +27406,7 @@ sat
   (define-fun |11_11__db3-x3hl-xcg-9-13_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |5__reachable-id_db3-x3hl-xcg-9-20| () Int
-    5)
+    3)
   (define-fun |22_22__db3-x3hl-xcg-9-10_Loopback0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |24_24__db3-x3sb-xcg-9-1a_Port-Channel4_INBOUND_SOFTAdd| () Bool
@@ -27456,7 +27452,7 @@ sat
   (define-fun |35_35__db3-x3sb-xcg-9-1a_Port-Channel12_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_db3-x3hl-xcg-9-11_BGP_IMPORT_Port-Channel2AllowChoiceUseSoft| () Bool
-    false)
+    true)
   (define-fun |19_19__db3-x3sb-xcg-9-1a_Port-Channel5_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |14_14__db3-x3sb-xcg-9-1b_Port-Channel17_INBOUND_SOFTAdd| () Bool
@@ -27466,7 +27462,7 @@ sat
   (define-fun |36_36__db3-x3sb-xcg-9-1a_Port-Channel3_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |38__reachable-id_db3-x3hl-xcg-9-16| () Int
-    3)
+    5)
   (define-fun |0_0__db3-x3sb-xcg-9-1a_Port-Channel11_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |19_19__db3-x3hl-xcg-9-10_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
@@ -27493,13 +27489,13 @@ sat
     true)
   (define-fun |38_38__db3-x3hl-xcg-9-13_Port-Channel2_INBOUND_SOFTAdd| () Bool
     true)
-  (define-fun |18_18__db3-x3hl-xcg-9-10_Vlan102_OUTBOUND_SOFTAdd| () Bool
+  (define-fun |0_10.243.182.76/32ExportRemoveSoft0_db3-x3hl-xcg-9-19_OVERALL_BEST_None| () Bool
     true)
   (define-fun |16_16__db3-x3hl-xcg-9-02_Port-Channel1_INBOUND_SOFTAdd| () Bool
     true)
-  (define-fun |0_10.243.182.76/32ExportRemoveSoft0_db3-x3hl-xcg-9-19_OVERALL_BEST_None| () Bool
-    true)
   (define-fun |6_6__db3-x3hl-xcg-9-01_mgmt0_OUTBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |13_13__db3-x3hl-xcg-9-04_Loopback0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |30_30__db3-x3hl-xcg-9-14_Port-Channel2_INBOUND_SOFTAdd| () Bool
     true)
@@ -27507,10 +27503,10 @@ sat
     true)
   (define-fun |1_1__db3-x3sb-xcg-9-1a_Port-Channel11_INBOUND_SOFTAdd| () Bool
     true)
-  (define-fun |13_13__db3-x3hl-xcg-9-04_Loopback0_OUTBOUND_SOFTAdd| () Bool
+  (define-fun |18_18__db3-x3hl-xcg-9-10_Vlan102_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_db3-x3hl-xcg-9-11-StaticRouteAddSoft-db3-x3hl-xcg-9-11,Port-Channel2 --> db3-x3sb-xcg-9-1b,Port-Channel11| () Bool
-    true)
+    false)
   (define-fun |30_30__db3-x3hl-xcg-9-05_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |28_28__db3-x3hl-xcg-9-06_Vlan101_INBOUND_SOFTAdd| () Bool
@@ -27530,11 +27526,11 @@ sat
   (define-fun |0_0__db3-x3hl-xcg-9-19_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |18__reachable-id_db3-x3hl-xcg-9-11| () Int
-    3)
+    5)
   (define-fun |26_icmp-code| () Int
     0)
   (define-fun |29__reachable-id_db3-x3hl-xcg-9-20| () Int
-    3)
+    5)
   (define-fun |26_26__db3-x3hl-xcg-9-13_Port-Channel1_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |32_32__db3-x3hl-xcg-9-05_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
@@ -27566,7 +27562,7 @@ sat
   (define-fun |16_16__db3-x3sb-xcg-9-1a_Port-Channel8_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |33__reachable-id_db3-x3hl-xcg-9-02| () Int
-    5)
+    3)
   (define-fun |18_18__db3-x3sb-xcg-9-1a_Port-Channel4_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |21_21__db3-x3hl-xcg-9-04_Vlan102_OUTBOUND_SOFTAdd| () Bool
@@ -27650,7 +27646,7 @@ sat
   (define-fun |15_15__db3-x3hl-xcg-9-15_Port-Channel1_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |30__reachable-id_db3-x3hl-xcg-9-08| () Int
-    3)
+    7)
   (define-fun |19_19__db3-x3hl-xcg-9-18_Loopback0_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |35_icmp-type| () Int
@@ -27682,7 +27678,7 @@ sat
   (define-fun |10_10__db3-x3sb-xcg-9-1b_Port-Channel3_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0__reachable-id_db3-x3hl-xcg-9-20| () Int
-    3)
+    9)
   (define-fun |31__reachable-id_db3-x3hl-xcg-9-12| () Int
     5)
   (define-fun |35_35__db3-x3sb-xcg-9-1a_Port-Channel5_OUTBOUND_SOFTAdd| () Bool
@@ -27712,19 +27708,19 @@ sat
   (define-fun |32_32__db3-x3sb-xcg-9-1a_Port-Channel17_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |37__reachable-id_db3-x3hl-xcg-9-15| () Int
-    3)
+    5)
   (define-fun |31_31__db3-x3hl-xcg-9-19_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |36_36__db3-x3hl-xcg-9-02_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
-  (define-fun |23_23__db3-x3hl-xcg-9-11_Loopback0_INBOUND_SOFTAdd| () Bool
-    true)
   (define-fun |5_5__db3-x3hl-xcg-9-05_Loopback0_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |23_23__db3-x3hl-xcg-9-11_Loopback0_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_db3-x3hl-xcg-9-18-StaticRouteAddSoft-db3-x3hl-xcg-9-18,Port-Channel1 --> db3-x3sb-xcg-9-1a,Port-Channel18| () Bool
     false)
   (define-fun |18__reachable-id_db3-x3hl-xcg-9-19| () Int
-    3)
+    5)
   (define-fun |5_5__db3-x3sb-xcg-9-1b_Loopback0_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |9_9__db3-x3hl-xcg-9-17_Loopback0_OUTBOUND_SOFTAdd| () Bool
@@ -27734,7 +27730,7 @@ sat
   (define-fun |16_16__db3-x3hl-xcg-9-09_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
   (define-fun |20__reachable-id_db3-x3hl-xcg-9-16| () Int
-    7)
+    5)
   (define-fun |12_12__db3-x3sb-xcg-9-1a_Port-Channel20_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |24_24__db3-x3hl-xcg-9-08_Port-Channel1_INBOUND_SOFTAdd| () Bool
@@ -27754,7 +27750,7 @@ sat
   (define-fun |22_22__db3-x3hl-xcg-9-07_Vlan102_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |10__reachable-id_db3-x3hl-xcg-9-06| () Int
-    5)
+    3)
   (define-fun |10_10__db3-x3sb-xcg-9-1a_Port-Channel20_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |31_31__db3-x3hl-xcg-9-12_Loopback0_INBOUND_SOFTAdd| () Bool
@@ -27850,7 +27846,7 @@ sat
   (define-fun |33_33__db3-x3hl-xcg-9-07_Loopback0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |12__reachable-id_db3-x3hl-xcg-9-04| () Int
-    5)
+    3)
   (define-fun |25_25__db3-x3hl-xcg-9-06_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |41_41__db3-x3hl-xcg-9-12_Loopback0_INBOUND_SOFTAdd| () Bool
@@ -27858,7 +27854,7 @@ sat
   (define-fun |37_37__db3-x3sb-xcg-9-1b_Port-Channel14_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |34__reachable-id_db3-x3hl-xcg-9-02| () Int
-    3)
+    5)
   (define-fun |29_29__db3-x3hl-xcg-9-15_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |28_28__db3-x3hl-xcg-9-18_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
@@ -27894,7 +27890,7 @@ sat
   (define-fun |14_14__db3-x3sb-xcg-9-1a_Loopback0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |5__reachable-id_db3-x3hl-xcg-9-15| () Int
-    3)
+    5)
   (define-fun |20_20__db3-x3hl-xcg-9-09_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |30_30__db3-x3hl-xcg-9-12_Port-Channel2_INBOUND_SOFTAdd| () Bool
@@ -28042,7 +28038,7 @@ sat
   (define-fun |0_0__db3-x3sb-xcg-9-1b_Port-Channel11_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |17__reachable-id_db3-x3hl-xcg-9-20| () Int
-    3)
+    5)
   (define-fun |14_14__db3-x3hl-xcg-9-15_Vlan102_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |14_14__db3-x3hl-xcg-9-04_Vlan102_INBOUND_SOFTAdd| () Bool
@@ -28084,7 +28080,7 @@ sat
   (define-fun |25_25__db3-x3sb-xcg-9-1a_Port-Channel19_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |13__reachable-id_db3-x3hl-xcg-9-14| () Int
-    7)
+    5)
   (define-fun |30_30__db3-x3sb-xcg-9-1a_Port-Channel13_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |35_35__db3-x3sb-xcg-9-1b_Ethernet1/48_OUTBOUND_SOFTAdd| () Bool
@@ -28158,7 +28154,7 @@ sat
   (define-fun |23_23__db3-x3hl-xcg-9-11_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |10__reachable-id_db3-x3hl-xcg-9-15| () Int
-    3)
+    5)
   (define-fun |10_10__db3-x3sb-xcg-9-1a_Port-Channel8_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |6_6__db3-x3hl-xcg-9-04_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
@@ -28170,7 +28166,7 @@ sat
   (define-fun |32_32__db3-x3sb-xcg-9-1b_Port-Channel14_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |32__reachable-id_db3-x3hl-xcg-9-11| () Int
-    3)
+    5)
   (define-fun |12_12__db3-x3hl-xcg-9-09_Vlan102_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |14_14__db3-x3hl-xcg-9-02_Port-Channel1_INBOUND_SOFTAdd| () Bool
@@ -28304,7 +28300,7 @@ sat
   (define-fun |33_33__db3-x3sb-xcg-9-1b_Port-Channel15_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |18__reachable-id_db3-x3hl-xcg-9-01| () Int
-    3)
+    5)
   (define-fun |11_11__db3-x3hl-xcg-9-01_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |30_30__db3-x3hl-xcg-9-17_Loopback0_OUTBOUND_SOFTAdd| () Bool
@@ -28360,7 +28356,7 @@ sat
   (define-fun |34_34__db3-x3sb-xcg-9-1b_Port-Channel14_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |1_dst-ip| () (_ BitVec 32)
-    #x0af28382)
+    #x0af28380)
   (define-fun |8_8__db3-x3sb-xcg-9-1b_Port-Channel3_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |11_11__db3-x3hl-xcg-9-09_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
@@ -28378,7 +28374,7 @@ sat
   (define-fun |19_19__db3-x3hl-xcg-9-03_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |40__reachable-id_db3-x3hl-xcg-9-10| () Int
-    4)
+    5)
   (define-fun |8_8__db3-x3hl-xcg-9-11_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |2_2__db3-x3sb-xcg-9-1b_Port-Channel3_INBOUND_SOFTAdd| () Bool
@@ -28416,7 +28412,7 @@ sat
   (define-fun |20_icmp-code| () Int
     0)
   (define-fun |21__reachable-id_db3-x3hl-xcg-9-16| () Int
-    3)
+    5)
   (define-fun |16_16__db3-x3hl-xcg-9-14_Port-Channel2_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_CONTROL-FORWARDING_db3-x3hl-xcg-9-04_Port-Channel2| () Bool
@@ -28462,9 +28458,9 @@ sat
   (define-fun |21_21__db3-x3hl-xcg-9-04_Port-Channel1_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |2__reachable-id_db3-x3hl-xcg-9-11| () Int
-    3)
+    5)
   (define-fun |10__reachable-id_db3-x3hl-xcg-9-05| () Int
-    3)
+    5)
   (define-fun |12_12__db3-x3hl-xcg-9-08_Port-Channel2_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |7_7__db3-x3hl-xcg-9-10_Vlan101_INBOUND_SOFTAdd| () Bool
@@ -28524,7 +28520,7 @@ sat
   (define-fun |2_icmp-type| () Int
     0)
   (define-fun |23__reachable-id_db3-x3sb-xcg-9-1b| () Int
-    6)
+    2)
   (define-fun |10_10__db3-x3hl-xcg-9-06_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
     false)
   (define-fun |22_22__db3-x3hl-xcg-9-12_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
@@ -28592,7 +28588,7 @@ sat
   (define-fun |0_0__db3-x3sb-xcg-9-1a_Port-Channel12_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |19__reachable-id_db3-x3hl-xcg-9-13| () Int
-    5)
+    7)
   (define-fun |2_2__db3-x3hl-xcg-9-07_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |35_35__db3-x3hl-xcg-9-13_Vlan102_INBOUND_SOFTAdd| () Bool
@@ -28630,13 +28626,13 @@ sat
   (define-fun |11_11__db3-x3sb-xcg-9-1a_Port-Channel10_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_db3-x3hl-xcg-9-02_BGP_SINGLE-EXPORT__metric| () Int
-    3)
+    0)
   (define-fun |32_32__db3-x3sb-xcg-9-1b_Port-Channel6_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |9_9__db3-x3sb-xcg-9-1a_Port-Channel8_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |23__reachable-id_db3-x3hl-xcg-9-10| () Int
-    9)
+    5)
   (define-fun |5_5__db3-x3hl-xcg-9-18_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |25_25__db3-x3hl-xcg-9-14_Port-Channel1_INBOUND_SOFTAdd| () Bool
@@ -28652,7 +28648,7 @@ sat
   (define-fun |32_32__db3-x3sb-xcg-9-1b_Ethernet1/47_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |4__reachable-id_db3-x3hl-xcg-9-11| () Int
-    5)
+    3)
   (define-fun |35_35__db3-x3hl-xcg-9-19_Port-Channel2_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_src-ip| () (_ BitVec 32)
@@ -28688,7 +28684,7 @@ sat
   (define-fun |39_39__db3-x3sb-xcg-9-1a_Port-Channel19_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |30__reachable-id_db3-x3hl-xcg-9-03| () Int
-    5)
+    7)
   (define-fun |39_39__db3-x3sb-xcg-9-1b_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |26_26__db3-x3sb-xcg-9-1a_Port-Channel17_INBOUND_SOFTAdd| () Bool
@@ -28790,7 +28786,7 @@ sat
   (define-fun |17_17__db3-x3hl-xcg-9-10_Loopback0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |37__reachable-id_db3-x3hl-xcg-9-19| () Int
-    3)
+    5)
   (define-fun |13_13__db3-x3hl-xcg-9-09_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |7_7__db3-x3hl-xcg-9-13_Loopback0_INBOUND_SOFTAdd| () Bool
@@ -28798,7 +28794,7 @@ sat
   (define-fun |32_32__db3-x3sb-xcg-9-1a_Port-Channel8_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |7__reachable-id_db3-x3hl-xcg-9-11| () Int
-    3)
+    5)
   (define-fun |7_7__db3-x3sb-xcg-9-1a_Port-Channel14_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |15_15__db3-x3hl-xcg-9-19_mgmt0_OUTBOUND_SOFTAdd| () Bool
@@ -28816,7 +28812,7 @@ sat
   (define-fun |17_17__db3-x3sb-xcg-9-1a_Port-Channel6_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |6__reachable-id_db3-x3hl-xcg-9-14| () Int
-    3)
+    5)
   (define-fun |23_23__db3-x3hl-xcg-9-01_Loopback0_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |29_29__db3-x3hl-xcg-9-18_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
@@ -28884,7 +28880,7 @@ sat
   (define-fun |12_12__db3-x3hl-xcg-9-01_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |8__reachable-id_db3-x3hl-xcg-9-01| () Int
-    3)
+    5)
   (define-fun |9_9__db3-x3hl-xcg-9-05_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |23_23__db3-x3sb-xcg-9-1b_Port-Channel14_OUTBOUND_SOFTAdd| () Bool
@@ -28914,7 +28910,7 @@ sat
   (define-fun |7_7__db3-x3hl-xcg-9-06_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
     false)
   (define-fun |40__reachable-id_db3-x3hl-xcg-9-20| () Int
-    4)
+    5)
   (define-fun |32_32__db3-x3hl-xcg-9-19_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |29_29__db3-x3hl-xcg-9-18_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
@@ -29017,6 +29013,8 @@ sat
     false)
   (define-fun |28_28__db3-x3hl-xcg-9-10_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
+  (define-fun |0_10.22.173.192/29db3-x3sb-xcg-9-1bBGPRemoveFilterSoft| () Bool
+    true)
   (define-fun |21_21__db3-x3hl-xcg-9-03_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |9_9__db3-x3hl-xcg-9-03_mgmt0_OUTBOUND_SOFTAdd| () Bool
@@ -29158,7 +29156,7 @@ sat
   (define-fun |27_27__db3-x3hl-xcg-9-12_Port-Channel2_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |7__reachable-id_db3-x3hl-xcg-9-08| () Int
-    3)
+    5)
   (define-fun |14_14__db3-x3hl-xcg-9-09_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |3_3__db3-x3hl-xcg-9-13_mgmt0_OUTBOUND_SOFTAdd| () Bool
@@ -29202,7 +29200,7 @@ sat
   (define-fun |0_db3-x3hl-xcg-9-07_BGP_IMPORT_Port-Channel1_prefixLength| () Int
     0)
   (define-fun |24__reachable-id_db3-x3hl-xcg-9-03| () Int
-    10)
+    3)
   (define-fun |2_2__db3-x3hl-xcg-9-19_Loopback0_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |24_24__db3-x3hl-xcg-9-08_Port-Channel2_INBOUND_SOFTAdd| () Bool
@@ -29224,7 +29222,7 @@ sat
   (define-fun |15__reachable-id_db3-x3hl-xcg-9-04| () Int
     5)
   (define-fun |22__reachable-id_db3-x3hl-xcg-9-10| () Int
-    5)
+    3)
   (define-fun |35_35__db3-x3hl-xcg-9-15_Vlan102_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |16_16__db3-x3hl-xcg-9-14_Port-Channel1_INBOUND_SOFTAdd| () Bool
@@ -29320,7 +29318,7 @@ sat
   (define-fun |15_15__db3-x3hl-xcg-9-05_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
   (define-fun |9__reachable-id_db3-x3hl-xcg-9-05| () Int
-    5)
+    3)
   (define-fun |16_16__db3-x3sb-xcg-9-1b_Port-Channel12_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |33_33__db3-x3hl-xcg-9-15_Loopback0_INBOUND_SOFTAdd| () Bool
@@ -29342,7 +29340,7 @@ sat
   (define-fun |0_db3-x3sb-xcg-9-1a_BGP_IMPORT_Port-Channel10_metric| () Int
     0)
   (define-fun |31__reachable-id_db3-x3hl-xcg-9-13| () Int
-    3)
+    5)
   (define-fun |21_21__db3-x3sb-xcg-9-1a_Ethernet1/48_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |28_28__db3-x3hl-xcg-9-14_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
@@ -29422,7 +29420,7 @@ sat
   (define-fun |2_2__db3-x3hl-xcg-9-04_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
     false)
   (define-fun |25__reachable-id_db3-x3hl-xcg-9-06| () Int
-    3)
+    5)
   (define-fun |8_8__db3-x3hl-xcg-9-12_Loopback0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |3_3__db3-x3hl-xcg-9-09_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
@@ -29576,7 +29574,7 @@ sat
   (define-fun |39_39__db3-x3sb-xcg-9-1a_Port-Channel13_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |25__reachable-id_db3-x3hl-xcg-9-12| () Int
-    3)
+    5)
   (define-fun |17_17__db3-x3hl-xcg-9-14_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |5_5__db3-x3hl-xcg-9-02_Vlan102_INBOUND_SOFTAdd| () Bool
@@ -29602,7 +29600,7 @@ sat
   (define-fun |5_5__db3-x3hl-xcg-9-04_Loopback0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |9__reachable-id_db3-x3hl-xcg-9-04| () Int
-    3)
+    5)
   (define-fun |37_37__db3-x3hl-xcg-9-07_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |33_33__db3-x3sb-xcg-9-1a_Port-Channel12_INBOUND_SOFTAdd| () Bool
@@ -29620,7 +29618,7 @@ sat
   (define-fun |35_35__db3-x3sb-xcg-9-1b_Port-Channel8_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |38__reachable-id_db3-x3hl-xcg-9-15| () Int
-    3)
+    5)
   (define-fun |5_5__db3-x3hl-xcg-9-06_Port-Channel1_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |1_1__db3-x3hl-xcg-9-15_Vlan102_INBOUND_SOFTAdd| () Bool
@@ -29674,7 +29672,7 @@ sat
   (define-fun |27_27__db3-x3hl-xcg-9-11_Loopback0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |18_dst-ip| () (_ BitVec 32)
-    #x0af28380)
+    #x0af28384)
   (define-fun |30_30__db3-x3hl-xcg-9-20_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |40_40__db3-x3sb-xcg-9-1a_Port-Channel18_OUTBOUND_SOFTAdd| () Bool
@@ -29718,7 +29716,7 @@ sat
   (define-fun |3_3__db3-x3hl-xcg-9-03_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |3__reachable-id_db3-x3hl-xcg-9-07| () Int
-    5)
+    3)
   (define-fun |39_39__db3-x3sb-xcg-9-1a_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |22_22__db3-x3hl-xcg-9-06_Port-Channel1_INBOUND_SOFTAdd| () Bool
@@ -29730,7 +29728,7 @@ sat
   (define-fun |0_db3-x3hl-xcg-9-15_BGP_SINGLE-EXPORT__prefixLength| () Int
     25)
   (define-fun |31__reachable-id_db3-x3hl-xcg-9-11| () Int
-    3)
+    5)
   (define-fun |23_23__db3-x3hl-xcg-9-11_Loopback0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |41_41__db3-x3sb-xcg-9-1a_Port-Channel5_OUTBOUND_SOFTAdd| () Bool
@@ -29746,7 +29744,7 @@ sat
   (define-fun |19_19__db3-x3hl-xcg-9-10_Loopback0_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |19__reachable-id_db3-x3hl-xcg-9-14| () Int
-    3)
+    7)
   (define-fun |0_0__db3-x3hl-xcg-9-03_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |14_14__db3-x3hl-xcg-9-03_Loopback0_INBOUND_SOFTAdd| () Bool
@@ -29836,7 +29834,7 @@ sat
   (define-fun |6_6__db3-x3hl-xcg-9-12_Loopback0_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |41_dst-ip| () (_ BitVec 32)
-    #x0af28381)
+    #x0af28380)
   (define-fun |3_3__db3-x3hl-xcg-9-17_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
     false)
   (define-fun |30_30__db3-x3sb-xcg-9-1b_Port-Channel3_OUTBOUND_SOFTAdd| () Bool
@@ -29892,7 +29890,7 @@ sat
   (define-fun |5_5__db3-x3hl-xcg-9-09_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |33__reachable-id_db3-x3sb-xcg-9-1b| () Int
-    2)
+    4)
   (define-fun |20_20__db3-x3sb-xcg-9-1a_Ethernet1/47_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |31_src-port| () Int
@@ -29954,7 +29952,7 @@ sat
   (define-fun |27_27__db3-x3sb-xcg-9-1b_Port-Channel13_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0__reachable-id_db3-x3hl-xcg-9-05| () Int
-    3)
+    9)
   (define-fun |24_24__db3-x3hl-xcg-9-11_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |35_35__db3-x3hl-xcg-9-11_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
@@ -30018,7 +30016,7 @@ sat
   (define-fun |16_16__db3-x3hl-xcg-9-07_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
     false)
   (define-fun |26__reachable-id_db3-x3hl-xcg-9-06| () Int
-    5)
+    3)
   (define-fun |41_41__db3-x3hl-xcg-9-07_Loopback0_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |32_32__db3-x3hl-xcg-9-12_Vlan102_OUTBOUND_SOFTAdd| () Bool
@@ -30068,17 +30066,17 @@ sat
   (define-fun |32_32__db3-x3sb-xcg-9-1b_Port-Channel3_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |41__reachable-id_db3-x3hl-xcg-9-14| () Int
-    3)
+    5)
   (define-fun |16_16__db3-x3hl-xcg-9-13_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |39_dst-ip| () (_ BitVec 32)
-    #x0af28390)
+    #x0af283a0)
   (define-fun |3_3__db3-x3hl-xcg-9-02_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |25_25__db3-x3hl-xcg-9-01_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |31__reachable-id_db3-x3sb-xcg-9-1a| () Int
-    4)
+    2)
   (define-fun |15_15__db3-x3hl-xcg-9-01_Loopback0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |7_7__db3-x3hl-xcg-9-10_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
@@ -30152,7 +30150,7 @@ sat
   (define-fun |28_28__db3-x3hl-xcg-9-10_Vlan102_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |34__reachable-id_db3-x3hl-xcg-9-07| () Int
-    5)
+    3)
   (define-fun |39_39__db3-x3hl-xcg-9-17_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |13_13__db3-x3hl-xcg-9-08_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
@@ -30230,13 +30228,13 @@ sat
   (define-fun |2_2__db3-x3sb-xcg-9-1a_Port-Channel3_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |1__reachable-id_db3-x3hl-xcg-9-10| () Int
-    5)
+    3)
   (define-fun |25_25__db3-x3hl-xcg-9-20_Vlan102_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |5_5__db3-x3hl-xcg-9-07_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |14__reachable-id_db3-x3hl-xcg-9-14| () Int
-    3)
+    5)
   (define-fun |5_5__db3-x3hl-xcg-9-13_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
     false)
   (define-fun |20_20__db3-x3sb-xcg-9-1a_Port-Channel7_INBOUND_SOFTAdd| () Bool
@@ -30340,7 +30338,7 @@ sat
   (define-fun |33_33__db3-x3hl-xcg-9-04_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0__reachable-id_db3-x3hl-xcg-9-07| () Int
-    3)
+    11)
   (define-fun |18_18__db3-x3sb-xcg-9-1a_Port-Channel7_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |23_23__db3-x3sb-xcg-9-1b_Port-Channel4_OUTBOUND_SOFTAdd| () Bool
@@ -30390,9 +30388,7 @@ sat
   (define-fun |0_0__db3-x3sb-xcg-9-1a_Port-Channel4_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_db3-x3hl-xcg-9-02_BGP_IMPORT_Port-Channel2_prefixLength| () Int
-    25)
-  (define-fun |0_10.22.173.192/29BGPRemoveFilterSoft| () Bool
-    true)
+    0)
   (define-fun |31_icmp-code| () Int
     0)
   (define-fun |13_13__db3-x3hl-xcg-9-06_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
@@ -30418,7 +30414,7 @@ sat
   (define-fun |19_19__db3-x3sb-xcg-9-1b_Port-Channel19_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |16_dst-ip| () (_ BitVec 32)
-    #x0af28381)
+    #x0af28380)
   (define-fun |13_13__db3-x3hl-xcg-9-20_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |3_3__db3-x3hl-xcg-9-02_Port-Channel1_INBOUND_SOFTAdd| () Bool
@@ -30508,7 +30504,7 @@ sat
   (define-fun |3_3__db3-x3sb-xcg-9-1a_Port-Channel4_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |39__reachable-id_db3-x3hl-xcg-9-07| () Int
-    3)
+    8)
   (define-fun |0_157.56.255.200/29ExportRemoveSoft0_db3-x3hl-xcg-9-19_OVERALL_BEST_None| () Bool
     true)
   (define-fun |12_12__db3-x3sb-xcg-9-1b_Port-Channel6_INBOUND_SOFTAdd| () Bool
@@ -30567,6 +30563,8 @@ sat
     false)
   (define-fun |5_5__db3-x3sb-xcg-9-1b_Port-Channel5_INBOUND_SOFTAdd| () Bool
     true)
+  (define-fun |0_10.22.173.184/29db3-x3sb-xcg-9-1bBGPRemoveFilterSoft| () Bool
+    true)
   (define-fun |36_36__db3-x3hl-xcg-9-15_Port-Channel2_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_0__db3-x3sb-xcg-9-1b_Port-Channel7_INBOUND_SOFTAdd| () Bool
@@ -30576,6 +30574,8 @@ sat
   (define-fun |16_16__db3-x3sb-xcg-9-1a_Port-Channel10_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |2_2__db3-x3hl-xcg-9-11_Port-Channel1_INBOUND_SOFTAdd| () Bool
+    true)
+  (define-fun |0_10.22.173.176/29db3-x3sb-xcg-9-1bBGPRemoveFilterSoft| () Bool
     true)
   (define-fun |10_10__db3-x3sb-xcg-9-1b_Port-Channel3_INBOUND_SOFTAdd| () Bool
     true)
@@ -30592,7 +30592,7 @@ sat
   (define-fun |0_db3-x3hl-xcg-9-04_BGP_IMPORT_Port-Channel2_metric| () Int
     0)
   (define-fun |17__reachable-id_db3-x3hl-xcg-9-12| () Int
-    3)
+    5)
   (define-fun |14_14__db3-x3sb-xcg-9-1b_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |13_13__db3-x3hl-xcg-9-04_Vlan102_OUTBOUND_SOFTAdd| () Bool
@@ -30608,7 +30608,7 @@ sat
   (define-fun |10_10__db3-x3hl-xcg-9-10_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0__reachable-id_db3-x3hl-xcg-9-09| () Int
-    3)
+    9)
   (define-fun |16_icmp-code| () Int
     0)
   (define-fun |4_4__db3-x3sb-xcg-9-1a_Port-Channel13_OUTBOUND_SOFTAdd| () Bool
@@ -30638,7 +30638,7 @@ sat
   (define-fun |30_30__db3-x3hl-xcg-9-11_Port-Channel1_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |30__reachable-id_db3-x3sb-xcg-9-1b| () Int
-    2)
+    4)
   (define-fun |39_39__db3-x3hl-xcg-9-03_Port-Channel2_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |28_28__db3-x3hl-xcg-9-02_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
@@ -30656,7 +30656,7 @@ sat
   (define-fun |29_29__db3-x3hl-xcg-9-19_Port-Channel2_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |35__reachable-id_db3-x3hl-xcg-9-09| () Int
-    5)
+    3)
   (define-fun |36_36__db3-x3sb-xcg-9-1b_Ethernet1/48_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |32_32__db3-x3hl-xcg-9-10_Vlan102_OUTBOUND_SOFTAdd| () Bool
@@ -30676,7 +30676,7 @@ sat
   (define-fun |34_34__db3-x3hl-xcg-9-12_Loopback0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |35__reachable-id_db3-x3hl-xcg-9-08| () Int
-    5)
+    3)
   (define-fun |31_31__db3-x3hl-xcg-9-10_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |5_5__db3-x3sb-xcg-9-1b_Port-Channel1_INBOUND_SOFTAdd| () Bool
@@ -30758,7 +30758,7 @@ sat
   (define-fun |22_22__db3-x3hl-xcg-9-06_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
   (define-fun |24__reachable-id_db3-x3hl-xcg-9-20| () Int
-    3)
+    5)
   (define-fun |1_1__db3-x3hl-xcg-9-15_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |8_8__db3-x3hl-xcg-9-10_Port-Channel1_INBOUND_SOFTAdd| () Bool
@@ -30798,7 +30798,7 @@ sat
   (define-fun |37_37__db3-x3hl-xcg-9-13_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0__reachable-id_db3-x3hl-xcg-9-19| () Int
-    5)
+    11)
   (define-fun |25_25__db3-x3sb-xcg-9-1b_Port-Channel5_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |33_33__db3-x3hl-xcg-9-06_Loopback0_OUTBOUND_SOFTAdd| () Bool
@@ -30860,7 +30860,7 @@ sat
   (define-fun |15_icmp-type| () Int
     0)
   (define-fun |29__reachable-id_db3-x3hl-xcg-9-08| () Int
-    3)
+    5)
   (define-fun |36_36__db3-x3hl-xcg-9-03_Loopback0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |7_7__db3-x3sb-xcg-9-1a_Port-Channel12_OUTBOUND_SOFTAdd| () Bool
@@ -30888,7 +30888,7 @@ sat
   (define-fun |12_12__db3-x3hl-xcg-9-18_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |9__reachable-id_db3-x3hl-xcg-9-03| () Int
-    3)
+    5)
   (define-fun |34_34__db3-x3hl-xcg-9-14_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |35_35__db3-x3hl-xcg-9-12_mgmt0_OUTBOUND_SOFTAdd| () Bool
@@ -30946,7 +30946,7 @@ sat
   (define-fun |19_19__db3-x3sb-xcg-9-1b_Port-Channel19_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |36__reachable-id_db3-x3hl-xcg-9-14| () Int
-    5)
+    3)
   (define-fun |40_40__db3-x3hl-xcg-9-09_Loopback0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |12__reachable-id_db3-x3sb-xcg-9-1a| () Int
@@ -30966,7 +30966,7 @@ sat
   (define-fun |28_28__db3-x3hl-xcg-9-09_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |22__reachable-id_db3-x3hl-xcg-9-05| () Int
-    3)
+    5)
   (define-fun |1_1__db3-x3hl-xcg-9-14_Loopback0_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |23_23__db3-x3sb-xcg-9-1b_Port-Channel13_INBOUND_SOFTAdd| () Bool
@@ -30994,7 +30994,7 @@ sat
   (define-fun |34_34__db3-x3hl-xcg-9-17_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
   (define-fun |14__reachable-id_db3-x3hl-xcg-9-01| () Int
-    5)
+    3)
   (define-fun |7_7__db3-x3hl-xcg-9-07_Port-Channel2_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |29_29__db3-x3hl-xcg-9-14_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
@@ -31014,7 +31014,7 @@ sat
   (define-fun |18_18__db3-x3hl-xcg-9-03_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |6__reachable-id_db3-x3sb-xcg-9-1a| () Int
-    7)
+    4)
   (define-fun |18_18__db3-x3hl-xcg-9-18_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |8_8__db3-x3sb-xcg-9-1b_Port-Channel11_OUTBOUND_SOFTAdd| () Bool
@@ -31098,9 +31098,9 @@ sat
   (define-fun |32_32__db3-x3hl-xcg-9-08_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |40__reachable-id_db3-x3hl-xcg-9-13| () Int
-    4)
+    5)
   (define-fun |11__reachable-id_db3-x3hl-xcg-9-16| () Int
-    3)
+    5)
   (define-fun |19_19__db3-x3hl-xcg-9-07_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |12_12__db3-x3sb-xcg-9-1b_Port-Channel8_INBOUND_SOFTAdd| () Bool
@@ -31160,7 +31160,7 @@ sat
   (define-fun |26_26__db3-x3hl-xcg-9-12_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |35__reachable-id_db3-x3hl-xcg-9-04| () Int
-    3)
+    5)
   (define-fun |15_15__db3-x3hl-xcg-9-01_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
     false)
   (define-fun |27_27__db3-x3hl-xcg-9-10_Port-Channel2_INBOUND_SOFTAdd| () Bool
@@ -31176,7 +31176,7 @@ sat
   (define-fun |30_30__db3-x3sb-xcg-9-1a_Port-Channel15_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |15__reachable-id_db3-x3hl-xcg-9-20| () Int
-    3)
+    5)
   (define-fun |41_41__db3-x3sb-xcg-9-1b_Port-Channel1_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |6_6__db3-x3hl-xcg-9-13_Vlan101_INBOUND_SOFTAdd| () Bool
@@ -31210,7 +31210,7 @@ sat
   (define-fun |14_14__db3-x3hl-xcg-9-14_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |24__reachable-id_db3-x3sb-xcg-9-1a| () Int
-    9)
+    4)
   (define-fun |9_9__db3-x3hl-xcg-9-05_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |34_34__db3-x3hl-xcg-9-16_mgmt0_OUTBOUND_SOFTAdd| () Bool
@@ -31222,7 +31222,7 @@ sat
   (define-fun |31_31__db3-x3hl-xcg-9-12_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |24__reachable-id_db3-x3hl-xcg-9-10| () Int
-    10)
+    5)
   (define-fun |29_29__db3-x3hl-xcg-9-04_Port-Channel1_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |28_28__db3-x3hl-xcg-9-07_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
@@ -31264,7 +31264,7 @@ sat
   (define-fun |40_40__db3-x3hl-xcg-9-15_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |8__reachable-id_db3-x3hl-xcg-9-12| () Int
-    3)
+    5)
   (define-fun |38_38__db3-x3sb-xcg-9-1b_Port-Channel9_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |26_26__db3-x3hl-xcg-9-05_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
@@ -31278,7 +31278,7 @@ sat
   (define-fun |15_15__db3-x3hl-xcg-9-01_Port-Channel2_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |29__reachable-id_db3-x3hl-xcg-9-09| () Int
-    8)
+    5)
   (define-fun |30_30__db3-x3sb-xcg-9-1a_Port-Channel16_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |25_25__db3-x3hl-xcg-9-09_Loopback0_INBOUND_SOFTAdd| () Bool
@@ -31322,7 +31322,7 @@ sat
   (define-fun |11__reachable-id_db3-x3hl-xcg-9-02| () Int
     5)
   (define-fun |24__reachable-id_db3-x3hl-xcg-9-04| () Int
-    3)
+    5)
   (define-fun |41_41__db3-x3hl-xcg-9-18_Vlan102_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |11_11__db3-x3hl-xcg-9-06_mgmt0_OUTBOUND_SOFTAdd| () Bool
@@ -31434,7 +31434,7 @@ sat
   (define-fun |22_22__db3-x3hl-xcg-9-05_Vlan102_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |0_db3-x3sb-xcg-9-1a-StaticRouteAddSoft-db3-x3sb-xcg-9-1a,Port-Channel11 --> db3-x3hl-xcg-9-11,Port-Channel1| () Bool
-    true)
+    false)
   (define-fun |0_157.56.255.168/29ExportRemoveSoft0_db3-x3hl-xcg-9-15_OVERALL_BEST_None| () Bool
     true)
   (define-fun |8_8__db3-x3sb-xcg-9-1a_Ethernet1/47_INBOUND_SOFTAdd| () Bool
@@ -31464,7 +31464,7 @@ sat
   (define-fun |24_24__db3-x3hl-xcg-9-09_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
     false)
   (define-fun |19__reachable-id_db3-x3hl-xcg-9-10| () Int
-    5)
+    7)
   (define-fun |21_21__db3-x3sb-xcg-9-1b_Port-Channel17_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |41_41__db3-x3hl-xcg-9-03_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
@@ -31480,9 +31480,9 @@ sat
   (define-fun |12_12__db3-x3hl-xcg-9-09_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
     false)
   (define-fun |24__reachable-id_db3-x3hl-xcg-9-14| () Int
-    3)
+    5)
   (define-fun |16__reachable-id_db3-x3hl-xcg-9-19| () Int
-    3)
+    5)
   (define-fun |33_33__db3-x3hl-xcg-9-07_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |32_32__db3-x3hl-xcg-9-02_Loopback0_OUTBOUND_SOFTAdd| () Bool
@@ -31540,7 +31540,7 @@ sat
   (define-fun |14_14__db3-x3hl-xcg-9-05_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |41__reachable-id_db3-x3hl-xcg-9-06| () Int
-    3)
+    5)
   (define-fun |35_35__db3-x3sb-xcg-9-1a_Port-Channel5_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |39_39__db3-x3hl-xcg-9-18_Port-Channel1_INBOUND_SOFTAdd| () Bool
@@ -31560,9 +31560,9 @@ sat
   (define-fun |5_5__db3-x3hl-xcg-9-01_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |19__reachable-id_db3-x3hl-xcg-9-18| () Int
-    3)
+    7)
   (define-fun |38__reachable-id_db3-x3hl-xcg-9-11| () Int
-    3)
+    5)
   (define-fun |11_11__db3-x3hl-xcg-9-12_Vlan101_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |4_4__db3-x3sb-xcg-9-1a_Port-Channel15_OUTBOUND_SOFTAdd| () Bool
@@ -31584,7 +31584,7 @@ sat
   (define-fun |14_14__db3-x3hl-xcg-9-02_Vlan102_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |8__reachable-id_db3-x3hl-xcg-9-15| () Int
-    3)
+    5)
   (define-fun |18_18__db3-x3sb-xcg-9-1a_Port-Channel1_INBOUND_SOFTAdd| () Bool
     true)
   (define-fun |20_20__db3-x3hl-xcg-9-20_Vlan102_INBOUND_SOFTAdd| () Bool
@@ -31675,9 +31675,9 @@ sat
     true)
   (define-fun |7_7__db3-x3hl-xcg-9-07_Vlan102_INBOUND_SOFTAdd| () Bool
     true)
-  (define-fun |33_33__db3-x3hl-xcg-9-07_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
-    false)
   (define-fun |10_10__db3-x3hl-xcg-9-19_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
+    false)
+  (define-fun |33_33__db3-x3hl-xcg-9-07_mgmt0_INBOUND_mgmt-onlyRemove| () Bool
     false)
   (define-fun |1_1__db3-x3sb-xcg-9-1a_Loopback0_OUTBOUND_SOFTAdd| () Bool
     true)
@@ -31742,9 +31742,9 @@ sat
   (define-fun |25_25__db3-x3hl-xcg-9-13_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |24__reachable-id_db3-x3hl-xcg-9-16| () Int
-    3)
+    5)
   (define-fun |18__reachable-id_db3-x3hl-xcg-9-04| () Int
-    3)
+    5)
   (define-fun |2_2__db3-x3hl-xcg-9-02_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |15_15__db3-x3sb-xcg-9-1b_Port-Channel17_INBOUND_SOFTAdd| () Bool
@@ -31784,7 +31784,7 @@ sat
   (define-fun |20_20__db3-x3hl-xcg-9-07_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
     false)
   (define-fun |8__reachable-id_db3-x3sb-xcg-9-1b| () Int
-    2)
+    4)
   (define-fun |20__reachable-id_db3-x3hl-xcg-9-04| () Int
     5)
   (define-fun |25_25__db3-x3sb-xcg-9-1b_Port-Channel1_OUTBOUND_SOFTAdd| () Bool
@@ -31820,7 +31820,7 @@ sat
   (define-fun |9_9__db3-x3sb-xcg-9-1b_Port-Channel6_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |10__reachable-id_db3-x3hl-xcg-9-09| () Int
-    3)
+    5)
   (define-fun |41_41__db3-x3hl-xcg-9-08_Vlan101_OUTBOUND_vlan101-xcg-outRemove| () Bool
     false)
   (define-fun |26_26__db3-x3hl-xcg-9-11_Port-Channel1_INBOUND_SOFTAdd| () Bool
@@ -31882,7 +31882,7 @@ sat
   (define-fun |10_10__db3-x3hl-xcg-9-03_mgmt0_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |28__reachable-id_db3-x3hl-xcg-9-04| () Int
-    3)
+    5)
   (define-fun |1_1__db3-x3hl-xcg-9-20_Port-Channel2_OUTBOUND_SOFTAdd| () Bool
     true)
   (define-fun |18_18__db3-x3sb-xcg-9-1a_Port-Channel15_INBOUND_SOFTAdd| () Bool
@@ -32020,11 +32020,11 @@ sat
   (define-fun |41_DATA-FORWARDING_db3-x3hl-xcg-9-04_Loopback0| () Bool
     false)
   (define-fun |41_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |41_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan102| () Bool
     false)
   (define-fun |41_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |41_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan101| () Bool
     false)
   (define-fun |41_DATA-FORWARDING_db3-x3hl-xcg-9-14_mgmt0| () Bool
@@ -32060,9 +32060,9 @@ sat
   (define-fun |41_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan102| () Bool
     false)
   (define-fun |41_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel1| () Bool
-    false)
-  (define-fun |41_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
     true)
+  (define-fun |41_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
+    false)
   (define-fun |41_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan101| () Bool
     false)
   (define-fun |41_DATA-FORWARDING_db3-x3hl-xcg-9-02_Loopback0| () Bool
@@ -32164,7 +32164,7 @@ sat
   (define-fun |41_DATA-FORWARDING_db3-x3hl-xcg-9-06_Vlan102| () Bool
     false)
   (define-fun |41_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |41_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan102| () Bool
     false)
   (define-fun |41_DATA-FORWARDING_db3-x3hl-xcg-9-16_mgmt0| () Bool
@@ -32172,7 +32172,7 @@ sat
   (define-fun |41_DATA-FORWARDING_db3-x3hl-xcg-9-16_Loopback0| () Bool
     false)
   (define-fun |41_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |41_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan101| () Bool
     false)
   (define-fun |41_DATA-FORWARDING_db3-x3hl-xcg-9-05_Vlan102| () Bool
@@ -32288,9 +32288,9 @@ sat
   (define-fun |41_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel14| () Bool
     false)
   (define-fun |41_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel17| () Bool
-    false)
-  (define-fun |41_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
     true)
+  (define-fun |41_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
+    false)
   (define-fun |41_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel1| () Bool
     false)
   (define-fun |41_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Loopback0| () Bool
@@ -32744,11 +32744,11 @@ sat
   (define-fun |40_DATA-FORWARDING_db3-x3hl-xcg-9-04_Loopback0| () Bool
     false)
   (define-fun |40_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |40_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan102| () Bool
     false)
   (define-fun |40_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |40_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan101| () Bool
     false)
   (define-fun |40_DATA-FORWARDING_db3-x3hl-xcg-9-14_mgmt0| () Bool
@@ -32784,9 +32784,9 @@ sat
   (define-fun |40_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan102| () Bool
     false)
   (define-fun |40_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel1| () Bool
-    false)
-  (define-fun |40_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
     true)
+  (define-fun |40_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
+    false)
   (define-fun |40_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan101| () Bool
     false)
   (define-fun |40_DATA-FORWARDING_db3-x3hl-xcg-9-02_Loopback0| () Bool
@@ -32888,7 +32888,7 @@ sat
   (define-fun |40_DATA-FORWARDING_db3-x3hl-xcg-9-06_Vlan102| () Bool
     false)
   (define-fun |40_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |40_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan102| () Bool
     false)
   (define-fun |40_DATA-FORWARDING_db3-x3hl-xcg-9-16_mgmt0| () Bool
@@ -32896,7 +32896,7 @@ sat
   (define-fun |40_DATA-FORWARDING_db3-x3hl-xcg-9-16_Loopback0| () Bool
     false)
   (define-fun |40_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |40_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan101| () Bool
     false)
   (define-fun |40_DATA-FORWARDING_db3-x3hl-xcg-9-05_Vlan102| () Bool
@@ -33012,9 +33012,9 @@ sat
   (define-fun |40_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel14| () Bool
     false)
   (define-fun |40_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel17| () Bool
-    false)
-  (define-fun |40_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
     true)
+  (define-fun |40_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
+    false)
   (define-fun |40_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel1| () Bool
     false)
   (define-fun |40_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Loopback0| () Bool
@@ -33468,11 +33468,11 @@ sat
   (define-fun |39_DATA-FORWARDING_db3-x3hl-xcg-9-04_Loopback0| () Bool
     false)
   (define-fun |39_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |39_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan102| () Bool
     false)
   (define-fun |39_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |39_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan101| () Bool
     false)
   (define-fun |39_DATA-FORWARDING_db3-x3hl-xcg-9-14_mgmt0| () Bool
@@ -33508,9 +33508,9 @@ sat
   (define-fun |39_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan102| () Bool
     false)
   (define-fun |39_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel1| () Bool
-    false)
-  (define-fun |39_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
     true)
+  (define-fun |39_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
+    false)
   (define-fun |39_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan101| () Bool
     false)
   (define-fun |39_DATA-FORWARDING_db3-x3hl-xcg-9-02_Loopback0| () Bool
@@ -33612,7 +33612,7 @@ sat
   (define-fun |39_DATA-FORWARDING_db3-x3hl-xcg-9-06_Vlan102| () Bool
     false)
   (define-fun |39_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |39_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan102| () Bool
     false)
   (define-fun |39_DATA-FORWARDING_db3-x3hl-xcg-9-16_mgmt0| () Bool
@@ -33620,7 +33620,7 @@ sat
   (define-fun |39_DATA-FORWARDING_db3-x3hl-xcg-9-16_Loopback0| () Bool
     false)
   (define-fun |39_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |39_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan101| () Bool
     false)
   (define-fun |39_DATA-FORWARDING_db3-x3hl-xcg-9-05_Vlan102| () Bool
@@ -33736,9 +33736,9 @@ sat
   (define-fun |39_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel14| () Bool
     false)
   (define-fun |39_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel17| () Bool
-    false)
-  (define-fun |39_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
     true)
+  (define-fun |39_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
+    false)
   (define-fun |39_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel1| () Bool
     false)
   (define-fun |39_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Loopback0| () Bool
@@ -34192,11 +34192,11 @@ sat
   (define-fun |38_DATA-FORWARDING_db3-x3hl-xcg-9-04_Loopback0| () Bool
     false)
   (define-fun |38_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |38_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan102| () Bool
     false)
   (define-fun |38_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |38_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan101| () Bool
     false)
   (define-fun |38_DATA-FORWARDING_db3-x3hl-xcg-9-14_mgmt0| () Bool
@@ -34232,9 +34232,9 @@ sat
   (define-fun |38_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan102| () Bool
     false)
   (define-fun |38_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel1| () Bool
-    false)
-  (define-fun |38_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
     true)
+  (define-fun |38_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
+    false)
   (define-fun |38_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan101| () Bool
     false)
   (define-fun |38_DATA-FORWARDING_db3-x3hl-xcg-9-02_Loopback0| () Bool
@@ -34336,7 +34336,7 @@ sat
   (define-fun |38_DATA-FORWARDING_db3-x3hl-xcg-9-06_Vlan102| () Bool
     false)
   (define-fun |38_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |38_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan102| () Bool
     false)
   (define-fun |38_DATA-FORWARDING_db3-x3hl-xcg-9-16_mgmt0| () Bool
@@ -34344,7 +34344,7 @@ sat
   (define-fun |38_DATA-FORWARDING_db3-x3hl-xcg-9-16_Loopback0| () Bool
     false)
   (define-fun |38_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |38_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan101| () Bool
     false)
   (define-fun |38_DATA-FORWARDING_db3-x3hl-xcg-9-05_Vlan102| () Bool
@@ -34460,9 +34460,9 @@ sat
   (define-fun |38_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel14| () Bool
     false)
   (define-fun |38_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel17| () Bool
-    false)
-  (define-fun |38_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
     true)
+  (define-fun |38_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
+    false)
   (define-fun |38_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel1| () Bool
     false)
   (define-fun |38_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Loopback0| () Bool
@@ -34916,11 +34916,11 @@ sat
   (define-fun |37_DATA-FORWARDING_db3-x3hl-xcg-9-04_Loopback0| () Bool
     false)
   (define-fun |37_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |37_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan102| () Bool
     false)
   (define-fun |37_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |37_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan101| () Bool
     false)
   (define-fun |37_DATA-FORWARDING_db3-x3hl-xcg-9-14_mgmt0| () Bool
@@ -34956,9 +34956,9 @@ sat
   (define-fun |37_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan102| () Bool
     false)
   (define-fun |37_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel1| () Bool
-    false)
-  (define-fun |37_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
     true)
+  (define-fun |37_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
+    false)
   (define-fun |37_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan101| () Bool
     false)
   (define-fun |37_DATA-FORWARDING_db3-x3hl-xcg-9-02_Loopback0| () Bool
@@ -35060,7 +35060,7 @@ sat
   (define-fun |37_DATA-FORWARDING_db3-x3hl-xcg-9-06_Vlan102| () Bool
     false)
   (define-fun |37_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |37_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan102| () Bool
     false)
   (define-fun |37_DATA-FORWARDING_db3-x3hl-xcg-9-16_mgmt0| () Bool
@@ -35068,7 +35068,7 @@ sat
   (define-fun |37_DATA-FORWARDING_db3-x3hl-xcg-9-16_Loopback0| () Bool
     false)
   (define-fun |37_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |37_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan101| () Bool
     false)
   (define-fun |37_DATA-FORWARDING_db3-x3hl-xcg-9-05_Vlan102| () Bool
@@ -35184,9 +35184,9 @@ sat
   (define-fun |37_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel14| () Bool
     false)
   (define-fun |37_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel17| () Bool
-    false)
-  (define-fun |37_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
     true)
+  (define-fun |37_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
+    false)
   (define-fun |37_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel1| () Bool
     false)
   (define-fun |37_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Loopback0| () Bool
@@ -35640,11 +35640,11 @@ sat
   (define-fun |36_DATA-FORWARDING_db3-x3hl-xcg-9-04_Loopback0| () Bool
     false)
   (define-fun |36_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |36_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan102| () Bool
     false)
   (define-fun |36_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |36_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan101| () Bool
     false)
   (define-fun |36_DATA-FORWARDING_db3-x3hl-xcg-9-14_mgmt0| () Bool
@@ -35680,9 +35680,9 @@ sat
   (define-fun |36_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan102| () Bool
     false)
   (define-fun |36_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel1| () Bool
-    false)
-  (define-fun |36_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
     true)
+  (define-fun |36_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
+    false)
   (define-fun |36_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan101| () Bool
     false)
   (define-fun |36_DATA-FORWARDING_db3-x3hl-xcg-9-02_Loopback0| () Bool
@@ -35784,7 +35784,7 @@ sat
   (define-fun |36_DATA-FORWARDING_db3-x3hl-xcg-9-06_Vlan102| () Bool
     false)
   (define-fun |36_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |36_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan102| () Bool
     false)
   (define-fun |36_DATA-FORWARDING_db3-x3hl-xcg-9-16_mgmt0| () Bool
@@ -35792,7 +35792,7 @@ sat
   (define-fun |36_DATA-FORWARDING_db3-x3hl-xcg-9-16_Loopback0| () Bool
     false)
   (define-fun |36_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |36_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan101| () Bool
     false)
   (define-fun |36_DATA-FORWARDING_db3-x3hl-xcg-9-05_Vlan102| () Bool
@@ -35908,9 +35908,9 @@ sat
   (define-fun |36_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel14| () Bool
     false)
   (define-fun |36_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel17| () Bool
-    false)
-  (define-fun |36_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
     true)
+  (define-fun |36_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
+    false)
   (define-fun |36_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel1| () Bool
     false)
   (define-fun |36_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Loopback0| () Bool
@@ -36364,11 +36364,11 @@ sat
   (define-fun |35_DATA-FORWARDING_db3-x3hl-xcg-9-04_Loopback0| () Bool
     false)
   (define-fun |35_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |35_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan102| () Bool
     false)
   (define-fun |35_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |35_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan101| () Bool
     false)
   (define-fun |35_DATA-FORWARDING_db3-x3hl-xcg-9-14_mgmt0| () Bool
@@ -36404,9 +36404,9 @@ sat
   (define-fun |35_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan102| () Bool
     false)
   (define-fun |35_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel1| () Bool
-    false)
-  (define-fun |35_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
     true)
+  (define-fun |35_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
+    false)
   (define-fun |35_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan101| () Bool
     false)
   (define-fun |35_DATA-FORWARDING_db3-x3hl-xcg-9-02_Loopback0| () Bool
@@ -36508,7 +36508,7 @@ sat
   (define-fun |35_DATA-FORWARDING_db3-x3hl-xcg-9-06_Vlan102| () Bool
     false)
   (define-fun |35_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |35_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan102| () Bool
     false)
   (define-fun |35_DATA-FORWARDING_db3-x3hl-xcg-9-16_mgmt0| () Bool
@@ -36516,7 +36516,7 @@ sat
   (define-fun |35_DATA-FORWARDING_db3-x3hl-xcg-9-16_Loopback0| () Bool
     false)
   (define-fun |35_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |35_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan101| () Bool
     false)
   (define-fun |35_DATA-FORWARDING_db3-x3hl-xcg-9-05_Vlan102| () Bool
@@ -36632,9 +36632,9 @@ sat
   (define-fun |35_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel14| () Bool
     false)
   (define-fun |35_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel17| () Bool
-    false)
-  (define-fun |35_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
     true)
+  (define-fun |35_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
+    false)
   (define-fun |35_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel1| () Bool
     false)
   (define-fun |35_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Loopback0| () Bool
@@ -37088,11 +37088,11 @@ sat
   (define-fun |34_DATA-FORWARDING_db3-x3hl-xcg-9-04_Loopback0| () Bool
     false)
   (define-fun |34_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |34_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan102| () Bool
     false)
   (define-fun |34_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |34_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan101| () Bool
     false)
   (define-fun |34_DATA-FORWARDING_db3-x3hl-xcg-9-14_mgmt0| () Bool
@@ -37128,9 +37128,9 @@ sat
   (define-fun |34_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan102| () Bool
     false)
   (define-fun |34_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel1| () Bool
-    false)
-  (define-fun |34_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
     true)
+  (define-fun |34_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
+    false)
   (define-fun |34_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan101| () Bool
     false)
   (define-fun |34_DATA-FORWARDING_db3-x3hl-xcg-9-02_Loopback0| () Bool
@@ -37232,7 +37232,7 @@ sat
   (define-fun |34_DATA-FORWARDING_db3-x3hl-xcg-9-06_Vlan102| () Bool
     false)
   (define-fun |34_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |34_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan102| () Bool
     false)
   (define-fun |34_DATA-FORWARDING_db3-x3hl-xcg-9-16_mgmt0| () Bool
@@ -37240,7 +37240,7 @@ sat
   (define-fun |34_DATA-FORWARDING_db3-x3hl-xcg-9-16_Loopback0| () Bool
     false)
   (define-fun |34_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |34_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan101| () Bool
     false)
   (define-fun |34_DATA-FORWARDING_db3-x3hl-xcg-9-05_Vlan102| () Bool
@@ -37356,9 +37356,9 @@ sat
   (define-fun |34_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel14| () Bool
     false)
   (define-fun |34_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel17| () Bool
-    false)
-  (define-fun |34_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
     true)
+  (define-fun |34_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
+    false)
   (define-fun |34_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel1| () Bool
     false)
   (define-fun |34_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Loopback0| () Bool
@@ -37812,11 +37812,11 @@ sat
   (define-fun |33_DATA-FORWARDING_db3-x3hl-xcg-9-04_Loopback0| () Bool
     false)
   (define-fun |33_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |33_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan102| () Bool
     false)
   (define-fun |33_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |33_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan101| () Bool
     false)
   (define-fun |33_DATA-FORWARDING_db3-x3hl-xcg-9-14_mgmt0| () Bool
@@ -37852,9 +37852,9 @@ sat
   (define-fun |33_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan102| () Bool
     false)
   (define-fun |33_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel1| () Bool
-    false)
-  (define-fun |33_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
     true)
+  (define-fun |33_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
+    false)
   (define-fun |33_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan101| () Bool
     false)
   (define-fun |33_DATA-FORWARDING_db3-x3hl-xcg-9-02_Loopback0| () Bool
@@ -37956,7 +37956,7 @@ sat
   (define-fun |33_DATA-FORWARDING_db3-x3hl-xcg-9-06_Vlan102| () Bool
     false)
   (define-fun |33_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |33_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan102| () Bool
     false)
   (define-fun |33_DATA-FORWARDING_db3-x3hl-xcg-9-16_mgmt0| () Bool
@@ -37964,7 +37964,7 @@ sat
   (define-fun |33_DATA-FORWARDING_db3-x3hl-xcg-9-16_Loopback0| () Bool
     false)
   (define-fun |33_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |33_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan101| () Bool
     false)
   (define-fun |33_DATA-FORWARDING_db3-x3hl-xcg-9-05_Vlan102| () Bool
@@ -38080,9 +38080,9 @@ sat
   (define-fun |33_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel14| () Bool
     false)
   (define-fun |33_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel17| () Bool
-    false)
-  (define-fun |33_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
     true)
+  (define-fun |33_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
+    false)
   (define-fun |33_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel1| () Bool
     false)
   (define-fun |33_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Loopback0| () Bool
@@ -38536,11 +38536,11 @@ sat
   (define-fun |32_DATA-FORWARDING_db3-x3hl-xcg-9-04_Loopback0| () Bool
     false)
   (define-fun |32_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |32_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan102| () Bool
     false)
   (define-fun |32_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |32_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan101| () Bool
     false)
   (define-fun |32_DATA-FORWARDING_db3-x3hl-xcg-9-14_mgmt0| () Bool
@@ -38576,9 +38576,9 @@ sat
   (define-fun |32_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan102| () Bool
     false)
   (define-fun |32_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel1| () Bool
-    false)
-  (define-fun |32_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
     true)
+  (define-fun |32_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
+    false)
   (define-fun |32_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan101| () Bool
     false)
   (define-fun |32_DATA-FORWARDING_db3-x3hl-xcg-9-02_Loopback0| () Bool
@@ -38680,7 +38680,7 @@ sat
   (define-fun |32_DATA-FORWARDING_db3-x3hl-xcg-9-06_Vlan102| () Bool
     false)
   (define-fun |32_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |32_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan102| () Bool
     false)
   (define-fun |32_DATA-FORWARDING_db3-x3hl-xcg-9-16_mgmt0| () Bool
@@ -38688,7 +38688,7 @@ sat
   (define-fun |32_DATA-FORWARDING_db3-x3hl-xcg-9-16_Loopback0| () Bool
     false)
   (define-fun |32_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |32_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan101| () Bool
     false)
   (define-fun |32_DATA-FORWARDING_db3-x3hl-xcg-9-05_Vlan102| () Bool
@@ -38804,9 +38804,9 @@ sat
   (define-fun |32_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel14| () Bool
     false)
   (define-fun |32_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel17| () Bool
-    false)
-  (define-fun |32_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
     true)
+  (define-fun |32_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
+    false)
   (define-fun |32_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel1| () Bool
     false)
   (define-fun |32_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Loopback0| () Bool
@@ -39260,11 +39260,11 @@ sat
   (define-fun |31_DATA-FORWARDING_db3-x3hl-xcg-9-04_Loopback0| () Bool
     false)
   (define-fun |31_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |31_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan102| () Bool
     false)
   (define-fun |31_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |31_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan101| () Bool
     false)
   (define-fun |31_DATA-FORWARDING_db3-x3hl-xcg-9-14_mgmt0| () Bool
@@ -39300,9 +39300,9 @@ sat
   (define-fun |31_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan102| () Bool
     false)
   (define-fun |31_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel1| () Bool
-    false)
-  (define-fun |31_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
     true)
+  (define-fun |31_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
+    false)
   (define-fun |31_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan101| () Bool
     false)
   (define-fun |31_DATA-FORWARDING_db3-x3hl-xcg-9-02_Loopback0| () Bool
@@ -39404,7 +39404,7 @@ sat
   (define-fun |31_DATA-FORWARDING_db3-x3hl-xcg-9-06_Vlan102| () Bool
     false)
   (define-fun |31_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |31_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan102| () Bool
     false)
   (define-fun |31_DATA-FORWARDING_db3-x3hl-xcg-9-16_mgmt0| () Bool
@@ -39412,7 +39412,7 @@ sat
   (define-fun |31_DATA-FORWARDING_db3-x3hl-xcg-9-16_Loopback0| () Bool
     false)
   (define-fun |31_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |31_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan101| () Bool
     false)
   (define-fun |31_DATA-FORWARDING_db3-x3hl-xcg-9-05_Vlan102| () Bool
@@ -39528,9 +39528,9 @@ sat
   (define-fun |31_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel14| () Bool
     false)
   (define-fun |31_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel17| () Bool
-    false)
-  (define-fun |31_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
     true)
+  (define-fun |31_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
+    false)
   (define-fun |31_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel1| () Bool
     false)
   (define-fun |31_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Loopback0| () Bool
@@ -39984,11 +39984,11 @@ sat
   (define-fun |30_DATA-FORWARDING_db3-x3hl-xcg-9-04_Loopback0| () Bool
     false)
   (define-fun |30_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |30_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan102| () Bool
     false)
   (define-fun |30_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |30_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan101| () Bool
     false)
   (define-fun |30_DATA-FORWARDING_db3-x3hl-xcg-9-14_mgmt0| () Bool
@@ -40024,9 +40024,9 @@ sat
   (define-fun |30_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan102| () Bool
     false)
   (define-fun |30_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel1| () Bool
-    false)
-  (define-fun |30_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
     true)
+  (define-fun |30_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
+    false)
   (define-fun |30_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan101| () Bool
     false)
   (define-fun |30_DATA-FORWARDING_db3-x3hl-xcg-9-02_Loopback0| () Bool
@@ -40128,7 +40128,7 @@ sat
   (define-fun |30_DATA-FORWARDING_db3-x3hl-xcg-9-06_Vlan102| () Bool
     false)
   (define-fun |30_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |30_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan102| () Bool
     false)
   (define-fun |30_DATA-FORWARDING_db3-x3hl-xcg-9-16_mgmt0| () Bool
@@ -40136,7 +40136,7 @@ sat
   (define-fun |30_DATA-FORWARDING_db3-x3hl-xcg-9-16_Loopback0| () Bool
     false)
   (define-fun |30_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |30_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan101| () Bool
     false)
   (define-fun |30_DATA-FORWARDING_db3-x3hl-xcg-9-05_Vlan102| () Bool
@@ -40252,9 +40252,9 @@ sat
   (define-fun |30_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel14| () Bool
     false)
   (define-fun |30_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel17| () Bool
-    false)
-  (define-fun |30_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
     true)
+  (define-fun |30_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
+    false)
   (define-fun |30_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel1| () Bool
     false)
   (define-fun |30_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Loopback0| () Bool
@@ -40708,11 +40708,11 @@ sat
   (define-fun |29_DATA-FORWARDING_db3-x3hl-xcg-9-04_Loopback0| () Bool
     false)
   (define-fun |29_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |29_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan102| () Bool
     false)
   (define-fun |29_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |29_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan101| () Bool
     false)
   (define-fun |29_DATA-FORWARDING_db3-x3hl-xcg-9-14_mgmt0| () Bool
@@ -40748,9 +40748,9 @@ sat
   (define-fun |29_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan102| () Bool
     false)
   (define-fun |29_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel1| () Bool
-    false)
-  (define-fun |29_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
     true)
+  (define-fun |29_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
+    false)
   (define-fun |29_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan101| () Bool
     false)
   (define-fun |29_DATA-FORWARDING_db3-x3hl-xcg-9-02_Loopback0| () Bool
@@ -40852,7 +40852,7 @@ sat
   (define-fun |29_DATA-FORWARDING_db3-x3hl-xcg-9-06_Vlan102| () Bool
     false)
   (define-fun |29_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |29_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan102| () Bool
     false)
   (define-fun |29_DATA-FORWARDING_db3-x3hl-xcg-9-16_mgmt0| () Bool
@@ -40860,7 +40860,7 @@ sat
   (define-fun |29_DATA-FORWARDING_db3-x3hl-xcg-9-16_Loopback0| () Bool
     false)
   (define-fun |29_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |29_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan101| () Bool
     false)
   (define-fun |29_DATA-FORWARDING_db3-x3hl-xcg-9-05_Vlan102| () Bool
@@ -40976,9 +40976,9 @@ sat
   (define-fun |29_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel14| () Bool
     false)
   (define-fun |29_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel17| () Bool
-    false)
-  (define-fun |29_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
     true)
+  (define-fun |29_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
+    false)
   (define-fun |29_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel1| () Bool
     false)
   (define-fun |29_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Loopback0| () Bool
@@ -41432,11 +41432,11 @@ sat
   (define-fun |28_DATA-FORWARDING_db3-x3hl-xcg-9-04_Loopback0| () Bool
     false)
   (define-fun |28_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |28_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan102| () Bool
     false)
   (define-fun |28_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |28_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan101| () Bool
     false)
   (define-fun |28_DATA-FORWARDING_db3-x3hl-xcg-9-14_mgmt0| () Bool
@@ -41472,9 +41472,9 @@ sat
   (define-fun |28_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan102| () Bool
     false)
   (define-fun |28_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel1| () Bool
-    false)
-  (define-fun |28_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
     true)
+  (define-fun |28_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
+    false)
   (define-fun |28_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan101| () Bool
     false)
   (define-fun |28_DATA-FORWARDING_db3-x3hl-xcg-9-02_Loopback0| () Bool
@@ -41576,7 +41576,7 @@ sat
   (define-fun |28_DATA-FORWARDING_db3-x3hl-xcg-9-06_Vlan102| () Bool
     false)
   (define-fun |28_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |28_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan102| () Bool
     false)
   (define-fun |28_DATA-FORWARDING_db3-x3hl-xcg-9-16_mgmt0| () Bool
@@ -41584,7 +41584,7 @@ sat
   (define-fun |28_DATA-FORWARDING_db3-x3hl-xcg-9-16_Loopback0| () Bool
     false)
   (define-fun |28_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |28_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan101| () Bool
     false)
   (define-fun |28_DATA-FORWARDING_db3-x3hl-xcg-9-05_Vlan102| () Bool
@@ -41700,9 +41700,9 @@ sat
   (define-fun |28_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel14| () Bool
     false)
   (define-fun |28_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel17| () Bool
-    false)
-  (define-fun |28_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
     true)
+  (define-fun |28_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
+    false)
   (define-fun |28_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel1| () Bool
     false)
   (define-fun |28_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Loopback0| () Bool
@@ -42156,11 +42156,11 @@ sat
   (define-fun |27_DATA-FORWARDING_db3-x3hl-xcg-9-04_Loopback0| () Bool
     false)
   (define-fun |27_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |27_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan102| () Bool
     false)
   (define-fun |27_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |27_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan101| () Bool
     false)
   (define-fun |27_DATA-FORWARDING_db3-x3hl-xcg-9-14_mgmt0| () Bool
@@ -42196,9 +42196,9 @@ sat
   (define-fun |27_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan102| () Bool
     false)
   (define-fun |27_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel1| () Bool
-    false)
-  (define-fun |27_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
     true)
+  (define-fun |27_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
+    false)
   (define-fun |27_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan101| () Bool
     false)
   (define-fun |27_DATA-FORWARDING_db3-x3hl-xcg-9-02_Loopback0| () Bool
@@ -42300,7 +42300,7 @@ sat
   (define-fun |27_DATA-FORWARDING_db3-x3hl-xcg-9-06_Vlan102| () Bool
     false)
   (define-fun |27_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |27_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan102| () Bool
     false)
   (define-fun |27_DATA-FORWARDING_db3-x3hl-xcg-9-16_mgmt0| () Bool
@@ -42308,7 +42308,7 @@ sat
   (define-fun |27_DATA-FORWARDING_db3-x3hl-xcg-9-16_Loopback0| () Bool
     false)
   (define-fun |27_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |27_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan101| () Bool
     false)
   (define-fun |27_DATA-FORWARDING_db3-x3hl-xcg-9-05_Vlan102| () Bool
@@ -42424,9 +42424,9 @@ sat
   (define-fun |27_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel14| () Bool
     false)
   (define-fun |27_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel17| () Bool
-    false)
-  (define-fun |27_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
     true)
+  (define-fun |27_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
+    false)
   (define-fun |27_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel1| () Bool
     false)
   (define-fun |27_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Loopback0| () Bool
@@ -42880,11 +42880,11 @@ sat
   (define-fun |26_DATA-FORWARDING_db3-x3hl-xcg-9-04_Loopback0| () Bool
     false)
   (define-fun |26_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |26_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan102| () Bool
     false)
   (define-fun |26_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |26_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan101| () Bool
     false)
   (define-fun |26_DATA-FORWARDING_db3-x3hl-xcg-9-14_mgmt0| () Bool
@@ -42920,9 +42920,9 @@ sat
   (define-fun |26_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan102| () Bool
     false)
   (define-fun |26_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel1| () Bool
-    false)
-  (define-fun |26_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
     true)
+  (define-fun |26_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
+    false)
   (define-fun |26_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan101| () Bool
     false)
   (define-fun |26_DATA-FORWARDING_db3-x3hl-xcg-9-02_Loopback0| () Bool
@@ -43024,7 +43024,7 @@ sat
   (define-fun |26_DATA-FORWARDING_db3-x3hl-xcg-9-06_Vlan102| () Bool
     false)
   (define-fun |26_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |26_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan102| () Bool
     false)
   (define-fun |26_DATA-FORWARDING_db3-x3hl-xcg-9-16_mgmt0| () Bool
@@ -43032,7 +43032,7 @@ sat
   (define-fun |26_DATA-FORWARDING_db3-x3hl-xcg-9-16_Loopback0| () Bool
     false)
   (define-fun |26_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |26_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan101| () Bool
     false)
   (define-fun |26_DATA-FORWARDING_db3-x3hl-xcg-9-05_Vlan102| () Bool
@@ -43148,9 +43148,9 @@ sat
   (define-fun |26_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel14| () Bool
     false)
   (define-fun |26_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel17| () Bool
-    false)
-  (define-fun |26_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
     true)
+  (define-fun |26_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
+    false)
   (define-fun |26_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel1| () Bool
     false)
   (define-fun |26_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Loopback0| () Bool
@@ -43604,11 +43604,11 @@ sat
   (define-fun |25_DATA-FORWARDING_db3-x3hl-xcg-9-04_Loopback0| () Bool
     false)
   (define-fun |25_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |25_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan102| () Bool
     false)
   (define-fun |25_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |25_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan101| () Bool
     false)
   (define-fun |25_DATA-FORWARDING_db3-x3hl-xcg-9-14_mgmt0| () Bool
@@ -43644,9 +43644,9 @@ sat
   (define-fun |25_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan102| () Bool
     false)
   (define-fun |25_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel1| () Bool
-    false)
-  (define-fun |25_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
     true)
+  (define-fun |25_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
+    false)
   (define-fun |25_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan101| () Bool
     false)
   (define-fun |25_DATA-FORWARDING_db3-x3hl-xcg-9-02_Loopback0| () Bool
@@ -43748,7 +43748,7 @@ sat
   (define-fun |25_DATA-FORWARDING_db3-x3hl-xcg-9-06_Vlan102| () Bool
     false)
   (define-fun |25_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |25_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan102| () Bool
     false)
   (define-fun |25_DATA-FORWARDING_db3-x3hl-xcg-9-16_mgmt0| () Bool
@@ -43756,7 +43756,7 @@ sat
   (define-fun |25_DATA-FORWARDING_db3-x3hl-xcg-9-16_Loopback0| () Bool
     false)
   (define-fun |25_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |25_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan101| () Bool
     false)
   (define-fun |25_DATA-FORWARDING_db3-x3hl-xcg-9-05_Vlan102| () Bool
@@ -43872,9 +43872,9 @@ sat
   (define-fun |25_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel14| () Bool
     false)
   (define-fun |25_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel17| () Bool
-    false)
-  (define-fun |25_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
     true)
+  (define-fun |25_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
+    false)
   (define-fun |25_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel1| () Bool
     false)
   (define-fun |25_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Loopback0| () Bool
@@ -44328,11 +44328,11 @@ sat
   (define-fun |24_DATA-FORWARDING_db3-x3hl-xcg-9-04_Loopback0| () Bool
     false)
   (define-fun |24_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |24_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan102| () Bool
     false)
   (define-fun |24_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |24_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan101| () Bool
     false)
   (define-fun |24_DATA-FORWARDING_db3-x3hl-xcg-9-14_mgmt0| () Bool
@@ -44368,9 +44368,9 @@ sat
   (define-fun |24_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan102| () Bool
     false)
   (define-fun |24_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel1| () Bool
-    false)
-  (define-fun |24_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
     true)
+  (define-fun |24_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
+    false)
   (define-fun |24_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan101| () Bool
     false)
   (define-fun |24_DATA-FORWARDING_db3-x3hl-xcg-9-02_Loopback0| () Bool
@@ -44472,7 +44472,7 @@ sat
   (define-fun |24_DATA-FORWARDING_db3-x3hl-xcg-9-06_Vlan102| () Bool
     false)
   (define-fun |24_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |24_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan102| () Bool
     false)
   (define-fun |24_DATA-FORWARDING_db3-x3hl-xcg-9-16_mgmt0| () Bool
@@ -44480,7 +44480,7 @@ sat
   (define-fun |24_DATA-FORWARDING_db3-x3hl-xcg-9-16_Loopback0| () Bool
     false)
   (define-fun |24_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |24_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan101| () Bool
     false)
   (define-fun |24_DATA-FORWARDING_db3-x3hl-xcg-9-05_Vlan102| () Bool
@@ -44596,9 +44596,9 @@ sat
   (define-fun |24_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel14| () Bool
     false)
   (define-fun |24_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel17| () Bool
-    false)
-  (define-fun |24_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
     true)
+  (define-fun |24_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
+    false)
   (define-fun |24_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel1| () Bool
     false)
   (define-fun |24_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Loopback0| () Bool
@@ -45052,11 +45052,11 @@ sat
   (define-fun |23_DATA-FORWARDING_db3-x3hl-xcg-9-04_Loopback0| () Bool
     false)
   (define-fun |23_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |23_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan102| () Bool
     false)
   (define-fun |23_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |23_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan101| () Bool
     false)
   (define-fun |23_DATA-FORWARDING_db3-x3hl-xcg-9-14_mgmt0| () Bool
@@ -45092,9 +45092,9 @@ sat
   (define-fun |23_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan102| () Bool
     false)
   (define-fun |23_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel1| () Bool
-    false)
-  (define-fun |23_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
     true)
+  (define-fun |23_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
+    false)
   (define-fun |23_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan101| () Bool
     false)
   (define-fun |23_DATA-FORWARDING_db3-x3hl-xcg-9-02_Loopback0| () Bool
@@ -45196,7 +45196,7 @@ sat
   (define-fun |23_DATA-FORWARDING_db3-x3hl-xcg-9-06_Vlan102| () Bool
     false)
   (define-fun |23_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |23_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan102| () Bool
     false)
   (define-fun |23_DATA-FORWARDING_db3-x3hl-xcg-9-16_mgmt0| () Bool
@@ -45204,7 +45204,7 @@ sat
   (define-fun |23_DATA-FORWARDING_db3-x3hl-xcg-9-16_Loopback0| () Bool
     false)
   (define-fun |23_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |23_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan101| () Bool
     false)
   (define-fun |23_DATA-FORWARDING_db3-x3hl-xcg-9-05_Vlan102| () Bool
@@ -45320,9 +45320,9 @@ sat
   (define-fun |23_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel14| () Bool
     false)
   (define-fun |23_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel17| () Bool
-    false)
-  (define-fun |23_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
     true)
+  (define-fun |23_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
+    false)
   (define-fun |23_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel1| () Bool
     false)
   (define-fun |23_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Loopback0| () Bool
@@ -45776,11 +45776,11 @@ sat
   (define-fun |22_DATA-FORWARDING_db3-x3hl-xcg-9-04_Loopback0| () Bool
     false)
   (define-fun |22_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |22_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan102| () Bool
     false)
   (define-fun |22_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |22_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan101| () Bool
     false)
   (define-fun |22_DATA-FORWARDING_db3-x3hl-xcg-9-14_mgmt0| () Bool
@@ -45816,9 +45816,9 @@ sat
   (define-fun |22_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan102| () Bool
     false)
   (define-fun |22_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel1| () Bool
-    false)
-  (define-fun |22_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
     true)
+  (define-fun |22_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
+    false)
   (define-fun |22_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan101| () Bool
     false)
   (define-fun |22_DATA-FORWARDING_db3-x3hl-xcg-9-02_Loopback0| () Bool
@@ -45920,7 +45920,7 @@ sat
   (define-fun |22_DATA-FORWARDING_db3-x3hl-xcg-9-06_Vlan102| () Bool
     false)
   (define-fun |22_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |22_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan102| () Bool
     false)
   (define-fun |22_DATA-FORWARDING_db3-x3hl-xcg-9-16_mgmt0| () Bool
@@ -45928,7 +45928,7 @@ sat
   (define-fun |22_DATA-FORWARDING_db3-x3hl-xcg-9-16_Loopback0| () Bool
     false)
   (define-fun |22_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |22_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan101| () Bool
     false)
   (define-fun |22_DATA-FORWARDING_db3-x3hl-xcg-9-05_Vlan102| () Bool
@@ -46044,9 +46044,9 @@ sat
   (define-fun |22_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel14| () Bool
     false)
   (define-fun |22_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel17| () Bool
-    false)
-  (define-fun |22_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
     true)
+  (define-fun |22_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
+    false)
   (define-fun |22_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel1| () Bool
     false)
   (define-fun |22_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Loopback0| () Bool
@@ -46500,11 +46500,11 @@ sat
   (define-fun |21_DATA-FORWARDING_db3-x3hl-xcg-9-04_Loopback0| () Bool
     false)
   (define-fun |21_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |21_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan102| () Bool
     false)
   (define-fun |21_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |21_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan101| () Bool
     false)
   (define-fun |21_DATA-FORWARDING_db3-x3hl-xcg-9-14_mgmt0| () Bool
@@ -46540,9 +46540,9 @@ sat
   (define-fun |21_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan102| () Bool
     false)
   (define-fun |21_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel1| () Bool
-    false)
-  (define-fun |21_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
     true)
+  (define-fun |21_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
+    false)
   (define-fun |21_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan101| () Bool
     false)
   (define-fun |21_DATA-FORWARDING_db3-x3hl-xcg-9-02_Loopback0| () Bool
@@ -46644,7 +46644,7 @@ sat
   (define-fun |21_DATA-FORWARDING_db3-x3hl-xcg-9-06_Vlan102| () Bool
     false)
   (define-fun |21_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |21_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan102| () Bool
     false)
   (define-fun |21_DATA-FORWARDING_db3-x3hl-xcg-9-16_mgmt0| () Bool
@@ -46652,7 +46652,7 @@ sat
   (define-fun |21_DATA-FORWARDING_db3-x3hl-xcg-9-16_Loopback0| () Bool
     false)
   (define-fun |21_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |21_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan101| () Bool
     false)
   (define-fun |21_DATA-FORWARDING_db3-x3hl-xcg-9-05_Vlan102| () Bool
@@ -46768,9 +46768,9 @@ sat
   (define-fun |21_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel14| () Bool
     false)
   (define-fun |21_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel17| () Bool
-    false)
-  (define-fun |21_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
     true)
+  (define-fun |21_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
+    false)
   (define-fun |21_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel1| () Bool
     false)
   (define-fun |21_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Loopback0| () Bool
@@ -47224,11 +47224,11 @@ sat
   (define-fun |20_DATA-FORWARDING_db3-x3hl-xcg-9-04_Loopback0| () Bool
     false)
   (define-fun |20_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |20_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan102| () Bool
     false)
   (define-fun |20_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |20_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan101| () Bool
     false)
   (define-fun |20_DATA-FORWARDING_db3-x3hl-xcg-9-14_mgmt0| () Bool
@@ -47264,9 +47264,9 @@ sat
   (define-fun |20_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan102| () Bool
     false)
   (define-fun |20_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel1| () Bool
-    false)
-  (define-fun |20_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
     true)
+  (define-fun |20_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
+    false)
   (define-fun |20_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan101| () Bool
     false)
   (define-fun |20_DATA-FORWARDING_db3-x3hl-xcg-9-02_Loopback0| () Bool
@@ -47368,7 +47368,7 @@ sat
   (define-fun |20_DATA-FORWARDING_db3-x3hl-xcg-9-06_Vlan102| () Bool
     false)
   (define-fun |20_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |20_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan102| () Bool
     false)
   (define-fun |20_DATA-FORWARDING_db3-x3hl-xcg-9-16_mgmt0| () Bool
@@ -47376,7 +47376,7 @@ sat
   (define-fun |20_DATA-FORWARDING_db3-x3hl-xcg-9-16_Loopback0| () Bool
     false)
   (define-fun |20_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |20_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan101| () Bool
     false)
   (define-fun |20_DATA-FORWARDING_db3-x3hl-xcg-9-05_Vlan102| () Bool
@@ -47492,9 +47492,9 @@ sat
   (define-fun |20_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel14| () Bool
     false)
   (define-fun |20_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel17| () Bool
-    false)
-  (define-fun |20_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
     true)
+  (define-fun |20_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
+    false)
   (define-fun |20_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel1| () Bool
     false)
   (define-fun |20_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Loopback0| () Bool
@@ -47948,11 +47948,11 @@ sat
   (define-fun |19_DATA-FORWARDING_db3-x3hl-xcg-9-04_Loopback0| () Bool
     false)
   (define-fun |19_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |19_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan102| () Bool
     false)
   (define-fun |19_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |19_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan101| () Bool
     false)
   (define-fun |19_DATA-FORWARDING_db3-x3hl-xcg-9-14_mgmt0| () Bool
@@ -47988,9 +47988,9 @@ sat
   (define-fun |19_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan102| () Bool
     false)
   (define-fun |19_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel1| () Bool
-    false)
-  (define-fun |19_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
     true)
+  (define-fun |19_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
+    false)
   (define-fun |19_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan101| () Bool
     false)
   (define-fun |19_DATA-FORWARDING_db3-x3hl-xcg-9-02_Loopback0| () Bool
@@ -48092,7 +48092,7 @@ sat
   (define-fun |19_DATA-FORWARDING_db3-x3hl-xcg-9-06_Vlan102| () Bool
     false)
   (define-fun |19_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |19_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan102| () Bool
     false)
   (define-fun |19_DATA-FORWARDING_db3-x3hl-xcg-9-16_mgmt0| () Bool
@@ -48100,7 +48100,7 @@ sat
   (define-fun |19_DATA-FORWARDING_db3-x3hl-xcg-9-16_Loopback0| () Bool
     false)
   (define-fun |19_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |19_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan101| () Bool
     false)
   (define-fun |19_DATA-FORWARDING_db3-x3hl-xcg-9-05_Vlan102| () Bool
@@ -48216,9 +48216,9 @@ sat
   (define-fun |19_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel14| () Bool
     false)
   (define-fun |19_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel17| () Bool
-    false)
-  (define-fun |19_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
     true)
+  (define-fun |19_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
+    false)
   (define-fun |19_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel1| () Bool
     false)
   (define-fun |19_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Loopback0| () Bool
@@ -48672,11 +48672,11 @@ sat
   (define-fun |18_DATA-FORWARDING_db3-x3hl-xcg-9-04_Loopback0| () Bool
     false)
   (define-fun |18_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |18_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan102| () Bool
     false)
   (define-fun |18_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |18_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan101| () Bool
     false)
   (define-fun |18_DATA-FORWARDING_db3-x3hl-xcg-9-14_mgmt0| () Bool
@@ -48712,9 +48712,9 @@ sat
   (define-fun |18_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan102| () Bool
     false)
   (define-fun |18_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel1| () Bool
-    false)
-  (define-fun |18_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
     true)
+  (define-fun |18_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
+    false)
   (define-fun |18_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan101| () Bool
     false)
   (define-fun |18_DATA-FORWARDING_db3-x3hl-xcg-9-02_Loopback0| () Bool
@@ -48816,7 +48816,7 @@ sat
   (define-fun |18_DATA-FORWARDING_db3-x3hl-xcg-9-06_Vlan102| () Bool
     false)
   (define-fun |18_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |18_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan102| () Bool
     false)
   (define-fun |18_DATA-FORWARDING_db3-x3hl-xcg-9-16_mgmt0| () Bool
@@ -48824,7 +48824,7 @@ sat
   (define-fun |18_DATA-FORWARDING_db3-x3hl-xcg-9-16_Loopback0| () Bool
     false)
   (define-fun |18_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |18_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan101| () Bool
     false)
   (define-fun |18_DATA-FORWARDING_db3-x3hl-xcg-9-05_Vlan102| () Bool
@@ -48940,9 +48940,9 @@ sat
   (define-fun |18_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel14| () Bool
     false)
   (define-fun |18_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel17| () Bool
-    false)
-  (define-fun |18_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
     true)
+  (define-fun |18_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
+    false)
   (define-fun |18_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel1| () Bool
     false)
   (define-fun |18_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Loopback0| () Bool
@@ -49396,11 +49396,11 @@ sat
   (define-fun |17_DATA-FORWARDING_db3-x3hl-xcg-9-04_Loopback0| () Bool
     false)
   (define-fun |17_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |17_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan102| () Bool
     false)
   (define-fun |17_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |17_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan101| () Bool
     false)
   (define-fun |17_DATA-FORWARDING_db3-x3hl-xcg-9-14_mgmt0| () Bool
@@ -49436,9 +49436,9 @@ sat
   (define-fun |17_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan102| () Bool
     false)
   (define-fun |17_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel1| () Bool
-    false)
-  (define-fun |17_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
     true)
+  (define-fun |17_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
+    false)
   (define-fun |17_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan101| () Bool
     false)
   (define-fun |17_DATA-FORWARDING_db3-x3hl-xcg-9-02_Loopback0| () Bool
@@ -49540,7 +49540,7 @@ sat
   (define-fun |17_DATA-FORWARDING_db3-x3hl-xcg-9-06_Vlan102| () Bool
     false)
   (define-fun |17_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |17_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan102| () Bool
     false)
   (define-fun |17_DATA-FORWARDING_db3-x3hl-xcg-9-16_mgmt0| () Bool
@@ -49548,7 +49548,7 @@ sat
   (define-fun |17_DATA-FORWARDING_db3-x3hl-xcg-9-16_Loopback0| () Bool
     false)
   (define-fun |17_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |17_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan101| () Bool
     false)
   (define-fun |17_DATA-FORWARDING_db3-x3hl-xcg-9-05_Vlan102| () Bool
@@ -49664,9 +49664,9 @@ sat
   (define-fun |17_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel14| () Bool
     false)
   (define-fun |17_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel17| () Bool
-    false)
-  (define-fun |17_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
     true)
+  (define-fun |17_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
+    false)
   (define-fun |17_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel1| () Bool
     false)
   (define-fun |17_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Loopback0| () Bool
@@ -50120,11 +50120,11 @@ sat
   (define-fun |16_DATA-FORWARDING_db3-x3hl-xcg-9-04_Loopback0| () Bool
     false)
   (define-fun |16_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |16_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan102| () Bool
     false)
   (define-fun |16_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |16_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan101| () Bool
     false)
   (define-fun |16_DATA-FORWARDING_db3-x3hl-xcg-9-14_mgmt0| () Bool
@@ -50160,9 +50160,9 @@ sat
   (define-fun |16_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan102| () Bool
     false)
   (define-fun |16_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel1| () Bool
-    false)
-  (define-fun |16_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
     true)
+  (define-fun |16_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
+    false)
   (define-fun |16_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan101| () Bool
     false)
   (define-fun |16_DATA-FORWARDING_db3-x3hl-xcg-9-02_Loopback0| () Bool
@@ -50264,7 +50264,7 @@ sat
   (define-fun |16_DATA-FORWARDING_db3-x3hl-xcg-9-06_Vlan102| () Bool
     false)
   (define-fun |16_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |16_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan102| () Bool
     false)
   (define-fun |16_DATA-FORWARDING_db3-x3hl-xcg-9-16_mgmt0| () Bool
@@ -50272,7 +50272,7 @@ sat
   (define-fun |16_DATA-FORWARDING_db3-x3hl-xcg-9-16_Loopback0| () Bool
     false)
   (define-fun |16_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |16_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan101| () Bool
     false)
   (define-fun |16_DATA-FORWARDING_db3-x3hl-xcg-9-05_Vlan102| () Bool
@@ -50388,9 +50388,9 @@ sat
   (define-fun |16_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel14| () Bool
     false)
   (define-fun |16_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel17| () Bool
-    false)
-  (define-fun |16_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
     true)
+  (define-fun |16_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
+    false)
   (define-fun |16_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel1| () Bool
     false)
   (define-fun |16_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Loopback0| () Bool
@@ -50844,11 +50844,11 @@ sat
   (define-fun |15_DATA-FORWARDING_db3-x3hl-xcg-9-04_Loopback0| () Bool
     false)
   (define-fun |15_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |15_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan102| () Bool
     false)
   (define-fun |15_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |15_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan101| () Bool
     false)
   (define-fun |15_DATA-FORWARDING_db3-x3hl-xcg-9-14_mgmt0| () Bool
@@ -50884,9 +50884,9 @@ sat
   (define-fun |15_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan102| () Bool
     false)
   (define-fun |15_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel1| () Bool
-    false)
-  (define-fun |15_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
     true)
+  (define-fun |15_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
+    false)
   (define-fun |15_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan101| () Bool
     false)
   (define-fun |15_DATA-FORWARDING_db3-x3hl-xcg-9-02_Loopback0| () Bool
@@ -50988,7 +50988,7 @@ sat
   (define-fun |15_DATA-FORWARDING_db3-x3hl-xcg-9-06_Vlan102| () Bool
     false)
   (define-fun |15_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |15_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan102| () Bool
     false)
   (define-fun |15_DATA-FORWARDING_db3-x3hl-xcg-9-16_mgmt0| () Bool
@@ -50996,7 +50996,7 @@ sat
   (define-fun |15_DATA-FORWARDING_db3-x3hl-xcg-9-16_Loopback0| () Bool
     false)
   (define-fun |15_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |15_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan101| () Bool
     false)
   (define-fun |15_DATA-FORWARDING_db3-x3hl-xcg-9-05_Vlan102| () Bool
@@ -51112,9 +51112,9 @@ sat
   (define-fun |15_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel14| () Bool
     false)
   (define-fun |15_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel17| () Bool
-    false)
-  (define-fun |15_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
     true)
+  (define-fun |15_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
+    false)
   (define-fun |15_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel1| () Bool
     false)
   (define-fun |15_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Loopback0| () Bool
@@ -51568,11 +51568,11 @@ sat
   (define-fun |14_DATA-FORWARDING_db3-x3hl-xcg-9-04_Loopback0| () Bool
     false)
   (define-fun |14_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |14_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan102| () Bool
     false)
   (define-fun |14_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |14_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan101| () Bool
     false)
   (define-fun |14_DATA-FORWARDING_db3-x3hl-xcg-9-14_mgmt0| () Bool
@@ -51608,9 +51608,9 @@ sat
   (define-fun |14_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan102| () Bool
     false)
   (define-fun |14_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel1| () Bool
-    false)
-  (define-fun |14_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
     true)
+  (define-fun |14_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
+    false)
   (define-fun |14_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan101| () Bool
     false)
   (define-fun |14_DATA-FORWARDING_db3-x3hl-xcg-9-02_Loopback0| () Bool
@@ -51712,7 +51712,7 @@ sat
   (define-fun |14_DATA-FORWARDING_db3-x3hl-xcg-9-06_Vlan102| () Bool
     false)
   (define-fun |14_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |14_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan102| () Bool
     false)
   (define-fun |14_DATA-FORWARDING_db3-x3hl-xcg-9-16_mgmt0| () Bool
@@ -51720,7 +51720,7 @@ sat
   (define-fun |14_DATA-FORWARDING_db3-x3hl-xcg-9-16_Loopback0| () Bool
     false)
   (define-fun |14_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |14_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan101| () Bool
     false)
   (define-fun |14_DATA-FORWARDING_db3-x3hl-xcg-9-05_Vlan102| () Bool
@@ -51836,9 +51836,9 @@ sat
   (define-fun |14_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel14| () Bool
     false)
   (define-fun |14_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel17| () Bool
-    false)
-  (define-fun |14_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
     true)
+  (define-fun |14_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
+    false)
   (define-fun |14_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel1| () Bool
     false)
   (define-fun |14_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Loopback0| () Bool
@@ -52292,11 +52292,11 @@ sat
   (define-fun |13_DATA-FORWARDING_db3-x3hl-xcg-9-04_Loopback0| () Bool
     false)
   (define-fun |13_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |13_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan102| () Bool
     false)
   (define-fun |13_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |13_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan101| () Bool
     false)
   (define-fun |13_DATA-FORWARDING_db3-x3hl-xcg-9-14_mgmt0| () Bool
@@ -52332,9 +52332,9 @@ sat
   (define-fun |13_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan102| () Bool
     false)
   (define-fun |13_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel1| () Bool
-    false)
-  (define-fun |13_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
     true)
+  (define-fun |13_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
+    false)
   (define-fun |13_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan101| () Bool
     false)
   (define-fun |13_DATA-FORWARDING_db3-x3hl-xcg-9-02_Loopback0| () Bool
@@ -52436,7 +52436,7 @@ sat
   (define-fun |13_DATA-FORWARDING_db3-x3hl-xcg-9-06_Vlan102| () Bool
     false)
   (define-fun |13_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |13_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan102| () Bool
     false)
   (define-fun |13_DATA-FORWARDING_db3-x3hl-xcg-9-16_mgmt0| () Bool
@@ -52444,7 +52444,7 @@ sat
   (define-fun |13_DATA-FORWARDING_db3-x3hl-xcg-9-16_Loopback0| () Bool
     false)
   (define-fun |13_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |13_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan101| () Bool
     false)
   (define-fun |13_DATA-FORWARDING_db3-x3hl-xcg-9-05_Vlan102| () Bool
@@ -52560,9 +52560,9 @@ sat
   (define-fun |13_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel14| () Bool
     false)
   (define-fun |13_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel17| () Bool
-    false)
-  (define-fun |13_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
     true)
+  (define-fun |13_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
+    false)
   (define-fun |13_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel1| () Bool
     false)
   (define-fun |13_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Loopback0| () Bool
@@ -53016,11 +53016,11 @@ sat
   (define-fun |12_DATA-FORWARDING_db3-x3hl-xcg-9-04_Loopback0| () Bool
     false)
   (define-fun |12_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |12_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan102| () Bool
     false)
   (define-fun |12_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |12_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan101| () Bool
     false)
   (define-fun |12_DATA-FORWARDING_db3-x3hl-xcg-9-14_mgmt0| () Bool
@@ -53056,9 +53056,9 @@ sat
   (define-fun |12_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan102| () Bool
     false)
   (define-fun |12_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel1| () Bool
-    false)
-  (define-fun |12_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
     true)
+  (define-fun |12_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
+    false)
   (define-fun |12_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan101| () Bool
     false)
   (define-fun |12_DATA-FORWARDING_db3-x3hl-xcg-9-02_Loopback0| () Bool
@@ -53160,7 +53160,7 @@ sat
   (define-fun |12_DATA-FORWARDING_db3-x3hl-xcg-9-06_Vlan102| () Bool
     false)
   (define-fun |12_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |12_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan102| () Bool
     false)
   (define-fun |12_DATA-FORWARDING_db3-x3hl-xcg-9-16_mgmt0| () Bool
@@ -53168,7 +53168,7 @@ sat
   (define-fun |12_DATA-FORWARDING_db3-x3hl-xcg-9-16_Loopback0| () Bool
     false)
   (define-fun |12_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |12_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan101| () Bool
     false)
   (define-fun |12_DATA-FORWARDING_db3-x3hl-xcg-9-05_Vlan102| () Bool
@@ -53284,9 +53284,9 @@ sat
   (define-fun |12_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel14| () Bool
     false)
   (define-fun |12_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel17| () Bool
-    false)
-  (define-fun |12_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
     true)
+  (define-fun |12_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
+    false)
   (define-fun |12_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel1| () Bool
     false)
   (define-fun |12_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Loopback0| () Bool
@@ -53740,11 +53740,11 @@ sat
   (define-fun |11_DATA-FORWARDING_db3-x3hl-xcg-9-04_Loopback0| () Bool
     false)
   (define-fun |11_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |11_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan102| () Bool
     false)
   (define-fun |11_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |11_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan101| () Bool
     false)
   (define-fun |11_DATA-FORWARDING_db3-x3hl-xcg-9-14_mgmt0| () Bool
@@ -53780,9 +53780,9 @@ sat
   (define-fun |11_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan102| () Bool
     false)
   (define-fun |11_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel1| () Bool
-    false)
-  (define-fun |11_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
     true)
+  (define-fun |11_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
+    false)
   (define-fun |11_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan101| () Bool
     false)
   (define-fun |11_DATA-FORWARDING_db3-x3hl-xcg-9-02_Loopback0| () Bool
@@ -53884,7 +53884,7 @@ sat
   (define-fun |11_DATA-FORWARDING_db3-x3hl-xcg-9-06_Vlan102| () Bool
     false)
   (define-fun |11_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |11_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan102| () Bool
     false)
   (define-fun |11_DATA-FORWARDING_db3-x3hl-xcg-9-16_mgmt0| () Bool
@@ -53892,7 +53892,7 @@ sat
   (define-fun |11_DATA-FORWARDING_db3-x3hl-xcg-9-16_Loopback0| () Bool
     false)
   (define-fun |11_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |11_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan101| () Bool
     false)
   (define-fun |11_DATA-FORWARDING_db3-x3hl-xcg-9-05_Vlan102| () Bool
@@ -54008,9 +54008,9 @@ sat
   (define-fun |11_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel14| () Bool
     false)
   (define-fun |11_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel17| () Bool
-    false)
-  (define-fun |11_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
     true)
+  (define-fun |11_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
+    false)
   (define-fun |11_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel1| () Bool
     false)
   (define-fun |11_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Loopback0| () Bool
@@ -54464,11 +54464,11 @@ sat
   (define-fun |10_DATA-FORWARDING_db3-x3hl-xcg-9-04_Loopback0| () Bool
     false)
   (define-fun |10_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |10_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan102| () Bool
     false)
   (define-fun |10_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |10_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan101| () Bool
     false)
   (define-fun |10_DATA-FORWARDING_db3-x3hl-xcg-9-14_mgmt0| () Bool
@@ -54504,9 +54504,9 @@ sat
   (define-fun |10_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan102| () Bool
     false)
   (define-fun |10_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel1| () Bool
-    false)
-  (define-fun |10_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
     true)
+  (define-fun |10_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
+    false)
   (define-fun |10_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan101| () Bool
     false)
   (define-fun |10_DATA-FORWARDING_db3-x3hl-xcg-9-02_Loopback0| () Bool
@@ -54608,7 +54608,7 @@ sat
   (define-fun |10_DATA-FORWARDING_db3-x3hl-xcg-9-06_Vlan102| () Bool
     false)
   (define-fun |10_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |10_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan102| () Bool
     false)
   (define-fun |10_DATA-FORWARDING_db3-x3hl-xcg-9-16_mgmt0| () Bool
@@ -54616,7 +54616,7 @@ sat
   (define-fun |10_DATA-FORWARDING_db3-x3hl-xcg-9-16_Loopback0| () Bool
     false)
   (define-fun |10_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |10_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan101| () Bool
     false)
   (define-fun |10_DATA-FORWARDING_db3-x3hl-xcg-9-05_Vlan102| () Bool
@@ -54732,9 +54732,9 @@ sat
   (define-fun |10_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel14| () Bool
     false)
   (define-fun |10_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel17| () Bool
-    false)
-  (define-fun |10_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
     true)
+  (define-fun |10_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
+    false)
   (define-fun |10_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel1| () Bool
     false)
   (define-fun |10_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Loopback0| () Bool
@@ -55188,11 +55188,11 @@ sat
   (define-fun |9_DATA-FORWARDING_db3-x3hl-xcg-9-04_Loopback0| () Bool
     false)
   (define-fun |9_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |9_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan102| () Bool
     false)
   (define-fun |9_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |9_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan101| () Bool
     false)
   (define-fun |9_DATA-FORWARDING_db3-x3hl-xcg-9-14_mgmt0| () Bool
@@ -55228,9 +55228,9 @@ sat
   (define-fun |9_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan102| () Bool
     false)
   (define-fun |9_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel1| () Bool
-    false)
-  (define-fun |9_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
     true)
+  (define-fun |9_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
+    false)
   (define-fun |9_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan101| () Bool
     false)
   (define-fun |9_DATA-FORWARDING_db3-x3hl-xcg-9-02_Loopback0| () Bool
@@ -55332,7 +55332,7 @@ sat
   (define-fun |9_DATA-FORWARDING_db3-x3hl-xcg-9-06_Vlan102| () Bool
     false)
   (define-fun |9_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |9_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan102| () Bool
     false)
   (define-fun |9_DATA-FORWARDING_db3-x3hl-xcg-9-16_mgmt0| () Bool
@@ -55340,7 +55340,7 @@ sat
   (define-fun |9_DATA-FORWARDING_db3-x3hl-xcg-9-16_Loopback0| () Bool
     false)
   (define-fun |9_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |9_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan101| () Bool
     false)
   (define-fun |9_DATA-FORWARDING_db3-x3hl-xcg-9-05_Vlan102| () Bool
@@ -55456,9 +55456,9 @@ sat
   (define-fun |9_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel14| () Bool
     false)
   (define-fun |9_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel17| () Bool
-    false)
-  (define-fun |9_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
     true)
+  (define-fun |9_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
+    false)
   (define-fun |9_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel1| () Bool
     false)
   (define-fun |9_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Loopback0| () Bool
@@ -55912,11 +55912,11 @@ sat
   (define-fun |8_DATA-FORWARDING_db3-x3hl-xcg-9-04_Loopback0| () Bool
     false)
   (define-fun |8_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |8_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan102| () Bool
     false)
   (define-fun |8_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |8_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan101| () Bool
     false)
   (define-fun |8_DATA-FORWARDING_db3-x3hl-xcg-9-14_mgmt0| () Bool
@@ -55952,9 +55952,9 @@ sat
   (define-fun |8_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan102| () Bool
     false)
   (define-fun |8_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel1| () Bool
-    false)
-  (define-fun |8_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
     true)
+  (define-fun |8_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
+    false)
   (define-fun |8_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan101| () Bool
     false)
   (define-fun |8_DATA-FORWARDING_db3-x3hl-xcg-9-02_Loopback0| () Bool
@@ -56056,7 +56056,7 @@ sat
   (define-fun |8_DATA-FORWARDING_db3-x3hl-xcg-9-06_Vlan102| () Bool
     false)
   (define-fun |8_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |8_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan102| () Bool
     false)
   (define-fun |8_DATA-FORWARDING_db3-x3hl-xcg-9-16_mgmt0| () Bool
@@ -56064,7 +56064,7 @@ sat
   (define-fun |8_DATA-FORWARDING_db3-x3hl-xcg-9-16_Loopback0| () Bool
     false)
   (define-fun |8_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |8_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan101| () Bool
     false)
   (define-fun |8_DATA-FORWARDING_db3-x3hl-xcg-9-05_Vlan102| () Bool
@@ -56180,9 +56180,9 @@ sat
   (define-fun |8_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel14| () Bool
     false)
   (define-fun |8_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel17| () Bool
-    false)
-  (define-fun |8_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
     true)
+  (define-fun |8_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
+    false)
   (define-fun |8_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel1| () Bool
     false)
   (define-fun |8_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Loopback0| () Bool
@@ -56636,11 +56636,11 @@ sat
   (define-fun |7_DATA-FORWARDING_db3-x3hl-xcg-9-04_Loopback0| () Bool
     false)
   (define-fun |7_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |7_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan102| () Bool
     false)
   (define-fun |7_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |7_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan101| () Bool
     false)
   (define-fun |7_DATA-FORWARDING_db3-x3hl-xcg-9-14_mgmt0| () Bool
@@ -56676,9 +56676,9 @@ sat
   (define-fun |7_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan102| () Bool
     false)
   (define-fun |7_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel1| () Bool
-    false)
-  (define-fun |7_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
     true)
+  (define-fun |7_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
+    false)
   (define-fun |7_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan101| () Bool
     false)
   (define-fun |7_DATA-FORWARDING_db3-x3hl-xcg-9-02_Loopback0| () Bool
@@ -56780,7 +56780,7 @@ sat
   (define-fun |7_DATA-FORWARDING_db3-x3hl-xcg-9-06_Vlan102| () Bool
     false)
   (define-fun |7_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |7_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan102| () Bool
     false)
   (define-fun |7_DATA-FORWARDING_db3-x3hl-xcg-9-16_mgmt0| () Bool
@@ -56788,7 +56788,7 @@ sat
   (define-fun |7_DATA-FORWARDING_db3-x3hl-xcg-9-16_Loopback0| () Bool
     false)
   (define-fun |7_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |7_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan101| () Bool
     false)
   (define-fun |7_DATA-FORWARDING_db3-x3hl-xcg-9-05_Vlan102| () Bool
@@ -56904,9 +56904,9 @@ sat
   (define-fun |7_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel14| () Bool
     false)
   (define-fun |7_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel17| () Bool
-    false)
-  (define-fun |7_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
     true)
+  (define-fun |7_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
+    false)
   (define-fun |7_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel1| () Bool
     false)
   (define-fun |7_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Loopback0| () Bool
@@ -57360,11 +57360,11 @@ sat
   (define-fun |6_DATA-FORWARDING_db3-x3hl-xcg-9-04_Loopback0| () Bool
     false)
   (define-fun |6_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |6_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan102| () Bool
     false)
   (define-fun |6_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |6_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan101| () Bool
     false)
   (define-fun |6_DATA-FORWARDING_db3-x3hl-xcg-9-14_mgmt0| () Bool
@@ -57400,9 +57400,9 @@ sat
   (define-fun |6_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan102| () Bool
     false)
   (define-fun |6_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel1| () Bool
-    false)
-  (define-fun |6_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
     true)
+  (define-fun |6_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
+    false)
   (define-fun |6_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan101| () Bool
     false)
   (define-fun |6_DATA-FORWARDING_db3-x3hl-xcg-9-02_Loopback0| () Bool
@@ -57504,7 +57504,7 @@ sat
   (define-fun |6_DATA-FORWARDING_db3-x3hl-xcg-9-06_Vlan102| () Bool
     false)
   (define-fun |6_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |6_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan102| () Bool
     false)
   (define-fun |6_DATA-FORWARDING_db3-x3hl-xcg-9-16_mgmt0| () Bool
@@ -57512,7 +57512,7 @@ sat
   (define-fun |6_DATA-FORWARDING_db3-x3hl-xcg-9-16_Loopback0| () Bool
     false)
   (define-fun |6_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |6_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan101| () Bool
     false)
   (define-fun |6_DATA-FORWARDING_db3-x3hl-xcg-9-05_Vlan102| () Bool
@@ -57628,9 +57628,9 @@ sat
   (define-fun |6_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel14| () Bool
     false)
   (define-fun |6_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel17| () Bool
-    false)
-  (define-fun |6_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
     true)
+  (define-fun |6_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
+    false)
   (define-fun |6_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel1| () Bool
     false)
   (define-fun |6_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Loopback0| () Bool
@@ -58084,11 +58084,11 @@ sat
   (define-fun |5_DATA-FORWARDING_db3-x3hl-xcg-9-04_Loopback0| () Bool
     false)
   (define-fun |5_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |5_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan102| () Bool
     false)
   (define-fun |5_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |5_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan101| () Bool
     false)
   (define-fun |5_DATA-FORWARDING_db3-x3hl-xcg-9-14_mgmt0| () Bool
@@ -58124,9 +58124,9 @@ sat
   (define-fun |5_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan102| () Bool
     false)
   (define-fun |5_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel1| () Bool
-    false)
-  (define-fun |5_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
     true)
+  (define-fun |5_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
+    false)
   (define-fun |5_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan101| () Bool
     false)
   (define-fun |5_DATA-FORWARDING_db3-x3hl-xcg-9-02_Loopback0| () Bool
@@ -58228,7 +58228,7 @@ sat
   (define-fun |5_DATA-FORWARDING_db3-x3hl-xcg-9-06_Vlan102| () Bool
     false)
   (define-fun |5_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |5_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan102| () Bool
     false)
   (define-fun |5_DATA-FORWARDING_db3-x3hl-xcg-9-16_mgmt0| () Bool
@@ -58236,7 +58236,7 @@ sat
   (define-fun |5_DATA-FORWARDING_db3-x3hl-xcg-9-16_Loopback0| () Bool
     false)
   (define-fun |5_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |5_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan101| () Bool
     false)
   (define-fun |5_DATA-FORWARDING_db3-x3hl-xcg-9-05_Vlan102| () Bool
@@ -58352,9 +58352,9 @@ sat
   (define-fun |5_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel14| () Bool
     false)
   (define-fun |5_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel17| () Bool
-    false)
-  (define-fun |5_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
     true)
+  (define-fun |5_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
+    false)
   (define-fun |5_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel1| () Bool
     false)
   (define-fun |5_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Loopback0| () Bool
@@ -58808,11 +58808,11 @@ sat
   (define-fun |4_DATA-FORWARDING_db3-x3hl-xcg-9-04_Loopback0| () Bool
     false)
   (define-fun |4_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |4_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan102| () Bool
     false)
   (define-fun |4_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |4_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan101| () Bool
     false)
   (define-fun |4_DATA-FORWARDING_db3-x3hl-xcg-9-14_mgmt0| () Bool
@@ -58848,9 +58848,9 @@ sat
   (define-fun |4_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan102| () Bool
     false)
   (define-fun |4_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel1| () Bool
-    false)
-  (define-fun |4_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
     true)
+  (define-fun |4_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
+    false)
   (define-fun |4_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan101| () Bool
     false)
   (define-fun |4_DATA-FORWARDING_db3-x3hl-xcg-9-02_Loopback0| () Bool
@@ -58952,7 +58952,7 @@ sat
   (define-fun |4_DATA-FORWARDING_db3-x3hl-xcg-9-06_Vlan102| () Bool
     false)
   (define-fun |4_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |4_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan102| () Bool
     false)
   (define-fun |4_DATA-FORWARDING_db3-x3hl-xcg-9-16_mgmt0| () Bool
@@ -58960,7 +58960,7 @@ sat
   (define-fun |4_DATA-FORWARDING_db3-x3hl-xcg-9-16_Loopback0| () Bool
     false)
   (define-fun |4_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |4_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan101| () Bool
     false)
   (define-fun |4_DATA-FORWARDING_db3-x3hl-xcg-9-05_Vlan102| () Bool
@@ -59076,9 +59076,9 @@ sat
   (define-fun |4_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel14| () Bool
     false)
   (define-fun |4_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel17| () Bool
-    false)
-  (define-fun |4_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
     true)
+  (define-fun |4_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
+    false)
   (define-fun |4_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel1| () Bool
     false)
   (define-fun |4_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Loopback0| () Bool
@@ -59532,11 +59532,11 @@ sat
   (define-fun |3_DATA-FORWARDING_db3-x3hl-xcg-9-04_Loopback0| () Bool
     false)
   (define-fun |3_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |3_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan102| () Bool
     false)
   (define-fun |3_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |3_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan101| () Bool
     false)
   (define-fun |3_DATA-FORWARDING_db3-x3hl-xcg-9-14_mgmt0| () Bool
@@ -59572,9 +59572,9 @@ sat
   (define-fun |3_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan102| () Bool
     false)
   (define-fun |3_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel1| () Bool
-    false)
-  (define-fun |3_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
     true)
+  (define-fun |3_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
+    false)
   (define-fun |3_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan101| () Bool
     false)
   (define-fun |3_DATA-FORWARDING_db3-x3hl-xcg-9-02_Loopback0| () Bool
@@ -59676,7 +59676,7 @@ sat
   (define-fun |3_DATA-FORWARDING_db3-x3hl-xcg-9-06_Vlan102| () Bool
     false)
   (define-fun |3_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |3_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan102| () Bool
     false)
   (define-fun |3_DATA-FORWARDING_db3-x3hl-xcg-9-16_mgmt0| () Bool
@@ -59684,7 +59684,7 @@ sat
   (define-fun |3_DATA-FORWARDING_db3-x3hl-xcg-9-16_Loopback0| () Bool
     false)
   (define-fun |3_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |3_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan101| () Bool
     false)
   (define-fun |3_DATA-FORWARDING_db3-x3hl-xcg-9-05_Vlan102| () Bool
@@ -59800,9 +59800,9 @@ sat
   (define-fun |3_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel14| () Bool
     false)
   (define-fun |3_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel17| () Bool
-    false)
-  (define-fun |3_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
     true)
+  (define-fun |3_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
+    false)
   (define-fun |3_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel1| () Bool
     false)
   (define-fun |3_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Loopback0| () Bool
@@ -60256,11 +60256,11 @@ sat
   (define-fun |2_DATA-FORWARDING_db3-x3hl-xcg-9-04_Loopback0| () Bool
     false)
   (define-fun |2_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |2_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan102| () Bool
     false)
   (define-fun |2_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |2_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan101| () Bool
     false)
   (define-fun |2_DATA-FORWARDING_db3-x3hl-xcg-9-14_mgmt0| () Bool
@@ -60296,9 +60296,9 @@ sat
   (define-fun |2_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan102| () Bool
     false)
   (define-fun |2_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel1| () Bool
-    false)
-  (define-fun |2_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
     true)
+  (define-fun |2_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
+    false)
   (define-fun |2_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan101| () Bool
     false)
   (define-fun |2_DATA-FORWARDING_db3-x3hl-xcg-9-02_Loopback0| () Bool
@@ -60400,7 +60400,7 @@ sat
   (define-fun |2_DATA-FORWARDING_db3-x3hl-xcg-9-06_Vlan102| () Bool
     false)
   (define-fun |2_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |2_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan102| () Bool
     false)
   (define-fun |2_DATA-FORWARDING_db3-x3hl-xcg-9-16_mgmt0| () Bool
@@ -60408,7 +60408,7 @@ sat
   (define-fun |2_DATA-FORWARDING_db3-x3hl-xcg-9-16_Loopback0| () Bool
     false)
   (define-fun |2_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |2_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan101| () Bool
     false)
   (define-fun |2_DATA-FORWARDING_db3-x3hl-xcg-9-05_Vlan102| () Bool
@@ -60524,9 +60524,9 @@ sat
   (define-fun |2_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel14| () Bool
     false)
   (define-fun |2_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel17| () Bool
-    false)
-  (define-fun |2_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
     true)
+  (define-fun |2_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
+    false)
   (define-fun |2_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel1| () Bool
     false)
   (define-fun |2_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Loopback0| () Bool
@@ -60980,11 +60980,11 @@ sat
   (define-fun |1_DATA-FORWARDING_db3-x3hl-xcg-9-04_Loopback0| () Bool
     false)
   (define-fun |1_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |1_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan102| () Bool
     false)
   (define-fun |1_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |1_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan101| () Bool
     false)
   (define-fun |1_DATA-FORWARDING_db3-x3hl-xcg-9-14_mgmt0| () Bool
@@ -61020,9 +61020,9 @@ sat
   (define-fun |1_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan102| () Bool
     false)
   (define-fun |1_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel1| () Bool
-    false)
-  (define-fun |1_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
     true)
+  (define-fun |1_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
+    false)
   (define-fun |1_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan101| () Bool
     false)
   (define-fun |1_DATA-FORWARDING_db3-x3hl-xcg-9-02_Loopback0| () Bool
@@ -61124,7 +61124,7 @@ sat
   (define-fun |1_DATA-FORWARDING_db3-x3hl-xcg-9-06_Vlan102| () Bool
     false)
   (define-fun |1_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |1_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan102| () Bool
     false)
   (define-fun |1_DATA-FORWARDING_db3-x3hl-xcg-9-16_mgmt0| () Bool
@@ -61132,7 +61132,7 @@ sat
   (define-fun |1_DATA-FORWARDING_db3-x3hl-xcg-9-16_Loopback0| () Bool
     false)
   (define-fun |1_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |1_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan101| () Bool
     false)
   (define-fun |1_DATA-FORWARDING_db3-x3hl-xcg-9-05_Vlan102| () Bool
@@ -61248,9 +61248,9 @@ sat
   (define-fun |1_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel14| () Bool
     false)
   (define-fun |1_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel17| () Bool
-    false)
-  (define-fun |1_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
     true)
+  (define-fun |1_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
+    false)
   (define-fun |1_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel1| () Bool
     false)
   (define-fun |1_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Loopback0| () Bool
@@ -61708,11 +61708,11 @@ sat
   (define-fun |0_DATA-FORWARDING_db3-x3hl-xcg-9-04_Loopback0| () Bool
     false)
   (define-fun |0_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |0_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan102| () Bool
     false)
   (define-fun |0_DATA-FORWARDING_db3-x3hl-xcg-9-14_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |0_DATA-FORWARDING_db3-x3hl-xcg-9-14_Vlan101| () Bool
     false)
   (define-fun |0_DATA-FORWARDING_db3-x3hl-xcg-9-14_mgmt0| () Bool
@@ -61748,9 +61748,9 @@ sat
   (define-fun |0_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan102| () Bool
     false)
   (define-fun |0_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel1| () Bool
-    false)
-  (define-fun |0_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
     true)
+  (define-fun |0_DATA-FORWARDING_db3-x3hl-xcg-9-02_Port-Channel2| () Bool
+    false)
   (define-fun |0_DATA-FORWARDING_db3-x3hl-xcg-9-02_Vlan101| () Bool
     false)
   (define-fun |0_DATA-FORWARDING_db3-x3hl-xcg-9-02_Loopback0| () Bool
@@ -61852,7 +61852,7 @@ sat
   (define-fun |0_DATA-FORWARDING_db3-x3hl-xcg-9-06_Vlan102| () Bool
     false)
   (define-fun |0_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel2| () Bool
-    true)
+    false)
   (define-fun |0_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan102| () Bool
     false)
   (define-fun |0_DATA-FORWARDING_db3-x3hl-xcg-9-16_mgmt0| () Bool
@@ -61860,7 +61860,7 @@ sat
   (define-fun |0_DATA-FORWARDING_db3-x3hl-xcg-9-16_Loopback0| () Bool
     false)
   (define-fun |0_DATA-FORWARDING_db3-x3hl-xcg-9-16_Port-Channel1| () Bool
-    false)
+    true)
   (define-fun |0_DATA-FORWARDING_db3-x3hl-xcg-9-16_Vlan101| () Bool
     false)
   (define-fun |0_DATA-FORWARDING_db3-x3hl-xcg-9-05_Vlan102| () Bool
@@ -61976,9 +61976,9 @@ sat
   (define-fun |0_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel14| () Bool
     false)
   (define-fun |0_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel17| () Bool
-    false)
-  (define-fun |0_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
     true)
+  (define-fun |0_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel11| () Bool
+    false)
   (define-fun |0_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Port-Channel1| () Bool
     false)
   (define-fun |0_DATA-FORWARDING_db3-x3sb-xcg-9-1a_Loopback0| () Bool
@@ -62162,13 +62162,13 @@ sat
   (define-fun |0_db3-x3hl-xcg-9-11_BGP_IMPORT_Port-Channel1_choice| () Bool
     false)
   (define-fun |0_db3-x3hl-xcg-9-11_BGP_IMPORT_Port-Channel2_choice| () Bool
-    false)
+    true)
   (define-fun |0_db3-x3hl-xcg-9-10_BGP_IMPORT_Port-Channel2_choice| () Bool
     false)
   (define-fun |0_db3-x3hl-xcg-9-10_BGP_IMPORT_Port-Channel1_choice| () Bool
     false)
   (define-fun |0_db3-x3hl-xcg-9-20_BGP_IMPORT_Port-Channel2_choice| () Bool
-    false)
+    true)
   (define-fun |0_db3-x3hl-xcg-9-20_BGP_IMPORT_Port-Channel1_choice| () Bool
     false)
   (define-fun |0_db3-x3hl-xcg-9-15_BGP_IMPORT_Port-Channel2_choice| () Bool
@@ -62182,7 +62182,7 @@ sat
   (define-fun |0_db3-x3hl-xcg-9-14_BGP_IMPORT_Port-Channel1_choice| () Bool
     false)
   (define-fun |0_db3-x3hl-xcg-9-14_BGP_IMPORT_Port-Channel2_choice| () Bool
-    true)
+    false)
   (define-fun |0_db3-x3hl-xcg-9-03_BGP_IMPORT_Port-Channel1_choice| () Bool
     false)
   (define-fun |0_db3-x3hl-xcg-9-03_BGP_IMPORT_Port-Channel2_choice| () Bool
@@ -62194,7 +62194,7 @@ sat
   (define-fun |0_db3-x3hl-xcg-9-02_BGP_IMPORT_Port-Channel1_choice| () Bool
     false)
   (define-fun |0_db3-x3hl-xcg-9-02_BGP_IMPORT_Port-Channel2_choice| () Bool
-    true)
+    false)
   (define-fun |0_db3-x3hl-xcg-9-12_BGP_IMPORT_Port-Channel1_choice| () Bool
     false)
   (define-fun |0_db3-x3hl-xcg-9-12_BGP_IMPORT_Port-Channel2_choice| () Bool
@@ -62326,23 +62326,23 @@ sat
   (define-fun |0_db3-x3sb-xcg-9-1a_BGP_IMPORT_Port-Channel8_choice| () Bool
     false)
   (define-fun |0_db3-x3hl-xcg-9-11_OVERALL_BEST_None_permitted| () Bool
-    false)
+    true)
   (define-fun |0_db3-x3hl-xcg-9-10_OVERALL_BEST_None_permitted| () Bool
     false)
   (define-fun |0_db3-x3hl-xcg-9-20_OVERALL_BEST_None_permitted| () Bool
-    false)
+    true)
   (define-fun |0_db3-x3hl-xcg-9-15_OVERALL_BEST_None_permitted| () Bool
     true)
   (define-fun |0_db3-x3hl-xcg-9-04_OVERALL_BEST_None_permitted| () Bool
     false)
   (define-fun |0_db3-x3hl-xcg-9-14_OVERALL_BEST_None_permitted| () Bool
-    true)
+    false)
   (define-fun |0_db3-x3hl-xcg-9-03_OVERALL_BEST_None_permitted| () Bool
     true)
   (define-fun |0_db3-x3hl-xcg-9-13_OVERALL_BEST_None_permitted| () Bool
     true)
   (define-fun |0_db3-x3hl-xcg-9-02_OVERALL_BEST_None_permitted| () Bool
-    true)
+    false)
   (define-fun |0_db3-x3hl-xcg-9-12_OVERALL_BEST_None_permitted| () Bool
     true)
   (define-fun |0_db3-x3hl-xcg-9-01_OVERALL_BEST_None_permitted| () Bool
