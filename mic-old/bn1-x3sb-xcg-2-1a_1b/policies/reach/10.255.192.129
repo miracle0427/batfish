@@ -3,11 +3,11 @@ smt-reachability srcIps=["10.255.192.1/25"], dstIps=["10.255.192.129/25"], ingre
 smt-reachability srcIps=["132.245.2.17/28"], dstIps=["10.255.192.129/25"], ingressNodeRegex=bn1-x3hl-xcg-2-03, finalNodeRegex=bn1-x3hl-xcg-2-02
 smt-reachability srcIps=["10.255.193.1/25"], dstIps=["10.255.192.129/25"], ingressNodeRegex=bn1-x3hl-xcg-2-03, finalNodeRegex=bn1-x3hl-xcg-2-02
 smt-reachability srcIps=["132.245.2.81/29"], dstIps=["10.255.192.129/25"], ingressNodeRegex=bn1-x3hl-xcg-2-04, finalNodeRegex=bn1-x3hl-xcg-2-02
-smt-reachability srcIps=["10.255.193.129/25"], dstIps=["10.255.192.129/25"], ingressNodeRegex=bn1-x3hl-xcg-2-04, finalNodeRegex=bn1-x3hl-xcg-2-02
-smt-reachability srcIps=["132.245.2.33/28"], dstIps=["10.255.192.129/25"], ingressNodeRegex=bn1-x3hl-xcg-2-05, finalNodeRegex=bn1-x3hl-xcg-2-02
-smt-reachability srcIps=["10.255.194.1/25"], dstIps=["10.255.192.129/25"], ingressNodeRegex=bn1-x3hl-xcg-2-05, finalNodeRegex=bn1-x3hl-xcg-2-02
-smt-reachability srcIps=["132.245.2.89/29"], dstIps=["10.255.192.129/25"], ingressNodeRegex=bn1-x3hl-xcg-2-06, finalNodeRegex=bn1-x3hl-xcg-2-02
-smt-reachability srcIps=["10.255.194.129/25"], dstIps=["10.255.192.129/25"], ingressNodeRegex=bn1-x3hl-xcg-2-06, finalNodeRegex=bn1-x3hl-xcg-2-02
+smt-block srcIps=["10.255.193.129/25"], dstIps=["10.255.192.129/25"], ingressNodeRegex=bn1-x3hl-xcg-2-04, finalNodeRegex=bn1-x3hl-xcg-2-02
+smt-block srcIps=["132.245.2.33/28"], dstIps=["10.255.192.129/25"], ingressNodeRegex=bn1-x3hl-xcg-2-05, finalNodeRegex=bn1-x3hl-xcg-2-02
+smt-block srcIps=["10.255.194.1/25"], dstIps=["10.255.192.129/25"], ingressNodeRegex=bn1-x3hl-xcg-2-05, finalNodeRegex=bn1-x3hl-xcg-2-02
+smt-block srcIps=["132.245.2.89/29"], dstIps=["10.255.192.129/25"], ingressNodeRegex=bn1-x3hl-xcg-2-06, finalNodeRegex=bn1-x3hl-xcg-2-02
+smt-block srcIps=["10.255.194.129/25"], dstIps=["10.255.192.129/25"], ingressNodeRegex=bn1-x3hl-xcg-2-06, finalNodeRegex=bn1-x3hl-xcg-2-02
 smt-reachability srcIps=["132.245.2.49/28"], dstIps=["10.255.192.129/25"], ingressNodeRegex=bn1-x3hl-xcg-2-07, finalNodeRegex=bn1-x3hl-xcg-2-02
 smt-reachability srcIps=["10.255.195.1/25"], dstIps=["10.255.192.129/25"], ingressNodeRegex=bn1-x3hl-xcg-2-07, finalNodeRegex=bn1-x3hl-xcg-2-02
 smt-reachability srcIps=["132.245.2.97/29"], dstIps=["10.255.192.129/25"], ingressNodeRegex=bn1-x3hl-xcg-2-08, finalNodeRegex=bn1-x3hl-xcg-2-02
