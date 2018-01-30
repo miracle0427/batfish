@@ -4,7 +4,6 @@ import com.microsoft.z3.ArithExpr;
 import com.microsoft.z3.BitVecExpr;
 import com.microsoft.z3.BoolExpr;
 import com.microsoft.z3.Expr;
-import com.microsoft.z3.Symbol;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -56,6 +55,7 @@ import org.batfish.datamodel.routing_policy.expr.MatchIpv6;
 import org.batfish.datamodel.routing_policy.expr.MatchPrefix6Set;
 import org.batfish.datamodel.routing_policy.expr.MatchPrefixSet;
 import org.batfish.datamodel.routing_policy.expr.MatchProtocol;
+import org.batfish.datamodel.routing_policy.expr.MatchTag;
 import org.batfish.datamodel.routing_policy.expr.MultipliedAs;
 import org.batfish.datamodel.routing_policy.expr.NamedCommunitySet;
 import org.batfish.datamodel.routing_policy.expr.NamedPrefixSet;
@@ -447,30 +447,6 @@ class TransferSSA {
       }
       BoolExpr shouldAdd = _enc.getCtx().mkBoolConst(_enc.getEncoder().getId() + "_" + 
         p.getData().getName() + "BGPExportAddSoft");
-      //temp
-      /*
-      BoolExpr shouldAdd = _enc.mkAnd(
-        _enc.mkEq(
-          _enc.getSymbolicPacket().getDstIp(), _enc.getCtx().mkBVConst(
-            _enc.getEncoder().getId() + "_" + p.getData().getName() + "SrcBGPExportAddSoft", 32)), 
-        _enc.mkEq(
-          _enc.getSymbolicPacket().getSrcIp(), _enc.getCtx().mkBVConst(
-            _enc.getEncoder().getId() + "_" +  p.getData().getName() + "DstBGPExportAddSoft", 32)));
-      //shouldAdd = _enc.mkNot(shouldAdd);
-      */
-      ArithExpr simply = _enc.getCtx().mkIntConst(_enc.getEncoder().getId() + "_" + 
-        p.getData().getName() + "SimplyBGPExportAddSoft");
-      ArithExpr simply1 = _enc.getCtx().mkIntConst(_enc.getEncoder().getId() + "_" + 
-        p.getData().getName() + "Simply1BGPExportAddSoft");
-      /*shouldAdd = _enc.mkAnd(_enc.mkEq(simply, _enc.mkInt(100)), shouldAdd);
-      shouldAdd = _enc.mkAnd(_enc.mkEq(simply1, _enc.mkInt(100)), shouldAdd);
-      _enc.addSoft(_enc.mkEq(simply, _enc.mkInt(100)), _enc.staticWeight, "StaticAdd");
-      _enc.addSoft(_enc.mkEq(simply1, _enc.mkInt(100)), _enc.staticWeight, "StaticAdd");
-      */
-      _enc.addSoft(_enc.mkEq(simply, _enc.mkInt(100)), _enc.staticWeight, "StaticAdd");
-      _enc.add(_enc.mkIf(_enc.mkGt(simply, _enc.mkInt(150)), _enc.mkNot(shouldAdd), shouldAdd));
-      _enc.addSoft(_enc.mkEq(simply1, _enc.mkInt(100)), _enc.staticWeight, "StaticAdd");
-      _enc.add(_enc.mkIf(_enc.mkGt(simply1, _enc.mkInt(150)), _enc.mkNot(shouldAdd), shouldAdd));
 
       if (_enc.getEncoder()._repairObjective != 1) {
         _enc.addSoft(_enc.mkNot(shouldAdd), _enc.bgpWeight, "BGPExportAdd");
@@ -620,6 +596,7 @@ class TransferSSA {
       System.out.println("Warning: use of unimplemented feature MatchAsPath");
       return fromExpr(_enc.mkFalse());
     }
+
 
     String s = (_isExport ? "export" : "import");
     String msg =
@@ -832,19 +809,23 @@ class TransferSSA {
     if (result.isChanged("OSPF-TYPE")) {
       type = _enc.safeEqEnum(_current.getOspfType(), p.getData().getOspfType());
     } else {
-      boolean hasAreaIface = _iface.getOspfAreaName() != null;
-      boolean hasArea = p.getData().getOspfArea() != null;
-      boolean hasType = p.getData().getOspfType() != null;
-      boolean areaPossiblyChanged = hasType && hasArea && hasAreaIface;
-      // Check if area changed
-      if (areaPossiblyChanged) {
-        BoolExpr internal = p.getData().getOspfType().isInternal();
-        BoolExpr same = p.getData().getOspfArea().checkIfValue(_iface.getOspfAreaName());
-        BoolExpr update = _enc.mkAnd(internal, _enc.mkNot(same));
-        BoolExpr copyOld = _enc.safeEqEnum(_current.getOspfType(), p.getData().getOspfType());
-        type = _enc.mkIf(update, _current.getOspfType().checkIfValue(OspfType.OIA), copyOld);
+      if (_current.getOspfType() == null) {
+        type = _enc.mkTrue();
       } else {
-        type = _enc.safeEqEnum(_current.getOspfType(), p.getData().getOspfType());
+        boolean hasAreaIface = _iface.getOspfAreaName() != null;
+        boolean hasArea = p.getData().getOspfArea() != null;
+        boolean hasType = p.getData().getOspfType() != null;
+        boolean areaPossiblyChanged = hasType && hasArea && hasAreaIface;
+        // Check if area changed
+        if (areaPossiblyChanged) {
+          BoolExpr internal = p.getData().getOspfType().isInternal();
+          BoolExpr same = p.getData().getOspfArea().checkIfValue(_iface.getOspfAreaName());
+          BoolExpr update = _enc.mkAnd(internal, _enc.mkNot(same));
+          BoolExpr copyOld = _enc.safeEqEnum(_current.getOspfType(), p.getData().getOspfType());
+          type = _enc.mkIf(update, _current.getOspfType().checkIfValue(OspfType.OIA), copyOld);
+        } else {
+          type = _enc.safeEqEnum(_current.getOspfType(), p.getData().getOspfType());
+        }
       }
     }
 
@@ -1337,6 +1318,20 @@ class TransferSSA {
         AddCommunity ac = (AddCommunity) stmt;
         Set<CommunityVar> comms = _enc.getGraph().findAllCommunities(_conf, ac.getExpr());
         for (CommunityVar cvar : comms) {
+          BoolExpr newValue = _enc.mkIf(result.getReturnAssignedValue(),
+              p.getData().getCommunities().get(cvar),
+              _enc.mkTrue());
+          BoolExpr x = createBoolVariableWith(p, cvar.getValue(), newValue);
+          p.getData().getCommunities().put(cvar, x);
+          result = result.addChangedVariable(cvar.getValue(), x);
+        }
+
+      } else if (stmt instanceof SetCommunity) {
+        p.debug("SetCommunity");
+        SetCommunity sc = (SetCommunity) stmt;
+        Set<CommunityVar> comms = _enc.getGraph().findAllCommunities(_conf, sc.getExpr());
+
+        for (CommunityVar cvar : comms) {
           BoolExpr newValue =
               _enc.mkIf(
                   result.getReturnAssignedValue(),
@@ -1485,10 +1480,6 @@ class TransferSSA {
     String s = "SSA_" + name + generateId();
     BoolExpr x = _enc.getCtx().mkBoolConst(s);
     // _enc.getAllVariables().add(x);
-    _enc.getAllBoolVars().add(x);
-    Symbol temp = _enc.getCtx().mkSymbol(s);
-    _enc.getAllBoolVarsList().add(temp);
-
     BoolExpr eq = _enc.mkEq(x, e);
     _enc.add(eq);
     p.debug(eq.toString());
