@@ -594,10 +594,6 @@ class EncoderSlice {
 
           BoolExpr outAcl = getCtx().mkBoolConst(outName);
           BoolExpr outAclFunc = computeACL(outbound);
-          _allBoolVars.add(outAcl);
-          Symbol temp = getCtx().mkSymbol(outName);
-          _allBoolVarsList.add(temp);
-
           /*
           if (existsACL(outbound)) {
             System.out.println(router + i.getName() + "-out");
@@ -642,9 +638,6 @@ class EncoderSlice {
 
           BoolExpr inAcl = getCtx().mkBoolConst(inName);
           BoolExpr inAclFunc = computeACL(inbound);
-          _allBoolVars.add(inAcl);
-          Symbol temp = getCtx().mkSymbol(inName);
-          _allBoolVarsList.add(temp);
           /*if (existsACL(inbound)) {
             System.out.println(router + i.getName() + "-in");
           }*/
@@ -2412,13 +2405,8 @@ private void addSymbolicPacketBoundConstraints() {
    */
   private BoolExpr computeTcpFlags(TcpFlags flags) {
     BoolExpr acc = mkTrue();
-    String packname = _encoder.getId() + "_" + _sliceName;
     if (flags.getUseAck()) {
       acc = mkAnd(acc, mkEq(_symbolicPacket.getTcpAck(), mkBool(flags.getAck())));
-      _allBoolVars.add(_symbolicPacket.getTcpAck());
-      Symbol temp = getCtx().mkSymbol(packname + "tcp-ack");
-      _allBoolVarsList.add(temp);
-
     }
     if (flags.getUseCwr()) {
       acc = mkAnd(acc, mkEq(_symbolicPacket.getTcpCwr(), mkBool(flags.getCwr())));
@@ -2434,16 +2422,9 @@ private void addSymbolicPacketBoundConstraints() {
     }
     if (flags.getUseRst()) {
       acc = mkAnd(acc, mkEq(_symbolicPacket.getTcpRst(), mkBool(flags.getRst())));
-      _allBoolVars.add(_symbolicPacket.getTcpRst());
-      Symbol temp = getCtx().mkSymbol(packname + "tcp-rst");
-      _allBoolVarsList.add(temp);
     }
     if (flags.getUseSyn()) {
       acc = mkAnd(acc, mkEq(_symbolicPacket.getTcpSyn(), mkBool(flags.getSyn())));
-      _allBoolVars.add(_symbolicPacket.getTcpSyn());
-      Symbol temp = getCtx().mkSymbol(packname + "tcp-syn");
-      _allBoolVarsList.add(temp);
-
     }
     if (flags.getUseUrg()) {
       acc = mkAnd(acc, mkEq(_symbolicPacket.getTcpUrg(), mkBool(flags.getUrg())));
@@ -2779,27 +2760,7 @@ private void addSymbolicPacketBoundConstraints() {
             if (!_isTCE)
             {
               shouldAdd = getCtx().mkBoolConst(_encoder.getId() + "_" + router +
-                "-StaticRouteAddSoft-" + ge);
-              //temp
-              /*
-              shouldAdd = mkAnd(
-                mkEq(
-                  _symbolicPacket.getDstIp(), getCtx().mkBVConst(
-                    _encoder.getId() + "_SRC_" + router + "-StaticRouteAddSoft-" + ge, 32)),
-                mkEq(
-                  _symbolicPacket.getSrcIp(), getCtx().mkBVConst(
-                    _encoder.getId() + "_DST_" + router + "-StaticRouteAddSoft-" + ge, 32)));
-              //shouldAdd = mkNot(shouldAdd);
-              */
-              ArithExpr simply = getCtx().mkIntConst(_encoder.getId() + "_" + router +
-                "-SimplyStaticRouteAddSoft-" + ge);
-              ArithExpr simply1 = getCtx().mkIntConst(_encoder.getId() + "_" + router +
-                "-Simply1StaticRouteAddSoft-" + ge);
-              addSoft(mkEq(simply, mkInt(100)), staticWeight, "StaticAdd");
-              add(mkIf(mkGt(simply, mkInt(150)), mkNot(shouldAdd), shouldAdd));
-              addSoft(mkEq(simply1, mkInt(100)), staticWeight, "StaticAdd");
-              add(mkIf(mkGt(simply1, mkInt(150)), mkNot(shouldAdd), shouldAdd));
-
+               "-StaticRouteAddSoft-" + ge);
               if (_encoder._repairObjective != 1) {
                 addSoft(mkNot(shouldAdd), staticWeight, "StaticAdd");
               }
