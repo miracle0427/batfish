@@ -1,0 +1,10 @@
+There are few addition things that need to be done to run this version of batfish
+
+Running the command for a property (like reachability) will create a MAXSMT.smt file. Then running the command "z3-smt2 MAXSMT.smt" will give one of three results 
+(i)  sat with objective value 0 - this means it has no repairs
+(ii) sat with non-zero objective value - this means it requires some repair. (By looking at model.smt, you can find out what repair was done)
+(iii) unsat - this means no repair could fix the policy
+
+- To run for multiple policies, enter your properties in "properties.txt" and use the command smt-mul <any src/dst IP>
+
+- weights.txt - has weights for repair

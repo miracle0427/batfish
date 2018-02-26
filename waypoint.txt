@@ -1,2 +1,0 @@
-smt-waypointing srcIps=['30.0.0.0/30'], dstIps=['30.3.0.0/30'], ingressNodeRegex="e0-0", waypoints=["e0-0", "agg0-0", "c0", "agg3-0", "e3-0"]
-smt-waypointing srcIps=['30.0.1.0/30'], dstIps=['30.3.0.0/30'], ingressNodeRegex="e0-1", waypoints=["e0-1", "agg0-0", "c0", "agg3-0", "e3-0"]
