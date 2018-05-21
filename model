@@ -1,110 +1,552 @@
-(define-fun |0_dst-port| () Int
-  0)
-(define-fun |0_src-port| () Int
-  0)
-(define-fun |0_aggregation-3_OVERALL_BEST_None_metric| () Int
-  1)
-(define-fun |0_edge-2_BGP_SINGLE-EXPORT__permitted| () Bool
+(define-fun |4_core-0_BGP_SINGLE-EXPORT__permitted| () Bool
   true)
-(define-fun |0__reachable-id_aggregation-1| () Int
-  4)
+(define-fun |3_aggregation-1_BGP_SINGLE-EXPORT__prefixLength| () Int
+  24)
+(define-fun |int_\|3_DATA-FORWARDING_aggregation-3_Serial1\|| () Int
+  0)
+(define-fun |4_aggregation-1_OVERALL_BEST_None_metric| () Int
+  3)
+(define-fun |int_\|1_DATA-FORWARDING_edge-2_Serial0\|| () Int
+  0)
+(define-fun |3_core-0_BGP_SINGLE-EXPORT__metric| () Int
+  3)
 (define-fun |0_edge-2_OVERALL_BEST_None_permitted| () Bool
   true)
-(define-fun |0_core-0_OVERALL_BEST_None_metric| () Int
+(define-fun |2_core-0_OVERALL_BEST_None_metric| () Int
   2)
 (define-fun |0_edge-2_OVERALL_BEST_None_metric| () Int
   4)
-(define-fun |0_edge-4_BGP_BEST_None_prefixLength| () Int
-  24)
-(define-fun |0_edge-4_OVERALL_BEST_None_metric| () Int
-  0)
-(define-fun |0_edge-4_OVERALL_BEST_None_prefixLength| () Int
-  32)
-(define-fun |int_\|0_DATA-FORWARDING_core-0_Serial1\|| () Int
-  1)
-(define-fun |0_core-0_BGP_SINGLE-EXPORT__permitted| () Bool
-  true)
-(define-fun |0_aggregation-1_OVERALL_BEST_None_prefixLength| () Int
-  24)
 (define-fun |0_aggregation-1_BGP_SINGLE-EXPORT__prefixLength| () Int
   24)
-(define-fun |0_edge-2_BGP_SINGLE-EXPORT__prefixLength| () Int
-  24)
-(define-fun |0_edge-2_OVERALL_BEST_None_prefixLength| () Int
-  24)
-(define-fun |int_\|0_DATA-FORWARDING_aggregation-3_Serial0\|| () Int
+(define-fun |int_\|2_DATA-FORWARDING_aggregation-1_Serial0\|| () Int
+  1)
+(define-fun |3_edge-2_OVERALL_BEST_None_metric| () Int
   0)
-(define-fun |0_core-0_OVERALL_BEST_None_routerID| () Int
-  1174405888)
-(define-fun |0_edge-4_BGP_BEST_None_permitted| () Bool
-  true)
-(define-fun |0_edge-4_BGP_SINGLE-EXPORT__metric| () Int
+(define-fun z3name!13 () Int
   1)
-(define-fun |0_aggregation-1_OVERALL_BEST_None_routerID| () Int
-  1174405120)
-(define-fun |int_\|0_DATA-FORWARDING_edge-2_Serial0\|| () Int
-  1)
-(define-fun |0__reachable-id_core-0| () Int
-  3)
-(define-fun |0_core-0_BGP_SINGLE-EXPORT__prefixLength| () Int
+(define-fun |3_aggregation-3_OVERALL_BEST_None_prefixLength| () Int
   24)
-(define-fun |0_edge-4_BGP_SINGLE-EXPORT__permitted| () Bool
-  true)
+(define-fun |4_core-0_OVERALL_BEST_None_prefixLength| () Int
+  24)
+(define-fun |int_\|3_DATA-FORWARDING_core-0_Serial1\|| () Int
+  0)
+(define-fun |4_aggregation-1_OVERALL_BEST_None_routerID| () Int
+  1174405120)
+(define-fun |1_edge-4_OVERALL_BEST_None_prefixLength| () Int
+  24)
+(define-fun |3_src-port| () Int
+  0)
+(define-fun z3name!11 () Int
+  1)
 (define-fun |0_icmp-code| () Int
   0)
 (define-fun |0_aggregation-3_OVERALL_BEST_None_prefixLength| () Int
   24)
-(define-fun |0_aggregation-1_OVERALL_BEST_None_metric| () Int
-  3)
 (define-fun |0_edge-4_BGP_BEST_None_routerID| () Int
   1174405888)
 (define-fun |0_edge-4_BGP_BEST_None_metric| () Int
   2)
-(define-fun |int_\|0_DATA-FORWARDING_edge-4_null_interface\|| () Int
+(define-fun |0_aggregation-1_OVERALL_BEST_None_metric| () Int
+  3)
+(define-fun |0_core-0_BGP_SINGLE-EXPORT__prefixLength| () Int
+  24)
+(define-fun |int_\|2_DATA-FORWARDING_edge-2_Serial0\|| () Int
+  1)
+(define-fun |3_edge-4_OVERALL_BEST_None_metric| () Int
+  4)
+(define-fun |3__reachable-id_aggregation-1| () Int
+  2)
+(define-fun |4_edge-4_BGP_BEST_None_routerID| () Int
+  1174405888)
+(define-fun |int_\|3_DATA-FORWARDING_edge-2_Serial0\|| () Int
   0)
+(define-fun |4_edge-4_BGP_SINGLE-EXPORT__metric| () Int
+  1)
+(define-fun |2_edge-2_OVERALL_BEST_None_permitted| () Bool
+  true)
 (define-fun |int_\|0_DATA-FORWARDING_aggregation-3_Serial1\|| () Int
   1)
-(define-fun |0_edge-4_OVERALL_BEST_None_adminDist| () Int
-  0)
-(define-fun |0_edge-2_BGP_SINGLE-EXPORT__metric| () Int
+(define-fun |3_aggregation-3_BGP_SINGLE-EXPORT__metric| () Int
+  4)
+(define-fun |2__reachable-id_aggregation-3| () Int
+  2)
+(define-fun |4_edge-4_BGP_SINGLE-EXPORT__permitted| () Bool
+  true)
+(define-fun |1_edge-2_BGP_BEST_None_prefixLength| () Int
+  24)
+(define-fun |int_\|4_DATA-FORWARDING_edge-2_Serial0\|| () Int
+  1)
+(define-fun |3__reachable-id_edge-4| () Int
   5)
-(define-fun |0_aggregation-3_OVERALL_BEST_None_routerID| () Int
-  1174406144)
-(define-fun |int_\|0_DATA-FORWARDING_core-0_Serial0\|| () Int
-  0)
+(define-fun |4_edge-2_OVERALL_BEST_None_metric| () Int
+  4)
 (define-fun |0__reachable-id_edge-2| () Int
   5)
+(define-fun |3_edge-2_OVERALL_BEST_None_routerID| () Int
+  0)
+(define-fun |4_edge-2_OVERALL_BEST_None_routerID| () Int
+  1174405376)
+(define-fun |2_icmp-code| () Int
+  0)
+(define-fun |1_core-0_OVERALL_BEST_None_metric| () Int
+  2)
+(define-fun |4_aggregation-3_BGP_SINGLE-EXPORT__metric| () Int
+  2)
+(define-fun |3_ip-protocol| () Int
+  0)
 (define-fun |0_icmp-type| () Int
   0)
-(define-fun |0_edge-4_CONNECTED_BEST_None_prefixLength| () Int
-  32)
+(define-fun |2_aggregation-1_BGP_SINGLE-EXPORT__metric| () Int
+  4)
+(define-fun |int_\|1_DATA-FORWARDING_core-0_Serial0\|| () Int
+  1)
+(define-fun |2_aggregation-1_OVERALL_BEST_None_metric| () Int
+  3)
 (define-fun |0_aggregation-3_BGP_SINGLE-EXPORT__metric| () Int
   2)
-(define-fun |0_edge-2_OVERALL_BEST_None_routerID| () Int
-  1174405376)
-(define-fun |0_aggregation-3_BGP_SINGLE-EXPORT__prefixLength| () Int
-  24)
+(define-fun |2_edge-2_BGP_SINGLE-EXPORT__metric| () Int
+  5)
+(define-fun |int_\|4_DATA-FORWARDING_aggregation-3_Serial0\|| () Int
+  0)
+(define-fun |int_\|4_DATA-FORWARDING_aggregation-1_Serial1\|| () Int
+  0)
 (define-fun |0__reachable-id_aggregation-3| () Int
   2)
+(define-fun z3name!10 () Int
+  1)
+(define-fun |int_\|4_DATA-FORWARDING_aggregation-3_Serial1\|| () Int
+  1)
 (define-fun |int_\|0_DATA-FORWARDING_edge-4_Serial0\|| () Int
   0)
-(define-fun |int_\|0_DATA-FORWARDING_aggregation-1_Serial1\|| () Int
+(define-fun |2_icmp-type| () Int
   0)
+(define-fun |2_dst-port| () Int
+  0)
+(define-fun |4_edge-4_OVERALL_BEST_None_adminDist| () Int
+  0)
+(define-fun |3_core-0_OVERALL_BEST_None_routerID| () Int
+  1174405376)
+(define-fun |2_edge-4_OVERALL_BEST_None_routerID| () Int
+  0)
+(define-fun |1_edge-2_CONNECTED_BEST_None_prefixLength| () Int
+  32)
+(define-fun |3_aggregation-1_OVERALL_BEST_None_routerID| () Int
+  1174405632)
+(define-fun |int_\|4_DATA-FORWARDING_edge-4_null_interface\|| () Int
+  0)
+(define-fun |2_edge-4_BGP_BEST_None_routerID| () Int
+  1174405888)
+(define-fun |2_edge-2_OVERALL_BEST_None_routerID| () Int
+  1174405376)
+(define-fun |int_\|1_DATA-FORWARDING_core-0_Serial1\|| () Int
+  0)
+(define-fun |2_src-port| () Int
+  0)
+(define-fun |1_aggregation-3_OVERALL_BEST_None_metric| () Int
+  3)
+(define-fun |int_\|4_DATA-FORWARDING_aggregation-1_Serial0\|| () Int
+  1)
+(define-fun |3_edge-2_BGP_BEST_None_metric| () Int
+  2)
+(define-fun |3_aggregation-1_OVERALL_BEST_None_prefixLength| () Int
+  24)
+(define-fun |1_aggregation-3_BGP_SINGLE-EXPORT__prefixLength| () Int
+  24)
+(define-fun |0_edge-2_BGP_SINGLE-EXPORT__permitted| () Bool
+  true)
+(define-fun |0__reachable-id_aggregation-1| () Int
+  4)
+(define-fun |4__reachable-id_aggregation-3| () Int
+  2)
+(define-fun |0_core-0_OVERALL_BEST_None_metric| () Int
+  2)
+(define-fun |3_edge-4_BGP_SINGLE-EXPORT__permitted| () Bool
+  true)
+(define-fun |4_edge-4_BGP_SINGLE-EXPORT__prefixLength| () Int
+  24)
+(define-fun |0_edge-4_BGP_BEST_None_prefixLength| () Int
+  24)
+(define-fun |1__reachable-id_edge-4| () Int
+  5)
+(define-fun |2_aggregation-1_OVERALL_BEST_None_prefixLength| () Int
+  24)
+(define-fun |int_\|1_DATA-FORWARDING_aggregation-3_Serial1\|| () Int
+  0)
+(define-fun |int_\|0_DATA-FORWARDING_core-0_Serial1\|| () Int
+  1)
+(define-fun |3_edge-4_OVERALL_BEST_None_permitted| () Bool
+  true)
+(define-fun |1_edge-2_BGP_BEST_None_metric| () Int
+  2)
+(define-fun |3_edge-2_OVERALL_BEST_None_adminDist| () Int
+  0)
+(define-fun |0_edge-2_BGP_SINGLE-EXPORT__prefixLength| () Int
+  24)
+(define-fun |4_dst-port| () Int
+  0)
+(define-fun |3_edge-4_OVERALL_BEST_None_routerID| () Int
+  1174405888)
+(define-fun |4_edge-2_BGP_SINGLE-EXPORT__metric| () Int
+  5)
+(define-fun |2_aggregation-3_BGP_SINGLE-EXPORT__metric| () Int
+  2)
+(define-fun |2_edge-4_BGP_SINGLE-EXPORT__metric| () Int
+  1)
+(define-fun |3_dst-port| () Int
+  0)
+(define-fun |3_edge-2_OVERALL_BEST_None_prefixLength| () Int
+  32)
+(define-fun |1_aggregation-1_OVERALL_BEST_None_metric| () Int
+  1)
+(define-fun |0_core-0_OVERALL_BEST_None_routerID| () Int
+  1174405888)
+(define-fun |1_src-port| () Int
+  0)
+(define-fun |2_edge-2_OVERALL_BEST_None_metric| () Int
+  4)
+(define-fun |4__reachable-id_aggregation-1| () Int
+  4)
+(define-fun |0_edge-4_BGP_SINGLE-EXPORT__metric| () Int
+  1)
+(define-fun |0__reachable-id_core-0| () Int
+  3)
+(define-fun |3_edge-4_OVERALL_BEST_None_prefixLength| () Int
+  24)
+(define-fun |0_edge-4_BGP_SINGLE-EXPORT__permitted| () Bool
+  true)
+(define-fun |1_aggregation-1_BGP_SINGLE-EXPORT__prefixLength| () Int
+  24)
+(define-fun |2_aggregation-3_OVERALL_BEST_None_metric| () Int
+  1)
+(define-fun |1__reachable-id_aggregation-1| () Int
+  2)
+(define-fun |int_\|2_DATA-FORWARDING_edge-4_Serial0\|| () Int
+  0)
+(define-fun z3name!12 () Int
+  1)
+(define-fun |1_core-0_BGP_SINGLE-EXPORT__prefixLength| () Int
+  24)
+(define-fun |int_\|3_DATA-FORWARDING_edge-4_Serial0\|| () Int
+  1)
+(define-fun |1_core-0_OVERALL_BEST_None_routerID| () Int
+  1174405376)
+(define-fun |3_edge-2_BGP_SINGLE-EXPORT__metric| () Int
+  1)
+(define-fun |2_edge-4_BGP_BEST_None_prefixLength| () Int
+  24)
+(define-fun |int_\|3_DATA-FORWARDING_edge-2_null_interface\|| () Int
+  0)
+(define-fun |4_edge-4_BGP_BEST_None_metric| () Int
+  2)
+(define-fun |1_edge-4_BGP_SINGLE-EXPORT__metric| () Int
+  5)
+(define-fun |3__reachable-id_aggregation-3| () Int
+  4)
+(define-fun |2_core-0_BGP_SINGLE-EXPORT__prefixLength| () Int
+  24)
+(define-fun |int_\|2_DATA-FORWARDING_aggregation-3_Serial1\|| () Int
+  1)
+(define-fun |1_edge-4_OVERALL_BEST_None_metric| () Int
+  4)
+(define-fun |3_core-0_BGP_SINGLE-EXPORT__prefixLength| () Int
+  24)
+(define-fun |4_icmp-code| () Int
+  0)
+(define-fun |1_dst-port| () Int
+  0)
+(define-fun |3_core-0_OVERALL_BEST_None_metric| () Int
+  2)
+(define-fun |3_icmp-type| () Int
+  0)
+(define-fun |3_edge-4_BGP_SINGLE-EXPORT__metric| () Int
+  5)
+(define-fun |3_aggregation-1_BGP_SINGLE-EXPORT__metric| () Int
+  2)
+(define-fun |2_edge-4_CONNECTED_BEST_None_prefixLength| () Int
+  32)
+(define-fun |3_aggregation-3_OVERALL_BEST_None_routerID| () Int
+  1174405120)
+(define-fun |3_edge-4_BGP_SINGLE-EXPORT__prefixLength| () Int
+  24)
+(define-fun |2_aggregation-3_OVERALL_BEST_None_prefixLength| () Int
+  24)
+(define-fun |1_core-0_BGP_SINGLE-EXPORT__permitted| () Bool
+  true)
 (define-fun |int_\|0_DATA-FORWARDING_aggregation-1_Serial0\|| () Int
   1)
 (define-fun |0_core-0_OVERALL_BEST_None_prefixLength| () Int
   24)
+(define-fun |1_edge-2_BGP_SINGLE-EXPORT__permitted| () Bool
+  true)
+(define-fun |2_edge-2_OVERALL_BEST_None_prefixLength| () Int
+  24)
+(define-fun |3_edge-2_BGP_BEST_None_prefixLength| () Int
+  24)
+(define-fun |3_aggregation-1_OVERALL_BEST_None_metric| () Int
+  1)
 (define-fun |0_aggregation-1_BGP_SINGLE-EXPORT__metric| () Int
   4)
-(define-fun |0_edge-4_OVERALL_BEST_None_routerID| () Int
+(define-fun |4_ip-protocol| () Int
   0)
-(define-fun |0_ip-protocol| () Int
-  0)
-(define-fun |0_core-0_BGP_SINGLE-EXPORT__metric| () Int
-  3)
+(define-fun |4_core-0_OVERALL_BEST_None_metric| () Int
+  2)
+(define-fun |3_edge-2_CONNECTED_BEST_None_prefixLength| () Int
+  32)
+(define-fun |4__reachable-id_edge-2| () Int
+  5)
+(define-fun |3_edge-2_BGP_BEST_None_permitted| () Bool
+  true)
+(define-fun |1_edge-4_BGP_SINGLE-EXPORT__prefixLength| () Int
+  24)
 (define-fun |0_edge-4_BGP_SINGLE-EXPORT__prefixLength| () Int
   24)
+(define-fun |0_dst-port| () Int
+  0)
+(define-fun |3_icmp-code| () Int
+  0)
+(define-fun |0_src-port| () Int
+  0)
+(define-fun |3_aggregation-3_BGP_SINGLE-EXPORT__prefixLength| () Int
+  24)
+(define-fun |0_aggregation-3_OVERALL_BEST_None_metric| () Int
+  1)
+(define-fun |3_edge-2_BGP_BEST_None_routerID| () Int
+  1174405376)
+(define-fun |4_edge-4_OVERALL_BEST_None_routerID| () Int
+  0)
+(define-fun z3name!14 () Int
+  1)
+(define-fun |int_\|1_DATA-FORWARDING_aggregation-1_Serial1\|| () Int
+  1)
+(define-fun |1_edge-2_BGP_SINGLE-EXPORT__metric| () Int
+  1)
+(define-fun |2_edge-4_BGP_SINGLE-EXPORT__permitted| () Bool
+  true)
+(define-fun |2_aggregation-1_OVERALL_BEST_None_routerID| () Int
+  1174405120)
+(define-fun |2_edge-4_OVERALL_BEST_None_metric| () Int
+  0)
+(define-fun |0_core-0_BGP_SINGLE-EXPORT__permitted| () Bool
+  true)
+(define-fun |2_ip-protocol| () Int
+  0)
+(define-fun |0_edge-2_OVERALL_BEST_None_prefixLength| () Int
+  24)
+(define-fun |int_\|0_DATA-FORWARDING_aggregation-3_Serial0\|| () Int
+  0)
+(define-fun |int_\|1_DATA-FORWARDING_aggregation-1_Serial0\|| () Int
+  0)
+(define-fun |0_edge-4_BGP_BEST_None_permitted| () Bool
+  true)
+(define-fun |1_aggregation-3_BGP_SINGLE-EXPORT__metric| () Int
+  4)
+(define-fun |2_edge-4_OVERALL_BEST_None_adminDist| () Int
+  0)
+(define-fun |4_aggregation-3_BGP_SINGLE-EXPORT__prefixLength| () Int
+  24)
+(define-fun |4_core-0_BGP_SINGLE-EXPORT__metric| () Int
+  3)
+(define-fun |1_edge-2_BGP_BEST_None_permitted| () Bool
+  true)
+(define-fun |2_edge-4_BGP_BEST_None_permitted| () Bool
+  true)
+(define-fun |int_\|0_DATA-FORWARDING_edge-2_Serial0\|| () Int
+  1)
+(define-fun |2_core-0_BGP_SINGLE-EXPORT__permitted| () Bool
+  true)
+(define-fun |1_edge-2_OVERALL_BEST_None_routerID| () Int
+  0)
+(define-fun |1_aggregation-1_OVERALL_BEST_None_routerID| () Int
+  1174405632)
+(define-fun |int_\|1_DATA-FORWARDING_aggregation-3_Serial0\|| () Int
+  1)
+(define-fun |2_aggregation-3_OVERALL_BEST_None_routerID| () Int
+  1174406144)
+(define-fun |2__reachable-id_edge-2| () Int
+  5)
+(define-fun |int_\|2_DATA-FORWARDING_aggregation-1_Serial1\|| () Int
+  0)
+(define-fun |int_\|0_DATA-FORWARDING_edge-4_null_interface\|| () Int
+  0)
+(define-fun |4_src-port| () Int
+  0)
+(define-fun |4_aggregation-1_BGP_SINGLE-EXPORT__metric| () Int
+  4)
+(define-fun |4_aggregation-3_OVERALL_BEST_None_metric| () Int
+  1)
+(define-fun |2_core-0_OVERALL_BEST_None_prefixLength| () Int
+  24)
+(define-fun |1_aggregation-1_OVERALL_BEST_None_prefixLength| () Int
+  24)
+(define-fun |2_aggregation-3_BGP_SINGLE-EXPORT__prefixLength| () Int
+  24)
+(define-fun |int_\|2_DATA-FORWARDING_aggregation-3_Serial0\|| () Int
+  0)
+(define-fun |4_aggregation-3_OVERALL_BEST_None_routerID| () Int
+  1174406144)
+(define-fun |0_aggregation-3_OVERALL_BEST_None_routerID| () Int
+  1174406144)
+(define-fun |int_\|4_DATA-FORWARDING_core-0_Serial1\|| () Int
+  1)
+(define-fun |2_edge-4_BGP_SINGLE-EXPORT__prefixLength| () Int
+  24)
+(define-fun |4_edge-4_BGP_BEST_None_prefixLength| () Int
+  24)
+(define-fun |1_ip-protocol| () Int
+  0)
+(define-fun |3_edge-2_BGP_SINGLE-EXPORT__prefixLength| () Int
+  24)
+(define-fun |1_edge-2_OVERALL_BEST_None_adminDist| () Int
+  0)
+(define-fun |4_icmp-type| () Int
+  0)
+(define-fun |1_aggregation-1_BGP_SINGLE-EXPORT__metric| () Int
+  2)
+(define-fun |2_core-0_BGP_SINGLE-EXPORT__metric| () Int
+  3)
+(define-fun |4_edge-2_OVERALL_BEST_None_prefixLength| () Int
+  24)
+(define-fun |4_aggregation-1_OVERALL_BEST_None_prefixLength| () Int
+  24)
+(define-fun |int_\|1_DATA-FORWARDING_edge-4_Serial0\|| () Int
+  1)
+(define-fun |0_edge-4_OVERALL_BEST_None_routerID| () Int
+  0)
+(define-fun |1_edge-2_BGP_SINGLE-EXPORT__prefixLength| () Int
+  24)
+(define-fun |4_edge-4_OVERALL_BEST_None_metric| () Int
+  0)
+(define-fun |1_icmp-type| () Int
+  0)
+(define-fun |4_edge-4_BGP_BEST_None_permitted| () Bool
+  true)
+(define-fun |2_edge-2_BGP_SINGLE-EXPORT__permitted| () Bool
+  true)
+(define-fun |int_\|2_DATA-FORWARDING_core-0_Serial1\|| () Int
+  1)
+(define-fun |3__reachable-id_core-0| () Int
+  3)
+(define-fun |2_aggregation-1_BGP_SINGLE-EXPORT__prefixLength| () Int
+  24)
+(define-fun |4_core-0_OVERALL_BEST_None_routerID| () Int
+  1174405888)
+(define-fun |4_edge-4_CONNECTED_BEST_None_prefixLength| () Int
+  32)
+(define-fun |int_\|3_DATA-FORWARDING_aggregation-1_Serial0\|| () Int
+  0)
+(define-fun |1_icmp-code| () Int
+  0)
+(define-fun |0_edge-4_OVERALL_BEST_None_metric| () Int
+  0)
+(define-fun |0_edge-4_OVERALL_BEST_None_prefixLength| () Int
+  32)
+(define-fun |1_aggregation-3_OVERALL_BEST_None_prefixLength| () Int
+  24)
+(define-fun |1_edge-2_BGP_BEST_None_routerID| () Int
+  1174405376)
+(define-fun |1_edge-4_OVERALL_BEST_None_permitted| () Bool
+  true)
+(define-fun |0_aggregation-1_OVERALL_BEST_None_prefixLength| () Int
+  24)
+(define-fun |2_edge-4_OVERALL_BEST_None_prefixLength| () Int
+  32)
+(define-fun |2_edge-4_BGP_BEST_None_metric| () Int
+  2)
+(define-fun |int_\|3_DATA-FORWARDING_aggregation-3_Serial0\|| () Int
+  1)
+(define-fun |1_edge-4_BGP_SINGLE-EXPORT__permitted| () Bool
+  true)
+(define-fun |1_core-0_BGP_SINGLE-EXPORT__metric| () Int
+  3)
+(define-fun |4_core-0_BGP_SINGLE-EXPORT__prefixLength| () Int
+  24)
+(define-fun |0_aggregation-1_OVERALL_BEST_None_routerID| () Int
+  1174405120)
+(define-fun |4_aggregation-1_BGP_SINGLE-EXPORT__prefixLength| () Int
+  24)
+(define-fun |int_\|2_DATA-FORWARDING_edge-4_null_interface\|| () Int
+  0)
+(define-fun |int_\|4_DATA-FORWARDING_edge-4_Serial0\|| () Int
+  0)
+(define-fun |2_core-0_OVERALL_BEST_None_routerID| () Int
+  1174405888)
+(define-fun |1_edge-2_OVERALL_BEST_None_metric| () Int
+  0)
+(define-fun |3_aggregation-3_OVERALL_BEST_None_metric| () Int
+  3)
+(define-fun |1_aggregation-3_OVERALL_BEST_None_routerID| () Int
+  1174405120)
+(define-fun |0_edge-4_OVERALL_BEST_None_adminDist| () Int
+  0)
+(define-fun |0_edge-2_BGP_SINGLE-EXPORT__metric| () Int
+  5)
+(define-fun |1_edge-2_OVERALL_BEST_None_prefixLength| () Int
+  32)
+(define-fun |1__reachable-id_core-0| () Int
+  3)
+(define-fun |int_\|4_DATA-FORWARDING_core-0_Serial0\|| () Int
+  0)
+(define-fun |int_\|0_DATA-FORWARDING_core-0_Serial0\|| () Int
+  0)
+(define-fun |int_\|2_DATA-FORWARDING_core-0_Serial0\|| () Int
+  0)
+(define-fun |3_core-0_OVERALL_BEST_None_prefixLength| () Int
+  24)
+(define-fun |1_core-0_OVERALL_BEST_None_prefixLength| () Int
+  24)
+(define-fun |int_\|3_DATA-FORWARDING_core-0_Serial0\|| () Int
+  1)
+(define-fun |4_edge-4_OVERALL_BEST_None_prefixLength| () Int
+  32)
+(define-fun |4_aggregation-3_OVERALL_BEST_None_prefixLength| () Int
+  24)
+(define-fun |4__reachable-id_core-0| () Int
+  3)
+(define-fun |int_\|3_DATA-FORWARDING_aggregation-1_Serial1\|| () Int
+  1)
+(define-fun |0_edge-4_CONNECTED_BEST_None_prefixLength| () Int
+  32)
+(define-fun |3_edge-2_BGP_SINGLE-EXPORT__permitted| () Bool
+  true)
+(define-fun |3_core-0_BGP_SINGLE-EXPORT__permitted| () Bool
+  true)
+(define-fun |0_edge-2_OVERALL_BEST_None_routerID| () Int
+  1174405376)
+(define-fun |0_aggregation-3_BGP_SINGLE-EXPORT__prefixLength| () Int
+  24)
+(define-fun |4_edge-2_BGP_SINGLE-EXPORT__prefixLength| () Int
+  24)
+(define-fun |1_edge-4_OVERALL_BEST_None_routerID| () Int
+  1174405888)
+(define-fun |int_\|0_DATA-FORWARDING_aggregation-1_Serial1\|| () Int
+  0)
+(define-fun |2__reachable-id_aggregation-1| () Int
+  4)
+(define-fun |0_core-0_BGP_SINGLE-EXPORT__metric| () Int
+  3)
+(define-fun |0_ip-protocol| () Int
+  0)
+(define-fun |4_edge-2_BGP_SINGLE-EXPORT__permitted| () Bool
+  true)
+(define-fun |int_\|1_DATA-FORWARDING_edge-2_null_interface\|| () Int
+  0)
+(define-fun |2_edge-2_BGP_SINGLE-EXPORT__prefixLength| () Int
+  24)
+(define-fun |4_edge-2_OVERALL_BEST_None_permitted| () Bool
+  true)
+(define-fun |2__reachable-id_core-0| () Int
+  3)
+(define-fun |1__reachable-id_aggregation-3| () Int
+  4)
+(define-fun |2_edge-4_OVERALL_BEST_None_history| () (_ BitVec 2)
+  #b01)
 (define-fun |0_edge-4_OVERALL_BEST_None_history| () (_ BitVec 2)
+  #b01)
+(define-fun |1_edge-2_OVERALL_BEST_None_history| () (_ BitVec 2)
+  #b01)
+(define-fun |3_edge-2_OVERALL_BEST_None_history| () (_ BitVec 2)
+  #b01)
+(define-fun |4_edge-4_OVERALL_BEST_None_history| () (_ BitVec 2)
   #b01)
 (define-fun |0_edge-4_CONNECTED_IMPORT_Loopback0_prefixLength| () Int
   32)
@@ -112,25 +554,801 @@
   31)
 (define-fun |0_edge-4_STATIC_IMPORT_null_interface_prefixLength| () Int
   24)
+(define-fun |1_edge-2_CONNECTED_IMPORT_Loopback0_prefixLength| () Int
+  32)
+(define-fun |1_edge-2_CONNECTED_IMPORT_Ethernet0_prefixLength| () Int
+  31)
+(define-fun |1_edge-2_STATIC_IMPORT_null_interface_prefixLength| () Int
+  24)
+(define-fun |2_edge-4_CONNECTED_IMPORT_Loopback0_prefixLength| () Int
+  32)
+(define-fun |2_edge-4_CONNECTED_IMPORT_Ethernet0_prefixLength| () Int
+  31)
+(define-fun |2_edge-4_STATIC_IMPORT_null_interface_prefixLength| () Int
+  24)
+(define-fun |3_edge-2_CONNECTED_IMPORT_Loopback0_prefixLength| () Int
+  32)
+(define-fun |3_edge-2_CONNECTED_IMPORT_Ethernet0_prefixLength| () Int
+  31)
+(define-fun |3_edge-2_STATIC_IMPORT_null_interface_prefixLength| () Int
+  24)
+(define-fun |4_edge-4_CONNECTED_IMPORT_Loopback0_prefixLength| () Int
+  32)
+(define-fun |4_edge-4_CONNECTED_IMPORT_Ethernet0_prefixLength| () Int
+  31)
+(define-fun |4_edge-4_STATIC_IMPORT_null_interface_prefixLength| () Int
+  24)
+(define-fun |int_\|4_DATA-FORWARDING_edge-4_Ethernet0\|| () Int
+  0)
+(define-fun |int_\|3_DATA-FORWARDING_edge-4_Ethernet0\|| () Int
+  0)
+(define-fun |int_\|2_DATA-FORWARDING_edge-4_Ethernet0\|| () Int
+  0)
+(define-fun |int_\|1_DATA-FORWARDING_edge-4_Ethernet0\|| () Int
+  0)
 (define-fun |int_\|0_DATA-FORWARDING_edge-4_Ethernet0\|| () Int
+  0)
+(define-fun |int_\|4_DATA-FORWARDING_edge-2_Ethernet0\|| () Int
+  0)
+(define-fun |int_\|3_DATA-FORWARDING_edge-2_Ethernet0\|| () Int
+  0)
+(define-fun |int_\|2_DATA-FORWARDING_edge-2_Ethernet0\|| () Int
+  0)
+(define-fun |int_\|1_DATA-FORWARDING_edge-2_Ethernet0\|| () Int
   0)
 (define-fun |int_\|0_DATA-FORWARDING_edge-2_Ethernet0\|| () Int
   0)
+(define-fun |int_\|4_DATA-FORWARDING_edge-2_Loopback0\|| () Int
+  0)
+(define-fun |int_\|3_DATA-FORWARDING_edge-2_Loopback0\|| () Int
+  0)
+(define-fun |int_\|2_DATA-FORWARDING_edge-2_Loopback0\|| () Int
+  0)
+(define-fun |int_\|1_DATA-FORWARDING_edge-2_Loopback0\|| () Int
+  0)
 (define-fun |int_\|0_DATA-FORWARDING_edge-2_Loopback0\|| () Int
+  0)
+(define-fun |int_\|4_DATA-FORWARDING_edge-4_Loopback0\|| () Int
+  0)
+(define-fun |int_\|3_DATA-FORWARDING_edge-4_Loopback0\|| () Int
+  0)
+(define-fun |int_\|2_DATA-FORWARDING_edge-4_Loopback0\|| () Int
+  0)
+(define-fun |int_\|1_DATA-FORWARDING_edge-4_Loopback0\|| () Int
   0)
 (define-fun |int_\|0_DATA-FORWARDING_edge-4_Loopback0\|| () Int
   0)
+(define-fun |int_\|4_DATA-FORWARDING_edge-2_Ethernet1\|| () Int
+  0)
+(define-fun |int_\|3_DATA-FORWARDING_edge-2_Ethernet1\|| () Int
+  0)
+(define-fun |int_\|2_DATA-FORWARDING_edge-2_Ethernet1\|| () Int
+  0)
+(define-fun |int_\|1_DATA-FORWARDING_edge-2_Ethernet1\|| () Int
+  0)
 (define-fun |int_\|0_DATA-FORWARDING_edge-2_Ethernet1\|| () Int
+  0)
+(define-fun |int_\|4_DATA-FORWARDING_aggregation-3_Loopback0\|| () Int
+  0)
+(define-fun |int_\|3_DATA-FORWARDING_aggregation-3_Loopback0\|| () Int
+  0)
+(define-fun |int_\|2_DATA-FORWARDING_aggregation-3_Loopback0\|| () Int
+  0)
+(define-fun |int_\|1_DATA-FORWARDING_aggregation-3_Loopback0\|| () Int
   0)
 (define-fun |int_\|0_DATA-FORWARDING_aggregation-3_Loopback0\|| () Int
   0)
+(define-fun |int_\|3_DATA-FORWARDING_edge-4_null_interface\|| () Int
+  0)
+(define-fun |int_\|1_DATA-FORWARDING_edge-4_null_interface\|| () Int
+  0)
+(define-fun |int_\|4_DATA-FORWARDING_edge-4_Ethernet1\|| () Int
+  0)
+(define-fun |int_\|3_DATA-FORWARDING_edge-4_Ethernet1\|| () Int
+  0)
+(define-fun |int_\|2_DATA-FORWARDING_edge-4_Ethernet1\|| () Int
+  0)
+(define-fun |int_\|1_DATA-FORWARDING_edge-4_Ethernet1\|| () Int
+  0)
 (define-fun |int_\|0_DATA-FORWARDING_edge-4_Ethernet1\|| () Int
+  0)
+(define-fun |int_\|4_DATA-FORWARDING_aggregation-1_Loopback0\|| () Int
+  0)
+(define-fun |int_\|3_DATA-FORWARDING_aggregation-1_Loopback0\|| () Int
+  0)
+(define-fun |int_\|2_DATA-FORWARDING_aggregation-1_Loopback0\|| () Int
+  0)
+(define-fun |int_\|1_DATA-FORWARDING_aggregation-1_Loopback0\|| () Int
   0)
 (define-fun |int_\|0_DATA-FORWARDING_aggregation-1_Loopback0\|| () Int
   0)
+(define-fun |int_\|4_DATA-FORWARDING_core-0_Loopback0\|| () Int
+  0)
+(define-fun |int_\|3_DATA-FORWARDING_core-0_Loopback0\|| () Int
+  0)
+(define-fun |int_\|2_DATA-FORWARDING_core-0_Loopback0\|| () Int
+  0)
+(define-fun |int_\|1_DATA-FORWARDING_core-0_Loopback0\|| () Int
+  0)
 (define-fun |int_\|0_DATA-FORWARDING_core-0_Loopback0\|| () Int
   0)
+(define-fun |int_\|4_DATA-FORWARDING_edge-2_null_interface\|| () Int
+  0)
+(define-fun |int_\|2_DATA-FORWARDING_edge-2_null_interface\|| () Int
+  0)
 (define-fun |int_\|0_DATA-FORWARDING_edge-2_null_interface\|| () Int
+  0)
+(define-fun |4__reachable_edge-4| () Bool
+  true)
+(define-fun |4__reachable_aggregation-1| () Bool
+  true)
+(define-fun |4__reachable_edge-2| () Bool
+  true)
+(define-fun |4__reachable_core-0| () Bool
+  true)
+(define-fun |4__reachable_aggregation-3| () Bool
+  true)
+(define-fun |4__reachable-id_edge-4| () Int
+  1)
+(define-fun |4_src-ip| () (_ BitVec 32)
+  #x0a000301)
+(define-fun |4_dst-ip| () (_ BitVec 32)
+  #x46000400)
+(define-fun |4_CONTROL-FORWARDING_edge-4_null_interface| () Bool
+  false)
+(define-fun |4_DATA-FORWARDING_edge-4_null_interface| () Bool
+  false)
+(define-fun |4_DATA-FORWARDING_edge-4_Ethernet0| () Bool
+  false)
+(define-fun |4_DATA-FORWARDING_edge-4_Loopback0| () Bool
+  false)
+(define-fun |4_CONTROL-FORWARDING_edge-4_Serial0| () Bool
+  false)
+(define-fun |4_DATA-FORWARDING_edge-4_Serial0| () Bool
+  false)
+(define-fun |4_DATA-FORWARDING_edge-4_Ethernet1| () Bool
+  false)
+(define-fun |4_CONTROL-FORWARDING_aggregation-1_Serial0| () Bool
+  true)
+(define-fun |4_DATA-FORWARDING_aggregation-1_Serial0| () Bool
+  true)
+(define-fun |4_CONTROL-FORWARDING_aggregation-1_Serial1| () Bool
+  false)
+(define-fun |4_DATA-FORWARDING_aggregation-1_Serial1| () Bool
+  false)
+(define-fun |4_DATA-FORWARDING_aggregation-1_Loopback0| () Bool
+  false)
+(define-fun |4_DATA-FORWARDING_edge-2_null_interface| () Bool
+  false)
+(define-fun |4_DATA-FORWARDING_edge-2_Ethernet0| () Bool
+  false)
+(define-fun |4_DATA-FORWARDING_edge-2_Loopback0| () Bool
+  false)
+(define-fun |4_CONTROL-FORWARDING_edge-2_Serial0| () Bool
+  true)
+(define-fun |4_DATA-FORWARDING_edge-2_Serial0| () Bool
+  true)
+(define-fun |4_DATA-FORWARDING_edge-2_Ethernet1| () Bool
+  false)
+(define-fun |4_CONTROL-FORWARDING_core-0_Serial0| () Bool
+  false)
+(define-fun |4_DATA-FORWARDING_core-0_Serial0| () Bool
+  false)
+(define-fun |4_CONTROL-FORWARDING_core-0_Serial1| () Bool
+  true)
+(define-fun |4_DATA-FORWARDING_core-0_Serial1| () Bool
+  true)
+(define-fun |4_DATA-FORWARDING_core-0_Loopback0| () Bool
+  false)
+(define-fun |4_CONTROL-FORWARDING_aggregation-3_Serial0| () Bool
+  false)
+(define-fun |4_DATA-FORWARDING_aggregation-3_Serial0| () Bool
+  false)
+(define-fun |4_CONTROL-FORWARDING_aggregation-3_Serial1| () Bool
+  true)
+(define-fun |4_DATA-FORWARDING_aggregation-3_Serial1| () Bool
+  true)
+(define-fun |4_DATA-FORWARDING_aggregation-3_Loopback0| () Bool
+  false)
+(define-fun |4_CONTROL-FORWARDING_edge-4_Ethernet0| () Bool
+  false)
+(define-fun |4_CONTROL-FORWARDING_edge-4_Loopback0| () Bool
+  false)
+(define-fun |4_CONTROL-FORWARDING_edge-4_Ethernet1| () Bool
+  false)
+(define-fun |4_CONTROL-FORWARDING_aggregation-1_Loopback0| () Bool
+  false)
+(define-fun |4_CONTROL-FORWARDING_core-0_Loopback0| () Bool
+  false)
+(define-fun |4_CONTROL-FORWARDING_aggregation-3_Loopback0| () Bool
+  false)
+(define-fun |4_CONTROL-FORWARDING_edge-2_null_interface| () Bool
+  false)
+(define-fun |4_CONTROL-FORWARDING_edge-2_Ethernet0| () Bool
+  false)
+(define-fun |4_CONTROL-FORWARDING_edge-2_Loopback0| () Bool
+  false)
+(define-fun |4_CONTROL-FORWARDING_edge-2_Ethernet1| () Bool
+  false)
+(define-fun |4_edge-4_OVERALL_BEST_None_permitted| () Bool
+  true)
+(define-fun |4_edge-4_STATIC_IMPORT_null_interface_choice| () Bool
+  true)
+(define-fun |4_edge-4_CONNECTED_IMPORT_Ethernet0_choice| () Bool
+  false)
+(define-fun |4_edge-4_CONNECTED_IMPORT_Loopback0_choice| () Bool
+  true)
+(define-fun |4_edge-4_BGP_IMPORT_Serial0_choice| () Bool
+  true)
+(define-fun |4_aggregation-1_BGP_IMPORT_Serial1_choice| () Bool
+  false)
+(define-fun |4_aggregation-1_BGP_IMPORT_Serial0_choice| () Bool
+  true)
+(define-fun |4_core-0_BGP_IMPORT_Serial1_choice| () Bool
+  true)
+(define-fun |4_core-0_BGP_IMPORT_Serial0_choice| () Bool
+  false)
+(define-fun |4_aggregation-3_BGP_IMPORT_Serial0_choice| () Bool
+  false)
+(define-fun |4_aggregation-3_BGP_IMPORT_Serial1_choice| () Bool
+  true)
+(define-fun |4_edge-2_BGP_IMPORT_Serial0_choice| () Bool
+  true)
+(define-fun |4_edge-4_STATIC_BEST_None_permitted| () Bool
+  true)
+(define-fun |4_edge-4_STATIC_BEST_None_prefixLength| () Int
+  24)
+(define-fun |4_edge-4_CONNECTED_BEST_None_permitted| () Bool
+  true)
+(define-fun |4_aggregation-1_OVERALL_BEST_None_permitted| () Bool
+  true)
+(define-fun |4_core-0_OVERALL_BEST_None_permitted| () Bool
+  true)
+(define-fun |4_aggregation-3_BGP_SINGLE-EXPORT__permitted| () Bool
+  true)
+(define-fun |4_aggregation-3_OVERALL_BEST_None_permitted| () Bool
+  true)
+(define-fun |4_aggregation-1_BGP_SINGLE-EXPORT__permitted| () Bool
+  true)
+(define-fun |4_edge-4_STATIC_IMPORT_null_interface_permitted| () Bool
+  true)
+(define-fun |4_edge-4_CONNECTED_IMPORT_Ethernet0_permitted| () Bool
+  true)
+(define-fun |4_edge-4_CONNECTED_IMPORT_Loopback0_permitted| () Bool
+  true)
+(define-fun |4_FAILED-EDGE_edge-2_Ethernet0| () Int
+  0)
+(define-fun |4_FAILED-EDGE_edge-4_Ethernet1| () Int
+  0)
+(define-fun |4_FAILED-EDGE_aggregation-3_core-0| () Int
+  0)
+(define-fun |4_FAILED-EDGE_aggregation-3_edge-4| () Int
+  0)
+(define-fun |4_FAILED-EDGE_aggregation-3_Loopback0| () Int
+  0)
+(define-fun |4_FAILED-EDGE_edge-4_Ethernet0| () Int
+  0)
+(define-fun |4_FAILED-EDGE_edge-2_Ethernet1| () Int
+  0)
+(define-fun |4_FAILED-EDGE_edge-2_null_interface| () Int
+  0)
+(define-fun |4_FAILED-EDGE_edge-2_Loopback0| () Int
+  0)
+(define-fun |4_FAILED-EDGE_core-0_Loopback0| () Int
+  0)
+(define-fun |4_FAILED-EDGE_aggregation-1_Loopback0| () Int
+  0)
+(define-fun |4_FAILED-EDGE_aggregation-1_core-0| () Int
+  0)
+(define-fun |4_FAILED-EDGE_edge-4_null_interface| () Int
+  0)
+(define-fun |4_FAILED-EDGE_aggregation-1_edge-2| () Int
+  0)
+(define-fun |4_FAILED-EDGE_edge-4_Loopback0| () Int
+  0)
+(define-fun |3__reachable_edge-4| () Bool
+  true)
+(define-fun |3__reachable_aggregation-1| () Bool
+  true)
+(define-fun |3__reachable_edge-2| () Bool
+  true)
+(define-fun |3__reachable_core-0| () Bool
+  true)
+(define-fun |3__reachable_aggregation-3| () Bool
+  true)
+(define-fun |3__reachable-id_edge-2| () Int
+  1)
+(define-fun |3_src-ip| () (_ BitVec 32)
+  #x0a000301)
+(define-fun |3_dst-ip| () (_ BitVec 32)
+  #x46000200)
+(define-fun |3_DATA-FORWARDING_edge-4_null_interface| () Bool
+  false)
+(define-fun |3_DATA-FORWARDING_edge-4_Ethernet0| () Bool
+  false)
+(define-fun |3_DATA-FORWARDING_edge-4_Loopback0| () Bool
+  false)
+(define-fun |3_CONTROL-FORWARDING_edge-4_Serial0| () Bool
+  true)
+(define-fun |3_DATA-FORWARDING_edge-4_Serial0| () Bool
+  true)
+(define-fun |3_DATA-FORWARDING_edge-4_Ethernet1| () Bool
+  false)
+(define-fun |3_CONTROL-FORWARDING_aggregation-1_Serial0| () Bool
+  false)
+(define-fun |3_DATA-FORWARDING_aggregation-1_Serial0| () Bool
+  false)
+(define-fun |3_CONTROL-FORWARDING_aggregation-1_Serial1| () Bool
+  true)
+(define-fun |3_DATA-FORWARDING_aggregation-1_Serial1| () Bool
+  true)
+(define-fun |3_DATA-FORWARDING_aggregation-1_Loopback0| () Bool
+  false)
+(define-fun |3_CONTROL-FORWARDING_edge-2_null_interface| () Bool
+  false)
+(define-fun |3_DATA-FORWARDING_edge-2_null_interface| () Bool
+  false)
+(define-fun |3_DATA-FORWARDING_edge-2_Ethernet0| () Bool
+  false)
+(define-fun |3_DATA-FORWARDING_edge-2_Loopback0| () Bool
+  false)
+(define-fun |3_CONTROL-FORWARDING_edge-2_Serial0| () Bool
+  false)
+(define-fun |3_DATA-FORWARDING_edge-2_Serial0| () Bool
+  false)
+(define-fun |3_DATA-FORWARDING_edge-2_Ethernet1| () Bool
+  false)
+(define-fun |3_CONTROL-FORWARDING_core-0_Serial0| () Bool
+  true)
+(define-fun |3_DATA-FORWARDING_core-0_Serial0| () Bool
+  true)
+(define-fun |3_CONTROL-FORWARDING_core-0_Serial1| () Bool
+  false)
+(define-fun |3_DATA-FORWARDING_core-0_Serial1| () Bool
+  false)
+(define-fun |3_DATA-FORWARDING_core-0_Loopback0| () Bool
+  false)
+(define-fun |3_CONTROL-FORWARDING_aggregation-3_Serial0| () Bool
+  true)
+(define-fun |3_DATA-FORWARDING_aggregation-3_Serial0| () Bool
+  true)
+(define-fun |3_CONTROL-FORWARDING_aggregation-3_Serial1| () Bool
+  false)
+(define-fun |3_DATA-FORWARDING_aggregation-3_Serial1| () Bool
+  false)
+(define-fun |3_DATA-FORWARDING_aggregation-3_Loopback0| () Bool
+  false)
+(define-fun |3_CONTROL-FORWARDING_edge-4_null_interface| () Bool
+  false)
+(define-fun |3_CONTROL-FORWARDING_edge-4_Ethernet0| () Bool
+  false)
+(define-fun |3_CONTROL-FORWARDING_edge-4_Loopback0| () Bool
+  false)
+(define-fun |3_CONTROL-FORWARDING_edge-4_Ethernet1| () Bool
+  false)
+(define-fun |3_CONTROL-FORWARDING_aggregation-1_Loopback0| () Bool
+  false)
+(define-fun |3_CONTROL-FORWARDING_core-0_Loopback0| () Bool
+  false)
+(define-fun |3_CONTROL-FORWARDING_aggregation-3_Loopback0| () Bool
+  false)
+(define-fun |3_CONTROL-FORWARDING_edge-2_Ethernet0| () Bool
+  false)
+(define-fun |3_CONTROL-FORWARDING_edge-2_Loopback0| () Bool
+  false)
+(define-fun |3_CONTROL-FORWARDING_edge-2_Ethernet1| () Bool
+  false)
+(define-fun |3_edge-2_OVERALL_BEST_None_permitted| () Bool
+  true)
+(define-fun |3_edge-4_BGP_IMPORT_Serial0_choice| () Bool
+  true)
+(define-fun |3_aggregation-1_BGP_IMPORT_Serial0_choice| () Bool
+  false)
+(define-fun |3_aggregation-1_BGP_IMPORT_Serial1_choice| () Bool
+  true)
+(define-fun |3_core-0_BGP_IMPORT_Serial1_choice| () Bool
+  false)
+(define-fun |3_core-0_BGP_IMPORT_Serial0_choice| () Bool
+  true)
+(define-fun |3_aggregation-3_BGP_IMPORT_Serial0_choice| () Bool
+  true)
+(define-fun |3_aggregation-3_BGP_IMPORT_Serial1_choice| () Bool
+  false)
+(define-fun |3_edge-2_STATIC_IMPORT_null_interface_choice| () Bool
+  true)
+(define-fun |3_edge-2_CONNECTED_IMPORT_Loopback0_choice| () Bool
+  true)
+(define-fun |3_edge-2_CONNECTED_IMPORT_Ethernet0_choice| () Bool
+  false)
+(define-fun |3_edge-2_BGP_IMPORT_Serial0_choice| () Bool
+  true)
+(define-fun |3_aggregation-1_OVERALL_BEST_None_permitted| () Bool
+  true)
+(define-fun |3_core-0_OVERALL_BEST_None_permitted| () Bool
+  true)
+(define-fun |3_aggregation-3_BGP_SINGLE-EXPORT__permitted| () Bool
+  true)
+(define-fun |3_aggregation-3_OVERALL_BEST_None_permitted| () Bool
+  true)
+(define-fun |3_edge-2_STATIC_BEST_None_permitted| () Bool
+  true)
+(define-fun |3_edge-2_STATIC_BEST_None_prefixLength| () Int
+  24)
+(define-fun |3_edge-2_CONNECTED_BEST_None_permitted| () Bool
+  true)
+(define-fun |3_aggregation-1_BGP_SINGLE-EXPORT__permitted| () Bool
+  true)
+(define-fun |3_edge-2_STATIC_IMPORT_null_interface_permitted| () Bool
+  true)
+(define-fun |3_edge-2_CONNECTED_IMPORT_Ethernet0_permitted| () Bool
+  true)
+(define-fun |3_edge-2_CONNECTED_IMPORT_Loopback0_permitted| () Bool
+  true)
+(define-fun |3_FAILED-EDGE_edge-2_Ethernet0| () Int
+  0)
+(define-fun |3_FAILED-EDGE_edge-4_null_interface| () Int
+  0)
+(define-fun |3_FAILED-EDGE_edge-2_null_interface| () Int
+  0)
+(define-fun |3_FAILED-EDGE_aggregation-3_edge-4| () Int
+  0)
+(define-fun |3_FAILED-EDGE_edge-2_Ethernet1| () Int
+  0)
+(define-fun |3_FAILED-EDGE_core-0_Loopback0| () Int
+  0)
+(define-fun |3_FAILED-EDGE_edge-4_Ethernet1| () Int
+  0)
+(define-fun |3_FAILED-EDGE_aggregation-3_core-0| () Int
+  0)
+(define-fun |3_FAILED-EDGE_aggregation-1_core-0| () Int
+  0)
+(define-fun |3_FAILED-EDGE_edge-2_Loopback0| () Int
+  0)
+(define-fun |3_FAILED-EDGE_aggregation-3_Loopback0| () Int
+  0)
+(define-fun |3_FAILED-EDGE_aggregation-1_edge-2| () Int
+  0)
+(define-fun |3_FAILED-EDGE_aggregation-1_Loopback0| () Int
+  0)
+(define-fun |3_FAILED-EDGE_edge-4_Loopback0| () Int
+  0)
+(define-fun |3_FAILED-EDGE_edge-4_Ethernet0| () Int
+  0)
+(define-fun |2__reachable_edge-4| () Bool
+  true)
+(define-fun |2__reachable_aggregation-1| () Bool
+  true)
+(define-fun |2__reachable_edge-2| () Bool
+  true)
+(define-fun |2__reachable_core-0| () Bool
+  true)
+(define-fun |2__reachable_aggregation-3| () Bool
+  true)
+(define-fun |2__reachable-id_edge-4| () Int
+  1)
+(define-fun |2_src-ip| () (_ BitVec 32)
+  #x0a000200)
+(define-fun |2_dst-ip| () (_ BitVec 32)
+  #x46000400)
+(define-fun |2_CONTROL-FORWARDING_edge-4_null_interface| () Bool
+  false)
+(define-fun |2_DATA-FORWARDING_edge-4_null_interface| () Bool
+  false)
+(define-fun |2_DATA-FORWARDING_edge-4_Ethernet0| () Bool
+  false)
+(define-fun |2_DATA-FORWARDING_edge-4_Loopback0| () Bool
+  false)
+(define-fun |2_CONTROL-FORWARDING_edge-4_Serial0| () Bool
+  false)
+(define-fun |2_DATA-FORWARDING_edge-4_Serial0| () Bool
+  false)
+(define-fun |2_DATA-FORWARDING_edge-4_Ethernet1| () Bool
+  false)
+(define-fun |2_CONTROL-FORWARDING_aggregation-1_Serial0| () Bool
+  true)
+(define-fun |2_DATA-FORWARDING_aggregation-1_Serial0| () Bool
+  true)
+(define-fun |2_CONTROL-FORWARDING_aggregation-1_Serial1| () Bool
+  false)
+(define-fun |2_DATA-FORWARDING_aggregation-1_Serial1| () Bool
+  false)
+(define-fun |2_DATA-FORWARDING_aggregation-1_Loopback0| () Bool
+  false)
+(define-fun |2_DATA-FORWARDING_edge-2_null_interface| () Bool
+  false)
+(define-fun |2_DATA-FORWARDING_edge-2_Ethernet0| () Bool
+  false)
+(define-fun |2_DATA-FORWARDING_edge-2_Loopback0| () Bool
+  false)
+(define-fun |2_CONTROL-FORWARDING_edge-2_Serial0| () Bool
+  true)
+(define-fun |2_DATA-FORWARDING_edge-2_Serial0| () Bool
+  true)
+(define-fun |2_DATA-FORWARDING_edge-2_Ethernet1| () Bool
+  false)
+(define-fun |2_CONTROL-FORWARDING_core-0_Serial0| () Bool
+  false)
+(define-fun |2_DATA-FORWARDING_core-0_Serial0| () Bool
+  false)
+(define-fun |2_CONTROL-FORWARDING_core-0_Serial1| () Bool
+  true)
+(define-fun |2_DATA-FORWARDING_core-0_Serial1| () Bool
+  true)
+(define-fun |2_DATA-FORWARDING_core-0_Loopback0| () Bool
+  false)
+(define-fun |2_CONTROL-FORWARDING_aggregation-3_Serial0| () Bool
+  false)
+(define-fun |2_DATA-FORWARDING_aggregation-3_Serial0| () Bool
+  false)
+(define-fun |2_CONTROL-FORWARDING_aggregation-3_Serial1| () Bool
+  true)
+(define-fun |2_DATA-FORWARDING_aggregation-3_Serial1| () Bool
+  true)
+(define-fun |2_DATA-FORWARDING_aggregation-3_Loopback0| () Bool
+  false)
+(define-fun |2_CONTROL-FORWARDING_edge-4_Ethernet0| () Bool
+  false)
+(define-fun |2_CONTROL-FORWARDING_edge-4_Loopback0| () Bool
+  false)
+(define-fun |2_CONTROL-FORWARDING_edge-4_Ethernet1| () Bool
+  false)
+(define-fun |2_CONTROL-FORWARDING_aggregation-1_Loopback0| () Bool
+  false)
+(define-fun |2_CONTROL-FORWARDING_core-0_Loopback0| () Bool
+  false)
+(define-fun |2_CONTROL-FORWARDING_aggregation-3_Loopback0| () Bool
+  false)
+(define-fun |2_CONTROL-FORWARDING_edge-2_null_interface| () Bool
+  false)
+(define-fun |2_CONTROL-FORWARDING_edge-2_Ethernet0| () Bool
+  false)
+(define-fun |2_CONTROL-FORWARDING_edge-2_Loopback0| () Bool
+  false)
+(define-fun |2_CONTROL-FORWARDING_edge-2_Ethernet1| () Bool
+  false)
+(define-fun |2_edge-4_OVERALL_BEST_None_permitted| () Bool
+  true)
+(define-fun |2_edge-4_STATIC_IMPORT_null_interface_choice| () Bool
+  true)
+(define-fun |2_edge-4_CONNECTED_IMPORT_Ethernet0_choice| () Bool
+  false)
+(define-fun |2_edge-4_CONNECTED_IMPORT_Loopback0_choice| () Bool
+  true)
+(define-fun |2_edge-4_BGP_IMPORT_Serial0_choice| () Bool
+  true)
+(define-fun |2_aggregation-1_BGP_IMPORT_Serial0_choice| () Bool
+  true)
+(define-fun |2_aggregation-1_BGP_IMPORT_Serial1_choice| () Bool
+  false)
+(define-fun |2_core-0_BGP_IMPORT_Serial0_choice| () Bool
+  false)
+(define-fun |2_core-0_BGP_IMPORT_Serial1_choice| () Bool
+  true)
+(define-fun |2_aggregation-3_BGP_IMPORT_Serial0_choice| () Bool
+  false)
+(define-fun |2_aggregation-3_BGP_IMPORT_Serial1_choice| () Bool
+  true)
+(define-fun |2_edge-2_BGP_IMPORT_Serial0_choice| () Bool
+  true)
+(define-fun |2_edge-4_STATIC_BEST_None_permitted| () Bool
+  true)
+(define-fun |2_edge-4_STATIC_BEST_None_prefixLength| () Int
+  24)
+(define-fun |2_edge-4_CONNECTED_BEST_None_permitted| () Bool
+  true)
+(define-fun |2_aggregation-1_OVERALL_BEST_None_permitted| () Bool
+  true)
+(define-fun |2_core-0_OVERALL_BEST_None_permitted| () Bool
+  true)
+(define-fun |2_aggregation-3_BGP_SINGLE-EXPORT__permitted| () Bool
+  true)
+(define-fun |2_aggregation-3_OVERALL_BEST_None_permitted| () Bool
+  true)
+(define-fun |2_aggregation-1_BGP_SINGLE-EXPORT__permitted| () Bool
+  true)
+(define-fun |2_edge-4_STATIC_IMPORT_null_interface_permitted| () Bool
+  true)
+(define-fun |2_edge-4_CONNECTED_IMPORT_Ethernet0_permitted| () Bool
+  true)
+(define-fun |2_edge-4_CONNECTED_IMPORT_Loopback0_permitted| () Bool
+  true)
+(define-fun |2_FAILED-EDGE_aggregation-1_core-0| () Int
+  0)
+(define-fun |2_FAILED-EDGE_edge-2_null_interface| () Int
+  0)
+(define-fun |2_FAILED-EDGE_edge-4_null_interface| () Int
+  0)
+(define-fun |2_FAILED-EDGE_edge-4_Loopback0| () Int
+  0)
+(define-fun |2_FAILED-EDGE_edge-4_Ethernet0| () Int
+  0)
+(define-fun |2_FAILED-EDGE_aggregation-1_Loopback0| () Int
+  0)
+(define-fun |2_FAILED-EDGE_aggregation-3_core-0| () Int
+  0)
+(define-fun |2_FAILED-EDGE_aggregation-3_edge-4| () Int
+  0)
+(define-fun |2_FAILED-EDGE_edge-2_Ethernet0| () Int
+  0)
+(define-fun |2_FAILED-EDGE_edge-2_Loopback0| () Int
+  0)
+(define-fun |2_FAILED-EDGE_aggregation-1_edge-2| () Int
+  0)
+(define-fun |2_FAILED-EDGE_edge-4_Ethernet1| () Int
+  0)
+(define-fun |2_FAILED-EDGE_aggregation-3_Loopback0| () Int
+  0)
+(define-fun |2_FAILED-EDGE_core-0_Loopback0| () Int
+  0)
+(define-fun |2_FAILED-EDGE_edge-2_Ethernet1| () Int
+  0)
+(define-fun |1__reachable_edge-4| () Bool
+  true)
+(define-fun |1__reachable_aggregation-1| () Bool
+  true)
+(define-fun |1__reachable_edge-2| () Bool
+  true)
+(define-fun |1__reachable_core-0| () Bool
+  true)
+(define-fun |1__reachable_aggregation-3| () Bool
+  true)
+(define-fun |1__reachable-id_edge-2| () Int
+  1)
+(define-fun |1_src-ip| () (_ BitVec 32)
+  #x0a000200)
+(define-fun |1_dst-ip| () (_ BitVec 32)
+  #x46000200)
+(define-fun |1_DATA-FORWARDING_edge-4_null_interface| () Bool
+  false)
+(define-fun |1_DATA-FORWARDING_edge-4_Ethernet0| () Bool
+  false)
+(define-fun |1_DATA-FORWARDING_edge-4_Loopback0| () Bool
+  false)
+(define-fun |1_CONTROL-FORWARDING_edge-4_Serial0| () Bool
+  true)
+(define-fun |1_DATA-FORWARDING_edge-4_Serial0| () Bool
+  true)
+(define-fun |1_DATA-FORWARDING_edge-4_Ethernet1| () Bool
+  false)
+(define-fun |1_CONTROL-FORWARDING_aggregation-1_Serial0| () Bool
+  false)
+(define-fun |1_DATA-FORWARDING_aggregation-1_Serial0| () Bool
+  false)
+(define-fun |1_CONTROL-FORWARDING_aggregation-1_Serial1| () Bool
+  true)
+(define-fun |1_DATA-FORWARDING_aggregation-1_Serial1| () Bool
+  true)
+(define-fun |1_DATA-FORWARDING_aggregation-1_Loopback0| () Bool
+  false)
+(define-fun |1_CONTROL-FORWARDING_edge-2_null_interface| () Bool
+  false)
+(define-fun |1_DATA-FORWARDING_edge-2_null_interface| () Bool
+  false)
+(define-fun |1_DATA-FORWARDING_edge-2_Ethernet0| () Bool
+  false)
+(define-fun |1_DATA-FORWARDING_edge-2_Loopback0| () Bool
+  false)
+(define-fun |1_CONTROL-FORWARDING_edge-2_Serial0| () Bool
+  false)
+(define-fun |1_DATA-FORWARDING_edge-2_Serial0| () Bool
+  false)
+(define-fun |1_DATA-FORWARDING_edge-2_Ethernet1| () Bool
+  false)
+(define-fun |1_CONTROL-FORWARDING_core-0_Serial0| () Bool
+  true)
+(define-fun |1_DATA-FORWARDING_core-0_Serial0| () Bool
+  true)
+(define-fun |1_CONTROL-FORWARDING_core-0_Serial1| () Bool
+  false)
+(define-fun |1_DATA-FORWARDING_core-0_Serial1| () Bool
+  false)
+(define-fun |1_DATA-FORWARDING_core-0_Loopback0| () Bool
+  false)
+(define-fun |1_CONTROL-FORWARDING_aggregation-3_Serial0| () Bool
+  true)
+(define-fun |1_DATA-FORWARDING_aggregation-3_Serial0| () Bool
+  true)
+(define-fun |1_CONTROL-FORWARDING_aggregation-3_Serial1| () Bool
+  false)
+(define-fun |1_DATA-FORWARDING_aggregation-3_Serial1| () Bool
+  false)
+(define-fun |1_DATA-FORWARDING_aggregation-3_Loopback0| () Bool
+  false)
+(define-fun |1_CONTROL-FORWARDING_edge-4_null_interface| () Bool
+  false)
+(define-fun |1_CONTROL-FORWARDING_edge-4_Ethernet0| () Bool
+  false)
+(define-fun |1_CONTROL-FORWARDING_edge-4_Loopback0| () Bool
+  false)
+(define-fun |1_CONTROL-FORWARDING_edge-4_Ethernet1| () Bool
+  false)
+(define-fun |1_CONTROL-FORWARDING_aggregation-1_Loopback0| () Bool
+  false)
+(define-fun |1_CONTROL-FORWARDING_core-0_Loopback0| () Bool
+  false)
+(define-fun |1_CONTROL-FORWARDING_aggregation-3_Loopback0| () Bool
+  false)
+(define-fun |1_CONTROL-FORWARDING_edge-2_Ethernet0| () Bool
+  false)
+(define-fun |1_CONTROL-FORWARDING_edge-2_Loopback0| () Bool
+  false)
+(define-fun |1_CONTROL-FORWARDING_edge-2_Ethernet1| () Bool
+  false)
+(define-fun |1_edge-2_OVERALL_BEST_None_permitted| () Bool
+  true)
+(define-fun |1_edge-4_BGP_IMPORT_Serial0_choice| () Bool
+  true)
+(define-fun |1_aggregation-1_BGP_IMPORT_Serial1_choice| () Bool
+  true)
+(define-fun |1_aggregation-1_BGP_IMPORT_Serial0_choice| () Bool
+  false)
+(define-fun |1_core-0_BGP_IMPORT_Serial0_choice| () Bool
+  true)
+(define-fun |1_core-0_BGP_IMPORT_Serial1_choice| () Bool
+  false)
+(define-fun |1_aggregation-3_BGP_IMPORT_Serial0_choice| () Bool
+  true)
+(define-fun |1_aggregation-3_BGP_IMPORT_Serial1_choice| () Bool
+  false)
+(define-fun |1_edge-2_STATIC_IMPORT_null_interface_choice| () Bool
+  true)
+(define-fun |1_edge-2_CONNECTED_IMPORT_Loopback0_choice| () Bool
+  true)
+(define-fun |1_edge-2_CONNECTED_IMPORT_Ethernet0_choice| () Bool
+  false)
+(define-fun |1_edge-2_BGP_IMPORT_Serial0_choice| () Bool
+  true)
+(define-fun |1_aggregation-1_OVERALL_BEST_None_permitted| () Bool
+  true)
+(define-fun |1_core-0_OVERALL_BEST_None_permitted| () Bool
+  true)
+(define-fun |1_aggregation-3_BGP_SINGLE-EXPORT__permitted| () Bool
+  true)
+(define-fun |1_aggregation-3_OVERALL_BEST_None_permitted| () Bool
+  true)
+(define-fun |1_edge-2_STATIC_BEST_None_permitted| () Bool
+  true)
+(define-fun |1_edge-2_STATIC_BEST_None_prefixLength| () Int
+  24)
+(define-fun |1_edge-2_CONNECTED_BEST_None_permitted| () Bool
+  true)
+(define-fun |1_aggregation-1_BGP_SINGLE-EXPORT__permitted| () Bool
+  true)
+(define-fun |1_edge-2_STATIC_IMPORT_null_interface_permitted| () Bool
+  true)
+(define-fun |1_edge-2_CONNECTED_IMPORT_Ethernet0_permitted| () Bool
+  true)
+(define-fun |1_edge-2_CONNECTED_IMPORT_Loopback0_permitted| () Bool
+  true)
+(define-fun |1_FAILED-EDGE_edge-2_Ethernet0| () Int
+  0)
+(define-fun |1_FAILED-EDGE_edge-2_Ethernet1| () Int
+  0)
+(define-fun |1_FAILED-EDGE_edge-4_Ethernet0| () Int
+  0)
+(define-fun |1_FAILED-EDGE_edge-2_Loopback0| () Int
+  0)
+(define-fun |1_FAILED-EDGE_edge-2_null_interface| () Int
+  0)
+(define-fun |1_FAILED-EDGE_edge-4_Ethernet1| () Int
+  0)
+(define-fun |1_FAILED-EDGE_core-0_Loopback0| () Int
+  0)
+(define-fun |1_FAILED-EDGE_aggregation-3_Loopback0| () Int
+  0)
+(define-fun |1_FAILED-EDGE_aggregation-3_core-0| () Int
+  0)
+(define-fun |1_FAILED-EDGE_aggregation-1_core-0| () Int
+  0)
+(define-fun |1_FAILED-EDGE_edge-4_Loopback0| () Int
+  0)
+(define-fun |1_FAILED-EDGE_edge-4_null_interface| () Int
+  0)
+(define-fun |1_FAILED-EDGE_aggregation-1_Loopback0| () Int
+  0)
+(define-fun |1_FAILED-EDGE_aggregation-1_edge-2| () Int
+  0)
+(define-fun |1_FAILED-EDGE_aggregation-3_edge-4| () Int
   0)
 (define-fun |0__reachable_edge-4| () Bool
   true)
@@ -300,19 +1518,83 @@
   0)
 (define-fun |0_FAILED-EDGE_aggregation-1_edge-2| () Int
   0)
-(define-fun |0_tcp-syn| () Bool
+(define-fun |4_tcp-urg| () Bool
+  false)
+(define-fun |3_tcp-ack| () Bool
+  false)
+(define-fun |2_tcp-cwr| () Bool
+  false)
+(define-fun |2_tcp-ece| () Bool
+  false)
+(define-fun |2_tcp-fin| () Bool
+  false)
+(define-fun |2_tcp-psh| () Bool
+  false)
+(define-fun |1_tcp-fin| () Bool
+  false)
+(define-fun |1_tcp-ece| () Bool
+  false)
+(define-fun |2_tcp-ack| () Bool
+  false)
+(define-fun |3_tcp-rst| () Bool
+  false)
+(define-fun |3_tcp-urg| () Bool
+  false)
+(define-fun |0_tcp-rst| () Bool
+  false)
+(define-fun |1_tcp-psh| () Bool
+  false)
+(define-fun |4_tcp-syn| () Bool
+  false)
+(define-fun |0_tcp-urg| () Bool
+  false)
+(define-fun |1_tcp-syn| () Bool
   false)
 (define-fun |0_tcp-cwr| () Bool
+  false)
+(define-fun |4_tcp-psh| () Bool
   false)
 (define-fun |0_tcp-fin| () Bool
   false)
 (define-fun |0_tcp-ece| () Bool
   false)
-(define-fun |0_tcp-rst| () Bool
+(define-fun |1_tcp-ack| () Bool
+  false)
+(define-fun |3_tcp-syn| () Bool
+  false)
+(define-fun |4_tcp-fin| () Bool
+  false)
+(define-fun |4_tcp-ece| () Bool
+  false)
+(define-fun |2_tcp-rst| () Bool
+  false)
+(define-fun |4_tcp-cwr| () Bool
+  false)
+(define-fun |2_tcp-urg| () Bool
+  false)
+(define-fun |0_tcp-ack| () Bool
+  false)
+(define-fun |1_tcp-cwr| () Bool
+  false)
+(define-fun |0_tcp-syn| () Bool
+  false)
+(define-fun |4_tcp-ack| () Bool
+  false)
+(define-fun |3_tcp-psh| () Bool
+  false)
+(define-fun |2_tcp-syn| () Bool
+  false)
+(define-fun |1_tcp-urg| () Bool
+  false)
+(define-fun |3_tcp-cwr| () Bool
   false)
 (define-fun |0_tcp-psh| () Bool
   false)
-(define-fun |0_tcp-urg| () Bool
+(define-fun |1_tcp-rst| () Bool
   false)
-(define-fun |0_tcp-ack| () Bool
+(define-fun |3_tcp-fin| () Bool
+  false)
+(define-fun |4_tcp-rst| () Bool
+  false)
+(define-fun |3_tcp-ece| () Bool
   false)
