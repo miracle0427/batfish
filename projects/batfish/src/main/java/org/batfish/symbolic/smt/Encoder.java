@@ -32,6 +32,7 @@ import org.batfish.datamodel.IpWildcard;
 import org.batfish.datamodel.Prefix;
 import org.batfish.datamodel.SubRange;
 import org.batfish.datamodel.questions.smt.HeaderQuestion;
+import org.batfish.symbolic.collections.Table2;
 import org.batfish.symbolic.CommunityVar;
 import org.batfish.symbolic.Graph;
 import org.batfish.symbolic.GraphEdge;
@@ -82,6 +83,9 @@ public class Encoder {
   private Solver _solver;
 
   private UnsatCore _unsatCore;
+
+  //private Map<String, Map<String, BoolExpr>> _dataFwdCons;
+  public Map<Integer, Table2<String, GraphEdge, BoolExpr>> _AllDataForwarding;
 
   /**
    * Create an encoder object that will consider all packets in the provided headerspace.
@@ -174,8 +178,10 @@ public class Encoder {
 
     if (vars == null) {
       _allVariables = new HashMap<>();
+      _AllDataForwarding = new HashMap<>();
     } else {
       _allVariables = vars;
+      _AllDataForwarding = _previousEncoder.getAllDataForwarding();
     }
 
     if (ENABLE_DEBUGGING) {
@@ -830,6 +836,10 @@ public class Encoder {
 
   Map<String, Map<String, BoolExpr>> getSliceReachability() {
     return _sliceReachability;
+  }
+
+  public Map<Integer, Table2<String, GraphEdge, BoolExpr>> getAllDataForwarding() {
+    return _AllDataForwarding;
   }
 
   UnsatCore getUnsatCore() {

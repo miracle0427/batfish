@@ -549,6 +549,7 @@ class EncoderSlice {
         }
       }
     }
+    _encoder.getAllDataForwarding().put( _encoder.getId(), _symbolicDecisions.getDataForwarding());
   }
 
   /*

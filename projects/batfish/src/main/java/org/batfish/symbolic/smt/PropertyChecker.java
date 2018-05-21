@@ -7,8 +7,16 @@ import com.microsoft.z3.BitVecExpr;
 import com.microsoft.z3.BoolExpr;
 import com.microsoft.z3.Context;
 import com.microsoft.z3.Expr;
+import com.microsoft.z3.IntExpr;
 import com.microsoft.z3.Model;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.EnumMap;
@@ -50,6 +58,7 @@ import org.batfish.symbolic.abstraction.Abstraction;
 import org.batfish.symbolic.abstraction.EquivalenceClass;
 import org.batfish.symbolic.answers.SmtDeterminismAnswerElement;
 import org.batfish.symbolic.answers.SmtManyAnswerElement;
+import org.batfish.symbolic.answers.SmtMulAnswerElement;
 import org.batfish.symbolic.answers.SmtOneAnswerElement;
 import org.batfish.symbolic.answers.SmtReachabilityAnswerElement;
 import org.batfish.symbolic.collections.Table2;
@@ -67,6 +76,18 @@ import org.batfish.symbolic.utils.Tuple;
  */
 public class PropertyChecker {
 
+  class Ips {
+    public IpWildcard srcip;
+    public IpWildcard dstip;
+    public int val;
+
+    public Ips(String src, String dst, String value) {
+      srcip = new IpWildcard(src);
+      dstip = new IpWildcard(dst);
+      val =  Integer.parseInt(value);
+    }
+
+  }
   private IBatfish _batfish;
 
   public PropertyChecker(IBatfish batfish) {
@@ -255,6 +276,18 @@ public class PropertyChecker {
       return singleEc.stream();
     }
   }
+
+  private Stream<Supplier<EquivalenceClass>> createEquivalenceClasses(
+      HeaderQuestion q, @Nullable Graph graph, boolean useDefaultCase) {
+    List<Supplier<EquivalenceClass>> singleEc = new ArrayList<>();
+    Graph g = graph == null ? new Graph(_batfish) : graph;
+    EquivalenceClass ec = new EquivalenceClass(q.getHeaderSpace(), g, null);
+    Supplier<EquivalenceClass> sup = () -> ec;
+    singleEc.add(sup);
+    return singleEc.stream();
+  }
+
+
 
   /*
    * Apply mapping from concrete to abstract nodes
@@ -468,6 +501,221 @@ public class PropertyChecker {
     return answer.apply(vp);
   }
 
+
+
+  /*
+   * General purpose logic for checking a property that holds that
+   * handles the various flags and parameters for a query with endpoints
+   */
+  private AnswerElement checkQProperty(
+      HeaderLocationQuestion q,
+      TriFunction<Encoder, Set<String>, Set<GraphEdge>, Map<String, BoolExpr>> instrument,
+      Function<VerifyParam, AnswerElement> answer) {
+
+    System.out.println("Calling CheckQ property");
+    long l = System.currentTimeMillis();
+    PathRegexes p = new PathRegexes(q);
+    Graph graph = new Graph(_batfish);
+    Set<GraphEdge> destPorts = findFinalInterfaces(graph, p);
+    List<String> sourceRouters = PatternUtils.findMatchingSourceNodes(graph, p);
+    HeaderSpace h = new HeaderSpace();
+    SortedSet<IpWildcard> srcIps = new TreeSet<IpWildcard>();
+    SortedSet<IpWildcard> dstIps = new TreeSet<IpWildcard>();
+    // Store set of src-dst Ips
+    List<Ips> ips = new ArrayList<Ips>();
+    IpWildcard s1, s2;
+    String line;
+    Map<Integer, Integer> bandwidth;
+    bandwidth = new HashMap<>();
+
+    try {
+      BufferedReader reader = new BufferedReader(new FileReader("policy.csv"));
+      int id = 0;
+      while((line = reader.readLine()) != null) {
+        String[] split = line.split(",");
+        //System.out.println(split[0] + "" + split[1] + "" + split[2]);
+        Ips ip_set;
+        ip_set = new Ips(split[0], split[1], split[2]);
+        ips.add(ip_set);
+        srcIps.add(ip_set.srcip);
+        dstIps.add(ip_set.dstip);
+        bandwidth.put(id, ip_set.val);
+        id = id + 1;
+      }
+      reader.close();
+    } catch (IOException e) {
+      System.out.println("Reader IO error");
+    }
+
+    h.setDstIps(dstIps);
+    h.setSrcIps(srcIps);
+    q.setHeaderSpace(h);
+
+
+    Set<GraphEdge> failOptions = failLinkSet(graph, q);
+    Stream<Supplier<EquivalenceClass>> stream = createEquivalenceClasses(q, graph, true);
+
+    AnswerElement[] answerElement = new AnswerElement[1];
+    VerificationResult[] result = new VerificationResult[1];
+    answerElement[0] = null;
+    result[0] = null;
+    Object o = new Object();
+    Encoder enc2 = null;
+    // Checks ECs in parallel, but short circuits when a counterexample is found
+    boolean hasCounterExample =
+        stream.anyMatch(
+            lazyEc -> {
+              long ecTime = System.currentTimeMillis();
+              Encoder enc = null;
+              Map<String, BoolExpr> prop = null;
+              Set<String> srcRouters = null;
+              EquivalenceClass ec = lazyEc.get();
+              if (q.getBenchmark()) {
+                System.out.println("  Compute EC: " + (System.currentTimeMillis() - ecTime));
+              }
+              boolean firstDone = false;
+              // generate network encoding for each TC-pair
+              for (Ips currIp : ips) {
+                SortedSet<IpWildcard> sIps = new TreeSet<IpWildcard>();
+                SortedSet<IpWildcard> dIps = new TreeSet<IpWildcard>();
+                sIps.add(currIp.srcip);
+                dIps.add(currIp.dstip);
+                h.setSrcIps(sIps);
+                h.setDstIps(dIps);
+                q.setHeaderSpace(h);
+                HeaderLocationQuestion question = new HeaderLocationQuestion(q);
+
+                // Get the EC graph and mapping
+                Graph g = ec.getGraph();
+
+                PathRegexes p1 = new PathRegexes(q);
+                Set<GraphEdge> destPorts1 = findFinalInterfaces(g, p1);
+                List<String> sourceRouters1 = PatternUtils.findMatchingSourceNodes(g, p1);
+                inferDestinationHeaderSpace(g, destPorts1, q);
+
+                srcRouters = mapConcreteToAbstract(ec, sourceRouters1);
+                Encoder newenc = null;
+                long l1 = System.currentTimeMillis();
+                if (firstDone == false) {
+                  newenc = new Encoder(g, question);
+                } else {
+                  newenc = new Encoder(enc, g, question);
+                }
+                firstDone = true;
+                newenc.computeEncoding();
+                if (question.getBenchmark()) {
+                  System.out.println("  Base Encoding: " + (System.currentTimeMillis() - l1));
+                }
+
+                // Add environment constraints for base case
+                addEnvironmentConstraints(newenc, question.getBaseEnvironmentType());
+
+                prop = instrument.apply(newenc, srcRouters, destPorts1);
+
+                BoolExpr allProp = newenc.mkTrue();
+                // add reachability contraint
+                for (String router : srcRouters) {
+                  BoolExpr r = prop.get(router);
+                  allProp = newenc.mkAnd(allProp, r);
+                }
+                newenc.add(allProp);
+                //newenc.add(allProp);
+
+                addFailureConstraints(newenc, destPorts1, failOptions);
+                enc = newenc;
+
+              }
+              Map<GraphEdge, Tuple<IntExpr, ArrayList<Tuple<Integer,BoolExpr>>>> edgeConstraints;
+              edgeConstraints = new HashMap<>();
+              Context ctx = enc.getCtx();
+              for (Entry<Integer, Table2<String, GraphEdge, BoolExpr>>
+               entry : enc.getAllDataForwarding().entrySet()) {
+                int id = entry.getKey();
+                Table2<String, GraphEdge, BoolExpr> e = entry.getValue();
+                e.forEach(
+                        (router, edge, var) -> {
+                          if (!edgeConstraints.containsKey(edge)) {
+                            edgeConstraints.put(edge, new Tuple<>(ctx.mkInt(100), new ArrayList<>()));
+                          }
+                          edgeConstraints.get(edge).getSecond().add(new Tuple<>(bandwidth.get(id), var));
+                        });
+              }                           
+
+              // add link resource constraint
+              BoolExpr linkConstraint = ctx.mkFalse();;
+              for (Entry<GraphEdge, Tuple<IntExpr, ArrayList<Tuple<Integer,BoolExpr>>>>
+               entry : edgeConstraints.entrySet()) {
+                ArithExpr x = ctx.mkInt(0);
+                for ( Tuple<Integer,BoolExpr> tup : entry.getValue().getSecond() ) {
+                  BoolExpr b = tup.getSecond();
+                  ArithExpr one = ctx.mkInt(1);
+                  ArithExpr zero = ctx.mkInt(0);
+                  //convert bool to int
+                  String nameForBool = "int_"+ b.toString();
+                  ArithExpr exists = ctx.mkIntConst(nameForBool);
+                  enc.add(ctx.mkIff(b, ctx.mkEq(exists, one)));
+                  enc.add(ctx.mkIff( ctx.mkNot(b), ctx.mkEq(exists, zero)));
+                  x = ctx.mkAdd(x, ctx.mkMul( exists, ctx.mkInt(tup.getFirst())));
+                }
+                BoolExpr c1 = ctx.mkGt(x, entry.getValue().getFirst());
+                linkConstraint = ctx.mkOr(c1, linkConstraint);
+              }
+              enc.add(linkConstraint);
+              
+              try {
+                BufferedWriter writer = new BufferedWriter(new FileWriter("enc.smt"));
+                writer.write(enc.getSolver().toString());
+                writer.close();
+              } catch (IOException e) {
+                System.out.println("IO error");
+              }
+
+              long startVerify = System.currentTimeMillis();
+              Tuple<VerificationResult, Model> tup = enc.verify();
+              if (true) {
+                System.out.println("  z3 time: " + (System.currentTimeMillis() - startVerify));
+              }
+
+              VerificationResult res = tup.getFirst();
+              Model model = tup.getSecond();
+              Map<String, BoolExpr> prop2 = null;
+              if (!res.isVerified()) {
+                try {
+                  System.out.println("Model printed in model");
+                  BufferedWriter writer = new BufferedWriter(new FileWriter("model"));
+                  writer.write(model.toString());
+                  writer.close();
+                } catch (IOException e) {
+                  System.out.println("IO error");
+                }
+
+                VerifyParam vp = new VerifyParam(res, model, srcRouters, enc, enc2, prop, prop2);
+                synchronized (o) {
+                  answerElement[0] = answer.apply(vp);
+                }
+                return true;
+              }
+
+              synchronized (o) {
+                result[0] = res;
+              }
+              return false;
+            });
+
+    if (q.getBenchmark()) {
+      System.out.println("Total time: " + (System.currentTimeMillis() - l));
+    }
+    /*
+    if (hasCounterExample) {
+      return answerElement[0];
+    }*/
+    VerifyParam vp = new VerifyParam(result[0], null, null, null, null, null, null);
+    return answer.apply(vp);
+  }
+
+
+
+
   /*
    * Check if a collection of routers will be reachable to
    * one or more destinations.
@@ -502,6 +750,45 @@ public class PropertyChecker {
           }
         });
   }
+
+
+  /*
+   * Check if a collection of routers will be reachable to
+   * one or more destinations.
+   */
+  public AnswerElement checkMul(HeaderLocationQuestion q) {
+    return checkQProperty(
+        q,
+        (enc, srcRouters, destPorts) -> {
+          PropertyAdder pa = new PropertyAdder(enc.getMainSlice());
+          return pa.instrumentReachability(destPorts);
+        },
+        (vp) -> {
+          /*
+          if (vp.getResult().isVerified()) {
+            return new SmtReachabilityAnswerElement(vp.getResult(), new FlowHistory());
+          } else {
+            FlowHistory fh;
+            CounterExample ce = new CounterExample(vp.getModel());
+            String testrigName = _batfish.getTestrigName();
+            if (q.getDiffType() != null) {
+              fh =
+                  ce.buildFlowHistoryDiff(
+                      testrigName,
+                      vp.getSrcRouters(),
+                      vp.getEnc(),
+                      vp.getEncDiff(),
+                      vp.getProp(),
+                      vp.getPropDiff());
+            } else {
+              fh = ce.buildFlowHistory(testrigName, vp.getSrcRouters(), vp.getEnc(), vp.getProp());
+            }*/
+            
+          //}
+          return new SmtMulAnswerElement(vp.getResult()); 
+        });
+  }
+
 
   /*
    * Compute whether the path length will always be bounded by a constant k

@@ -37,4 +37,5 @@ public class Table3<K1, K2, K3, V> {
   public void put(K1 key1, Map<K2, Map<K3, V>> val) {
     _map.put(key1, val);
   }
+
 }
