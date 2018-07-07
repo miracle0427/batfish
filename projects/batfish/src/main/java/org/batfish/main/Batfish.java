@@ -4356,7 +4356,7 @@ public class Batfish extends PluginConsumer implements IBatfish {
 
   @Override
   public AnswerElement smtBlock(HeaderLocationQuestion q) {
-    PropertyChecker p = new PropertyChecker(this);
+    PropertyChecker p = new PropertyChecker(this, _settings);
     return p.checkBlock(q);
   }
 
@@ -4401,7 +4401,7 @@ public class Batfish extends PluginConsumer implements IBatfish {
 
   @Override
   public AnswerElement smtMul(HeaderLocationQuestion q) {
-    PropertyChecker p = new PropertyChecker(this);
+    PropertyChecker p = new PropertyChecker(this, _settings);
     return p.checkMul(q);
   }
 
@@ -4413,7 +4413,7 @@ public class Batfish extends PluginConsumer implements IBatfish {
 
   @Override
   public AnswerElement smtPathPreferences(HeaderLocationQuestion q, List<List<String>> pathPrefs) {
-    PropertyChecker p = new PropertyChecker(this);
+    PropertyChecker p = new PropertyChecker(this, _settings);
     return p.checkPathPreferences(q, pathPrefs);
   }
 
@@ -4441,110 +4441,9 @@ public class Batfish extends PluginConsumer implements IBatfish {
   }
 
   public AnswerElement smtWaypoint(HeaderLocationQuestion q, List<String> waypoints) {
-    PropertyChecker p = new PropertyChecker(this);
+    PropertyChecker p = new PropertyChecker(this, _settings);
     return p.checkWaypointing(q, waypoints);
   }
-
-  @Override
-  public AnswerElement standard(
-      HeaderSpace headerSpace,
-      Set<ForwardingAction> actions,
-      String ingressNodeRegexStr,
-      String notIngressNodeRegexStr,
-      String finalNodeRegexStr,
-      String notFinalNodeRegexStr,
-      Set<String> transitNodes,
-      Set<String> notTransitNodes) {
-    if (SystemUtils.IS_OS_MAC_OSX) {
-      // TODO: remove when z3 parallelism bug on OSX is fixed
-      _settings.setSequential(true);
-    }
-    Settings settings = getSettings();
-    String tag = getFlowTag(_testrigSettings);
-    Map<String, Configuration> configurations = loadConfigurations();
-    Set<Flow> flows = null;
-    Synthesizer dataPlaneSynthesizer = synthesizeDataPlane();
-
-    // collect ingress nodes
-    Pattern ingressNodeRegex = Pattern.compile(ingressNodeRegexStr);
-    Pattern notIngressNodeRegex = Pattern.compile(notIngressNodeRegexStr);
-    Set<String> activeIngressNodes = new TreeSet<>();
-    for (String node : configurations.keySet()) {
-      Matcher ingressNodeMatcher = ingressNodeRegex.matcher(node);
-      Matcher notIngressNodeMatcher = notIngressNodeRegex.matcher(node);
-      if (ingressNodeMatcher.matches() && !notIngressNodeMatcher.matches()) {
-        activeIngressNodes.add(node);
-      }
-    }
-    if (activeIngressNodes.isEmpty()) {
-      return new StringAnswerElement(
-          "NOTHING TO DO: No nodes both match ingressNodeRegex: '"
-              + ingressNodeRegexStr
-              + "' and fail to match notIngressNodeRegex: '"
-              + notIngressNodeRegexStr
-              + "'");
-    }
-
-    // collect final nodes
-    Pattern finalNodeRegex = Pattern.compile(finalNodeRegexStr);
-    Pattern notFinalNodeRegex = Pattern.compile(notFinalNodeRegexStr);
-    Set<String> activeFinalNodes = new TreeSet<>();
-    for (String node : configurations.keySet()) {
-      Matcher finalNodeMatcher = finalNodeRegex.matcher(node);
-      Matcher notFinalNodeMatcher = notFinalNodeRegex.matcher(node);
-      if (finalNodeMatcher.matches() && !notFinalNodeMatcher.matches()) {
-        activeFinalNodes.add(node);
-      }
-    }
-    if (activeFinalNodes.isEmpty()) {
-      return new StringAnswerElement(
-          "NOTHING TO DO: No nodes both match finalNodeRegex: '"
-              + finalNodeRegexStr
-              + "' and fail to match notFinalNodeRegex: '"
-              + notFinalNodeRegexStr
-              + "'");
-    }
-
-    // check transit nodes
-    Set<String> allNodes = configurations.keySet();
-    Set<String> invalidTransitNodes = Sets.difference(transitNodes, allNodes);
-    if (!invalidTransitNodes.isEmpty()) {
-      return new StringAnswerElement(
-          String.format("Unknown transit nodes %s", invalidTransitNodes));
-    }
-    Set<String> invalidNotTransitNodes = Sets.difference(notTransitNodes, allNodes);
-    if (!invalidNotTransitNodes.isEmpty()) {
-      return new StringAnswerElement(
-          String.format("Unknown notTransit nodes %s", invalidNotTransitNodes));
-    }
-    Set<String> illegalTransitNodes = Sets.intersection(transitNodes, notTransitNodes);
-    if (!illegalTransitNodes.isEmpty()) {
-      return new StringAnswerElement(
-          String.format(
-              "Same node %s can not be in both transit and notTransit", illegalTransitNodes));
-    }
-
-    // build query jobs
-    List<NodJob> jobs = new ArrayList<>();
-    for (String ingressNode : activeIngressNodes) {
-      for (String ingressVrf : configurations.get(ingressNode).getVrfs().keySet()) {
-        Map<String, Set<String>> nodeVrfs = new TreeMap<>();
-        nodeVrfs.put(ingressNode, Collections.singleton(ingressVrf));
-        ReachabilityQuerySynthesizer query =
-            new ReachabilityQuerySynthesizer(
-                actions, headerSpace, activeFinalNodes, nodeVrfs, transitNodes, notTransitNodes);
-        SortedSet<Pair<String, String>> nodes = new TreeSet<>();
-        nodes.add(new Pair<>(ingressNode, ingressVrf));
-        NodJob job = new NodJob(settings, dataPlaneSynthesizer, query, nodes, tag);
-        jobs.add(job);
-      }
-    }
-
-    // run jobs and get resulting flows
-    flows = computeNodOutput(jobs);
-
-    getDataPlanePlugin().processFlows(flows);
->>>>>>> fixed a constraint
 
   @Override
   public AnswerElement standard(ReachabilityParameters reachabilityParameters) {

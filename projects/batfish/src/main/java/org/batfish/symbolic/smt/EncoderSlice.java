@@ -30,12 +30,14 @@ import org.batfish.datamodel.HeaderSpace;
 import org.batfish.datamodel.Interface;
 import org.batfish.datamodel.Ip;
 import org.batfish.datamodel.IpAccessList;
+import org.batfish.datamodel.IpProtocol;
 import org.batfish.datamodel.IpWildcard;
 import org.batfish.datamodel.Prefix;
 import org.batfish.datamodel.PrefixRange;
 import org.batfish.datamodel.RoutingProtocol;
 import org.batfish.datamodel.StaticRoute;
 import org.batfish.datamodel.SubRange;
+import org.batfish.datamodel.TcpFlags;
 import org.batfish.datamodel.acl.MatchHeaderSpace;
 import org.batfish.datamodel.routing_policy.RoutingPolicy;
 import org.batfish.datamodel.routing_policy.expr.BooleanExpr;
@@ -252,7 +254,6 @@ class EncoderSlice {
 
     initOptimizations();
     initOriginatedPrefixes();
-    initCommunities();
 
     /*
     if (_first) {
@@ -377,9 +378,6 @@ class EncoderSlice {
     _originatedNetworks = existsES.getOriginatedNetworks();
     _allOriginatedNetworks = existsES.getAllOriginatedNetworks(); 
 
-    _allCommunities = existsES.getAllCommunities();
-    _namedCommunities = existsES.getNamedCommunities();
-    _communityDependencies = existsES.getCommunityDependencies();
     //initRedistributionProtocols();
     addDataForwardingVariables();
     initAclFunctions();
@@ -799,7 +797,7 @@ class EncoderSlice {
   BoolExpr isRelevantForSoft(ArithExpr prefixLen, PrefixRange range, String routerName) {
     Prefix p = range.getPrefix();
     SubRange r = range.getLengthRange();
-    long pfx = p.getNetworkAddress().asLong();
+    long pfx = p.getStartIp().asLong();
     int len = p.getPrefixLength();
     int lower = r.getStart();
     int upper = r.getEnd();
@@ -1255,7 +1253,7 @@ class EncoderSlice {
                       .contains(e);
 
               Interface i = e.getStart();
-              Prefix p = i.getPrefix();
+              Prefix p = i.getAddress().getPrefix();
 
               boolean doModel = !(proto.isConnected() && p != null && !relevantPrefix(p));
               // Optimization: Don't model the connected interfaces that aren't relevant
@@ -2317,14 +2315,14 @@ private void addSymbolicPacketBoundConstraints() {
   }
 
   public boolean matchIpWithPref(IpWildcard addr, Prefix wc) {
-    if (addr.contains(wc.getAddress()) || wc.contains(addr.getIp())) {
+    if (addr.containsIp(wc.getStartIp()) || wc.containsIp(addr.getIp())) {
       return true;
     }
     return false;
   }
 
   private boolean matchIp(IpWildcard addr, IpWildcard wc) {
-    if (addr.contains(wc.getIp()) || wc.contains(addr.getIp())) {
+    if (addr.containsIp(wc.getIp()) || wc.containsIp(addr.getIp())) {
       return true;
     }
     return false;
@@ -2339,18 +2337,6 @@ private void addSymbolicPacketBoundConstraints() {
     return false;
   }
   */
-
-  /*
-   * Convert a set of wildcards and a packet field to a symbolic boolean expression
-   */
-  private BoolExpr computeWildcardMatch(Set<IpWildcard> wcs, BitVecExpr field) {
-    BoolExpr acc = mkFalse();
-    for (IpWildcard wc : wcs) {
-      ipWildCardBound(field, wc);
-      acc = mkOr(acc, ipWildCardBound(field, wc));
-    }
-    return (BoolExpr) acc.simplify();
-  }
 
   /*
    * Convert a set of ranges and a packet field to a symbolic boolean expression

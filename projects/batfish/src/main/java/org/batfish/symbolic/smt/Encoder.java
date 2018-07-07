@@ -34,6 +34,7 @@ import java.util.TreeSet;
 import javax.annotation.Nullable;
 import org.batfish.common.BatfishException;
 import org.batfish.common.Pair;
+import org.batfish.common.plugin.IBatfish;
 import org.batfish.config.Settings;
 import org.batfish.datamodel.BgpNeighbor;
 import org.batfish.datamodel.HeaderSpace;
@@ -128,14 +129,6 @@ public class Encoder {
    */
   private Optimize _optsolve;
 
-  /**
-   * Create an encoder object that will consider all packets in the provided headerspace.
-   *
-   * @param batfish The Batfish object
-   */
-  Encoder(IBatfish batfish, HeaderQuestion q) {
-    this(new Graph(batfish), q);
-  }
 
   /**
    * Create an encoder object that will consider all packets in the provided headerspace.
@@ -1241,9 +1234,11 @@ public class Encoder {
     } catch (IOException e) {
       System.out.println("IO error");
     }
+
+    VerificationStats stats = null;
     //*
     if (true) {
-      VerificationResult res = new VerificationResult(true, null, null, null, null, null);
+      VerificationResult res = new VerificationResult(true, null, null, null, null, null, stats);
       System.out.println("\n\nUNSATISFIABLE\n\n");
       return new Tuple<>(res, null);
     }//*/
@@ -1252,13 +1247,23 @@ public class Encoder {
     Status status = _optsolve.Check();
     long time = System.currentTimeMillis() - start;
 
-    if (ENABLE_BENCHMARKING) {
-      VerificationStats stats =
-          new VerificationStats(numNodes, numEdges, numVariables, numConstraints, time);
-      System.out.println("Constraints: " + stats.getNumConstraints());
-      System.out.println("Variables: " + stats.getNumVariables());
-      System.out.println("Z3 Time: " + stats.getTime());
-      System.out.println("Stats: \n" + _optsolve.getStatistics());
+    if (_question.getBenchmark()) {
+      stats = new VerificationStats();
+      stats.setAvgNumNodes(numNodes);
+      stats.setMaxNumNodes(numNodes);
+      stats.setMinNumNodes(numNodes);
+      stats.setAvgNumEdges(numEdges);
+      stats.setMaxNumEdges(numEdges);
+      stats.setMinNumEdges(numEdges);
+      stats.setAvgNumVariables(numVariables);
+      stats.setMaxNumVariables(numVariables);
+      stats.setMinNumVariables(numVariables);
+      stats.setAvgNumConstraints(numConstraints);
+      stats.setMaxNumConstraints(numConstraints);
+      stats.setMinNumConstraints(numConstraints);
+      stats.setAvgSolverTime(time);
+      stats.setMaxSolverTime(time);
+      stats.setMinSolverTime(time);
     }
 
     if (status == Status.UNSATISFIABLE) {

@@ -201,15 +201,5 @@ public interface IBatfish extends IPluginConsumer {
 
   AnswerElement smtWaypoint(HeaderLocationQuestion q, List<String> waypoints);
 
-  AnswerElement standard(
-      HeaderSpace headerSpace,
-      Set<ForwardingAction> actions,
-      String ingressNodeRegexStr,
-      String notIngressNodeRegexStr,
-      String finalNodeRegexStr,
-      String notFinalNodeRegexStr,
-      Set<String> transitNodes,
-      Set<String> notTransitNodes);
-
   void writeDataPlane(DataPlane dp, DataPlaneAnswerElement ae);
 }

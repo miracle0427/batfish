@@ -6,7 +6,7 @@ import org.batfish.datamodel.FlowHistory;
 import org.batfish.datamodel.answers.AnswerElement;
 import org.batfish.symbolic.smt.VerificationResult;
 
-public class SmtWaypointAnswerElement implements AnswerElement {
+public class SmtWaypointAnswerElement extends AnswerElement {
 
   private static final String PROP_RESULT = "result";
 

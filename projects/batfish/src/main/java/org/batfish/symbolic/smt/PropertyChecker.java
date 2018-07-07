@@ -368,6 +368,22 @@ public class PropertyChecker {
   }
 
   /*
+   * Apply mapping from concrete to abstract nodes
+   */
+  private Set<String> mapConcreteToAbstract(EquivalenceClass ec, List<String> concreteNodes) {
+    if (ec.getAbstraction() == null) {
+      return new HashSet<>(concreteNodes);
+    }
+    Set<String> abstractNodes = new HashSet<>();
+    for (String c : concreteNodes) {
+      Set<String> abs = ec.getAbstraction().getAbstractRepresentatives(c);
+      abstractNodes.addAll(abs);
+    }
+    return abstractNodes;
+  }
+
+
+  /*
    * Compute the forwarding behavior for the network. This adds no
    * additional constraints on top of the base network encoding.
    * Forwarding will be determined only for a particular network
@@ -555,77 +571,65 @@ public class PropertyChecker {
                     }
                     allProp = enc.mkAnd(allProp, r);
                   }
-                  enc.add(enc.mkNot(allProp));
+                  enc.add(allProp);
                 }
-              }
-              addFailureConstraints(enc, destPorts, failOptions);
-              enc.setIfReq();
-              /*
-              try {
-                System.out.println("Encoding written in enc.smt");
-                BufferedWriter writer = new BufferedWriter(new FileWriter("enc.smt"));
-                writer.write(enc.getSolver().toString());
-                writer.close();
-              } catch (IOException e) {
-                System.out.println("IO error");
-              }
-              */
+                addFailureConstraints(enc, destPorts, failOptions);
+                enc.setIfReq();
 
-              long startVerify = System.currentTimeMillis();
-              Tuple<VerificationResult, Model> tup = enc.verify();
-              //if (question.getBenchmark()) {
-              System.out.println("  z3 time: " + (System.currentTimeMillis() - startVerify));
-              //}
+                long startVerify = System.currentTimeMillis();
+                Tuple<VerificationResult, Model> tup = enc.verify();
+                //if (question.getBenchmark()) {
+                System.out.println("  z3 time: " + (System.currentTimeMillis() - startVerify));
+                //}
 
-              VerificationResult res = tup.getFirst();
-              Model model = tup.getSecond();
+                VerificationResult res = tup.getFirst();
+                Model model = tup.getSecond();
 
-              if (!res.isVerified()) {
+                if (!res.isVerified()) {
 
-                try {
-                  System.out.println("\n\nModel printed in model.smt\n\n");
-                  BufferedWriter writer = new BufferedWriter(new FileWriter("model.smt"));
-                  writer.write(model.toString());
-                  writer.close();
-                } catch (IOException e) {
-                  System.out.println("IO error");
+                  try {
+                    System.out.println("\n\nModel printed in model.smt\n\n");
+                    BufferedWriter writer = new BufferedWriter(new FileWriter("model.smt"));
+                    writer.write(model.toString());
+                    writer.close();
+                  } catch (IOException e) {
+                    System.out.println("IO error");
+                  }
+
+
+                  VerifyParam vp = new VerifyParam(res, model, srcRouters, enc, enc2, prop, prop2);
+                  synchronized (_lock) {
+                    answerElement[0] = answer.apply(vp);
+                    result[0] = res;
+                  }
+                  return true;
                 }
 
-
-                VerifyParam vp = new VerifyParam(res, model, srcRouters, enc, enc2, prop, prop2);
-                synchronized (o) {
-                  answerElement[0] = answer.apply(vp);
+                synchronized (_lock) {
+                  result[1] = res;
                 }
-                return true;
+                return false;
               }
-
-              synchronized (o) {
-                result[0] = res;
-              }
-              return false;
             });
 
     //if (q.getBenchmark()) {
-    System.out.println("Total time: " + (System.currentTimeMillis() - l));
+    System.out.println("Total time: " + (System.currentTimeMillis() - totalTime));
     //}
     if (hasCounterExample) {
       return answerElement[0];
     }
-    VerifyParam vp = new VerifyParam(result[0], null, null, null, null, null, null);
+    VerifyParam vp = new VerifyParam(result[1], null, null, null, null, null, null);
     return answer.apply(vp);
   }
 
 
-  /*
-   * General purpose logic for checking a block property 
-   */
   private AnswerElement checkBlockProperty(
-      HeaderLocationQuestion q,
+      HeaderLocationQuestion qOrig,
       TriFunction<Encoder, Set<String>, Set<GraphEdge>, Map<String, BoolExpr>> instrument,
       Function<VerifyParam, AnswerElement> answer) {
 
-    long l = System.currentTimeMillis();
-    PathRegexes p = new PathRegexes(q);
+    long totalTime = System.currentTimeMillis();
+    PathRegexes p = new PathRegexes(qOrig);
     Graph graph = new Graph(_batfish);
     Set<GraphEdge> destPorts = findFinalInterfaces(graph, p);
     List<String> sourceRouters = PatternUtils.findMatchingSourceNodes(graph, p);
@@ -637,185 +641,171 @@ public class PropertyChecker {
       throw new BatfishException("Set of valid ingress nodes is empty");
     }
 
+    // copy before updating header space, so these changes don't get propagated to the answer
+    HeaderLocationQuestion q = new HeaderLocationQuestion(qOrig);
+    q.setHeaderSpace(q.getHeaderSpace().toBuilder().build());
     inferDestinationHeaderSpace(graph, destPorts, q);
+
     Set<GraphEdge> failOptions = failLinkSet(graph, q);
-    Stream<Supplier<EquivalenceClass>> stream = findAllEquivalenceClasses(q, graph, true);
+    Tuple<Stream<Supplier<NetworkSlice>>, Long> ecs = findAllNetworkSlices(q, graph, true);
+    Stream<Supplier<NetworkSlice>> stream = ecs.getFirst();
+    Long timeAbstraction = ecs.getSecond();
 
     AnswerElement[] answerElement = new AnswerElement[1];
-    VerificationResult[] result = new VerificationResult[1];
-    answerElement[0] = null;
-    result[0] = null;
-    Object o = new Object();
+    VerificationResult[] result = new VerificationResult[2];
+    List<VerificationStats> ecStats = new ArrayList<>();
 
     // Checks ECs in parallel, but short circuits when a counterexample is found
     boolean hasCounterExample =
         stream.anyMatch(
             lazyEc -> {
-              long ecTime = System.currentTimeMillis();
-              EquivalenceClass ec = lazyEc.get();
-              if (q.getBenchmark()) {
-                System.out.println("  Compute EC: " + (System.currentTimeMillis() - ecTime));
-              }
+              long timeEc = System.currentTimeMillis();
+              NetworkSlice slice = lazyEc.get();
+              timeEc = System.currentTimeMillis() - timeEc;
 
-              // Make sure the headerspace is correct
-              HeaderLocationQuestion question = new HeaderLocationQuestion(q);
-              question.setHeaderSpace(ec.getHeaderSpace());
+              synchronized (_lock) {
+                // Make sure the headerspace is correct
+                HeaderLocationQuestion question = new HeaderLocationQuestion(q);
+                question.setHeaderSpace(slice.getHeaderSpace());
 
-              // Get the EC graph and mapping
-              Graph g = ec.getGraph();
-              Set<String> srcRouters = mapConcreteToAbstract(ec, sourceRouters);
+                // Get the EC graph and mapping
+                Graph g = slice.getGraph();
+                Set<String> srcRouters = mapConcreteToAbstract(slice, sourceRouters);
 
-              long l1 = System.currentTimeMillis();
-              Encoder enc = new Encoder(g, question);
-              enc.computeEncoding();
-              if (question.getBenchmark()) {
-                System.out.println("  Base Encoding: " + (System.currentTimeMillis() - l1));
-              }
+                long timeEncoding = System.currentTimeMillis();
+                Encoder enc = new Encoder(_settings, g, question);
+                enc.computeEncoding();
+                timeEncoding = System.currentTimeMillis() - timeEncoding;
 
-              // Add environment constraints for base case
-              if (question.getDiffType() != null) {
-                if (question.getEnvDiff()) {
-                  addEnvironmentConstraints(enc, question.getDeltaEnvironmentType());
-                }
-              } else {
-                addEnvironmentConstraints(enc, question.getBaseEnvironmentType());
-              }
-
-              Map<String, BoolExpr> prop = instrument.apply(enc, srcRouters, destPorts);
-
-              // If this is a equivalence query, we create a second copy of the network
-              Encoder enc2 = null;
-              Map<String, BoolExpr> prop2 = null;
-
-              if (question.getDiffType() != null) {
-                HeaderLocationQuestion q2 = new HeaderLocationQuestion(question);
-                q2.setFailures(0);
-                long l2 = System.currentTimeMillis();
-                enc2 = new Encoder(enc, g, q2);
-                enc2.computeEncoding();
-                if (question.getBenchmark()) {
-                  System.out.println("  Diff Encoding: " + (System.currentTimeMillis() - l2));
-                }
-              }
-
-              if (question.getDiffType() != null) {
-                assert (enc2 != null);
-                // create a map for enc2 to lookup a related environment variable from enc
-                Table2<GraphEdge, EdgeType, SymbolicRoute> relatedEnv = new Table2<>();
-                enc2.getMainSlice()
-                    .getLogicalGraph()
-                    .getEnvironmentVars()
-                    .forEach((lge, r) -> relatedEnv.put(lge.getEdge(), lge.getEdgeType(), r));
-
-                BoolExpr related = enc.mkTrue();
-                addEnvironmentConstraints(enc2, question.getBaseEnvironmentType());
-
-                if (!question.getEnvDiff()) {
-                  related = relateEnvironments(enc, enc2);
-                }
-
-                prop2 = instrument.apply(enc2, srcRouters, destPorts);
-
-                // Add diff constraints
-                BoolExpr required = enc.mkTrue();
-                for (String source : srcRouters) {
-                  BoolExpr sourceProp1 = prop.get(source);
-                  BoolExpr sourceProp2 = prop2.get(source);
-                  BoolExpr val;
-                  switch (q.getDiffType()) {
-                    case INCREASED:
-                      val = enc.mkImplies(sourceProp1, sourceProp2);
-                      break;
-                    case REDUCED:
-                      val = enc.mkImplies(sourceProp2, sourceProp1);
-                      break;
-                    case ANY:
-                      val = enc.mkEq(sourceProp1, sourceProp2);
-                      break;
-                    default:
-                      throw new BatfishException("Missing case: " + q.getDiffType());
+                // Add environment constraints for base case
+                if (question.getDiffType() != null) {
+                  if (question.getEnvDiff()) {
+                    addEnvironmentConstraints(enc, question.getDeltaEnvironmentType());
                   }
-                  required = enc.mkAnd(required, val);
-                }
-
-                related = enc.mkAnd(related, relatePackets(enc, enc2));
-                enc.add(related);
-                enc.add(enc.mkNot(required));
-
-              } else {
-                BoolExpr allProp = enc.mkTrue();
-                for (String router : srcRouters) {
-                  BoolExpr r = prop.get(router);
-                  allProp = enc.mkAnd(allProp, r);
-                }
-                if (enc.getFailures() != 0) {
-                  enc._propertRep = enc.mkNot(allProp);
                 } else {
+                  addEnvironmentConstraints(enc, question.getBaseEnvironmentType());
+                }
+
+                Map<String, BoolExpr> prop = instrument.apply(enc, srcRouters, destPorts);
+
+                // If this is a equivalence query, we create a second copy of the network
+                Encoder enc2 = null;
+                Map<String, BoolExpr> prop2 = null;
+
+                if (question.getDiffType() != null) {
+                  HeaderLocationQuestion q2 = new HeaderLocationQuestion(question);
+                  q2.setFailures(0);
+                  long timeDiffEncoding = System.currentTimeMillis();
+                  enc2 = new Encoder(enc, g, q2);
+                  enc2.computeEncoding();
+                  timeDiffEncoding = System.currentTimeMillis() - timeDiffEncoding;
+                  timeEncoding += timeDiffEncoding;
+                }
+
+                if (question.getDiffType() != null) {
+                  assert (enc2 != null);
+                  // create a map for enc2 to lookup a related environment variable from enc
+                  Table2<GraphEdge, EdgeType, SymbolicRoute> relatedEnv = new Table2<>();
+                  enc2.getMainSlice()
+                      .getLogicalGraph()
+                      .getEnvironmentVars()
+                      .forEach((lge, r) -> relatedEnv.put(lge.getEdge(), lge.getEdgeType(), r));
+
+                  BoolExpr related = enc.mkTrue();
+                  addEnvironmentConstraints(enc2, question.getBaseEnvironmentType());
+
+                  if (!question.getEnvDiff()) {
+                    related = relateEnvironments(enc, enc2);
+                  }
+
+                  prop2 = instrument.apply(enc2, srcRouters, destPorts);
+
+                  // Add diff constraints
+                  BoolExpr required = enc.mkTrue();
+                  for (String source : srcRouters) {
+                    BoolExpr sourceProp1 = prop.get(source);
+                    BoolExpr sourceProp2 = prop2.get(source);
+                    BoolExpr val;
+                    switch (q.getDiffType()) {
+                      case INCREASED:
+                        val = enc.mkImplies(sourceProp1, sourceProp2);
+                        break;
+                      case REDUCED:
+                        val = enc.mkImplies(sourceProp2, sourceProp1);
+                        break;
+                      case ANY:
+                        val = enc.mkEq(sourceProp1, sourceProp2);
+                        break;
+                      default:
+                        throw new BatfishException("Missing case: " + q.getDiffType());
+                    }
+                    required = enc.mkAnd(required, val);
+                  }
+
+                  related = enc.mkAnd(related, relatePackets(enc, enc2));
+                  enc.add(related);
+                  enc.add(enc.mkNot(required));
+
+                } else {
+                  // Not a differential query; just a query on a single version of the network.
+                  BoolExpr allProp = enc.mkTrue();
+                  for (String router : srcRouters) {
+                    BoolExpr r = prop.get(router);
+                    if (q.getNegate()) {
+                      r = enc.mkNot(r);
+                    }
+                    allProp = enc.mkAnd(allProp, r);
+                  }
                   enc.add(enc.mkNot(allProp));
                 }
+                addFailureConstraints(enc, destPorts, failOptions);
+                enc.setIfReq();
 
-                //@archie instead of not(property). It's now property
-                //enc.add(allProp);
-              }
+                long startVerify = System.currentTimeMillis();
+                Tuple<VerificationResult, Model> tup = enc.verify();
+                //if (question.getBenchmark()) {
+                System.out.println("  z3 time: " + (System.currentTimeMillis() - startVerify));
+                //}
 
-              addFailureConstraints(enc, destPorts, failOptions);
-              enc.setIfReq();
-              /*
-              try {
-                System.out.println("Encoding written in enc.smt");
-                BufferedWriter writer = new BufferedWriter(new FileWriter("enc.smt"));
-                writer.write(enc.getSolver().toString());
-                writer.close();
-              } catch (IOException e) {
-                System.out.println("IO error");
-              }
-              */
+                VerificationResult res = tup.getFirst();
+                Model model = tup.getSecond();
 
-              long startVerify = System.currentTimeMillis();
-              Tuple<VerificationResult, Model> tup = enc.verify();
-              //if (question.getBenchmark()) {
-              System.out.println("  z3 time: " + (System.currentTimeMillis() - startVerify));
-              //}
+                if (!res.isVerified()) {
 
-              VerificationResult res = tup.getFirst();
-              Model model = tup.getSecond();
+                  try {
+                    System.out.println("\n\nModel printed in model.smt\n\n");
+                    BufferedWriter writer = new BufferedWriter(new FileWriter("model.smt"));
+                    writer.write(model.toString());
+                    writer.close();
+                  } catch (IOException e) {
+                    System.out.println("IO error");
+                  }
 
-              if (!res.isVerified()) {
 
-                try {
-                  System.out.println("\n\nModel printed in model.smt\n\n");
-                  BufferedWriter writer = new BufferedWriter(new FileWriter("model.smt"));
-                  writer.write(model.toString());
-                  writer.close();
-                } catch (IOException e) {
-                  System.out.println("IO error");
+                  VerifyParam vp = new VerifyParam(res, model, srcRouters, enc, enc2, prop, prop2);
+                  synchronized (_lock) {
+                    answerElement[0] = answer.apply(vp);
+                    result[0] = res;
+                  }
+                  return true;
                 }
 
-
-                VerifyParam vp = new VerifyParam(res, model, srcRouters, enc, enc2, prop, prop2);
-                synchronized (o) {
-                  answerElement[0] = answer.apply(vp);
+                synchronized (_lock) {
+                  result[1] = res;
                 }
-                return true;
+                return false;
               }
-
-              synchronized (o) {
-                result[0] = res;
-              }
-              return false;
             });
 
     //if (q.getBenchmark()) {
-    System.out.println("Total time: " + (System.currentTimeMillis() - l));
+    System.out.println("Total time: " + (System.currentTimeMillis() - totalTime));
     //}
     if (hasCounterExample) {
       return answerElement[0];
     }
-    VerifyParam vp = new VerifyParam(result[0], null, null, null, null, null, null);
+    VerifyParam vp = new VerifyParam(result[1], null, null, null, null, null, null);
     return answer.apply(vp);
   }
-
-
 
 
   /*
@@ -1507,6 +1497,9 @@ public class PropertyChecker {
                 System.out.println("  z3 time: " + (System.currentTimeMillis() - startVerify));
               }
 
+              VerificationResult res = tup.getFirst();
+              Model model = tup.getSecond();
+
               if (!res.isVerified()) {
 
                 try {
@@ -1523,21 +1516,13 @@ public class PropertyChecker {
                   answerElement[0] = answer.apply(vp);
                 }
 
-                if (!res.isVerified()) {
-                  VerifyParam vp = new VerifyParam(res, model, srcRouters, enc, enc2, prop, prop2);
-                  AnswerElement ae = answer.apply(vp);
-                  synchronized (_lock) {
-                    answerElement[0] = ae;
-                    result[0] = res;
-                  }
-                  return true;
-                }
-
-                synchronized (_lock) {
-                  result[1] = res;
-                }
-                return false;
+                return true;
               }
+
+              synchronized (o) {
+                result[0] = res;
+              }
+              return false;
             });
     
     if (true) {
@@ -1788,7 +1773,8 @@ public class PropertyChecker {
                       vp.getProp(),
                       vp.getPropDiff());
             } else {
-              fh = ce.buildFlowHistory(testrigName, vp.getSrcRouters(), vp.getEnc(), vp.getProp());
+              //fh = ce.buildFlowHistory(testrigName, vp.getSrcRouters(), vp.getEnc(), vp.getProp());
+              fh = new FlowHistory();
             }
             return new SmtWaypointAnswerElement(vp.getResult(), fh);
           }
@@ -1998,8 +1984,8 @@ public class PropertyChecker {
             BoolExpr implication = enc.mkImplies(fwdOnPath, notAvailable);
             allImplications = enc.mkAnd(allImplications, implication);
           }
-          System.out.println("Assert: " + allImplications);
-          System.out.println("Assert: " + allImplications.simplify());
+          System.out.println("X Assert: " + allImplications);
+          //System.out.println("Assert: " + allImplications.simplify());
 
           //enc.getSolver().add(enc.mkNot(allImplications));
           enc.add(allImplications);

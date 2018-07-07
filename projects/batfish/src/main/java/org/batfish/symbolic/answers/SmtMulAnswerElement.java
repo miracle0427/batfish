@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import org.batfish.datamodel.answers.AnswerElement;
 import org.batfish.symbolic.smt.VerificationResult;
 
-public class SmtMulAnswerElement implements AnswerElement {
+public class SmtMulAnswerElement extends AnswerElement {
 
   private static final String PROP_RESULT = "result";
 

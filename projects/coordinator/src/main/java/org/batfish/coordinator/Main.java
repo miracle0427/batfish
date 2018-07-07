@@ -320,6 +320,11 @@ public class Main {
         bindPortFutures.getWorkV2Port());
   }
 
+  public static void main(String[] args) {
+    System.out.println("Illegal args");
+  }
+
+
   public static void main(String[] args, BindPortFutures portFutures) {
     main(
         args,
