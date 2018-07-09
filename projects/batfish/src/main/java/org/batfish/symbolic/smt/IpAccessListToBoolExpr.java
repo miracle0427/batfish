@@ -53,11 +53,13 @@ public class IpAccessListToBoolExpr implements GenericAclLineMatchExprVisitor<Bo
 
   public BoolExpr toBoolExpr(IpAccessList ipAccessList) {
     BoolExpr expr = _context.mkFalse();
+    System.out.println("IPAccessList");
     for (IpAccessListLine line : Lists.reverse(ipAccessList.getLines())) {
       BoolExpr matchExpr = line.getMatchCondition().accept(this);
       BoolExpr actionExpr =
           line.getAction() == LineAction.ACCEPT ? _context.mkTrue() : _context.mkFalse();
       expr = (BoolExpr) _context.mkITE(matchExpr, actionExpr, expr);
+      System.out.println(expr);
     }
     return expr;
   }

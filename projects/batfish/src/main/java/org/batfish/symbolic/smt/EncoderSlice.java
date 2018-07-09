@@ -552,6 +552,7 @@ class EncoderSlice {
   private void initAclFunctions() {
     for (Entry<String, List<GraphEdge>> entry : getGraph().getEdgeMap().entrySet()) {
       String router = entry.getKey();
+      System.out.println("Router" + router);
       List<GraphEdge> edges = entry.getValue();
       for (GraphEdge ge : edges) {
         Interface i = ge.getStart();
@@ -584,6 +585,8 @@ class EncoderSlice {
           // @archie outAclRemove is soft constraint to do out ACL remove
           add(mkEq(outAcl, outAclFunc));
           //_outboundAcls.put(ge, outAcl);
+          System.out.println("Y");
+          System.out.println(mkOr(outAcl,outAclRemove));
           _outboundAcls.put(ge, mkOr(outAcl,outAclRemove));
 
         } else {
