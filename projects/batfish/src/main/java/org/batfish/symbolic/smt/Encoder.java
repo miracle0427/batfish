@@ -104,6 +104,8 @@ public class Encoder {
 
   public Map<IpWildcard, Encoder> _dstEncoders;
 
+  public Map<String, Set<BoolExpr>> _dataforward;
+
   public Map<IpWildcard, Map<IpWildcard, Encoder>> _tcEncoders;
 
   public boolean _dstEncoderExists;
@@ -229,9 +231,11 @@ public class Encoder {
     if (enc == null) {
       _dstEncoders =  new HashMap<>();
       _tcEncoders =  new HashMap<>();
+      _dataforward = new HashMap<>();
     } else {
       _dstEncoders = enc._dstEncoders;
       _tcEncoders = enc._tcEncoders;
+      _dataforward = enc._dataforward;
     }
 
     _dstEncoderExists = _dstEncoders.containsKey(dst);
@@ -339,9 +343,11 @@ public class Encoder {
     if (enc == null) {
       _dstEncoders =  new HashMap<>();
       _tcEncoders =  new HashMap<>();
+      _dataforward = new HashMap<>();
     } else {
       _dstEncoders = enc._dstEncoders;
       _tcEncoders = enc._tcEncoders;
+      _dataforward = enc._dataforward;
     }
 
     _dstEncoderExists = _dstEncoders.containsKey(_dstIp);
@@ -1206,7 +1212,6 @@ public class Encoder {
   public Tuple<VerificationResult, Model> verify() {
     // @archie modified to use _optsolve
     EncoderSlice mainSlice = _slices.get(MAIN_SLICE_NAME);
-
     int numVariables = _allVariables.size();
     int numConstraints = _solver.getAssertions().length;
     int numNodes = mainSlice.getGraph().getConfigurations().size();
@@ -1220,6 +1225,39 @@ public class Encoder {
         addSoft(_routerConsMap.get(keyRouter), 10000, "deviceAffected");
       }
     }
+    
+    if (_repairObjective == 2) {
+      Map<String, String> dfwd = new HashMap<>();
+      String line;
+      System.out.println("Datafwd objective");
+      
+      try {
+        BufferedReader reader = new BufferedReader(new FileReader("datafwd"));
+        
+        while((line = reader.readLine()) != null) {
+              String[] split = line.split(" ");
+              dfwd.put(split[0], split[1]);
+        }
+        reader.close();
+      } catch (IOException e) {
+        System.out.println("Reader IO error");
+      }      
+
+      
+      for (Entry<String, Set<BoolExpr>> entry : _dataforward.entrySet()) {
+        for ( BoolExpr data : entry.getValue() ) {
+          
+          if (dfwd.get(data.toString()).equals("false")) {
+            System.out.println(data.toString() + "false");
+            addSoft( mkEq(data,mkFalse()), 100000,"fwdAffected");
+          } else {
+            System.out.println(data.toString() + "true");
+            addSoft( mkEq(data,mkTrue()), 100000, "fwdAffected");;
+          }
+        }
+      }
+    }
+    
 
     try {
       /*

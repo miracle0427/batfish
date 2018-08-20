@@ -285,7 +285,7 @@ class TransferSSA {
                 }
                 BoolExpr shouldRemove = _enc.getCtx().mkBoolConst(_enc.getEncoder().getId() + "_"
                  + pfx + "Stat-Conn-ExportRemoveSoft" + other.getName());
-                if (_enc.getEncoder()._repairObjective != 1) {
+                if (_enc.getEncoder()._repairObjective == 0) {
                   _enc.addSoft(shouldRemove, _enc.bgpWeight, "SCExportRemove");
                 }
                 _enc._routerConsMap.put(router, _enc.mkAnd(_enc._routerConsMap.get(router), shouldRemove));
@@ -307,7 +307,7 @@ class TransferSSA {
                   }
                   BoolExpr shouldRemove = _enc.getCtx().mkBoolConst(_enc.getEncoder().getId() + "_"
                    + pfx + "ExportRemoveSoft" + other.getName());
-                  if (_enc.getEncoder()._repairObjective != 1) {
+                  if (_enc.getEncoder()._repairObjective == 0) {
                     _enc.addSoft(shouldRemove, _enc.bgpWeight, "ExportRemove");
                   }
                   _enc._routerConsMap.put(router, _enc.mkAnd(_enc._routerConsMap.get(router), shouldRemove));
@@ -448,7 +448,7 @@ class TransferSSA {
       BoolExpr shouldAdd = _enc.getCtx().mkBoolConst(_enc.getEncoder().getId() + "_" + 
         p.getData().getName() + "BGPExportAddSoft");
 
-      if (_enc.getEncoder()._repairObjective != 1) {
+      if (_enc.getEncoder()._repairObjective == 0) {
         _enc.addSoft(_enc.mkNot(shouldAdd), _enc.bgpWeight, "BGPExportAdd");
       }
       _enc._routerConsMap.put(_conf.getName(), _enc.mkAnd(_enc._routerConsMap.get(_conf.getName()), _enc.mkNot(shouldAdd)));
@@ -1072,7 +1072,7 @@ class TransferSSA {
       //_enc.addSoft(_enc.mkNot(lp1), 2, "localpref");
       val = _enc.mkIf(lp2, _enc.getCtx().mkInt(intval), val);
       if (actualVal == intval) {
-        if (_enc.getEncoder()._repairObjective != 1) {
+        if (_enc.getEncoder()._repairObjective == 0) {
           _enc.addSoft(lp2, _enc.localprefWeight, "localpref");
         }
         _enc._routerConsMap.put(_conf.getName(), _enc.mkAnd(_enc._routerConsMap.get(_conf.getName()), lp2));
@@ -1085,7 +1085,7 @@ class TransferSSA {
     }
     BoolExpr lp = _enc.getCtx().mkBoolConst(_currentName + "_localpref_" + highestVal);
     lp =_enc.mkNot(exists);
-    if (_enc.getEncoder()._repairObjective != 1) {
+    if (_enc.getEncoder()._repairObjective == 0) {
       _enc.addSoft(_enc.mkAnd(_enc.mkNot(doesChange), exists), _enc.localprefWeight, "localpref");
     }
     _enc._routerConsMap.put(_conf.getName(), _enc.mkAnd(_enc._routerConsMap.get(_conf.getName()),

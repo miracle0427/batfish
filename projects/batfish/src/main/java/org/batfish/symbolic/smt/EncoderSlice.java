@@ -552,7 +552,7 @@ class EncoderSlice {
   private void initAclFunctions() {
     for (Entry<String, List<GraphEdge>> entry : getGraph().getEdgeMap().entrySet()) {
       String router = entry.getKey();
-      System.out.println("Router" + router);
+      //System.out.println("Router" + router);
       List<GraphEdge> edges = entry.getValue();
       for (GraphEdge ge : edges) {
         Interface i = ge.getStart();
@@ -578,7 +578,7 @@ class EncoderSlice {
           }*/
 
           BoolExpr outAclRemove = getCtx().mkBoolConst(_encoder.getId() + "_" + outName + "Remove");
-          if (_encoder._repairObjective != 1) {
+          if (_encoder._repairObjective == 0) {
             addSoft(mkNot(outAclRemove), aclWeight, "SoftOutAclRemove");
           }
           _routerConsMap.put(router, mkAnd(_routerConsMap.get(router), mkNot(outAclRemove)));
@@ -601,7 +601,7 @@ class EncoderSlice {
                   "SOFT");
           BoolExpr outAcl = getCtx().mkBoolConst(_encoder.getId() + "_" + outName + "Add");
           // @archie outAcl is soft constraint to do out ACL add
-          if (_encoder._repairObjective != 1) {
+          if (_encoder._repairObjective == 0) {
             addSoft(outAcl, aclWeight, "SoftOutAclAdd");
           }
           _routerConsMap.put(router, mkAnd(_routerConsMap.get(router), outAcl));
@@ -623,7 +623,7 @@ class EncoderSlice {
           }*/
           
           BoolExpr inAclRemove = getCtx().mkBoolConst(_encoder.getId() + "_" + inName + "Remove");
-          if (_encoder._repairObjective != 1) {
+          if (_encoder._repairObjective == 0) {
             addSoft(mkNot(inAclRemove), aclWeight, "SoftInAclRemove");
           }
           _routerConsMap.put(router, mkAnd(_routerConsMap.get(router), mkNot(inAclRemove)));
@@ -639,7 +639,7 @@ class EncoderSlice {
                   _encoder.getId(), _sliceName, router, i.getName(), "INBOUND", "SOFT");
           BoolExpr inAcl = getCtx().mkBoolConst(_encoder.getId() + "_" + inName + "Add");
           // @archie inAcl is soft constraint to do out ACL add
-          if (_encoder._repairObjective != 1) {
+          if (_encoder._repairObjective == 0) {
             addSoft(inAcl, aclWeight, "SoftInAclAdd");
           }
           _routerConsMap.put(router, mkAnd(_routerConsMap.get(router), inAcl));
@@ -817,7 +817,7 @@ class EncoderSlice {
         //System.out.println("Lower bits match: " + lowerBitsMatch);
         BoolExpr shouldRemove = getCtx().mkBoolConst(_encoder.getId() + "_"
          + p + routerName + "BGPRemoveFilterSoft");
-        if (_encoder._repairObjective != 1) {
+        if (_encoder._repairObjective == 0) {
           addSoft(shouldRemove, importWeight, "BGPRemoveFilter");
         }
         _routerConsMap.put(routerName, mkAnd(_routerConsMap.get(routerName), shouldRemove));
@@ -904,6 +904,7 @@ class EncoderSlice {
    */
   private void addDataForwardingVariables() {
     _symbolicDecisions.setDataForwarding();
+    Set<BoolExpr> fwdset = new HashSet<>();
     for (Entry<String, List<GraphEdge>> entry : getGraph().getEdgeMap().entrySet()) {
       String router = entry.getKey();
       List<GraphEdge> edges = entry.getValue();
@@ -916,9 +917,11 @@ class EncoderSlice {
           getAllVariables().put(dForward.toString() + _encoder.getStringId(),
            dForward);
           _symbolicDecisions.getDataForwarding().put(router, edge, dForward);
+          fwdset.add(dForward);
         }
       }
     }
+    _encoder._dataforward.put( _encoder.getStringId(), fwdset);  
   }
 
   /*
@@ -926,6 +929,7 @@ class EncoderSlice {
    * data plane final forwarding decisions
    */
   private void addForwardingVariables() {
+    Set<BoolExpr> fwdset = new HashSet<>();
     for (Entry<String, List<GraphEdge>> entry : getGraph().getEdgeMap().entrySet()) {
       String router = entry.getKey();
       List<GraphEdge> edges = entry.getValue();
@@ -948,6 +952,7 @@ class EncoderSlice {
           BoolExpr dForward = getCtx().mkBoolConst(dName);
           getAllVariables().put(dForward.toString() + _encoder.getStringId(),
            dForward);
+          fwdset.add(dForward);
           _symbolicDecisions.getDataForwarding().put(router, edge, dForward);
           _allBoolVars.add(dForward);
           Symbol temp2 = getCtx().mkSymbol(dName);
@@ -956,6 +961,7 @@ class EncoderSlice {
         }
       }
     }
+    _encoder._dataforward.put( _encoder.getStringId(), fwdset);  
   }
 
   /*
@@ -2195,7 +2201,7 @@ private void addSymbolicPacketBoundConstraints() {
             } else {
               shouldAllow = getCtx().mkBoolConst(_encoder.getId() + "_"
                 + keyvalue + "AllowChoiceSoft");
-              if (_encoder._repairObjective != 1) {
+              if (_encoder._repairObjective == 0) {
                 addSoft(mkNot(shouldAllow), enableAdjWeight, "AllowRoute");
               }
               _routerConsMap.put(router, mkAnd(_routerConsMap.get(router), mkNot(shouldAllow)));
@@ -2557,7 +2563,7 @@ private void addSymbolicPacketBoundConstraints() {
             {
               shouldAdd = getCtx().mkBoolConst(_encoder.getId() + "_" + router +
                "-StaticRouteAddSoft-" + ge);
-              if (_encoder._repairObjective != 1) {
+              if (_encoder._repairObjective == 0) {
                 addSoft(mkNot(shouldAdd), staticWeight, "StaticAdd");
               }
               _staticRouteAddSoft.put(ge, shouldAdd);
@@ -2640,7 +2646,7 @@ private void addSymbolicPacketBoundConstraints() {
           }*/
           BoolExpr shouldRemove = getCtx().mkBoolConst(_encoder.getId() + "_"
            + router + "StaticRouteRemoveSoft" + p);
-          if (_encoder._repairObjective != 1) {
+          if (_encoder._repairObjective == 0) {
             addSoft(shouldRemove, staticWeight, "StaticRemove");
           }
           _routerConsMap.put(router, mkAnd(_routerConsMap.get(router), shouldRemove));  
@@ -2761,7 +2767,7 @@ private void addSymbolicPacketBoundConstraints() {
             } else {
               shouldAllow = getCtx().mkBoolConst(_encoder.getId() + "_"
                 + keyvalue + "AllowChoiceUseSoft");
-              if (_encoder._repairObjective != 1) {
+              if (_encoder._repairObjective == 0) {
                 addSoft(mkNot(shouldAllow), enableAdjWeight, "AllowRouteSoft");
               }
               _routerConsMap.put(router, mkAnd(_routerConsMap.get(router), mkNot(shouldAllow)));  
@@ -2800,7 +2806,7 @@ private void addSymbolicPacketBoundConstraints() {
 
           BoolExpr shouldAddFilter = getCtx().mkBoolConst(_encoder.getId() + "_" + router
            + "ImportFilterAddSoft" + vars.getName());
-          if (_encoder._repairObjective != 1) {
+          if (_encoder._repairObjective == 0) {
             addSoft(shouldAddFilter, importWeight, "ImportFilterAdd");
           }
           _routerConsMap.put(router, mkAnd(_routerConsMap.get(router), shouldAddFilter));  
@@ -2955,7 +2961,7 @@ private void addSymbolicPacketBoundConstraints() {
           } else {
             redisRemove = getCtx().mkBoolConst(_encoder.getId() + "_"
              + router + proto.name() + "SoftRedisRemove");
-            if (_encoder._repairObjective != 1) {
+            if (_encoder._repairObjective == 0) {
               addSoft(redisRemove, redisWeight, "RedisRemove");
             }
             _routerConsMap.put(router, mkAnd(_routerConsMap.get(router), redisRemove));  
@@ -3037,7 +3043,7 @@ private void addSymbolicPacketBoundConstraints() {
               } else {
                 shouldRemove = getCtx().mkBoolConst(_encoder.getId() + "_"
                   + router + "OSPFExportRemoveSoft" + p);
-                if (_encoder._repairObjective != 1) {
+                if (_encoder._repairObjective == 0) {
                   addSoft(shouldRemove, ospfWeight, "OSPFExportRemove"); 
                 }
                 _routerConsMap.put(router, mkAnd(_routerConsMap.get(router), shouldRemove));  
@@ -3101,7 +3107,7 @@ private void addSymbolicPacketBoundConstraints() {
             BoolExpr relevantPrefix = isRelevantFor(p, _symbolicPacket.getDstIp());
             BoolExpr shouldAdd = getCtx().mkBoolConst(_encoder.getId() + "_"
              + router + "OSPFExportAddSoft" + p);
-            if (_encoder._repairObjective != 1) {
+            if (_encoder._repairObjective == 0) {
               addSoft(mkNot(shouldAdd), ospfWeight, "OSPFExportAdd");
             }
             _routerConsMap.put(router, mkAnd(_routerConsMap.get(router), mkNot(shouldAdd)));  
