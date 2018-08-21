@@ -106,6 +106,8 @@ public class Encoder {
 
   public Map<String, Set<BoolExpr>> _dataforward;
 
+  public Map<Integer, BoolExpr> _aclTemp;
+
   public Map<IpWildcard, Map<IpWildcard, Encoder>> _tcEncoders;
 
   public boolean _dstEncoderExists;
@@ -232,10 +234,12 @@ public class Encoder {
       _dstEncoders =  new HashMap<>();
       _tcEncoders =  new HashMap<>();
       _dataforward = new HashMap<>();
+      _aclTemp = new HashMap<>(); 
     } else {
       _dstEncoders = enc._dstEncoders;
       _tcEncoders = enc._tcEncoders;
       _dataforward = enc._dataforward;
+      _aclTemp = enc._aclTemp;
     }
 
     _dstEncoderExists = _dstEncoders.containsKey(dst);
@@ -344,10 +348,12 @@ public class Encoder {
       _dstEncoders =  new HashMap<>();
       _tcEncoders =  new HashMap<>();
       _dataforward = new HashMap<>();
+      _aclTemp = new HashMap<>();
     } else {
       _dstEncoders = enc._dstEncoders;
       _tcEncoders = enc._tcEncoders;
       _dataforward = enc._dataforward;
+      _aclTemp = enc._aclTemp;
     }
 
     _dstEncoderExists = _dstEncoders.containsKey(_dstIp);
@@ -1229,7 +1235,7 @@ public class Encoder {
     if (_repairObjective == 2) {
       Map<String, String> dfwd = new HashMap<>();
       String line;
-      System.out.println("Datafwd objective");
+      //System.out.println("Datafwd objective");
       
       try {
         BufferedReader reader = new BufferedReader(new FileReader("datafwd"));
