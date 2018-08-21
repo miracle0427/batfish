@@ -1246,12 +1246,16 @@ public class Encoder {
       
       for (Entry<String, Set<BoolExpr>> entry : _dataforward.entrySet()) {
         for ( BoolExpr data : entry.getValue() ) {
-          
+
+          if (!dfwd.containsKey(data.toString())) {
+            continue;
+          }
+ 
           if (dfwd.get(data.toString()).equals("false")) {
-            System.out.println(data.toString() + "false");
+            //System.out.println(data.toString() + "false");
             addSoft( mkEq(data,mkFalse()), 100000,"fwdAffected");
           } else {
-            System.out.println(data.toString() + "true");
+            //System.out.println(data.toString() + "true");
             addSoft( mkEq(data,mkTrue()), 100000, "fwdAffected");;
           }
         }
