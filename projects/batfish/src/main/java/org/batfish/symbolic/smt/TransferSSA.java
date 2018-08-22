@@ -217,8 +217,11 @@ class TransferSSA {
 
     List<RouteFilterLine> lines = new ArrayList<>(x.getLines());
     Collections.reverse(lines);
+    int lineno = 0;
 
     for (RouteFilterLine line : lines) {
+      lineno = lineno + 1;
+
       if (!line.getIpWildcard().isPrefix()) {
         throw new BatfishException("non-prefix IpWildcards are unsupported");
       }
@@ -226,6 +229,22 @@ class TransferSSA {
       SubRange r = line.getLengthRange();
       PrefixRange range = new PrefixRange(p, r);
       BoolExpr matches = _enc.isRelevantForSoft(other.getPrefixLength(), range, _conf.getName());
+
+      if (_enc.getEncoder()._repairObjective == 4) {
+        BoolExpr filterRemove = _enc.mkFalse();
+        if (!_enc.getEncoder()._bgpTemp.containsKey(lineno)) {
+          //System.out.println("not Exists " + lineno);
+          filterRemove = _enc.getCtx().mkBoolConst( "bgpline_" + Integer.toString(lineno) + "_Remove");
+          _enc.getEncoder().addSoft(_enc.mkNot(filterRemove), 100000, "perBGPRemove");
+          _enc.getEncoder()._bgpTemp.put(lineno, filterRemove);
+        } else {
+          //System.out.println("Exists" + lineno);
+          filterRemove = _enc.getEncoder()._bgpTemp.get(lineno);
+        }
+        matches = _enc.mkAnd(matches, filterRemove);
+      }
+
+
       BoolExpr action = _enc.mkBool(line.getAction() == LineAction.ACCEPT);
       acc = _enc.mkIf(matches, action, acc);
     }

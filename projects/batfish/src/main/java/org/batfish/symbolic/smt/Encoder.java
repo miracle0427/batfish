@@ -108,6 +108,8 @@ public class Encoder {
 
   public Map<Integer, BoolExpr> _aclTemp;
 
+  public Map<Integer, BoolExpr> _bgpTemp;
+
   public Map<IpWildcard, Map<IpWildcard, Encoder>> _tcEncoders;
 
   public boolean _dstEncoderExists;
@@ -235,11 +237,13 @@ public class Encoder {
       _tcEncoders =  new HashMap<>();
       _dataforward = new HashMap<>();
       _aclTemp = new HashMap<>(); 
+      _bgpTemp = new HashMap<>(); 
     } else {
       _dstEncoders = enc._dstEncoders;
       _tcEncoders = enc._tcEncoders;
       _dataforward = enc._dataforward;
       _aclTemp = enc._aclTemp;
+      _bgpTemp = enc._bgpTemp;
     }
 
     _dstEncoderExists = _dstEncoders.containsKey(dst);
@@ -349,11 +353,13 @@ public class Encoder {
       _tcEncoders =  new HashMap<>();
       _dataforward = new HashMap<>();
       _aclTemp = new HashMap<>();
+      _bgpTemp = new HashMap<>();
     } else {
       _dstEncoders = enc._dstEncoders;
       _tcEncoders = enc._tcEncoders;
       _dataforward = enc._dataforward;
       _aclTemp = enc._aclTemp;
+      _bgpTemp = enc._bgpTemp;
     }
 
     _dstEncoderExists = _dstEncoders.containsKey(_dstIp);
