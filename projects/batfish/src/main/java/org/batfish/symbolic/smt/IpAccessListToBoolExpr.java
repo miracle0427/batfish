@@ -53,16 +53,45 @@ public class IpAccessListToBoolExpr implements GenericAclLineMatchExprVisitor<Bo
 
   public BoolExpr toBoolExpr(IpAccessList ipAccessList) {
     BoolExpr expr = _context.mkFalse();
-    System.out.println("IPAccessList");
+    //System.out.println("IPAccessList");
     for (IpAccessListLine line : Lists.reverse(ipAccessList.getLines())) {
       BoolExpr matchExpr = line.getMatchCondition().accept(this);
       BoolExpr actionExpr =
           line.getAction() == LineAction.ACCEPT ? _context.mkTrue() : _context.mkFalse();
       expr = (BoolExpr) _context.mkITE(matchExpr, actionExpr, expr);
-      System.out.println(expr);
+      //System.out.println(expr);
     }
     return expr;
   }
+
+  public BoolExpr toBoolExpr(IpAccessList ipAccessList, Encoder _encoder) {
+    BoolExpr expr = _context.mkFalse();
+    //System.out.println("IPAccessList");
+    int lineno = 1;
+    for (IpAccessListLine line : Lists.reverse(ipAccessList.getLines())) {
+      BoolExpr matchExpr = line.getMatchCondition().accept(this);
+      BoolExpr actionExpr =
+          line.getAction() == LineAction.ACCEPT ? _context.mkTrue() : _context.mkFalse();
+
+      if (_encoder._repairObjective == 3) {
+        BoolExpr inAclRemove = _context.mkFalse();
+        if (!_encoder._aclTemp.containsKey(lineno)) {
+          inAclRemove = _context.mkBoolConst( "line_" + Integer.toString(lineno) + "_Remove");
+          _encoder.addSoft(_encoder.mkNot(inAclRemove), 100000, "perAclRemove");
+          _encoder._aclTemp.put(lineno, inAclRemove);
+        } else {
+          inAclRemove = _encoder._aclTemp.get(lineno);
+        }
+        matchExpr = _context.mkAnd(matchExpr, inAclRemove);
+      }
+
+      expr = (BoolExpr) _context.mkITE(matchExpr, actionExpr, expr);
+      //System.out.println(expr);
+      lineno = lineno + 1;
+    }
+    return expr;
+  }
+
 
   private @Nullable BoolExpr toBoolExpr(@Nullable IpSpace ipSpace, BitVecExpr var) {
     if (ipSpace == null) {

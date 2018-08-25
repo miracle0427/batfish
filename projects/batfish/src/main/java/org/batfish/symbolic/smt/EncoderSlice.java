@@ -585,7 +585,7 @@ class EncoderSlice {
           // @archie outAclRemove is soft constraint to do out ACL remove
           add(mkEq(outAcl, outAclFunc));
           //_outboundAcls.put(ge, outAcl);
-          System.out.println("Y");
+          //System.out.println("Y");
           System.out.println(mkOr(outAcl,outAclRemove));
           _outboundAcls.put(ge, mkOr(outAcl,outAclRemove));
 
@@ -2480,7 +2480,7 @@ private void addSymbolicPacketBoundConstraints() {
       return mkTrue();
     }
 
-    return new IpAccessListToBoolExpr(_encoder.getCtx(), _symbolicPacket).toBoolExpr(acl);
+    return new IpAccessListToBoolExpr(_encoder.getCtx(), _symbolicPacket).toBoolExpr(acl, _encoder);
   }
 
   private boolean otherSliceHasEdge(EncoderSlice slice, String r, GraphEdge ge) {

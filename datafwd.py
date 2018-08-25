@@ -24,8 +24,6 @@ with open((modelfile)) as file:
                 	        else:
                         	        databool[fwd] = "true"
 
-write=open(modelfile+".dfw","w")
-
-print modelfile
+write=open((modelfile+".dfw"),"w")
 for i in databool:
         write.write(i+" "+databool[i]+"\n")
