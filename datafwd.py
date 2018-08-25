@@ -18,10 +18,11 @@ with open((modelfile)) as file:
                         #(define-fun |0_SLICE-MAIN_DATA-FORWARDING_CamB6A_GigabitEthernet7| () Bool
                         #print m.group(0)
                         fwd=m.group(0).replace(" () Bool","").replace("(define-fun ","").replace("  ","")
-                        if "false" in lines[i+1]:
-                                databool[fwd] = "false"
-                        else:
-                                databool[fwd] = "true"
+			if (i+1) <= len(lines):
+	                        if "false" in lines[i+1]:
+        	                        databool[fwd] = "false"
+                	        else:
+                        	        databool[fwd] = "true"
 
 write=open((modelfile+".dfw"),"w")
 for i in databool:
