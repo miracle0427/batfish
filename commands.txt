@@ -1,2 +1,2 @@
 init-testrig test_rigs/fattree-6
-get smt-mul
+get smt-mul failures=1

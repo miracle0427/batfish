@@ -444,11 +444,13 @@ public class Encoder {
 
   // Add a boolean variable to the model
   void add(BoolExpr e) {
+    _unsatCore.track(_solver, _ctx, e);
+    /*
     if (_question.getFailures() == 0) {
       _unsatCore.track(_solver, _ctx, e);
     } else {
       _modelAnd = mkAnd(_modelAnd, e);
-    }
+    }*/
   }
 
   /*
@@ -478,7 +480,7 @@ public class Encoder {
         add(mkEq(var, mkInt(0)));
       }
     } else {
-      add(mkLe(sum, mkInt(k)));
+      add(mkEq(sum, mkInt(k)));
     }
   }
 

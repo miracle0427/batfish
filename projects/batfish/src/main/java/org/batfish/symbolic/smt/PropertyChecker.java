@@ -638,15 +638,10 @@ public class PropertyChecker {
                   BoolExpr r = prop.get(router);
                   allProp = newenc.mkAnd(allProp, r);
                 }
-                if (question.getFailures() == 0) {
-                  //newenc.add(allProp);
-                } else {
-                  newenc._propertRep = allProp;
-                }
-                //newenc.add(allProp);
+                newenc.add(allProp);
 
                 addFailureConstraints(newenc, destPorts1, failOptions);
-                newenc.setIfReq();
+                //newenc.setIfReq();
                 enc = newenc;
 
               }
