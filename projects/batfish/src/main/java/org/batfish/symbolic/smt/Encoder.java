@@ -9,6 +9,9 @@ import com.microsoft.z3.Model;
 import com.microsoft.z3.Solver;
 import com.microsoft.z3.Status;
 import com.microsoft.z3.Tactic;
+import com.microsoft.z3.Sort;
+import com.microsoft.z3.Symbol;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -84,6 +87,11 @@ public class Encoder {
 
   private UnsatCore _unsatCore;
 
+  public BoolExpr _modelAnd;
+
+  public BoolExpr _propertRep;
+
+  private List<Symbol> _allFailList;
   //private Map<String, Map<String, BoolExpr>> _dataFwdCons;
   public Map<Integer, Table2<String, GraphEdge, BoolExpr>> _AllDataForwarding;
 
@@ -173,7 +181,7 @@ public class Encoder {
     } else {
       _solver = solver;
     }
-
+    _modelAnd = mkTrue();
     _symbolicFailures = new SymbolicFailures(this._ctx);
 
     if (vars == null) {
@@ -191,6 +199,7 @@ public class Encoder {
     _unsatCore = new UnsatCore(ENABLE_UNSAT_CORE);
 
     initFailedLinkVariables();
+    trackFailVars();
     initSlices(_question.getHeaderSpace(), graph);
   }
 
@@ -223,6 +232,41 @@ public class Encoder {
       }
     }
   }
+
+
+
+  private void trackFailVars() {
+    _allFailList = new ArrayList<>();
+    Set<String> existAlready = new HashSet<>();
+    for (List<GraphEdge> edges : _graph.getEdgeMap().values()) {
+      for (GraphEdge ge : edges) {
+        if (ge.getPeer() == null) {
+          Interface i = ge.getStart();
+          String name = getId() + "_FAILED-EDGE_" + ge.getRouter() + "_" + i.getName();
+          if (!existAlready.contains(name)) {
+            Symbol temp = getCtx().mkSymbol(name);
+            _allFailList.add(temp); 
+            existAlready.add(name);
+          }
+        }
+      }
+    }
+    for (Entry<String, Set<String>> entry : _graph.getNeighbors().entrySet()) {
+      String router = entry.getKey();
+      Set<String> peers = entry.getValue();
+      for (String peer : peers) {
+        // sort names for unique
+        String pair = (router.compareTo(peer) < 0 ? router + "_" + peer : peer + "_" + router);
+        String name = getId() + "_FAILED-EDGE_" + pair;
+        if (!existAlready.contains(name)) {
+          Symbol temp = getCtx().mkSymbol(name);
+          _allFailList.add(temp); 
+          existAlready.add(name);
+        }
+      }
+    }
+  }
+
 
   /*
    * Initialize each encoding slice.
@@ -400,7 +444,11 @@ public class Encoder {
 
   // Add a boolean variable to the model
   void add(BoolExpr e) {
-    _unsatCore.track(_solver, _ctx, e);
+    if (_question.getFailures() == 0) {
+      _unsatCore.track(_solver, _ctx, e);
+    } else {
+      _modelAnd = mkAnd(_modelAnd, e);
+    }
   }
 
   /*
@@ -705,6 +753,64 @@ public class Encoder {
 
     return mkAnd(acc1, acc2);
   }
+
+
+
+  void setIfReq() {
+    if (_question.getFailures() != 0) {
+
+      EncoderSlice mainSlice = _slices.get(MAIN_SLICE_NAME);
+      Map<Symbol, Integer> _allBVValues = mainSlice.getAllBVValuesMap();
+
+      List<Symbol> boollist = _slices.get(MAIN_SLICE_NAME).getAllBoolVarsList();
+      List<Symbol> arithlist = _slices.get(MAIN_SLICE_NAME).getAllArithVarsList();
+      List<Symbol> bvlist = _slices.get(MAIN_SLICE_NAME).getAllBVVarsList();
+      
+      int length = boollist.size() + arithlist.size() + bvlist.size() + _allFailList.size();
+
+      int index = 0;
+      Symbol[] names = new Symbol[length];
+      Sort[] sorts = new Sort[length];
+
+      for (Symbol temp : boollist) {
+        //String x = temp.toString().replace("\\|","");
+        names[index] = temp;//getCtx().mkSymbol(x);
+        sorts[index] = getCtx().getBoolSort();
+        //System.out.println(temp.toString());
+        index = index + 1;
+      }    
+      for (Symbol temp : arithlist) {
+        //String x = temp.toString().replace("\\|","");
+        names[index] = temp;//getCtx().mkSymbol(x);
+        sorts[index] = getCtx().getIntSort();
+        //System.out.println(temp.toString());
+        index = index + 1;
+      }    
+      for (Symbol temp : bvlist) {
+        //String x = temp.toString().replace("\\|","");
+        names[index] = temp;//getCtx().mkSymbol(x);
+        sorts[index] = getCtx().mkBitVecSort(_allBVValues.get(temp));
+        index = index + 1;
+      }
+
+      for (Symbol temp : _allFailList) {
+        names[index] = temp;
+        sorts[index] = getCtx().getIntSort();
+        index = index + 1;
+      }    
+
+      BoolExpr quick = getCtx().mkForall(sorts,
+        names, 
+      mkImplies(_modelAnd, _propertRep), 1, null , null, null, null);
+
+      _unsatCore.track(_solver, _ctx, quick);
+      //System.out.println(quick);
+
+
+    }
+  }
+
+
 
   /**
    * Checks that a property is always true by seeing if the encoding is unsatisfiable. mkIf the

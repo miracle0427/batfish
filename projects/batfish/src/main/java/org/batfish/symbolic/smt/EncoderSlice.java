@@ -6,6 +6,8 @@ import com.microsoft.z3.BoolExpr;
 import com.microsoft.z3.Context;
 import com.microsoft.z3.Expr;
 import com.microsoft.z3.Solver;
+import com.microsoft.z3.Sort;
+import com.microsoft.z3.Symbol;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -90,6 +92,14 @@ class EncoderSlice {
 
   private Table2<String, Protocol, Set<Prefix>> _originatedNetworks;
 
+  private List<Symbol> _allBoolVarsList;
+
+  private List<Symbol> _allArithVarsList;
+
+  private List<Symbol> _allBVVarsList;
+
+  private Map<Symbol, Integer> _allBVValuesMap;
+
   /**
    * Create a new encoding slice
    *
@@ -119,6 +129,12 @@ class EncoderSlice {
     _logicalGraph = new LogicalGraph(graph);
     _symbolicDecisions = new SymbolicDecisions();
     _symbolicPacket = new SymbolicPacket(enc.getCtx(), enc.getId(), _sliceName);
+
+    _allBoolVarsList = new ArrayList<>();
+    _allArithVarsList = new ArrayList<>();
+    _allBVVarsList = new ArrayList<>();
+    _allBVValuesMap = new HashMap<>();
+
 
     enc.getAllVariables().put(_symbolicPacket.getDstIp().toString(), _symbolicPacket.getDstIp());
     enc.getAllVariables().put(_symbolicPacket.getSrcIp().toString(), _symbolicPacket.getSrcIp());
@@ -518,6 +534,8 @@ class EncoderSlice {
           BoolExpr choiceVar = getCtx().mkBoolConst(chName);
           getAllVariables().put(choiceVar.toString(), choiceVar);
           edgeMap.put(e, choiceVar);
+          Symbol temp = getCtx().mkSymbol(chName);
+          _allBoolVarsList.add(temp);
         }
       }
     }
@@ -538,6 +556,8 @@ class EncoderSlice {
         BoolExpr cForward = getCtx().mkBoolConst(cName);
         getAllVariables().put(cForward.toString(), cForward);
         _symbolicDecisions.getControlForwarding().put(router, edge, cForward);
+        Symbol temp = getCtx().mkSymbol(cName);
+        _allBoolVarsList.add(temp);
 
         // Don't add data forwarding variable for abstract edge
         if (!edge.isAbstract()) {
@@ -546,6 +566,8 @@ class EncoderSlice {
           BoolExpr dForward = getCtx().mkBoolConst(dName);
           getAllVariables().put(dForward.toString(), dForward);
           _symbolicDecisions.getDataForwarding().put(router, edge, dForward);
+          Symbol temp2 = getCtx().mkSymbol(cName);
+          _allBoolVarsList.add(temp2);
         }
       }
     }
@@ -568,6 +590,12 @@ class EncoderSlice {
                 _encoder.getId(), _sliceName, router, "OVERALL", "BEST", "None");
         String historyName = name + "_history";
         SymbolicEnum<Protocol> h = new SymbolicEnum<>(this, allProtos, historyName);
+        if (h.getBitVec()!=null) {
+          Symbol temp = getCtx().mkSymbol(historyName);
+          _allBVVarsList.add(temp);
+          _allBVValuesMap.put(temp, h._numBits);
+        }
+
         SymbolicRoute evBest =
             new SymbolicRoute(this, name, router, Protocol.BEST, _optimizations, h, false);
         getAllSymbolicRecords().add(evBest);
@@ -2489,6 +2517,107 @@ class EncoderSlice {
     }
   }
 
+
+  /*
+   * Add to a map
+   */
+  private void addtoMap() {
+
+    Symbol temp;
+    for (SymbolicRoute vars : getAllSymbolicRecords()) {
+      String symName = vars.getName();
+      temp = getCtx().mkSymbol(symName + "_permitted");
+      _allBoolVarsList.add(temp);
+
+      if (vars.getAdminDist() != null) {
+        temp = getCtx().mkSymbol(symName + "_adminDist");
+        _allArithVarsList.add(temp);        
+      }
+      if (vars.getMed() != null) {
+        temp = getCtx().mkSymbol(symName + "_med");
+        _allArithVarsList.add(temp);        
+      }
+      if (vars.getLocalPref() != null) {
+        temp = getCtx().mkSymbol(symName + "_localPref");
+        _allArithVarsList.add(temp);        
+      }
+      if (vars.getPrefixLength() != null) {
+        temp = getCtx().mkSymbol(symName + "_prefixLength");
+        _allArithVarsList.add(temp);        
+      }
+      if (vars.getMetric() != null) {
+        temp = getCtx().mkSymbol(symName + "_metric");
+        _allArithVarsList.add(temp);        
+      }
+      if (vars.getBgpInternal() != null) {
+        temp = getCtx().mkSymbol(symName + "_bgpInternal");
+        _allBoolVarsList.add(temp);
+      }
+      if (vars.getIgpMetric() != null) {
+        temp = getCtx().mkSymbol(symName + "_igpMetric");
+        _allArithVarsList.add(temp);        
+      }
+      if (vars.getRouterId() != null) {
+        temp = getCtx().mkSymbol(symName + "_routerID");
+        _allArithVarsList.add(temp);        
+      }
+      if (vars.getRouterId() != null) {
+        temp = getCtx().mkSymbol(symName + "_routerID");
+        _allArithVarsList.add(temp);        
+      }
+      if (vars.getRouterId() != null) {
+        temp = getCtx().mkSymbol(symName + "_routerID");
+        _allArithVarsList.add(temp);        
+      }
+      if (vars.getOspfArea() != null) {
+        temp = getCtx().mkSymbol(symName + "_ospfArea");
+        _allBVVarsList.add(temp);
+        _allBVValuesMap.put(temp, vars.getOspfArea()._numBits);
+
+      }
+      if (vars.getOspfType() != null) {
+        temp = getCtx().mkSymbol(symName + "_ospfType");
+        _allBVVarsList.add(temp); 
+        _allBVValuesMap.put(temp, vars.getOspfType()._numBits);       
+      }
+
+    }
+
+    String packname = _encoder.getId() + "_" + _sliceName;
+    temp = getCtx().mkSymbol(packname + "dst-port");
+    _allArithVarsList.add(temp);        
+
+    temp = getCtx().mkSymbol(packname + "src-port");
+    _allArithVarsList.add(temp);        
+
+    temp = getCtx().mkSymbol(packname + "icmp-type");
+    _allArithVarsList.add(temp);        
+
+    temp = getCtx().mkSymbol(packname + "ip-protocol");
+    _allArithVarsList.add(temp);        
+
+    temp = getCtx().mkSymbol(packname + "icmp-code");
+    _allArithVarsList.add(temp);        
+
+    if (_symbolicPacket.getDstIp() != null) {
+      String dstname = packname + "dst-ip";
+      temp = getCtx().mkSymbol(dstname);
+      _allBVVarsList.add(temp);
+      _allBVValuesMap.put(temp, 32);
+
+    }
+
+    if (_symbolicPacket.getSrcIp() != null) {
+      String srcname = packname + "src-ip";
+      temp = getCtx().mkSymbol(srcname);
+      _allBVVarsList.add(temp);
+      _allBVValuesMap.put(temp, 32);
+
+    }
+
+  }
+
+
   /*
    * Create boolean expression for a variable being within a bound.
    */
@@ -2799,4 +2928,21 @@ class EncoderSlice {
   Table2<String, Protocol, Set<Prefix>> getOriginatedNetworks() {
     return _originatedNetworks;
   }
+
+  List<Symbol> getAllBoolVarsList() {
+    return _allBoolVarsList;
+  }
+
+  List<Symbol> getAllArithVarsList() {
+    return _allArithVarsList;
+  }
+
+  List<Symbol> getAllBVVarsList() {
+    return _allBVVarsList;
+  }
+
+  Map<Symbol, Integer> getAllBVValuesMap() {
+    return _allBVValuesMap;
+  }
+
 }

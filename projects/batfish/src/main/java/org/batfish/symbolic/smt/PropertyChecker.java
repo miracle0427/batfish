@@ -618,10 +618,15 @@ public class PropertyChecker {
                   BoolExpr r = prop.get(router);
                   allProp = newenc.mkAnd(allProp, r);
                 }
-                newenc.add(allProp);
+                if (question.getFailures() == 0) {
+                  newenc.add(allProp);
+                } else {
+                  newenc._propertRep = allProp;
+                }
                 //newenc.add(allProp);
 
                 addFailureConstraints(newenc, destPorts1, failOptions);
+                newenc.setIfReq();
                 enc = newenc;
 
               }
@@ -668,8 +673,8 @@ public class PropertyChecker {
                 writer.close();
               } catch (IOException e) {
                 System.out.println("IO error");
-              }
-
+              } 
+              /*
               long startVerify = System.currentTimeMillis();
               Tuple<VerificationResult, Model> tup = enc.verify();
               if (true) {
@@ -698,7 +703,7 @@ public class PropertyChecker {
 
               synchronized (o) {
                 result[0] = res;
-              }
+              }*/
               return false;
             });
 
