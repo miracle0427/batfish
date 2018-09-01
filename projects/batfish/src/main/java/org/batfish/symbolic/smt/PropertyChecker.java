@@ -639,7 +639,7 @@ public class PropertyChecker {
                   allProp = newenc.mkAnd(allProp, r);
                 }
                 if (question.getFailures() == 0) {
-                  newenc.add(allProp);
+                  //newenc.add(allProp);
                 } else {
                   newenc._propertRep = allProp;
                 }

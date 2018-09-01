@@ -49620,7 +49620,6 @@
                 a!1
                 (= |0__reachable-id_e3-0| 0))))
   (ite (or false false) (= |0__reachable-id_e3-0| 1) a!2))))
-(assert (and true |0__reachable_e0-0|))
 (assert (= |0_FAILED-EDGE_e0-0_GigabitEthernet0/4| 0))
 (assert (=> (= (bvand |0_dst-ip| #xfffffffe) (bvand #x14000002 #xfffffffe))
     (= |0_FAILED-EDGE_agg0-0_e0-1| 0)))
