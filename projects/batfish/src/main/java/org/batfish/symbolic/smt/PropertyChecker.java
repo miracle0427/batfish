@@ -80,6 +80,16 @@ public class PropertyChecker {
     public IpWildcard srcip;
     public IpWildcard dstip;
     public int val;
+    public String ingressNodeRegex="";
+    public String finalNodeRegex="";
+
+    public Ips(String src, String dst, String value, String ingressnode, String finalnode) {
+      srcip = new IpWildcard(src);
+      dstip = new IpWildcard(dst);
+      val =  Integer.parseInt(value);
+      ingressNodeRegex = ingressnode;
+      finalNodeRegex = finalnode;
+    }
 
     public Ips(String src, String dst, String value) {
       srcip = new IpWildcard(src);
@@ -535,7 +545,11 @@ public class PropertyChecker {
         String[] split = line.split(",");
         //System.out.println(split[0] + "" + split[1] + "" + split[2]);
         Ips ip_set;
-        ip_set = new Ips(split[0], split[1], split[2]);
+        if (split.length >3) {
+          ip_set = new Ips(split[0], split[1], split[2], split[3], split[4]);
+        } else {
+          ip_set = new Ips(split[0], split[1], split[2]);
+        }
         ips.add(ip_set);
         srcIps.add(ip_set.srcip);
         dstIps.add(ip_set.dstip);
@@ -583,6 +597,12 @@ public class PropertyChecker {
                 h.setSrcIps(sIps);
                 h.setDstIps(dIps);
                 q.setHeaderSpace(h);
+                if (currIp.ingressNodeRegex != "") {
+                  q.setIngressNodeRegex(currIp.ingressNodeRegex);  
+                }
+                if (currIp.finalNodeRegex != "") {
+                  q.setFinalNodeRegex(currIp.finalNodeRegex);
+                }
                 HeaderLocationQuestion question = new HeaderLocationQuestion(q);
 
                 // Get the EC graph and mapping
@@ -666,7 +686,6 @@ public class PropertyChecker {
                 linkConstraint = ctx.mkOr(c1, linkConstraint);
               }
               enc.add(linkConstraint);
-              
               try {
                 BufferedWriter writer = new BufferedWriter(new FileWriter("enc.smt"));
                 writer.write(enc.getSolver().toString());
