@@ -1,79 +1,150 @@
-(declare-fun |0_FAILED-EDGE_R2_Loopback0| () Int)
-(declare-fun |0_FAILED-EDGE_R1_Loopback1| () Int)
-(declare-fun |0_FAILED-EDGE_R1_R2| () Int)
-(declare-fun |0_FAILED-EDGE_R1_Loopback0| () Int)
+(declare-fun |0_src-ip| () (_ BitVec 32))
+(declare-fun |0_dst-ip| () (_ BitVec 32))
+(declare-fun |0__B_GigabitEthernet0/1_INBOUND_1| () Bool)
+(declare-fun |0__C_GigabitEthernet0/1_INBOUND_1| () Bool)
+(declare-fun |0_FAILED-EDGE_A_B| () Int)
+(declare-fun |0_FAILED-EDGE_A_GigabitEthernet0/3| () Int)
+(declare-fun |0_FAILED-EDGE_B_C| () Int)
+(declare-fun |0_FAILED-EDGE_C_GigabitEthernet0/3| () Int)
+(declare-fun |0_FAILED-EDGE_A_GigabitEthernet0/4| () Int)
 (declare-fun |0_dst-port| () Int)
 (declare-fun |0_src-port| () Int)
 (declare-fun |0_icmp-type| () Int)
 (declare-fun |0_ip-protocol| () Int)
 (declare-fun |0_icmp-code| () Int)
-(declare-fun |0_R2_OVERALL_BEST_None_routerID| () Int)
-(declare-fun |0_R2_OVERALL_BEST_None_metric| () Int)
-(declare-fun |0_R2_OVERALL_BEST_None_prefixLength| () Int)
-(declare-fun |0_R1_OVERALL_BEST_None_routerID| () Int)
-(declare-fun |0_R1_OVERALL_BEST_None_metric| () Int)
-(declare-fun |0_R1_OVERALL_BEST_None_prefixLength| () Int)
-(declare-fun |0_R2_BGP_SINGLE-EXPORT__metric| () Int)
-(declare-fun |0_R2_BGP_SINGLE-EXPORT__prefixLength| () Int)
-(declare-fun |0_R2_BGP_IMPORT_Serial0_metric| () Int)
-(declare-fun |0_R2_BGP_IMPORT_Serial0_prefixLength| () Int)
-(declare-fun |0_R1_BGP_SINGLE-EXPORT__metric| () Int)
-(declare-fun |0_R1_BGP_SINGLE-EXPORT__prefixLength| () Int)
-(declare-fun |0_R1_BGP_IMPORT_Serial0_metric| () Int)
-(declare-fun |0_R1_BGP_IMPORT_Serial0_prefixLength| () Int)
-(declare-fun |0_R2_BGP_IMPORT_Serial0_permitted| () Bool)
-(declare-fun |0_R1_BGP_SINGLE-EXPORT__permitted| () Bool)
-(declare-fun bgpline_1_Remove () Bool)
-(declare-fun bgpline_2_Remove () Bool)
-(declare-fun |0_42.42.42.0/24R2BGPRemoveFilterSoft| () Bool)
-(declare-fun |0_dst-ip| () (_ BitVec 32))
-(declare-fun |0_R2ImportFilterAddSoft0_R2_BGP_IMPORT_Serial0| () Bool)
-(declare-fun |0_CONTROL-FORWARDING_R1_Serial0| () Bool)
-(declare-fun |0_R2_BGP_SINGLE-EXPORT__permitted| () Bool)
-(declare-fun |0_69.69.69.0/24ExportRemoveSoft0_R2_OVERALL_BEST_None| () Bool)
-(declare-fun |0_R2_OVERALL_BEST_None_permitted| () Bool)
-(declare-fun |0_R1_BGP_IMPORT_Serial0_permitted| () Bool)
-(declare-fun |0_42.42.42.0/24R1BGPRemoveFilterSoft| () Bool)
-(declare-fun |0_R1ImportFilterAddSoft0_R1_BGP_IMPORT_Serial0| () Bool)
-(declare-fun |0_CONTROL-FORWARDING_R2_Serial0| () Bool)
-(declare-fun |0_22.22.22.0/24ExportRemoveSoft0_R1_OVERALL_BEST_None| () Bool)
-(declare-fun |0_R1_OVERALL_BEST_None_permitted| () Bool)
-(declare-fun |0_R2_BGP_IMPORT_Serial0_choice| () Bool)
-(declare-fun |0_R1_BGP_IMPORT_Serial0_choice| () Bool)
-(declare-fun |0_CONTROL-FORWARDING_R2_Loopback0| () Bool)
-(declare-fun |0_CONTROL-FORWARDING_R1_Loopback1| () Bool)
-(declare-fun |0_CONTROL-FORWARDING_R1_Loopback0| () Bool)
-(declare-fun |0_DATA-FORWARDING_R2_Loopback0| () Bool)
-(declare-fun |0_0__R2_Loopback0_OUTBOUND_SOFTAdd| () Bool)
-(declare-fun |0_DATA-FORWARDING_R2_Serial0| () Bool)
-(declare-fun |0_R2-StaticRouteAddSoft-R2,Serial0 --> R1,Serial0| () Bool)
-(declare-fun |0_0__R2_Serial0_OUTBOUND_SOFTAdd| () Bool)
-(declare-fun |0_DATA-FORWARDING_R1_Serial0| () Bool)
-(declare-fun |0_R1-StaticRouteAddSoft-R1,Serial0 --> R2,Serial0| () Bool)
-(declare-fun |0_0__R1_Serial0_OUTBOUND_SOFTAdd| () Bool)
-(declare-fun |0_DATA-FORWARDING_R1_Loopback1| () Bool)
-(declare-fun |0_0__R1_Loopback1_OUTBOUND_SOFTAdd| () Bool)
-(declare-fun |0_DATA-FORWARDING_R1_Loopback0| () Bool)
-(declare-fun |0_0__R1_Loopback0_OUTBOUND_SOFTAdd| () Bool)
-(declare-fun |0_src-ip| () (_ BitVec 32))
-(declare-fun |0__reachable-id_R2| () Int)
-(declare-fun |0__reachable_R2| () Bool)
-(declare-fun |0__reachable-id_R1| () Int)
-(declare-fun |0__reachable_R1| () Bool)
-(declare-fun |0_0__R1_Serial0_INBOUND_SOFTAdd| () Bool)
-(declare-fun |0_0__R2_Serial0_INBOUND_SOFTAdd| () Bool)
-(assert (>= |0_FAILED-EDGE_R2_Loopback0| 0))
-(assert (<= |0_FAILED-EDGE_R2_Loopback0| 1))
-(assert (>= |0_FAILED-EDGE_R1_Loopback1| 0))
-(assert (<= |0_FAILED-EDGE_R1_Loopback1| 1))
-(assert (>= |0_FAILED-EDGE_R1_R2| 0))
-(assert (<= |0_FAILED-EDGE_R1_R2| 1))
-(assert (>= |0_FAILED-EDGE_R1_Loopback0| 0))
-(assert (<= |0_FAILED-EDGE_R1_Loopback0| 1))
-(assert (= |0_FAILED-EDGE_R2_Loopback0| 0))
-(assert (= |0_FAILED-EDGE_R1_Loopback1| 0))
-(assert (= |0_FAILED-EDGE_R1_R2| 0))
-(assert (= |0_FAILED-EDGE_R1_Loopback0| 0))
+(declare-fun |0_A_OVERALL_BEST_None_adminDist| () Int)
+(declare-fun |0_A_OVERALL_BEST_None_metric| () Int)
+(declare-fun |0_A_OVERALL_BEST_None_prefixLength| () Int)
+(declare-fun |0_A_OSPF_BEST_None_metric| () Int)
+(declare-fun |0_A_OSPF_BEST_None_prefixLength| () Int)
+(declare-fun |0_A_CONNECTED_BEST_None_prefixLength| () Int)
+(declare-fun |0_B_OVERALL_BEST_None_metric| () Int)
+(declare-fun |0_B_OVERALL_BEST_None_prefixLength| () Int)
+(declare-fun |0_C_OVERALL_BEST_None_metric| () Int)
+(declare-fun |0_C_OVERALL_BEST_None_prefixLength| () Int)
+(declare-fun |0_A_OSPF_SINGLE-EXPORT__metric| () Int)
+(declare-fun |0_A_OSPF_SINGLE-EXPORT__prefixLength| () Int)
+(declare-fun |0_A_OSPF_IMPORT_GigabitEthernet0/1_metric| () Int)
+(declare-fun |0_A_OSPF_IMPORT_GigabitEthernet0/1_prefixLength| () Int)
+(declare-fun |0_A_CONNECTED_IMPORT_GigabitEthernet0/3_prefixLength| () Int)
+(declare-fun |0_B_OSPF_SINGLE-EXPORT__metric| () Int)
+(declare-fun |0_B_OSPF_SINGLE-EXPORT__prefixLength| () Int)
+(declare-fun |0_B_OSPF_IMPORT_GigabitEthernet0/1_metric| () Int)
+(declare-fun |0_B_OSPF_IMPORT_GigabitEthernet0/1_prefixLength| () Int)
+(declare-fun |0_B_OSPF_IMPORT_GigabitEthernet0/2_metric| () Int)
+(declare-fun |0_B_OSPF_IMPORT_GigabitEthernet0/2_prefixLength| () Int)
+(declare-fun |0_C_OSPF_SINGLE-EXPORT__metric| () Int)
+(declare-fun |0_C_OSPF_SINGLE-EXPORT__prefixLength| () Int)
+(declare-fun |0_C_OSPF_IMPORT_GigabitEthernet0/1_metric| () Int)
+(declare-fun |0_C_OSPF_IMPORT_GigabitEthernet0/1_prefixLength| () Int)
+(declare-fun |0_A_OSPF_IMPORT_GigabitEthernet0/1_permitted| () Bool)
+(declare-fun |0_B_OSPF_SINGLE-EXPORT__permitted| () Bool)
+(declare-fun |0_AImportFilterAddSoft0_A_OSPF_IMPORT_GigabitEthernet0/1| () Bool)
+(declare-fun |0_A_OSPF_SINGLE-EXPORT__permitted| () Bool)
+(declare-fun |0_A_OSPF_BEST_None_permitted| () Bool)
+(declare-fun |0_AOSPFExportRemoveSoft104.0.0.0/8| () Bool)
+(declare-fun |0_A_CONNECTED_IMPORT_GigabitEthernet0/3_permitted| () Bool)
+(declare-fun |0_B_OSPF_IMPORT_GigabitEthernet0/1_permitted| () Bool)
+(declare-fun |0_BImportFilterAddSoft0_B_OSPF_IMPORT_GigabitEthernet0/1| () Bool)
+(declare-fun |0_B_OVERALL_BEST_None_permitted| () Bool)
+(declare-fun |0_B_OSPF_IMPORT_GigabitEthernet0/2_permitted| () Bool)
+(declare-fun |0_C_OSPF_SINGLE-EXPORT__permitted| () Bool)
+(declare-fun |0_BImportFilterAddSoft0_B_OSPF_IMPORT_GigabitEthernet0/2| () Bool)
+(declare-fun |0_C_OSPF_IMPORT_GigabitEthernet0/1_permitted| () Bool)
+(declare-fun |0_CImportFilterAddSoft0_C_OSPF_IMPORT_GigabitEthernet0/1| () Bool)
+(declare-fun |0_C_OVERALL_BEST_None_permitted| () Bool)
+(declare-fun |0_A_CONNECTED_BEST_None_permitted| () Bool)
+(declare-fun |0_A_OSPF_IMPORT_GigabitEthernet0/1_choice| () Bool)
+(declare-fun |0_A_CONNECTED_IMPORT_GigabitEthernet0/3_choice| () Bool)
+(declare-fun |0_B_OSPF_IMPORT_GigabitEthernet0/1_choice| () Bool)
+(declare-fun |0_B_OSPF_IMPORT_GigabitEthernet0/2_choice| () Bool)
+(declare-fun |0_C_OSPF_IMPORT_GigabitEthernet0/1_choice| () Bool)
+(declare-fun |0_A_OVERALL_BEST_None_permitted| () Bool)
+(declare-fun |0_A_OVERALL_BEST_None_history| () (_ BitVec 1))
+(declare-fun |0_CONTROL-FORWARDING_A_GigabitEthernet0/1| () Bool)
+(declare-fun |0_CONTROL-FORWARDING_A_GigabitEthernet0/3| () Bool)
+(declare-fun |0_CONTROL-FORWARDING_A_GigabitEthernet0/4| () Bool)
+(declare-fun |0_CONTROL-FORWARDING_B_GigabitEthernet0/1| () Bool)
+(declare-fun |0_CONTROL-FORWARDING_B_GigabitEthernet0/2| () Bool)
+(declare-fun |0_CONTROL-FORWARDING_C_GigabitEthernet0/1| () Bool)
+(declare-fun |0_CONTROL-FORWARDING_C_GigabitEthernet0/3| () Bool)
+(declare-fun |0_DATA-FORWARDING_A_GigabitEthernet0/3| () Bool)
+(declare-fun |0_0__A_GigabitEthernet0/3_OUTBOUND_SOFTAdd| () Bool)
+(declare-fun |0_DATA-FORWARDING_A_GigabitEthernet0/4| () Bool)
+(declare-fun |0_0__A_GigabitEthernet0/4_OUTBOUND_SOFTAdd| () Bool)
+(declare-fun |0_DATA-FORWARDING_A_GigabitEthernet0/1| () Bool)
+(declare-fun |0_A-StaticRouteAddSoft-A,GigabitEthernet0/1 --> B,GigabitEthernet0/1|
+             ()
+             Bool)
+(declare-fun |0_0__A_GigabitEthernet0/1_OUTBOUND_SOFTAdd| () Bool)
+(declare-fun |0_DATA-FORWARDING_B_GigabitEthernet0/1| () Bool)
+(declare-fun |0_B-StaticRouteAddSoft-B,GigabitEthernet0/1 --> A,GigabitEthernet0/1|
+             ()
+             Bool)
+(declare-fun |0_0__B_GigabitEthernet0/1_OUTBOUND_SOFTAdd| () Bool)
+(declare-fun |0_DATA-FORWARDING_B_GigabitEthernet0/2| () Bool)
+(declare-fun |0_B-StaticRouteAddSoft-B,GigabitEthernet0/2 --> C,GigabitEthernet0/1|
+             ()
+             Bool)
+(declare-fun |0_0__B_GigabitEthernet0/2_OUTBOUND_SOFTAdd| () Bool)
+(declare-fun |0_DATA-FORWARDING_C_GigabitEthernet0/3| () Bool)
+(declare-fun |0_0__C_GigabitEthernet0/3_OUTBOUND_SOFTAdd| () Bool)
+(declare-fun |0_DATA-FORWARDING_C_GigabitEthernet0/1| () Bool)
+(declare-fun |0_C-StaticRouteAddSoft-C,GigabitEthernet0/1 --> B,GigabitEthernet0/2|
+             ()
+             Bool)
+(declare-fun |0_0__C_GigabitEthernet0/1_OUTBOUND_SOFTAdd| () Bool)
+(declare-fun |0__reachable-id_A| () Int)
+(declare-fun |0__reachable_A| () Bool)
+(declare-fun |0__reachable-id_B| () Int)
+(declare-fun |0__reachable_B| () Bool)
+(declare-fun |0__reachable-id_C| () Int)
+(declare-fun |0__reachable_C| () Bool)
+(declare-fun |0_0__B_GigabitEthernet0/1_INBOUND_1Remove| () Bool)
+(declare-fun |0_0__C_GigabitEthernet0/1_INBOUND_1Remove| () Bool)
+(declare-fun |0_0__A_GigabitEthernet0/1_INBOUND_SOFTAdd| () Bool)
+(declare-fun |0_0__B_GigabitEthernet0/2_INBOUND_SOFTAdd| () Bool)
+(assert (let ((a!1 (ite (and (= (bvand |0_dst-ip| #x00000000)
+                        (bvand #x00000000 #x00000000))
+                     (= (bvand |0_src-ip| #x00000000)
+                        (bvand #x00000000 #x00000000)))
+                true
+                false)))
+(let ((a!2 (ite (and (= (bvand |0_dst-ip| #x00000000)
+                        (bvand #x00000000 #x00000000))
+                     (= (bvand |0_src-ip| #xff000000)
+                        (bvand #x68000000 #xff000000)))
+                false
+                a!1)))
+  (= |0__B_GigabitEthernet0/1_INBOUND_1| a!2))))
+(assert (let ((a!1 (ite (and (= (bvand |0_dst-ip| #x00000000)
+                        (bvand #x00000000 #x00000000))
+                     (= (bvand |0_src-ip| #x00000000)
+                        (bvand #x00000000 #x00000000)))
+                true
+                false)))
+(let ((a!2 (ite (and (= (bvand |0_dst-ip| #x00000000)
+                        (bvand #x00000000 #x00000000))
+                     (= (bvand |0_src-ip| #xff000000)
+                        (bvand #x68000000 #xff000000)))
+                false
+                a!1)))
+  (= |0__C_GigabitEthernet0/1_INBOUND_1| a!2))))
+(assert (>= |0_FAILED-EDGE_A_B| 0))
+(assert (<= |0_FAILED-EDGE_A_B| 1))
+(assert (>= |0_FAILED-EDGE_A_GigabitEthernet0/3| 0))
+(assert (<= |0_FAILED-EDGE_A_GigabitEthernet0/3| 1))
+(assert (>= |0_FAILED-EDGE_B_C| 0))
+(assert (<= |0_FAILED-EDGE_B_C| 1))
+(assert (>= |0_FAILED-EDGE_C_GigabitEthernet0/3| 0))
+(assert (<= |0_FAILED-EDGE_C_GigabitEthernet0/3| 1))
+(assert (>= |0_FAILED-EDGE_A_GigabitEthernet0/4| 0))
+(assert (<= |0_FAILED-EDGE_A_GigabitEthernet0/4| 1))
+(assert (= |0_FAILED-EDGE_A_B| 0))
+(assert (= |0_FAILED-EDGE_A_GigabitEthernet0/3| 0))
+(assert (= |0_FAILED-EDGE_B_C| 0))
+(assert (= |0_FAILED-EDGE_C_GigabitEthernet0/3| 0))
+(assert (= |0_FAILED-EDGE_A_GigabitEthernet0/4| 0))
 (assert (>= |0_dst-port| 0))
 (assert (>= |0_src-port| 0))
 (assert (< |0_dst-port| 65536))
@@ -84,51 +155,105 @@
 (assert (<= |0_ip-protocol| 256))
 (assert (>= |0_icmp-code| 0))
 (assert (< |0_icmp-code| 16))
-(assert (>= |0_R2_OVERALL_BEST_None_routerID| 0))
-(assert (>= |0_R2_OVERALL_BEST_None_metric| 0))
-(assert (< |0_R2_OVERALL_BEST_None_metric| 65536))
-(assert (>= |0_R2_OVERALL_BEST_None_prefixLength| 0))
-(assert (<= |0_R2_OVERALL_BEST_None_prefixLength| 32))
-(assert (>= |0_R1_OVERALL_BEST_None_routerID| 0))
-(assert (>= |0_R1_OVERALL_BEST_None_metric| 0))
-(assert (< |0_R1_OVERALL_BEST_None_metric| 65536))
-(assert (>= |0_R1_OVERALL_BEST_None_prefixLength| 0))
-(assert (<= |0_R1_OVERALL_BEST_None_prefixLength| 32))
-(assert (>= |0_R2_BGP_SINGLE-EXPORT__metric| 0))
-(assert (< |0_R2_BGP_SINGLE-EXPORT__metric| 65536))
-(assert (>= |0_R2_BGP_SINGLE-EXPORT__prefixLength| 0))
-(assert (<= |0_R2_BGP_SINGLE-EXPORT__prefixLength| 32))
-(assert (>= |0_R2_BGP_IMPORT_Serial0_metric| 0))
-(assert (< |0_R2_BGP_IMPORT_Serial0_metric| 65536))
-(assert (>= |0_R2_BGP_IMPORT_Serial0_prefixLength| 0))
-(assert (<= |0_R2_BGP_IMPORT_Serial0_prefixLength| 32))
-(assert (>= |0_R1_BGP_SINGLE-EXPORT__metric| 0))
-(assert (< |0_R1_BGP_SINGLE-EXPORT__metric| 65536))
-(assert (>= |0_R1_BGP_SINGLE-EXPORT__prefixLength| 0))
-(assert (<= |0_R1_BGP_SINGLE-EXPORT__prefixLength| 32))
-(assert (>= |0_R1_BGP_IMPORT_Serial0_metric| 0))
-(assert (< |0_R1_BGP_IMPORT_Serial0_metric| 65536))
-(assert (>= |0_R1_BGP_IMPORT_Serial0_prefixLength| 0))
-(assert (<= |0_R1_BGP_IMPORT_Serial0_prefixLength| 32))
-(assert (let ((a!1 (not (and (>= |0_R1_BGP_SINGLE-EXPORT__prefixLength| 24)
-                     (<= |0_R1_BGP_SINGLE-EXPORT__prefixLength| 26)
-                     (= ((_ extract 31 8) |0_dst-ip|) #x2a2a2a)
-                     |0_42.42.42.0/24R2BGPRemoveFilterSoft|
-                     bgpline_2_Remove))))
-(let ((a!2 (ite (and a!1
-                     (>= |0_R1_BGP_SINGLE-EXPORT__prefixLength| 0)
-                     (<= |0_R1_BGP_SINGLE-EXPORT__prefixLength| 32)
-                     bgpline_1_Remove)
+(assert (>= |0_A_OVERALL_BEST_None_adminDist| 0))
+(assert (< |0_A_OVERALL_BEST_None_adminDist| 256))
+(assert (>= |0_A_OVERALL_BEST_None_metric| 0))
+(assert (< |0_A_OVERALL_BEST_None_metric| 65536))
+(assert (>= |0_A_OVERALL_BEST_None_prefixLength| 0))
+(assert (<= |0_A_OVERALL_BEST_None_prefixLength| 32))
+(assert (>= |0_A_OSPF_BEST_None_metric| 0))
+(assert (< |0_A_OSPF_BEST_None_metric| 65536))
+(assert (>= |0_A_OSPF_BEST_None_prefixLength| 0))
+(assert (<= |0_A_OSPF_BEST_None_prefixLength| 32))
+(assert (>= |0_A_CONNECTED_BEST_None_prefixLength| 0))
+(assert (<= |0_A_CONNECTED_BEST_None_prefixLength| 32))
+(assert (>= |0_B_OVERALL_BEST_None_metric| 0))
+(assert (< |0_B_OVERALL_BEST_None_metric| 65536))
+(assert (>= |0_B_OVERALL_BEST_None_prefixLength| 0))
+(assert (<= |0_B_OVERALL_BEST_None_prefixLength| 32))
+(assert (>= |0_C_OVERALL_BEST_None_metric| 0))
+(assert (< |0_C_OVERALL_BEST_None_metric| 65536))
+(assert (>= |0_C_OVERALL_BEST_None_prefixLength| 0))
+(assert (<= |0_C_OVERALL_BEST_None_prefixLength| 32))
+(assert (>= |0_A_OSPF_SINGLE-EXPORT__metric| 0))
+(assert (< |0_A_OSPF_SINGLE-EXPORT__metric| 65536))
+(assert (>= |0_A_OSPF_SINGLE-EXPORT__prefixLength| 0))
+(assert (<= |0_A_OSPF_SINGLE-EXPORT__prefixLength| 32))
+(assert (>= |0_A_OSPF_IMPORT_GigabitEthernet0/1_metric| 0))
+(assert (< |0_A_OSPF_IMPORT_GigabitEthernet0/1_metric| 65536))
+(assert (>= |0_A_OSPF_IMPORT_GigabitEthernet0/1_prefixLength| 0))
+(assert (<= |0_A_OSPF_IMPORT_GigabitEthernet0/1_prefixLength| 32))
+(assert (>= |0_A_CONNECTED_IMPORT_GigabitEthernet0/3_prefixLength| 0))
+(assert (<= |0_A_CONNECTED_IMPORT_GigabitEthernet0/3_prefixLength| 32))
+(assert (>= |0_B_OSPF_SINGLE-EXPORT__metric| 0))
+(assert (< |0_B_OSPF_SINGLE-EXPORT__metric| 65536))
+(assert (>= |0_B_OSPF_SINGLE-EXPORT__prefixLength| 0))
+(assert (<= |0_B_OSPF_SINGLE-EXPORT__prefixLength| 32))
+(assert (>= |0_B_OSPF_IMPORT_GigabitEthernet0/1_metric| 0))
+(assert (< |0_B_OSPF_IMPORT_GigabitEthernet0/1_metric| 65536))
+(assert (>= |0_B_OSPF_IMPORT_GigabitEthernet0/1_prefixLength| 0))
+(assert (<= |0_B_OSPF_IMPORT_GigabitEthernet0/1_prefixLength| 32))
+(assert (>= |0_B_OSPF_IMPORT_GigabitEthernet0/2_metric| 0))
+(assert (< |0_B_OSPF_IMPORT_GigabitEthernet0/2_metric| 65536))
+(assert (>= |0_B_OSPF_IMPORT_GigabitEthernet0/2_prefixLength| 0))
+(assert (<= |0_B_OSPF_IMPORT_GigabitEthernet0/2_prefixLength| 32))
+(assert (>= |0_C_OSPF_SINGLE-EXPORT__metric| 0))
+(assert (< |0_C_OSPF_SINGLE-EXPORT__metric| 65536))
+(assert (>= |0_C_OSPF_SINGLE-EXPORT__prefixLength| 0))
+(assert (<= |0_C_OSPF_SINGLE-EXPORT__prefixLength| 32))
+(assert (>= |0_C_OSPF_IMPORT_GigabitEthernet0/1_metric| 0))
+(assert (< |0_C_OSPF_IMPORT_GigabitEthernet0/1_metric| 65536))
+(assert (>= |0_C_OSPF_IMPORT_GigabitEthernet0/1_prefixLength| 0))
+(assert (<= |0_C_OSPF_IMPORT_GigabitEthernet0/1_prefixLength| 32))
+(assert (let ((a!1 (ite true
+                (and (= |0_A_OSPF_IMPORT_GigabitEthernet0/1_permitted|
+                        |0_B_OSPF_SINGLE-EXPORT__permitted|)
+                     (= |0_A_OSPF_IMPORT_GigabitEthernet0/1_prefixLength|
+                        |0_B_OSPF_SINGLE-EXPORT__prefixLength|)
+                     true
+                     true
+                     true
+                     (= |0_A_OSPF_IMPORT_GigabitEthernet0/1_metric|
+                        (+ |0_B_OSPF_SINGLE-EXPORT__metric| 1))
+                     true
+                     true
+                     true
+                     true
+                     true
+                     true
+                     true
+                     true)
+                (not |0_A_OSPF_IMPORT_GigabitEthernet0/1_permitted|))))
+  (ite (and (not false)
+            true
+            true
+            |0_B_OSPF_SINGLE-EXPORT__permitted|
+            (= |0_FAILED-EDGE_A_B| 0)
+            |0_AImportFilterAddSoft0_A_OSPF_IMPORT_GigabitEthernet0/1|)
+       (ite true a!1 (not |0_A_OSPF_IMPORT_GigabitEthernet0/1_permitted|))
+       (not |0_A_OSPF_IMPORT_GigabitEthernet0/1_permitted|))))
+(assert (let ((a!1 (and |0_A_OSPF_SINGLE-EXPORT__permitted|
+                true
+                true
+                (= |0_A_OSPF_SINGLE-EXPORT__metric| 0)
+                true
+                (= |0_A_OSPF_SINGLE-EXPORT__prefixLength| 8)
+                true
+                true
+                true
+                true
+                true))
+      (a!2 (ite true
                 (ite true
-                     (and (= |0_R2_BGP_IMPORT_Serial0_permitted|
-                             |0_R1_BGP_SINGLE-EXPORT__permitted|)
-                          (= |0_R2_BGP_IMPORT_Serial0_prefixLength|
-                             |0_R1_BGP_SINGLE-EXPORT__prefixLength|)
+                     (and (= |0_A_OSPF_SINGLE-EXPORT__permitted|
+                             |0_A_OSPF_BEST_None_permitted|)
+                          (= |0_A_OSPF_SINGLE-EXPORT__prefixLength|
+                             |0_A_OSPF_BEST_None_prefixLength|)
                           true
                           true
                           true
-                          (= |0_R2_BGP_IMPORT_Serial0_metric|
-                             |0_R1_BGP_SINGLE-EXPORT__metric|)
+                          (= |0_A_OSPF_SINGLE-EXPORT__metric|
+                             |0_A_OSPF_BEST_None_metric|)
                           true
                           true
                           true
@@ -137,64 +262,96 @@
                           true
                           true
                           true)
-                     (not |0_R2_BGP_IMPORT_Serial0_permitted|))
-                (not |0_R2_BGP_IMPORT_Serial0_permitted|))))
-  (ite (and (not |0_CONTROL-FORWARDING_R1_Serial0|)
+                     (not |0_A_OSPF_SINGLE-EXPORT__permitted|))
+                (not |0_A_OSPF_SINGLE-EXPORT__permitted|))))
+(let ((a!3 (ite (and (and true true)
+                     (= (bvand |0_dst-ip| #xffff0000)
+                        (bvand #x01000000 #xffff0000)))
+                (and |0_A_OSPF_SINGLE-EXPORT__permitted|
+                     true
+                     true
+                     (= |0_A_OSPF_SINGLE-EXPORT__metric| 0)
+                     true
+                     (= |0_A_OSPF_SINGLE-EXPORT__prefixLength| 16)
+                     true
+                     true
+                     true
+                     true
+                     true)
+                (ite (and (and true true)
+                          true
+                          |0_A_OSPF_BEST_None_permitted|
+                          (= |0_FAILED-EDGE_A_B| 0))
+                     a!2
+                     (not |0_A_OSPF_SINGLE-EXPORT__permitted|)))))
+(let ((a!4 (ite (and (and true true)
+                     (= (bvand |0_dst-ip| #xff000000)
+                        (bvand #x68000000 #xff000000))
+                     |0_AOSPFExportRemoveSoft104.0.0.0/8|)
+                a!1
+                a!3)))
+  (ite (and (and true true)
+            (= (bvand |0_dst-ip| #xff000000) (bvand #x69000000 #xff000000)))
+       a!1
+       a!4)))))
+(assert (ite (and true
+          (= (bvand |0_dst-ip| #xff000000) (bvand #x68000000 #xff000000))
+          (= |0_FAILED-EDGE_A_GigabitEthernet0/3| 0))
+     (and |0_A_CONNECTED_IMPORT_GigabitEthernet0/3_permitted|
+          (= |0_A_CONNECTED_IMPORT_GigabitEthernet0/3_prefixLength| 8)
+          true
+          true
+          true)
+     (not |0_A_CONNECTED_IMPORT_GigabitEthernet0/3_permitted|)))
+(assert (let ((a!1 (ite true
+                (and (= |0_B_OSPF_IMPORT_GigabitEthernet0/1_permitted|
+                        |0_A_OSPF_SINGLE-EXPORT__permitted|)
+                     (= |0_B_OSPF_IMPORT_GigabitEthernet0/1_prefixLength|
+                        |0_A_OSPF_SINGLE-EXPORT__prefixLength|)
+                     true
+                     true
+                     true
+                     (= |0_B_OSPF_IMPORT_GigabitEthernet0/1_metric|
+                        (+ |0_A_OSPF_SINGLE-EXPORT__metric| 1))
+                     true
+                     true
+                     true
+                     true
+                     true
+                     true
+                     true
+                     true)
+                (not |0_B_OSPF_IMPORT_GigabitEthernet0/1_permitted|))))
+  (ite (and (not false)
             true
-            |0_R1_BGP_SINGLE-EXPORT__permitted|
-            (= |0_FAILED-EDGE_R1_R2| 0)
-            |0_R2ImportFilterAddSoft0_R2_BGP_IMPORT_Serial0|)
-       a!2
-       (not |0_R2_BGP_IMPORT_Serial0_permitted|)))))
-(assert (let ((a!1 (ite (and (= |0_R2_OVERALL_BEST_None_prefixLength| 24)
-                     (= (bvand |0_dst-ip| #xffffff00)
-                        (bvand #x45454500 #xffffff00))
-                     |0_69.69.69.0/24ExportRemoveSoft0_R2_OVERALL_BEST_None|)
-                24
-                |0_R2_OVERALL_BEST_None_prefixLength|)))
-(let ((a!2 (and (= |0_R2_BGP_SINGLE-EXPORT__permitted|
-                   |0_R2_OVERALL_BEST_None_permitted|)
-                (= |0_R2_BGP_SINGLE-EXPORT__prefixLength| a!1)
-                true
-                true
-                true
-                (= |0_R2_BGP_SINGLE-EXPORT__metric|
-                   (ite true (+ |0_R2_OVERALL_BEST_None_metric| 1) 1))
-                true
-                true
-                true
-                true
-                true
-                true
-                true
-                true)))
-  (ite (and true
             true
-            |0_R2_OVERALL_BEST_None_permitted|
-            (= |0_FAILED-EDGE_R1_R2| 0))
-       (ite true
-            (ite true a!2 (not |0_R2_BGP_SINGLE-EXPORT__permitted|))
-            (not |0_R2_BGP_SINGLE-EXPORT__permitted|))
-       (not |0_R2_BGP_SINGLE-EXPORT__permitted|)))))
-(assert (let ((a!1 (not (and (>= |0_R2_BGP_SINGLE-EXPORT__prefixLength| 24)
-                     (<= |0_R2_BGP_SINGLE-EXPORT__prefixLength| 26)
-                     (= ((_ extract 31 8) |0_dst-ip|) #x2a2a2a)
-                     |0_42.42.42.0/24R1BGPRemoveFilterSoft|
-                     bgpline_2_Remove))))
-(let ((a!2 (ite (and a!1
-                     (>= |0_R2_BGP_SINGLE-EXPORT__prefixLength| 0)
-                     (<= |0_R2_BGP_SINGLE-EXPORT__prefixLength| 32)
-                     bgpline_1_Remove)
+            |0_A_OSPF_SINGLE-EXPORT__permitted|
+            (= |0_FAILED-EDGE_A_B| 0)
+            |0_BImportFilterAddSoft0_B_OSPF_IMPORT_GigabitEthernet0/1|)
+       (ite true a!1 (not |0_B_OSPF_IMPORT_GigabitEthernet0/1_permitted|))
+       (not |0_B_OSPF_IMPORT_GigabitEthernet0/1_permitted|))))
+(assert (let ((a!1 (and |0_B_OSPF_SINGLE-EXPORT__permitted|
+                true
+                true
+                (= |0_B_OSPF_SINGLE-EXPORT__metric| 0)
+                true
+                (= |0_B_OSPF_SINGLE-EXPORT__prefixLength| 16)
+                true
+                true
+                true
+                true
+                true))
+      (a!2 (ite true
                 (ite true
-                     (and (= |0_R1_BGP_IMPORT_Serial0_permitted|
-                             |0_R2_BGP_SINGLE-EXPORT__permitted|)
-                          (= |0_R1_BGP_IMPORT_Serial0_prefixLength|
-                             |0_R2_BGP_SINGLE-EXPORT__prefixLength|)
+                     (and (= |0_B_OSPF_SINGLE-EXPORT__permitted|
+                             |0_B_OVERALL_BEST_None_permitted|)
+                          (= |0_B_OSPF_SINGLE-EXPORT__prefixLength|
+                             |0_B_OVERALL_BEST_None_prefixLength|)
                           true
                           true
                           true
-                          (= |0_R1_BGP_IMPORT_Serial0_metric|
-                             |0_R2_BGP_SINGLE-EXPORT__metric|)
+                          (= |0_B_OSPF_SINGLE-EXPORT__metric|
+                             |0_B_OVERALL_BEST_None_metric|)
                           true
                           true
                           true
@@ -203,326 +360,783 @@
                           true
                           true
                           true)
-                     (not |0_R1_BGP_IMPORT_Serial0_permitted|))
-                (not |0_R1_BGP_IMPORT_Serial0_permitted|))))
-  (ite (and (not |0_CONTROL-FORWARDING_R2_Serial0|)
+                     (not |0_B_OSPF_SINGLE-EXPORT__permitted|))
+                (not |0_B_OSPF_SINGLE-EXPORT__permitted|))))
+(let ((a!3 (ite (and (and true true)
+                     (= (bvand |0_dst-ip| #xffff0000)
+                        (bvand #x01000000 #xffff0000)))
+                a!1
+                (ite (and (and true true)
+                          true
+                          |0_B_OVERALL_BEST_None_permitted|
+                          (= |0_FAILED-EDGE_A_B| 0))
+                     a!2
+                     (not |0_B_OSPF_SINGLE-EXPORT__permitted|)))))
+  (ite (and (and true true)
+            (= (bvand |0_dst-ip| #xffff0000) (bvand #x02000000 #xffff0000)))
+       a!1
+       a!3))))
+(assert (let ((a!1 (ite true
+                (and (= |0_B_OSPF_IMPORT_GigabitEthernet0/2_permitted|
+                        |0_C_OSPF_SINGLE-EXPORT__permitted|)
+                     (= |0_B_OSPF_IMPORT_GigabitEthernet0/2_prefixLength|
+                        |0_C_OSPF_SINGLE-EXPORT__prefixLength|)
+                     true
+                     true
+                     true
+                     (= |0_B_OSPF_IMPORT_GigabitEthernet0/2_metric|
+                        (+ |0_C_OSPF_SINGLE-EXPORT__metric| 1))
+                     true
+                     true
+                     true
+                     true
+                     true
+                     true
+                     true
+                     true)
+                (not |0_B_OSPF_IMPORT_GigabitEthernet0/2_permitted|))))
+  (ite (and (not false)
             true
-            |0_R2_BGP_SINGLE-EXPORT__permitted|
-            (= |0_FAILED-EDGE_R1_R2| 0)
-            |0_R1ImportFilterAddSoft0_R1_BGP_IMPORT_Serial0|)
-       a!2
-       (not |0_R1_BGP_IMPORT_Serial0_permitted|)))))
-(assert (let ((a!1 (ite (and (= |0_R1_OVERALL_BEST_None_prefixLength| 24)
-                     (= (bvand |0_dst-ip| #xffffff00)
-                        (bvand #x16161600 #xffffff00))
-                     |0_22.22.22.0/24ExportRemoveSoft0_R1_OVERALL_BEST_None|)
-                24
-                |0_R1_OVERALL_BEST_None_prefixLength|)))
-(let ((a!2 (and (= |0_R1_BGP_SINGLE-EXPORT__permitted|
-                   |0_R1_OVERALL_BEST_None_permitted|)
-                (= |0_R1_BGP_SINGLE-EXPORT__prefixLength| a!1)
-                true
-                true
-                true
-                (= |0_R1_BGP_SINGLE-EXPORT__metric|
-                   (ite true (+ |0_R1_OVERALL_BEST_None_metric| 1) 1))
-                true
-                true
-                true
-                true
-                true
-                true
-                true
-                true)))
-  (ite (and true
             true
-            |0_R1_OVERALL_BEST_None_permitted|
-            (= |0_FAILED-EDGE_R1_R2| 0))
-       (ite true
-            (ite true a!2 (not |0_R1_BGP_SINGLE-EXPORT__permitted|))
-            (not |0_R1_BGP_SINGLE-EXPORT__permitted|))
-       (not |0_R1_BGP_SINGLE-EXPORT__permitted|)))))
-(assert (=> |0_R2_OVERALL_BEST_None_permitted| true))
-(assert (=> |0_R1_OVERALL_BEST_None_permitted| true))
-(assert (let ((a!1 (and true
-                (or false
-                    (and true (<= |0_R2_OVERALL_BEST_None_routerID| 707406337))))))
-(let ((a!2 (and true (or false (and true (or false a!1))))))
+            |0_C_OSPF_SINGLE-EXPORT__permitted|
+            (= |0_FAILED-EDGE_B_C| 0)
+            |0_BImportFilterAddSoft0_B_OSPF_IMPORT_GigabitEthernet0/2|)
+       (ite true a!1 (not |0_B_OSPF_IMPORT_GigabitEthernet0/2_permitted|))
+       (not |0_B_OSPF_IMPORT_GigabitEthernet0/2_permitted|))))
+(assert (let ((a!1 (ite true
+                (and (= |0_C_OSPF_IMPORT_GigabitEthernet0/1_permitted|
+                        |0_B_OSPF_SINGLE-EXPORT__permitted|)
+                     (= |0_C_OSPF_IMPORT_GigabitEthernet0/1_prefixLength|
+                        |0_B_OSPF_SINGLE-EXPORT__prefixLength|)
+                     true
+                     true
+                     true
+                     (= |0_C_OSPF_IMPORT_GigabitEthernet0/1_metric|
+                        (+ |0_B_OSPF_SINGLE-EXPORT__metric| 1))
+                     true
+                     true
+                     true
+                     true
+                     true
+                     true
+                     true
+                     true)
+                (not |0_C_OSPF_IMPORT_GigabitEthernet0/1_permitted|))))
+  (ite (and (not false)
+            true
+            true
+            |0_B_OSPF_SINGLE-EXPORT__permitted|
+            (= |0_FAILED-EDGE_B_C| 0)
+            |0_CImportFilterAddSoft0_C_OSPF_IMPORT_GigabitEthernet0/1|)
+       (ite true a!1 (not |0_C_OSPF_IMPORT_GigabitEthernet0/1_permitted|))
+       (not |0_C_OSPF_IMPORT_GigabitEthernet0/1_permitted|))))
+(assert (let ((a!1 (ite true
+                (ite true
+                     (and (= |0_C_OSPF_SINGLE-EXPORT__permitted|
+                             |0_C_OVERALL_BEST_None_permitted|)
+                          (= |0_C_OSPF_SINGLE-EXPORT__prefixLength|
+                             |0_C_OVERALL_BEST_None_prefixLength|)
+                          true
+                          true
+                          true
+                          (= |0_C_OSPF_SINGLE-EXPORT__metric|
+                             |0_C_OVERALL_BEST_None_metric|)
+                          true
+                          true
+                          true
+                          true
+                          true
+                          true
+                          true
+                          true)
+                     (not |0_C_OSPF_SINGLE-EXPORT__permitted|))
+                (not |0_C_OSPF_SINGLE-EXPORT__permitted|))))
+(let ((a!2 (ite (and (and true true)
+                     (= (bvand |0_dst-ip| #xffff0000)
+                        (bvand #x02000000 #xffff0000)))
+                (and |0_C_OSPF_SINGLE-EXPORT__permitted|
+                     true
+                     true
+                     (= |0_C_OSPF_SINGLE-EXPORT__metric| 0)
+                     true
+                     (= |0_C_OSPF_SINGLE-EXPORT__prefixLength| 16)
+                     true
+                     true
+                     true
+                     true
+                     true)
+                (ite (and (and true true)
+                          true
+                          |0_C_OVERALL_BEST_None_permitted|
+                          (= |0_FAILED-EDGE_B_C| 0))
+                     a!1
+                     (not |0_C_OSPF_SINGLE-EXPORT__permitted|)))))
+  (ite (and (and true true)
+            (= (bvand |0_dst-ip| #xff000000) (bvand #x67000000 #xff000000)))
+       (and |0_C_OSPF_SINGLE-EXPORT__permitted|
+            true
+            true
+            (= |0_C_OSPF_SINGLE-EXPORT__metric| 0)
+            true
+            (= |0_C_OSPF_SINGLE-EXPORT__prefixLength| 8)
+            true
+            true
+            true
+            true
+            true)
+       a!2))))
+(assert (=> |0_B_OVERALL_BEST_None_permitted| true))
+(assert (=> |0_C_OVERALL_BEST_None_permitted| true))
+(assert (let ((a!1 (or false (and true (or false (and true true))))))
+(let ((a!2 (or false (and true (or false (and true a!1))))))
 (let ((a!3 (and true
-                (or (< |0_R2_OVERALL_BEST_None_metric|
-                       |0_R2_BGP_IMPORT_Serial0_metric|)
-                    (and (= |0_R2_OVERALL_BEST_None_metric|
-                            |0_R2_BGP_IMPORT_Serial0_metric|)
-                         (or false a!2))))))
-(let ((a!4 (and (= |0_R2_OVERALL_BEST_None_prefixLength|
-                   |0_R2_BGP_IMPORT_Serial0_prefixLength|)
+                (or (< |0_A_OSPF_BEST_None_metric|
+                       |0_A_OSPF_IMPORT_GigabitEthernet0/1_metric|)
+                    (and (= |0_A_OSPF_BEST_None_metric|
+                            |0_A_OSPF_IMPORT_GigabitEthernet0/1_metric|)
+                         a!2)))))
+(let ((a!4 (and (= |0_A_OSPF_BEST_None_prefixLength|
+                   |0_A_OSPF_IMPORT_GigabitEthernet0/1_prefixLength|)
                 (or false (and true (or false a!3))))))
-  (=> |0_R2_BGP_IMPORT_Serial0_permitted|
-      (or (> |0_R2_OVERALL_BEST_None_prefixLength|
-             |0_R2_BGP_IMPORT_Serial0_prefixLength|)
+  (=> |0_A_OSPF_IMPORT_GigabitEthernet0/1_permitted|
+      (or (> |0_A_OSPF_BEST_None_prefixLength|
+             |0_A_OSPF_IMPORT_GigabitEthernet0/1_prefixLength|)
           a!4)))))))
-(assert (= |0_R2_BGP_IMPORT_Serial0_permitted| |0_R2_OVERALL_BEST_None_permitted|))
-(assert (=> |0_R2_BGP_IMPORT_Serial0_permitted|
-    (and |0_R2_BGP_IMPORT_Serial0_permitted|
-         (= |0_R2_OVERALL_BEST_None_prefixLength|
-            |0_R2_BGP_IMPORT_Serial0_prefixLength|)
+(assert (= |0_A_OSPF_IMPORT_GigabitEthernet0/1_permitted|
+   |0_A_OSPF_BEST_None_permitted|))
+(assert (=> |0_A_OSPF_IMPORT_GigabitEthernet0/1_permitted|
+    (and |0_A_OSPF_IMPORT_GigabitEthernet0/1_permitted|
+         (= |0_A_OSPF_BEST_None_prefixLength|
+            |0_A_OSPF_IMPORT_GigabitEthernet0/1_prefixLength|)
          true
          true
-         (= |0_R2_OVERALL_BEST_None_metric| |0_R2_BGP_IMPORT_Serial0_metric|)
+         (= |0_A_OSPF_BEST_None_metric|
+            |0_A_OSPF_IMPORT_GigabitEthernet0/1_metric|)
          true
          true
          true
-         (= |0_R2_OVERALL_BEST_None_routerID| 707406337)
+         true
          true
          true
          true
          true
          true)))
-(assert (let ((a!1 (and true
-                (or false
-                    (and true (<= |0_R1_OVERALL_BEST_None_routerID| 1162167553))))))
-(let ((a!2 (and true (or false (and true (or false a!1))))))
-(let ((a!3 (and true
-                (or (< |0_R1_OVERALL_BEST_None_metric|
-                       |0_R1_BGP_IMPORT_Serial0_metric|)
-                    (and (= |0_R1_OVERALL_BEST_None_metric|
-                            |0_R1_BGP_IMPORT_Serial0_metric|)
-                         (or false a!2))))))
-(let ((a!4 (and (= |0_R1_OVERALL_BEST_None_prefixLength|
-                   |0_R1_BGP_IMPORT_Serial0_prefixLength|)
-                (or false (and true (or false a!3))))))
-  (=> |0_R1_BGP_IMPORT_Serial0_permitted|
-      (or (> |0_R1_OVERALL_BEST_None_prefixLength|
-             |0_R1_BGP_IMPORT_Serial0_prefixLength|)
-          a!4)))))))
-(assert (= |0_R1_BGP_IMPORT_Serial0_permitted| |0_R1_OVERALL_BEST_None_permitted|))
-(assert (=> |0_R1_BGP_IMPORT_Serial0_permitted|
-    (and |0_R1_BGP_IMPORT_Serial0_permitted|
-         (= |0_R1_OVERALL_BEST_None_prefixLength|
-            |0_R1_BGP_IMPORT_Serial0_prefixLength|)
-         true
-         true
-         (= |0_R1_OVERALL_BEST_None_metric| |0_R1_BGP_IMPORT_Serial0_metric|)
+(assert (let ((a!1 (or false (and true (or false (and true true))))))
+(let ((a!2 (or false (and true (or false (and true a!1))))))
+(let ((a!3 (or false (and true (or false (and true a!2))))))
+(let ((a!4 (or (> |0_A_CONNECTED_BEST_None_prefixLength|
+                  |0_A_CONNECTED_IMPORT_GigabitEthernet0/3_prefixLength|)
+               (and (= |0_A_CONNECTED_BEST_None_prefixLength|
+                       |0_A_CONNECTED_IMPORT_GigabitEthernet0/3_prefixLength|)
+                    (or false (and true a!3))))))
+  (=> |0_A_CONNECTED_IMPORT_GigabitEthernet0/3_permitted| a!4))))))
+(assert (= |0_A_CONNECTED_IMPORT_GigabitEthernet0/3_permitted|
+   |0_A_CONNECTED_BEST_None_permitted|))
+(assert (=> |0_A_CONNECTED_IMPORT_GigabitEthernet0/3_permitted|
+    (and |0_A_CONNECTED_IMPORT_GigabitEthernet0/3_permitted|
+         (= |0_A_CONNECTED_BEST_None_prefixLength|
+            |0_A_CONNECTED_IMPORT_GigabitEthernet0/3_prefixLength|)
          true
          true
          true
-         (= |0_R1_OVERALL_BEST_None_routerID| 1162167553)
+         true
+         true
+         true
+         true
          true
          true
          true
          true
          true)))
-(assert (= |0_R2_BGP_IMPORT_Serial0_choice|
-   (and |0_R2_BGP_IMPORT_Serial0_permitted|
-        (= |0_R2_OVERALL_BEST_None_prefixLength|
-           |0_R2_BGP_IMPORT_Serial0_prefixLength|)
+(assert (let ((a!1 (or false (and true (or false (and true true))))))
+(let ((a!2 (or false (and true (or false (and true a!1))))))
+(let ((a!3 (and true
+                (or (< |0_B_OVERALL_BEST_None_metric|
+                       |0_B_OSPF_IMPORT_GigabitEthernet0/1_metric|)
+                    (and (= |0_B_OVERALL_BEST_None_metric|
+                            |0_B_OSPF_IMPORT_GigabitEthernet0/1_metric|)
+                         a!2)))))
+(let ((a!4 (and (= |0_B_OVERALL_BEST_None_prefixLength|
+                   |0_B_OSPF_IMPORT_GigabitEthernet0/1_prefixLength|)
+                (or false (and true (or false a!3))))))
+  (=> |0_B_OSPF_IMPORT_GigabitEthernet0/1_permitted|
+      (or (> |0_B_OVERALL_BEST_None_prefixLength|
+             |0_B_OSPF_IMPORT_GigabitEthernet0/1_prefixLength|)
+          a!4)))))))
+(assert (let ((a!1 (or false (and true (or false (and true true))))))
+(let ((a!2 (or false (and true (or false (and true a!1))))))
+(let ((a!3 (and true
+                (or (< |0_B_OVERALL_BEST_None_metric|
+                       |0_B_OSPF_IMPORT_GigabitEthernet0/2_metric|)
+                    (and (= |0_B_OVERALL_BEST_None_metric|
+                            |0_B_OSPF_IMPORT_GigabitEthernet0/2_metric|)
+                         a!2)))))
+(let ((a!4 (and (= |0_B_OVERALL_BEST_None_prefixLength|
+                   |0_B_OSPF_IMPORT_GigabitEthernet0/2_prefixLength|)
+                (or false (and true (or false a!3))))))
+  (=> |0_B_OSPF_IMPORT_GigabitEthernet0/2_permitted|
+      (or (> |0_B_OVERALL_BEST_None_prefixLength|
+             |0_B_OSPF_IMPORT_GigabitEthernet0/2_prefixLength|)
+          a!4)))))))
+(assert (= (or |0_B_OSPF_IMPORT_GigabitEthernet0/1_permitted|
+       |0_B_OSPF_IMPORT_GigabitEthernet0/2_permitted|)
+   |0_B_OVERALL_BEST_None_permitted|))
+(assert (=> (or |0_B_OSPF_IMPORT_GigabitEthernet0/1_permitted|
+        |0_B_OSPF_IMPORT_GigabitEthernet0/2_permitted|)
+    (or (and |0_B_OSPF_IMPORT_GigabitEthernet0/1_permitted|
+             (= |0_B_OVERALL_BEST_None_prefixLength|
+                |0_B_OSPF_IMPORT_GigabitEthernet0/1_prefixLength|)
+             true
+             true
+             (= |0_B_OVERALL_BEST_None_metric|
+                |0_B_OSPF_IMPORT_GigabitEthernet0/1_metric|)
+             true
+             true
+             true
+             true
+             true
+             true
+             true
+             true
+             true)
+        (and |0_B_OSPF_IMPORT_GigabitEthernet0/2_permitted|
+             (= |0_B_OVERALL_BEST_None_prefixLength|
+                |0_B_OSPF_IMPORT_GigabitEthernet0/2_prefixLength|)
+             true
+             true
+             (= |0_B_OVERALL_BEST_None_metric|
+                |0_B_OSPF_IMPORT_GigabitEthernet0/2_metric|)
+             true
+             true
+             true
+             true
+             true
+             true
+             true
+             true
+             true))))
+(assert (let ((a!1 (or false (and true (or false (and true true))))))
+(let ((a!2 (or false (and true (or false (and true a!1))))))
+(let ((a!3 (and true
+                (or (< |0_C_OVERALL_BEST_None_metric|
+                       |0_C_OSPF_IMPORT_GigabitEthernet0/1_metric|)
+                    (and (= |0_C_OVERALL_BEST_None_metric|
+                            |0_C_OSPF_IMPORT_GigabitEthernet0/1_metric|)
+                         a!2)))))
+(let ((a!4 (and (= |0_C_OVERALL_BEST_None_prefixLength|
+                   |0_C_OSPF_IMPORT_GigabitEthernet0/1_prefixLength|)
+                (or false (and true (or false a!3))))))
+  (=> |0_C_OSPF_IMPORT_GigabitEthernet0/1_permitted|
+      (or (> |0_C_OVERALL_BEST_None_prefixLength|
+             |0_C_OSPF_IMPORT_GigabitEthernet0/1_prefixLength|)
+          a!4)))))))
+(assert (= |0_C_OSPF_IMPORT_GigabitEthernet0/1_permitted|
+   |0_C_OVERALL_BEST_None_permitted|))
+(assert (=> |0_C_OSPF_IMPORT_GigabitEthernet0/1_permitted|
+    (and |0_C_OSPF_IMPORT_GigabitEthernet0/1_permitted|
+         (= |0_C_OVERALL_BEST_None_prefixLength|
+            |0_C_OSPF_IMPORT_GigabitEthernet0/1_prefixLength|)
+         true
+         true
+         (= |0_C_OVERALL_BEST_None_metric|
+            |0_C_OSPF_IMPORT_GigabitEthernet0/1_metric|)
+         true
+         true
+         true
+         true
+         true
+         true
+         true
+         true
+         true)))
+(assert (= |0_A_OSPF_IMPORT_GigabitEthernet0/1_choice|
+   (and |0_A_OSPF_IMPORT_GigabitEthernet0/1_permitted|
+        (= |0_A_OSPF_BEST_None_prefixLength|
+           |0_A_OSPF_IMPORT_GigabitEthernet0/1_prefixLength|)
         true
         true
-        (= |0_R2_OVERALL_BEST_None_metric| |0_R2_BGP_IMPORT_Serial0_metric|)
+        (= |0_A_OSPF_BEST_None_metric|
+           |0_A_OSPF_IMPORT_GigabitEthernet0/1_metric|)
         true
         true
         true
-        (= |0_R2_OVERALL_BEST_None_routerID| 707406337)
+        true
         true
         true
         true
         true
         true)))
-(assert (= |0_R1_BGP_IMPORT_Serial0_choice|
-   (and |0_R1_BGP_IMPORT_Serial0_permitted|
-        (= |0_R1_OVERALL_BEST_None_prefixLength|
-           |0_R1_BGP_IMPORT_Serial0_prefixLength|)
-        true
-        true
-        (= |0_R1_OVERALL_BEST_None_metric| |0_R1_BGP_IMPORT_Serial0_metric|)
+(assert (= |0_A_CONNECTED_IMPORT_GigabitEthernet0/3_choice|
+   (and |0_A_CONNECTED_IMPORT_GigabitEthernet0/3_permitted|
+        (= |0_A_CONNECTED_BEST_None_prefixLength|
+           |0_A_CONNECTED_IMPORT_GigabitEthernet0/3_prefixLength|)
         true
         true
         true
-        (= |0_R1_OVERALL_BEST_None_routerID| 1162167553)
+        true
+        true
+        true
+        true
         true
         true
         true
         true
         true)))
+(assert (= |0_B_OSPF_IMPORT_GigabitEthernet0/1_choice|
+   (and |0_B_OSPF_IMPORT_GigabitEthernet0/1_permitted|
+        (= |0_B_OVERALL_BEST_None_prefixLength|
+           |0_B_OSPF_IMPORT_GigabitEthernet0/1_prefixLength|)
+        true
+        true
+        (= |0_B_OVERALL_BEST_None_metric|
+           |0_B_OSPF_IMPORT_GigabitEthernet0/1_metric|)
+        true
+        true
+        true
+        true
+        true
+        true
+        true
+        true
+        true)))
+(assert (= |0_B_OSPF_IMPORT_GigabitEthernet0/2_choice|
+   (and |0_B_OSPF_IMPORT_GigabitEthernet0/2_permitted|
+        (= |0_B_OVERALL_BEST_None_prefixLength|
+           |0_B_OSPF_IMPORT_GigabitEthernet0/2_prefixLength|)
+        true
+        true
+        (= |0_B_OVERALL_BEST_None_metric|
+           |0_B_OSPF_IMPORT_GigabitEthernet0/2_metric|)
+        true
+        true
+        true
+        true
+        true
+        true
+        true
+        true
+        true)))
+(assert (= |0_C_OSPF_IMPORT_GigabitEthernet0/1_choice|
+   (and |0_C_OSPF_IMPORT_GigabitEthernet0/1_permitted|
+        (= |0_C_OVERALL_BEST_None_prefixLength|
+           |0_C_OSPF_IMPORT_GigabitEthernet0/1_prefixLength|)
+        true
+        true
+        (= |0_C_OVERALL_BEST_None_metric|
+           |0_C_OSPF_IMPORT_GigabitEthernet0/1_metric|)
+        true
+        true
+        true
+        true
+        true
+        true
+        true
+        true
+        true)))
+(assert (let ((a!1 (or false (and true (or false (and true true))))))
+(let ((a!2 (or false (and true (or false (and true a!1))))))
+(let ((a!3 (and true
+                (or (< |0_A_OVERALL_BEST_None_metric|
+                       |0_A_OSPF_BEST_None_metric|)
+                    (and (= |0_A_OVERALL_BEST_None_metric|
+                            |0_A_OSPF_BEST_None_metric|)
+                         a!2)))))
+(let ((a!4 (and (= |0_A_OVERALL_BEST_None_prefixLength|
+                   |0_A_OSPF_BEST_None_prefixLength|)
+                (or (< |0_A_OVERALL_BEST_None_adminDist| 110)
+                    (and (= |0_A_OVERALL_BEST_None_adminDist| 110)
+                         (or false a!3))))))
+  (=> |0_A_OSPF_BEST_None_permitted|
+      (or (> |0_A_OVERALL_BEST_None_prefixLength|
+             |0_A_OSPF_BEST_None_prefixLength|)
+          a!4)))))))
+(assert (let ((a!1 (or false (and true (or false (and true true))))))
+(let ((a!2 (or false (and true (or false (and true a!1))))))
+(let ((a!3 (and true
+                (or (< |0_A_OVERALL_BEST_None_metric| 0)
+                    (and (= |0_A_OVERALL_BEST_None_metric| 0) a!2)))))
+(let ((a!4 (and (= |0_A_OVERALL_BEST_None_prefixLength|
+                   |0_A_CONNECTED_BEST_None_prefixLength|)
+                (or (< |0_A_OVERALL_BEST_None_adminDist| 0)
+                    (and (= |0_A_OVERALL_BEST_None_adminDist| 0) (or false a!3))))))
+  (=> |0_A_CONNECTED_BEST_None_permitted|
+      (or (> |0_A_OVERALL_BEST_None_prefixLength|
+             |0_A_CONNECTED_BEST_None_prefixLength|)
+          a!4)))))))
+(assert (= (or |0_A_OSPF_BEST_None_permitted| |0_A_CONNECTED_BEST_None_permitted|)
+   |0_A_OVERALL_BEST_None_permitted|))
+(assert (=> (or |0_A_OSPF_BEST_None_permitted| |0_A_CONNECTED_BEST_None_permitted|)
+    (or (and |0_A_OSPF_BEST_None_permitted|
+             (= |0_A_OVERALL_BEST_None_prefixLength|
+                |0_A_OSPF_BEST_None_prefixLength|)
+             (= |0_A_OVERALL_BEST_None_adminDist| 110)
+             true
+             (= |0_A_OVERALL_BEST_None_metric| |0_A_OSPF_BEST_None_metric|)
+             true
+             true
+             true
+             true
+             (= |0_A_OVERALL_BEST_None_history| #b0)
+             true
+             true
+             true
+             true)
+        (and |0_A_CONNECTED_BEST_None_permitted|
+             (= |0_A_OVERALL_BEST_None_prefixLength|
+                |0_A_CONNECTED_BEST_None_prefixLength|)
+             (= |0_A_OVERALL_BEST_None_adminDist| 0)
+             true
+             (= |0_A_OVERALL_BEST_None_metric| 0)
+             true
+             true
+             true
+             true
+             (= |0_A_OVERALL_BEST_None_history| #b1)
+             true
+             true
+             true
+             true))))
 (assert (=> (and true
-         |0_R2_BGP_IMPORT_Serial0_choice|
-         (= |0_R2_OVERALL_BEST_None_prefixLength|
-            |0_R2_BGP_IMPORT_Serial0_prefixLength|)
+         |0_A_OSPF_IMPORT_GigabitEthernet0/1_choice|
+         (= |0_A_OVERALL_BEST_None_prefixLength|
+            |0_A_OSPF_IMPORT_GigabitEthernet0/1_prefixLength|)
+         (= |0_A_OVERALL_BEST_None_adminDist| 110)
+         true
+         (= |0_A_OVERALL_BEST_None_metric|
+            |0_A_OSPF_IMPORT_GigabitEthernet0/1_metric|)
          true
          true
-         (= |0_R2_OVERALL_BEST_None_metric| |0_R2_BGP_IMPORT_Serial0_metric|)
+         true
+         true
+         (= |0_A_OVERALL_BEST_None_history| #b0)
          true
          true
          true
-         (= |0_R2_OVERALL_BEST_None_routerID| 707406337)
+         true)
+    |0_CONTROL-FORWARDING_A_GigabitEthernet0/1|))
+(assert (=> (and (not (= |0_dst-ip| #x68000103))
+         |0_A_CONNECTED_IMPORT_GigabitEthernet0/3_choice|
+         (= |0_A_OVERALL_BEST_None_prefixLength|
+            |0_A_CONNECTED_IMPORT_GigabitEthernet0/3_prefixLength|)
+         (= |0_A_OVERALL_BEST_None_adminDist| 0)
+         true
+         (= |0_A_OVERALL_BEST_None_metric| 0)
+         true
+         true
+         true
+         true
+         (= |0_A_OVERALL_BEST_None_history| #b1)
+         true
+         true
+         true
+         true)
+    |0_CONTROL-FORWARDING_A_GigabitEthernet0/3|))
+(assert (not |0_CONTROL-FORWARDING_A_GigabitEthernet0/4|))
+(assert (=> (not (and true
+              |0_A_OSPF_IMPORT_GigabitEthernet0/1_choice|
+              (= |0_A_OVERALL_BEST_None_prefixLength|
+                 |0_A_OSPF_IMPORT_GigabitEthernet0/1_prefixLength|)
+              (= |0_A_OVERALL_BEST_None_adminDist| 110)
+              true
+              (= |0_A_OVERALL_BEST_None_metric|
+                 |0_A_OSPF_IMPORT_GigabitEthernet0/1_metric|)
+              true
+              true
+              true
+              true
+              (= |0_A_OVERALL_BEST_None_history| #b0)
+              true
+              true
+              true
+              true))
+    (not |0_CONTROL-FORWARDING_A_GigabitEthernet0/1|)))
+(assert (let ((a!1 (not (and (not (= |0_dst-ip| #x68000103))
+                     |0_A_CONNECTED_IMPORT_GigabitEthernet0/3_choice|
+                     (= |0_A_OVERALL_BEST_None_prefixLength|
+                        |0_A_CONNECTED_IMPORT_GigabitEthernet0/3_prefixLength|)
+                     (= |0_A_OVERALL_BEST_None_adminDist| 0)
+                     true
+                     (= |0_A_OVERALL_BEST_None_metric| 0)
+                     true
+                     true
+                     true
+                     true
+                     (= |0_A_OVERALL_BEST_None_history| #b1)
+                     true
+                     true
+                     true
+                     true))))
+  (=> a!1 (not |0_CONTROL-FORWARDING_A_GigabitEthernet0/3|))))
+(assert (=> (and true
+         |0_B_OSPF_IMPORT_GigabitEthernet0/1_choice|
+         (= |0_B_OVERALL_BEST_None_prefixLength|
+            |0_B_OSPF_IMPORT_GigabitEthernet0/1_prefixLength|)
+         true
+         true
+         (= |0_B_OVERALL_BEST_None_metric|
+            |0_B_OSPF_IMPORT_GigabitEthernet0/1_metric|)
+         true
+         true
+         true
+         true
          true
          true
          true
          true
          true)
-    |0_CONTROL-FORWARDING_R2_Serial0|))
-(assert (not |0_CONTROL-FORWARDING_R2_Loopback0|))
-(assert (=> (not (and true
-              |0_R2_BGP_IMPORT_Serial0_choice|
-              (= |0_R2_OVERALL_BEST_None_prefixLength|
-                 |0_R2_BGP_IMPORT_Serial0_prefixLength|)
-              true
-              true
-              (= |0_R2_OVERALL_BEST_None_metric|
-                 |0_R2_BGP_IMPORT_Serial0_metric|)
-              true
-              true
-              true
-              (= |0_R2_OVERALL_BEST_None_routerID| 707406337)
-              true
-              true
-              true
-              true
-              true))
-    (not |0_CONTROL-FORWARDING_R2_Serial0|)))
+    |0_CONTROL-FORWARDING_B_GigabitEthernet0/1|))
 (assert (=> (and true
-         |0_R1_BGP_IMPORT_Serial0_choice|
-         (= |0_R1_OVERALL_BEST_None_prefixLength|
-            |0_R1_BGP_IMPORT_Serial0_prefixLength|)
+         |0_B_OSPF_IMPORT_GigabitEthernet0/2_choice|
+         (= |0_B_OVERALL_BEST_None_prefixLength|
+            |0_B_OSPF_IMPORT_GigabitEthernet0/2_prefixLength|)
          true
          true
-         (= |0_R1_OVERALL_BEST_None_metric| |0_R1_BGP_IMPORT_Serial0_metric|)
+         (= |0_B_OVERALL_BEST_None_metric|
+            |0_B_OSPF_IMPORT_GigabitEthernet0/2_metric|)
          true
          true
          true
-         (= |0_R1_OVERALL_BEST_None_routerID| 1162167553)
+         true
          true
          true
          true
          true
          true)
-    |0_CONTROL-FORWARDING_R1_Serial0|))
-(assert (not |0_CONTROL-FORWARDING_R1_Loopback1|))
-(assert (not |0_CONTROL-FORWARDING_R1_Loopback0|))
+    |0_CONTROL-FORWARDING_B_GigabitEthernet0/2|))
 (assert (=> (not (and true
-              |0_R1_BGP_IMPORT_Serial0_choice|
-              (= |0_R1_OVERALL_BEST_None_prefixLength|
-                 |0_R1_BGP_IMPORT_Serial0_prefixLength|)
+              |0_B_OSPF_IMPORT_GigabitEthernet0/1_choice|
+              (= |0_B_OVERALL_BEST_None_prefixLength|
+                 |0_B_OSPF_IMPORT_GigabitEthernet0/1_prefixLength|)
               true
               true
-              (= |0_R1_OVERALL_BEST_None_metric|
-                 |0_R1_BGP_IMPORT_Serial0_metric|)
+              (= |0_B_OVERALL_BEST_None_metric|
+                 |0_B_OSPF_IMPORT_GigabitEthernet0/1_metric|)
               true
               true
               true
-              (= |0_R1_OVERALL_BEST_None_routerID| 1162167553)
+              true
               true
               true
               true
               true
               true))
-    (not |0_CONTROL-FORWARDING_R1_Serial0|)))
-(assert (= (and (or false |0_CONTROL-FORWARDING_R2_Loopback0|)
-        |0_0__R2_Loopback0_OUTBOUND_SOFTAdd|
-        (= |0_FAILED-EDGE_R2_Loopback0| 0))
-   |0_DATA-FORWARDING_R2_Loopback0|))
-(assert (let ((a!1 (and (or (and (or false |0_CONTROL-FORWARDING_R2_Serial0|)
-                         |0_0__R2_Serial0_OUTBOUND_SOFTAdd|)
-                    |0_R2-StaticRouteAddSoft-R2,Serial0 --> R1,Serial0|)
-                (= |0_FAILED-EDGE_R1_R2| 0))))
-  (= a!1 |0_DATA-FORWARDING_R2_Serial0|)))
-(assert (let ((a!1 (and (or (and (or false |0_CONTROL-FORWARDING_R1_Serial0|)
-                         |0_0__R1_Serial0_OUTBOUND_SOFTAdd|)
-                    |0_R1-StaticRouteAddSoft-R1,Serial0 --> R2,Serial0|)
-                (= |0_FAILED-EDGE_R1_R2| 0))))
-  (= a!1 |0_DATA-FORWARDING_R1_Serial0|)))
-(assert (= (and (or false |0_CONTROL-FORWARDING_R1_Loopback1|)
-        |0_0__R1_Loopback1_OUTBOUND_SOFTAdd|
-        (= |0_FAILED-EDGE_R1_Loopback1| 0))
-   |0_DATA-FORWARDING_R1_Loopback1|))
-(assert (= (and (or false |0_CONTROL-FORWARDING_R1_Loopback0|)
-        |0_0__R1_Loopback0_OUTBOUND_SOFTAdd|
-        (= |0_FAILED-EDGE_R1_Loopback0| 0))
-   |0_DATA-FORWARDING_R1_Loopback0|))
-(assert (=> (not |0_R2_OVERALL_BEST_None_permitted|)
-    (= |0_R2_OVERALL_BEST_None_prefixLength| 0)))
-(assert (=> (not |0_R2_OVERALL_BEST_None_permitted|)
-    (= |0_R2_OVERALL_BEST_None_metric| 0)))
-(assert (=> (not |0_R2_OVERALL_BEST_None_permitted|) true))
-(assert (=> (not |0_R2_OVERALL_BEST_None_permitted|)
-    (= |0_R2_OVERALL_BEST_None_routerID| 0)))
-(assert (=> (not |0_R1_OVERALL_BEST_None_permitted|)
-    (= |0_R1_OVERALL_BEST_None_prefixLength| 0)))
-(assert (=> (not |0_R1_OVERALL_BEST_None_permitted|)
-    (= |0_R1_OVERALL_BEST_None_metric| 0)))
-(assert (=> (not |0_R1_OVERALL_BEST_None_permitted|) true))
-(assert (=> (not |0_R1_OVERALL_BEST_None_permitted|)
-    (= |0_R1_OVERALL_BEST_None_routerID| 0)))
-(assert (=> (not |0_R2_BGP_SINGLE-EXPORT__permitted|)
-    (= |0_R2_BGP_SINGLE-EXPORT__prefixLength| 0)))
-(assert (=> (not |0_R2_BGP_SINGLE-EXPORT__permitted|)
-    (= |0_R2_BGP_SINGLE-EXPORT__metric| 0)))
-(assert (=> (not |0_R2_BGP_IMPORT_Serial0_permitted|)
-    (= |0_R2_BGP_IMPORT_Serial0_prefixLength| 0)))
-(assert (=> (not |0_R2_BGP_IMPORT_Serial0_permitted|)
-    (= |0_R2_BGP_IMPORT_Serial0_metric| 0)))
-(assert (=> (not |0_R1_BGP_SINGLE-EXPORT__permitted|)
-    (= |0_R1_BGP_SINGLE-EXPORT__prefixLength| 0)))
-(assert (=> (not |0_R1_BGP_SINGLE-EXPORT__permitted|)
-    (= |0_R1_BGP_SINGLE-EXPORT__metric| 0)))
-(assert (=> (not |0_R1_BGP_IMPORT_Serial0_permitted|)
-    (= |0_R1_BGP_IMPORT_Serial0_prefixLength| 0)))
-(assert (=> (not |0_R1_BGP_IMPORT_Serial0_permitted|)
-    (= |0_R1_BGP_IMPORT_Serial0_metric| 0)))
-(assert (and (or (= (bvand |0_dst-ip| #xffffffff) (bvand #x67000303 #xffffffff)))
+    (not |0_CONTROL-FORWARDING_B_GigabitEthernet0/1|)))
+(assert (=> (not (and true
+              |0_B_OSPF_IMPORT_GigabitEthernet0/2_choice|
+              (= |0_B_OVERALL_BEST_None_prefixLength|
+                 |0_B_OSPF_IMPORT_GigabitEthernet0/2_prefixLength|)
+              true
+              true
+              (= |0_B_OVERALL_BEST_None_metric|
+                 |0_B_OSPF_IMPORT_GigabitEthernet0/2_metric|)
+              true
+              true
+              true
+              true
+              true
+              true
+              true
+              true
+              true))
+    (not |0_CONTROL-FORWARDING_B_GigabitEthernet0/2|)))
+(assert (=> (and true
+         |0_C_OSPF_IMPORT_GigabitEthernet0/1_choice|
+         (= |0_C_OVERALL_BEST_None_prefixLength|
+            |0_C_OSPF_IMPORT_GigabitEthernet0/1_prefixLength|)
+         true
+         true
+         (= |0_C_OVERALL_BEST_None_metric|
+            |0_C_OSPF_IMPORT_GigabitEthernet0/1_metric|)
+         true
+         true
+         true
+         true
+         true
+         true
+         true
+         true
+         true)
+    |0_CONTROL-FORWARDING_C_GigabitEthernet0/1|))
+(assert (not |0_CONTROL-FORWARDING_C_GigabitEthernet0/3|))
+(assert (=> (not (and true
+              |0_C_OSPF_IMPORT_GigabitEthernet0/1_choice|
+              (= |0_C_OVERALL_BEST_None_prefixLength|
+                 |0_C_OSPF_IMPORT_GigabitEthernet0/1_prefixLength|)
+              true
+              true
+              (= |0_C_OVERALL_BEST_None_metric|
+                 |0_C_OSPF_IMPORT_GigabitEthernet0/1_metric|)
+              true
+              true
+              true
+              true
+              true
+              true
+              true
+              true
+              true))
+    (not |0_CONTROL-FORWARDING_C_GigabitEthernet0/1|)))
+(assert (= (and (or false |0_CONTROL-FORWARDING_A_GigabitEthernet0/3|)
+        |0_0__A_GigabitEthernet0/3_OUTBOUND_SOFTAdd|
+        (= |0_FAILED-EDGE_A_GigabitEthernet0/3| 0))
+   |0_DATA-FORWARDING_A_GigabitEthernet0/3|))
+(assert (= (and (or false |0_CONTROL-FORWARDING_A_GigabitEthernet0/4|)
+        |0_0__A_GigabitEthernet0/4_OUTBOUND_SOFTAdd|
+        (= |0_FAILED-EDGE_A_GigabitEthernet0/4| 0))
+   |0_DATA-FORWARDING_A_GigabitEthernet0/4|))
+(assert (let ((a!1 (and (or (and (or false |0_CONTROL-FORWARDING_A_GigabitEthernet0/1|)
+                         |0_0__A_GigabitEthernet0/1_OUTBOUND_SOFTAdd|)
+                    |0_A-StaticRouteAddSoft-A,GigabitEthernet0/1 --> B,GigabitEthernet0/1|)
+                (= |0_FAILED-EDGE_A_B| 0))))
+  (= a!1 |0_DATA-FORWARDING_A_GigabitEthernet0/1|)))
+(assert (let ((a!1 (and (or (and (or false |0_CONTROL-FORWARDING_B_GigabitEthernet0/1|)
+                         |0_0__B_GigabitEthernet0/1_OUTBOUND_SOFTAdd|)
+                    |0_B-StaticRouteAddSoft-B,GigabitEthernet0/1 --> A,GigabitEthernet0/1|)
+                (= |0_FAILED-EDGE_A_B| 0))))
+  (= a!1 |0_DATA-FORWARDING_B_GigabitEthernet0/1|)))
+(assert (let ((a!1 (and (or (and (or false |0_CONTROL-FORWARDING_B_GigabitEthernet0/2|)
+                         |0_0__B_GigabitEthernet0/2_OUTBOUND_SOFTAdd|)
+                    |0_B-StaticRouteAddSoft-B,GigabitEthernet0/2 --> C,GigabitEthernet0/1|)
+                (= |0_FAILED-EDGE_B_C| 0))))
+  (= a!1 |0_DATA-FORWARDING_B_GigabitEthernet0/2|)))
+(assert (= (and (or false |0_CONTROL-FORWARDING_C_GigabitEthernet0/3|)
+        |0_0__C_GigabitEthernet0/3_OUTBOUND_SOFTAdd|
+        (= |0_FAILED-EDGE_C_GigabitEthernet0/3| 0))
+   |0_DATA-FORWARDING_C_GigabitEthernet0/3|))
+(assert (let ((a!1 (and (or (and (or false |0_CONTROL-FORWARDING_C_GigabitEthernet0/1|)
+                         |0_0__C_GigabitEthernet0/1_OUTBOUND_SOFTAdd|)
+                    |0_C-StaticRouteAddSoft-C,GigabitEthernet0/1 --> B,GigabitEthernet0/2|)
+                (= |0_FAILED-EDGE_B_C| 0))))
+  (= a!1 |0_DATA-FORWARDING_C_GigabitEthernet0/1|)))
+(assert (=> (not |0_A_OVERALL_BEST_None_permitted|)
+    (= |0_A_OVERALL_BEST_None_adminDist| 0)))
+(assert (=> (not |0_A_OVERALL_BEST_None_permitted|)
+    (= |0_A_OVERALL_BEST_None_prefixLength| 0)))
+(assert (=> (not |0_A_OVERALL_BEST_None_permitted|)
+    (= |0_A_OVERALL_BEST_None_metric| 0)))
+(assert (=> (not |0_A_OVERALL_BEST_None_permitted|)
+    (= |0_A_OVERALL_BEST_None_history| #b0)))
+(assert (=> (not |0_A_OSPF_BEST_None_permitted|)
+    (= |0_A_OSPF_BEST_None_prefixLength| 0)))
+(assert (=> (not |0_A_OSPF_BEST_None_permitted|) (= |0_A_OSPF_BEST_None_metric| 0)))
+(assert (=> (not |0_A_CONNECTED_BEST_None_permitted|)
+    (= |0_A_CONNECTED_BEST_None_prefixLength| 0)))
+(assert (=> (not |0_B_OVERALL_BEST_None_permitted|)
+    (= |0_B_OVERALL_BEST_None_prefixLength| 0)))
+(assert (=> (not |0_B_OVERALL_BEST_None_permitted|)
+    (= |0_B_OVERALL_BEST_None_metric| 0)))
+(assert (=> (not |0_B_OVERALL_BEST_None_permitted|) true))
+(assert (=> (not |0_C_OVERALL_BEST_None_permitted|)
+    (= |0_C_OVERALL_BEST_None_prefixLength| 0)))
+(assert (=> (not |0_C_OVERALL_BEST_None_permitted|)
+    (= |0_C_OVERALL_BEST_None_metric| 0)))
+(assert (=> (not |0_C_OVERALL_BEST_None_permitted|) true))
+(assert (=> (not |0_A_OSPF_SINGLE-EXPORT__permitted|)
+    (= |0_A_OSPF_SINGLE-EXPORT__prefixLength| 0)))
+(assert (=> (not |0_A_OSPF_SINGLE-EXPORT__permitted|)
+    (= |0_A_OSPF_SINGLE-EXPORT__metric| 0)))
+(assert (=> (not |0_A_OSPF_IMPORT_GigabitEthernet0/1_permitted|)
+    (= |0_A_OSPF_IMPORT_GigabitEthernet0/1_prefixLength| 0)))
+(assert (=> (not |0_A_OSPF_IMPORT_GigabitEthernet0/1_permitted|)
+    (= |0_A_OSPF_IMPORT_GigabitEthernet0/1_metric| 0)))
+(assert (=> (not |0_A_CONNECTED_IMPORT_GigabitEthernet0/3_permitted|)
+    (= |0_A_CONNECTED_IMPORT_GigabitEthernet0/3_prefixLength| 0)))
+(assert (=> (not |0_B_OSPF_SINGLE-EXPORT__permitted|)
+    (= |0_B_OSPF_SINGLE-EXPORT__prefixLength| 0)))
+(assert (=> (not |0_B_OSPF_SINGLE-EXPORT__permitted|)
+    (= |0_B_OSPF_SINGLE-EXPORT__metric| 0)))
+(assert (=> (not |0_B_OSPF_IMPORT_GigabitEthernet0/1_permitted|)
+    (= |0_B_OSPF_IMPORT_GigabitEthernet0/1_prefixLength| 0)))
+(assert (=> (not |0_B_OSPF_IMPORT_GigabitEthernet0/1_permitted|)
+    (= |0_B_OSPF_IMPORT_GigabitEthernet0/1_metric| 0)))
+(assert (=> (not |0_B_OSPF_IMPORT_GigabitEthernet0/2_permitted|)
+    (= |0_B_OSPF_IMPORT_GigabitEthernet0/2_prefixLength| 0)))
+(assert (=> (not |0_B_OSPF_IMPORT_GigabitEthernet0/2_permitted|)
+    (= |0_B_OSPF_IMPORT_GigabitEthernet0/2_metric| 0)))
+(assert (=> (not |0_C_OSPF_SINGLE-EXPORT__permitted|)
+    (= |0_C_OSPF_SINGLE-EXPORT__prefixLength| 0)))
+(assert (=> (not |0_C_OSPF_SINGLE-EXPORT__permitted|)
+    (= |0_C_OSPF_SINGLE-EXPORT__metric| 0)))
+(assert (=> (not |0_C_OSPF_IMPORT_GigabitEthernet0/1_permitted|)
+    (= |0_C_OSPF_IMPORT_GigabitEthernet0/1_prefixLength| 0)))
+(assert (=> (not |0_C_OSPF_IMPORT_GigabitEthernet0/1_permitted|)
+    (= |0_C_OSPF_IMPORT_GigabitEthernet0/1_metric| 0)))
+(assert (and (or (= (bvand |0_dst-ip| #xffffffff) (bvand #x68000103 #xffffffff)))
      (not or)
-     (or (= (bvand |0_src-ip| #xffffffff) (bvand #x68000103 #xffffffff)))
+     (or (= (bvand |0_src-ip| #xffffffff) (bvand #x67000303 #xffffffff)))
      (not or)))
-(assert (= |0__reachable_R2| (> |0__reachable-id_R2| 0)))
-(assert (>= |0__reachable-id_R2| 0))
-(assert (= |0__reachable_R1| (> |0__reachable-id_R1| 0)))
-(assert (>= |0__reachable-id_R1| 0))
+(assert (= |0__reachable_A| (> |0__reachable-id_A| 0)))
+(assert (>= |0__reachable-id_A| 0))
+(assert (= |0__reachable_B| (> |0__reachable-id_B| 0)))
+(assert (>= |0__reachable-id_B| 0))
+(assert (= |0__reachable_C| (> |0__reachable-id_C| 0)))
+(assert (>= |0__reachable-id_C| 0))
 (assert (let ((a!1 (and true
-                (=> (and |0_DATA-FORWARDING_R2_Serial0|
-                         |0_0__R1_Serial0_INBOUND_SOFTAdd|
-                         (> |0__reachable-id_R1| 0))
-                    (> |0__reachable-id_R2| |0__reachable-id_R1|)))))
+                (=> (and |0_DATA-FORWARDING_A_GigabitEthernet0/1|
+                         (or |0__B_GigabitEthernet0/1_INBOUND_1|
+                             |0_0__B_GigabitEthernet0/1_INBOUND_1Remove|)
+                         (> |0__reachable-id_B| 0))
+                    (> |0__reachable-id_A| |0__reachable-id_B|)))))
 (let ((a!2 (ite (or false
-                    (and |0_DATA-FORWARDING_R2_Serial0|
-                         |0_0__R1_Serial0_INBOUND_SOFTAdd|
-                         (> |0__reachable-id_R1| 0)))
+                    (and |0_DATA-FORWARDING_A_GigabitEthernet0/1|
+                         (or |0__B_GigabitEthernet0/1_INBOUND_1|
+                             |0_0__B_GigabitEthernet0/1_INBOUND_1Remove|)
+                         (> |0__reachable-id_B| 0)))
                 a!1
-                (= |0__reachable-id_R2| 0))))
+                (= |0__reachable-id_A| 0))))
   (ite (or false
-           (and |0_DATA-FORWARDING_R2_Loopback0| true)
+           (and |0_DATA-FORWARDING_A_GigabitEthernet0/3| true)
+           (and |0_DATA-FORWARDING_A_GigabitEthernet0/4| true)
            false
-           (and |0_R2_OVERALL_BEST_None_permitted| (= |0_dst-ip| #x45454501))
-           (and |0_R2_OVERALL_BEST_None_permitted| (= |0_dst-ip| #xc0a82a02)))
-       (= |0__reachable-id_R2| 1)
+           (and |0_A_CONNECTED_BEST_None_permitted| (= |0_dst-ip| #x68000103))
+           (and |0_A_CONNECTED_BEST_None_permitted| (= |0_dst-ip| #x69000104))
+           (and |0_A_CONNECTED_BEST_None_permitted| (= |0_dst-ip| #x01000101)))
+       (= |0__reachable-id_A| 1)
        a!2))))
 (assert (let ((a!1 (and true
-                (=> (and |0_DATA-FORWARDING_R1_Serial0|
-                         |0_0__R2_Serial0_INBOUND_SOFTAdd|
-                         (> |0__reachable-id_R2| 0))
-                    (> |0__reachable-id_R1| |0__reachable-id_R2|)))))
+                (=> (and |0_DATA-FORWARDING_B_GigabitEthernet0/1|
+                         |0_0__A_GigabitEthernet0/1_INBOUND_SOFTAdd|
+                         (> |0__reachable-id_A| 0))
+                    (> |0__reachable-id_B| |0__reachable-id_A|))
+                (=> (and |0_DATA-FORWARDING_B_GigabitEthernet0/2|
+                         (or |0__C_GigabitEthernet0/1_INBOUND_1|
+                             |0_0__C_GigabitEthernet0/1_INBOUND_1Remove|)
+                         (> |0__reachable-id_C| 0))
+                    (> |0__reachable-id_B| |0__reachable-id_C|)))))
 (let ((a!2 (ite (or false
-                    (and |0_DATA-FORWARDING_R1_Serial0|
-                         |0_0__R2_Serial0_INBOUND_SOFTAdd|
-                         (> |0__reachable-id_R2| 0)))
+                    (and |0_DATA-FORWARDING_B_GigabitEthernet0/1|
+                         |0_0__A_GigabitEthernet0/1_INBOUND_SOFTAdd|
+                         (> |0__reachable-id_A| 0))
+                    (and |0_DATA-FORWARDING_B_GigabitEthernet0/2|
+                         (or |0__C_GigabitEthernet0/1_INBOUND_1|
+                             |0_0__C_GigabitEthernet0/1_INBOUND_1Remove|)
+                         (> |0__reachable-id_C| 0)))
                 a!1
-                (= |0__reachable-id_R1| 0))))
-  (ite (or false
-           (and |0_DATA-FORWARDING_R1_Loopback1| true)
-           (and |0_DATA-FORWARDING_R1_Loopback0| true)
-           false
-           (and |0_R1_OVERALL_BEST_None_permitted| (= |0_dst-ip| #xc0a82a01))
-           (and |0_R1_OVERALL_BEST_None_permitted| (= |0_dst-ip| #x16161601))
-           (and |0_R1_OVERALL_BEST_None_permitted| (= |0_dst-ip| #x2a2a2a01)))
-       (= |0__reachable-id_R1| 1)
-       a!2))))
-(assert (and true |0__reachable_R2| |0__reachable_R1|))
-(assert (= |0_FAILED-EDGE_R2_Loopback0| 0))
-(assert (=> (= (bvand |0_dst-ip| #xffffff00) (bvand #xc0a82a00 #xffffff00))
-    (= |0_FAILED-EDGE_R1_R2| 0)))
-(assert (=> (= (bvand |0_dst-ip| #xffffff00) (bvand #xc0a82a00 #xffffff00))
-    (= |0_FAILED-EDGE_R1_R2| 0)))
-(assert (= |0_FAILED-EDGE_R1_Loopback1| 0))
-(assert (= |0_FAILED-EDGE_R1_Loopback0| 0))
-(assert-soft (not bgpline_1_Remove) :weight 100000 :id a)
-(assert-soft (not bgpline_2_Remove) :weight 100000 :id a)
+                (= |0__reachable-id_B| 0))))
+  (ite (or false false) (= |0__reachable-id_B| 1) a!2))))
+(assert (let ((a!1 (and true
+                (=> (and |0_DATA-FORWARDING_C_GigabitEthernet0/1|
+                         |0_0__B_GigabitEthernet0/2_INBOUND_SOFTAdd|
+                         (> |0__reachable-id_B| 0))
+                    (> |0__reachable-id_C| |0__reachable-id_B|)))))
+(let ((a!2 (ite (or false
+                    (and |0_DATA-FORWARDING_C_GigabitEthernet0/1|
+                         |0_0__B_GigabitEthernet0/2_INBOUND_SOFTAdd|
+                         (> |0__reachable-id_B| 0)))
+                a!1
+                (= |0__reachable-id_C| 0))))
+  (ite (or false false) (= |0__reachable-id_C| 1) a!2))))
+(assert (and true |0__reachable_C|))
+(assert (= |0_FAILED-EDGE_A_GigabitEthernet0/3| 0))
+(assert (= |0_FAILED-EDGE_A_GigabitEthernet0/4| 0))
+(assert (=> (= (bvand |0_dst-ip| #xffff0000) (bvand #x01000000 #xffff0000))
+    (= |0_FAILED-EDGE_A_B| 0)))
+(assert (= |0_FAILED-EDGE_C_GigabitEthernet0/3| 0))
+(assert-soft (= |0_DATA-FORWARDING_B_GigabitEthernet0/1| true) :weight 100000 :id a)
+(assert-soft (= |0_DATA-FORWARDING_C_GigabitEthernet0/3| false) :weight 100000 :id a)
+(assert-soft (= |0_DATA-FORWARDING_A_GigabitEthernet0/4| false) :weight 100000 :id a)
+(assert-soft (= |0_DATA-FORWARDING_B_GigabitEthernet0/2| false) :weight 100000 :id a)
+(assert-soft (= |0_DATA-FORWARDING_A_GigabitEthernet0/3| false) :weight 100000 :id a)
+(assert-soft (= |0_DATA-FORWARDING_A_GigabitEthernet0/1| true) :weight 100000 :id a)
+(assert-soft (= |0_DATA-FORWARDING_C_GigabitEthernet0/1| true) :weight 100000 :id a)
 (check-sat)

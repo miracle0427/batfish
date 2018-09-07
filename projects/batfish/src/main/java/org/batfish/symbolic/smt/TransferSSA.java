@@ -230,7 +230,7 @@ class TransferSSA {
       PrefixRange range = new PrefixRange(p, r);
       BoolExpr matches = _enc.isRelevantForSoft(other.getPrefixLength(), range, _conf.getName());
 
-      if (_enc.getEncoder()._repairObjective == 4) {
+      if (_enc.getEncoder()._repairObjective == 3) {
         BoolExpr filterRemove = _enc.mkFalse();
         if (!_enc.getEncoder()._bgpTemp.containsKey(lineno)) {
           //System.out.println("not Exists " + lineno);

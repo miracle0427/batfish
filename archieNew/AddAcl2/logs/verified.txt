@@ -1,1 +1,2 @@
 smt-reachability srcIps=["103.0.3.3"], dstIps=["104.0.1.3"], ingressNodeRegex=C, finalNodeRegex=A
+smt-reachability srcIps=["104.0.1.3"], dstIps=["103.0.3.3"], ingressNodeRegex=A, finalNodeRegex=C

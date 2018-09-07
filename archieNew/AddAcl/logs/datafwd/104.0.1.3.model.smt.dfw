@@ -1,0 +1,7 @@
+|0_DATA-FORWARDING_A_GigabitEthernet0/1| true
+|0_DATA-FORWARDING_A_GigabitEthernet0/3| false
+|0_DATA-FORWARDING_C_GigabitEthernet0/3| false
+|0_DATA-FORWARDING_B_GigabitEthernet0/1| true
+|0_DATA-FORWARDING_B_GigabitEthernet0/2| false
+|0_DATA-FORWARDING_C_GigabitEthernet0/1| true
+|0_DATA-FORWARDING_A_GigabitEthernet0/4| false

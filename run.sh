@@ -1,2 +1,0 @@
-./rununbroken.sh
-./runbroken.sh
