@@ -1,0 +1,294 @@
+Init'ed and set active container
+Uploaded testrig.
+Parsing now.
+Status: SUCCESS
+PARSING SUMMARY
+STATISTICS
+  Parsing results:
+    Parsed successfully: 3
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[1.0.0.0/16], srcIps=[1.0.0.0/16], finalNodeRegex=A, ingressNodeRegex=B
+
+Flow: ingress:B vrf:default 1.0.0.0->1.0.1.65 HOPOPT packetLength:0 state:NEW
+  environment:BASE
+Environment{envName=BASE, testrigName=tr_286324ca-323e-47b8-8ac5-0881f9684bcc, edgeBlacklist=null, interfaceBlacklist=null, nodeBlacklist=null, bgpTables=null, routingTables=null, externalBgpAnnouncements=null}
+    NEIGHBOR_UNREACHABLE_OR_EXITS_NETWORK
+
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[1.0.0.0/16], srcIps=[2.0.0.0/16], finalNodeRegex=A, ingressNodeRegex=B
+
+Flow: ingress:B vrf:default 2.0.0.0->1.0.1.65 HOPOPT packetLength:0 state:NEW
+  environment:BASE
+Environment{envName=BASE, testrigName=tr_286324ca-323e-47b8-8ac5-0881f9684bcc, edgeBlacklist=null, interfaceBlacklist=null, nodeBlacklist=null, bgpTables=null, routingTables=null, externalBgpAnnouncements=null}
+    NEIGHBOR_UNREACHABLE_OR_EXITS_NETWORK
+
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[1.0.0.0/16], srcIps=[2.0.0.0/16], finalNodeRegex=A, ingressNodeRegex=C
+
+Flow: ingress:C vrf:default 2.0.0.0->1.0.1.65 HOPOPT packetLength:0 state:NEW
+  environment:BASE
+Environment{envName=BASE, testrigName=tr_286324ca-323e-47b8-8ac5-0881f9684bcc, edgeBlacklist=null, interfaceBlacklist=null, nodeBlacklist=null, bgpTables=null, routingTables=null, externalBgpAnnouncements=null}
+    Hop 1: C:GigabitEthernet0/1 -> B:GigabitEthernet0/2 --- [OspfRoute<1.0.0.0/16,nhip:2.0.3.1,nhint:dynamic>]
+    NEIGHBOR_UNREACHABLE_OR_EXITS_NETWORK
+
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[1.0.0.0/16], srcIps=[103.0.0.0/8], finalNodeRegex=A, ingressNodeRegex=C
+
+Flow: ingress:C vrf:default 103.0.0.0->1.0.1.65 HOPOPT packetLength:0 state:NEW
+  environment:BASE
+Environment{envName=BASE, testrigName=tr_286324ca-323e-47b8-8ac5-0881f9684bcc, edgeBlacklist=null, interfaceBlacklist=null, nodeBlacklist=null, bgpTables=null, routingTables=null, externalBgpAnnouncements=null}
+    Hop 1: C:GigabitEthernet0/1 -> B:GigabitEthernet0/2 --- [OspfRoute<1.0.0.0/16,nhip:2.0.3.1,nhint:dynamic>]
+    NEIGHBOR_UNREACHABLE_OR_EXITS_NETWORK
+
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[104.0.0.0/8], srcIps=[1.0.0.0/16], finalNodeRegex=A, ingressNodeRegex=B
+
+Verified
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[104.0.0.0/8], srcIps=[2.0.0.0/16], finalNodeRegex=A, ingressNodeRegex=B
+
+Verified
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[104.0.0.0/8], srcIps=[2.0.0.0/16], finalNodeRegex=A, ingressNodeRegex=C
+
+Verified
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[104.0.0.0/8], srcIps=[103.0.0.0/8], finalNodeRegex=A, ingressNodeRegex=C
+
+Verified
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[105.0.0.0/8], srcIps=[1.0.0.0/16], finalNodeRegex=A, ingressNodeRegex=B
+
+Verified
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[105.0.0.0/8], srcIps=[2.0.0.0/16], finalNodeRegex=A, ingressNodeRegex=B
+
+Verified
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[105.0.0.0/8], srcIps=[2.0.0.0/16], finalNodeRegex=A, ingressNodeRegex=C
+
+Verified
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[105.0.0.0/8], srcIps=[103.0.0.0/8], finalNodeRegex=A, ingressNodeRegex=C
+
+Verified
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[1.0.0.0/16], srcIps=[1.0.0.0/16], finalNodeRegex=B, ingressNodeRegex=A
+
+Flow: ingress:A vrf:default 1.0.0.0->1.0.2.65 HOPOPT packetLength:0 state:NEW
+  environment:BASE
+Environment{envName=BASE, testrigName=tr_286324ca-323e-47b8-8ac5-0881f9684bcc, edgeBlacklist=null, interfaceBlacklist=null, nodeBlacklist=null, bgpTables=null, routingTables=null, externalBgpAnnouncements=null}
+    NEIGHBOR_UNREACHABLE_OR_EXITS_NETWORK
+
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[1.0.0.0/16], srcIps=[104.0.0.0/8], finalNodeRegex=B, ingressNodeRegex=A
+
+Flow: ingress:A vrf:default 104.0.0.0->1.0.1.1 HOPOPT packetLength:0 state:NEW
+  environment:BASE
+Environment{envName=BASE, testrigName=tr_286324ca-323e-47b8-8ac5-0881f9684bcc, edgeBlacklist=null, interfaceBlacklist=null, nodeBlacklist=null, bgpTables=null, routingTables=null, externalBgpAnnouncements=null}
+    ACCEPTED
+
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[1.0.0.0/16], srcIps=[105.0.0.0/8], finalNodeRegex=B, ingressNodeRegex=A
+
+Flow: ingress:A vrf:default 105.0.0.0->1.0.1.1 HOPOPT packetLength:0 state:NEW
+  environment:BASE
+Environment{envName=BASE, testrigName=tr_286324ca-323e-47b8-8ac5-0881f9684bcc, edgeBlacklist=null, interfaceBlacklist=null, nodeBlacklist=null, bgpTables=null, routingTables=null, externalBgpAnnouncements=null}
+    ACCEPTED
+
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[1.0.0.0/16], srcIps=[2.0.0.0/16], finalNodeRegex=B, ingressNodeRegex=C
+
+Flow: ingress:C vrf:default 2.0.0.0->1.0.2.65 HOPOPT packetLength:0 state:NEW
+  environment:BASE
+Environment{envName=BASE, testrigName=tr_286324ca-323e-47b8-8ac5-0881f9684bcc, edgeBlacklist=null, interfaceBlacklist=null, nodeBlacklist=null, bgpTables=null, routingTables=null, externalBgpAnnouncements=null}
+    Hop 1: C:GigabitEthernet0/1 -> B:GigabitEthernet0/2 --- [OspfRoute<1.0.0.0/16,nhip:2.0.3.1,nhint:dynamic>]
+    NEIGHBOR_UNREACHABLE_OR_EXITS_NETWORK
+
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[1.0.0.0/16], srcIps=[103.0.0.0/8], finalNodeRegex=B, ingressNodeRegex=C
+
+Flow: ingress:C vrf:default 103.0.0.0->1.0.1.1 HOPOPT packetLength:0 state:NEW
+  environment:BASE
+Environment{envName=BASE, testrigName=tr_286324ca-323e-47b8-8ac5-0881f9684bcc, edgeBlacklist=null, interfaceBlacklist=null, nodeBlacklist=null, bgpTables=null, routingTables=null, externalBgpAnnouncements=null}
+    Hop 1: C:GigabitEthernet0/1 -> B:GigabitEthernet0/2 --- [OspfRoute<1.0.0.0/16,nhip:2.0.3.1,nhint:dynamic>]
+    Hop 2: B:GigabitEthernet0/1 -> A:GigabitEthernet0/1 --- [ConnectedRoute<1.0.0.0/16,nhip:AUTO/NONE(-1l),nhint:GigabitEthernet0/1>]
+    ACCEPTED
+
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[2.0.0.0/16], srcIps=[1.0.0.0/16], finalNodeRegex=B, ingressNodeRegex=A
+
+Flow: ingress:A vrf:default 1.0.0.0->2.0.0.0 HOPOPT packetLength:0 state:NEW
+  environment:BASE
+Environment{envName=BASE, testrigName=tr_286324ca-323e-47b8-8ac5-0881f9684bcc, edgeBlacklist=null, interfaceBlacklist=null, nodeBlacklist=null, bgpTables=null, routingTables=null, externalBgpAnnouncements=null}
+    Hop 1: A:GigabitEthernet0/1 -> B:GigabitEthernet0/1 --- [OspfRoute<2.0.0.0/16,nhip:1.0.1.1,nhint:dynamic>]
+    NEIGHBOR_UNREACHABLE_OR_EXITS_NETWORK
+
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[2.0.0.0/16], srcIps=[104.0.0.0/8], finalNodeRegex=B, ingressNodeRegex=A
+
+Flow: ingress:A vrf:default 104.0.0.0->2.0.2.2 HOPOPT packetLength:0 state:NEW
+  environment:BASE
+Environment{envName=BASE, testrigName=tr_286324ca-323e-47b8-8ac5-0881f9684bcc, edgeBlacklist=null, interfaceBlacklist=null, nodeBlacklist=null, bgpTables=null, routingTables=null, externalBgpAnnouncements=null}
+    Hop 1: A:GigabitEthernet0/1 -> B:GigabitEthernet0/1 --- [OspfRoute<2.0.0.0/16,nhip:1.0.1.1,nhint:dynamic>]
+    DENIED_IN{1}{deny 104.0.1.3 0.255.255.255}
+
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[2.0.0.0/16], srcIps=[105.0.0.0/8], finalNodeRegex=B, ingressNodeRegex=A
+
+Flow: ingress:A vrf:default 105.0.0.0->2.0.0.0 HOPOPT packetLength:0 state:NEW
+  environment:BASE
+Environment{envName=BASE, testrigName=tr_286324ca-323e-47b8-8ac5-0881f9684bcc, edgeBlacklist=null, interfaceBlacklist=null, nodeBlacklist=null, bgpTables=null, routingTables=null, externalBgpAnnouncements=null}
+    Hop 1: A:GigabitEthernet0/1 -> B:GigabitEthernet0/1 --- [OspfRoute<2.0.0.0/16,nhip:1.0.1.1,nhint:dynamic>]
+    NEIGHBOR_UNREACHABLE_OR_EXITS_NETWORK
+
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[2.0.0.0/16], srcIps=[2.0.0.0/16], finalNodeRegex=B, ingressNodeRegex=C
+
+Flow: ingress:C vrf:default 2.0.0.0->2.0.130.2 HOPOPT packetLength:0 state:NEW
+  environment:BASE
+Environment{envName=BASE, testrigName=tr_286324ca-323e-47b8-8ac5-0881f9684bcc, edgeBlacklist=null, interfaceBlacklist=null, nodeBlacklist=null, bgpTables=null, routingTables=null, externalBgpAnnouncements=null}
+    NEIGHBOR_UNREACHABLE_OR_EXITS_NETWORK
+
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[2.0.0.0/16], srcIps=[103.0.0.0/8], finalNodeRegex=B, ingressNodeRegex=C
+
+Flow: ingress:C vrf:default 103.0.0.0->2.0.130.2 HOPOPT packetLength:0 state:NEW
+  environment:BASE
+Environment{envName=BASE, testrigName=tr_286324ca-323e-47b8-8ac5-0881f9684bcc, edgeBlacklist=null, interfaceBlacklist=null, nodeBlacklist=null, bgpTables=null, routingTables=null, externalBgpAnnouncements=null}
+    NEIGHBOR_UNREACHABLE_OR_EXITS_NETWORK
+
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[2.0.0.0/16], srcIps=[1.0.0.0/16], finalNodeRegex=C, ingressNodeRegex=A
+
+Flow: ingress:A vrf:default 1.0.0.0->2.0.2.2 HOPOPT packetLength:0 state:NEW
+  environment:BASE
+Environment{envName=BASE, testrigName=tr_286324ca-323e-47b8-8ac5-0881f9684bcc, edgeBlacklist=null, interfaceBlacklist=null, nodeBlacklist=null, bgpTables=null, routingTables=null, externalBgpAnnouncements=null}
+    Hop 1: A:GigabitEthernet0/1 -> B:GigabitEthernet0/1 --- [OspfRoute<2.0.0.0/16,nhip:1.0.1.1,nhint:dynamic>]
+    ACCEPTED
+
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[2.0.0.0/16], srcIps=[104.0.0.0/8], finalNodeRegex=C, ingressNodeRegex=A
+
+Flow: ingress:A vrf:default 104.0.0.0->2.0.0.0 HOPOPT packetLength:0 state:NEW
+  environment:BASE
+Environment{envName=BASE, testrigName=tr_286324ca-323e-47b8-8ac5-0881f9684bcc, edgeBlacklist=null, interfaceBlacklist=null, nodeBlacklist=null, bgpTables=null, routingTables=null, externalBgpAnnouncements=null}
+    Hop 1: A:GigabitEthernet0/1 -> B:GigabitEthernet0/1 --- [OspfRoute<2.0.0.0/16,nhip:1.0.1.1,nhint:dynamic>]
+    DENIED_IN{1}{deny 104.0.1.3 0.255.255.255}
+
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[2.0.0.0/16], srcIps=[105.0.0.0/8], finalNodeRegex=C, ingressNodeRegex=A
+
+Flow: ingress:A vrf:default 105.0.0.0->2.0.3.0 HOPOPT packetLength:0 state:NEW
+  environment:BASE
+Environment{envName=BASE, testrigName=tr_286324ca-323e-47b8-8ac5-0881f9684bcc, edgeBlacklist=null, interfaceBlacklist=null, nodeBlacklist=null, bgpTables=null, routingTables=null, externalBgpAnnouncements=null}
+    Hop 1: A:GigabitEthernet0/1 -> B:GigabitEthernet0/1 --- [OspfRoute<2.0.0.0/16,nhip:1.0.1.1,nhint:dynamic>]
+    NEIGHBOR_UNREACHABLE_OR_EXITS_NETWORK
+
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[2.0.0.0/16], srcIps=[1.0.0.0/16], finalNodeRegex=C, ingressNodeRegex=B
+
+Flow: ingress:B vrf:default 1.0.0.0->2.0.2.2 HOPOPT packetLength:0 state:NEW
+  environment:BASE
+Environment{envName=BASE, testrigName=tr_286324ca-323e-47b8-8ac5-0881f9684bcc, edgeBlacklist=null, interfaceBlacklist=null, nodeBlacklist=null, bgpTables=null, routingTables=null, externalBgpAnnouncements=null}
+    ACCEPTED
+
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[2.0.0.0/16], srcIps=[2.0.0.0/16], finalNodeRegex=C, ingressNodeRegex=B
+
+Flow: ingress:B vrf:default 2.0.0.0->2.0.2.2 HOPOPT packetLength:0 state:NEW
+  environment:BASE
+Environment{envName=BASE, testrigName=tr_286324ca-323e-47b8-8ac5-0881f9684bcc, edgeBlacklist=null, interfaceBlacklist=null, nodeBlacklist=null, bgpTables=null, routingTables=null, externalBgpAnnouncements=null}
+    ACCEPTED
+
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[103.0.0.0/8], srcIps=[1.0.0.0/16], finalNodeRegex=C, ingressNodeRegex=A
+
+Verified
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[103.0.0.0/8], srcIps=[104.0.0.0/8], finalNodeRegex=C, ingressNodeRegex=A
+
+Flow: ingress:A vrf:default 104.0.0.0->103.0.0.0 HOPOPT packetLength:0 state:NEW
+  environment:BASE
+Environment{envName=BASE, testrigName=tr_286324ca-323e-47b8-8ac5-0881f9684bcc, edgeBlacklist=null, interfaceBlacklist=null, nodeBlacklist=null, bgpTables=null, routingTables=null, externalBgpAnnouncements=null}
+    Hop 1: A:GigabitEthernet0/1 -> B:GigabitEthernet0/1 --- [OspfRoute<103.0.0.0/8,nhip:1.0.1.1,nhint:dynamic>]
+    DENIED_IN{1}{deny 104.0.1.3 0.255.255.255}
+
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[103.0.0.0/8], srcIps=[105.0.0.0/8], finalNodeRegex=C, ingressNodeRegex=A
+
+Verified
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[103.0.0.0/8], srcIps=[1.0.0.0/16], finalNodeRegex=C, ingressNodeRegex=B
+
+Verified
+
+Summary: 0 (non-assertion) results; 
+Status: SUCCESS
+Question: smt-reachability actions=[ACCEPT], dstIps=[103.0.0.0/8], srcIps=[2.0.0.0/16], finalNodeRegex=C, ingressNodeRegex=B
+
+Verified
+
+Summary: 0 (non-assertion) results; 

@@ -1,0 +1,74 @@
+*** Settings ***
+Log level: INFO
+Configs directory: /users/archie/batfish/archieNew/AddAcl/configs/
+Warn assumptions: false
+Routers Only: false
+Waypoints file: null
+Minimum policy group size: 4
+Include entire flowspace: false
+Exclude external policy groups: true
+Generate per-flow ETGs: false
+Generate per-destination ETGs: false
+Use interface descriptions to generate device-based ETG: false
+Parallelize: false
+Graphs directory: null
+Test files: null
+Serialized ETGs file: null
+Minesweeper policies file: /users/archie/batfish/archieNew/AddAcl/logs//minesweeper_tocheck.txt
+Netcomplete reqs file: /users/archie/batfish/archieNew/AddAcl/req
+Verify currently blocked: false
+Verify always blocked: false
+Verify always reachable: false K=-1
+Verify always traverse waypoint: false
+Verify always isolated: false
+Verify primary path: false
+Verify path equivalence: false VIRL-log=null
+Verify equivalence: false Comparison ETGs=null
+Fault Localize Method: null
+Check Polcies File: null
+Save policies file: null
+Edit policies file: null
+Repair: false Policies=null
+Modifier: null
+Objective: null
+Compare ETGs file: null
+Only repair broken ETGs: false
+Compare configs file: null
+*** Reading configuration files ***
+*** Extract Policy Groups ***
+Parsing A...OK
+Parsing B...OK
+Parsing C...OK
+RESULTS_START: PolicyGroups
+	1.0.0.0-1.0.255.255 INTERNAL
+	2.0.0.0-2.0.255.255 INTERNAL
+	103.0.0.0-103.255.255.255 INTERNAL
+	104.0.0.0-104.255.255.255 INTERNAL
+	105.0.0.0-105.255.255.255 INTERNAL
+RESULTS_END: PolicyGroups
+COUNT: policyGroups 5
+COUNT: devices 3
+Devices:
+	A
+	B
+	C
+*** Generate Minesweeper policy list ***
+*** Generate device-based ETG ***
+COUNT: deviceETGVertices 3
+COUNT: deviceETGEdges 2
+*** Generate process-based ETG ***
+No interface connected to A:GigabitEthernet0/3 which is used by process A.OSPF.default
+No interface connected to A:GigabitEthernet0/4 which is used by process A.OSPF.default
+No interface connected to C:GigabitEthernet0/3 which is used by process C.OSPF.default
+COUNT: baseETGVertices 6
+COUNT: baseETGEdges 7
+COUNT: ospfProcesses 3
+COUNT: bgpProcesses 0
+COUNT: staticProcesses 0
+*** Generate instance-based ETG ***
+COUNT: instanceETGVertices 1
+COUNT: instanceETGEdges 0
+COUNT: ospfInstances 1
+COUNT: bgpInstances 0
+COUNT: staticInstances 0
+PROP: instanceIsDag true
