@@ -42,4 +42,5 @@ echo "All edgeprops Z3 done"
 end=`date +%s`
 objective=`awk '{ sum += $1 } END { print sum }' sumobjective`
 runtime=$((end-start))
-echo "$configs,$runtime,$objective" >> runoutput
+numrouter=`ls $configs/configs | wc -l`
+echo "$numrouter,$configs,$runtime,$objective" >> runoutput
