@@ -1,2 +1,0 @@
-init-testrig /users/archie/exp-old/db3-x3sb-xcg-9-1a_1b
-get smt-mul srcIps=["103.0.3.3"], dstIps=["104.0.1.3"]
