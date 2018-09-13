@@ -4,4 +4,5 @@ mv runoutput minchange-out
 mv runoutput mindevchange-out
 ./minfwdchng.sh ~/exp-old-nochng ~/exp-old
 mv runoutput minfwd-out
-
+./mintempchng.sh ~/exp-old
+mv runoutput mintemp-out
