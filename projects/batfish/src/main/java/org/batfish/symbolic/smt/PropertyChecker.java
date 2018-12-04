@@ -45,6 +45,7 @@ import org.batfish.datamodel.answers.AnswerElement;
 import org.batfish.datamodel.questions.smt.EnvironmentType;
 import org.batfish.datamodel.questions.smt.HeaderLocationQuestion;
 import org.batfish.datamodel.questions.smt.HeaderQuestion;
+import org.batfish.mulgraph.Mulgraph;
 import org.batfish.symbolic.CommunityVar;
 import org.batfish.symbolic.Graph;
 import org.batfish.symbolic.GraphEdge;
@@ -52,6 +53,7 @@ import org.batfish.symbolic.Protocol;
 import org.batfish.symbolic.abstraction.Abstraction;
 import org.batfish.symbolic.abstraction.DestinationClasses;
 import org.batfish.symbolic.abstraction.NetworkSlice;
+import org.batfish.symbolic.answers.NullAnswer;
 import org.batfish.symbolic.answers.SmtDeterminismAnswerElement;
 import org.batfish.symbolic.answers.SmtManyAnswerElement;
 import org.batfish.symbolic.answers.SmtOneAnswerElement;
@@ -590,6 +592,15 @@ public class PropertyChecker {
             return new SmtReachabilityAnswerElement(vp.getResult(), fh);
           }
         });
+  }
+
+  /*
+   * Check if things are reachable
+   */
+  public AnswerElement checkGraphReachability(HeaderLocationQuestion q) {
+    Graph graph = new Graph(_batfish);
+    Mulgraph m = new Mulgraph(graph);
+    return new NullAnswer();
   }
 
   /*

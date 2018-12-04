@@ -34,6 +34,7 @@ export ALLINONE="$ALLINONE_PATH/allinone"
 
 export COMMON_PATH="$PROJECTS_PATH/batfish-common-protocol"
 export COMMON_JAR="$COMMON_PATH/target/batfish-common-protocol-${BATFISH_VERSION}.jar"
+export GUROBI_JAR="$PROJECTS_PATH/lib/gurobi.jar"
 
 export QUESTION_PATH="$PROJECTS_PATH/question"
 export BATFISH_QUESTION_PLUGIN_DIR="$PROJECTS_PATH/question/target/"
@@ -69,7 +70,7 @@ export -f batfish_build
 
 _batfish_build() {
    _pre_build || return 1
-   mvn install -pl batfish -am || return 1
+   mvn install -pl batfish -am -Dfile=$GUROBI_JAR|| return 1
    if [ "$BATFISH_COMPLETION_FILE" -ot "$BATFISH_PATH/target/batfish-${BATFISH_VERSION}.jar" -a -e "$BATFISH_PATH/target/batfish-${BATFISH_VERSION}.jar" ]; then
       echo -n "Generating bash completion file (after batfish_build) ..."
       BATFISH_PRINT_CMDLINE=no batfish -help | grep -o '^ *-[a-zA-Z0-9]*' | tr -d ' ' | tr '\n' ' ' > "$BATFISH_COMPLETION_FILE"
@@ -108,7 +109,7 @@ export -f batfish_build_all
 _batfish_build_all() {
    _pre_build || return 1
    cd "${PROJECTS_PATH}"
-   mvn install || return 1
+   mvn install -Dfile=$GUROBI_JAR|| return 1
 }
 export -f _batfish_build_all
 
@@ -120,7 +121,7 @@ export -f batfish_rebuild_all
 _batfish_rebuild_all() {
    _pre_build || return 1
    cd "${PROJECTS_PATH}"
-   mvn -DskipTests clean install || return 1
+   mvn -DskipTests clean install -Dfile=$GUROBI_JAR|| return 1
 }
 export -f _batfish_rebuild_all
 
@@ -132,7 +133,7 @@ export -f batfish_test_all
 _batfish_test_all() {
    _pre_build || return 1
    cd "${PROJECTS_PATH}"
-   mvn clean install -P '!fast' || return 1
+   mvn clean install -P '!fast' -Dfile=$GUROBI_JAR|| return 1
 }
 export -f _batfish_test_all
 
@@ -320,7 +321,7 @@ export -f client_build
 
 _client_build() {
    _pre_build || return 1
-   mvn install -DskipTests -pl batfish-client -am || return 1
+   mvn install -DskipTests -pl batfish-client -am -Dfile=$GUROBI_JAR|| return 1
    if [ "$BATFISH_CLIENT_COMPLETION_FILE" -ot "$BATFISH_CLIENT_PATH/target/batfish-client-${BATFISH_VERSION}.jar" -a -e "$BATFISH_CLIENT_PATH/target/batfish-client-${BATFISH_VERSION}.jar" ]; then
       echo -n "Generating bash completion file for batfish-client (via client_build) ..."
       BATFISH_PRINT_CMDLINE=no batfish_client -help | grep -o '^ *-[a-zA-Z0-9]*' | tr -d ' ' | tr '\n' ' ' > "$BATFISH_CLIENT_COMPLETION_FILE"
@@ -353,7 +354,7 @@ allinone_build() {
 
 _allinone_build() {
    _pre_build || return 1
-   mvn install -pl allinone -am || return 1
+   mvn install -pl allinone -am -Dfile=$GUROBI_JAR|| return 1
    if [ "$ALLINONE_COMPLETION_FILE" -ot "$ALLINONE_PATH/target/allinone-${BATFISH_VERSION}.jar" -a -e "$ALLINONE_PATH/target/allinone-${BATFISH_VERSION}.jar" ]; then
       echo -n "Generating bash completion file for allinone (via allinone_build) ..."
       BATFISH_PRINT_CMDLINE=no allinone -help | grep -o '^ *-[a-zA-Z0-9]*' | tr -d ' ' | tr '\n' ' ' > "$ALLINONE_COMPLETION_FILE"
@@ -370,7 +371,7 @@ export -f coordinator_build
 
 _coordinator_build() {
    _pre_build || return 1
-   mvn install -pl coordinator -am || return 1
+   mvn install -pl coordinator -am -Dfile=$GUROBI_JAR|| return 1
    if [ "$COORDINATOR_COMPLETION_FILE" -ot "$COORDINATOR_PATH/target/coordinator-${BATFISH_VERSION}.jar" -a -e "$COORDINATOR_PATH/target/coordinator-${BATFISH_VERSION}.jar" ]; then
       echo -n "Generating bash completion file for coordinator (via coordinator_build) ..."
       BATFISH_PRINT_CMDLINE=no coordinator -help | grep -o '^ *-[a-zA-Z0-9]*' | tr -d ' ' | tr '\n' ' ' > "$COORDINATOR_COMPLETION_FILE"
@@ -386,7 +387,7 @@ export -f common_build
 
 _common_build() {
    _pre_build || return 1
-   mvn install -pl batfish-common-protocol -am || return 1
+   mvn install -pl batfish-common-protocol -am -Dfile=$GUROBI_JAR|| return 1
 }
 export -f _common_build
 

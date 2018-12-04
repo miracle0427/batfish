@@ -205,6 +205,8 @@ public interface IBatfish extends IPluginConsumer {
   Optional<SearchFiltersResult> reachFilter(
       Configuration node, IpAccessList acl, SearchFiltersParameters parameters);
 
+  AnswerElement arcReach(HeaderLocationQuestion q);
+
   AnswerElement smtBlackhole(HeaderQuestion q);
 
   AnswerElement smtBoundedLength(HeaderLocationQuestion q, Integer bound);
