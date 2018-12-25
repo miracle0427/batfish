@@ -243,6 +243,7 @@ class TransferSSA {
       ExplicitPrefixSet x = (ExplicitPrefixSet) e;
 
       Set<PrefixRange> ranges = x.getPrefixSpace().getPrefixRanges();
+      System.out.println(e);
       if (ranges.isEmpty()) {
         return result.setReturnValue(_enc.mkTrue());
       }

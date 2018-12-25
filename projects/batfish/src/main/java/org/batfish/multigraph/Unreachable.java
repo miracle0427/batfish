@@ -1,6 +1,8 @@
 package org.batfish.mulgraph;
 
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.ArrayList;
 
 public class Unreachable {
@@ -22,11 +24,68 @@ public class Unreachable {
         for (Node v : g.getVertices()) {
             visited.put(v, false);
         }
-        ArrayList<protocol> protocolList = new ArrayList<>();  
+        //ArrayList<protocol> protocolList = new ArrayList<>();  
           
         //Call recursive utility 
-        return !(isReachableAnyPathUtil(src, dst, visited, protocolList)); 
+        //return !(isReachableAnyPathUtil(src, dst, visited, protocolList)); 
+        return !(isReachableAny(src, dst, visited)); 
     } 
+
+    // A recursive function to detect if
+    // 'u' is reachable to 'd'. 
+
+    private Boolean isReachableAny(Node u, Node d, 
+        HashMap<Node, Boolean> visited) { 
+          
+        // Mark the current Node 
+        visited.put(u, true);
+          
+        if (u.equals(d)) { 
+            return true;
+        } 
+
+        // Recur for all the vertices 
+        // adjacent to current vertex 
+        for(Edge e: g.getNeighbors(u)) {
+            protocol current = e.getType(); 
+            Node i = e.getDst();
+            if (current == protocol.DEF) 
+                continue;
+            // reset the Nodes to remove ospf-ospf pair and reset DEF to anything else
+            Set<Edge> removeEdges = new HashSet<>();
+            if (current == protocol.IBGP) {
+                for (Edge e1: g.getNeighbors(i)) {
+                    protocol next = e1.getType(); 
+                    if (next == protocol.OSPF) {
+                        Node i2 = e1.getDst();
+                        for (Edge e2: g.getNeighbors(i2)) {
+                            protocol third = e2.getType();
+                            if (third == protocol.DEF) {
+                                e2.type = protocol.BGP;
+                            } else if (third == protocol.OSPF) {
+                                removeEdges.add(e2);
+                                System.out.println("IBGP " + e);
+                            }
+                        }
+                    }
+                }
+            }
+            for (Edge remove : removeEdges) {
+                System.out.println("Remove " + remove);
+                g.removeEdgeGraph(remove);
+            }
+            if (visited.get(i) == false && (e.getType()!= protocol.DEF)) {
+            // store current Node  
+            // in path[] 
+                if (isReachableAny(i, d, visited)) {
+                    return true;
+                } 
+            } 
+        } 
+
+        return false;
+          
+    }
   
     // A recursive function to detect if
     // 'u' is reachable to 'd'. 

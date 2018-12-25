@@ -1,7 +1,7 @@
 
 package org.batfish.mulgraph;
 
-//import gurobi.*;
+import gurobi.*;
 import java.util.HashMap;
 import java.util.ArrayList;
 import java.util.Map;
@@ -10,23 +10,22 @@ import java.util.Map;
 public class Disconnect {
 
   Digraph g;
-  //GRBEnv env;
-  //GRBModel model;
+  GRBEnv env;
+  GRBModel model;
 
   public Disconnect(Digraph graph)
   { 
-    g = graph;/*
+    g = graph;
     try {
       env = new GRBEnv("Disconnect.log");
       model = new GRBModel(env);
     } catch (GRBException e) {
       System.out.println("Error code at Constructor: " + e.getErrorCode() + ". " +
                          e.getMessage());
-    }*/
+    }
   }
   public long formulate(Node src, Node dst) {
     long duration = 0;
-  /*
     try {
 
       // Create variables
@@ -103,20 +102,20 @@ public class Disconnect {
   }
 
   public double run(){
-    double time = 0;/*
+    double time = 0;
      try {
         model.set(GRB.IntParam.OutputFlag, 0);
         model.write("out.rlp");
          // Optimize model
         model.optimize();
-        
+        /*   
         System.out.println(x.get(GRB.StringAttr.VarName)
                            + " " +x.get(GRB.DoubleAttr.X));
         System.out.println(y.get(GRB.StringAttr.VarName)
                            + " " +y.get(GRB.DoubleAttr.X));
         System.out.println(z.get(GRB.StringAttr.VarName)
                            + " " +z.get(GRB.DoubleAttr.X));
-        
+        */
         System.out.println("Obj: " + model.get(GRB.DoubleAttr.ObjVal));
         time = model.get(GRB.DoubleAttr.Runtime) * 1000;
         System.out.println("ILP Time: " + time + " ms");
@@ -129,7 +128,7 @@ public class Disconnect {
     } catch (GRBException e) {
       System.out.println("Error code at optimization: " + e.getErrorCode() + ". " +
                          e.getMessage());
-    }*/
+    }
     return time;
   }
 }

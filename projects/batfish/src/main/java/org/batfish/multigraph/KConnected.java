@@ -1,37 +1,39 @@
 
 package org.batfish.mulgraph;
 
-//import gurobi.*;
+import gurobi.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.ArrayList;
 
 
 public class KConnected {
 
   Digraph g;
-  //GRBEnv env;
-  //GRBModel model;
+  GRBEnv env;
+  GRBModel model;
 
   public KConnected(Digraph graph)
   { 
-    g = graph;/*
+    g = graph;
     try {
       env = new GRBEnv("kConnected.log");
       model = new GRBModel(env);
     } catch (GRBException e) {
       System.out.println("Error code at Constructor: " + e.getErrorCode() + ". " +
                          e.getMessage());
-    }*/     
+    }      
   }
+  
   public void formulate(Node src, Node dst) {
-  /*
     try {
 
       
       // Create variables
-      GRBLinExpr expr, inflow, temp1, corr;
+      GRBLinExpr expr, inflow, temp1, corr, sumParentReach, sumGParentReach, tempAdd;
       Map<Node, Map<Node, GRBVar>> flow = new HashMap<>();
       Map<Node, Map<Node, GRBVar>> fail = new HashMap<>();
       List<GRBVar> allFail = new ArrayList<>();
@@ -39,6 +41,7 @@ public class KConnected {
 
       Map<Integer, GRBVar> physicalFailVar = new HashMap<>();
 
+      Map<Node, Map<Integer, GRBVar>> community = new HashMap<>();
 
       int constraint = 0;
       for (Node from : g.getVertices()) {
@@ -84,6 +87,18 @@ public class KConnected {
       model.addConstr(reachable.get(dst), GRB.EQUAL, 0.0, "reachcons"+constraint);
       constraint = constraint + 1;
 
+
+      Map<Integer, Set<Node>> communitySeen = g.getCommunitySeen();
+      for ( Integer comm : communitySeen.keySet() ) {
+        for ( Node v : communitySeen.get(comm) ) {
+          if (!community.containsKey(v)) {
+            community.put(v, new HashMap<>());
+          }
+          GRBVar canReachCom = model.addVar(0.0, 1.0, 0.0, GRB.BINARY, (v.getId()+""+comm) );
+          community.get(v).put(comm, canReachCom);
+        }
+      }
+
       // assume the graph which has been given is already pruned and tells me what is the src and dst node
 
       for (Node v : g.getVertices()) {
@@ -94,11 +109,45 @@ public class KConnected {
 
         inflow = new GRBLinExpr();
 
+        for (Integer comm : v.addedCommunity) {
+          model.addConstr(community.get(v).get(comm), GRB.EQUAL, 1.0, "reachcomm"+constraint);
+          constraint = constraint + 1;          
+        }
+
+        for (Integer comm : v.removedCommunity) {
+          model.addConstr(community.get(v).get(comm), GRB.EQUAL, 0.0, "reachcomm"+constraint);
+          constraint = constraint + 1;          
+        }
+
+        //Map<Node, Map<Integer, GRBVar>> community = new HashMap<>();
+        if (community.containsKey(v)) {
+          for (Integer comm : community.get(v).keySet()) {
+
+            if (v.addedCommunity.contains(comm)||v.removedCommunity.contains(comm)) {
+              continue;
+            }
+
+            GRBVar reachvcomm = community.get(v).get(comm);
+            temp1 = new GRBLinExpr();
+            for (Node from : g.inboundNeighbors(v)) {
+              if ( communitySeen.get(comm).contains(from) ) {
+                model.addConstr(reachvcomm, GRB.GREATER_EQUAL, community.get(from).get(comm), "reachcomm"+constraint);
+                constraint = constraint + 1;
+                temp1.addTerm(1.0, community.get(from).get(comm));
+              }
+              model.addConstr(reachvcomm, GRB.LESS_EQUAL, temp1, "reachcomm"+constraint);
+              constraint = constraint + 1;
+
+            }  
+            //temp1.addTerm(1.0, reachable.get(from));
+          }
+
+        }
+
         // flow = reach - fail
         // reach = summation(flow)
         for (Node from : g.inboundNeighbors(v)) {
           GRBVar flowcons = flow.get(from).get(v);
-          inflow.addTerm(1.0, flowcons);
           temp1 = new GRBLinExpr();
           temp1.addTerm(1.0, reachable.get(from));
           temp1.addTerm(-1.0, fail.get(from).get(v));
@@ -106,29 +155,188 @@ public class KConnected {
           // modified the previous statement to support hedge graph
           //model.addConstr(flowcons, GRB.GREATER_EQUAL, temp1, "flowcons"+constraint);
           // further modified the previous statement to support correlated-edges
+          if (g.isIBGPPair(from, v)) {
+            //List<Node> pair = g.getPair(from, v).get(0);
+            //Node v1 = pair.get(0);
+            //Node v2 = pair.get(1);
+            //System.out.println("iBGP-pair-" + v1 + " " + v2 + " " + from + " " + v );
+            List<List<Node>> allPair = g.getPair(from, v);
+            ArrayList<Node> tempList = new ArrayList<Node>(); 
+            for (List<Node> vv : allPair) {
+              tempList.add(vv.get(1));
+            }
+
+            // can be reached from parent w/o a ospf-edge
+            GRBVar nonIBGPParReach = model.addVar(0.0, 1.0, 0.0, GRB.BINARY, ("nonIBGPParReach"+constraint) );
+            constraint = constraint + 1;
+            sumParentReach = new GRBLinExpr();
+            sumParentReach.addConstant(0);
+
+            for (Node parent : g.inboundNeighbors(from)) {
+              if (tempList.contains(parent))
+                continue;
+              GRBVar parentReach = flow.get(parent).get(from);
+              model.addConstr(nonIBGPParReach, GRB.GREATER_EQUAL, parentReach, "nonIBGPParReach"+constraint);
+              constraint = constraint + 1;
+              sumParentReach.addTerm(1.0, parentReach);
+            }
+            model.addConstr(nonIBGPParReach, GRB.LESS_EQUAL, sumParentReach, "nonIBGPParReach"+constraint);
+            constraint = constraint + 1;
+
+
+            // can be reached from grandparent to an ospf-edge w/o IBGP edge
+            GRBVar nonIBGP_GPReach = model.addVar(0.0, 1.0, 0.0, GRB.BINARY, ("nonIBGP_GPReach"+constraint) );
+            constraint = constraint + 1;
+
+            sumGParentReach = new GRBLinExpr();
+            sumGParentReach.addConstant(0);
+
+            for (Node v2 : tempList) {
+              GRBVar secondFlow = flow.get(v2).get(from);
+              for (Node grandParent : g.inboundNeighbors(v2)) {
+                if (g.getEdge(grandParent, v2).getType() == protocol.IBGP)
+                  continue;
+                GRBVar gParentReach = flow.get(grandParent).get(v2);
+
+                GRBVar tempV1 = model.addVar(0.0, 1.0, 0.0, GRB.BINARY, ("tempV1"+constraint) );
+                constraint = constraint + 1;
+
+                //tempV1 is 1 if both gParentReach and secondFlow is 1
+                model.addConstr(tempV1, GRB.LESS_EQUAL, secondFlow, "nonIBGP_GPReach"+constraint);
+                constraint = constraint + 1;
+                model.addConstr(tempV1, GRB.LESS_EQUAL, gParentReach, "nonIBGP_GPReach"+constraint);
+                constraint = constraint + 1;
+                
+                tempAdd = new GRBLinExpr();
+                tempAdd.addTerm(1.0, secondFlow);
+                tempAdd.addTerm(1.0, gParentReach);
+                tempAdd.addConstant(-1.0);
+                model.addConstr(tempV1, GRB.GREATER_EQUAL, tempAdd, "nonIBGP_GPReach"+constraint);
+                constraint = constraint + 1;
+
+                model.addConstr(nonIBGP_GPReach, GRB.GREATER_EQUAL, tempV1, "nonIBGP_GPReach"+constraint);
+                constraint = constraint + 1;
+                sumGParentReach.addTerm(1.0, tempV1);
+              }
+            }
+            model.addConstr(nonIBGP_GPReach, GRB.LESS_EQUAL, sumGParentReach, "nonIBGP_GPReach"+constraint);
+            constraint = constraint + 1;
+
+
+            /*corr = new GRBLinExpr();
+            corr.addConstant(2.0);
+            corr.addTerm(-1.0, flow.get(v1).get(v2));
+            corr.addTerm(-1.0, flow.get(v2).get(from));
+            model.addConstr(flowcons, GRB.LESS_EQUAL, corr, "flowcons"+constraint);
+            constraint = constraint + 1;*/
+            GRBVar canReach = model.addVar(0.0, 1.0, 0.0, GRB.BINARY, ("canReach"+constraint) );
+            constraint = constraint + 1;
+            model.addConstr(canReach, GRB.GREATER_EQUAL, nonIBGPParReach, "canReach"+constraint);
+            constraint = constraint + 1;
+            model.addConstr(canReach, GRB.GREATER_EQUAL, nonIBGP_GPReach, "canReach"+constraint);
+            constraint = constraint + 1;
+            
+            tempAdd = new GRBLinExpr();
+            tempAdd.addTerm(1.0, nonIBGPParReach);
+            tempAdd.addTerm(1.0, nonIBGP_GPReach);
+            model.addConstr(canReach, GRB.LESS_EQUAL, tempAdd, "canReach"+constraint);
+            constraint = constraint + 1;
+
+            GRBVar onlyIBGP = model.addVar(0.0, 1.0, 0.0, GRB.BINARY, ("onlyIBGP"+constraint) );
+            constraint = constraint + 1;
+            tempAdd = new GRBLinExpr();
+            tempAdd.addConstant(1.0);
+            tempAdd.addTerm(-1.0, canReach);
+            model.addConstr(onlyIBGP, GRB.EQUAL, tempAdd, "onlyIBGP"+constraint);
+            constraint = constraint + 1;
+
+            temp1.addTerm(-1.0, onlyIBGP);
+          }
+
+          if (g.getEdge(from, v).getType() ==  protocol.DEF) {
+            if (g.isDefPair(from, v)) {
+
+              GRBVar canUseDef = model.addVar(0.0, 1.0, 0.0, GRB.BINARY, ("canUseDef"+constraint) );
+              constraint = constraint + 1;              
+              tempAdd = new GRBLinExpr();
+            
+              List<List<Node>> allPair = g.getDefPair(from, v);
+
+              for (List<Node> apair : allPair) {
+                Node v1 = apair.get(0);
+                Node v2 = apair.get(1);
+                GRBVar flow1 = flow.get(v1).get(v2);
+                GRBVar flow2 = flow.get(v2).get(from);
+
+                GRBVar canReach = model.addVar(0.0, 1.0, 0.0, GRB.BINARY, ("canReach"+constraint) );
+                constraint = constraint + 1;
+
+                model.addConstr(canReach, GRB.LESS_EQUAL, flow1, "canReach"+constraint);
+                constraint = constraint + 1;
+                model.addConstr(canReach, GRB.LESS_EQUAL, flow2, "canReach"+constraint);
+                constraint = constraint + 1;
+
+                GRBLinExpr tempAdd2 = new GRBLinExpr();
+                tempAdd2.addTerm(1.0, flow1);
+                tempAdd2.addTerm(1.0, flow2);
+                tempAdd2.addConstant(-1.0);
+                model.addConstr(canReach, GRB.GREATER_EQUAL, tempAdd2, "canReach"+constraint);
+                constraint = constraint + 1;
+
+                model.addConstr(canUseDef, GRB.GREATER_EQUAL, canReach, "canReach"+constraint);
+                tempAdd.addTerm(1.0, canReach);
+                constraint = constraint + 1;
+
+              }
+              model.addConstr(canUseDef, GRB.LESS_EQUAL, tempAdd, "canReach"+constraint);
+
+
+              GRBVar notDef = model.addVar(0.0, 1.0, 0.0, GRB.BINARY, ("notDef"+constraint) );
+              constraint = constraint + 1;              
+
+              tempAdd = new GRBLinExpr();
+              tempAdd.addConstant(1.0);
+              tempAdd.addTerm(-1.0, canUseDef);
+              model.addConstr(notDef, GRB.EQUAL, tempAdd, "onlyIBGP"+constraint);
+              constraint = constraint + 1;
+              temp1.addTerm(-1.0, notDef);
+
+
+            } else {
+              continue;
+            }
+          }
+
+          GRBVar blockCom = model.addVar(0.0, 1.0, 0.0, GRB.BINARY, ("blockcommunity"+constraint) );
+          constraint = constraint + 1;
+
+          tempAdd = new GRBLinExpr();
+
+          for (Integer comm : v.blockedCommunity) {
+            if (communitySeen.get(comm).contains(from)) {
+              model.addConstr(blockCom, GRB.GREATER_EQUAL, community.get(from).get(comm), "reachcomm"+constraint);
+              constraint = constraint + 1;
+              tempAdd.addTerm(1.0, community.get(from).get(comm));
+            }
+          }
+          model.addConstr(blockCom, GRB.LESS_EQUAL, tempAdd, "reachcomm"+constraint);
+          constraint = constraint + 1;
+          temp1.addTerm(-1.0, blockCom);
+
+
           GRBVar tempVar = model.addVar(0.0, 1.0, 0.0, GRB.BINARY, ("tempVar"+constraint) );
+          constraint = constraint + 1;
           model.addConstr(tempVar, GRB.GREATER_EQUAL, temp1, "flowcons"+constraint);
           constraint = constraint + 1;
           model.addConstr(flowcons, GRB.GREATER_EQUAL, tempVar, "flowcons"+constraint);
           constraint = constraint + 1;
 
-          if (g.isIBGPPair(from, v)) {
-            List<Node> pair = g.getPair(from, v);
-            Node v1 = pair.get(0);
-            Node v2 = pair.get(1);
-            System.out.println("iBGP-pair-" + v1 + " " + v2 + " " + from + " " + v );
-            corr = new GRBLinExpr();
-            corr.addConstant(2.0);
-            corr.addTerm(-1.0, flow.get(v1).get(v2));
-            corr.addTerm(-1.0, flow.get(v2).get(from));
-            model.addConstr(flowcons, GRB.LESS_EQUAL, corr, "flowcons"+constraint);
-            constraint = constraint + 1;
 
-          }
-
+          inflow.addTerm(1.0, flowcons);
           model.addConstr(reachable.get(v), GRB.GREATER_EQUAL, flowcons, "reach-or-cons"+constraint);
           constraint = constraint + 1;
         }
+
 
         model.addConstr(reachable.get(v), GRB.LESS_EQUAL, inflow, "flowcons"+constraint);
         constraint = constraint + 1;
@@ -146,11 +354,11 @@ public class KConnected {
     } catch (GRBException e) {
       System.out.println("Error code at formulation: " + e.getErrorCode() + ". " +
                          e.getMessage());
-    }*/
+    }
   }
 
   public double run(){
-    double time = 0;/*
+    double time = 0;
      try {
         model.set(GRB.IntParam.OutputFlag, 0);
         model.write("out.rlp");
@@ -163,10 +371,15 @@ public class KConnected {
                            + " " +y.get(GRB.DoubleAttr.X));
         System.out.println(z.get(GRB.StringAttr.VarName)
                            + " " +z.get(GRB.DoubleAttr.X));
-        
-        //System.out.println("Obj: " + model.get(GRB.DoubleAttr.ObjVal));
+        */
+
+        if(model.get(GRB.IntAttr.Status) != GRB.Status.OPTIMAL){
+            System.out.println("There is no optimal solution ");
+        }                           
+
+        System.out.println("Obj: " + model.get(GRB.DoubleAttr.ObjVal));
         time = model.get(GRB.DoubleAttr.Runtime) * 1000;
-        //System.out.println("ILP Time: " + time + " ms");
+        System.out.println("ILP Time: " + time + " ms");
 
         // Dispose of model and environment
         model.write("out.sol");
@@ -176,7 +389,7 @@ public class KConnected {
     } catch (GRBException e) {
       System.out.println("Error code at optimization: " + e.getErrorCode() + ". " +
                          e.getMessage());
-    }*/
+    }
     return time;
   }
 }

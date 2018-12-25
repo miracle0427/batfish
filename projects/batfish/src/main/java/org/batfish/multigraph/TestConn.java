@@ -7,10 +7,10 @@ public class TestConn {
     public static void main(String[] args) throws IOException {
 
         Digraph graph = new Digraph();
-        //Unreachable unreachable = new Unreachable(graph);
+        Unreachable unreachable = new Unreachable(graph);
         //Cycle cycle = new Cycle(graph);
         //BasicOperation basic = new BasicOperation(graph);
-        Disconnect kconn = new Disconnect(graph);
+        //Disconnect kconn = new Disconnect(graph);
         //BellmanFord bf = new BellmanFord(graph);
 
         Node v1 = new Node("v1", protocol.BGP);
@@ -48,13 +48,21 @@ public class TestConn {
         //*
         EdgeCost ec = new EdgeCost();
         ec.ospf_cost = 3;
-        //*
+        
+        graph.add(v1, v2, ec, protocol.OSPF);
+        graph.add(v2, v3, ec, protocol.OSPF);
+        graph.add(v3, v6, ec, protocol.OSPF);
+        graph.add(v4, v5, ec, protocol.OSPF);
+        graph.add(v5, v6, ec, protocol.OSPF);
+
+
+        /*
         graph.add(v1, v2, ec, protocol.IBGP);
         graph.add(v2, v3, ec, protocol.OSPF);
         graph.add(v3, v6, ec, protocol.OSPF);
         graph.add(v3, v4, ec, protocol.DEF);
         graph.add(v4, v5, ec, protocol.OSPF);
-        graph.add(v6, v5, ec, protocol.OSPF);//*/
+        graph.add(v6, v5, ec, protocol.OSPF);
         graph.add(v1, v7, ec, protocol.OSPF);
         graph.add(v7, v9, ec, protocol.OSPF);
         graph.add(v9, v10, ec, protocol.OSPF);
@@ -69,7 +77,7 @@ public class TestConn {
         //graph.addPhysicalMap(v10, v5, 1);
 
         kconn.formulate(v1,v5);
-        kconn.run();
+        kconn.run();*/
 
         //System.out.println(basic.printAllPaths(v1,v5));
 

@@ -7,6 +7,7 @@ public class EdgeCost {
     int lp;
     int med;
     int rediscost;
+    int weight;
     Boolean valid;
 
     public EdgeCost() {
@@ -85,10 +86,20 @@ public class EdgeCost {
         return rediscost;
     }
 
+    public void setWeight(int cost) {
+        weight = cost;
+        valid = true;
+    }
+
+    public int getWeight() {
+        return weight;
+    }
+
     @Override
     public String toString() {
         //return "Edge-Cost:" + valid + " (AD=" + AD + ", ospf=" + ospf_cost + ", AS=" + as_length + ", LP=" + lp + ", MED=" + med + ", REDIS=" + rediscost + ")";
-        return "Edge-Cost:" + " (AD=" + AD + ", ospf=" + ospf_cost + ", AS=" + as_length + ", LP=" + lp + ")";
+        return "Edge-Cost:"/* + " (AD=" + AD + ", ospf=" + ospf_cost + ", AS=" + as_length + ", LP=" + lp +  ", MED=" + med + 
+         ", weight=" + weight + ")"*/;
     }
 
 }

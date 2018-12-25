@@ -46,6 +46,7 @@ import org.batfish.datamodel.questions.smt.EnvironmentType;
 import org.batfish.datamodel.questions.smt.HeaderLocationQuestion;
 import org.batfish.datamodel.questions.smt.HeaderQuestion;
 import org.batfish.mulgraph.Mulgraph;
+import org.batfish.mulgraph.Node;
 import org.batfish.symbolic.CommunityVar;
 import org.batfish.symbolic.Graph;
 import org.batfish.symbolic.GraphEdge;
@@ -599,7 +600,19 @@ public class PropertyChecker {
    */
   public AnswerElement checkGraphReachability(HeaderLocationQuestion q) {
     Graph graph = new Graph(_batfish);
-    Mulgraph m = new Mulgraph(graph);
+    //System.out.println(q.getSrcIps() + "\t" + q.getDstIps());
+    if (q.getSrcIps() != null && q.getDstIps() != null) {
+      if (q.getSrcIps().size() != 0 && q.getDstIps().size() != 0) {
+        Mulgraph m = new Mulgraph(graph, q.getSrcIps().first(), q.getDstIps().first());
+      }
+    }
+    
+    /*
+    for ( Node n : m.getDigraph().getVertices()) {
+      System.out.println(n);
+    }*/
+
+    //System.out.println(_batfish.getLayer2Topology().getGraph().nodes());
     return new NullAnswer();
   }
 

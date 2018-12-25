@@ -191,17 +191,20 @@ public final class TopologyUtil {
     Interface i1 = getInterface(node1, configurations);
     Interface i2 = getInterface(node2, configurations);
     if (i1 == null || i2 == null) {
+      System.out.println("Return null");
       return;
     }
     if (i1.getSwitchportMode() == SwitchportMode.TRUNK
         || i2.getSwitchportMode() == SwitchportMode.TRUNK) {
       addLayer2TrunkEdges(i1, i2, edges, node1, node2);
+      System.out.println("Trunk");
     } else {
       Integer node1VlanId =
           i1.getSwitchportMode() == SwitchportMode.ACCESS ? i1.getAccessVlan() : null;
       Integer node2VlanId =
           i2.getSwitchportMode() == SwitchportMode.ACCESS ? i2.getAccessVlan() : null;
       edges.add(new Layer2Edge(node1, node1VlanId, node2, node2VlanId, null));
+      System.out.println("Both");
     }
   }
 
@@ -260,6 +263,8 @@ public final class TopologyUtil {
         .stream()
         .forEach(layer1Edge -> computeLayer2EdgesForLayer1Edge(layer1Edge, configurations, edges));
 
+    System.out.println("1. " + edges.build());
+
     // Then add edges within each node to connect switchports on the same VLAN(s).
     configurations
         .values()
@@ -269,6 +274,8 @@ public final class TopologyUtil {
                   .values()
                   .forEach(vrf -> computeLayer2SelfEdges(c.getHostname(), vrf, edges));
             });
+
+    System.out.println("2. " + edges.build());
 
     // Now compute the transitive closure to connect interfaces across devices
     Layer2Topology initial = new Layer2Topology(edges.build());
@@ -288,6 +295,9 @@ public final class TopologyUtil {
         .forEach(
             newEndpoint ->
                 edges.add(new Layer2Edge(newEndpoint.source(), newEndpoint.target(), null)));
+
+    System.out.println("3. " + edges.build());
+
     return new Layer2Topology(edges.build());
   }
 

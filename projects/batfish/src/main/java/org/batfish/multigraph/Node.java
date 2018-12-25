@@ -1,21 +1,22 @@
 package org.batfish.mulgraph;
 
-import java.util.ArrayList;
+import java.util.Set;
+import java.util.HashSet;
 
 public class Node {
 
 	String id;
 	protocol type;
-    ArrayList<Integer> addedCommunity;
-    ArrayList<Integer> removedCommunity;
-    ArrayList<Integer> blockedCommunity;
+    Set<Integer> addedCommunity;
+    Set<Integer> removedCommunity;
+    Set<Integer> blockedCommunity;
 
 
     public Node(String x, protocol y){
         id = x; type = y;
-        addedCommunity = new ArrayList<>();
-        removedCommunity = new ArrayList<>();
-        blockedCommunity = new ArrayList<>();
+        addedCommunity = new HashSet<>();
+        removedCommunity = new HashSet<>();
+        blockedCommunity = new HashSet<>();
     }
 
     public String getId() {
@@ -32,7 +33,7 @@ public class Node {
 
     @Override
     public String toString() {
-        return "Node=" + id;
+        return "Node=" + id + " Add " + addedCommunity + " Remove " + removedCommunity + " Block " + blockedCommunity;
     }
 
     public void addCommunity(int community) {
@@ -45,6 +46,27 @@ public class Node {
 
     public void blockCommunity(int community) {
         blockedCommunity.add(community);
+    }
+
+    public void setBlockCommunity(Set<Long> community) {
+        for (Long comm : community) {
+            int l = comm.intValue();
+            blockedCommunity.add(l);
+        }
+    }
+
+    public void setAddCommunity(Set<Long> community) {
+        for (Long comm : community) {
+            int l = comm.intValue();
+            addedCommunity.add(l);
+        }
+    }
+
+    public void setRemoveCommunity(Set<Long> community) {
+        for (Long comm : community) {
+            int l = comm.intValue();
+            removedCommunity.add(l);
+        }
     }
 
 }

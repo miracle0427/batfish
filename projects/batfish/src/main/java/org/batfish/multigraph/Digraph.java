@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.List;
 import java.util.Set;
+import java.util.HashSet;
 import java.util.Collections;
 //import java.lang.*;
 
@@ -14,11 +15,19 @@ public class Digraph {
      * A Map is used to map each vertex to its list of adjacent vertices.
      */
 
-    private Map<Node, List<Edge>> neighbors = new HashMap<Node, List<Edge>>();
+    private Map<Node, List<Edge>> neighbors = new HashMap<>();
 
-    private Map<Edge, Integer> logicalPhysicalMap = new HashMap<Edge, Integer>();
+    private Map<Edge, Integer> logicalPhysicalMap = new HashMap<>();
 
-    private Map<String, List<Node>> iBGPCorr = new HashMap<String, List<Node>>();
+    private Map<String, List<List<Node>>> iBGPCorr = new HashMap<>();
+
+    private Map<String, List<List<Node>>> defCorr = new HashMap<>();
+
+    private Map<Integer, Set<Node>> communityAdded = new HashMap<>();
+
+    private Set<Integer> communityBlocked = new HashSet<>();
+
+    private Map<Integer, Set<Node>> communitySeen = new HashMap<>();
 
     private int nr_edges = 0;
 
@@ -36,6 +45,10 @@ public class Digraph {
         return s.toString();
     }
 
+    public Map<Integer, Set<Node>> getCommunitySeen() {
+      return communitySeen;
+    }
+
     /**
      * Add a vertex to the graph. Nothing happens if vertex is already in graph.
      */
@@ -44,6 +57,57 @@ public class Digraph {
             return;
         neighbors.put(vertex, new ArrayList<Edge>());
         nr_vertices = nr_vertices + 1;
+        for (Integer community : vertex.addedCommunity) {
+          if (!communityAdded.containsKey(community)) {
+            Set<Node> list = new HashSet<>();
+            communityAdded.put(community, list);  
+          }
+          communityAdded.get(community).add(vertex);          
+        }
+
+        for (Integer community : vertex.blockedCommunity) {
+          communityBlocked.add(community);
+        }
+    }
+
+    /**
+     * Set vertices who can see a community
+     */
+    public void setAll(Node v, Set<Node> seenCommunity, HashMap<Node, Boolean> visited) {
+      // Mark the current node 
+      visited.put(v, true);
+      seenCommunity.add(v);
+      for(Edge e: getNeighbors(v)) {
+        Node i = e.getDst();
+        if (visited.get(i) == false) {
+          setAll(i, seenCommunity, visited);
+        } 
+      }
+    }
+
+
+    /**
+     * Set vertices who can see a community
+     */
+    public void setCommunity() {
+
+      for (Integer community : communityBlocked) {
+        //Set commSet = communityAdded.get(community);
+        Set<Node> seenCommunity = new HashSet<>();
+        communitySeen.put( community, seenCommunity);
+
+        HashMap<Node, Boolean> visited = new HashMap<>(); 
+        for (Node v : getVertices()) {
+            visited.put(v, false);
+        }
+
+        for (Node added : communityAdded.get(community)) {
+          setAll(added, seenCommunity, visited);
+        }
+      }
+
+      //System.out.println("X " + communitySeen);
+
     }
 
     public int getNumberOfEdges(){
@@ -162,6 +226,14 @@ public class Digraph {
       return edges;
     }
 
+    public void removeEdgeGraph(Edge e) {
+
+      //String from = e.src.getId();
+      //String to = e.vertex.getId();
+      neighbors.get(e.src).remove(e);
+
+    }
+
     public void removeEdge(Edge e) {
       EdgeCost ec = new EdgeCost();
       Edge change = getEdgeById(e.src.getId(), e.vertex.getId());
@@ -226,11 +298,22 @@ public class Digraph {
         return iBGPCorr.containsKey(key);
     }
 
-    public List<Node> getPair(Node v3, Node v4) {
+    public Boolean isDefPair(Node v3, Node v4) {
         String key = v3 + "-" + v4;
-        return iBGPCorr.get(key);
+        return defCorr.containsKey(key);
     }
 
+    public List<List<Node>> getDefPair(Node v3, Node v4) {
+        String key = v3 + "-" + v4;
+        //System.out.println(defCorr.get(key));
+        return defCorr.get(key);
+    }
+
+    public List<List<Node>> getPair(Node v3, Node v4) {
+        String key = v3 + "-" + v4;
+        //System.out.println(iBGPCorr.get(key));
+        return iBGPCorr.get(key);
+    }
 
     public void setCorrelated() {
       for(Node v1 : getVertices()) {
@@ -243,19 +326,40 @@ public class Digraph {
                 Node v3 = e2.getDst();
 
                 for(Edge e3 :  neighbors.get(v3)) {
+
                   if(e3.getType() == protocol.OSPF) {
                     Node v4 = e3.getDst();
                     List<Node> starttwo = new ArrayList<Node>();
                     starttwo.add(v1);
                     starttwo.add(v2);
                     String key = v3 + "-" + v4;
-                    iBGPCorr.put(key, starttwo);
-                    System.out.println("iBGP set");
-                    // v4 - v3 : v2 - v1
-                    // flowZ = flow.get(v3).get(v4);
-                    // flowY = flow.get(v2).get(v3);
-                    // flowX = flow.get(v1).get(v2);
+                    if (iBGPCorr.containsKey(key)) {
+                      iBGPCorr.get(key).add(starttwo);  
+                    } else {
+                      List<List<Node>> all = new ArrayList<>();
+                      all.add(starttwo);
+                      iBGPCorr.put(key, all);  
+                    }
+                    
+                    //System.out.println("iBGP set");
                   }
+
+                  if(e3.getType() == protocol.DEF) {
+                    Node v4 = e3.getDst();
+                    List<Node> starttwo = new ArrayList<Node>();
+                    starttwo.add(v1);
+                    starttwo.add(v2);
+                    String key = v3 + "-" + v4;
+                    if (defCorr.containsKey(key)) {
+                      defCorr.get(key).add(starttwo);  
+                    } else {
+                      List<List<Node>> all = new ArrayList<>();
+                      all.add(starttwo);
+                      defCorr.put(key, all);  
+                    }
+                    //System.out.println("DEF set");
+                  }
+
                 }
               }
             }
@@ -264,5 +368,6 @@ public class Digraph {
         }            
       }
     }
+
 }
 

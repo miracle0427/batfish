@@ -45,11 +45,17 @@ import org.batfish.datamodel.ospf.OspfProcess;
 import org.batfish.datamodel.routing_policy.RoutingPolicy;
 import org.batfish.datamodel.routing_policy.expr.BooleanExpr;
 import org.batfish.datamodel.routing_policy.expr.CommunitySetExpr;
+
+import org.batfish.datamodel.CommunityListLine;
+import org.batfish.datamodel.LineAction;
+
 import org.batfish.datamodel.routing_policy.expr.Conjunction;
 import org.batfish.datamodel.routing_policy.expr.ExplicitPrefixSet;
+import org.batfish.datamodel.routing_policy.expr.LiteralCommunitySet;
 import org.batfish.datamodel.routing_policy.expr.MatchCommunitySet;
 import org.batfish.datamodel.routing_policy.expr.MatchPrefixSet;
 import org.batfish.datamodel.routing_policy.expr.MatchProtocol;
+import org.batfish.datamodel.routing_policy.expr.NamedCommunitySet;
 import org.batfish.datamodel.routing_policy.expr.Not;
 import org.batfish.datamodel.routing_policy.expr.PrefixSetExpr;
 import org.batfish.datamodel.routing_policy.statement.AddCommunity;
@@ -98,6 +104,12 @@ public class Graph {
   private Map<String, Integer> _originatorId;
   private Map<String, Integer> _domainMap;
   private Map<Integer, Set<String>> _domainMapInverse;
+
+  public Map<String, Long> _communityID;
+  public Map<String, Set<Long>> _actCommunity;
+  public Map<String, Set<Long>> _addCommunity;
+  public Map<String, Set<Long>> _removeCommunity;
+
 
   /**
    * A graph with a static route with a dynamic next hop cannot be encoded to SMT, so some of the
@@ -162,6 +174,11 @@ public class Graph {
     _domainMapInverse = new HashMap<>();
     _configurations = configs;
     _communityDependencies = new TreeMap<>();
+
+    _communityID = new TreeMap<>();
+    _actCommunity = new TreeMap<>();
+    _addCommunity = new TreeMap<>();
+    _removeCommunity = new TreeMap<>();
 
     if (_configurations == null) {
       // Since many functions that use the graph mutate the configurations, we must clone them
@@ -840,10 +857,25 @@ public class Graph {
    */
   private void initNamedCommunities() {
     _namedCommunities = new HashMap<>();
-    for (Configuration conf : getConfigurations().values()) {
+    for (String router : getConfigurations().keySet()) {
+      Configuration conf = getConfigurations().get(router);
       for (Entry<String, CommunityList> entry : conf.getCommunityLists().entrySet()) {
         String name = entry.getKey();
         CommunityList cl = entry.getValue();
+        for (CommunityListLine cll : cl.getLines()) {
+          CommunitySetExpr matchCondition = cll.getMatchCondition();
+          LineAction la = cll.getAction();
+          
+          for (CommunityVar cv : collectCommunityVars(conf, matchCondition)) {
+            if(la  == LineAction.DENY && cv.asLong()!=null) {
+              _actCommunity.get(router).add(cv.asLong());
+              //System.out.println("Router "+ router + "\t" + cv.getValue() + "\t" + cv.asLong() + " " + la);
+            }
+          }
+
+          
+        }
+
         if (cl != null && cl.getLines().size() == 1) {
           CommunitySetExpr matchCondition = cl.getLines().get(0).getMatchCondition();
           if (matchCondition instanceof RegexCommunitySet) {
@@ -874,8 +906,16 @@ public class Graph {
     Set<CommunityVar> comms = new HashSet<>();
     for (String router : getRouters()) {
       comms.addAll(findAllCommunities(router));
+      setCommunityMap(router);
     }
+    /*
+    for (String router : getRouters()) {
+      setCommunity(router);
+    }
+    */
+
     // Add an other option that matches a regex but isn't from this network
+
     List<CommunityVar> others = new ArrayList<>();
     for (CommunityVar c : comms) {
       if (c.getType() == CommunityVar.Type.REGEX) {
@@ -886,6 +926,139 @@ public class Graph {
     comms.addAll(others);
     return comms;
   }
+
+  public void setCommunityMap(String router) {
+    Configuration conf = getConfigurations().get(router);
+    _addCommunity.put(router, new HashSet<>());
+    _removeCommunity.put(router, new HashSet<>());
+    _actCommunity.put(router, new HashSet<>());
+
+
+    for (RoutingPolicy pol : conf.getRoutingPolicies().values()) {
+      AstVisitor v = new AstVisitor();
+      v.visit(
+          conf,
+          pol.getStatements(),
+          stmt -> {
+            if (stmt instanceof SetCommunity) {
+              SetCommunity sc = (SetCommunity) stmt;
+              for (CommunityVar cv : collectCommunityVars(conf, sc.getExpr())) {
+                if(cv.asLong()!=null) {
+                  _communityID.put(cv.getValue().replace("$","").replace("^",""), cv.asLong());
+                }
+              }
+            }
+            if (stmt instanceof AddCommunity) {
+              AddCommunity ac = (AddCommunity) stmt;
+              for (CommunityVar cv : collectCommunityVars(conf, ac.getExpr())) {
+                if(cv.asLong()!=null) {
+                  _communityID.put(cv.getValue().replace("$","").replace("^",""), cv.asLong());
+                }
+              }
+            }
+            if (stmt instanceof DeleteCommunity) {
+              DeleteCommunity dc = (DeleteCommunity) stmt;
+              for (CommunityVar cv : collectCommunityVars(conf, dc.getExpr())) {
+                if(cv.asLong()!=null) {
+                  _communityID.put(cv.getValue().replace("$","").replace("^",""), cv.asLong());
+                }
+              }
+            }
+            if (stmt instanceof RetainCommunity) {
+              RetainCommunity rc = (RetainCommunity) stmt;
+              for (CommunityVar cv : collectCommunityVars(conf, rc.getExpr())) {
+                if(cv.asLong()!=null) {
+                  _communityID.put(cv.getValue().replace("$","").replace("^",""), cv.asLong());
+                }
+              }
+            }
+          },
+          expr -> {
+            if (expr instanceof MatchCommunitySet) {
+              MatchCommunitySet m = (MatchCommunitySet) expr;
+              CommunitySetExpr ce = m.getExpr();
+              for (CommunityVar cv : collectCommunityVars(conf, ce)) {
+                if(cv.asLong()!=null) {
+                  _communityID.put(cv.getValue().replace("$","").replace("^",""), cv.asLong());
+                }
+              }
+            }
+          });
+    }
+
+  }
+
+  public void setCommunity(String router) {
+    Configuration conf = getConfigurations().get(router);
+
+    for (RoutingPolicy pol : conf.getRoutingPolicies().values()) {
+      AstVisitor v = new AstVisitor();
+      v.visit(
+          conf,
+          pol.getStatements(),
+          stmt -> {
+            if (stmt instanceof SetCommunity) {
+              SetCommunity sc = (SetCommunity) stmt;
+              //System.out.println("Router " + router + " Set ---");
+              for (CommunityVar cv : collectCommunityVars(conf, sc.getExpr())) {
+                //System.out.println(cv.getValue() + " " + cv.asLong());
+              }
+              //System.out.println("------------------------------");
+            }
+            if (stmt instanceof AddCommunity) {
+              AddCommunity ac = (AddCommunity) stmt;
+              //System.out.println("Router " + router + " Add ---");
+              for (CommunityVar cv : collectCommunityVars(conf, ac.getExpr())) {
+              _addCommunity.get(router).add( _communityID.get(cv.getValue()) );
+                //System.out.println(cv.getValue() + " " + cv.asLong());
+              }
+              //System.out.println("------------------------------");
+
+              if (ac.getExpr() instanceof LiteralCommunitySet) {
+                LiteralCommunitySet lcs = (LiteralCommunitySet) ac.getExpr();
+                //System.out.println("\t" + lcs.getCommunities());
+              }
+            }
+            if (stmt instanceof DeleteCommunity) {
+              DeleteCommunity dc = (DeleteCommunity) stmt;
+              //System.out.println("Router " + router + " Remove ---");
+              for (CommunityVar cv : collectCommunityVars(conf, dc.getExpr())) {
+                _removeCommunity.get(router).add( _communityID.get(cv.getValue().replace("$","").replace("^","")) );
+                //System.out.println(cv.getValue().replace("$","").replace("^","") +
+                // " " + cv.asLong() + "\t" + _communityID.get(cv.getValue().replace("$","").replace("^","")));
+              }
+              //System.out.println("------------------------------");
+
+              if (dc.getExpr() instanceof NamedCommunitySet) {
+                NamedCommunitySet ncs = (NamedCommunitySet) dc.getExpr();
+                //System.out.println("\t" + ncs.getName());
+              }
+            }
+            if (stmt instanceof RetainCommunity) {
+              RetainCommunity rc = (RetainCommunity) stmt;
+              //System.out.println("Router " + router + " Retain ---");
+              for (CommunityVar cv : collectCommunityVars(conf, rc.getExpr())) {
+                //System.out.println(cv.getValue() + " " + cv.asLong());
+              }
+              //System.out.println("------------------------------");
+            }
+          },
+          expr -> {
+            if (expr instanceof MatchCommunitySet) {
+              MatchCommunitySet m = (MatchCommunitySet) expr;
+              CommunitySetExpr ce = m.getExpr();
+              //System.out.println("Router " + router + " Match --");
+              for (CommunityVar cv : collectCommunityVars(conf, ce)) {
+                //System.out.println(cv.getValue() + " " + cv.asLong());
+              }
+              //System.out.println("------------------------------");
+            }
+          });
+    }
+
+  }
+
+
 
   public Set<CommunityVar> findAllCommunities(String router) {
     Set<CommunityVar> comms = new HashSet<>();
