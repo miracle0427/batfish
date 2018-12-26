@@ -98,8 +98,9 @@ public class EdgeCost {
     @Override
     public String toString() {
         //return "Edge-Cost:" + valid + " (AD=" + AD + ", ospf=" + ospf_cost + ", AS=" + as_length + ", LP=" + lp + ", MED=" + med + ", REDIS=" + rediscost + ")";
-        return "Edge-Cost:"/* + " (AD=" + AD + ", ospf=" + ospf_cost + ", AS=" + as_length + ", LP=" + lp +  ", MED=" + med + 
-         ", weight=" + weight + ")"*/;
+        return "Edge-Cost:" + " (AD=" + AD + ", ospf=" + ospf_cost + ", AS=" + as_length + ", LP=" + lp +  ", MED=" + med + 
+         ", weight=" + weight + ")";
+        //return "Edge-Cost:";
     }
 
 }

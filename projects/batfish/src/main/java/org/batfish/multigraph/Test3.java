@@ -34,10 +34,10 @@ public class Test3 {
         v10.blockCommunity(20);
         */
 
-        v7.addCommunity(10);
-        v2.addCommunity(10);
-        v3.removeCommunity(10);
-        v4.blockCommunity(10);
+        v7.addCommunity("10");
+        v2.addCommunity("10");
+        v3.removeCommunity("10");
+        v4.blockCommunity("10");
 
         graph.add(v1);
         graph.add(v2);

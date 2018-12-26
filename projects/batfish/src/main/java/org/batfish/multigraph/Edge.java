@@ -24,7 +24,8 @@ public class Edge {
         result.put(protocol.IBGP, 200);
         result.put(protocol.DEF, 1000);
         result.put(protocol.NONE, -1000);
-        result.put(protocol.REDISSTAT, 10);
+        result.put(protocol.REDISSB, 20);
+        result.put(protocol.REDISSO, 100);
 
         return Collections.unmodifiableMap(result);
     }
@@ -71,8 +72,8 @@ public class Edge {
     public String toString() {
         //return "Edge [src=" + src + ", dst=" + vertex + ", cost=" + cost + ", type=" + type + "]";
         //return "[src=" + src + ", dst=" + vertex + ", cost=" + cost + "]";
-        //return "Edge [src=" + src + ", dst=" + vertex + ", isACL=" + hasACL + "]";
-        return "Edge [src=" + src + ", dst=" + vertex + ", " + cost + "]";
+        return "Edge [src=" + src + ", dst=" + vertex + ", isACL=" + hasACL;// + ", cost=" + cost + "]";
+        //return "Edge [src=" + src + ", dst=" + vertex + ", " + cost + "]";
     }
 
     public Edge copy() {

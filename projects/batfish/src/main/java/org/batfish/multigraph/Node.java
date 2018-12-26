@@ -7,9 +7,9 @@ public class Node {
 
 	String id;
 	protocol type;
-    Set<Integer> addedCommunity;
-    Set<Integer> removedCommunity;
-    Set<Integer> blockedCommunity;
+    Set<String> addedCommunity;
+    Set<String> removedCommunity;
+    Set<String> blockedCommunity;
 
 
     public Node(String x, protocol y){
@@ -33,39 +33,36 @@ public class Node {
 
     @Override
     public String toString() {
-        return "Node=" + id + " Add " + addedCommunity + " Remove " + removedCommunity + " Block " + blockedCommunity;
+        return "Node=" + id;// + " Add " + addedCommunity + " Remove " + removedCommunity + " Block " + blockedCommunity;
     }
 
-    public void addCommunity(int community) {
+    public void addCommunity(String community) {
         addedCommunity.add(community);
     }
 
-    public void removeCommunity(int community) {
+    public void removeCommunity(String community) {
         removedCommunity.add(community);
     }
 
-    public void blockCommunity(int community) {
+    public void blockCommunity(String community) {
         blockedCommunity.add(community);
     }
 
-    public void setBlockCommunity(Set<Long> community) {
-        for (Long comm : community) {
-            int l = comm.intValue();
-            blockedCommunity.add(l);
+    public void setBlockCommunity(Set<String> community) {
+        for (String comm : community) {
+            blockedCommunity.add(comm);
         }
     }
 
-    public void setAddCommunity(Set<Long> community) {
-        for (Long comm : community) {
-            int l = comm.intValue();
-            addedCommunity.add(l);
+    public void setAddCommunity(Set<String> community) {
+        for (String comm : community) {
+            addedCommunity.add(comm);
         }
     }
 
-    public void setRemoveCommunity(Set<Long> community) {
-        for (Long comm : community) {
-            int l = comm.intValue();
-            removedCommunity.add(l);
+    public void setRemoveCommunity(Set<String> community) {
+        for (String comm : community) {
+            removedCommunity.add(comm);
         }
     }
 

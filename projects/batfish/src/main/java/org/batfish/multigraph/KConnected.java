@@ -41,7 +41,7 @@ public class KConnected {
 
       Map<Integer, GRBVar> physicalFailVar = new HashMap<>();
 
-      Map<Node, Map<Integer, GRBVar>> community = new HashMap<>();
+      Map<Node, Map<String, GRBVar>> community = new HashMap<>();
 
       int constraint = 0;
       for (Node from : g.getVertices()) {
@@ -88,8 +88,8 @@ public class KConnected {
       constraint = constraint + 1;
 
 
-      Map<Integer, Set<Node>> communitySeen = g.getCommunitySeen();
-      for ( Integer comm : communitySeen.keySet() ) {
+      Map<String, Set<Node>> communitySeen = g.getCommunitySeen();
+      for ( String comm : communitySeen.keySet() ) {
         for ( Node v : communitySeen.get(comm) ) {
           if (!community.containsKey(v)) {
             community.put(v, new HashMap<>());
@@ -109,19 +109,19 @@ public class KConnected {
 
         inflow = new GRBLinExpr();
 
-        for (Integer comm : v.addedCommunity) {
+        for (String comm : v.addedCommunity) {
           model.addConstr(community.get(v).get(comm), GRB.EQUAL, 1.0, "reachcomm"+constraint);
           constraint = constraint + 1;          
         }
 
-        for (Integer comm : v.removedCommunity) {
+        for (String comm : v.removedCommunity) {
           model.addConstr(community.get(v).get(comm), GRB.EQUAL, 0.0, "reachcomm"+constraint);
           constraint = constraint + 1;          
         }
 
         //Map<Node, Map<Integer, GRBVar>> community = new HashMap<>();
         if (community.containsKey(v)) {
-          for (Integer comm : community.get(v).keySet()) {
+          for (String comm : community.get(v).keySet()) {
 
             if (v.addedCommunity.contains(comm)||v.removedCommunity.contains(comm)) {
               continue;
@@ -312,7 +312,7 @@ public class KConnected {
 
           tempAdd = new GRBLinExpr();
 
-          for (Integer comm : v.blockedCommunity) {
+          for (String comm : v.blockedCommunity) {
             if (communitySeen.get(comm).contains(from)) {
               model.addConstr(blockCom, GRB.GREATER_EQUAL, community.get(from).get(comm), "reachcomm"+constraint);
               constraint = constraint + 1;

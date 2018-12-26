@@ -131,7 +131,7 @@ public class BasicOperation {
         ArrayList<Edge> pathEdgeList = new ArrayList<>(); 
         ArrayList<Path> allPaths = new ArrayList<Path>();
         ArrayList<protocol> protocolList = new ArrayList<>();
-        ArrayList<Integer> communitySeen = new ArrayList<>();
+        ArrayList<String> communitySeen = new ArrayList<>();
         //add source to path[] 
         pathList.add(src); 
           
@@ -154,7 +154,7 @@ public class BasicOperation {
         ArrayList<Edge> pathEdgeList,
         ArrayList<Path> allPaths,
         ArrayList<protocol> protocolList,
-        ArrayList<Integer> communitySeen) { 
+        ArrayList<String> communitySeen) { 
           
         // Mark the current node 
         visited.put(u, true);
@@ -166,9 +166,9 @@ public class BasicOperation {
 
         //System.out.println("V " + u + " " + communitySeen);
 
-        for (Integer comm : u.blockedCommunity) {
+        for (String comm : u.blockedCommunity) {
             if (communitySeen.contains(comm)) {
-                for (Integer community : u.addedCommunity)
+                for (String community : u.addedCommunity)
                     communitySeen.remove(community);
                 //System.out.println("Blocked community at " + u);
                 visited.put(u, false);
@@ -242,7 +242,7 @@ public class BasicOperation {
         } 
 
         // remove added communities
-        for (Integer comm : u.addedCommunity)
+        for (String comm : u.addedCommunity)
             communitySeen.remove(comm);
           
         // Mark the current node 

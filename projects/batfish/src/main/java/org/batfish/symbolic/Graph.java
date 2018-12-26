@@ -106,10 +106,6 @@ public class Graph {
   private Map<Integer, Set<String>> _domainMapInverse;
 
   public Map<String, Long> _communityID;
-  public Map<String, Set<Long>> _actCommunity;
-  public Map<String, Set<Long>> _addCommunity;
-  public Map<String, Set<Long>> _removeCommunity;
-
 
   /**
    * A graph with a static route with a dynamic next hop cannot be encoded to SMT, so some of the
@@ -176,9 +172,6 @@ public class Graph {
     _communityDependencies = new TreeMap<>();
 
     _communityID = new TreeMap<>();
-    _actCommunity = new TreeMap<>();
-    _addCommunity = new TreeMap<>();
-    _removeCommunity = new TreeMap<>();
 
     if (_configurations == null) {
       // Since many functions that use the graph mutate the configurations, we must clone them
@@ -868,12 +861,11 @@ public class Graph {
           
           for (CommunityVar cv : collectCommunityVars(conf, matchCondition)) {
             if(la  == LineAction.DENY && cv.asLong()!=null) {
-              _actCommunity.get(router).add(cv.asLong());
+              //_actCommunity.get(router).add(cv.getValue());
+              //_actCommunity.get(router).add(cv.asLong());
               //System.out.println("Router "+ router + "\t" + cv.getValue() + "\t" + cv.asLong() + " " + la);
             }
-          }
-
-          
+          }          
         }
 
         if (cl != null && cl.getLines().size() == 1) {
@@ -929,10 +921,6 @@ public class Graph {
 
   public void setCommunityMap(String router) {
     Configuration conf = getConfigurations().get(router);
-    _addCommunity.put(router, new HashSet<>());
-    _removeCommunity.put(router, new HashSet<>());
-    _actCommunity.put(router, new HashSet<>());
-
 
     for (RoutingPolicy pol : conf.getRoutingPolicies().values()) {
       AstVisitor v = new AstVisitor();
@@ -987,7 +975,7 @@ public class Graph {
     }
 
   }
-
+  /*
   public void setCommunity(String router) {
     Configuration conf = getConfigurations().get(router);
 
@@ -1009,7 +997,7 @@ public class Graph {
               AddCommunity ac = (AddCommunity) stmt;
               //System.out.println("Router " + router + " Add ---");
               for (CommunityVar cv : collectCommunityVars(conf, ac.getExpr())) {
-              _addCommunity.get(router).add( _communityID.get(cv.getValue()) );
+              _addCommunity.get(router).add( cv.getValue() );
                 //System.out.println(cv.getValue() + " " + cv.asLong());
               }
               //System.out.println("------------------------------");
@@ -1023,7 +1011,7 @@ public class Graph {
               DeleteCommunity dc = (DeleteCommunity) stmt;
               //System.out.println("Router " + router + " Remove ---");
               for (CommunityVar cv : collectCommunityVars(conf, dc.getExpr())) {
-                _removeCommunity.get(router).add( _communityID.get(cv.getValue().replace("$","").replace("^","")) );
+                _removeCommunity.get(router).add( cv.getValue().replace("$","").replace("^","") );
                 //System.out.println(cv.getValue().replace("$","").replace("^","") +
                 // " " + cv.asLong() + "\t" + _communityID.get(cv.getValue().replace("$","").replace("^","")));
               }
@@ -1056,7 +1044,7 @@ public class Graph {
           });
     }
 
-  }
+  }*/
 
 
 

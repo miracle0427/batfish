@@ -23,11 +23,11 @@ public class Digraph {
 
     private Map<String, List<List<Node>>> defCorr = new HashMap<>();
 
-    private Map<Integer, Set<Node>> communityAdded = new HashMap<>();
+    private Map<String, Set<Node>> communityAdded = new HashMap<>();
 
-    private Set<Integer> communityBlocked = new HashSet<>();
+    private Set<String> communityBlocked = new HashSet<>();
 
-    private Map<Integer, Set<Node>> communitySeen = new HashMap<>();
+    private Map<String, Set<Node>> communitySeen = new HashMap<>();
 
     private int nr_edges = 0;
 
@@ -45,7 +45,7 @@ public class Digraph {
         return s.toString();
     }
 
-    public Map<Integer, Set<Node>> getCommunitySeen() {
+    public Map<String, Set<Node>> getCommunitySeen() {
       return communitySeen;
     }
 
@@ -57,7 +57,7 @@ public class Digraph {
             return;
         neighbors.put(vertex, new ArrayList<Edge>());
         nr_vertices = nr_vertices + 1;
-        for (Integer community : vertex.addedCommunity) {
+        for (String community : vertex.addedCommunity) {
           if (!communityAdded.containsKey(community)) {
             Set<Node> list = new HashSet<>();
             communityAdded.put(community, list);  
@@ -65,7 +65,7 @@ public class Digraph {
           communityAdded.get(community).add(vertex);          
         }
 
-        for (Integer community : vertex.blockedCommunity) {
+        for (String community : vertex.blockedCommunity) {
           communityBlocked.add(community);
         }
     }
@@ -91,7 +91,7 @@ public class Digraph {
      */
     public void setCommunity() {
 
-      for (Integer community : communityBlocked) {
+      for (String community : communityBlocked) {
         //Set commSet = communityAdded.get(community);
         Set<Node> seenCommunity = new HashSet<>();
         communitySeen.put( community, seenCommunity);

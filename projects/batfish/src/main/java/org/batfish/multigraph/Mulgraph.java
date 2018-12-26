@@ -49,6 +49,13 @@ import org.batfish.datamodel.routing_policy.expr.CommunitySetExpr;
 import org.batfish.datamodel.routing_policy.expr.Conjunction;
 import org.batfish.datamodel.routing_policy.expr.CallExpr;
 import org.batfish.datamodel.routing_policy.expr.BooleanExpr;
+import org.batfish.datamodel.routing_policy.expr.Disjunction;
+import org.batfish.datamodel.routing_policy.expr.Conjunction;
+import org.batfish.datamodel.routing_policy.expr.WithEnvironmentExpr;
+
+import org.batfish.datamodel.CommunityList;
+import org.batfish.datamodel.CommunityListLine;
+import org.batfish.datamodel.StaticRoute;
 
 import org.batfish.symbolic.AstVisitor;
 import org.batfish.symbolic.CommunityVar;
@@ -67,10 +74,11 @@ public class Mulgraph {
 
 
     public Map<String, Long> _communityID;
-    public Map<String, Set<Long>> _actCommunity;
-    public Map<String, Set<Long>> _addCommunity;
-    public Map<String, Set<Long>> _removeCommunity;
+    public Map<String, Set<String>> _actCommunity;
+    public Map<String, Set<String>> _addCommunity;
+    public Map<String, Set<String>> _removeCommunity;
 
+    public Map<String, Map<String, EdgeCost>> _routerCommunityLp;
 
     IpWildcard srcIp;
     IpWildcard dstIp;
@@ -89,11 +97,10 @@ public class Mulgraph {
     	phyNodeMap = new HashMap<>();
         phyEdgeMap = new HashMap<>();
 
-        _communityID = new TreeMap<>();
         _actCommunity = new TreeMap<>();
         _addCommunity = new TreeMap<>();
         _removeCommunity = new TreeMap<>();
-
+        _routerCommunityLp = new TreeMap<>();
 
     	buildGraph();
     	System.out.println(dg);
@@ -108,11 +115,6 @@ public class Mulgraph {
 			}
 		}*/
 
-    	/*
-    	System.out.println("Community Map " + g._communityID);
-  		System.out.println("ACT " + g._actCommunity);
-  		System.out.println("ADD " + g._addCommunity);
-  		System.out.println("REMOVE " + g._removeCommunity);*/
     }
 
     public Digraph getDigraph() {
@@ -151,10 +153,10 @@ public class Mulgraph {
         return false;
     }
 
-    public boolean blockAcl(GraphEdge ge) {
-        Interface i = ge.getStart();
+    public boolean blockAcl(Interface out, Interface in) {
+        //Interface i = ge.getStart();
 
-        IpAccessList outbound = i.getOutgoingFilter();
+        IpAccessList outbound = out.getOutgoingFilter();
 
         if (outbound != null) {
             for ( IpAccessListLine line : outbound.getLines() ) {
@@ -178,7 +180,8 @@ public class Mulgraph {
             }
         }
 
-        IpAccessList inbound = i.getIncomingFilter();
+        //Interface i = ge.getEnd();
+        IpAccessList inbound = in.getIncomingFilter();
 
         if (inbound != null) {
             for ( IpAccessListLine line : inbound.getLines() ) {
@@ -215,8 +218,53 @@ public class Mulgraph {
     }
 
     public void setBGPCost(RoutingPolicy importRP, RoutingPolicy exportRP, EdgeCost ec, Configuration conf) {
-        if (importRP != null) {
-            for (Statement st : importRP.getStatements()) {
+        setBGPCostPol(importRP, ec, conf);
+        setBGPCostPol(exportRP, ec, conf);
+    }
+
+    public void setRouterCommunityCost(List<Statement> stmt, String router, String comm) {
+        EdgeCost ec = new EdgeCost();
+        boolean set = false;
+        for (Statement st : stmt) {
+            if ( st instanceof SetLocalPreference ) {
+                SetLocalPreference i = (SetLocalPreference) st;
+                if (i.getLocalPreference() instanceof LiteralInt) {
+                    LiteralInt li = (LiteralInt) i.getLocalPreference();
+                    ec.setLP(li.getValue());
+                    set = true;
+                }
+            } else if ( st instanceof SetMetric ) {
+                SetMetric i = (SetMetric) st;
+                if (i.getMetric() instanceof LiteralLong) {
+                    LiteralLong li = (LiteralLong) i.getMetric();
+                    ec.setMED(((int)li.getValue()));
+                    set = true;
+                }
+            }  else if ( st instanceof SetWeight ) {
+                SetWeight i = (SetWeight) st;
+                if (i.getWeight() instanceof LiteralInt) {
+                    LiteralInt li = (LiteralInt) i.getWeight();
+                    ec.setWeight(li.getValue());
+                    set = true;
+                }
+            } else if ( st instanceof SetAdministrativeCost ) {
+                SetAdministrativeCost i = (SetAdministrativeCost) st;
+                if (i.getAdmin() instanceof LiteralInt) {
+                    LiteralInt li = (LiteralInt) i.getAdmin();
+                    ec.setAD(li.getValue());
+                    set = true;
+                }
+            }
+        }
+        if (set)
+            _routerCommunityLp.get(router).put(comm, ec);
+    }
+
+
+
+    public void setBGPCostPol(RoutingPolicy rp, EdgeCost ec, Configuration conf) {
+        if (rp != null) {
+            for (Statement st : rp.getStatements()) {
                 if ( st instanceof SetLocalPreference ) {
                     SetLocalPreference i = (SetLocalPreference) st;
                     if (i.getLocalPreference() instanceof LiteralInt) {
@@ -285,119 +333,160 @@ public class Mulgraph {
             }
 
         }
-        if (exportRP != null) {
-            //System.out.println(router + " Export RP.\t"+exportRP.getStatements());    
+    }
+
+
+    public void appliesRP(String router, List<Statement> stmts) {
+
+        Configuration conf = g.getConfigurations().get(router);
+        for (Statement stmt : stmts) {
+            if (stmt instanceof SetCommunity) {
+              SetCommunity sc = (SetCommunity) stmt;
+              for (CommunityVar cv : collectCommunityVars(conf, sc.getExpr())) {
+                _addCommunity.get(router).add( cv.getValue().replace("$","").replace("^","") );
+              }
+            } else if (stmt instanceof AddCommunity) {
+              AddCommunity ac = (AddCommunity) stmt;
+              for (CommunityVar cv : collectCommunityVars(conf, ac.getExpr())) {
+                _addCommunity.get(router).add( cv.getValue().replace("$","").replace("^","") );
+              }
+            } else if (stmt instanceof DeleteCommunity) {
+              DeleteCommunity dc = (DeleteCommunity) stmt;
+              for (CommunityVar cv : collectCommunityVars(conf, dc.getExpr())) {
+                _removeCommunity.get(router).add( cv.getValue().replace("$","").replace("^","") );
+              }
+            } else if ( stmt instanceof If ) {
+                If i = (If) stmt;
+                // do nothing
+                //System.out.println("Check " + i.getGuard()+"\t"+i.getTrueStatements()+"\t"+i.getFalseStatements());
+            }
+
         }
 
     }
 
-    public boolean appliesCommunity (String policyName, RoutingPolicy importRP, RoutingPolicy exportRP, Configuration conf) {
+  public void check(Statement stmt, Configuration conf) {
+      AstVisitor v = new AstVisitor();
+      v.visit(
+          conf,
+          stmt,
+          st -> {
+            if ( st instanceof SetLocalPreference ) {
+                SetLocalPreference i = (SetLocalPreference) st;
+                if (i.getLocalPreference() instanceof LiteralInt) {
+                    LiteralInt li = (LiteralInt) i.getLocalPreference();
+                    System.out.println("1. \t" + li.getValue());
+                }
+            } else if ( st instanceof SetMetric ) {
+                SetMetric i = (SetMetric) st;
+                if (i.getMetric() instanceof LiteralLong) {
+                    LiteralLong li = (LiteralLong) i.getMetric();
+                    System.out.println("1. \t" + li.getValue());
+                }
+            }  else if ( st instanceof SetWeight ) {
+                SetWeight i = (SetWeight) st;
+                if (i.getWeight() instanceof LiteralInt) {
+                    LiteralInt li = (LiteralInt) i.getWeight();
+                    System.out.println("1. \t" + li.getValue());
+                }
+            } else if ( st instanceof SetAdministrativeCost ) {
+                SetAdministrativeCost i = (SetAdministrativeCost) st;
+                if (i.getAdmin() instanceof LiteralInt) {
+                    LiteralInt li = (LiteralInt) i.getAdmin();
+                    System.out.println("1. \t" + li.getValue());
+                }
+            }
 
-        if (importRP != null) {
-            String temp = ""+ importRP.getStatements();
-            if (temp.contains(policyName))
-                return true;
-            for ( Statement st : importRP.getStatements() ) {
+          },
+          expr -> {
+            if (expr instanceof MatchCommunitySet) {
+              MatchCommunitySet m = (MatchCommunitySet) expr;
+              CommunitySetExpr ce = m.getExpr();
+            }
+          });
+  }
+
+    public void appliesCommunity (String router, RoutingPolicy rp) {
+        if (rp != null) {
+            Configuration conf = g.getConfigurations().get(router);
+            //System.out.println("CHECK RP " + rp.getStatements()+"\n*****************");
+            for ( Statement st : rp.getStatements() ) {
                 if ( st instanceof If ) {
                     If i = (If) st;
-                    System.out.println(i.getGuard()+"\t"+i.getTrueStatements()+"\t"+i.getFalseStatements());
-                    temp = "" + i.getGuard();
+                    //System.out.println(i.getGuard()+"\t"+i.getTrueStatements()+"\t"+i.getFalseStatements());
                     if (i.getGuard() instanceof Conjunction) {
                         Conjunction cj = (Conjunction) i.getGuard();
                         for (BooleanExpr be : cj.getConjuncts()) {
                             if (be instanceof CallExpr) {
                                 CallExpr ce = (CallExpr) be;
-                                System.out.println("Pol " + ce.getCalledPolicyName() + conf.getRoutingPolicies().get(ce.getCalledPolicyName()));
+                                appliesRP(router, conf.getRoutingPolicies().get(ce.getCalledPolicyName()).getStatements());
                             }
                         }
-                    }
-                    if (temp.contains(policyName))
-                        return true;
-                }
-            }
-        }
-
-        if (exportRP != null) {
-            String temp = ""+ exportRP.getStatements();
-            if (temp.contains(policyName))
-                return true;
-            for ( Statement st : exportRP.getStatements() ) {
-                if ( st instanceof If ) {
-                    If i = (If) st;
-                    System.out.println(i.getGuard()+"\t"+i.getTrueStatements()+"\t"+i.getFalseStatements());
-                    temp = "" + i.getGuard();
-                    if (i.getGuard() instanceof Conjunction) {
-                        Conjunction cj = (Conjunction) i.getGuard();
-                        for (BooleanExpr be : cj.getConjuncts()) {
-                            if (be instanceof CallExpr) {
-                                CallExpr ce = (CallExpr) be;
-                                System.out.println("Pol " + ce.getCalledPolicyName() + conf.getRoutingPolicies().get(ce.getCalledPolicyName()));
+                    } else if (i.getGuard() instanceof MatchPrefixSet) {
+                        MatchPrefixSet m = (MatchPrefixSet) i.getGuard();
+                        if (m.getPrefixSet() instanceof NamedPrefixSet) {
+                            NamedPrefixSet x = (NamedPrefixSet) m.getPrefixSet();
+                            RouteFilterList fl = conf.getRouteFilterLists().get(x.getName());
+                            if (fl != null) {
+                                for ( RouteFilterLine line : fl.getLines() ) {
+                                    //System.out.println("IP. "+ line.getIpWildcard() +"\t"+i.getTrueStatements());
+                                    if (line.getIpWildcard().intersects(dstIp)) {
+                                        appliesRP(router, i.getTrueStatements());
+                                    }        
+                                }
                             }
                         }
+                    } else if (i.getGuard() instanceof MatchCommunitySet) {
+                        MatchCommunitySet m = (MatchCommunitySet) i.getGuard();
+                        //System.out.println("@. " + m.getExpr() + "\t" +i.getTrueStatements());
+                        // Right now allow it. afterwards need to modify, when it is set
+                        CommunitySetExpr ce = m.getExpr();
+
+                        //LineAction la = ce.getAction();
+                        for (CommunityVar cv : collectCommunityVars(conf, ce)) {
+                            String cvName = ""+cv.getValue().replace("$","").replace("^","");
+                            if (isBlockedCommunity(router, cvName)) {
+                                _actCommunity.get(router).add(cvName);
+                                //System.out.println("Long - " + cvName);
+                            }
+                            setRouterCommunityCost(i.getTrueStatements(), router, cvName);
+                        }
+                        appliesRP(router, i.getTrueStatements());
                     }
-                    if (temp.contains(policyName))
-                        return true;
                 }
             }
+            //System.out.println("############################");
         }
 
+    }
+
+    public boolean isBlockedCommunity(String router, String cvName) {
+        Configuration conf = g.getConfigurations().get(router);
+        _routerCommunityLp.put(router, new TreeMap<>());
+        for (Entry<String, CommunityList> entry : conf.getCommunityLists().entrySet()) {
+            String name = entry.getKey();
+            CommunityList cl = entry.getValue();
+            for (CommunityListLine cll : cl.getLines()) {
+              CommunitySetExpr matchCondition = cll.getMatchCondition();
+              LineAction la = cll.getAction();
+              
+              for (CommunityVar cv : collectCommunityVars(conf, matchCondition)) {
+                if(la  == LineAction.DENY && cv.asLong()!=null) {
+                  String thisCvName = "" + cv.getValue().replace("$","").replace("^","");
+                  //System.out.println(thisCvName + "\tX\t" + cvName);
+                  if (thisCvName.equals(cvName))   
+                    return true;
+                }
+              }          
+            }
+        }
         return false;
     }
 
     public void setAllCommunity (String router, RoutingPolicy importRP, RoutingPolicy exportRP) {
         Configuration conf = g.getConfigurations().get(router);
-        for (String key : conf.getRoutingPolicies().keySet()) {
-            RoutingPolicy pol = conf.getRoutingPolicies().get(key);
-            AstVisitor v = new AstVisitor();
-            v.visit(
-                conf,
-                pol.getStatements(),
-                stmt -> {
-                    if (stmt instanceof SetCommunity) {
-                      SetCommunity sc = (SetCommunity) stmt;
-                      for (CommunityVar cv : collectCommunityVars(conf, sc.getExpr())) {
-                        if (appliesCommunity(key, importRP, exportRP, conf)) {
-                            System.out.println("SET");
-                            g._addCommunity.get(router).add( g._communityID.get(cv.getValue()) );
-                        }
-                        //System.out.println(cv.getValue() + " " + cv.asLong());
-                      }
-                    }
-                    if (stmt instanceof AddCommunity) {
-                      AddCommunity ac = (AddCommunity) stmt;
-                      for (CommunityVar cv : collectCommunityVars(conf, ac.getExpr())) {
-                        if (appliesCommunity(key, importRP, exportRP, conf)) {
-                            g._addCommunity.get(router).add( g._communityID.get(cv.getValue()) );
-                            System.out.println("ADD");
-                        }
-                      }
-                    }
-                    if (stmt instanceof DeleteCommunity) {
-                      DeleteCommunity dc = (DeleteCommunity) stmt;
-                      for (CommunityVar cv : collectCommunityVars(conf, dc.getExpr())) {
-                        if (appliesCommunity(key, importRP, exportRP, conf)) {
-                            g._removeCommunity.get(router).add( g._communityID.get(cv.getValue().replace("$","").replace("^","")) );
-                            System.out.println("DEL");
-                        }
-                      }
-                    }/*
-                    if (stmt instanceof RetainCommunity) {
-                      RetainCommunity rc = (RetainCommunity) stmt;
-                      for (CommunityVar cv : collectCommunityVars(conf, rc.getExpr())) {
-                      }
-                    }*/
-                },
-                expr -> {
-                    if (expr instanceof MatchCommunitySet) {/*
-                      MatchCommunitySet m = (MatchCommunitySet) expr;
-                      CommunitySetExpr ce = m.getExpr();
-                      for (CommunityVar cv : collectCommunityVars(conf, ce)) {
-                        System.out.println("Match");
-                      }*/
-                    }
-                }
-            );
-        }
+        appliesCommunity(router, importRP);
+        appliesCommunity(router, exportRP);
     }
 
     public void buildCommunity() {
@@ -412,6 +501,9 @@ public class Mulgraph {
                         if (proto.isBgp()) {
                             RoutingPolicy importRP = g.findImportRoutingPolicy(router, proto, e);
                             RoutingPolicy exportRP = g.findExportRoutingPolicy(router, proto, e);
+                            _addCommunity.put(router, new HashSet<>());
+                            _removeCommunity.put(router, new HashSet<>());
+                            _actCommunity.put(router, new HashSet<>());                            
                             setAllCommunity(router, importRP, exportRP);
                         }
                     }
@@ -435,7 +527,6 @@ public class Mulgraph {
     		//System.out.println("VRF " + conf.getVrfs());
     		for (Protocol proto : _protocols.get(router)) {
     			for (GraphEdge e : edges) {
-                    boolean acl = blockAcl(e);
 
     				if (g.isEdgeUsed(conf, proto, e)) {
 						srcnode = e.getRouter();
@@ -468,8 +559,9 @@ public class Mulgraph {
 					        //ec.setAD(10);
                             setBGPCost(importRP, exportRP, ec, conf);
                             //System.out.println("Cost " + ec);
-							dg.add(src, dst, ec, protocol.BGP);
-                            dg.getEdge(src, dst).setIsACL(acl);
+                            boolean acl = blockAcl(e.getEnd(), e.getStart());
+							dg.add(dst, src, ec, protocol.BGP);
+                            dg.getEdge(dst, src).setIsACL(acl);
 
     					} else if (proto.isOspf()) {
     						srcnode = srcnode + "-OSPF";
@@ -477,9 +569,11 @@ public class Mulgraph {
 							src = multigraphNode.get(srcnode);
     						dst = multigraphNode.get(dstnode);
     						EdgeCost ec = new EdgeCost();
-					        ec.setOSPF(e.getStart().getOspfCost());
+					        //ec.setOSPF(e.getStart().getOspfCost());
+                            ec.setOSPF(e.getEnd().getOspfCost());
 					        //ec.setAD(5);
 							dg.add(src, dst, ec, protocol.OSPF);
+                            boolean acl = blockAcl(e.getStart(), e.getEnd());
                             dg.getEdge(src, dst).setIsACL(acl);
 							//System.out.println(e.getStart() + "" + e.getStart().getOspfCost() + 
 							//	"" + e.getEnd() + "" + e.getEnd().getOspfCost());
@@ -499,11 +593,24 @@ public class Mulgraph {
     						dst = multigraphNode.get(dstnode);
     						EdgeCost ec = new EdgeCost();
 					        //ec.setAD(50);
+                            boolean applies = false;
+                            for (StaticRoute sr : g.getStaticRoutes().get(conf.getHostname(), e.getStart().getName())) {
+                                if (dstIp.containsIp(sr.getNextHopIp())) {
+                                    applies = true;
+                                    int staticWeight = sr.getMetric().intValue();
+                                    ec.setWeight(staticWeight);
+                                    break;
+                                }
+                            }
+                            if (applies == false)
+                                continue;
+
 							dg.add(src, dst, ec, protocol.STAT);
+                            boolean acl = blockAcl(e.getStart(), e.getEnd());
                             dg.getEdge(src, dst).setIsACL(acl);
 
 							for (Node s : srcRouters) {
-								if (s.getType() == protocol.STAT)
+								if (s.getType() != protocol.STAT)
 									continue;
 								for (Node d : dstRouters) {
 									if (d.getType() == protocol.STAT)
@@ -532,24 +639,31 @@ public class Mulgraph {
     				continue;
     			}
     			Set<Protocol> ps = g.findRedistributedProtocols(conf, pol, proto);
-    			for (Protocol p : ps) {
 
+    			for (Protocol p : ps) {
 	    			dstnode = router + ( (p.isBgp()) ? "-BGP" : (p.isOspf()) ? "-OSPF" : (p.isStatic()) ? "-STATIC" : "");
 	    			dst = multigraphNode.get(dstnode);
 	    			protocol dstType = p.isBgp() ? protocol.BGP : (p.isOspf()) ? protocol.OSPF : (p.isStatic()) ? protocol.STAT : protocol.NONE;
 	    			//fix cost
+                    if (src == null || dst == null) {
+                        System.out.println("Can't add redis between "+ srcnode + " " + dstnode);
+                        continue;
+                    }
+
 					EdgeCost ec = new EdgeCost();
-					if (dstType == protocol.BGP) {
-						ec.setAD(10);
-						dg.add(src, dst, ec, protocol.REDISBO);
-					}
-					else if (dstType == protocol.OSPF) {
-						ec.setAD(5);
-						dg.add(src, dst, ec, protocol.REDISBO);
-					} else if (dstType == protocol.STAT) {
-						ec.setAD(50);
-						dg.add(src, dst, ec, protocol.REDISSTAT);
-					}
+					if (srcType == protocol.BGP && dstType == protocol.OSPF) {
+                        ec.setAS(1);
+						dg.add(dst, src, ec, protocol.REDISOB);
+					} else if (srcType == protocol.OSPF && dstType == protocol.BGP) {
+                        ec.setOSPF(1);
+						dg.add(dst, src, ec, protocol.REDISBO);
+					} else if (srcType == protocol.BGP && dstType == protocol.STAT) {
+                        ec.setOSPF(20);
+						dg.add(src, dst, ec, protocol.REDISSO);
+					} else if (srcType == protocol.BGP && dstType == protocol.STAT) {
+                        ec.setAS(1);
+                        dg.add(dst, src, ec, protocol.REDISSB);
+                    } 
     			}
     		}
     	}
@@ -658,19 +772,19 @@ public class Mulgraph {
                             continue;
                         }
 
-                        if(g._actCommunity.containsKey(srcname))
-                            src.setBlockCommunity(g._actCommunity.get(srcname));
-                        if(g._addCommunity.containsKey(srcname))
-                            src.setAddCommunity(g._addCommunity.get(srcname));
-                        if(g._removeCommunity.containsKey(srcname))
-                            src.setRemoveCommunity(g._removeCommunity.get(srcname));
+                        if(_actCommunity.containsKey(srcname))
+                            src.setBlockCommunity(_actCommunity.get(srcname));
+                        if(_addCommunity.containsKey(srcname))
+                            src.setAddCommunity(_addCommunity.get(srcname));
+                        if(_removeCommunity.containsKey(srcname))
+                            src.setRemoveCommunity(_removeCommunity.get(srcname));
 
-                        if(g._actCommunity.containsKey(dstname))
-                            dst.setBlockCommunity(g._actCommunity.get(dstname));
-                        if(g._addCommunity.containsKey(dstname))
-                            dst.setAddCommunity(g._addCommunity.get(dstname));
-                        if(g._removeCommunity.containsKey(dstname))
-                            dst.setRemoveCommunity(g._removeCommunity.get(dstname));
+                        if(_actCommunity.containsKey(dstname))
+                            dst.setBlockCommunity(_actCommunity.get(dstname));
+                        if(_addCommunity.containsKey(dstname))
+                            dst.setAddCommunity(_addCommunity.get(dstname));
+                        if(_removeCommunity.containsKey(dstname))
+                            dst.setRemoveCommunity(_removeCommunity.get(dstname));
     				}
     			}
     		}
