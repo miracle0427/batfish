@@ -239,4 +239,6 @@ public interface IBatfish extends IPluginConsumer {
 
   @Nullable
   String loadQuestionSettings(@Nonnull Question question);
+
+  List<String> getAllPaths();  
 }

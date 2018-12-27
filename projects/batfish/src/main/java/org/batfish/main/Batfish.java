@@ -236,6 +236,7 @@ import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 
+
 /** This class encapsulates the main control logic for Batfish. */
 public class Batfish extends PluginConsumer implements IBatfish {
 
@@ -1107,6 +1108,7 @@ public class Batfish extends PluginConsumer implements IBatfish {
   }
 
   private void flatten(Path inputPath, Path outputPath) {
+    System.out.println("Flatten");
     Map<Path, String> configurationData =
         readConfigurationFiles(inputPath, BfConsts.RELPATH_CONFIGURATIONS_DIR);
     Map<Path, String> outputConfigurationData = new TreeMap<>();
@@ -1450,6 +1452,16 @@ public class Batfish extends PluginConsumer implements IBatfish {
   @Override
   public SnapshotId getTestrigName() {
     return _testrigSettings.getName();
+  }
+
+  public List<String> getAllPaths() {
+    Path testRigPath = _testrigSettings.getInputPath();
+    Path configsPath = testRigPath.resolve(BfConsts.RELPATH_CONFIGURATIONS_DIR);
+    List<String> allPaths = new ArrayList<>();
+    for (Path p: listAllFiles(configsPath)) {
+      allPaths.add((""+p));
+    }
+    return allPaths;
   }
 
   @Override

@@ -190,6 +190,8 @@ public class Digraph {
     }
 
     public boolean isEdge(Node from, Node to) {
+      if (from == null || to ==null)
+        return false;
       for(Edge e :  neighbors.get(from)){
           if(e.vertex.equals(to))
               return true;

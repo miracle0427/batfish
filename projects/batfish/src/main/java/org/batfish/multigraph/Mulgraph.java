@@ -80,6 +80,9 @@ public class Mulgraph {
 
     public Map<String, Map<String, EdgeCost>> _routerCommunityLp;
 
+    public Map<String, Set<String>> _vrfMap;
+    public Set<String> _allVrfMap;
+
     IpWildcard srcIp;
     IpWildcard dstIp;
 
@@ -101,20 +104,12 @@ public class Mulgraph {
         _addCommunity = new TreeMap<>();
         _removeCommunity = new TreeMap<>();
         _routerCommunityLp = new TreeMap<>();
+        _vrfMap = new TreeMap<>();
+        _allVrfMap = new HashSet<>();
 
     	buildGraph();
     	System.out.println(dg);
-		/*for (Entry<String, List<GraphEdge>> entry : g.getEdgeMap().entrySet()) {
-			String router = entry.getKey();
-			List<GraphEdge> edges = entry.getValue();
-			for (GraphEdge e : edges) {
-				if (e.getStart()!=null)
-					System.out.print(e.getStart().getVrfName() + "\t");
-				if (e.getEnd()!=null)
-					System.out.println(e.getEnd().getVrfName() + "\t");
-			}
-		}*/
-
+        System.out.println(_vrfMap);
     }
 
     public Digraph getDigraph() {
@@ -122,10 +117,57 @@ public class Mulgraph {
     }
 
     public void buildGraph() {
+        buildVrfMap();
         buildRouterProtocol();
         buildCommunity();
     	buildNodes();
     	buildEdges();
+    }
+
+    public void buildVrfMap() {
+
+        for (String router : g.getRouters()) {
+            _vrfMap.put(router, new HashSet<>());
+        }
+
+        for (Entry<String, List<GraphEdge>> entry : g.getEdgeMap().entrySet()) {
+            String router = entry.getKey();
+
+            List<GraphEdge> edges = entry.getValue();
+            for (GraphEdge e : edges) {
+                boolean addedStart = false, addedEnd = false;
+                String startVrfName = "", endVrfName = "";
+                String peer = e.getPeer();
+                if (e.getStart()!=null) {
+                    startVrfName = e.getStart().getVrfName();
+                    if (!(startVrfName.equals("default") || startVrfName.equals("Mgmt-intf"))) {
+                        _allVrfMap.add(startVrfName);
+                        addedStart = true;
+                        _vrfMap.get(router).add(startVrfName);
+                    }
+                }
+                if (e.getEnd()!=null) {
+                    endVrfName = e.getEnd().getVrfName();
+                    if (!(endVrfName.equals("default") || endVrfName.equals("Mgmt-intf"))) {
+                        _allVrfMap.add(endVrfName);
+                        addedEnd = true;
+                        _vrfMap.get(peer).add(endVrfName);
+                    }
+                }
+                if (addedStart == true && addedEnd == false) {
+                    _vrfMap.get(peer).add(startVrfName);
+                } else if (addedEnd == true && addedStart == false) {
+                    _vrfMap.get(router).add(endVrfName);
+                }
+
+            }
+        }
+
+        for (String router : g.getRouters()) {
+            if (_vrfMap.get(router).size() == 0 && g.getConfigurations().get(router).getMPLS())
+                _vrfMap.get(router).addAll(_allVrfMap);
+        }
+
     }
 
     public boolean blockFilter(RoutingPolicy rp, Configuration conf) {
@@ -364,7 +406,7 @@ public class Mulgraph {
         }
 
     }
-
+/*
   public void check(Statement stmt, Configuration conf) {
       AstVisitor v = new AstVisitor();
       v.visit(
@@ -405,7 +447,7 @@ public class Mulgraph {
             }
           });
   }
-
+*/
     public void appliesCommunity (String router, RoutingPolicy rp) {
         if (rp != null) {
             Configuration conf = g.getConfigurations().get(router);
@@ -513,10 +555,14 @@ public class Mulgraph {
 
     }
 
+    public boolean ibgpcontains(String srcname, String dstname) {
+        return dg.isEdge(dg.getNode(srcname+"-STATIC"), dg.getNode(dstname+"-STATIC"));
+    }
+
     public void buildEdges() {
 
     	Node src, dst;
-    	String pro, srcnode, dstnode;
+    	String pro, srcnode, dstnode, srcname, dstname;
 
 		// create edges connecting routing processes
     	for (Entry<String, List<GraphEdge>> entry : g.getEdgeMap().entrySet()) {
@@ -531,13 +577,16 @@ public class Mulgraph {
     				if (g.isEdgeUsed(conf, proto, e)) {
 						srcnode = e.getRouter();
 						dstnode = e.getPeer();
+
+                        srcname = e.getRouter();
+                        dstname = e.getPeer();
+
 						if (srcnode == null || dstnode == null)
 							continue;
     					if (proto.isBgp()) {
-    						if (g.getIbgpNeighbors().containsKey(e)) {
-    							//System.out.println("IBGP " + e);
-    							continue;
-    						}
+                            if (g.getIbgpNeighbors().containsKey(e)) {
+                                continue;
+                            }
                             RoutingPolicy importRP = g.findImportRoutingPolicy(router, proto, e);
                             RoutingPolicy exportRP = g.findExportRoutingPolicy(router, proto, e);
                             /*
@@ -549,19 +598,18 @@ public class Mulgraph {
                                 //System.out.print("Filter blocks it");
                                 continue;
                             }
-
-    						srcnode = srcnode + "-BGP";
-    						dstnode = dstnode + "-BGP";
-    						src = multigraphNode.get(srcnode);
+                            EdgeCost ec = new EdgeCost();
+                            srcnode = srcnode + "-BGP";
+                            dstnode = dstnode + "-BGP";
+                            ec.setAS(1);
+              				src = multigraphNode.get(srcnode);
     						dst = multigraphNode.get(dstnode);
-					        EdgeCost ec = new EdgeCost();
-					        ec.setAS(1);
 					        //ec.setAD(10);
                             setBGPCost(importRP, exportRP, ec, conf);
                             //System.out.println("Cost " + ec);
                             boolean acl = blockAcl(e.getEnd(), e.getStart());
-							dg.add(dst, src, ec, protocol.BGP);
-                            dg.getEdge(dst, src).setIsACL(acl);
+                            dg.add(dst, src, ec, protocol.BGP);
+                            dg.getEdge(dst, src).setIsACL(acl);                                
 
     					} else if (proto.isOspf()) {
     						srcnode = srcnode + "-OSPF";
@@ -668,12 +716,49 @@ public class Mulgraph {
     		}
     	}
 
+        for (Entry<String, List<GraphEdge>> entry : g.getEdgeMap().entrySet()) {
+            String router = entry.getKey();
+            List<GraphEdge> edges = entry.getValue();
+            Configuration conf = g.getConfigurations().get(router);
+            for (Protocol proto : _protocols.get(router)) {
+                for (GraphEdge e : edges) {
+                    if (proto.isBgp() && g.isEdgeUsed(conf, proto, e) && g.getIbgpNeighbors().containsKey(e)) {
+                        srcnode = e.getRouter();
+                        dstnode = e.getPeer();
+
+                        if (srcnode == null || dstnode == null)
+                            continue;
+                        if (ibgpcontains(dstnode, srcnode)) {
+                            RoutingPolicy importRP = g.findImportRoutingPolicy(router, proto, e);
+                            RoutingPolicy exportRP = g.findExportRoutingPolicy(router, proto, e);
+                            if(blockFilter(importRP, conf) || blockFilter(exportRP, conf)) {
+                                continue;
+                            }
+                            EdgeCost ec = new EdgeCost();
+                            srcnode = srcnode + "-IBGP";
+                            dstnode = dstnode + "-IBGP";
+                            ec.setAS(0);
+                            src = multigraphNode.get(srcnode);
+                            dst = multigraphNode.get(dstnode);
+                            setBGPCost(importRP, exportRP, ec, conf);
+                            boolean acl = blockAcl(e.getEnd(), e.getStart());
+                            dg.add(dst, src, ec, protocol.IBGP);
+                            dg.getEdge(dst, src).setIsACL(acl);                                
+                        }
+
+                    }
+                }
+            }
+
+        }
+
+
     }
 
 
     public void buildNodes() {
 
-    	Node src, dst;
+    	Node src = null, dst = null;
     	String pro, srcnode, dstnode, srcname, dstname;
 
     	// create physical router to logical router-process mapping
@@ -686,8 +771,11 @@ public class Mulgraph {
     	for (Entry<String, List<GraphEdge>> entry : g.getEdgeMap().entrySet()) {
     		String router = entry.getKey();
     		List<GraphEdge> edges = entry.getValue();
-   			//System.out.println(router + "\t" + edges);
-
+            /*
+   			System.out.print(router + "\t"); 
+            for (Protocol proto : _protocols.get(router)) {
+                System.out.print(proto.name() + "\t"); 
+            }*/
     		for (Protocol proto : _protocols.get(router)) {
     			for (GraphEdge e : edges) {
     				Configuration conf = g.getConfigurations().get(router);
@@ -696,26 +784,31 @@ public class Mulgraph {
     				if (g.isEdgeUsed(conf, proto, e)) {
 						srcnode = e.getRouter();
 						dstnode = e.getPeer();
+                        if (proto.isConnected())
+                            System.out.println("Connected: " + srcname + "\t" + dstnode);
 						if (srcnode == null || dstnode == null)
 							continue;
-    					if (proto.isBgp()) {
+                        else if (proto.isBgp()) {
+                            protocol thisProtocol = protocol.BGP;
     						if (g.getIbgpNeighbors().containsKey(e)) {
-    							System.out.println("IBGP " + e);
-    							continue;
-    						}
-    						srcnode = srcnode + "-BGP";
-    						dstnode = dstnode + "-BGP";
+                                srcnode = srcnode + "-IBGP";
+                                dstnode = dstnode + "-IBGP";
+                                thisProtocol = protocol.IBGP;
+    						} else {
+                                srcnode = srcnode + "-BGP";
+                                dstnode = dstnode + "-BGP";
+                            }
     						if (multigraphNode.containsKey(srcnode))
     							src = multigraphNode.get(srcnode);
     						else {
-    							src = new Node(srcnode, protocol.BGP);
+    							src = new Node(srcnode, thisProtocol);
     							dg.add(src);
     							multigraphNode.put(srcnode, src);
     						}
     						if (multigraphNode.containsKey(dstnode))
     							dst = multigraphNode.get(dstnode);
     						else {
-    							dst = new Node(dstnode, protocol.BGP);
+    							dst = new Node(dstnode, thisProtocol);
     							dg.add(dst);
     							multigraphNode.put(dstnode, dst);
     						}

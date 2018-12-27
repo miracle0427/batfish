@@ -297,6 +297,8 @@ public final class Configuration implements Serializable {
 
   private NavigableMap<String, Zone> _zones;
 
+  private boolean hasMPLS = false;
+
   @JsonCreator
   private static Configuration makeConfiguration(
       @JsonProperty(PROP_NAME) String hostname,
@@ -974,6 +976,14 @@ public final class Configuration implements Serializable {
                 .stream()
                 .collect(Collectors.toMap(Entry::getKey, e -> e.getValue().simplify())));
     _routingPolicies = simpleRoutingPolicies;
+  }
+
+  public void setMPLS(boolean mpls) {
+    hasMPLS = mpls;
+  }
+
+  public boolean getMPLS() {
+    return hasMPLS;
   }
 
   @Override

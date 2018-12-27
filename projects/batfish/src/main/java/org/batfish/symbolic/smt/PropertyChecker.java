@@ -65,6 +65,10 @@ import org.batfish.symbolic.utils.PatternUtils;
 import org.batfish.symbolic.utils.TriFunction;
 import org.batfish.symbolic.utils.Tuple;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
 /**
  * A collection of functions to check if various properties hold in the network. The general idea is
  * to create a new encoder object for the network, instrument additional properties on top of the
@@ -598,9 +602,28 @@ public class PropertyChecker {
   /*
    * Check if things are reachable
    */
-  public AnswerElement checkGraphReachability(HeaderLocationQuestion q) {
+  public AnswerElement checkGraphReachability(HeaderLocationQuestion q) throws IOException {
     Graph graph = new Graph(_batfish);
     //System.out.println(q.getSrcIps() + "\t" + q.getDstIps());
+    List<String> allPaths = _batfish.getAllPaths();
+
+    for (String fil : allPaths) {
+      BufferedReader br = new BufferedReader(new FileReader(fil));
+      String line;
+      boolean hasMpls = false;
+      while ((line = br.readLine()) != null) {
+        if (line.contains("mpls ldp router-id")) {
+          hasMpls = true;
+          String router = fil.substring(fil.lastIndexOf("/")+1, fil.length()).replace(".txt","").replace(".cfg","").toLowerCase();
+          if (graph.getConfigurations().containsKey(router))
+            graph.getConfigurations().get(router).setMPLS(hasMpls);
+          else
+            System.out.println("File name error " + router);
+          break;
+        }
+      }
+    }
+
     if (q.getSrcIps() != null && q.getDstIps() != null) {
       if (q.getSrcIps().size() != 0 && q.getDstIps().size() != 0) {
         Mulgraph m = new Mulgraph(graph, q.getSrcIps().first(), q.getDstIps().first());
