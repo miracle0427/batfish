@@ -12,6 +12,7 @@ public class TestConn {
         //BasicOperation basic = new BasicOperation(graph);
         //Disconnect kconn = new Disconnect(graph);
         //BellmanFord bf = new BellmanFord(graph);
+        KConnected kconn = new KConnected(graph);
 
         Node v1 = new Node("v1", protocol.BGP);
         Node v2 = new Node("v2", protocol.BGP);
@@ -48,21 +49,25 @@ public class TestConn {
         //*
         EdgeCost ec = new EdgeCost();
         ec.ospf_cost = 3;
-        
-        graph.add(v1, v2, ec, protocol.OSPF);
+        /*
+        graph.add(v1, v2, ec, protocol.IBGP);
         graph.add(v2, v3, ec, protocol.OSPF);
-        graph.add(v3, v6, ec, protocol.OSPF);
+        //graph.add(v3, v6, ec, protocol.DEF);
+        graph.add(v1, v4, ec, protocol.OSPF);
         graph.add(v4, v5, ec, protocol.OSPF);
-        graph.add(v5, v6, ec, protocol.OSPF);
+        graph.add(v5, v6, ec, protocol.DEF);
 
-
+        System.out.println(unreachable.isUnreachable(v1,v6));
+        */
+        
         /*
         graph.add(v1, v2, ec, protocol.IBGP);
         graph.add(v2, v3, ec, protocol.OSPF);
         graph.add(v3, v6, ec, protocol.OSPF);
-        graph.add(v3, v4, ec, protocol.DEF);
-        graph.add(v4, v5, ec, protocol.OSPF);
         graph.add(v6, v5, ec, protocol.OSPF);
+        //graph.add(v3, v4, ec, protocol.DEF);
+        graph.add(v3, v4, ec, protocol.OSPF);
+        graph.add(v4, v5, ec, protocol.OSPF);
         graph.add(v1, v7, ec, protocol.OSPF);
         graph.add(v7, v9, ec, protocol.OSPF);
         graph.add(v9, v10, ec, protocol.OSPF);
@@ -72,12 +77,35 @@ public class TestConn {
         graph.add(v11, v10, ec, protocol.OSPF);
         graph.add(v11, v12, ec, protocol.OSPF);
         graph.add(v12, v10, ec, protocol.OSPF);
+        //*/
 
         //graph.addPhysicalMap(v2, v3, 1);
         //graph.addPhysicalMap(v10, v5, 1);
 
-        kconn.formulate(v1,v5);
-        kconn.run();*/
+        /*
+        graph.add(v1, v2, ec, protocol.OSPF);
+        graph.add(v1, v3, ec, protocol.OSPF);
+        graph.add(v2, v4, ec, protocol.IBGP);
+        graph.add(v3, v4, ec, protocol.IBGP);
+        //graph.add(v1, v5, ec, protocol.OSPF);
+        graph.add(v4, v5, ec, protocol.OSPF);
+        graph.add(v5, v6, ec, protocol.DEF);
+        //graph.add(v1, v9, ec, protocol.OSPF);
+        graph.add(v2, v9, ec, protocol.IBGP);
+        graph.add(v9, v5, ec, protocol.OSPF);
+        */
+        graph.add(v1, v2, ec, protocol.OSPF);
+        graph.add(v2, v5, ec, protocol.DEF);
+        //graph.add(v1, v4, ec, protocol.IBGP);
+        //graph.add(v4, v5, ec, protocol.OSPF);
+        graph.add(v5, v6, ec, protocol.OSPF);
+
+
+        graph.setCorrelated();
+
+        System.out.println("Is unreachable? "+ unreachable.isUnreachable(v1, v6));
+        //kconn.formulate(v1,v6);
+        //kconn.run();
 
         //System.out.println(basic.printAllPaths(v1,v5));
 

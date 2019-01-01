@@ -1,6 +1,7 @@
 package org.batfish.mulgraph;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class Test {
 
@@ -104,7 +105,14 @@ public class Test {
         graph.add(v5, v7, ec, protocol.BGP);
         */
         int k = 1;
-        for (Path p : yen.ksp(v1, v7, 4)) {
+
+        long startTime = System.nanoTime();
+        ArrayList<Path> pp = yen.ksp(v1, v7, 4);
+        long endTime = System.nanoTime();
+        long duration = (endTime - startTime)/(1000000);
+        System.out.println(duration + " ms");
+
+        for (Path p : pp) {
             System.out.println(k + "." + p);
             k = k+1;
         }

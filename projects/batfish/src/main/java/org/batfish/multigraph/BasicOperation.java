@@ -33,10 +33,10 @@ public class BasicOperation {
           
         while(stack.empty() == false) 
         { 
-            // Pop a vertex from stack and print it 
+            // Pop a Node from stack and print it 
             temp = stack.peek(); 
             stack.pop(); 
-            // Stack may contain same vertex twice. So 
+            // Stack may contain same Node twice. So 
             // we need to print the popped item only 
             // if it is not visited. 
             if (visited.get(temp) == false) 
@@ -44,7 +44,7 @@ public class BasicOperation {
                 visited.put(temp, true);
             }
               
-            // Get all adjacent vertices of the popped vertex s 
+            // Get all adjacent vertices of the popped Node s 
             // If a adjacent has not been visited, then puah it 
             // to the stack. 
             for(Edge e :  g.getNeighbors(temp)) {
@@ -159,9 +159,9 @@ public class BasicOperation {
         // Mark the current node 
         visited.put(u, true);
 
-        // add communities by this vertex
+        // add communities by this Node
         communitySeen.addAll(u.addedCommunity);
-        // remove communities by this vertex
+        // remove communities by this Node
         communitySeen.removeAll(u.removedCommunity);
 
         //System.out.println("V " + u + " " + communitySeen);
@@ -196,7 +196,7 @@ public class BasicOperation {
         } 
           
         // Recur for all the vertices 
-        // adjacent to current vertex 
+        // adjacent to current Node 
         //System.out.println("V " + u + "  Edge: " + g.getNeighbors(u));
         for(Edge e: g.getNeighbors(u)) {
 

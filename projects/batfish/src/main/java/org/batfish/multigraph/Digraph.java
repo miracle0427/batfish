@@ -23,11 +23,23 @@ public class Digraph {
 
     private Map<String, List<List<Node>>> defCorr = new HashMap<>();
 
-    private Map<String, Set<Node>> communityAdded = new HashMap<>();
+    public Map<String, Set<Node>> communityAdded = new HashMap<>();
 
-    private Set<String> communityBlocked = new HashSet<>();
+    public Set<String> communityBlocked = new HashSet<>();
 
-    private Map<String, Set<Node>> communitySeen = new HashMap<>();
+    public Map<String, Set<Node>> communityBlockNodes = new HashMap<>();
+
+    public Map<String, Set<Node>> communityRemoveNodes = new HashMap<>();
+
+    public Map<String, Set<Node>> communitySeen = new HashMap<>();
+
+    public Map<Node, Set<String>> couldSee = new HashMap<>();
+
+    public Set<Edge> ospfAfterDef = new HashSet<>();
+
+    public Set<Edge> defUsed = new HashSet<>();
+
+    public Set<Edge> secondOSPF = new HashSet<>();
 
     private int nr_edges = 0;
 
@@ -49,38 +61,100 @@ public class Digraph {
       return communitySeen;
     }
 
+    public Map<Node, Set<String>> getCouldSeeCommunity() {
+      return couldSee;
+    }
+
+    public Map<Node, List<Edge>> getNeighborMap() {
+      return neighbors;
+    }
+
+    public Map<Node, List<Edge>> returnCopyNeighborMap() {
+      Map<Node, List<Edge>> copy = new HashMap<>();
+      for (Map.Entry<Node, List<Edge>> entry: neighbors.entrySet()) {
+        List<Edge> copyList = new ArrayList<Edge>();
+        for (Edge edge: entry.getValue()) {
+          copyList.add(edge);
+        }
+        copy.put(entry.getKey(), copyList);
+      }
+      return copy;
+    }
+
+
+    public void setNeighborMap(Map<Node, List<Edge>> neighborMap) {
+      neighbors = neighborMap;
+    }
+
     /**
-     * Add a vertex to the graph. Nothing happens if vertex is already in graph.
+     * Add a Node to the graph. Nothing happens if Node is already in graph.
      */
-    public void add(Node vertex) {
-        if (neighbors.containsKey(vertex))
+    public void add(Node Node) {
+        if (neighbors.containsKey(Node))
             return;
-        neighbors.put(vertex, new ArrayList<Edge>());
+        neighbors.put(Node, new ArrayList<Edge>());
         nr_vertices = nr_vertices + 1;
-        for (String community : vertex.addedCommunity) {
+        for (String community : Node.addedCommunity) {
           if (!communityAdded.containsKey(community)) {
             Set<Node> list = new HashSet<>();
             communityAdded.put(community, list);  
           }
-          communityAdded.get(community).add(vertex);          
+          communityAdded.get(community).add(Node);          
         }
 
-        for (String community : vertex.blockedCommunity) {
-          communityBlocked.add(community);
+        for (String community : Node.removedCommunity) {
+          if (!communityRemoveNodes.containsKey(community)) {
+            Set<Node> list = new HashSet<>();
+            communityRemoveNodes.put(community, list);  
+          }
+          communityRemoveNodes.get(community).add(Node);          
         }
+
+        for (String community : Node.blockedCommunity) {
+          communityBlocked.add(community);
+          if (!communityBlockNodes.containsKey(community)) {
+            Set<Node> list = new HashSet<>();
+            communityBlockNodes.put(community, list);  
+          }
+          communityBlockNodes.get(community).add(Node);          
+        }
+
     }
 
     /**
      * Set vertices who can see a community
      */
-    public void setAll(Node v, Set<Node> seenCommunity, HashMap<Node, Boolean> visited) {
+    public void setAll(Node v, Set<Node> seenCommunity, HashMap<Node, Boolean> visited, String community) {
       // Mark the current node 
       visited.put(v, true);
       seenCommunity.add(v);
-      for(Edge e: getNeighbors(v)) {
+      if (!couldSee.containsKey(v)) {
+        couldSee.put(v, new HashSet<String>());
+      }
+
+      couldSee.get(v).add(community);
+
+      for(Edge e : getNeighbors(v)) {
         Node i = e.getDst();
         if (visited.get(i) == false) {
-          setAll(i, seenCommunity, visited);
+          setAll(i, seenCommunity, visited, community);
+        } 
+      }
+    }
+
+    public void setAllReverse(Node v, Set<Node> seenCommunity, HashMap<Node, Boolean> visited, String community) {
+      // Mark the current node 
+      visited.put(v, true);
+      seenCommunity.add(v);
+      if (!couldSee.containsKey(v)) {
+        couldSee.put(v, new HashSet<String>());
+      }
+
+      couldSee.get(v).add(community);
+
+      for(Node i: inboundNeighbors(v)) {
+        if (visited.get(i) == false) {
+          setAllReverse(i, seenCommunity, visited, community);
         } 
       }
     }
@@ -89,10 +163,9 @@ public class Digraph {
     /**
      * Set vertices who can see a community
      */
-    public void setCommunity() {
+    public void setCommunityReverse() {
 
       for (String community : communityBlocked) {
-        //Set commSet = communityAdded.get(community);
         Set<Node> seenCommunity = new HashSet<>();
         communitySeen.put( community, seenCommunity);
 
@@ -101,13 +174,34 @@ public class Digraph {
             visited.put(v, false);
         }
 
-        for (Node added : communityAdded.get(community)) {
-          setAll(added, seenCommunity, visited);
+        if (communityAdded.containsKey(community)) {
+          for (Node added : communityAdded.get(community)) {
+            setAllReverse(added, seenCommunity, visited, community);
+          }
         }
       }
 
       //System.out.println("X " + communitySeen);
 
+    }
+
+    public void setCommunity() {
+
+      for (String community : communityBlocked) {
+        Set<Node> seenCommunity = new HashSet<>();
+        communitySeen.put( community, seenCommunity);
+
+        HashMap<Node, Boolean> visited = new HashMap<>(); 
+        for (Node v : getVertices()) {
+            visited.put(v, false);
+        }
+
+        if (communityAdded.containsKey(community)) {
+          for (Node added : communityAdded.get(community)) {
+            setAll(added, seenCommunity, visited, community);
+          }
+        }
+      }
     }
 
     public int getNumberOfEdges(){
@@ -159,7 +253,7 @@ public class Digraph {
         return neighbors.keySet();
     }
 
-    public Node getNode(String label) {
+    public Node getVertex(String label) {
       for (Node v : getVertices()) {
         if (v.getId().equals(label)) {
           return v;
@@ -170,6 +264,31 @@ public class Digraph {
 
     public List<Edge> getNeighbors(Node vertex) {
         return neighbors.get(vertex);
+    }
+
+    public void reverseNeighbors() {
+      Map<Node, List<Edge>> reverseNeighbors = new HashMap<>();
+      for (Node node: getVertices()) {
+        reverseNeighbors.put(node, new ArrayList<Edge>());
+      }
+
+      for (Node from : getVertices()) {
+        for (Edge e : neighbors.get(from)) {
+          Node to = e.getDst();
+          reverseNeighbors.get(to).add(new Edge(to, from, e.getCost(), e.getType()));
+        }
+      }
+      neighbors = reverseNeighbors;
+    }
+
+    public List<Edge> inboundEdges(Node inboundVertex) {
+        List<Edge> inList = new ArrayList<>();
+        for (Node from : getVertices()) {
+            for (Edge e : neighbors.get(from))
+                if (e.vertex.equals(inboundVertex))
+                    inList.add(e);
+        }
+        return inList;
     }
 
     public List<Node> outboundNeighbors(Node vertex) {
@@ -199,10 +318,10 @@ public class Digraph {
       return false;
     }
 
-    public ArrayList<Edge> removeNode(String label) {
+    public ArrayList<Edge> removeVertex(String label) {
       ArrayList<Edge> edges = new ArrayList<Edge>();
 
-      Node v = getNode(label);
+      Node v = getVertex(label);
       if (v == null) {
         return edges;
       }
@@ -255,7 +374,7 @@ public class Digraph {
     }
 
     public Edge getEdgeById(String from, String to) {
-      for(Edge e :  neighbors.get(getNode(from))){
+      for(Edge e :  neighbors.get(getVertex(from))){
           if(e.vertex.getId().equals(to))
               return e;
       }
@@ -295,24 +414,28 @@ public class Digraph {
         return null;
     }
 
-    public Boolean isIBGPPair(Node v3, Node v4) {
-        String key = v3 + "-" + v4;
+    public Boolean isIBGPPair(Node v2, Node v1) {
+        //String key = v3 + "-" + v4;
+        String key = v2 + "-" + v1;
         return iBGPCorr.containsKey(key);
     }
 
-    public Boolean isDefPair(Node v3, Node v4) {
-        String key = v3 + "-" + v4;
+    public Boolean isDefPair(Node v2, Node v1) {
+        String key = v2 + "-" + v1;
+        //String key = v3 + "-" + v4;
         return defCorr.containsKey(key);
     }
 
-    public List<List<Node>> getDefPair(Node v3, Node v4) {
-        String key = v3 + "-" + v4;
+    public List<List<Node>> getDefPair(Node v2, Node v1) {
+        String key = v2 + "-" + v1;
+        //String key = v3 + "-" + v4;
         //System.out.println(defCorr.get(key));
         return defCorr.get(key);
     }
 
-    public List<List<Node>> getPair(Node v3, Node v4) {
-        String key = v3 + "-" + v4;
+    public List<List<Node>> getPair(Node v2, Node v1) {
+        String key = v2 + "-" + v1;
+        //String key = v3 + "-" + v4;
         //System.out.println(iBGPCorr.get(key));
         return iBGPCorr.get(key);
     }
@@ -341,12 +464,13 @@ public class Digraph {
                       List<List<Node>> all = new ArrayList<>();
                       all.add(starttwo);
                       iBGPCorr.put(key, all);  
+                      System.out.println("iBGP set");
                     }
-                    
-                    //System.out.println("iBGP set");
                   }
 
                   if(e3.getType() == protocol.DEF) {
+                    defUsed.add(e3);
+                    secondOSPF.add(e2);
                     Node v4 = e3.getDst();
                     List<Node> starttwo = new ArrayList<Node>();
                     starttwo.add(v1);
@@ -358,8 +482,64 @@ public class Digraph {
                       List<List<Node>> all = new ArrayList<>();
                       all.add(starttwo);
                       defCorr.put(key, all);  
+                      System.out.println("DEF set");                      
                     }
-                    //System.out.println("DEF set");
+                  }
+
+                }
+              }
+            }
+
+          }
+        }            
+      }
+    }
+
+    public void setReverseCorrelated() {
+      //v4 - v3 - v2 - v1
+      for(Node v2 : getVertices()) {
+        for(Edge e1 :  neighbors.get(v2)){
+          if(e1.getType() == protocol.IBGP) {
+            Node v1 = e1.getDst();
+
+            for(Edge e2 : inboundEdges(v2)) {
+              if(e2.getType() == protocol.OSPF) {
+                Node v3 = e2.getSrc();
+
+                for(Edge e3 : inboundEdges(v3)) {
+
+                  if(e3.getType() == protocol.OSPF) {
+                    Node v4 = e3.getSrc();
+                    List<Node> starttwo = new ArrayList<Node>();
+                    starttwo.add(v4);
+                    starttwo.add(v3);
+                    String key = v2 + "-" + v1;
+                    if (iBGPCorr.containsKey(key)) {
+                      iBGPCorr.get(key).add(starttwo);  
+                    } else {
+                      List<List<Node>> all = new ArrayList<>();
+                      all.add(starttwo);
+                      iBGPCorr.put(key, all);  
+                      System.out.println("iBGP set");
+                    }
+                  }
+
+                  if(e3.getType() == protocol.DEF) {
+                    defUsed.add(e3);
+                    ospfAfterDef.add(getEdge(v3, v2));
+                    Node v4 = e3.getSrc();
+                    List<Node> starttwo = new ArrayList<Node>();
+                    starttwo.add(v4);
+                    starttwo.add(v3);
+                    String key = v2 + "-" + v1;
+                    if (defCorr.containsKey(key)) {
+                      defCorr.get(key).add(starttwo);  
+                    } else {
+                      List<List<Node>> all = new ArrayList<>();
+                      all.add(starttwo);
+                      defCorr.put(key, all);  
+                      System.out.println("DEF set");
+                    }
                   }
 
                 }

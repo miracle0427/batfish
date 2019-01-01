@@ -83,6 +83,8 @@ public class Mulgraph {
     public Map<String, Set<String>> _vrfMap;
     public Set<String> _allVrfMap;
 
+    public Map<String, Map<String, Set<String>>> l2map;
+
     IpWildcard srcIp;
     IpWildcard dstIp;
 
@@ -107,9 +109,10 @@ public class Mulgraph {
         _vrfMap = new TreeMap<>();
         _allVrfMap = new HashSet<>();
 
-    	buildGraph();
-    	System.out.println(dg);
-        System.out.println(_vrfMap);
+    }
+
+    public void setL2Map(Map<String, Map<String, Set<String>>> l2) {
+        l2map = l2;
     }
 
     public Digraph getDigraph() {
@@ -122,6 +125,8 @@ public class Mulgraph {
         buildCommunity();
     	buildNodes();
     	buildEdges();
+        System.out.println(dg);
+        System.out.println(_vrfMap);
     }
 
     public void buildVrfMap() {
@@ -154,9 +159,9 @@ public class Mulgraph {
                         _vrfMap.get(peer).add(endVrfName);
                     }
                 }
-                if (addedStart == true && addedEnd == false) {
+                if (peer!=null && addedStart == true && addedEnd == false) {
                     _vrfMap.get(peer).add(startVrfName);
-                } else if (addedEnd == true && addedStart == false) {
+                } else if (router!=null && addedEnd == true && addedStart == false) {
                     _vrfMap.get(router).add(endVrfName);
                 }
 
@@ -556,7 +561,7 @@ public class Mulgraph {
     }
 
     public boolean ibgpcontains(String srcname, String dstname) {
-        return dg.isEdge(dg.getNode(srcname+"-STATIC"), dg.getNode(dstname+"-STATIC"));
+        return dg.isEdge(dg.getVertex(srcname+"-STATIC"), dg.getVertex(dstname+"-STATIC"));
     }
 
     public void buildEdges() {

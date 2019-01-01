@@ -65,6 +65,9 @@ import org.batfish.symbolic.utils.PatternUtils;
 import org.batfish.symbolic.utils.TriFunction;
 import org.batfish.symbolic.utils.Tuple;
 
+import org.batfish.common.topology.Layer2Edge;
+
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -623,20 +626,68 @@ public class PropertyChecker {
         }
       }
     }
-
+    /*
     if (q.getSrcIps() != null && q.getDstIps() != null) {
       if (q.getSrcIps().size() != 0 && q.getDstIps().size() != 0) {
         Mulgraph m = new Mulgraph(graph, q.getSrcIps().first(), q.getDstIps().first());
       }
-    }
+    }*/
     
     /*
     for ( Node n : m.getDigraph().getVertices()) {
       System.out.println(n);
     }*/
 
-    //System.out.println(_batfish.getLayer2Topology().getGraph().nodes());
+    if (_batfish.getLayer2Topology() != null) {
+      System.out.println(makeL2());
+    }
+    //System.out.println(_batfish.getLayer2Topology().getGraph().edges());
+
     return new NullAnswer();
+  }
+
+  public Map<String, Map<String, Set<String>>> makeL2() {
+    Map<String, Map<String, Set<String>>> l2map = new HashMap<>();
+    for (Layer2Edge l2edge : _batfish.getLayer2Topology().getGraph().edges()) {
+      String src = l2edge.getNode1().getHostname();
+      String dst = l2edge.getNode2().getHostname();
+      String vlan1 = ""+l2edge.getNode1().getVlanId();
+      String vlan2 = ""+l2edge.getNode2().getVlanId();
+
+      if (!l2map.containsKey(src)) {
+        l2map.put(src, new HashMap<>());
+      }
+      if (!l2map.containsKey(dst)) {
+        l2map.put(dst, new HashMap<>());
+      }
+      if (!l2map.get(src).containsKey(dst)) {
+        l2map.get(src).put(dst, new HashSet<>());
+      }
+      if (!l2map.get(dst).containsKey(src)) {
+        l2map.get(dst).put(src, new HashSet<>());
+      }
+
+      if (l2edge.getNode1().getVlanId() != null)
+        l2map.get(src).get(dst).add(vlan1);
+      if (l2edge.getNode2().getVlanId() != null)
+        l2map.get(dst).get(src).add(vlan2);
+    }
+
+    for (String src : l2map.keySet()) {
+      for (String dst : l2map.get(src).keySet()) {
+        boolean notAll = false;
+        for (int i=1; i<4095; i++) {
+          if (!l2map.get(src).get(dst).contains(""+i)) {
+            notAll = true;
+          }
+        }
+        if (!notAll) {
+          l2map.get(src).put(dst, new HashSet<>());
+          l2map.get(src).get(dst).add("*");
+        }
+      }
+    }
+    return l2map;
   }
 
   /*

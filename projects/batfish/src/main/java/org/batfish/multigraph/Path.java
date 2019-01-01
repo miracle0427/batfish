@@ -37,7 +37,7 @@ public class Path {
 		Collections.reverse(pathEdges);
 	}
 
-	public Node getNode(int i) {
+	public Node getVertex(int i) {
 		if (i > pathNodes.size())
 			return null;
 		return pathNodes.get(i);

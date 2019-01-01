@@ -7,7 +7,9 @@ public class Test1 {
     public static void main(String[] args) throws IOException {
 
         Digraph graph = new Digraph();
-        Disconnect kconn = new Disconnect(graph);
+        //Disconnect kconn = new Disconnect(graph);
+        //Unreachable unreach = new Unreachable(graph);
+        Verification vf = new Verification(graph);
 
         Node v1 = new Node("v1", protocol.BGP);
         Node v2 = new Node("v2", protocol.BGP);
@@ -93,6 +95,17 @@ public class Test1 {
         Node v79 = new Node("v79", protocol.BGP);
         Node v80 = new Node("v80", protocol.BGP);
 
+        
+        v19.blockCommunity("10");
+        v20.blockCommunity("10");
+        v21.blockCommunity("10");
+        //v2.removeCommunity(10);
+        v37.removeCommunity("10");
+        //v21.removeCommunity(10);
+        v34.addCommunity("10");
+        v35.addCommunity("10");
+        v36.addCommunity("10");
+        //*/
 
         graph.add(v1);
         graph.add(v2);
@@ -177,6 +190,8 @@ public class Test1 {
 
 
         EdgeCost ec = new EdgeCost();
+        //ec.setOSPF(1);
+        ec.setAS(1);
         /*
         graph.add(v1, v9, ec, protocol.BGP);
         graph.add(v1, v10, ec, protocol.BGP);
@@ -613,9 +628,26 @@ public class Test1 {
         graph.diAdd(v36, v45, ec, protocol.BGP);
         //*/
 
-        kconn.formulate(v1,v18);
+        //kconn.formulate(v1,v18);
         //kconn.formulate(v1,v8);
-        kconn.run();
+        //kconn.run();
+        graph.setCommunity();
+        long startTime = System.nanoTime();
+        boolean b = vf.alwaysBlocked(v1,v18);//unreach.isUnreachable(v1,v18);
+
+        //RYen y = new RYen(graph);
+        //ArrayList<Path> k = y.ksp(v1, v18, 9);
+        //KConnected kconn = new KConnected(graph);
+        //kconn.formulate(v1, v18);
+        //double time = kconn.run();
+        //boolean b = vf.equalLength(v1,v18);
+        long endTime = System.nanoTime();
+        long duration = (endTime - startTime)/(1000000);
+        //System.out.println("Paths " + k + " : " + duration + " ms");
+        System.out.println("Always blocked? " + b);
+        //System.out.println("Time : " + time + " ms");
+
+
 
     }
 }

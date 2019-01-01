@@ -3,15 +3,64 @@ package org.batfish.mulgraph;
 import java.util.HashMap;
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.Set;
+import java.util.HashSet;
+import java.util.Iterator;
 
 
 public class BF {
 
 	Digraph g;
 
+    Map<Node, EdgeCost> weight;
+    Map<Node, Node> nextHop;
+    Map<Node, Set<Node>> prevHop;
+    Map<Node, Set<String>> couldSee;
+    Map<Node, Map<String, Boolean>> seen;
+
 	public BF(Digraph graph) {	
 		g = graph;
+
+        weight = new HashMap<Node, EdgeCost>();
+        nextHop = new HashMap<Node, Node>();
+        prevHop = new HashMap<>();
+        couldSee = g.getCouldSeeCommunity();
+        seen = new HashMap<>();
+
+        initializeGraph();
 	}
+
+    public Map<Node, Map<String, Boolean>> getSeen() {
+        return seen;
+    }
+
+    public void setSeen(Node v, Map<String, Boolean> seenComm) {
+        seen.put(v, seenComm);
+    }
+
+    public void initializeGraph() {
+
+        // Step 1: Initialize distances from src to all other 
+        // vertices as INFINITE 
+        for(Node v : g.getVertices()) {
+            weight.put(v, new EdgeCost());
+            nextHop.put(v, null);
+            prevHop.put(v, new HashSet<>());
+        }
+
+        for (Map.Entry<Node, Set<String>> entry : couldSee.entrySet()) {
+            Node key = entry.getKey();
+            Map<String, Boolean> seenCommunity = new HashMap<>();
+            seen.put(key, seenCommunity);
+            for (String comm : entry.getValue()) {
+                if (key.addedCommunity.contains(comm))
+                    seen.get(key).put(comm, true);
+                else
+                    seen.get(key).put(comm, false);
+            }
+        }
+
+    }
 
     public EdgeCost update(EdgeCost weight_u, EdgeCost dist) {
         EdgeCost ec = new EdgeCost();
@@ -72,37 +121,75 @@ public class BF {
         return false;
     }
 
+    public void addToPrevHop(Map<Node, Set<Node>> prevHop, Node newv, Node u, Node oldv) {
+        if (oldv != null) {
+            prevHop.get(oldv).remove(u);
+        }
+        prevHop.get(newv).add(u);
+    }
+
+    public void removeAllNext(Map<Node, Set<Node>> prevHop,
+     Map<Node, Node> nextHop, Node v, String comm, Map<Node, Map<String, Boolean>> seen, Map<Node, EdgeCost> edgeWeight) {
+
+        for (Iterator<Node> iterator = prevHop.get(v).iterator(); iterator.hasNext();) {
+            Node next = iterator.next();
+            nextHop.put( next, null);
+            prevHop.get(v).remove(next);
+            edgeWeight.put( next, new EdgeCost());
+            removeAllNext(prevHop, nextHop, next, comm, seen, edgeWeight);
+        }
+    }
+
+
+    public void resetSeen(Map<Node, Set<Node>> prevHop,
+     Map<Node, Node> nextHop, Node u, String comm, Map<Node, Map<String, Boolean>> seen, Map<Node, EdgeCost> edgeWeight) {
+
+        for (Iterator<Node> iterator = prevHop.get(u).iterator(); iterator.hasNext();) {
+            Node prev = iterator.next();
+
+            if (prev.blockedCommunity.contains(comm)) {
+                nextHop.put( prev, null);
+                prevHop.get(u).remove(prev);
+                edgeWeight.put( prev, new EdgeCost());
+                removeAllNext(prevHop, nextHop, prev, comm, seen, edgeWeight);
+            } else if (!prev.addedCommunity.contains(comm)) {
+                seen.get(prev).put(comm, true);
+                resetSeen(prevHop, nextHop, prev, comm, seen, edgeWeight);
+            }
+
+        }        
+
+    }
+
     // return shortest path
     public Path shortestPath(Node src, Node dst) { 
 
-        Map<Node, EdgeCost> weight = new HashMap<Node, EdgeCost>();
-        Map<Node, Node> nextHop = new HashMap<Node, Node>();
+
         EdgeCost currWeight = new EdgeCost();
         Path path = new Path();
-        Node s = g.getNode(src.getId());
-        Node d = g.getNode(dst.getId());
+        Node s = g.getVertex(src.getId());
+        Node d = g.getVertex(dst.getId());
         //System.out.println(((Node)src).getId());
         //System.out.println(currWeight);
         //*
 
-        // Step 1: Initialize distances from src to all other 
-        // vertices as INFINITE 
-        for(Node v : g.getVertices()) {
-            weight.put(v, new EdgeCost());
-            nextHop.put(v, null);
-        }
         EdgeCost ec = new EdgeCost();
-        if (src.getType() == protocol.OSPF)
+        if (src.getType() == protocol.OSPF) {
             ec.setOSPF(0);
-        else if (src.getType() == protocol.BGP)
+            ec.setAD(20);
+        }
+        else if (src.getType() == protocol.BGP) {
             ec.setAS(0);
+            ec.setAD(30);
+        }
 
         weight.put(d, ec);
         nextHop.put(d, d);
 
         // Step 2: Relax all edges |V| - 1 times. A simple 
-        // shortest path from src to any other vertex can 
+        // shortest path from src to any other Node can 
         // have at-most |V| - 1 edges 
+        //System.out.println("Starting weight calc");
         for(Node vertices : g.getVertices()) { 
           for(Node u : g.getVertices()) {
             for(Edge e1 : g.getNeighbors(u)) {
@@ -112,17 +199,85 @@ public class BF {
                 EdgeCost weight_u = weight.get(u);
                 EdgeCost weight_v = weight.get(v);
 
+                // FIX IBGP-DEF
+                if (e1.getType() == protocol.IBGP) {
+                    boolean canAllow = false;
+                    if (nextHop.get(v) != null && nextHop.get(v) != v ) {
+                        protocol edgeType = g.getEdge(v, nextHop.get(v)).getType();
+                        if (edgeType == protocol.OSPF) {
+                            Node next = nextHop.get(v);
+                            if (nextHop.get(next) != null && nextHop.get(next) != next ) {
+                                protocol edgeType2 = g.getEdge(next, nextHop.get(next)).getType();
+                                if (edgeType2 == protocol.DEF) {
+                                    canAllow = true;
+                                }
+                            }
+                        }
+                    }
+                    if (canAllow == false)
+                        continue;
+                }
+
+                if (e1.getType() == protocol.DEF && !g.defUsed.contains(e1)) {
+                    continue;
+                }
+
+                if (e1.getType() == protocol.OSPF) {
+                    Node nextnext = nextHop.get(v);
+                    if ( nextnext!=null && !nextnext.equals(v)) {
+                        if (g.secondOSPF.contains(g.getEdge(v, nextnext))) {
+                            continue;
+                        }
+                    }
+                }
+
+                boolean blockCommunity = false;
+                if (couldSee.containsKey(v)) {
+                    for ( String comm : couldSee.get(v) ) {
+                        if (seen.get(v).get(comm) && u.blockedCommunity.contains(comm)) {
+                            blockCommunity = true;
+                            break;
+                        }
+                    }
+                }
+
+                if (blockCommunity)
+                    continue;
+
+
                 if ( (weight_v.valid == true) ) {
                     currWeight = update(weight_v, dist);
+
+                    /*if (v==dst){
+                        System.out.println(weight_v + "\t" + dist+ "\t" + currWeight);
+                    }*/
+
                     if (compare(currWeight, weight_u)) {
-                        weight.put(u, currWeight); 
+                        weight.put(u, currWeight);
+                        addToPrevHop(prevHop, v, u, nextHop.get(u));
                         nextHop.put(u, v);
+
+                        if (couldSee.containsKey(v)) {
+                            for ( String comm : couldSee.get(v) ) {
+                                if ( !( u.removedCommunity.contains(comm) || u.addedCommunity.contains(comm)) ) {
+                                    seen.get(u).put(comm, seen.get(v).get(comm) ); 
+                                    // remove advertisement which use u for next hop and block on comm
+                                    if (seen.get(u).get(comm)) {
+                                        resetSeen(prevHop, nextHop, u, comm, seen, weight);
+                                    }
+                                }
+                            }
+                        }
+
+
+
                     }
                 }
             }
-          } 
+          } //break;
         }
 
+        //System.out.println("Path finding");
         Node cur = s;
         path.add(s);
         //System.out.println(nextHop);
