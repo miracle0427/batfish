@@ -36,7 +36,8 @@ public class RPathLength {
       
       g.reverseNeighbors();
       g.setReverseCorrelated();
-      g.setCommunity();      
+      g.setCommunity();
+
       // Create variables
       GRBLinExpr expr, inflow, temp1, corr, sumParentReach, sumGParentReach, tempAdd, outflow;
       Map<Node, Map<Node, GRBVar>> flow = new HashMap<>();
@@ -100,9 +101,6 @@ public class RPathLength {
 
       for (Node v : g.getVertices()) {
         // change it to if-else stmt to avoid use of continue
-        if (v == src) {
-          continue;
-        }
 
         inflow = new GRBLinExpr();
 
@@ -116,6 +114,10 @@ public class RPathLength {
           constraint = constraint + 1;          
         }
 
+        if (v == src) {
+          continue;
+        }
+
         //Map<Node, Map<String, GRBVar>> community = new HashMap<>();
         if (community.containsKey(v)) {
           for (String comm : community.get(v).keySet()) {
@@ -123,7 +125,7 @@ public class RPathLength {
             if (v.addedCommunity.contains(comm)||v.removedCommunity.contains(comm)) {
               continue;
             }
-
+            // if parents add, then I will see it
             GRBVar reachvcomm = community.get(v).get(comm);
             temp1 = new GRBLinExpr();
             for (Node from : g.inboundNeighbors(v)) {
@@ -143,6 +145,8 @@ public class RPathLength {
 
           Edge thisEdge = g.getEdge(from, v);
           if (thisEdge.getType() ==  protocol.DEF && !g.defUsed.contains(thisEdge)) {
+            model.addConstr(flowcons, GRB.EQUAL, 0.0, "defcons"+constraint);
+            constraint = constraint + 1;                      
             continue;
           }
 
@@ -160,7 +164,6 @@ public class RPathLength {
               constraint = constraint + 1;
               sumParentReach = new GRBLinExpr();
               sumParentReach.addConstant(0);
-
               for (Node parent : g.inboundNeighbors(from)) {
                 if (tempList.contains(parent))
                   continue;
