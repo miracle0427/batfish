@@ -1,0 +1,32 @@
+{
+  "edges": [
+    {
+      "node1": {
+        "hostname": "iosvl2-1",
+        "interfaceName": "GigabitEthernet0/2"
+      },
+      "node2": {
+        "hostname": "iosvl2-2",
+        "interfaceName": "GigabitEthernet0/1"
+      }
+    }, {
+      "node1": {
+        "hostname": "iosvl2-1",
+        "interfaceName": "GigabitEthernet0/1"
+      },
+      "node2": {
+        "hostname": "iosv-1",
+        "interfaceName": "GigabitEthernet0/1"
+      }
+    }, {
+      "node1": {
+        "hostname": "iosv-2",
+        "interfaceName": "GigabitEthernet0/1"
+      },
+      "node2": {
+        "hostname": "iosvl2-2",
+        "interfaceName": "GigabitEthernet0/2"
+      }
+    }
+  ]
+}

@@ -572,22 +572,17 @@ class EncoderSlice {
 
           BoolExpr outAcl = getCtx().mkBoolConst(outName);
           BoolExpr outAclFunc = computeACL(outbound);
-          /*
-          if (existsACL(outbound)) {
-            System.out.println(router + i.getName() + "-out");
-          }*/
-
+          /* ARCHIE REMOVE
           BoolExpr outAclRemove = getCtx().mkBoolConst(_encoder.getId() + "_" + outName + "Remove");
           if (_encoder._repairObjective == 0) {
             addSoft(mkNot(outAclRemove), aclWeight, "SoftOutAclRemove");
           }
           _routerConsMap.put(router, mkAnd(_routerConsMap.get(router), mkNot(outAclRemove)));
+          */
           // @archie outAclRemove is soft constraint to do out ACL remove
           add(mkEq(outAcl, outAclFunc));
-          //_outboundAcls.put(ge, outAcl);
-          //System.out.println("Y");
-          System.out.println(mkOr(outAcl,outAclRemove));
-          _outboundAcls.put(ge, mkOr(outAcl,outAclRemove));
+          _outboundAcls.put(ge, outAcl);
+          ///* ARCHIE REMOVE _outboundAcls.put(ge, mkOr(outAcl,outAclRemove));
 
         } else {
           String outName =
@@ -599,6 +594,7 @@ class EncoderSlice {
                   i.getName(),
                   "OUTBOUND",
                   "SOFT");
+          /* ARCHIE REMOVE
           BoolExpr outAcl = getCtx().mkBoolConst(_encoder.getId() + "_" + outName + "Add");
           // @archie outAcl is soft constraint to do out ACL add
           if (_encoder._repairObjective == 0) {
@@ -606,6 +602,7 @@ class EncoderSlice {
           }
           _routerConsMap.put(router, mkAnd(_routerConsMap.get(router), outAcl));
           _outboundAcls.put(ge, outAcl);
+          */
         }
 
         IpAccessList inbound = i.getIncomingFilter();
@@ -621,22 +618,23 @@ class EncoderSlice {
           /*if (existsACL(inbound)) {
             System.out.println(router + i.getName() + "-in");
           }*/
-          
+          /* ARCHIE REMOVE
           BoolExpr inAclRemove = getCtx().mkBoolConst(_encoder.getId() + "_" + inName + "Remove");
           if (_encoder._repairObjective == 0) {
             addSoft(mkNot(inAclRemove), aclWeight, "SoftInAclRemove");
           }
           _routerConsMap.put(router, mkAnd(_routerConsMap.get(router), mkNot(inAclRemove)));
           // @archie inAclRemove is soft constraint to do in ACL remove
-          add(mkEq(inAcl, inAclFunc));
-          //_inboundAcls.put(ge, inAcl);
-          _inboundAcls.put(ge, mkOr(inAcl,inAclRemove));
+          add(mkEq(inAcl, inAclFunc));*/
+          _inboundAcls.put(ge, inAcl);
+          ///* ARCHIE REMOVE _inboundAcls.put(ge, mkOr(inAcl,inAclRemove));
 
         } else {
           String inName =
               String.format(
                   "%d_%s_%s_%s_%s_%s",
                   _encoder.getId(), _sliceName, router, i.getName(), "INBOUND", "SOFT");
+          /* ARCHIE REMOVE
           BoolExpr inAcl = getCtx().mkBoolConst(_encoder.getId() + "_" + inName + "Add");
           // @archie inAcl is soft constraint to do out ACL add
           if (_encoder._repairObjective == 0) {
@@ -644,6 +642,7 @@ class EncoderSlice {
           }
           _routerConsMap.put(router, mkAnd(_routerConsMap.get(router), inAcl));
           _inboundAcls.put(ge, inAcl);
+          */
         }
       }
     }
@@ -793,10 +792,12 @@ class EncoderSlice {
     }
   }
 
+ 
  /*
    * Check if a prefix range match is applicable for the packet destination
    * Ip address, given the prefix length variable.
    */
+ /* ARCHIE REMOVE
   BoolExpr isRelevantForSoft(ArithExpr prefixLen, PrefixRange range, String routerName) {
     Prefix p = range.getPrefix();
     SubRange r = range.getLengthRange();
@@ -830,7 +831,7 @@ class EncoderSlice {
         return mkAnd(lengthLowerBound, lengthUpperBound, lowerBitsMatch);
       }
     }
-  }
+  }*/
 
   private BoolExpr firstBitsEqual(BitVecExpr x, long y, int n) {
     assert (n >= 0 && n <= 32);
@@ -2189,6 +2190,7 @@ private void addSymbolicPacketBoundConstraints() {
           BoolExpr choice = _symbolicDecisions.getChoiceVariables().get(router, proto, e);
           assert (choice != null);
           BoolExpr isBest = equal(conf, proto, bestVars, vars, e, false);
+          /* ARCHIE REMOVE
           if (_bgpAllow.contains(e) || _ospfAllow.contains(e)) {
  
             BoolExpr shouldAllow;
@@ -2207,13 +2209,13 @@ private void addSymbolicPacketBoundConstraints() {
               _routerConsMap.put(router, mkAnd(_routerConsMap.get(router), mkNot(shouldAllow)));
               _enableRoute.put(keyvalue, shouldAllow);
             }
-            /*
-            BoolExpr shouldAllow = getCtx().mkBoolConst(_encoder.getId() + "_"
-              + vars.getName() + "AllowChoice");
-            addSoft(mkNot(shouldAllow), 1, "AllowRoute");*/
+            
+            //BoolExpr shouldAllow = getCtx().mkBoolConst(_encoder.getId() + "_"
+            //  + vars.getName() + "AllowChoice");
+            //addSoft(mkNot(shouldAllow), 1, "AllowRoute");
 
             isBest = mkAnd(isBest,shouldAllow);
-          }
+          }*/
           add(mkEq(choice, mkAnd(vars.getPermitted(), isBest)));
         }
       }
@@ -2755,6 +2757,7 @@ private void addSymbolicPacketBoundConstraints() {
           assert (loop != null);
 
           BoolExpr usable = mkAnd(mkNot(loop), active, varsOther.getPermitted(), receiveMessage);
+          /* ARCHIE REMOVE
           if (_bgpAllow.contains(e) || _ospfAllow.contains(e)) {
 
             BoolExpr shouldAllow;
@@ -2774,13 +2777,13 @@ private void addSymbolicPacketBoundConstraints() {
               _enableRoute.put(keyvalue, shouldAllow);
             }
 
-            /*
-            BoolExpr shouldAllow = getCtx().mkBoolConst(_encoder.getId() + "_"
-              + vars.getName() + "AllowChoiceUse");
-            addSoft(mkNot(shouldAllow), 1, "AllowRoute");*/
+            
+            //BoolExpr shouldAllow = getCtx().mkBoolConst(_encoder.getId() + "_"
+            //  + vars.getName() + "AllowChoiceUse");
+            //addSoft(mkNot(shouldAllow), 1, "AllowRoute");
 
             usable = mkAnd(usable, shouldAllow);
-          }
+          }*/
           BoolExpr importFunction;
           RoutingPolicy pol = getGraph().findImportRoutingPolicy(router, proto, e.getEdge());
 
@@ -2803,7 +2806,7 @@ private void addSymbolicPacketBoundConstraints() {
               new TransferSSA(this, conf, varsOther, vars, proto, statements, cost, ge, false);
           importFunction = f.compute();
           //System.out.println("** IMPORT **\n" + ge + "   " + importFunction + "\n**   **");
-
+          /* ARCHIE REMOVE
           BoolExpr shouldAddFilter = getCtx().mkBoolConst(_encoder.getId() + "_" + router
            + "ImportFilterAddSoft" + vars.getName());
           if (_encoder._repairObjective == 0) {
@@ -2812,6 +2815,8 @@ private void addSymbolicPacketBoundConstraints() {
           _routerConsMap.put(router, mkAnd(_routerConsMap.get(router), shouldAddFilter));  
           //importFunction = mkOr(importFunction, shouldAddFilter);
           BoolExpr acc = mkIf(mkAnd(usable, shouldAddFilter), importFunction, val);
+          */
+          BoolExpr acc = mkIf(usable, importFunction, val);
           if (Encoder.ENABLE_DEBUGGING) {
             System.out.println("IMPORT FUNCTION: " + router + " " + varsOther.getName());
             System.out.println(importFunction.simplify());
@@ -2952,7 +2957,7 @@ private void addSymbolicPacketBoundConstraints() {
           f =
               new TransferSSA(
                   this, conf, overallBest, ospfRedistribVars, proto, statements, cost, ge, true);
-
+          /* ARCHIE REMOVE
           BoolExpr redisRemove;
           // remove the sharing of redis concept
           String keyvalue = router + proto.name();
@@ -2967,6 +2972,7 @@ private void addSymbolicPacketBoundConstraints() {
             _routerConsMap.put(router, mkAnd(_routerConsMap.get(router), redisRemove));  
             _disableRedis.put(keyvalue, redisRemove);
           }
+          */
           /*
           BoolExpr redisRemove = getCtx().mkBoolConst(_encoder.getId() + "_"
            + router + proto.name() + "SoftRedisRemove");
@@ -2976,7 +2982,8 @@ private void addSymbolicPacketBoundConstraints() {
           //System.out.println("################\n" + acc2 + "\n#############");
           // System.out.println("ADDING: \n" + acc2.simplify());
           add(acc2);
-          BoolExpr usable2 = mkAnd(active, doExport, ospfRedistribVars.getPermitted(), notFailed, redisRemove);
+          BoolExpr usable2 = mkAnd(active, doExport, ospfRedistribVars.getPermitted(), notFailed);
+          //* ARCHIE REMOVE , redisRemove);
           BoolExpr geq = greaterOrEqual(conf, proto, ospfRedistribVars, varsOther, e);
           BoolExpr isBetter = mkNot(mkAnd(ospfRedistribVars.getPermitted(), geq));
           BoolExpr usesOspf = mkAnd(varsOther.getPermitted(), isBetter);
@@ -3035,6 +3042,7 @@ private void addSymbolicPacketBoundConstraints() {
 
             BoolExpr ifaceUp = interfaceActive(iface, proto, e);
             BoolExpr relevantPrefix = isRelevantFor(p, _symbolicPacket.getDstIp());
+            /* ARCHIE REMOVE
             if (getEncoder()._dstIp != null && matchIpWithPref(getEncoder()._dstIp, p)) {
               BoolExpr shouldRemove;
               String keyvalue = router + p;
@@ -3049,11 +3057,11 @@ private void addSymbolicPacketBoundConstraints() {
                 _routerConsMap.put(router, mkAnd(_routerConsMap.get(router), shouldRemove));  
                 _disableOSPF.put(keyvalue, shouldRemove);
               }
-              /*BoolExpr shouldRemove = getCtx().mkBoolConst(_encoder.getId() + "_"
-               + router + "OSPFExportRemoveSoft" + p);
-              addSoft(shouldRemove, 3, "OSPFExportRemove");*/
+              //BoolExpr shouldRemove = getCtx().mkBoolConst(_encoder.getId() + "_"
+              // + router + "OSPFExportRemoveSoft" + p);
+              //addSoft(shouldRemove, 3, "OSPFExportRemove");
               relevantPrefix = mkAnd(relevantPrefix, shouldRemove);
-            }
+            }*/
             BoolExpr relevant = mkAnd(ifaceUp, relevantPrefix);
 
             int adminDistance = defaultAdminDistance(conf, proto);
@@ -3092,15 +3100,10 @@ private void addSymbolicPacketBoundConstraints() {
             acc = mkIf(relevant, values, acc);
           }
         }
-        //*
+        /* ARCHIE REMOVE
 
         for (Prefix p : allOriginations) {
           // For OSPF, we need to explicitly initiate a route
-          /*
-          if (getEncoder()._dstIp != null && !matchIpWithPref(getEncoder()._dstIp, p)) {
-            //System.out.println("Avoid add ospf " + p);
-            continue;
-          }*/
           if (proto.isOspf()) {
 
             BoolExpr ifaceUp = interfaceActive(iface, proto, e);

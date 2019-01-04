@@ -228,9 +228,11 @@ class TransferSSA {
       Prefix p = line.getIpWildcard().toPrefix();
       SubRange r = line.getLengthRange();
       PrefixRange range = new PrefixRange(p, r);
+      BoolExpr matches = _enc.isRelevantFor(other.getPrefixLength(), range);
+      /* ARCHIE REMOVE
       BoolExpr matches = _enc.isRelevantForSoft(other.getPrefixLength(), range, _conf.getName());
 
-      if (_enc.getEncoder()._repairObjective == 4) {
+      if (_enc.getEncoder()._repairObjective == 3) {
         BoolExpr filterRemove = _enc.mkFalse();
         if (!_enc.getEncoder()._bgpTemp.containsKey(lineno)) {
           //System.out.println("not Exists " + lineno);
@@ -243,7 +245,7 @@ class TransferSSA {
         }
         matches = _enc.mkAnd(matches, filterRemove);
       }
-
+      */
 
       BoolExpr action = _enc.mkBool(line.getAction() == LineAction.ACCEPT);
       acc = _enc.mkIf(matches, action, acc);
@@ -1054,7 +1056,7 @@ class TransferSSA {
     throw new BatfishException("[joinPoint]: unhandled case for " + variableName);
   }
 
-
+  /* ARCHIE REMOVE
   private ArithExpr getVarLocalPref(int actualVal) {
     if (_enc.getEncoder()._isBool == 0) {
       Map<String, ArithExpr> prefMap = _enc.getLocalPrefMap();
@@ -1113,7 +1115,7 @@ class TransferSSA {
     prefMap.put(_currentName, val);
     return val;
   }
-
+  */
   private int getIntFromExpr(IntExpr e) {
     if (e instanceof LiteralInt) {
       LiteralInt z = (LiteralInt) e;
@@ -1325,10 +1327,12 @@ class TransferSSA {
         newValue = _enc.mkIf(result.getReturnAssignedValue(), p.getData().getLocalPref(), newValue);
         ArithExpr x = createArithVariableWith(p, "LOCAL-PREF", newValue);
 
+        /* ARCHIE REMOVE
         //System.out.println("\n2.  **** " + x + " XX =   " + lpValue);
         //ArithExpr oneh = _enc.mkInt(100);
         ArithExpr getAllVal = getVarLocalPref(lpValue);
         x = getAllVal;//_enc.mkIf(_enc.mkTrue(), oneh, x);
+        */
         p.getData().setLocalPref(x);
         result = result.addChangedVariable("LOCAL-PREF", x);
 

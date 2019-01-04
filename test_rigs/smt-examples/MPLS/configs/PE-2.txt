@@ -1,0 +1,181 @@
+!
+! Last configuration change at 20:52:47 UTC Thu Feb 16 2017
+!
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname PE-2
+!
+boot-start-marker
+boot-end-marker
+!
+!
+vrf definition Mgmt-intf
+ !
+ address-family ipv4
+ exit-address-family
+ !
+ address-family ipv6
+ exit-address-family
+!
+enable password cisco
+!
+no aaa new-model
+ethernet lmi ce
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+ip vrf 100:COSTA
+ rd 65536:100
+ route-target export 65536:100
+ route-target import 65536:100
+!
+ip vrf 200:STARBUCKS
+ rd 65536:200
+ route-target export 65536:200
+ route-target import 65536:200
+!
+!
+!
+!
+no ip domain lookup
+ip domain name virl.info
+ip cef
+ipv6 unicast-routing
+ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+username cisco privilege 15 secret 5 $1$JFAk$2M0Rt.tSPBydh1yhPYca01
+!
+redundancy
+!
+no cdp run
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ description Loopback
+ ip address 192.168.0.6 255.255.255.255
+!
+interface GigabitEthernet0/0
+ description OOB Management
+ vrf forwarding Mgmt-intf
+ ip address 10.255.1.87 255.255.0.0
+ duplex full
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1
+ description to STARBUCKS2
+ ip vrf forwarding 200:STARBUCKS
+ ip address 10.0.0.22 255.255.255.252
+ ip ospf cost 1
+ duplex full
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/2
+ description to COSTA2
+ ip vrf forwarding 100:COSTA
+ ip address 10.0.0.18 255.255.255.252
+ ip ospf cost 1
+ duplex full
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/3
+ description to P3
+ ip address 10.0.0.25 255.255.255.252
+ ip ospf cost 1
+ duplex full
+ speed auto
+ media-type rj45
+ mpls ip
+!
+router ospf 100 vrf 100:COSTA
+ redistribute bgp 65536 subnets
+ network 10.0.0.18 0.0.0.0 area 0
+!
+router ospf 200 vrf 200:STARBUCKS
+ redistribute bgp 65536 subnets
+ network 10.0.0.22 0.0.0.0 area 0
+!
+router ospf 1
+ passive-interface Loopback0
+ network 10.0.0.16 0.0.0.3 area 0
+ network 10.0.0.20 0.0.0.3 area 0
+ network 10.0.0.24 0.0.0.3 area 0
+ network 192.168.0.6 0.0.0.0 area 0
+!
+router bgp 65536
+ bgp log-neighbor-changes
+ neighbor 192.168.0.3 remote-as 65536
+ neighbor 192.168.0.3 update-source Loopback0
+ !
+ address-family vpnv4
+  neighbor 192.168.0.3 activate
+  neighbor 192.168.0.3 send-community extended
+ exit-address-family
+ !
+ address-family ipv4 vrf 100:COSTA
+  redistribute ospf 100
+ exit-address-family
+ !
+ address-family ipv4 vrf 200:STARBUCKS
+  redistribute ospf 200
+ exit-address-family
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip ssh server algorithm authentication password
+!
+!
+!
+mpls ldp router-id Loopback0
+!
+control-plane
+!
+line con 0
+ password cisco
+line aux 0
+line vty 0 4
+ exec-timeout 720 0
+ password cisco
+ login local
+ transport input telnet ssh
+!
+no scheduler allocate
+!
+end
