@@ -2559,6 +2559,7 @@ private void addSymbolicPacketBoundConstraints() {
             acl = mkTrue();
           }
           BoolExpr notBlocked = mkAnd(fwd, acl);
+          /* ARCHIE REMOVE
           if (ge.getStart()!=null && ge.getEnd()!=null && (!_bothIfaceEdges.contains(ge))) {
             BoolExpr shouldAdd;
             if (!_isTCE)
@@ -2577,6 +2578,8 @@ private void addSymbolicPacketBoundConstraints() {
             
           }
           add(mkEq(mkAnd(notBlocked, mkEq(getSymbolicFailures().getFailedVariable(ge), mkInt(0))), dForward));
+          */
+          add(mkEq(notBlocked, dForward));
         }
       }
     }
@@ -2646,18 +2649,26 @@ private void addSymbolicPacketBoundConstraints() {
                       shouldRemove);
                         
           }*/
+          /* ARCHIE REMOVE
           BoolExpr shouldRemove = getCtx().mkBoolConst(_encoder.getId() + "_"
            + router + "StaticRouteRemoveSoft" + p);
           if (_encoder._repairObjective == 0) {
             addSoft(shouldRemove, staticWeight, "StaticRemove");
           }
-          _routerConsMap.put(router, mkAnd(_routerConsMap.get(router), shouldRemove));  
+          _routerConsMap.put(router, mkAnd(_routerConsMap.get(router), shouldRemove));
           relevant =
               mkAnd(
                   interfaceActive(iface, proto, e),
                   isRelevantFor(p, _symbolicPacket.getDstIp()),
                   notFailed,
                   shouldRemove);
+          */
+          relevant =
+              mkAnd(
+                  interfaceActive(iface, proto, e),
+                  isRelevantFor(p, _symbolicPacket.getDstIp()),
+                  notFailed);
+
           BoolExpr per = vars.getPermitted();
           BoolExpr len = safeEq(vars.getPrefixLength(), mkInt(p.getPrefixLength()));
           BoolExpr ad = safeEq(vars.getAdminDist(), mkInt(sr.getAdministrativeCost()));
