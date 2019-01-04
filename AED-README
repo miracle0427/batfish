@@ -1,0 +1,41 @@
+Format of network config folder
+----------------------------------
+I have a sample config in the following folder "archieExp/AddAcl". Here AddAcl is a sample network. This folder shows the input-config folder should be formatted for my tool.
+- This folder has a sub-directory called "configs". This (AddAcl/configs) has a list of router config files.
+- It has another sub-directory "logs". Here you need to create a file called "verified.txt". This file(AddAcl/logs/verified.txt) has the list of policies that needs to be implemented in the config. The format of the policy is as follows: 
+	smt-reachability srcIps=["<src-ip>"], dstIps=["<dst-ip>"], ingressNodeRegex=<src-router>, finalNodeRegex=<dst-router>
+  AddAcl/logs/verified.txt has some examples of these policies (For my parser to work properly, I need the whitespace and commas to be exactly like shown in the example)
+
+All my scripts mainly take a MainFolder as input. The MainFolder has a list of networks. For example, if microsoft have 3 networks - Mic1, Mic2, Mic3. Then all these will be subdirectory of another folder - lets say 'MicrosoftNetwork'. And this folder is usually given as input to my script.
+
+Next I'll list what script, you'll need to run for support different management objective
+
+Min change objective:
+------------------------
+This objective is to minimize number of changes made. 
+Run the following script: ./minchange.sh <NETWORKS>
+Here, NETWORKS folder will have a list of sub-directory, each represent a separate network. For example, archieExp folder has two subdirectories representing two networks "AddAcl" and "AddAcl2".
+
+This script will create a file called "runoutput". This file will tell me how long it took AED to run and how many changes did it made, for each network. 
+Output format: network,runtime,penalty-of-violating-soft-constraints
+
+Maintain template objective:
+------------------------
+This objective is to maintain ACL and RouteFilter template.
+Run the following script: ./mintempchng.sh <NETWORKS>
+This script will create a file called "runoutput".
+
+Min device affected objective:
+------------------------
+This objective is to minimize the no. of devices changed.
+Run the following script: ./mindevchng.sh <NETWORKS>
+This script will create a file called "runoutput" and "runoutput-devchng". The "runoutput-devchng" file will tell me how many devices were changed
+
+Min forwarding objective:
+------------------------
+This objective is to minimize the no. of data-forwarding changes. For this, you need to provide two input folders.
+Run the following script: ./minfwdchng.sh <NETWORKS-1> <NETWORKS-2>
+This script will create a file called "runoutput"
+
+Here, NETWORKS-2 has the list of networks that you want AED to modify. NETWORKS-1 has the same set of networks, but the "verified.txt" files of these networks only consists of policies that are already satisfied. In all other scenarios (including NETWORKS-2 of this example), the "verified.txt" files had both policies already satisfied and policies we want to additionally satisfy. [My script is first doing some preprocessing on NETWORKS-1 to find out how datafwd was happening to support existsing policies]
+

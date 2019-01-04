@@ -1,5 +1,0 @@
-smt-reachability srcIps=['30.0.0.0/30'], dstIps=['30.1.1.0/30'], ingressNodeRegex=e0-0, finalNodeRegex=e1-1
-smt-blackhole srcIps=['30.0.1.0/30'], dstIps=['30.1.1.0/30']
-smt-bounded-length srcIps=['30.1.0.0/30'], dstIps=['30.1.1.0/30'], ingressNodeRegex=e1-0, finalNodeRegex=e1-1, bound=4
-smt-waypointing srcIps=['30.2.0.0/30'], dstIps=['30.1.1.0/30'], ingressNodeRegex="e2-0", waypoints=["e2-0","agg2-0","c0","agg1-0","e1-1"]
-smt-waypointing srcIps=['30.3.0.0/30'], dstIps=['30.1.1.0/30'], ingressNodeRegex="e3-0", waypoints=["e3-0","agg3-0","c0","agg1-0","e1-1"]

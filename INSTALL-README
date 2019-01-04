@@ -1,0 +1,17 @@
+git clone https://github.com/anubhavnidhi/batfish.git
+cd batfish/
+git checkout newrepair
+# https://github.com/batfish/batfish/wiki/Building-and-running-Batfish-service - specifies what all are the requirements [except the command for z3. Correct command is sudo tools/install_z3_ubuntu.sh /usr]
+sudo apt-get -y install gcc g++ make automake autoconf libtool
+sudo tools/install_z3_ubuntu.sh /usr
+source tools/batfish_functions.sh
+
+
+sudo apt-get -y update
+sudo apt-get -y install software-properties-common
+sudo apt-add-repository ppa:webupd8team/java
+sudo apt-get -y update
+sudo apt-get -y install maven
+sudo apt-get -y install oracle-java8-installer
+
+batfish_build_all

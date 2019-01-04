@@ -1234,7 +1234,10 @@ public class Encoder {
 
     if (_repairObjective == 1) {
       for (String keyRouter : _routerConsMap.keySet()) {
-        addSoft(_routerConsMap.get(keyRouter), 10000, "deviceAffected");
+	BoolExpr device = getCtx().mkBoolConst("@" + keyRouter);
+	add(mkEq(device, _routerConsMap.get(keyRouter)));
+	addSoft(device, 10000, "deviceAffected");
+        //addSoft(_routerConsMap.get(keyRouter), 10000, "deviceAffected");
       }
     }
     
