@@ -9,7 +9,7 @@ public class Edge {
     Node vertex;
     EdgeCost cost;
     protocol type;
-    boolean hasACL;
+    boolean hasACL = false;
 
     static final Map<protocol, Integer> protocol_map = createMap();
 
@@ -26,6 +26,9 @@ public class Edge {
         result.put(protocol.NONE, -1000);
         result.put(protocol.REDISSB, 20);
         result.put(protocol.REDISSO, 100);
+        result.put(protocol.SWITCH, 1000);
+        result.put(protocol.SRC, 0);        
+        result.put(protocol.DST, 0);        
 
         return Collections.unmodifiableMap(result);
     }
@@ -72,8 +75,9 @@ public class Edge {
     public String toString() {
         //return "Edge [src=" + src + ", dst=" + vertex + ", cost=" + cost + ", type=" + type + "]";
         //return "[src=" + src + ", dst=" + vertex + ", cost=" + cost + "]";
-        return "Edge [src=" + src + ", dst=" + vertex + ", isACL=" + hasACL;// + ", cost=" + cost + "]";
+        //return "Edge [src=" + src + ", dst=" + vertex + ", isACL=" + hasACL;// + ", cost=" + cost + "]";
         //return "Edge [src=" + src + ", dst=" + vertex + ", " + cost + "]";
+        return "Edge [src=" + src + ", dst=" + vertex + "]";
     }
 
     public Edge copy() {

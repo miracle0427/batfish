@@ -1,0 +1,2 @@
+init-snapshot /users/anubhavnidhi/aceso/rebase/batfish/test_rigs/smt-examples/MPLS 
+get arcReach srcIps=["192.4.64.2"], dstIps=["10.10.10.2"]

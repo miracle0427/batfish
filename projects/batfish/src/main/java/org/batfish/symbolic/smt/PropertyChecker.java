@@ -605,42 +605,41 @@ public class PropertyChecker {
   /*
    * Check if things are reachable
    */
-  public AnswerElement checkGraphReachability(HeaderLocationQuestion q) throws IOException {
+  public AnswerElement checkGraphReachability(HeaderLocationQuestion q){
     Graph graph = new Graph(_batfish);
     //System.out.println(q.getSrcIps() + "\t" + q.getDstIps());
     List<String> allPaths = _batfish.getAllPaths();
-
-    for (String fil : allPaths) {
-      BufferedReader br = new BufferedReader(new FileReader(fil));
-      String line;
-      boolean hasMpls = false;
-      while ((line = br.readLine()) != null) {
-        if (line.contains("mpls ldp router-id")) {
-          hasMpls = true;
-          String router = fil.substring(fil.lastIndexOf("/")+1, fil.length()).replace(".txt","").replace(".cfg","").toLowerCase();
-          if (graph.getConfigurations().containsKey(router))
-            graph.getConfigurations().get(router).setMPLS(hasMpls);
-          else
-            System.out.println("File name error " + router);
-          break;
+    try {
+      for (String fil : allPaths) {
+        BufferedReader br = new BufferedReader(new FileReader(fil));
+        String line;
+        boolean hasMpls = false;
+        while ((line = br.readLine()) != null) {
+          if (line.contains("mpls ldp router-id")) {
+            hasMpls = true;
+            String router = fil.substring(fil.lastIndexOf("/")+1, fil.length()).replace(".txt","").replace(".cfg","").toLowerCase();
+            if (graph.getConfigurations().containsKey(router))
+              graph.getConfigurations().get(router).setMPLS(hasMpls);
+            else
+              System.out.println("File name error " + router);
+            break;
+          }
         }
       }
+    } catch(IOException io) {
+      System.out.println("IO exception while parsing for MPLS ");
     }
-    /*
+
     if (q.getSrcIps() != null && q.getDstIps() != null) {
       if (q.getSrcIps().size() != 0 && q.getDstIps().size() != 0) {
         Mulgraph m = new Mulgraph(graph, q.getSrcIps().first(), q.getDstIps().first());
+        if (_batfish.getLayer2Topology() != null) {
+          m.setL2Map(makeL2());
+        }
+        m.buildGraph();
       }
-    }*/
-    
-    /*
-    for ( Node n : m.getDigraph().getVertices()) {
-      System.out.println(n);
-    }*/
-
-    if (_batfish.getLayer2Topology() != null) {
-      System.out.println(makeL2());
     }
+    
     //System.out.println(_batfish.getLayer2Topology().getGraph().edges());
 
     return new NullAnswer();
@@ -676,11 +675,15 @@ public class PropertyChecker {
     for (String src : l2map.keySet()) {
       for (String dst : l2map.get(src).keySet()) {
         boolean notAll = false;
+        // doing a hack here to speed up things
+        if (l2map.get(src).get(dst).size() < 50)
+          notAll = true;
+        /*
         for (int i=1; i<4095; i++) {
           if (!l2map.get(src).get(dst).contains(""+i)) {
             notAll = true;
           }
-        }
+        }*/
         if (!notAll) {
           l2map.get(src).put(dst, new HashSet<>());
           l2map.get(src).get(dst).add("*");

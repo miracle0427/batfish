@@ -224,6 +224,7 @@ public class Digraph {
      * This implementation allows the creation of multi-edges and self-loops.
      */
     public void add(Node from, Node to, EdgeCost cost, protocol type) {
+        //System.out.println(from + "\t" + to);
         this.add(from);
         this.add(to);
         neighbors.get(from).add(new Edge(from, to, cost, type));

@@ -113,6 +113,7 @@ public class GraphEdge {
 
   @Override
   public String toString() {
+    /*
     return _router
         + ","
         + (_start == null ? "_" : _start.getName())
@@ -120,5 +121,12 @@ public class GraphEdge {
         + (_peer == null ? "_" : _peer)
         + ","
         + (_end == null ? "_" : _end.getName());
+    */
+    if (_peer == null)
+      return "";
+    return _router
+        + ","
+        + (_peer == null ? "_" : _peer);
+
   }
 }
