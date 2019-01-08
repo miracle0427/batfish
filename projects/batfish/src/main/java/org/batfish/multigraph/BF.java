@@ -62,22 +62,59 @@ public class BF {
 
     }
 
-    public EdgeCost update(EdgeCost weight_u, EdgeCost dist) {
+    public EdgeCost update(EdgeCost weight_u, EdgeCost dist, protocol type) {
         EdgeCost ec = new EdgeCost();
-        if (dist.AD == 20) {
-
+        if (type == protocol.OSPF) { 
+            // copy all variable just update ospf
+            ec = weight_u.copy();
             ec.setOSPF(weight_u.ospf_cost + dist.ospf_cost);
-            ec.AD =  20;
+            ec.AD =  dist.AD;
+            ec.valid = true;
 
-        } else if (dist.AD == 30) {
-
+        } else if (type == protocol.BGP) {
+            // update MED, LP as edge value, update AS
+            ec = dist.copy();
             ec.setAS(weight_u.as_length + dist.as_length);
-            ec.AD = 30;
-            ec.setLP(dist.getLP());
-
+            ec.AD = dist.AD;
+            ec.valid = true;
+        } else if (type == protocol.SWITCH) {
+            // copy edge value
+            ec = weight_u.copy();
+            ec.valid = true;
+            ec.AD = dist.AD;
+        } else if (type == protocol.STAT) {
+            // nothing really
+            ec.AD = dist.AD;
+            ec.valid = true;
+        } else if (type == protocol.IBGP) {
+            //same as BGP but don't update AS
+            ec = weight_u.copy();
+            ec.AD = dist.AD;
+            ec.valid = true;
+        } else if (type == protocol.DEF) {
+            //just copy values
+            ec = weight_u.copy();
+            ec.AD = dist.AD;
+            ec.valid = true;
+        } else if (type == protocol.REDISOB ||
+                   type == protocol.REDISBO ||
+                   type == protocol.REDISSB ||
+                   type == protocol.REDISSO ) {
+            // just use edge
+            ec = dist.copy();
+            ec.AD = dist.AD;
+            ec.valid = true;
+        } else if (type == protocol.SRC) {
+            // compare other vertices
+            ec = weight_u.copy();
+            ec.valid = true;
+        } else if (type == protocol.DST) {
+            // just use edge
+            ec = dist.copy();
+            ec.AD = dist.AD;
+            ec.valid = true;
         }
         return ec;
-        //return weight_u.ospf_cost + dist.ospf_cost;
     }
 
     public Boolean compare(EdgeCost x, EdgeCost y) {
@@ -89,7 +126,8 @@ public class BF {
             return false;
         } else {
             // if it is BGP
-            if (x.as_length != Integer.MAX_VALUE) {
+            if ( (x.AD == Edge.protocol_map.get(protocol.BGP) && y.AD == Edge.protocol_map.get(protocol.BGP)) ||
+                (x.AD == Edge.protocol_map.get(protocol.IBGP) && y.AD == Edge.protocol_map.get(protocol.IBGP)) ){
 
                 if (x.lp > y.lp) {
                     return true;
@@ -101,20 +139,49 @@ public class BF {
                     } else if (x.as_length > y.as_length) {
                         return false;
                     } else {
-                        //System.out.println("Same BGP");
+                        if (x.med < y.med) {
+                            return true;
+                        } else if (x.med > y.med) {
+                            return false;
+                        }
                         return false;
                     }
                 }
-            } else if (x.ospf_cost != Integer.MAX_VALUE) { // if it is ospf
-
+            } else if (x.AD == Edge.protocol_map.get(protocol.OSPF) && y.AD == Edge.protocol_map.get(protocol.OSPF)) { // if it is ospf
                 if (x.ospf_cost < y.ospf_cost) {
                     return true;
                 } else if (x.ospf_cost > y.ospf_cost) {
                     return false;
                 } else {
-                    //System.out.println("Same OSPF");
                     return false;
                 }
+            } else if (x.AD == Edge.protocol_map.get(protocol.SWITCH) && y.AD == Edge.protocol_map.get(protocol.SWITCH)) { // if it is ospf
+                if (x.lp > y.lp) {
+                    return true;
+                } else if (x.lp < y.lp) {
+                    return false;
+                } else {
+                    if (x.as_length < y.as_length) {
+                        return true;
+                    } else if (x.as_length > y.as_length) {
+                        return false;
+                    } else {
+                        if (x.med < y.med) {
+                            return true;
+                        } else if (x.med > y.med) {
+                            return false;
+                        } else {
+                            if (x.ospf_cost < y.ospf_cost) {
+                                return true;
+                            } else if (x.ospf_cost > y.ospf_cost) {
+                                return false;
+                            } else {
+                                return false;
+                            }
+                        }
+                    }
+                }
+
             }
         }
         //System.out.println("Same WEIGHT");
@@ -171,7 +238,7 @@ public class BF {
         Node d = g.getVertex(dst.getId());
         //System.out.println(((Node)src).getId());
         //System.out.println(currWeight);
-        //*
+        /*
 
         EdgeCost ec = new EdgeCost();
         if (src.getType() == protocol.OSPF) {
@@ -181,8 +248,9 @@ public class BF {
         else if (src.getType() == protocol.BGP) {
             ec.setAS(0);
             ec.setAD(30);
-        }
-
+        }*/
+        EdgeCost ec = new EdgeCost();
+        ec.valid = true;
         weight.put(d, ec);
         nextHop.put(d, d);
 
@@ -246,10 +314,11 @@ public class BF {
 
 
                 if ( (weight_v.valid == true) ) {
-                    currWeight = update(weight_v, dist);
+                    currWeight = update(weight_v, dist, e1.getType());
 
-                    /*if (v==dst){
-                        System.out.println(weight_v + "\t" + dist+ "\t" + currWeight);
+                    /*if (u.getId().equals("v1")){
+                        System.out.println(u + "\t" + currWeight+ "\t" + weight_u);
+                        System.out.println("  " + weight_v);
                     }*/
 
                     if (compare(currWeight, weight_u)) {

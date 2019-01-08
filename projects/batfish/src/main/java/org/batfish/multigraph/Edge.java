@@ -23,10 +23,10 @@ public class Edge {
         result.put(protocol.REDISBO, 100);
         result.put(protocol.IBGP, 200);
         result.put(protocol.DEF, 1000);
-        result.put(protocol.NONE, -1000);
+        result.put(protocol.NONE, 100000);
         result.put(protocol.REDISSB, 20);
         result.put(protocol.REDISSO, 100);
-        result.put(protocol.SWITCH, 1000);
+        result.put(protocol.SWITCH, 10000);
         result.put(protocol.SRC, 0);        
         result.put(protocol.DST, 0);        
 

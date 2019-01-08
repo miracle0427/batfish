@@ -608,6 +608,7 @@ public class PropertyChecker {
   public AnswerElement checkGraphReachability(HeaderLocationQuestion q){
     Graph graph = new Graph(_batfish);
     //System.out.println(q.getSrcIps() + "\t" + q.getDstIps());
+    q.setBenchmark(false);
     List<String> allPaths = _batfish.getAllPaths();
     try {
       for (String fil : allPaths) {

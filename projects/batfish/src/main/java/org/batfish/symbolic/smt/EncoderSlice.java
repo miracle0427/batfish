@@ -335,7 +335,7 @@ class EncoderSlice {
         _logicalGraph.getRedistributedProtocols().put(router, proto, redistributed);
         RoutingPolicy pol = Graph.findCommonRoutingPolicy(conf, proto);
         if (pol != null) {
-          System.out.println("Redis "+ pol.getStatements());
+          //System.out.println("Redis "+ pol.getStatements());
           Set<Protocol> ps = getGraph().findRedistributedProtocols(conf, pol, proto);
           for (Protocol p : ps) {
             // Make sure there is actually a routing process for the other protocol

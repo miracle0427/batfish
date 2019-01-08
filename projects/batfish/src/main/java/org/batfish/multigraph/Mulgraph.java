@@ -166,8 +166,7 @@ public class Mulgraph {
             dg.add(srcNode);
             Set<Node> allnode = phyNodeMap.get(srcName);
             for (Node anode : allnode) {
-                EdgeCost ec = new EdgeCost();
-                dg.add(srcNode, anode, ec, anode.getType());
+                dg.add(srcNode, anode, returnDefaultEC(), anode.getType());
             }
         }
         if (dstName != null) {
@@ -176,8 +175,7 @@ public class Mulgraph {
             dg.add(dstNode);
             Set<Node> allnode = phyNodeMap.get(dstName);
             for (Node anode : allnode) {
-                EdgeCost ec = new EdgeCost();
-                dg.add(anode, dstNode, ec, anode.getType());
+                dg.add(anode, dstNode, returnDefaultEC(), anode.getType());
             }
 
         }
@@ -192,10 +190,9 @@ public class Mulgraph {
                 if (srcprot.getType() == protocol.OSPF) {
                     for (Node dstprot : allnode) {
                         if (dstprot.getType() == protocol.BGP) {
-                            EdgeCost ec = new EdgeCost();
                             //System.out.println("Mayadd "+ srcprot +"\t"+ dstprot);
                             if (hasSameVrf(node, srcprot, dstprot))
-                                dg.add(srcprot, dstprot, ec, protocol.DEF);
+                                dg.add(srcprot, dstprot, returnDefaultEC(), protocol.DEF);
                             //connectVRF(node, node, srcprot.getId(), dstprot.getId(), ec, false, protocol.IBGP);
                         }
                     }
@@ -647,75 +644,68 @@ public class Mulgraph {
         return (hasStatic || adjacent);
     }
 
-    /*
-    public void connectEdge(String switchName, String routerName) {
-        EdgeCost ec = new EdgeCost();
-        for (Node routerProcesses : phyNodeMap.get(routerName)) {
-            Node mainSwitch = multigraphNode.get(switchName);
-            if (mainSwitch!=null) {
-                dg.add(mainSwitch, routerProcesses, ec, protocol.SWITCH);
-                dg.add(routerProcesses, mainSwitch, ec, protocol.SWITCH);
-            }
-            for (Node switchVLANs : _switchVLANMap.get(switchName).values()) {
-                dg.add(switchVLANs, routerProcesses, ec, protocol.SWITCH);
-                dg.add(routerProcesses, switchVLANs, ec, protocol.SWITCH);
-            }
-        }
-    }*/
-
     public void connectRouterSwitch(String routerName, String switchName) {
-        EdgeCost ec = new EdgeCost();
         for (Node routerProcesses : phyNodeMap.get(routerName)) {
             Node mainSwitch = multigraphNode.get(switchName);
             if (mainSwitch!=null) {
-                dg.add(routerProcesses, mainSwitch, ec, protocol.SWITCH);
+                dg.add(routerProcesses, mainSwitch, returnDefaultEC(), protocol.SWITCH);
             }
             for (Node switchVLANs : _switchVLANMap.get(switchName).values()) {
-                dg.add(routerProcesses, switchVLANs, ec, protocol.SWITCH);
+                dg.add(routerProcesses, switchVLANs, returnDefaultEC(), protocol.SWITCH);
             }
         }
     }
 
-    public void connectSwitchRouter(String switchName, String routerName) {
+    public EdgeCost returnDefaultEC() {
         EdgeCost ec = new EdgeCost();
+
+        ec.ospf_cost = 0;
+        ec.as_length = 0;
+        ec.lp = 0;
+        ec.med = 0;           
+        ec.rediscost = 0;
+        ec.valid = true;    
+        return ec;        
+    }
+
+    public void connectSwitchRouter(String switchName, String routerName) {
         for (Node routerProcesses : phyNodeMap.get(routerName)) {
             Node mainSwitch = multigraphNode.get(switchName);
             Set<String> allVlans = l2map.get(switchName).get(routerName);
 
             if ((allVlans.size() == 1 && allVlans.iterator().next().equals("*"))|| allVlans.size()==0) {
                 if (mainSwitch!=null) {
-                    dg.add(mainSwitch, routerProcesses, ec, protocol.SWITCH);
+                    dg.add(mainSwitch, routerProcesses, returnDefaultEC(), protocol.SWITCH);
                 }
             } else {
                 for (String aVlan : allVlans) {
                     if (_switchVLANMap.get(switchName).containsKey(aVlan))
-                        dg.add(_switchVLANMap.get(switchName).get(aVlan), routerProcesses, ec, protocol.SWITCH);                    
+                        dg.add(_switchVLANMap.get(switchName).get(aVlan), routerProcesses, returnDefaultEC(), protocol.SWITCH);                    
                 }
             }
         }
     }
 
     public void connectSwitches(String srcSwitch, String dstSwitch) {
-        EdgeCost ec = new EdgeCost();
         Set<String> allVlans = l2map.get(srcSwitch).get(dstSwitch);
         Node mainSrc = multigraphNode.get(srcSwitch);
         Node mainDst = multigraphNode.get(dstSwitch);
 
         if (allVlans.size() == 1 && allVlans.iterator().next().equals("*") || allVlans.size()==0) {
             if (mainSrc != null && mainDst != null)
-                dg.add(mainSrc, mainDst, ec, protocol.SWITCH);
+                dg.add(mainSrc, mainDst, returnDefaultEC(), protocol.SWITCH);
 
             for (String aVlan : allVlans) {
                 if (mainSrc != null && _switchVLANMap.get(dstSwitch).containsKey(aVlan))
-                    dg.add(mainSrc, _switchVLANMap.get(dstSwitch).get(aVlan), ec, protocol.SWITCH);
+                    dg.add(mainSrc, _switchVLANMap.get(dstSwitch).get(aVlan), returnDefaultEC(), protocol.SWITCH);
                 if (mainDst != null && _switchVLANMap.get(srcSwitch).containsKey(aVlan))
-                    dg.add(_switchVLANMap.get(srcSwitch).get(aVlan), mainDst, ec, protocol.SWITCH);
+                    dg.add(_switchVLANMap.get(srcSwitch).get(aVlan), mainDst, returnDefaultEC(), protocol.SWITCH);
             }
             
         } else {
             for (String aVlan : allVlans) {
                 if (_switchVLANMap.get(srcSwitch).containsKey(aVlan) && _switchVLANMap.get(dstSwitch).containsKey(aVlan))
-                    dg.add(_switchVLANMap.get(srcSwitch).get(aVlan), _switchVLANMap.get(dstSwitch).get(aVlan), ec, protocol.SWITCH);
+                    dg.add(_switchVLANMap.get(srcSwitch).get(aVlan), _switchVLANMap.get(dstSwitch).get(aVlan), returnDefaultEC(), protocol.SWITCH);
             }
         }
 
@@ -979,10 +969,9 @@ public class Mulgraph {
                 if (srcprot.getType() == protocol.BGP) {
                     for (Node dstprot : allnode) {
                         if (dstprot.getType() == protocol.OSPF) {
-                            EdgeCost ec = new EdgeCost();
                             //System.out.println("Mayadd "+ srcprot +"\t"+ dstprot);
                             if (hasSameVrf(node, srcprot, dstprot))
-                                dg.add(srcprot, dstprot, ec, protocol.IBGP);
+                                dg.add(srcprot, dstprot, returnDefaultEC(), protocol.IBGP);
                             //connectVRF(node, node, srcprot.getId(), dstprot.getId(), ec, false, protocol.IBGP);
                         }
                     }
@@ -1067,7 +1056,7 @@ public class Mulgraph {
                         ec.setOSPF(1);
 						//dg.add(dst, src, ec, protocol.REDISBO);
                         connectVRF(router, router, dstnode, srcnode, ec, false, protocol.REDISBO);
-					} else if (srcType == protocol.BGP && dstType == protocol.STAT) {
+					} else if (srcType == protocol.OSPF && dstType == protocol.STAT) {
                         ec.setOSPF(20);
 						//dg.add(src, dst, ec, protocol.REDISSO);
                         connectOneSideVRF(router, srcnode, dstnode, ec, false, protocol.REDISSO);

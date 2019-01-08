@@ -29,6 +29,7 @@ public class EdgeCost {
         c.med = med; //           
         c.rediscost = rediscost;
         c.valid = valid;
+        c.weight = weight;
         return c;
     }
 
