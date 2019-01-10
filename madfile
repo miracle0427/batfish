@@ -1,2 +1,2 @@
 init-snapshot /users/anubhavnidhi/configs/uwm
-get arcReach failNodeRegex="umad"
+get arcReach failNodeRegex="umad", notFailNodeRegex="fail"

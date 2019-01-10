@@ -108,11 +108,11 @@ public class PropertyChecker {
     List<List<String>> pathPrefs;
     public Ips(Map<String, String> argues, String property) {
       prop = property;
-      if (argues.containsKey("finalNodeRegex")) {
-        finalNodeRegex = argues.get("finalNodeRegex");
+      if (argues.containsKey("finalnoderegex")) {
+        finalNodeRegex = argues.get("finalnoderegex");
       }
-      if (argues.containsKey("ingressNodeRegex")) {
-        ingressNodeRegex = argues.get("ingressNodeRegex");
+      if (argues.containsKey("ingressnoderegex")) {
+        ingressNodeRegex = argues.get("ingressnoderegex");
       }
       if (argues.containsKey("failures")) {
         fails = Integer.parseInt(argues.get("failures"));
@@ -120,11 +120,11 @@ public class PropertyChecker {
       if (argues.containsKey("bound")) {
         bound = Integer.parseInt(argues.get("bound"));
       }
-      if (argues.containsKey("dstIps")) {
-        dstip = new IpWildcard(argues.get("dstIps"));
+      if (argues.containsKey("dstips")) {
+        dstip = new IpWildcard(argues.get("dstips"));
       }
-      if (argues.containsKey("srcIps")) {
-        srcip = new IpWildcard(argues.get("srcIps"));
+      if (argues.containsKey("srcips")) {
+        srcip = new IpWildcard(argues.get("srcips"));
       }
       if (argues.containsKey("waypoints")) {
         String temp = argues.get("waypoints").replace("[","").replace("]","");
@@ -141,6 +141,10 @@ public class PropertyChecker {
         }
       }
 
+    }
+
+    public String toString() {
+      return ("srcip="+ srcip + " dstip=" + dstip +" ingress=" + ingressNodeRegex + " final="+ finalNodeRegex);
     }
   }
 
@@ -703,6 +707,7 @@ public class PropertyChecker {
         String policy="";
         Map<String, String> argues;
         while((line = reader.readLine()) != null) {
+          line = line.toLowerCase();
           //System.out.println(line);
           argues = new HashMap<>();
           String[] split = line.split(" ");
@@ -723,6 +728,7 @@ public class PropertyChecker {
           //System.out.println(argues);
           Ips ip_set;
           ip_set = new Ips(argues, policy);
+          //System.out.println("# " + ip_set);
           ips.add(ip_set);
         }
         reader.close();
@@ -733,12 +739,29 @@ public class PropertyChecker {
       return ips;
   }
 
+  public Map<String, policyName> createPolMap() {
+      Map<String, policyName> result = new HashMap<>();
+      result.put("block", policyName.BLOCK);
+      result.put("bound", policyName.BOUND);
+      result.put("pref", policyName.PREF);
+      result.put("way", policyName.WAY);
+      result.put("equal", policyName.EQUAL);
+      result.put("fail", policyName.FAIL);
+      result.put("black", policyName.BLACK);
+      result.put("isolated", policyName.ISOLATED);
+      result.put("multipath", policyName.MULTIPATH);
+
+      return Collections.unmodifiableMap(result);
+  }
+
+
   /*
    * Check if things are reachable
    */
   public AnswerElement checkGraphReachability(HeaderLocationQuestion q){
     Graph graph = new Graph(_batfish);
     setAllMPLS(graph);
+    Map<String, policyName> policyMap = createPolMap();
     //System.out.println(q.getSrcIps() + "\t" + q.getDstIps());
     q.setBenchmark(false);
 
@@ -772,7 +795,17 @@ public class PropertyChecker {
       ConcurrentHashMap<String, Digraph> digraphMap
        = new ConcurrentHashMap<>();
 
-      List<Ips> ips = getAllIps(q.getFailNodeRegex());
+      String policyPath = q.getFailNodeRegex();
+      String policyType = q.getNotFailNodeRegex();
+      
+      if (policyType == null || policyType =="" || !policyMap.containsKey(policyType)) {
+        System.out.println("Error policy type");
+        return new NullAnswer();
+      }
+
+      policyName thisPolicy =  policyMap.get(policyType);
+
+      List<Ips> ips = getAllIps(policyPath);
       Map<String, Map<String, Set<String>>> l2map = null;
       System.out.println("Get L2 Map");
       if (_batfish.getLayer2Topology() != null) {
@@ -791,11 +824,13 @@ public class PropertyChecker {
           m.setL2Map(l2map);
         }
         //m.buildGraph();*/
-        Runnable makeGraph = new Mulgraph(graph, aIp.srcip, aIp.dstip, digraphMap);
+        //System.out.println(aIp);
+        Runnable makeGraph = new Mulgraph(graph, aIp.ingressNodeRegex, aIp.finalNodeRegex, aIp.srcip, aIp.dstip, digraphMap);
         if (l2map != null) {
           ((Mulgraph) makeGraph).setL2Map(l2map);
         }
-        pool.execute(makeGraph);
+        //pool.execute(makeGraph);
+        ((Mulgraph) makeGraph).buildGraph();
       }
       pool.shutdown();
 
@@ -814,7 +849,7 @@ public class PropertyChecker {
       startTime = System.nanoTime();
       for (String ipKey : digraphMap.keySet()) {
         Digraph currentGraph = digraphMap.get(ipKey);
-        Runnable veri = new Verification(currentGraph, policyName.BLOCK);
+        Runnable veri = new Verification(currentGraph, thisPolicy);
         if (currentGraph.getSrc() == null || currentGraph.getDst()== null)
           continue;
         ((Verification) veri).setSrcDstTC(currentGraph.getSrc(), currentGraph.getDst());

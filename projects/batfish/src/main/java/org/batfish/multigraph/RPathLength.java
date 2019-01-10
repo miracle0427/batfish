@@ -30,14 +30,27 @@ public class RPathLength {
   public double returnObj() {
     return obj;
   }
+
+  public void reverse() {
+      g.reverseNeighbors();
+      g.setReverseCorrelated();
+      g.setCommunity();
+  }
+
+  public void reset() {
+    try {
+      env = new GRBEnv("RPathLength.log");
+      model = new GRBModel(env);
+    } catch (GRBException e) {
+      System.out.println("Error code at Constructor: " + e.getErrorCode() + ". " +
+                         e.getMessage());
+    }      
+  }
+
   
   public void formulate(Node src, Node dst, int length) {
     try {
       
-      g.reverseNeighbors();
-      g.setReverseCorrelated();
-      g.setCommunity();
-
       // Create variables
       GRBLinExpr expr, inflow, temp1, corr, sumParentReach, sumGParentReach, tempAdd, outflow;
       Map<Node, Map<Node, GRBVar>> flow = new HashMap<>();
@@ -317,8 +330,9 @@ public class RPathLength {
         } else {                          
 
           System.out.println("Obj: " + model.get(GRB.DoubleAttr.ObjVal));
+          obj = model.get(GRB.DoubleAttr.ObjVal);
           time = model.get(GRB.DoubleAttr.Runtime) * 1000;
-          System.out.println("ILP Time: " + time + " ms");
+          //System.out.println("ILP Time: " + time + " ms");
 
           // Dispose of model and environment
           model.write("out.sol");

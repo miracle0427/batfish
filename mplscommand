@@ -1,0 +1,1 @@
+smt-reachability srcIps=["10.0.0.34"], dstIps=["10.0.0.33"]

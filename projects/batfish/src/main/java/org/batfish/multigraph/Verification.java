@@ -40,11 +40,17 @@ public class Verification implements Runnable {
 		return alwaysBlocked(src, dst);		
 	}
 
-	public double fail(Node src, Node dst) {
+	public double fail(Node srcNode, Node dstNode) {
+		src = srcNode;
+		dst = dstNode;
+		return fail();
+	}
+
+	public double fail() {
 		RKConnected rk = new RKConnected(g);
-		rk.formulate(src, dst);
+		rk.formulate(dst, src);
 		time = rk.run();
-		System.out.println("time " + time);
+		//System.out.println("time " + time + "\t obj: " + rk.returnObj());
 		return rk.returnObj();
 	}
 
@@ -57,24 +63,30 @@ public class Verification implements Runnable {
 
     public void run() {
         if (policy == policyName.BLOCK) {
-        	alwaysBlocked();
+        	System.out.println(alwaysBlocked());
+        } else if (policy == policyName.FAIL) {
+        	fail();
+        } else if (policy == policyName.EQUAL) {
+        	equalLength();
         }
     }
 
 
-	public boolean equalLength(Node src, Node dst) {
-		/*
-		PathLength pl = new PathLength(g);
-		pl.formulate(src, dst, 0);
+	public boolean equalLength() {
+		
+		RPathLength pl = new RPathLength(g);
+		pl.reverse();
+		pl.formulate(dst, src, 1);
 		double time1 = pl.run();
 		double min = pl.returnObj();
-		pl = new PathLength(g);
-		pl.formulate(src, dst, 1);
+		pl.reset();
+		pl.formulate(dst, src, 0);
 		double time2 = pl.run();
 		double max = pl.returnObj();
-		System.out.println( (time1 + time2)+ " ms" );
-		return (max == min);*/
-		return false;
+		//System.out.println( (time1 + time2)+ " ms" );
+		System.out.println( min + "\t" + max );
+		return (max!=-1 && (max == min));
+		
 	}
 
 	public boolean alwaysBlocked(Node srcName, Node dstName) {

@@ -151,6 +151,32 @@ public class Mulgraph implements Runnable {
         conMap = conncMap;
     }
 
+    public Mulgraph(Graph g, String src, String dst, IpWildcard srcip, IpWildcard dstip,
+     ConcurrentHashMap<String, Digraph> conncMap) {
+        System.out.println(src+"\t"+dst+"\t"+srcip+"\t"+dstip);
+        this.g = g;
+        dg = new Digraph();
+        srcName = src;
+        dstName = dst;
+        srcIp = srcip;
+        dstIp = dstip;
+
+        multigraphNode = new HashMap<>();
+        phyNodeMap = new HashMap<>();
+        phyEdgeMap = new HashMap<>();
+
+        _actCommunity = new TreeMap<>();
+        _addCommunity = new TreeMap<>();
+        _removeCommunity = new TreeMap<>();
+        _routerCommunityLp = new TreeMap<>();
+        _vrfMap = new TreeMap<>();
+        _allVrfMap = new HashSet<>();
+        _switchVLANMap = new TreeMap<>();
+        _hasIBGP = new HashSet<>();
+
+        conMap = conncMap;
+    }
+
     public void setL2Map(Map<String, Map<String, Set<String>>> l2) {
         l2map = l2;
     }
@@ -165,16 +191,16 @@ public class Mulgraph implements Runnable {
 
     public void buildGraph() {
         initialize();
-        long startTime = System.nanoTime();
+        //long startTime = System.nanoTime();
         buildVrfMap();
         buildRouterProtocol();
         buildCommunity();
     	buildNodes();
     	buildEdges();
         addDEFEdge();
-        long endTime = System.nanoTime();
+        //long endTime = System.nanoTime();
         setNodes();
-        generateTime = endTime - startTime;
+        //generateTime = endTime - startTime;
 
         String key = srcIp.toString() + "-" + dstIp.toString();
         if (conMap != null) {
@@ -212,23 +238,28 @@ public class Mulgraph implements Runnable {
     }
 
     public void setNodes() {
-        for (Entry<String, List<GraphEdge>> entry : g.getEdgeMap().entrySet()) {
-            String router = entry.getKey();
-            Configuration conf = g.getConfigurations().get(router);
-            for (Protocol proto : _protocols.get(router)) {
-                Set<Prefix> prefixes = Graph.getOriginatedNetworks(conf, proto);
-                //System.out.println(router + "\t" + prefixes);
-                for (Prefix pp : prefixes) {
-                    if (pp.containsPrefix(srcIp.toPrefix())) {
-                        srcName = router;
-                    }
-                    if (pp.containsPrefix(dstIp.toPrefix())) {
-                        dstName = router;
+
+        //System.out.println(srcName + "\t" + dstName + "\t" + srcIp + "\t" + dstIp);
+
+        if (srcName == null || srcName == "" || dstName == null || dstName == "") {
+            for (Entry<String, List<GraphEdge>> entry : g.getEdgeMap().entrySet()) {
+                String router = entry.getKey();
+                Configuration conf = g.getConfigurations().get(router);
+                for (Protocol proto : _protocols.get(router)) {
+                    Set<Prefix> prefixes = Graph.getOriginatedNetworks(conf, proto);
+                    //System.out.println(router + "\t" + prefixes);
+                    for (Prefix pp : prefixes) {
+                        if (pp.containsPrefix(srcIp.toPrefix())) {
+                            srcName = router;
+                        }
+                        if (pp.containsPrefix(dstIp.toPrefix())) {
+                            dstName = router;
+                        }
                     }
                 }
             }
         }
-
+        //System.out.println(phyNodeMap);
         if (srcName != null) {
             //System.out.println(srcName);
             srcNode = new Node(srcName, protocol.SRC);

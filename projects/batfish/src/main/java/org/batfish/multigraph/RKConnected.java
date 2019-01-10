@@ -14,7 +14,7 @@ public class RKConnected {
   GRBEnv env;
   GRBModel model;
   public double runTime = 0;
-  public double obj = 0;
+  public double obj = -1;
 
   public RKConnected(Digraph graph)
   { 
