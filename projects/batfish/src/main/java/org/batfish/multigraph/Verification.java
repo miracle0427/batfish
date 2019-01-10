@@ -63,7 +63,7 @@ public class Verification implements Runnable {
 
     public void run() {
         if (policy == policyName.BLOCK) {
-        	System.out.println(alwaysBlocked());
+        	alwaysBlocked();
         } else if (policy == policyName.FAIL) {
         	fail();
         } else if (policy == policyName.EQUAL) {
