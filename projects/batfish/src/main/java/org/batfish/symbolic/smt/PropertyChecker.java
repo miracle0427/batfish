@@ -703,6 +703,7 @@ public class PropertyChecker {
         String policy="";
         Map<String, String> argues;
         while((line = reader.readLine()) != null) {
+          //System.out.println(line);
           argues = new HashMap<>();
           String[] split = line.split(" ");
           for(String temp : split) {
@@ -719,14 +720,15 @@ public class PropertyChecker {
               policy = temp;
             }
           }
-
+          //System.out.println(argues);
           Ips ip_set;
           ip_set = new Ips(argues, policy);
           ips.add(ip_set);
         }
         reader.close();
-      } catch (IOException e) {
+      } catch (IOException excep) {
         System.out.println("Reader IO error");
+        excep.printStackTrace();
       }
       return ips;
   }
@@ -740,7 +742,7 @@ public class PropertyChecker {
     //System.out.println(q.getSrcIps() + "\t" + q.getDstIps());
     q.setBenchmark(false);
 
-    if (q.getFailNodeRegex() == null ||q.getFailNodeRegex() == null) {
+    if (q.getFailNodeRegex() == null ||q.getFailNodeRegex() == "") {
       if (q.getSrcIps() != null && q.getDstIps() != null) {
         if (q.getSrcIps().size() != 0 && q.getDstIps().size() != 0) {
           Mulgraph m = new Mulgraph(graph, q.getSrcIps().first(), q.getDstIps().first());
@@ -772,13 +774,14 @@ public class PropertyChecker {
 
       List<Ips> ips = getAllIps(q.getFailNodeRegex());
       Map<String, Map<String, Set<String>>> l2map = null;
+      System.out.println("Get L2 Map");
       if (_batfish.getLayer2Topology() != null) {
         l2map = makeL2();
       }
 
       int numThreads = Runtime.getRuntime().availableProcessors();
       ExecutorService pool = Executors.newFixedThreadPool(numThreads);
-
+      System.out.println("Start generation");
       long startTime = System.nanoTime();
       for (Ips aIp : ips) {
         /*
@@ -794,9 +797,7 @@ public class PropertyChecker {
         }
         pool.execute(makeGraph);
       }
-      long endTime = System.nanoTime();      
       pool.shutdown();
-      long graphGenerationTime = endTime - startTime;
 
       try {
           pool.awaitTermination(5000, TimeUnit.SECONDS);
@@ -804,7 +805,10 @@ public class PropertyChecker {
           System.out.println("Graph creation interrupted. EXIT");
           System.exit(0);
       }
+      long endTime = System.nanoTime();      
+      long graphGenerationTime = endTime - startTime;
 
+      System.out.println("End generation\nStart Verification");
       ExecutorService pool2 = Executors.newFixedThreadPool(numThreads);
 
       startTime = System.nanoTime();
@@ -828,6 +832,7 @@ public class PropertyChecker {
       }
       endTime = System.nanoTime();      
       long verificationTime = endTime - startTime;
+      System.out.println("End Verification");
       System.out.println("Generate time: " + graphGenerationTime/(double)1000000 + " ms" +
         "\nVerification time: " + verificationTime/(double)1000000 + " ms");
 

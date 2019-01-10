@@ -1,0 +1,3 @@
+smt-reachability srcIps=["10.128.8.128/25"], dstIps=["10.128.4.128/26"], ingressNodeRegex=r-animal-122a-2-core, finalNodeRegex=r-csscplat-b380-1-node
+smt-reachability srcIps=["10.128.13.0/24"], dstIps=["10.128.4.128/26"], ingressNodeRegex=r-animal-122a-2-core, finalNodeRegex=r-csscplat-b380-1-node
+smt-reachability srcIps=["10.128.14.0/24"], dstIps=["10.128.4.128/26"], ingressNodeRegex=r-animal-122a-2-core, finalNodeRegex=r-csscplat-b380-1-node
