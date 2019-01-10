@@ -79,8 +79,6 @@ public class Verification implements Runnable {
 		
         BF bf = new BF(g);
 
-        /*bf.shortestPath(src, dst);
-        bf.initializeGraph();
         bf.shortestPath(src, dst);
         bf.initializeGraph();
         bf.shortestPath(src, dst);
@@ -100,9 +98,11 @@ public class Verification implements Runnable {
         bf.shortestPath(src, dst);
         bf.initializeGraph();
         bf.shortestPath(src, dst);
-        bf.initializeGraph();*/
-        System.out.println("start");
-        System.out.println(bf.shortestPath(src, dst));
+        bf.initializeGraph();
+        bf.shortestPath(src, dst);
+        bf.initializeGraph();
+        //System.out.println("start");
+        //System.out.println(bf.shortestPath(src, dst));
         //bf.initializeGraph();
 
 		return true;

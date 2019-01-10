@@ -250,7 +250,7 @@ public class BF {
             ec.setAS(0);
             ec.setAD(30);
         }*/
-        System.out.println(g);
+        //System.out.println(g);
         EdgeCost ec = new EdgeCost();
         ec.valid = true;
         weight.put(d, ec);
@@ -351,7 +351,7 @@ public class BF {
         //System.out.println("Path finding");
         Node cur = s;
         path.add(s);
-        System.out.println(nextHop);
+        //System.out.println(nextHop);
         //System.out.println("Path");
         //System.out.print(cur);
         //System.out.print("--");
