@@ -238,7 +238,7 @@ public class Mulgraph implements Runnable {
 
     public void setNodes() {
 
-        //System.out.println(srcName + "\t" + dstName + "\t" + srcIp + "\t" + dstIp);
+        System.out.println(srcName + "\t" + dstName);
 
         if (srcName == null || srcName == "" || dstName == null || dstName == "") {
             for (Entry<String, List<GraphEdge>> entry : g.getEdgeMap().entrySet()) {
