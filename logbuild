@@ -1,0 +1,651 @@
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for org.batfish:batfish:jar:0.36.0
+[WARNING] 'dependencies.dependency.systemPath' for gurobi:gurobi:jar should use a variable instead of a hard-coded path /users/anubhavnidhi/multiLayer/batfish/projects/lib/gurobi/gurobi.jar @ org.batfish:batfish:[unknown-version], /users/anubhavnidhi/multiLayer/batfish/projects/batfish/pom.xml, line 160, column 21
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] Batfish
+[INFO] Build Tools
+[INFO] batfish-common-protocol
+[INFO] batfish
+[INFO] batfish-client
+[INFO] coordinator
+[INFO] question
+[INFO] allinone
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building Batfish 0.36.0
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.0.0-M1:enforce (enforce-maven) @ batfish-parent ---
+[INFO] 
+[INFO] --- maven-install-plugin:2.5.2:install-file (install-z3) @ batfish-parent ---
+[INFO] pom.xml not found in com.microsoft.z3-2018-01-12-450f3c9b459d128135abb5bbd4fa0508fe26bfae.jar
+[INFO] Installing /users/anubhavnidhi/multiLayer/batfish/projects/lib/z3/com.microsoft.z3-2018-01-12-450f3c9b459d128135abb5bbd4fa0508fe26bfae.jar to /users/anubhavnidhi/.m2/repository/com/microsoft/z3/z3/2018-01-12-450f3c9b459d128135abb5bbd4fa0508fe26bfae/z3-2018-01-12-450f3c9b459d128135abb5bbd4fa0508fe26bfae.jar
+[INFO] Installing /users/anubhavnidhi/multiLayer/batfish/projects/lib/z3/com.microsoft.z3-2018-01-12-450f3c9b459d128135abb5bbd4fa0508fe26bfae-sources.jar to /users/anubhavnidhi/.m2/repository/com/microsoft/z3/z3/2018-01-12-450f3c9b459d128135abb5bbd4fa0508fe26bfae/z3-2018-01-12-450f3c9b459d128135abb5bbd4fa0508fe26bfae-sources.jar
+[INFO] 
+[INFO] --- maven-install-plugin:2.5.2:install-file (install-gurobi) @ batfish-parent ---
+[INFO] pom.xml not found in gurobi.jar
+[INFO] Installing /users/anubhavnidhi/multiLayer/batfish/projects/lib/gurobi/gurobi.jar to /users/anubhavnidhi/.m2/repository/gurobi/gurobi/7.0.1/gurobi-7.0.1.jar
+[INFO] 
+[INFO] --- maven-install-plugin:2.5.2:install-file (install-bdd) @ batfish-parent ---
+[INFO] pom.xml not found in net.sf.javabdd-2018-07-26-36d0ed6-batfish-internal.jar
+[INFO] Installing /users/anubhavnidhi/multiLayer/batfish/projects/lib/bdd/net.sf.javabdd-2018-07-26-36d0ed6-batfish-internal.jar to /users/anubhavnidhi/.m2/repository/net/sf/javabdd/javabdd/2018-07-26-36d0ed6-batfish-internal/javabdd-2018-07-26-36d0ed6-batfish-internal.jar
+[INFO] Installing /users/anubhavnidhi/multiLayer/batfish/projects/lib/bdd/net.sf.javabdd-2018-07-26-36d0ed6-batfish-internal-sources.jar to /users/anubhavnidhi/.m2/repository/net/sf/javabdd/javabdd/2018-07-26-36d0ed6-batfish-internal/javabdd-2018-07-26-36d0ed6-batfish-internal-sources.jar
+[INFO] 
+[INFO] --- maven-install-plugin:2.5.2:install-file (install-antlr4) @ batfish-parent ---
+[INFO] Installing /users/anubhavnidhi/multiLayer/batfish/projects/lib/antlr4/antlr4-4.7.1-batfish-internal.jar to /users/anubhavnidhi/.m2/repository/org/antlr/antlr4/4.7.1-batfish-internal/antlr4-4.7.1-batfish-internal.jar
+[INFO] Installing /users/anubhavnidhi/multiLayer/batfish/projects/lib/antlr4/antlr4-4.7.1-batfish-internal.pom to /users/anubhavnidhi/.m2/repository/org/antlr/antlr4/4.7.1-batfish-internal/antlr4-4.7.1-batfish-internal.pom
+[INFO] 
+[INFO] --- maven-install-plugin:2.5.2:install-file (install-json-path) @ batfish-parent ---
+[INFO] Installing /users/anubhavnidhi/multiLayer/batfish/projects/lib/jsonpath/json-path-2.4.0-batfish-internal.jar to /users/anubhavnidhi/.m2/repository/com/jayway/jsonpath/json-path/2.4.0-batfish-internal/json-path-2.4.0-batfish-internal.jar
+[INFO] Installing /users/anubhavnidhi/multiLayer/batfish/projects/lib/jsonpath/json-path-2.4.0-batfish-internal.pom to /users/anubhavnidhi/.m2/repository/com/jayway/jsonpath/json-path/2.4.0-batfish-internal/json-path-2.4.0-batfish-internal.pom
+[INFO] Installing /users/anubhavnidhi/multiLayer/batfish/projects/lib/jsonpath/json-path-2.4.0-batfish-internal-sources.jar to /users/anubhavnidhi/.m2/repository/com/jayway/jsonpath/json-path/2.4.0-batfish-internal/json-path-2.4.0-batfish-internal-sources.jar
+[INFO] 
+[INFO] --- maven-install-plugin:2.5.2:install-file (install-jackson-jsonschema) @ batfish-parent ---
+[INFO] Installing /users/anubhavnidhi/multiLayer/batfish/projects/lib/jackson-jsonschema/mbknor-jackson-jsonschema_2.12-1.0.11-batfish-internal.jar to /users/anubhavnidhi/.m2/repository/com/kjetland/mbknor-jackson-jsonschema_2.12/1.0.11-batfish-internal/mbknor-jackson-jsonschema_2.12-1.0.11-batfish-internal.jar
+[INFO] Installing /users/anubhavnidhi/multiLayer/batfish/projects/lib/jackson-jsonschema/mbknor-jackson-jsonschema_2.12-1.0.11-batfish-internal.pom to /users/anubhavnidhi/.m2/repository/com/kjetland/mbknor-jackson-jsonschema_2.12/1.0.11-batfish-internal/mbknor-jackson-jsonschema_2.12-1.0.11-batfish-internal.pom
+[INFO] 
+[INFO] --- jacoco-maven-plugin:0.8.2:prepare-agent (prepare-agent) @ batfish-parent ---
+[INFO] argLine set to -javaagent:/users/anubhavnidhi/.m2/repository/org/jacoco/org.jacoco.agent/0.8.2/org.jacoco.agent-0.8.2-runtime.jar=destfile=/users/anubhavnidhi/multiLayer/batfish/projects/target/jacoco.exec
+[INFO] 
+[INFO] --- maven-javadoc-plugin:3.0.1:jar (attach-javadocs) @ batfish-parent ---
+[INFO] Skipping javadoc generation
+[INFO] 
+[INFO] --- maven-checkstyle-plugin:2.17:check (default) @ batfish-parent ---
+[INFO] 
+[INFO] --- maven-dependency-plugin:3.0.1:analyze-only (default) @ batfish-parent ---
+[INFO] Skipping plugin execution
+[INFO] 
+[INFO] >>> findbugs-maven-plugin:3.0.5:check (default) > :findbugs @ batfish-parent >>>
+[INFO] 
+[INFO] --- findbugs-maven-plugin:3.0.5:findbugs (findbugs) @ batfish-parent ---
+[INFO] 
+[INFO] <<< findbugs-maven-plugin:3.0.5:check (default) < :findbugs @ batfish-parent <<<
+[INFO] 
+[INFO] --- findbugs-maven-plugin:3.0.5:check (default) @ batfish-parent ---
+[INFO] 
+[INFO] --- maven-install-plugin:2.5.2:install (default-install) @ batfish-parent ---
+[INFO] Installing /users/anubhavnidhi/multiLayer/batfish/projects/pom.xml to /users/anubhavnidhi/.m2/repository/org/batfish/batfish-parent/0.36.0/batfish-parent-0.36.0.pom
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building Build Tools 0.36.0
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.0.0-M1:enforce (enforce-maven) @ build-tools ---
+[INFO] 
+[INFO] --- jacoco-maven-plugin:0.8.2:prepare-agent (prepare-agent) @ build-tools ---
+[INFO] argLine set to -javaagent:/users/anubhavnidhi/.m2/repository/org/jacoco/org.jacoco.agent/0.8.2/org.jacoco.agent-0.8.2-runtime.jar=destfile=/users/anubhavnidhi/multiLayer/batfish/projects/build-tools/target/jacoco.exec
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ build-tools ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.6.1:compile (default-compile) @ build-tools ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ build-tools ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /users/anubhavnidhi/multiLayer/batfish/projects/build-tools/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.6.1:testCompile (default-testCompile) @ build-tools ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.17:test (default-test) @ build-tools ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:3.0.2:jar (default-jar) @ build-tools ---
+[INFO] 
+[INFO] --- maven-javadoc-plugin:3.0.1:jar (attach-javadocs) @ build-tools ---
+[INFO] Skipping javadoc generation
+[INFO] 
+[INFO] --- maven-jar-plugin:3.0.2:test-jar (default) @ build-tools ---
+[WARNING] JAR will be empty - no content was marked for inclusion!
+[INFO] 
+[INFO] --- maven-checkstyle-plugin:2.17:check (default) @ build-tools ---
+[INFO] 
+[INFO] --- maven-dependency-plugin:3.0.1:analyze-only (default) @ build-tools ---
+[INFO] Skipping plugin execution
+[INFO] 
+[INFO] >>> findbugs-maven-plugin:3.0.5:check (default) > :findbugs @ build-tools >>>
+[INFO] 
+[INFO] --- findbugs-maven-plugin:3.0.5:findbugs (findbugs) @ build-tools ---
+[INFO] 
+[INFO] <<< findbugs-maven-plugin:3.0.5:check (default) < :findbugs @ build-tools <<<
+[INFO] 
+[INFO] --- findbugs-maven-plugin:3.0.5:check (default) @ build-tools ---
+[INFO] 
+[INFO] --- maven-install-plugin:2.5.2:install (default-install) @ build-tools ---
+[INFO] Installing /users/anubhavnidhi/multiLayer/batfish/projects/build-tools/target/build-tools-0.36.0.jar to /users/anubhavnidhi/.m2/repository/org/batfish/build-tools/0.36.0/build-tools-0.36.0.jar
+[INFO] Installing /users/anubhavnidhi/multiLayer/batfish/projects/build-tools/pom.xml to /users/anubhavnidhi/.m2/repository/org/batfish/build-tools/0.36.0/build-tools-0.36.0.pom
+[INFO] Installing /users/anubhavnidhi/multiLayer/batfish/projects/build-tools/target/build-tools-0.36.0-tests.jar to /users/anubhavnidhi/.m2/repository/org/batfish/build-tools/0.36.0/build-tools-0.36.0-tests.jar
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building batfish-common-protocol 0.36.0
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.0.0-M1:enforce (enforce-maven) @ batfish-common-protocol ---
+[INFO] 
+[INFO] --- jacoco-maven-plugin:0.8.2:prepare-agent (prepare-agent) @ batfish-common-protocol ---
+[INFO] argLine set to -javaagent:/users/anubhavnidhi/.m2/repository/org/jacoco/org.jacoco.agent/0.8.2/org.jacoco.agent-0.8.2-runtime.jar=destfile=/users/anubhavnidhi/multiLayer/batfish/projects/batfish-common-protocol/target/jacoco.exec
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ batfish-common-protocol ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 2 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.6.1:compile (default-compile) @ batfish-common-protocol ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- antlr4-maven-plugin:4.7.1:antlr4 (antlr4-test-simple) @ batfish-common-protocol ---
+[INFO] No grammars to process
+[INFO] ANTLR 4: Processing source directory /users/anubhavnidhi/multiLayer/batfish/projects/batfish-common-protocol/src/test/antlr4
+[INFO] 
+[INFO] --- build-helper-maven-plugin:3.0.0:add-test-source (add-test-sources) @ batfish-common-protocol ---
+[INFO] Test Source directory: /users/anubhavnidhi/multiLayer/batfish/projects/batfish-common-protocol/target/generated-test-sources/antlr4 added.
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ batfish-common-protocol ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 11 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.6.1:testCompile (default-testCompile) @ batfish-common-protocol ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.17:test (default-test) @ batfish-common-protocol ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:3.0.2:jar (default-jar) @ batfish-common-protocol ---
+[INFO] Building jar: /users/anubhavnidhi/multiLayer/batfish/projects/batfish-common-protocol/target/batfish-common-protocol-0.36.0.jar
+[INFO] 
+[INFO] --- maven-javadoc-plugin:3.0.1:jar (attach-javadocs) @ batfish-common-protocol ---
+[INFO] Skipping javadoc generation
+[INFO] 
+[INFO] --- maven-jar-plugin:3.0.2:test-jar (default) @ batfish-common-protocol ---
+[INFO] 
+[INFO] --- maven-checkstyle-plugin:2.17:check (default) @ batfish-common-protocol ---
+[INFO] 
+[INFO] --- maven-dependency-plugin:3.0.1:analyze-only (default) @ batfish-common-protocol ---
+[INFO] Skipping plugin execution
+[INFO] 
+[INFO] >>> findbugs-maven-plugin:3.0.5:check (default) > :findbugs @ batfish-common-protocol >>>
+[INFO] 
+[INFO] --- findbugs-maven-plugin:3.0.5:findbugs (findbugs) @ batfish-common-protocol ---
+[INFO] 
+[INFO] <<< findbugs-maven-plugin:3.0.5:check (default) < :findbugs @ batfish-common-protocol <<<
+[INFO] 
+[INFO] --- findbugs-maven-plugin:3.0.5:check (default) @ batfish-common-protocol ---
+[INFO] 
+[INFO] >>> maven-pmd-plugin:3.10.0:check (check) > :pmd @ batfish-common-protocol >>>
+[INFO] 
+[INFO] --- maven-pmd-plugin:3.10.0:pmd (pmd) @ batfish-common-protocol ---
+[INFO] 
+[INFO] <<< maven-pmd-plugin:3.10.0:check (check) < :pmd @ batfish-common-protocol <<<
+[INFO] 
+[INFO] --- maven-pmd-plugin:3.10.0:check (check) @ batfish-common-protocol ---
+[INFO] 
+[INFO] --- maven-install-plugin:2.5.2:install (default-install) @ batfish-common-protocol ---
+[INFO] Installing /users/anubhavnidhi/multiLayer/batfish/projects/batfish-common-protocol/target/batfish-common-protocol-0.36.0.jar to /users/anubhavnidhi/.m2/repository/org/batfish/batfish-common-protocol/0.36.0/batfish-common-protocol-0.36.0.jar
+[INFO] Installing /users/anubhavnidhi/multiLayer/batfish/projects/batfish-common-protocol/pom.xml to /users/anubhavnidhi/.m2/repository/org/batfish/batfish-common-protocol/0.36.0/batfish-common-protocol-0.36.0.pom
+[INFO] Installing /users/anubhavnidhi/multiLayer/batfish/projects/batfish-common-protocol/target/batfish-common-protocol-0.36.0-tests.jar to /users/anubhavnidhi/.m2/repository/org/batfish/batfish-common-protocol/0.36.0/batfish-common-protocol-0.36.0-tests.jar
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building batfish 0.36.0
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.0.0-M1:enforce (enforce-maven) @ batfish ---
+[INFO] 
+[INFO] --- jacoco-maven-plugin:0.8.2:prepare-agent (prepare-agent) @ batfish ---
+[INFO] argLine set to -javaagent:/users/anubhavnidhi/.m2/repository/org/jacoco/org.jacoco.agent/0.8.2/org.jacoco.agent-0.8.2-runtime.jar=destfile=/users/anubhavnidhi/multiLayer/batfish/projects/batfish/target/jacoco.exec
+[INFO] 
+[INFO] --- antlr4-maven-plugin:4.7.1:antlr4 (antlr4-cisco) @ batfish ---
+[INFO] No grammars to process
+[INFO] ANTLR 4: Processing source directory /users/anubhavnidhi/multiLayer/batfish/projects/batfish/src/main/antlr4
+[INFO] 
+[INFO] --- antlr4-maven-plugin:4.7.1:antlr4 (antlr4-flatjuniper) @ batfish ---
+[INFO] No grammars to process
+[INFO] ANTLR 4: Processing source directory /users/anubhavnidhi/multiLayer/batfish/projects/batfish/src/main/antlr4
+[INFO] 
+[INFO] --- antlr4-maven-plugin:4.7.1:antlr4 (antlr4-flatvyos) @ batfish ---
+[INFO] No grammars to process
+[INFO] ANTLR 4: Processing source directory /users/anubhavnidhi/multiLayer/batfish/projects/batfish/src/main/antlr4
+[INFO] 
+[INFO] --- antlr4-maven-plugin:4.7.1:antlr4 (antlr4-mrv) @ batfish ---
+[INFO] No grammars to process
+[INFO] ANTLR 4: Processing source directory /users/anubhavnidhi/multiLayer/batfish/projects/batfish/src/main/antlr4
+[INFO] 
+[INFO] --- antlr4-maven-plugin:4.7.1:antlr4 (antlr4-palo-alto) @ batfish ---
+[INFO] No grammars to process
+[INFO] ANTLR 4: Processing source directory /users/anubhavnidhi/multiLayer/batfish/projects/batfish/src/main/antlr4
+[INFO] 
+[INFO] --- antlr4-maven-plugin:4.7.1:antlr4 (antlr4-simple) @ batfish ---
+[INFO] No grammars to process
+[INFO] ANTLR 4: Processing source directory /users/anubhavnidhi/multiLayer/batfish/projects/batfish/src/main/antlr4
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ batfish ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.6.1:compile (default-compile) @ batfish ---
+[INFO] Compiling 24 source files to /users/anubhavnidhi/multiLayer/batfish/projects/batfish/target/classes
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ batfish ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 328 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.6.1:testCompile (default-testCompile) @ batfish ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.17:test (default-test) @ batfish ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:3.0.2:jar (default-jar) @ batfish ---
+[INFO] Building jar: /users/anubhavnidhi/multiLayer/batfish/projects/batfish/target/batfish-0.36.0.jar
+[INFO] 
+[INFO] --- maven-javadoc-plugin:3.0.1:jar (attach-javadocs) @ batfish ---
+[INFO] Skipping javadoc generation
+[INFO] 
+[INFO] --- maven-jar-plugin:3.0.2:test-jar (default) @ batfish ---
+[INFO] 
+[INFO] --- maven-checkstyle-plugin:2.17:check (default) @ batfish ---
+[INFO] 
+[INFO] --- maven-dependency-plugin:3.0.1:analyze-only (default) @ batfish ---
+[INFO] Skipping plugin execution
+[INFO] 
+[INFO] >>> findbugs-maven-plugin:3.0.5:check (default) > :findbugs @ batfish >>>
+[INFO] 
+[INFO] --- findbugs-maven-plugin:3.0.5:findbugs (findbugs) @ batfish ---
+[INFO] 
+[INFO] <<< findbugs-maven-plugin:3.0.5:check (default) < :findbugs @ batfish <<<
+[INFO] 
+[INFO] --- findbugs-maven-plugin:3.0.5:check (default) @ batfish ---
+[INFO] 
+[INFO] >>> maven-pmd-plugin:3.10.0:check (check) > :pmd @ batfish >>>
+[INFO] 
+[INFO] --- maven-pmd-plugin:3.10.0:pmd (pmd) @ batfish ---
+[INFO] 
+[INFO] <<< maven-pmd-plugin:3.10.0:check (check) < :pmd @ batfish <<<
+[INFO] 
+[INFO] --- maven-pmd-plugin:3.10.0:check (check) @ batfish ---
+[INFO] 
+[INFO] --- maven-install-plugin:2.5.2:install (default-install) @ batfish ---
+[INFO] Installing /users/anubhavnidhi/multiLayer/batfish/projects/batfish/target/batfish-0.36.0.jar to /users/anubhavnidhi/.m2/repository/org/batfish/batfish/0.36.0/batfish-0.36.0.jar
+[INFO] Installing /users/anubhavnidhi/multiLayer/batfish/projects/batfish/pom.xml to /users/anubhavnidhi/.m2/repository/org/batfish/batfish/0.36.0/batfish-0.36.0.pom
+[INFO] Installing /users/anubhavnidhi/multiLayer/batfish/projects/batfish/target/batfish-0.36.0-tests.jar to /users/anubhavnidhi/.m2/repository/org/batfish/batfish/0.36.0/batfish-0.36.0-tests.jar
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building batfish-client 0.36.0
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.0.0-M1:enforce (enforce-maven) @ batfish-client ---
+[INFO] 
+[INFO] --- jacoco-maven-plugin:0.8.2:prepare-agent (prepare-agent) @ batfish-client ---
+[INFO] argLine set to -javaagent:/users/anubhavnidhi/.m2/repository/org/jacoco/org.jacoco.agent/0.8.2/org.jacoco.agent-0.8.2-runtime.jar=destfile=/users/anubhavnidhi/multiLayer/batfish/projects/batfish-client/target/jacoco.exec
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ batfish-client ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.6.1:compile (default-compile) @ batfish-client ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ batfish-client ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 3 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.6.1:testCompile (default-testCompile) @ batfish-client ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.17:test (default-test) @ batfish-client ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:3.0.2:jar (default-jar) @ batfish-client ---
+[INFO] 
+[INFO] --- maven-javadoc-plugin:3.0.1:jar (attach-javadocs) @ batfish-client ---
+[INFO] Skipping javadoc generation
+[INFO] 
+[INFO] --- maven-jar-plugin:3.0.2:test-jar (default) @ batfish-client ---
+[INFO] 
+[INFO] --- maven-checkstyle-plugin:2.17:check (default) @ batfish-client ---
+[INFO] 
+[INFO] --- maven-dependency-plugin:3.0.1:analyze-only (default) @ batfish-client ---
+[INFO] Skipping plugin execution
+[INFO] 
+[INFO] >>> findbugs-maven-plugin:3.0.5:check (default) > :findbugs @ batfish-client >>>
+[INFO] 
+[INFO] --- findbugs-maven-plugin:3.0.5:findbugs (findbugs) @ batfish-client ---
+[INFO] 
+[INFO] <<< findbugs-maven-plugin:3.0.5:check (default) < :findbugs @ batfish-client <<<
+[INFO] 
+[INFO] --- findbugs-maven-plugin:3.0.5:check (default) @ batfish-client ---
+[INFO] 
+[INFO] >>> maven-pmd-plugin:3.10.0:check (check) > :pmd @ batfish-client >>>
+[INFO] 
+[INFO] --- maven-pmd-plugin:3.10.0:pmd (pmd) @ batfish-client ---
+[INFO] 
+[INFO] <<< maven-pmd-plugin:3.10.0:check (check) < :pmd @ batfish-client <<<
+[INFO] 
+[INFO] --- maven-pmd-plugin:3.10.0:check (check) @ batfish-client ---
+[INFO] 
+[INFO] --- maven-install-plugin:2.5.2:install (default-install) @ batfish-client ---
+[INFO] Installing /users/anubhavnidhi/multiLayer/batfish/projects/batfish-client/target/batfish-client-0.36.0.jar to /users/anubhavnidhi/.m2/repository/org/batfish/batfish-client/0.36.0/batfish-client-0.36.0.jar
+[INFO] Installing /users/anubhavnidhi/multiLayer/batfish/projects/batfish-client/pom.xml to /users/anubhavnidhi/.m2/repository/org/batfish/batfish-client/0.36.0/batfish-client-0.36.0.pom
+[INFO] Installing /users/anubhavnidhi/multiLayer/batfish/projects/batfish-client/target/batfish-client-0.36.0-tests.jar to /users/anubhavnidhi/.m2/repository/org/batfish/batfish-client/0.36.0/batfish-client-0.36.0-tests.jar
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building coordinator 0.36.0
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.0.0-M1:enforce (enforce-maven) @ coordinator ---
+[INFO] 
+[INFO] --- jacoco-maven-plugin:0.8.2:prepare-agent (prepare-agent) @ coordinator ---
+[INFO] argLine set to -javaagent:/users/anubhavnidhi/.m2/repository/org/jacoco/org.jacoco.agent/0.8.2/org.jacoco.agent-0.8.2-runtime.jar=destfile=/users/anubhavnidhi/multiLayer/batfish/projects/coordinator/target/jacoco.exec
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ coordinator ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.6.1:compile (default-compile) @ coordinator ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ coordinator ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /users/anubhavnidhi/multiLayer/batfish/projects/coordinator/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.6.1:testCompile (default-testCompile) @ coordinator ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.17:test (default-test) @ coordinator ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:3.0.2:jar (default-jar) @ coordinator ---
+[INFO] 
+[INFO] --- maven-javadoc-plugin:3.0.1:jar (attach-javadocs) @ coordinator ---
+[INFO] Skipping javadoc generation
+[INFO] 
+[INFO] --- maven-jar-plugin:3.0.2:test-jar (default) @ coordinator ---
+[INFO] 
+[INFO] --- maven-checkstyle-plugin:2.17:check (default) @ coordinator ---
+[INFO] 
+[INFO] --- maven-dependency-plugin:3.0.1:analyze-only (default) @ coordinator ---
+[INFO] Skipping plugin execution
+[INFO] 
+[INFO] >>> findbugs-maven-plugin:3.0.5:check (default) > :findbugs @ coordinator >>>
+[INFO] 
+[INFO] --- findbugs-maven-plugin:3.0.5:findbugs (findbugs) @ coordinator ---
+[INFO] 
+[INFO] <<< findbugs-maven-plugin:3.0.5:check (default) < :findbugs @ coordinator <<<
+[INFO] 
+[INFO] --- findbugs-maven-plugin:3.0.5:check (default) @ coordinator ---
+[INFO] 
+[INFO] >>> maven-pmd-plugin:3.10.0:check (check) > :pmd @ coordinator >>>
+[INFO] 
+[INFO] --- maven-pmd-plugin:3.10.0:pmd (pmd) @ coordinator ---
+[INFO] 
+[INFO] <<< maven-pmd-plugin:3.10.0:check (check) < :pmd @ coordinator <<<
+[INFO] 
+[INFO] --- maven-pmd-plugin:3.10.0:check (check) @ coordinator ---
+[INFO] 
+[INFO] --- maven-install-plugin:2.5.2:install (default-install) @ coordinator ---
+[INFO] Installing /users/anubhavnidhi/multiLayer/batfish/projects/coordinator/target/coordinator-0.36.0.jar to /users/anubhavnidhi/.m2/repository/org/batfish/coordinator/0.36.0/coordinator-0.36.0.jar
+[INFO] Installing /users/anubhavnidhi/multiLayer/batfish/projects/coordinator/pom.xml to /users/anubhavnidhi/.m2/repository/org/batfish/coordinator/0.36.0/coordinator-0.36.0.pom
+[INFO] Installing /users/anubhavnidhi/multiLayer/batfish/projects/coordinator/target/coordinator-0.36.0-tests.jar to /users/anubhavnidhi/.m2/repository/org/batfish/coordinator/0.36.0/coordinator-0.36.0-tests.jar
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building question 0.36.0
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.0.0-M1:enforce (enforce-maven) @ question ---
+[INFO] 
+[INFO] --- jacoco-maven-plugin:0.8.2:prepare-agent (prepare-agent) @ question ---
+[INFO] argLine set to -javaagent:/users/anubhavnidhi/.m2/repository/org/jacoco/org.jacoco.agent/0.8.2/org.jacoco.agent-0.8.2-runtime.jar=destfile=/users/anubhavnidhi/multiLayer/batfish/projects/question/target/jacoco.exec
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ question ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /users/anubhavnidhi/multiLayer/batfish/projects/question/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.6.1:compile (default-compile) @ question ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ question ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 5 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.6.1:testCompile (default-testCompile) @ question ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.17:test (default-test) @ question ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:3.0.2:jar (default-jar) @ question ---
+[INFO] 
+[INFO] --- maven-javadoc-plugin:3.0.1:jar (attach-javadocs) @ question ---
+[INFO] Skipping javadoc generation
+[INFO] 
+[INFO] --- maven-jar-plugin:3.0.2:test-jar (default) @ question ---
+[INFO] 
+[INFO] --- maven-checkstyle-plugin:2.17:check (default) @ question ---
+[INFO] 
+[INFO] --- maven-dependency-plugin:3.0.1:analyze-only (default) @ question ---
+[INFO] Skipping plugin execution
+[INFO] 
+[INFO] >>> findbugs-maven-plugin:3.0.5:check (default) > :findbugs @ question >>>
+[INFO] 
+[INFO] --- findbugs-maven-plugin:3.0.5:findbugs (findbugs) @ question ---
+[INFO] 
+[INFO] <<< findbugs-maven-plugin:3.0.5:check (default) < :findbugs @ question <<<
+[INFO] 
+[INFO] --- findbugs-maven-plugin:3.0.5:check (default) @ question ---
+[INFO] 
+[INFO] >>> maven-pmd-plugin:3.10.0:check (check) > :pmd @ question >>>
+[INFO] 
+[INFO] --- maven-pmd-plugin:3.10.0:pmd (pmd) @ question ---
+[INFO] 
+[INFO] <<< maven-pmd-plugin:3.10.0:check (check) < :pmd @ question <<<
+[INFO] 
+[INFO] --- maven-pmd-plugin:3.10.0:check (check) @ question ---
+[INFO] 
+[INFO] --- maven-install-plugin:2.5.2:install (default-install) @ question ---
+[INFO] Installing /users/anubhavnidhi/multiLayer/batfish/projects/question/target/question-0.36.0.jar to /users/anubhavnidhi/.m2/repository/org/batfish/question/0.36.0/question-0.36.0.jar
+[INFO] Installing /users/anubhavnidhi/multiLayer/batfish/projects/question/pom.xml to /users/anubhavnidhi/.m2/repository/org/batfish/question/0.36.0/question-0.36.0.pom
+[INFO] Installing /users/anubhavnidhi/multiLayer/batfish/projects/question/target/question-0.36.0-tests.jar to /users/anubhavnidhi/.m2/repository/org/batfish/question/0.36.0/question-0.36.0-tests.jar
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building allinone 0.36.0
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.0.0-M1:enforce (enforce-maven) @ allinone ---
+[INFO] 
+[INFO] --- jacoco-maven-plugin:0.8.2:prepare-agent (prepare-agent) @ allinone ---
+[INFO] argLine set to -javaagent:/users/anubhavnidhi/.m2/repository/org/jacoco/org.jacoco.agent/0.8.2/org.jacoco.agent-0.8.2-runtime.jar=destfile=/users/anubhavnidhi/multiLayer/batfish/projects/allinone/target/jacoco.exec
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ allinone ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.6.1:compile (default-compile) @ allinone ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ allinone ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 6 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.6.1:testCompile (default-testCompile) @ allinone ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.17:test (default-test) @ allinone ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:3.0.2:jar (default-jar) @ allinone ---
+[INFO] 
+[INFO] --- maven-javadoc-plugin:3.0.1:jar (attach-javadocs) @ allinone ---
+[INFO] Skipping javadoc generation
+[INFO] 
+[INFO] --- maven-shade-plugin:3.0.0:shade (default) @ allinone ---
+[INFO] Including org.batfish:batfish:jar:0.36.0 in the shaded jar.
+[INFO] Including com.fasterxml.jackson.core:jackson-annotations:jar:2.9.0 in the shaded jar.
+[INFO] Including com.fasterxml.jackson.core:jackson-core:jar:2.9.7 in the shaded jar.
+[INFO] Including com.fasterxml.jackson.core:jackson-databind:jar:2.9.7 in the shaded jar.
+[INFO] Including com.google.code.findbugs:jsr305:jar:3.0.2 in the shaded jar.
+[INFO] Including com.microsoft.z3:z3:jar:2018-01-12-450f3c9b459d128135abb5bbd4fa0508fe26bfae in the shaded jar.
+[INFO] Including io.opentracing:opentracing-api:jar:0.30.0 in the shaded jar.
+[INFO] Including io.opentracing.contrib:opentracing-jaxrs2:jar:0.0.9 in the shaded jar.
+[INFO] Including io.opentracing.contrib:opentracing-web-servlet-filter:jar:0.0.9 in the shaded jar.
+[INFO] Including io.opentracing.contrib:opentracing-concurrent:jar:0.0.1 in the shaded jar.
+[INFO] Including javax.ws.rs:javax.ws.rs-api:jar:2.1.1 in the shaded jar.
+[INFO] Including net.sf.javabdd:javabdd:jar:2018-07-26-36d0ed6-batfish-internal in the shaded jar.
+[INFO] Including org.antlr:antlr4-runtime:jar:4.7.1 in the shaded jar.
+[INFO] Including org.apache.commons:commons-collections4:jar:4.2 in the shaded jar.
+[INFO] Including org.apache.commons:commons-configuration2:jar:2.3 in the shaded jar.
+[INFO] Including commons-logging:commons-logging:jar:1.2 in the shaded jar.
+[INFO] Including org.apache.commons:commons-lang3:jar:3.8.1 in the shaded jar.
+[INFO] Including org.codehaus.jettison:jettison:jar:1.4.0 in the shaded jar.
+[INFO] Including org.glassfish.grizzly:grizzly-http-server:jar:2.4.3 in the shaded jar.
+[INFO] Including org.glassfish.grizzly:grizzly-http:jar:2.4.3 in the shaded jar.
+[INFO] Including org.glassfish.jersey.containers:jersey-container-grizzly2-http:jar:2.27 in the shaded jar.
+[INFO] Including org.glassfish.hk2.external:javax.inject:jar:2.5.0-b42 in the shaded jar.
+[INFO] Including org.glassfish.jersey.core:jersey-server:jar:2.27 in the shaded jar.
+[INFO] Including org.glassfish.jersey.media:jersey-media-jaxb:jar:2.27 in the shaded jar.
+[INFO] Including javax.validation:validation-api:jar:1.1.0.Final in the shaded jar.
+[INFO] Including org.glassfish.jersey.media:jersey-media-json-jettison:jar:2.27 in the shaded jar.
+[INFO] Including org.jgrapht:jgrapht-core:jar:1.2.0 in the shaded jar.
+[INFO] Including org.batfish:batfish-client:jar:0.36.0 in the shaded jar.
+[INFO] Including com.kjetland:mbknor-jackson-jsonschema_2.12:jar:1.0.11-batfish-internal in the shaded jar.
+[INFO] Including org.scala-lang:scala-library:jar:2.12.0 in the shaded jar.
+[INFO] Including commons-io:commons-io:jar:2.6 in the shaded jar.
+[INFO] Including com.github.wumpz:diffutils:jar:2.2 in the shaded jar.
+[INFO] Including org.eclipse.jgit:org.eclipse.jgit:jar:4.4.1.201607150455-r in the shaded jar.
+[INFO] Including org.glassfish.jersey.media:jersey-media-multipart:jar:2.27 in the shaded jar.
+[INFO] Including org.jvnet.mimepull:mimepull:jar:1.9.6 in the shaded jar.
+[INFO] Including org.jline:jline:jar:3.9.0 in the shaded jar.
+[INFO] Including org.batfish:batfish-common-protocol:jar:0.36.0 in the shaded jar.
+[INFO] Including com.fasterxml.jackson.datatype:jackson-datatype-guava:jar:2.9.7 in the shaded jar.
+[INFO] Including com.fasterxml.jackson.datatype:jackson-datatype-jdk8:jar:2.9.7 in the shaded jar.
+[INFO] Including com.fasterxml.jackson.datatype:jackson-datatype-jsr310:jar:2.9.7 in the shaded jar.
+[INFO] Including com.google.auto.service:auto-service:jar:1.0-rc4 in the shaded jar.
+[INFO] Including com.google.auto:auto-common:jar:0.8 in the shaded jar.
+[INFO] Including com.google.errorprone:error_prone_annotations:jar:2.3.1 in the shaded jar.
+[INFO] Including com.jayway.jsonpath:json-path:jar:2.4.0-batfish-internal in the shaded jar.
+[INFO] Including net.minidev:json-smart:jar:2.3 in the shaded jar.
+[INFO] Including net.minidev:accessors-smart:jar:1.2 in the shaded jar.
+[INFO] Including org.ow2.asm:asm:jar:5.0.4 in the shaded jar.
+[INFO] Including com.thoughtworks.xstream:xstream:jar:1.4.7 in the shaded jar.
+[INFO] Including xmlpull:xmlpull:jar:1.1.3.1 in the shaded jar.
+[INFO] Including xpp3:xpp3_min:jar:1.1.4c in the shaded jar.
+[INFO] Including commons-beanutils:commons-beanutils:jar:1.9.3 in the shaded jar.
+[INFO] Including commons-collections:commons-collections:jar:3.2.2 in the shaded jar.
+[INFO] Including commons-cli:commons-cli:jar:1.4 in the shaded jar.
+[INFO] Including io.opentracing:opentracing-mock:jar:0.30.0 in the shaded jar.
+[INFO] Including io.opentracing:opentracing-noop:jar:0.30.0 in the shaded jar.
+[INFO] Including org.lz4:lz4-java:jar:1.5.0 in the shaded jar.
+[INFO] Including org.apache.maven:maven-artifact:jar:3.5.4 in the shaded jar.
+[INFO] Including org.codehaus.plexus:plexus-utils:jar:3.1.0 in the shaded jar.
+[INFO] Including org.glassfish.grizzly:grizzly-framework:jar:2.4.3 in the shaded jar.
+[INFO] Including org.skyscreamer:jsonassert:jar:1.5.0 in the shaded jar.
+[INFO] Including com.vaadin.external.google:android-json:jar:0.0.20131108.vaadin1 in the shaded jar.
+[INFO] Including org.batfish:coordinator:jar:0.36.0 in the shaded jar.
+[INFO] Including com.microsoft.azure:azure-storage:jar:2.0.0 in the shaded jar.
+[INFO] Including javax.annotation:javax.annotation-api:jar:1.3.2 in the shaded jar.
+[INFO] Including org.glassfish.jersey.core:jersey-client:jar:2.27 in the shaded jar.
+[INFO] Including org.glassfish.jersey.core:jersey-common:jar:2.27 in the shaded jar.
+[INFO] Including org.glassfish.hk2:osgi-resource-locator:jar:1.0.1 in the shaded jar.
+[INFO] Including org.glassfish.jersey.media:jersey-media-json-jackson:jar:2.27 in the shaded jar.
+[INFO] Including org.glassfish.jersey.ext:jersey-entity-filtering:jar:2.27 in the shaded jar.
+[INFO] Including com.fasterxml.jackson.module:jackson-module-jaxb-annotations:jar:2.9.7 in the shaded jar.
+[INFO] Including javax.activation:activation:jar:1.1 in the shaded jar.
+[INFO] Including javax.xml.bind:jaxb-api:jar:2.3.0 in the shaded jar.
+[INFO] Including org.glassfish.jersey.inject:jersey-hk2:jar:2.27 in the shaded jar.
+[INFO] Including org.glassfish.hk2:hk2-locator:jar:2.5.0-b42 in the shaded jar.
+[INFO] Including org.glassfish.hk2.external:aopalliance-repackaged:jar:2.5.0-b42 in the shaded jar.
+[INFO] Including org.glassfish.hk2:hk2-api:jar:2.5.0-b42 in the shaded jar.
+[INFO] Including javax.inject:javax.inject:jar:1 in the shaded jar.
+[INFO] Including org.glassfish.hk2:hk2-utils:jar:2.5.0-b42 in the shaded jar.
+[INFO] Including org.javassist:javassist:jar:3.22.0-CR2 in the shaded jar.
+[INFO] Including org.batfish:question:jar:0.36.0 in the shaded jar.
+[INFO] Including com.google.guava:guava:jar:26.0-jre in the shaded jar.
+[INFO] Including org.checkerframework:checker-qual:jar:2.5.2 in the shaded jar.
+[INFO] Including com.google.j2objc:j2objc-annotations:jar:1.1 in the shaded jar.
+[INFO] Including org.codehaus.mojo:animal-sniffer-annotations:jar:1.14 in the shaded jar.
+[INFO] Including com.uber.jaeger:jaeger-core:jar:0.21.0 in the shaded jar.
+[INFO] Including com.uber.jaeger:jaeger-thrift:jar:0.21.0 in the shaded jar.
+[INFO] Including org.apache.thrift:libthrift:jar:0.9.2 in the shaded jar.
+[INFO] Including org.apache.httpcomponents:httpclient:jar:4.2.5 in the shaded jar.
+[INFO] Including commons-codec:commons-codec:jar:1.6 in the shaded jar.
+[INFO] Including org.apache.httpcomponents:httpcore:jar:4.2.4 in the shaded jar.
+[INFO] Including com.google.code.gson:gson:jar:2.8.0 in the shaded jar.
+[INFO] Including org.slf4j:slf4j-api:jar:1.7.25 in the shaded jar.
+[INFO] Including com.squareup.okhttp3:okhttp:jar:3.8.1 in the shaded jar.
+[INFO] Including com.squareup.okio:okio:jar:1.13.0 in the shaded jar.
+[INFO] Including io.opentracing:opentracing-util:jar:0.30.0 in the shaded jar.
+[INFO] Including org.slf4j:slf4j-jdk14:jar:1.7.25 in the shaded jar.
+[WARNING] javax.inject-1.jar, javax.inject-2.5.0-b42.jar define 6 overlapping classes: 
+[WARNING]   - javax.inject.Inject
+[WARNING]   - javax.inject.Singleton
+[WARNING]   - javax.inject.Scope
+[WARNING]   - javax.inject.Named
+[WARNING]   - javax.inject.Provider
+[WARNING]   - javax.inject.Qualifier
+[WARNING] xmlpull-1.1.3.1.jar, xpp3_min-1.1.4c.jar define 2 overlapping classes: 
+[WARNING]   - org.xmlpull.v1.XmlPullParserException
+[WARNING]   - org.xmlpull.v1.XmlPullParser
+[WARNING] jaxb-api-2.3.0.jar, javax.ws.rs-api-2.1.1.jar define 1 overlapping classes: 
+[WARNING]   - module-info
+[WARNING] maven-shade-plugin has detected that some class files are
+[WARNING] present in two or more JARs. When this happens, only one
+[WARNING] single version of the class is copied to the uber jar.
+[WARNING] Usually this is not harmful and you can skip these warnings,
+[WARNING] otherwise try to manually exclude artifacts based on
+[WARNING] mvn dependency:tree -Ddetail=true and the above output.
+[WARNING] See http://maven.apache.org/plugins/maven-shade-plugin/
+[INFO] Replacing /users/anubhavnidhi/multiLayer/batfish/projects/allinone/target/allinone-bundle-0.36.0.jar with /users/anubhavnidhi/multiLayer/batfish/projects/allinone/target/allinone-0.36.0-shaded.jar
+[INFO] 
+[INFO] --- maven-jar-plugin:3.0.2:test-jar (default) @ allinone ---
+[INFO] 
+[INFO] --- maven-checkstyle-plugin:2.17:check (default) @ allinone ---
+[INFO] 
+[INFO] --- maven-dependency-plugin:3.0.1:analyze-only (default) @ allinone ---
+[INFO] Skipping plugin execution
+[INFO] 
+[INFO] >>> findbugs-maven-plugin:3.0.5:check (default) > :findbugs @ allinone >>>
+[INFO] 
+[INFO] --- findbugs-maven-plugin:3.0.5:findbugs (findbugs) @ allinone ---
+[INFO] 
+[INFO] <<< findbugs-maven-plugin:3.0.5:check (default) < :findbugs @ allinone <<<
+[INFO] 
+[INFO] --- findbugs-maven-plugin:3.0.5:check (default) @ allinone ---
+[INFO] 
+[INFO] >>> maven-pmd-plugin:3.10.0:check (check) > :pmd @ allinone >>>
+[INFO] 
+[INFO] --- maven-pmd-plugin:3.10.0:pmd (pmd) @ allinone ---
+[INFO] 
+[INFO] <<< maven-pmd-plugin:3.10.0:check (check) < :pmd @ allinone <<<
+[INFO] 
+[INFO] --- maven-pmd-plugin:3.10.0:check (check) @ allinone ---
+[INFO] 
+[INFO] --- maven-install-plugin:2.5.2:install (default-install) @ allinone ---
+[INFO] Installing /users/anubhavnidhi/multiLayer/batfish/projects/allinone/target/allinone-0.36.0.jar to /users/anubhavnidhi/.m2/repository/org/batfish/allinone/0.36.0/allinone-0.36.0.jar
+[INFO] Installing /users/anubhavnidhi/multiLayer/batfish/projects/allinone/pom.xml to /users/anubhavnidhi/.m2/repository/org/batfish/allinone/0.36.0/allinone-0.36.0.pom
+[INFO] Installing /users/anubhavnidhi/multiLayer/batfish/projects/allinone/target/allinone-0.36.0-tests.jar to /users/anubhavnidhi/.m2/repository/org/batfish/allinone/0.36.0/allinone-0.36.0-tests.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary:
+[INFO] 
+[INFO] Batfish ............................................ SUCCESS [  5.074 s]
+[INFO] Build Tools ........................................ SUCCESS [  1.049 s]
+[INFO] batfish-common-protocol ............................ SUCCESS [  4.238 s]
+[INFO] batfish ............................................ SUCCESS [  9.785 s]
+[INFO] batfish-client ..................................... SUCCESS [  0.685 s]
+[INFO] coordinator ........................................ SUCCESS [  1.063 s]
+[INFO] question ........................................... SUCCESS [  0.917 s]
+[INFO] allinone ........................................... SUCCESS [  7.313 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 30.436 s
+[INFO] Finished at: 2019-01-09T11:39:32-06:00
+[INFO] Final Memory: 80M/812M
+[INFO] ------------------------------------------------------------------------
+Generating bash completion file for batfish (via batfish_build_all) ...OK

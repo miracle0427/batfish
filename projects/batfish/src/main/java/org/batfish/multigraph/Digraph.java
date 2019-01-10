@@ -47,6 +47,10 @@ public class Digraph {
 
     private int nr_vertices = 0;
 
+    private Node srcTCNode = null;
+
+    private Node dstTCNode = null;
+
     /**
      * String representation of graph.
      */
@@ -67,6 +71,19 @@ public class Digraph {
 
     public Map<Node, List<Edge>> getNeighborMap() {
       return neighbors;
+    }
+
+    public void setSourceDest(Node srctc, Node dsttc) {
+      srcTCNode = srctc;
+      dstTCNode = dsttc;
+    }
+
+    public Node getSrc() {
+      return srcTCNode;
+    }
+
+    public Node getDst() {
+      return dstTCNode;
     }
 
     public Map<Node, List<Edge>> returnCopyNeighborMap() {
@@ -397,6 +414,10 @@ public class Digraph {
         return logicalPhysicalMap.get(e);
       }
       return -1;
+    }
+
+    public void printAllPhysicalMap() {
+      System.out.println(logicalPhysicalMap);
     }
 
     public Edge getEdge(Node from, Node to) {

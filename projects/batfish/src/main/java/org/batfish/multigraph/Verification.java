@@ -5,12 +5,30 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
 
-public class Verification {
+public class Verification implements Runnable {
 
 	Digraph g;
+	double time = 0;
+	Node src = null;
+	Node dst = null;
+	policyName policy = policyName.NONE;
+
+	public double returnTime() {
+		return time;
+	}
 
 	public Verification(Digraph graph) {	
 		g = graph;
+	}
+
+	public Verification(Digraph graph, policyName pol) {	
+		g = graph;
+		policy = pol;
+	}
+
+	public void setSrcDstTC(Node srcNode, Node dstNode) {
+		src = srcNode;
+		dst = dstNode;
 	}
 
 	public void removeNode(Node v) {
@@ -22,12 +40,27 @@ public class Verification {
 		return alwaysBlocked(src, dst);		
 	}
 
+	public double fail(Node src, Node dst) {
+		RKConnected rk = new RKConnected(g);
+		rk.formulate(src, dst);
+		time = rk.run();
+		System.out.println("time " + time);
+		return rk.returnObj();
+	}
+
 	/*
 	public boolean alwaysChainWaypoint(Node src, Node dst, List<Node> chain) {
 		removeNode(waypoint);
 		return alwaysBlocked(src, dst);		
 	}
 	*/
+
+    public void run() {
+        if (policy == policyName.BLOCK) {
+        	alwaysBlocked();
+        }
+    }
+
 
 	public boolean equalLength(Node src, Node dst) {
 		/*
@@ -44,7 +77,16 @@ public class Verification {
 		return false;
 	}
 
-	public boolean alwaysBlocked(Node src, Node dst) {
+	public boolean alwaysBlocked(Node srcName, Node dstName) {
+		src = srcName;
+		dst = dstName;
+		return alwaysBlocked();
+	}
+
+
+	public boolean alwaysBlocked() {
+		if (src==null || dst==null)
+			return false;
 		Unreachable unreach = new Unreachable(g);
 		if ((g.communityBlocked.size()==0)|| g.communityAdded.isEmpty()){
 			return unreach.isUnreachable(src, dst);

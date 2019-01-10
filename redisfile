@@ -1,0 +1,2 @@
+init-snapshot /users/anubhavnidhi/aceso/rebase/batfish/test_rigs/smt-examples/REDISTRIBUTE2
+get arcReach srcIps=["146.151.160.5/32"], dstIps=["146.151.157.19/32"]

@@ -45,8 +45,6 @@ import org.batfish.datamodel.answers.AnswerElement;
 import org.batfish.datamodel.questions.smt.EnvironmentType;
 import org.batfish.datamodel.questions.smt.HeaderLocationQuestion;
 import org.batfish.datamodel.questions.smt.HeaderQuestion;
-import org.batfish.mulgraph.Mulgraph;
-import org.batfish.mulgraph.Node;
 import org.batfish.symbolic.CommunityVar;
 import org.batfish.symbolic.Graph;
 import org.batfish.symbolic.GraphEdge;
@@ -71,6 +69,22 @@ import org.batfish.common.topology.Layer2Edge;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.util.Arrays;
+
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.TimeUnit;
+
+import org.batfish.mulgraph.Mulgraph;
+import org.batfish.mulgraph.Digraph;
+import org.batfish.mulgraph.Node;
+import org.batfish.mulgraph.Verification;
+import org.batfish.mulgraph.policyName;
+
 
 /**
  * A collection of functions to check if various properties hold in the network. The general idea is
@@ -80,6 +94,56 @@ import java.io.IOException;
  * @author Ryan Beckett
  */
 public class PropertyChecker {
+
+  class Ips {
+    public IpWildcard srcip;
+    public IpWildcard dstip;
+    public String prop = "";
+    public int intval;
+    public int bound=0;
+    public int fails=0;
+    public String ingressNodeRegex="";
+    public String finalNodeRegex="";
+    public List<String> waypoints;
+    List<List<String>> pathPrefs;
+    public Ips(Map<String, String> argues, String property) {
+      prop = property;
+      if (argues.containsKey("finalNodeRegex")) {
+        finalNodeRegex = argues.get("finalNodeRegex");
+      }
+      if (argues.containsKey("ingressNodeRegex")) {
+        ingressNodeRegex = argues.get("ingressNodeRegex");
+      }
+      if (argues.containsKey("failures")) {
+        fails = Integer.parseInt(argues.get("failures"));
+      }
+      if (argues.containsKey("bound")) {
+        bound = Integer.parseInt(argues.get("bound"));
+      }
+      if (argues.containsKey("dstIps")) {
+        dstip = new IpWildcard(argues.get("dstIps"));
+      }
+      if (argues.containsKey("srcIps")) {
+        srcip = new IpWildcard(argues.get("srcIps"));
+      }
+      if (argues.containsKey("waypoints")) {
+        String temp = argues.get("waypoints").replace("[","").replace("]","");
+        waypoints = new ArrayList<String>(Arrays.asList(temp.split(",")));
+      }
+      if (argues.containsKey("prefs")) {
+        String temp = argues.get("prefs").replace("[[","").replace("]]","");
+        pathPrefs = new ArrayList<>();
+        String[] preferences = temp.split("],");
+        for (String aPath : preferences) {
+          aPath = aPath.replace("[","");
+          List<String> aList = new ArrayList<String>(Arrays.asList(aPath.split(",")));
+          pathPrefs.add(aList);
+        }
+      }
+
+    }
+  }
+
 
   private BDDPacket _bddPacket;
   private IBatfish _batfish;
@@ -602,13 +666,9 @@ public class PropertyChecker {
         });
   }
 
-  /*
-   * Check if things are reachable
-   */
-  public AnswerElement checkGraphReachability(HeaderLocationQuestion q){
-    Graph graph = new Graph(_batfish);
-    //System.out.println(q.getSrcIps() + "\t" + q.getDstIps());
-    q.setBenchmark(false);
+
+  public void setAllMPLS(Graph graph) {
+
     List<String> allPaths = _batfish.getAllPaths();
     try {
       for (String fil : allPaths) {
@@ -631,6 +691,162 @@ public class PropertyChecker {
       System.out.println("IO exception while parsing for MPLS ");
     }
 
+  }
+
+
+  public List<Ips> getAllIps(String filename) {
+
+      List<Ips> ips = new ArrayList<Ips>();
+      String line;
+      try {
+        BufferedReader reader = new BufferedReader(new FileReader(filename));
+        String policy="";
+        Map<String, String> argues;
+        while((line = reader.readLine()) != null) {
+          argues = new HashMap<>();
+          String[] split = line.split(" ");
+          for(String temp : split) {
+            if (temp.contains("=")) {
+              String[] var = temp.split("=");
+              String valvar;
+              if (!(var[0].equals("prefs") || var[0].equals("waypoints"))) {
+                valvar = var[1].replace("\"","").replace("\'","").replace(",","").replace("[","").replace("]","");
+              } else {
+                valvar = var[1].replace("\"","").replace("\'","");
+              }
+              argues.put(var[0], valvar);
+            } else {
+              policy = temp;
+            }
+          }
+
+          Ips ip_set;
+          ip_set = new Ips(argues, policy);
+          ips.add(ip_set);
+        }
+        reader.close();
+      } catch (IOException e) {
+        System.out.println("Reader IO error");
+      }
+      return ips;
+  }
+
+  /*
+   * Check if things are reachable
+   */
+  public AnswerElement checkGraphReachability(HeaderLocationQuestion q){
+    Graph graph = new Graph(_batfish);
+    setAllMPLS(graph);
+    //System.out.println(q.getSrcIps() + "\t" + q.getDstIps());
+    q.setBenchmark(false);
+
+    if (q.getFailNodeRegex() == null ||q.getFailNodeRegex() == null) {
+      if (q.getSrcIps() != null && q.getDstIps() != null) {
+        if (q.getSrcIps().size() != 0 && q.getDstIps().size() != 0) {
+          Mulgraph m = new Mulgraph(graph, q.getSrcIps().first(), q.getDstIps().first());
+          if (_batfish.getLayer2Topology() != null) {
+            m.setL2Map(makeL2());
+          }
+          m.buildGraph();
+
+          if (m.srcNode!=null && m.dstNode!=null) {
+            Verification veri = new Verification(m.getDigraph(), policyName.BLOCK);
+            long startTime = System.nanoTime();
+            boolean result = veri.alwaysBlocked(m.srcNode, m.dstNode);
+            long endTime = System.nanoTime();
+            long verifyTime = endTime - startTime;
+
+            /*System.out.println("Result " + result + 
+              "\nVerification time: " + verifyTime/(long)1000000 + " ms");*/
+            System.out.println("Result " + result + 
+              "\nGenerate time: " + m.returnGenerateTime()/(double)1000000 + " ms" +
+              "\nVerification time: " + verifyTime/(double)1000000 + " ms");
+          }
+
+        }
+      }
+    } else {
+      
+      ConcurrentHashMap<String, Digraph> digraphMap
+       = new ConcurrentHashMap<>();
+
+      List<Ips> ips = getAllIps(q.getFailNodeRegex());
+      Map<String, Map<String, Set<String>>> l2map = null;
+      if (_batfish.getLayer2Topology() != null) {
+        l2map = makeL2();
+      }
+
+      int numThreads = Runtime.getRuntime().availableProcessors();
+      ExecutorService pool = Executors.newFixedThreadPool(numThreads);
+
+      long startTime = System.nanoTime();
+      for (Ips aIp : ips) {
+        /*
+        System.out.println(aIp.srcip + "\t" + aIp.dstip);
+        Mulgraph m = new Mulgraph(graph, aIp.srcip, aIp.dstip, digraphMap, l2map);
+        if (l2map != null) {
+          m.setL2Map(l2map);
+        }
+        //m.buildGraph();*/
+        Runnable makeGraph = new Mulgraph(graph, aIp.srcip, aIp.dstip, digraphMap);
+        if (l2map != null) {
+          ((Mulgraph) makeGraph).setL2Map(l2map);
+        }
+        pool.execute(makeGraph);
+      }
+      long endTime = System.nanoTime();      
+      pool.shutdown();
+      long graphGenerationTime = endTime - startTime;
+
+      try {
+          pool.awaitTermination(5000, TimeUnit.SECONDS);
+      } catch (InterruptedException e) {
+          System.out.println("Graph creation interrupted. EXIT");
+          System.exit(0);
+      }
+
+      ExecutorService pool2 = Executors.newFixedThreadPool(numThreads);
+
+      startTime = System.nanoTime();
+      for (String ipKey : digraphMap.keySet()) {
+        Digraph currentGraph = digraphMap.get(ipKey);
+        Runnable veri = new Verification(currentGraph, policyName.BLOCK);
+        if (currentGraph.getSrc() == null || currentGraph.getDst()== null)
+          continue;
+        ((Verification) veri).setSrcDstTC(currentGraph.getSrc(), currentGraph.getDst());
+        pool2.execute(veri);
+        //((Verification) veri).run();
+      }
+      
+      pool2.shutdown();
+
+      try {
+          pool2.awaitTermination(5000, TimeUnit.SECONDS);
+      } catch (InterruptedException e) {
+          System.out.println("Verifictaion interrupted. EXIT");
+          System.exit(0);
+      }
+      endTime = System.nanoTime();      
+      long verificationTime = endTime - startTime;
+      System.out.println("Generate time: " + graphGenerationTime/(double)1000000 + " ms" +
+        "\nVerification time: " + verificationTime/(double)1000000 + " ms");
+
+    }
+    
+    //System.out.println(_batfish.getLayer2Topology().getGraph().edges());
+
+    return new NullAnswer();
+  }
+
+  /*
+   * Check if things are reachable
+   */
+  public AnswerElement checkGraphFail(HeaderLocationQuestion q){
+    Graph graph = new Graph(_batfish);
+    setAllMPLS(graph);
+    //System.out.println(q.getSrcIps() + "\t" + q.getDstIps());
+    q.setBenchmark(false);
+
     if (q.getSrcIps() != null && q.getDstIps() != null) {
       if (q.getSrcIps().size() != 0 && q.getDstIps().size() != 0) {
         Mulgraph m = new Mulgraph(graph, q.getSrcIps().first(), q.getDstIps().first());
@@ -638,6 +854,19 @@ public class PropertyChecker {
           m.setL2Map(makeL2());
         }
         m.buildGraph();
+
+        if (m.srcNode!=null && m.dstNode!=null) {
+          Verification veri = new Verification(m.getDigraph());
+          //long startTime = System.nanoTime();
+          double result = veri.fail(m.srcNode, m.dstNode);
+          //long endTime = System.nanoTime();
+          //long verifyTime = endTime - startTime;
+
+          System.out.println("Result " + result + 
+            "\nGenerate time: " + m.returnGenerateTime()/(double)1000000 + " ms" +
+            "\nVerification time: " + veri.returnTime() + " ms");
+        }
+
       }
     }
     

@@ -13,6 +13,8 @@ public class RKConnected {
   Digraph g;
   GRBEnv env;
   GRBModel model;
+  public double runTime = 0;
+  public double obj = 0;
 
   public RKConnected(Digraph graph)
   { 
@@ -24,6 +26,14 @@ public class RKConnected {
       System.out.println("Error code at Constructor: " + e.getErrorCode() + ". " +
                          e.getMessage());
     }      
+  }
+
+  public double returnTime() {
+    return runTime;
+  }
+  
+  public double returnObj() {
+    return obj;
   }
   
   public void formulate(Node src, Node dst) {
@@ -315,14 +325,6 @@ public class RKConnected {
         model.write("out.rlp");
          // Optimize model
         model.optimize();
-        /*
-        System.out.println(x.get(GRB.StringAttr.VarName)
-                           + " " +x.get(GRB.DoubleAttr.X));
-        System.out.println(y.get(GRB.StringAttr.VarName)
-                           + " " +y.get(GRB.DoubleAttr.X));
-        System.out.println(z.get(GRB.StringAttr.VarName)
-                           + " " +z.get(GRB.DoubleAttr.X));
-        */
 
         if(model.get(GRB.IntAttr.Status) == GRB.Status.INFEASIBLE){
             System.out.println("There is no optimal solution "+ model.get(GRB.IntAttr.Status));
@@ -331,9 +333,11 @@ public class RKConnected {
 
         } else {                          
 
-          System.out.println("Obj: " + model.get(GRB.DoubleAttr.ObjVal));
+          //System.out.println("Obj: " + model.get(GRB.DoubleAttr.ObjVal));
+          obj = model.get(GRB.DoubleAttr.ObjVal);
           time = model.get(GRB.DoubleAttr.Runtime) * 1000;
-          System.out.println("ILP Time: " + time + " ms");
+          runTime = time;
+          //System.out.println("ILP Time: " + time + " ms");
 
           // Dispose of model and environment
           model.write("out.sol");

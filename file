@@ -1,2 +1,2 @@
 init-snapshot /users/anubhavnidhi/configs/uwm
-get arcReach srcIps=["192.4.64.2"], dstIps=["10.10.10.2"]
+get arcReach srcIps=["146.151.160.5/32"], dstIps=["146.151.157.19/32"]

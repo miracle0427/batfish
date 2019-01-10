@@ -1,0 +1,2 @@
+init-snapshot /users/anubhavnidhi/aceso/rebase/batfish/test_rigs/smt-examples/VLAN
+get arcFail srcIps=["10.0.0.5"], dstIps=["10.0.0.6"]

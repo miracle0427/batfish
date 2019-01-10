@@ -3,6 +3,11 @@
 export BATFISH_ROOT="$(dirname "$BATFISH_TOOLS_PATH")"
 export PROJECTS_PATH="$BATFISH_ROOT/projects"
 
+export GUROBI_HOME="/users/anubhavnidhi/Sandbox/gurobi701/linux64"
+export PATH="${PATH}:${GUROBI_HOME}/bin"
+export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${GUROBI_HOME}/lib"
+export CLASSPATH="$CLASSPATH:/users/anubhavnidhi/Sandbox/gurobi"
+
 # Use Maven to print the current Batfish java version
 export BATFISH_VERSION="$(grep -1 batfish-parent "${PROJECTS_PATH}/pom.xml" | grep version | sed 's/[<>]/|/g' | cut -f3 -d\|)"
 
