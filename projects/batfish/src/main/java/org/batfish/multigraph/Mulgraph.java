@@ -107,6 +107,8 @@ public class Mulgraph implements Runnable {
 
     ConcurrentHashMap<String, Digraph> conMap = null;
 
+    boolean correctSrcDst = false;
+
     public Mulgraph(Graph g, IpWildcard src, IpWildcard dst) {//, String src, String dst){
         this.g = g;
         dg = new Digraph();
@@ -202,7 +204,7 @@ public class Mulgraph implements Runnable {
         //generateTime = endTime - startTime;
 
         String key = srcIp.toString() + "-" + dstIp.toString();
-        if (conMap != null) {
+        if (conMap != null && correctSrcDst == true) {
             conMap.put(key, dg);
         }
 
@@ -238,7 +240,7 @@ public class Mulgraph implements Runnable {
 
     public void setNodes() {
 
-        System.out.println(srcName + "\t" + dstName);
+        //System.out.println(srcName + "\t" + dstName);
 
         if (srcName == null || srcName == "" || dstName == null || dstName == "") {
             for (Entry<String, List<GraphEdge>> entry : g.getEdgeMap().entrySet()) {
@@ -259,7 +261,7 @@ public class Mulgraph implements Runnable {
             }
         }
         //System.out.println(phyNodeMap);
-        if (srcName != null) {
+        if (srcName != null && phyNodeMap.containsKey(srcName)) {
             //System.out.println(srcName);
             srcNode = new Node(srcName, protocol.SRC);
             dg.add(srcNode);
@@ -268,7 +270,7 @@ public class Mulgraph implements Runnable {
                 dg.add(srcNode, anode, returnDefaultEC(), anode.getType());
             }
         }
-        if (dstName != null) {
+        if (dstName != null && phyNodeMap.containsKey(dstName)) {
             //System.out.println(dstName);
             dstNode = new Node(dstName, protocol.DST);
             dg.add(dstNode);
@@ -278,9 +280,11 @@ public class Mulgraph implements Runnable {
             }
 
         }
-
-        dg.setSourceDest(srcNode, dstNode);
-
+        correctSrcDst = false;
+        if (srcNode!=null && dstNode!=null) {
+            dg.setSourceDest(srcNode, dstNode);
+            correctSrcDst = true;
+        }
     }
 
     public void addDEFEdge() {
