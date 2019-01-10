@@ -310,7 +310,7 @@ public class RPathLength {
     double time = 0;
      try {
         model.set(GRB.IntParam.OutputFlag, 0);
-        model.write("out.rlp");
+        //model.write("out.rlp");
          // Optimize model
         model.optimize();
         /*
@@ -325,17 +325,17 @@ public class RPathLength {
         if(model.get(GRB.IntAttr.Status) == GRB.Status.INFEASIBLE){
             System.out.println("There is no optimal solution "+ model.get(GRB.IntAttr.Status));
             model.computeIIS();
-            model.write("model.ilp");
+            //model.write("model.ilp");
 
         } else {                          
 
-          System.out.println("Obj: " + model.get(GRB.DoubleAttr.ObjVal));
+          //System.out.println("Obj: " + model.get(GRB.DoubleAttr.ObjVal));
           obj = model.get(GRB.DoubleAttr.ObjVal);
-          time = model.get(GRB.DoubleAttr.Runtime) * 1000;
+          //time = model.get(GRB.DoubleAttr.Runtime) * 1000;
           //System.out.println("ILP Time: " + time + " ms");
 
           // Dispose of model and environment
-          model.write("out.sol");
+          //model.write("out.sol");
         }
         //
         model.dispose();

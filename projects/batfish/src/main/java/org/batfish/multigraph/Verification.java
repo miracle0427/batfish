@@ -84,7 +84,7 @@ public class Verification implements Runnable {
 		double time2 = pl.run();
 		double max = pl.returnObj();
 		//System.out.println( (time1 + time2)+ " ms" );
-		System.out.println( min + "\t" + max );
+		//System.out.println( min + "\t" + max );
 		return (max!=-1 && (max == min));
 		
 	}

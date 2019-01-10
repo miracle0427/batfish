@@ -322,7 +322,7 @@ public class RKConnected {
     double time = 0;
      try {
         model.set(GRB.IntParam.OutputFlag, 0);
-        model.write("out.rlp");
+        //model.write("out.rlp");
          // Optimize model
         model.optimize();
 
@@ -334,13 +334,14 @@ public class RKConnected {
         } else {                          
 
           //System.out.println("Obj: " + model.get(GRB.DoubleAttr.ObjVal));
+          
           obj = model.get(GRB.DoubleAttr.ObjVal);
-          time = model.get(GRB.DoubleAttr.Runtime) * 1000;
-          runTime = time;
+          /*time = model.get(GRB.DoubleAttr.Runtime) * 1000;
+          runTime = time;*/
           //System.out.println("ILP Time: " + time + " ms");
 
           // Dispose of model and environment
-          model.write("out.sol");
+          //model.write("out.sol");
         }
         //
         model.dispose();

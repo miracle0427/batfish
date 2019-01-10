@@ -153,7 +153,6 @@ public class Mulgraph implements Runnable {
 
     public Mulgraph(Graph g, String src, String dst, IpWildcard srcip, IpWildcard dstip,
      ConcurrentHashMap<String, Digraph> conncMap) {
-        System.out.println(src+"\t"+dst+"\t"+srcip+"\t"+dstip);
         this.g = g;
         dg = new Digraph();
         srcName = src;
