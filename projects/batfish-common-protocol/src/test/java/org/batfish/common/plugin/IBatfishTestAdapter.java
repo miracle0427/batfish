@@ -207,6 +207,11 @@ public class IBatfishTestAdapter implements IBatfish {
   }
 
   @Override
+  public List<String> getAllPaths() {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
   public void initBgpOriginationSpaceExplicit(Map<String, Configuration> configurations) {
     throw new UnsupportedOperationException();
   }
@@ -354,6 +359,17 @@ public class IBatfishTestAdapter implements IBatfish {
       ExternalBgpAdvertisementPlugin externalBgpAdvertisementPlugin) {
     throw new UnsupportedOperationException();
   }
+
+  @Override
+  public AnswerElement arcReach(HeaderLocationQuestion q) {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public AnswerElement arcFail(HeaderLocationQuestion q) {
+    throw new UnsupportedOperationException();
+  }
+
 
   @Override
   public AnswerElement smtBlackhole(HeaderQuestion q) {
