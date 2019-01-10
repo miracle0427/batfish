@@ -317,11 +317,11 @@ public class BF {
 
                 if ( (weight_v.valid == true) ) {
                     currWeight = update(weight_v, dist, e1.getType());
-
+                    /*
                     if (u.getId().equals("b-OSPF")){
-                        //System.out.println(u + "\t" + currWeight+ "\t" + weight_u);
-                        //System.out.println(e1 + "  " + weight_v);
-                    }
+                        System.out.println(u + "\t" + currWeight+ "\t" + weight_u);
+                        System.out.println(e1 + "  " + weight_v);
+                    }*/
 
                     if (compare(currWeight, weight_u)) {
                         weight.put(u, currWeight);
@@ -367,7 +367,7 @@ public class BF {
                 break;
             }
             if (visitedInPath.get(cur) == true) {
-                //System.out.println("cycle");
+                System.out.println("cycle");
                 break;
             }            
             path.add(nextHop.get(cur), g.getEdge(cur, nextHop.get(cur)));

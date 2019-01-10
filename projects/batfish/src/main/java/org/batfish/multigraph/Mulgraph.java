@@ -267,7 +267,7 @@ public class Mulgraph implements Runnable {
             dg.add(srcNode);
             Set<Node> allnode = phyNodeMap.get(srcName);
             for (Node anode : allnode) {
-                dg.add(srcNode, anode, returnDefaultEC(), anode.getType());
+                dg.add(srcNode, anode, returnDefaultEC(), protocol.SRC);//anode.getType());
             }
         }
         if (dstName != null && phyNodeMap.containsKey(dstName)) {
@@ -278,7 +278,7 @@ public class Mulgraph implements Runnable {
             for (Node anode : allnode) {
                 EdgeCost thisEC = returnDefaultEC();
                 thisEC.AD = Edge.protocol_map.get(protocol.DST);
-                dg.add(anode, dstNode, returnDefaultEC(), anode.getType());
+                dg.add(anode, dstNode, returnDefaultEC(), protocol.DST);//anode.getType());
             }
 
         }

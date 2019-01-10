@@ -91,16 +91,6 @@ public class Verification implements Runnable {
         bf.initializeGraph();
         bf.shortestPath(src, dst);
         bf.initializeGraph();
-        bf.shortestPath(src, dst);
-        bf.initializeGraph();
-        bf.shortestPath(src, dst);
-        bf.initializeGraph();
-        bf.shortestPath(src, dst);
-        bf.initializeGraph();
-        bf.shortestPath(src, dst);
-        bf.initializeGraph();
-        bf.shortestPath(src, dst);
-        bf.initializeGraph();
         //System.out.println("start");
         //System.out.println(bf.shortestPath(src, dst));
         //bf.initializeGraph();
