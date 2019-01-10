@@ -276,6 +276,8 @@ public class Mulgraph implements Runnable {
             dg.add(dstNode);
             Set<Node> allnode = phyNodeMap.get(dstName);
             for (Node anode : allnode) {
+                EdgeCost thisEC = returnDefaultEC();
+                thisEC.AD = Edge.protocol_map.get(protocol.DST);
                 dg.add(anode, dstNode, returnDefaultEC(), anode.getType());
             }
 

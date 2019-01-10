@@ -111,7 +111,8 @@ public class BF {
         } else if (type == protocol.DST) {
             // just use edge
             ec = dist.copy();
-            ec.AD = dist.AD;
+            //ec.AD = dist.AD;
+            ec.AD = Edge.protocol_map.get(protocol.DST);
             ec.valid = true;
         }
         return ec;
@@ -249,6 +250,7 @@ public class BF {
             ec.setAS(0);
             ec.setAD(30);
         }*/
+        System.out.println(g);
         EdgeCost ec = new EdgeCost();
         ec.valid = true;
         weight.put(d, ec);
@@ -316,10 +318,10 @@ public class BF {
                 if ( (weight_v.valid == true) ) {
                     currWeight = update(weight_v, dist, e1.getType());
 
-                    /*if (u.getId().equals("v1")){
-                        System.out.println(u + "\t" + currWeight+ "\t" + weight_u);
-                        System.out.println("  " + weight_v);
-                    }*/
+                    if (u.getId().equals("b-OSPF")){
+                        //System.out.println(u + "\t" + currWeight+ "\t" + weight_u);
+                        //System.out.println(e1 + "  " + weight_v);
+                    }
 
                     if (compare(currWeight, weight_u)) {
                         weight.put(u, currWeight);
@@ -349,16 +351,29 @@ public class BF {
         //System.out.println("Path finding");
         Node cur = s;
         path.add(s);
-        //System.out.println(nextHop);
+        System.out.println(nextHop);
         //System.out.println("Path");
         //System.out.print(cur);
         //System.out.print("--");
+        HashMap<Node, Boolean> visitedInPath = new HashMap<>(); 
+
+        for (Node v : g.getVertices()) {
+            visitedInPath.put(v, false);
+        }
+
+
         while( cur!= d ) {
             if (nextHop.get(cur) == null) {
                 break;
             }
+            if (visitedInPath.get(cur) == true) {
+                //System.out.println("cycle");
+                break;
+            }            
             path.add(nextHop.get(cur), g.getEdge(cur, nextHop.get(cur)));
+            visitedInPath.put(cur, true);
             cur = nextHop.get(cur);
+
             //System.out.print(cur);
             //System.out.print("--");
         }

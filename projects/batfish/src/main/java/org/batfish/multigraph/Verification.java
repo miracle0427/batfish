@@ -68,9 +68,60 @@ public class Verification implements Runnable {
         	fail();
         } else if (policy == policyName.EQUAL) {
         	equalLength();
+        } else if (policy == policyName.BOUND) {
+        	boundLength();
+        } else if (policy == policyName.PREF) {
+        	prefPath();
         }
     }
 
+	public boolean prefPath() {
+		
+        BF bf = new BF(g);
+
+        /*bf.shortestPath(src, dst);
+        bf.initializeGraph();
+        bf.shortestPath(src, dst);
+        bf.initializeGraph();
+        bf.shortestPath(src, dst);
+        bf.initializeGraph();
+        bf.shortestPath(src, dst);
+        bf.initializeGraph();
+        bf.shortestPath(src, dst);
+        bf.initializeGraph();
+        bf.shortestPath(src, dst);
+        bf.initializeGraph();
+        bf.shortestPath(src, dst);
+        bf.initializeGraph();
+        bf.shortestPath(src, dst);
+        bf.initializeGraph();
+        bf.shortestPath(src, dst);
+        bf.initializeGraph();
+        bf.shortestPath(src, dst);
+        bf.initializeGraph();
+        bf.shortestPath(src, dst);
+        bf.initializeGraph();*/
+        System.out.println("start");
+        System.out.println(bf.shortestPath(src, dst));
+        //bf.initializeGraph();
+
+		return true;
+		
+	}
+
+
+	public boolean boundLength() {
+		
+		RPathLength pl = new RPathLength(g);
+		pl.reverse();
+		pl.formulate(dst, src, 1);
+		double time1 = pl.run();
+		double obj = pl.returnObj();
+		//System.out.println( (time1 + time2)+ " ms" );
+		//System.out.println( min + "\t" + max );
+		return (obj!=-1 && (obj == 5));
+		
+	}
 
 	public boolean equalLength() {
 		
