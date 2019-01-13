@@ -967,6 +967,10 @@ public class Mulgraph implements Runnable {
                             //System.out.println("Cost " + ec);
                             boolean acl = blockAcl(e.getEnd(), e.getStart());
 
+                            // ARCHIE avoid acl
+                            if (acl == true)
+                                continue;
+
                             connectVRF(dstname, srcname, dstnode, srcnode, ec, acl, protocol.BGP);
 
     					} else if (proto.isOspf()) {
@@ -978,6 +982,9 @@ public class Mulgraph implements Runnable {
 					        
                             ec.setOSPF(e.getEnd().getOspfCost());
                             boolean acl = blockAcl(e.getStart(), e.getEnd());
+                            // ARCHIE avoid acl
+                            if (acl == true)
+                                continue;
     						connectVRF(srcname, dstname, srcnode, dstnode, ec, acl, protocol.OSPF);
 
     					} else if (proto.isStatic()) {
@@ -1009,6 +1016,9 @@ public class Mulgraph implements Runnable {
 							//dg.add(src, dst, ec, protocol.STAT);
                             boolean acl = blockAcl(e.getStart(), e.getEnd());
                             //dg.getEdge(src, dst).setIsACL(acl);
+                            // ARCHIE avoid acl
+                            if (acl == true)
+                                continue;
                             
                             for (Node d : dstRouters) {
                                 /*if (d.getType() == protocol.STAT)
@@ -1065,6 +1075,9 @@ public class Mulgraph implements Runnable {
                             boolean acl = blockAcl(e.getEnd(), e.getStart());
                             //dg.add(dst, src, ec, protocol.IBGP);
                             //dg.getEdge(dst, src).setIsACL(acl);
+                            // ARCHIE avoid acl
+                            if (acl == true)
+                                continue;
                             connectVRF(srcname, dstname, srcnode, dstnode, ec, acl, protocol.IBGP);
                         }
                     }

@@ -829,8 +829,8 @@ public class PropertyChecker {
         if (l2map != null) {
           ((Mulgraph) makeGraph).setL2Map(l2map);
         }
-        //pool.execute(makeGraph);
-        ((Mulgraph) makeGraph).buildGraph();
+        pool.execute(makeGraph);
+        //((Mulgraph) makeGraph).buildGraph();
       }
       pool.shutdown();
 
