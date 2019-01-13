@@ -2562,7 +2562,7 @@ private void addSymbolicPacketBoundConstraints() {
             acl = mkTrue();
           }
           BoolExpr notBlocked = mkAnd(fwd, acl);
-          /* ARCHIE REMOVE
+          //* ARCHIE REMOVE
           if (ge.getStart()!=null && ge.getEnd()!=null && (!_bothIfaceEdges.contains(ge))) {
             BoolExpr shouldAdd;
             if (!_isTCE)
@@ -2582,7 +2582,7 @@ private void addSymbolicPacketBoundConstraints() {
           }
           add(mkEq(mkAnd(notBlocked, mkEq(getSymbolicFailures().getFailedVariable(ge), mkInt(0))), dForward));
           //*/
-          add(mkEq(notBlocked, dForward));
+          // ARCHIE ADD BACK add(mkEq(notBlocked, dForward));
         }
       }
     }
@@ -2652,7 +2652,7 @@ private void addSymbolicPacketBoundConstraints() {
                       shouldRemove);
                         
           }*/
-          /* ARCHIE REMOVE
+          //* ARCHIE REMOVE
           BoolExpr shouldRemove = getCtx().mkBoolConst(_encoder.getId() + "_"
            + router + "StaticRouteRemoveSoft" + p);
           if (_encoder._repairObjective == 0) {
@@ -2666,7 +2666,7 @@ private void addSymbolicPacketBoundConstraints() {
                   notFailed,
                   shouldRemove);
           //*/
-          //* ARCHIE ADD THIS BACK
+          /* ARCHIE ADD THIS BACK
           relevant =
               mkAnd(
                   interfaceActive(iface, proto, e),
