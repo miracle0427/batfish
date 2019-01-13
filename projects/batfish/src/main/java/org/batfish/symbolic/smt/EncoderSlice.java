@@ -800,7 +800,7 @@ class EncoderSlice {
    * Check if a prefix range match is applicable for the packet destination
    * Ip address, given the prefix length variable.
    */
- /* ARCHIE REMOVE
+ //* ARCHIE REMOVE
   BoolExpr isRelevantForSoft(ArithExpr prefixLen, PrefixRange range, String routerName) {
     Prefix p = range.getPrefix();
     SubRange r = range.getLengthRange();
@@ -2821,7 +2821,7 @@ private void addSymbolicPacketBoundConstraints() {
               new TransferSSA(this, conf, varsOther, vars, proto, statements, cost, ge, false);
           importFunction = f.compute();
           //System.out.println("** IMPORT **\n" + ge + "   " + importFunction + "\n**   **");
-          /* ARCHIE REMOVE
+          //* ARCHIE REMOVE
           BoolExpr shouldAddFilter = getCtx().mkBoolConst(_encoder.getId() + "_" + router
            + "ImportFilterAddSoft" + vars.getName());
           if (_encoder._repairObjective == 0) {
@@ -2830,8 +2830,7 @@ private void addSymbolicPacketBoundConstraints() {
           _routerConsMap.put(router, mkAnd(_routerConsMap.get(router), shouldAddFilter));  
           //importFunction = mkOr(importFunction, shouldAddFilter);
           BoolExpr acc = mkIf(mkAnd(usable, shouldAddFilter), importFunction, val);
-          // ARCHIE Add next line back */
-          BoolExpr acc = mkIf(usable, importFunction, val);
+          // ARCHIE Add next line back BoolExpr acc = mkIf(usable, importFunction, val);
           if (Encoder.ENABLE_DEBUGGING) {
             System.out.println("IMPORT FUNCTION: " + router + " " + varsOther.getName());
             System.out.println(importFunction.simplify());

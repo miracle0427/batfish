@@ -229,8 +229,8 @@ class TransferSSA {
       SubRange r = line.getLengthRange();
       PrefixRange range = new PrefixRange(p, r);
       BoolExpr matches = _enc.isRelevantFor(other.getPrefixLength(), range);
-      /* ARCHIE REMOVE
-      BoolExpr matches = _enc.isRelevantForSoft(other.getPrefixLength(), range, _conf.getName());
+      //* ARCHIE REMOVE
+      matches = _enc.isRelevantForSoft(other.getPrefixLength(), range, _conf.getName());
 
       if (_enc.getEncoder()._repairObjective == 3) {
         BoolExpr filterRemove = _enc.mkFalse();
@@ -245,7 +245,7 @@ class TransferSSA {
         }
         matches = _enc.mkAnd(matches, filterRemove);
       }
-      */
+      //*/
 
       BoolExpr action = _enc.mkBool(line.getAction() == LineAction.ACCEPT);
       acc = _enc.mkIf(matches, action, acc);
