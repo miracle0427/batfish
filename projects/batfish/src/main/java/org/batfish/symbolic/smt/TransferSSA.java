@@ -228,8 +228,8 @@ class TransferSSA {
       Prefix p = line.getIpWildcard().toPrefix();
       SubRange r = line.getLengthRange();
       PrefixRange range = new PrefixRange(p, r);
-      // ARCHIE ADD THIS BACK BoolExpr matches = _enc.isRelevantFor(other.getPrefixLength(), range);
-      //* ARCHIE REMOVE
+      BoolExpr matches = _enc.isRelevantFor(other.getPrefixLength(), range);
+      /* ARCHIE REMOVE
       BoolExpr matches = _enc.isRelevantForSoft(other.getPrefixLength(), range, _conf.getName());
 
       if (_enc.getEncoder()._repairObjective == 3) {
@@ -245,7 +245,7 @@ class TransferSSA {
         }
         matches = _enc.mkAnd(matches, filterRemove);
       }
-      //*/
+      */
 
       BoolExpr action = _enc.mkBool(line.getAction() == LineAction.ACCEPT);
       acc = _enc.mkIf(matches, action, acc);
@@ -313,7 +313,7 @@ class TransferSSA {
                 _enc._routerConsMap.put(router, _enc.mkAnd(_enc._routerConsMap.get(router), shouldRemove));
                 return result.setReturnValue(_enc.mkAnd(directRoute, shouldRemove));
                 //*/
-                // ARCHIE ADD THIS BACK return result.setReturnValue(directRoute);
+                //return result.setReturnValue(directRoute);
               } else {
                 // Also use network statement if OSPF has a route with the correct length
                 SymbolicRoute rec = _enc.getBestNeighborPerProtocol(router, Protocol.OSPF);
@@ -337,8 +337,7 @@ class TransferSSA {
                   _enc._routerConsMap.put(router, _enc.mkAnd(_enc._routerConsMap.get(router), shouldRemove));
                   BoolExpr ospfRelevant = _enc.mkAnd(_enc.isRelevantFor(rec.getPrefixLength(), r),
                    shouldRemove);//*/
-
-                  // ARCHIE ADD THIS BACK BoolExpr ospfRelevant = _enc.mkAnd(_enc.isRelevantFor(rec.getPrefixLength(), r));
+                  //BoolExpr ospfRelevant = _enc.mkAnd(_enc.isRelevantFor(rec.getPrefixLength(), r));
                   //System.out.println("\n\nCONS OSPF " + ospfRelevant);
                   ArithExpr newLength = _enc.mkIf(ospfRelevant, originLength, otherLen);
                   result = result.addChangedVariable("PREFIX-LEN", newLength);
@@ -1061,7 +1060,7 @@ class TransferSSA {
     throw new BatfishException("[joinPoint]: unhandled case for " + variableName);
   }
 
-  //* ARCHIE REMOVE
+  /* ARCHIE REMOVE
   private ArithExpr getVarLocalPref(int actualVal) {
     if (_enc.getEncoder()._isBool == 0) {
       Map<String, ArithExpr> prefMap = _enc.getLocalPrefMap();
@@ -1120,7 +1119,7 @@ class TransferSSA {
     prefMap.put(_currentName, val);
     return val;
   }
-  //*/
+  */
   private int getIntFromExpr(IntExpr e) {
     if (e instanceof LiteralInt) {
       LiteralInt z = (LiteralInt) e;
@@ -1332,12 +1331,12 @@ class TransferSSA {
         newValue = _enc.mkIf(result.getReturnAssignedValue(), p.getData().getLocalPref(), newValue);
         ArithExpr x = createArithVariableWith(p, "LOCAL-PREF", newValue);
 
-        //* ARCHIE REMOVE
+        /* ARCHIE REMOVE
         //System.out.println("\n2.  **** " + x + " XX =   " + lpValue);
         //ArithExpr oneh = _enc.mkInt(100);
         ArithExpr getAllVal = getVarLocalPref(lpValue);
         x = getAllVal;//_enc.mkIf(_enc.mkTrue(), oneh, x);
-        //*/
+        */
         p.getData().setLocalPref(x);
         result = result.addChangedVariable("LOCAL-PREF", x);
 
