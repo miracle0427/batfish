@@ -50,6 +50,7 @@ public class RYen {
             curCandidates.add(kthPath);
             curFails.add(0);
 
+            K = kthPath.getEdgesize() + 1;
 
             int seen = 1;
             int pref = 1;
@@ -136,7 +137,7 @@ public class RYen {
                             candidateMap.add(bf.getSeen());
                             candidateFailures.add(removedEdges.size());
                         } else {
-                            System.out.println("Candidate exists");
+                            //System.out.println("Candidate exists");
                             if ( candidateFailures.get(index) > removedEdges.size())
                                 candidateFailures.set(index, removedEdges.size());
                         }
@@ -167,7 +168,7 @@ public class RYen {
                         for (Path p : ksp) {
                             // Check to see if this candidate path duplicates a previously found path
                             if (p.equals(kthPath)) {
-                                System.out.println("Path exists");
+                                //System.out.println("Path exists");
                                 isNewPath = false;
                                 kthPath = null;
                                 break;

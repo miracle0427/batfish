@@ -1,2 +1,2 @@
 init-snapshot /users/anubhavnidhi/aceso/rebase/batfish/test_rigs/smt-examples/MPLS 
-get arcReach failNodeRegex="mplscommand", notFailNodeRegex="fail"
+get arcReach failNodeRegex="mplscommand", notFailNodeRegex="pref"

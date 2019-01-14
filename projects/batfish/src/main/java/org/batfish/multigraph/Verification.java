@@ -12,6 +12,7 @@ public class Verification implements Runnable {
 	Node src = null;
 	Node dst = null;
 	policyName policy = policyName.NONE;
+	Node waypoint = null;
 
 	public double returnTime() {
 		return time;
@@ -35,8 +36,14 @@ public class Verification implements Runnable {
 		g.getNeighborMap().put(v, new ArrayList<Edge>());
 	}
 
-	public boolean alwaysWaypoint(Node src, Node dst, Node waypoint) {
-		removeNode(waypoint);
+	public boolean alwaysWaypoint() {
+		//removeNode(waypoint);
+		if (alwaysBlocked(src, dst) == true)
+			return true;
+		//change this to waypointnode
+		List<Node> way = g.outboundNeighbors(src);
+		if (way.size() > 0)
+		removeNode(way.get(0));
 		return alwaysBlocked(src, dst);		
 	}
 
@@ -72,13 +79,15 @@ public class Verification implements Runnable {
         	boundLength();
         } else if (policy == policyName.PREF) {
         	prefPath();
+        } else if (policy == policyName.WAY) {
+        	alwaysWaypoint();
         }
     }
 
 	public boolean prefPath() {
 		
+        /*
         BF bf = new BF(g);
-
         bf.shortestPath(src, dst);
         bf.initializeGraph();
         bf.shortestPath(src, dst);
@@ -90,11 +99,13 @@ public class Verification implements Runnable {
         bf.shortestPath(src, dst);
         bf.initializeGraph();
         bf.shortestPath(src, dst);
-        bf.initializeGraph();
+        bf.initializeGraph();*/
         //System.out.println("start");
         //System.out.println(bf.shortestPath(src, dst));
         //bf.initializeGraph();
-
+        RYen yen = new RYen(g);
+        //System.out.println(yen.ksp(src, dst, 4));
+        yen.ksp(src, dst, 4)
 		return true;
 		
 	}
