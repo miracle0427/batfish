@@ -105,9 +105,8 @@ public class Verification implements Runnable {
         //bf.initializeGraph();
         RYen yen = new RYen(g);
         //System.out.println(yen.ksp(src, dst, 4));
-        yen.ksp(src, dst, 4)
-		return true;
-		
+        yen.ksp(src, dst, 4);
+        return true;
 	}
 
 

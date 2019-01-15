@@ -80,6 +80,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
 
 import org.batfish.mulgraph.Mulgraph;
+import org.batfish.mulgraph.Mulgraph2;
 import org.batfish.mulgraph.Digraph;
 import org.batfish.mulgraph.Node;
 import org.batfish.mulgraph.Verification;
@@ -884,33 +885,116 @@ public class PropertyChecker {
   public AnswerElement checkGraphFail(HeaderLocationQuestion q){
     Graph graph = new Graph(_batfish);
     setAllMPLS(graph);
+    Map<String, policyName> policyMap = createPolMap();
     //System.out.println(q.getSrcIps() + "\t" + q.getDstIps());
     q.setBenchmark(false);
 
-    if (q.getSrcIps() != null && q.getDstIps() != null) {
-      if (q.getSrcIps().size() != 0 && q.getDstIps().size() != 0) {
-        Mulgraph m = new Mulgraph(graph, q.getSrcIps().first(), q.getDstIps().first());
-        if (_batfish.getLayer2Topology() != null) {
-          m.setL2Map(makeL2());
+    if (q.getFailNodeRegex() == null ||q.getFailNodeRegex() == "") {
+      if (q.getSrcIps() != null && q.getDstIps() != null) {
+        if (q.getSrcIps().size() != 0 && q.getDstIps().size() != 0) {
+          Mulgraph2 m = new Mulgraph2(graph, q.getSrcIps().first(), q.getDstIps().first());
+          if (_batfish.getLayer2Topology() != null) {
+            m.setL2Map(makeL2());
+          }
+          m.buildGraph();
+
+          if (m.srcNode!=null && m.dstNode!=null) {
+            Verification veri = new Verification(m.getDigraph(), policyName.BLOCK);
+            long startTime = System.nanoTime();
+            boolean result = veri.alwaysBlocked(m.srcNode, m.dstNode);
+            long endTime = System.nanoTime();
+            long verifyTime = endTime - startTime;
+
+            /*System.out.println("Result " + result + 
+              "\nVerification time: " + verifyTime/(long)1000000 + " ms");*/
+            System.out.println("Result " + result + 
+              "\nGenerate time: " + m.returnGenerateTime()/(double)1000000 + " ms" +
+              "\nVerification time: " + verifyTime/(double)1000000 + " ms");
+          }
+
         }
-        m.buildGraph();
-
-        if (m.srcNode!=null && m.dstNode!=null) {
-          Verification veri = new Verification(m.getDigraph());
-          //long startTime = System.nanoTime();
-          double result = veri.fail(m.srcNode, m.dstNode);
-          //long endTime = System.nanoTime();
-          //long verifyTime = endTime - startTime;
-
-          System.out.println("Result " + result + 
-            "\nGenerate time: " + m.returnGenerateTime()/(double)1000000 + " ms" +
-            "\nVerification time: " + veri.returnTime() + " ms");
-        }
-
       }
+    } else {
+      
+      ConcurrentHashMap<String, Digraph> digraphMap
+       = new ConcurrentHashMap<>();
+
+      String policyPath = q.getFailNodeRegex();
+      String policyType = q.getNotFailNodeRegex();
+      
+      if (policyType == null || policyType =="" || !policyMap.containsKey(policyType)) {
+        System.out.println("Error policy type");
+        return new NullAnswer();
+      }
+
+      policyName thisPolicy =  policyMap.get(policyType);
+
+      List<Ips> ips = getAllIps(policyPath);
+      Map<String, Map<String, Set<String>>> l2map = null;
+      System.out.println("Get L2 Map");
+      if (_batfish.getLayer2Topology() != null) {
+        l2map = makeL2();
+      }
+
+      if (ips.size()<1)
+        return new NullAnswer();
+
+      System.out.println(policyType);
+
+      Ips basicIp = ips.get(0);
+      Mulgraph2 basicMulgraph = new Mulgraph2(graph, basicIp.ingressNodeRegex, basicIp.finalNodeRegex, basicIp.srcip, basicIp.dstip, digraphMap);
+      int numThreads = Runtime.getRuntime().availableProcessors();
+      ExecutorService pool = Executors.newFixedThreadPool(numThreads);
+      System.out.println("Start generation");
+      long startTime = System.nanoTime();
+      for (Ips aIp : ips) {
+        Runnable makeGraph = new Mulgraph2(graph, aIp.ingressNodeRegex, aIp.finalNodeRegex, aIp.srcip, aIp.dstip, digraphMap, basicMulgraph);
+        /*if (l2map != null) {
+          ((Mulgraph) makeGraph).setL2Map(l2map);
+        }*/
+        pool.execute(makeGraph);
+      }
+      pool.shutdown();
+
+      try {
+          pool.awaitTermination(5000, TimeUnit.SECONDS);
+      } catch (InterruptedException e) {
+          System.out.println("Graph creation interrupted. EXIT");
+          System.exit(0);
+      }
+      long endTime = System.nanoTime();      
+      long graphGenerationTime = endTime - startTime;
+
+      System.out.println("End generation\nStart Verification");
+      //*
+      ExecutorService pool2 = Executors.newFixedThreadPool(numThreads);
+
+      startTime = System.nanoTime();
+      for (String ipKey : digraphMap.keySet()) {
+        Digraph currentGraph = digraphMap.get(ipKey);
+        Runnable veri = new Verification(currentGraph, thisPolicy);
+        if (currentGraph.getSrc() == null || currentGraph.getDst()== null)
+          continue;
+        ((Verification) veri).setSrcDstTC(currentGraph.getSrc(), currentGraph.getDst());
+        pool2.execute(veri);
+        //((Verification) veri).run();
+      }
+      
+      pool2.shutdown();
+
+      try {
+          pool2.awaitTermination(5000, TimeUnit.SECONDS);
+      } catch (InterruptedException e) {
+          System.out.println("Verifictaion interrupted. EXIT");
+          System.exit(0);
+      }//*/
+      endTime = System.nanoTime();      
+      long verificationTime = endTime - startTime;
+      System.out.println("End Verification");
+      System.out.println("Generate time: " + graphGenerationTime/(double)1000000 + " ms" +
+        "\nVerification time: " + verificationTime/(double)1000000 + " ms");
+
     }
-    
-    //System.out.println(_batfish.getLayer2Topology().getGraph().edges());
 
     return new NullAnswer();
   }
