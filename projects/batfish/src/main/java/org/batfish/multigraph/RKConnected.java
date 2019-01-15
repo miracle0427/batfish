@@ -327,9 +327,9 @@ public class RKConnected {
         model.optimize();
 
         if(model.get(GRB.IntAttr.Status) == GRB.Status.INFEASIBLE){
-            System.out.println("There is no optimal solution "+ model.get(GRB.IntAttr.Status));
-            model.computeIIS();
-            model.write("model.ilp");
+            //System.out.println("There is no optimal solution "+ model.get(GRB.IntAttr.Status));
+            //model.computeIIS();
+            //model.write("model.ilp");
 
         } else {                          
 

@@ -683,7 +683,7 @@ public class PropertyChecker {
         while ((line = br.readLine()) != null) {
           if (line.contains("mpls ldp router-id")) {
             hasMpls = true;
-            String router = fil.substring(fil.lastIndexOf("/")+1, fil.length()).replace(".txt","").replace(".cfg","").toLowerCase();
+            String router = fil.substring(fil.lastIndexOf("/")+1, fil.length()).replace(".txt","").replace(".cfg","").replace(".conf","").toLowerCase();
             if (graph.getConfigurations().containsKey(router))
               graph.getConfigurations().get(router).setMPLS(hasMpls);
             else

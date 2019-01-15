@@ -323,8 +323,8 @@ public class RPathLength {
         */
 
         if(model.get(GRB.IntAttr.Status) == GRB.Status.INFEASIBLE){
-            System.out.println("There is no optimal solution "+ model.get(GRB.IntAttr.Status));
-            model.computeIIS();
+            //System.out.println("There is no optimal solution "+ model.get(GRB.IntAttr.Status));
+            //model.computeIIS();
             //model.write("model.ilp");
 
         } else {                          
