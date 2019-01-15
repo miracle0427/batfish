@@ -367,7 +367,7 @@ public class BF {
                 break;
             }
             if (visitedInPath.get(cur) == true) {
-                System.out.println("cycle");
+                //System.out.println("cycle");
                 break;
             }            
             path.add(nextHop.get(cur), g.getEdge(cur, nextHop.get(cur)));
