@@ -939,7 +939,7 @@ public class PropertyChecker {
       if (ips.size()<1)
         return new NullAnswer();
 
-      System.out.println(policyType);
+      System.out.println("Policy: " + policyType);
 
       Ips basicIp = ips.get(0);
       Mulgraph2 basicMulgraph = new Mulgraph2(graph, basicIp.ingressNodeRegex, basicIp.finalNodeRegex, basicIp.srcip, basicIp.dstip, digraphMap);
