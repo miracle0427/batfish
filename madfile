@@ -1,2 +1,2 @@
 init-snapshot /users/anubhavnidhi/configs/uwm
-get arcFail failNodeRegex="large", notFailNodeRegex="block"
+get arcReach failNodeRegex="umad", notFailNodeRegex="fail"

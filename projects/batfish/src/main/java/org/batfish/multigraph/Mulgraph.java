@@ -216,6 +216,24 @@ public class Mulgraph implements Runnable {
 
     public void run() {
         buildGraph();
+        System.out.println("Number of nodes: " + dg.getVertices().size());
+        System.out.println("Number of edges: " + dg.getNumberOfEdges());
+        System.out.println("Total community " + countComm());
+        System.out.println("Total edgecost var: " + dg.getNumberOfEdges() * 7);
+        System.out.println("Num ibgp: " + (dg.iBGPCorr.size() * 2 + dg.defCorr.size() * 2));
+        System.out.println("Num commseen: " + (dg.iBGPCorr.size() * 2 + dg.defCorr.size() * 2));
+
+    }
+
+    public int countComm(){
+        int count = 0;
+
+        for (Node aNode: dg.getVertices()) {
+            count = count + aNode.addedCommunity.size() + aNode.removedCommunity.size()
+                + aNode.blockedCommunity.size();
+        }
+
+        return count;
     }
 
 

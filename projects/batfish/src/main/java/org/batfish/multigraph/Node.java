@@ -7,9 +7,9 @@ public class Node {
 
 	String id;
 	protocol type;
-    Set<String> addedCommunity;
-    Set<String> removedCommunity;
-    Set<String> blockedCommunity;
+    public Set<String> addedCommunity;
+    public Set<String> removedCommunity;
+    public Set<String> blockedCommunity;
 
 
     public Node(String x, protocol y){

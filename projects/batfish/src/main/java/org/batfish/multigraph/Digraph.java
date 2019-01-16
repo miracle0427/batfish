@@ -19,9 +19,9 @@ public class Digraph {
 
     private Map<Edge, Integer> logicalPhysicalMap = new HashMap<>();
 
-    private Map<String, List<List<Node>>> iBGPCorr = new HashMap<>();
+    public Map<String, List<List<Node>>> iBGPCorr = new HashMap<>();
 
-    private Map<String, List<List<Node>>> defCorr = new HashMap<>();
+    public Map<String, List<List<Node>>> defCorr = new HashMap<>();
 
     public Map<String, Set<Node>> communityAdded = new HashMap<>();
 
