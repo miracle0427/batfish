@@ -229,7 +229,7 @@ class TransferSSA {
       SubRange r = line.getLengthRange();
       PrefixRange range = new PrefixRange(p, r);
       BoolExpr matches = _enc.isRelevantFor(other.getPrefixLength(), range);
-      /* ARCHIE REMOVE
+      //* ARCHIE REMOVE
       matches = _enc.isRelevantForSoft(other.getPrefixLength(), range, _conf.getName());
 
       if (_enc.getEncoder()._repairObjective == 3) {
@@ -304,7 +304,7 @@ class TransferSSA {
                   return result.setReturnValue(_enc.mkAnd(directRoute, shouldRemove));*/
                   //System.out.println("Only req Stat " + pfx);
                 }
-                /* ARCHIE REMOVE
+                //* ARCHIE REMOVE
                 BoolExpr shouldRemove = _enc.getCtx().mkBoolConst(_enc.getEncoder().getId() + "_"
                  + pfx + "Stat-Conn-ExportRemoveSoft" + other.getName());
                 if (_enc.getEncoder()._repairObjective == 0) {
@@ -313,7 +313,7 @@ class TransferSSA {
                 _enc._routerConsMap.put(router, _enc.mkAnd(_enc._routerConsMap.get(router), shouldRemove));
                 return result.setReturnValue(_enc.mkAnd(directRoute, shouldRemove));
                 //*/
-                return result.setReturnValue(directRoute);
+                //return result.setReturnValue(directRoute);
               } else {
                 // Also use network statement if OSPF has a route with the correct length
                 SymbolicRoute rec = _enc.getBestNeighborPerProtocol(router, Protocol.OSPF);
@@ -328,7 +328,7 @@ class TransferSSA {
                      shouldRemove);*/
                     //System.out.println("Only req Export" + pfx);
                   }
-                  /* ARCHIE REMOVE
+                  //* ARCHIE REMOVE
                   BoolExpr shouldRemove = _enc.getCtx().mkBoolConst(_enc.getEncoder().getId() + "_"
                    + pfx + "ExportRemoveSoft" + other.getName());
                   if (_enc.getEncoder()._repairObjective == 0) {
@@ -337,7 +337,8 @@ class TransferSSA {
                   _enc._routerConsMap.put(router, _enc.mkAnd(_enc._routerConsMap.get(router), shouldRemove));
                   BoolExpr ospfRelevant = _enc.mkAnd(_enc.isRelevantFor(rec.getPrefixLength(), r),
                    shouldRemove);//*/
-                  BoolExpr ospfRelevant = _enc.mkAnd(_enc.isRelevantFor(rec.getPrefixLength(), r));
+                  //ARCHIE ADD BACK
+                  //BoolExpr ospfRelevant = _enc.mkAnd(_enc.isRelevantFor(rec.getPrefixLength(), r));
                   //System.out.println("\n\nCONS OSPF " + ospfRelevant);
                   ArithExpr newLength = _enc.mkIf(ospfRelevant, originLength, otherLen);
                   result = result.addChangedVariable("PREFIX-LEN", newLength);

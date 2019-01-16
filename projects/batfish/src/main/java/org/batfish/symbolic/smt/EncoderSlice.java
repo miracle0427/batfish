@@ -554,7 +554,20 @@ class EncoderSlice {
       String router = entry.getKey();
       //System.out.println("Router" + router);
       List<GraphEdge> edges = entry.getValue();
+
+
+      boolean noChange = router.endsWith("a") || router.endsWith("b");
+
+
       for (GraphEdge ge : edges) {
+
+        if (noChange == true) {
+          BoolExpr thisAcl = getCtx().mkBoolConst(router);
+          _outboundAcls.put(ge, thisAcl);
+          _inboundAcls.put(ge, thisAcl);
+          continue;
+        }
+
         Interface i = ge.getStart();
         //System.out.println(ge.toString() + " *");
         IpAccessList outbound = i.getOutgoingFilter();
@@ -802,7 +815,7 @@ class EncoderSlice {
    * Check if a prefix range match is applicable for the packet destination
    * Ip address, given the prefix length variable.
    */
- /* ARCHIE REMOVE
+ //* ARCHIE REMOVE
   BoolExpr isRelevantForSoft(ArithExpr prefixLen, PrefixRange range, String routerName) {
     Prefix p = range.getPrefix();
     SubRange r = range.getLengthRange();
@@ -2195,7 +2208,7 @@ private void addSymbolicPacketBoundConstraints() {
           BoolExpr choice = _symbolicDecisions.getChoiceVariables().get(router, proto, e);
           assert (choice != null);
           BoolExpr isBest = equal(conf, proto, bestVars, vars, e, false);
-          /* ARCHIE REMOVE
+          //* ARCHIE REMOVE
           if (_bgpAllow.contains(e) || _ospfAllow.contains(e)) {
  
             BoolExpr shouldAllow;
@@ -2567,7 +2580,10 @@ private void addSymbolicPacketBoundConstraints() {
           //* ARCHIE REMOVE
           if (ge.getStart()!=null && ge.getEnd()!=null && (!_bothIfaceEdges.contains(ge))) {
             BoolExpr shouldAdd;
-            if (!_isTCE)
+
+            boolean noChange = router.endsWith("a") || router.endsWith("b");
+
+            if (!_isTCE && !noChange)
             {
               shouldAdd = getCtx().mkBoolConst(_encoder.getId() + "_" + router +
                "-StaticRouteAddSoft-" + ge);
@@ -2655,6 +2671,14 @@ private void addSymbolicPacketBoundConstraints() {
                         
           }*/
           //* ARCHIE REMOVE
+          boolean noChange = router.endsWith("a") || router.endsWith("b");
+          if (noChange) {
+            relevant =
+                          mkAnd(
+                              interfaceActive(iface, proto, e),
+                              isRelevantFor(p, _symbolicPacket.getDstIp()),
+                              notFailed);            
+                        } else {
           BoolExpr shouldRemove = getCtx().mkBoolConst(_encoder.getId() + "_"
            + router + "StaticRouteRemoveSoft" + p);
           if (_encoder._repairObjective == 0) {
@@ -2667,6 +2691,7 @@ private void addSymbolicPacketBoundConstraints() {
                   isRelevantFor(p, _symbolicPacket.getDstIp()),
                   notFailed,
                   shouldRemove);
+          }
           //*/
           /* ARCHIE ADD THIS BACK
           relevant =
@@ -2774,7 +2799,7 @@ private void addSymbolicPacketBoundConstraints() {
           assert (loop != null);
 
           BoolExpr usable = mkAnd(mkNot(loop), active, varsOther.getPermitted(), receiveMessage);
-          /* ARCHIE REMOVE
+          //* ARCHIE REMOVE
           if (_bgpAllow.contains(e) || _ospfAllow.contains(e)) {
 
             BoolExpr shouldAllow;
@@ -2823,7 +2848,7 @@ private void addSymbolicPacketBoundConstraints() {
               new TransferSSA(this, conf, varsOther, vars, proto, statements, cost, ge, false);
           importFunction = f.compute();
           //System.out.println("** IMPORT **\n" + ge + "   " + importFunction + "\n**   **");
-          /* ARCHIE REMOVE
+          //* ARCHIE REMOVE
           BoolExpr shouldAddFilter = getCtx().mkBoolConst(_encoder.getId() + "_" + router
            + "ImportFilterAddSoft" + vars.getName());
           if (_encoder._repairObjective == 0) {
@@ -2834,7 +2859,7 @@ private void addSymbolicPacketBoundConstraints() {
           BoolExpr acc = mkIf(mkAnd(usable, shouldAddFilter), importFunction, val);
           //*/
           // ARCHIE Add next line back 
-          BoolExpr acc = mkIf(usable, importFunction, val);
+          //BoolExpr acc = mkIf(usable, importFunction, val);
           if (Encoder.ENABLE_DEBUGGING) {
             System.out.println("IMPORT FUNCTION: " + router + " " + varsOther.getName());
             System.out.println(importFunction.simplify());
@@ -2975,7 +3000,7 @@ private void addSymbolicPacketBoundConstraints() {
           f =
               new TransferSSA(
                   this, conf, overallBest, ospfRedistribVars, proto, statements, cost, ge, true);
-          /* ARCHIE REMOVE
+          //* ARCHIE REMOVE
           BoolExpr redisRemove;
           // remove the sharing of redis concept
           String keyvalue = router + proto.name();
@@ -2990,8 +3015,8 @@ private void addSymbolicPacketBoundConstraints() {
             _routerConsMap.put(router, mkAnd(_routerConsMap.get(router), redisRemove));  
             _disableRedis.put(keyvalue, redisRemove);
           }
-          //*/
-          /*
+          /*/
+          
           BoolExpr redisRemove = getCtx().mkBoolConst(_encoder.getId() + "_"
            + router + proto.name() + "SoftRedisRemove");
           addSoft(redisRemove, 2, "RedisRemove");
@@ -3000,10 +3025,10 @@ private void addSymbolicPacketBoundConstraints() {
           //System.out.println("################\n" + acc2 + "\n#############");
           // System.out.println("ADDING: \n" + acc2.simplify());
           add(acc2);
-          //BoolExpr usable2 = mkAnd(active, doExport, ospfRedistribVars.getPermitted(), notFailed, redisRemove);
+          BoolExpr usable2 = mkAnd(active, doExport, ospfRedistribVars.getPermitted(), notFailed, redisRemove);
           //* ARCHIE REMOVE , redisRemove);
           // ARCHIE add back 
-          BoolExpr usable2 = mkAnd(active, doExport, ospfRedistribVars.getPermitted(), notFailed);
+          //BoolExpr usable2 = mkAnd(active, doExport, ospfRedistribVars.getPermitted(), notFailed);
           BoolExpr geq = greaterOrEqual(conf, proto, ospfRedistribVars, varsOther, e);
           BoolExpr isBetter = mkNot(mkAnd(ospfRedistribVars.getPermitted(), geq));
           BoolExpr usesOspf = mkAnd(varsOther.getPermitted(), isBetter);
@@ -3062,7 +3087,7 @@ private void addSymbolicPacketBoundConstraints() {
 
             BoolExpr ifaceUp = interfaceActive(iface, proto, e);
             BoolExpr relevantPrefix = isRelevantFor(p, _symbolicPacket.getDstIp());
-            /* ARCHIE REMOVE
+            //* ARCHIE REMOVE
             if (getEncoder()._dstIp != null && matchIpWithPref(getEncoder()._dstIp, p)) {
               BoolExpr shouldRemove;
               String keyvalue = router + p;
@@ -3120,57 +3145,59 @@ private void addSymbolicPacketBoundConstraints() {
             acc = mkIf(relevant, values, acc);
           }
         }
-        /* ARCHIE REMOVE
+        //* ARCHIE REMOVE
+        boolean noChange = router.endsWith("a") || router.endsWith("b");
+        if (!noChange) {
+          for (Prefix p : allOriginations) {
+            // For OSPF, we need to explicitly initiate a route
+            if (proto.isOspf()) {
 
-        for (Prefix p : allOriginations) {
-          // For OSPF, we need to explicitly initiate a route
-          if (proto.isOspf()) {
+              BoolExpr ifaceUp = interfaceActive(iface, proto, e);
+              BoolExpr relevantPrefix = isRelevantFor(p, _symbolicPacket.getDstIp());
+              BoolExpr shouldAdd = getCtx().mkBoolConst(_encoder.getId() + "_"
+               + router + "OSPFExportAddSoft" + p);
+              if (_encoder._repairObjective == 0) {
+                addSoft(mkNot(shouldAdd), ospfWeight, "OSPFExportAdd");
+              }
+              _routerConsMap.put(router, mkAnd(_routerConsMap.get(router), mkNot(shouldAdd)));  
+              relevantPrefix = mkAnd(relevantPrefix, shouldAdd);
+              BoolExpr relevant = mkAnd(ifaceUp, relevantPrefix);
 
-            BoolExpr ifaceUp = interfaceActive(iface, proto, e);
-            BoolExpr relevantPrefix = isRelevantFor(p, _symbolicPacket.getDstIp());
-            BoolExpr shouldAdd = getCtx().mkBoolConst(_encoder.getId() + "_"
-             + router + "OSPFExportAddSoft" + p);
-            if (_encoder._repairObjective == 0) {
-              addSoft(mkNot(shouldAdd), ospfWeight, "OSPFExportAdd");
+              int adminDistance = defaultAdminDistance(conf, proto);
+              int prefixLength = p.getPrefixLength();
+
+              BoolExpr per = vars.getPermitted();
+              BoolExpr lp = safeEq(vars.getLocalPref(), mkInt(0));
+              BoolExpr ad = safeEq(vars.getAdminDist(), mkInt(adminDistance));
+              BoolExpr met = safeEq(vars.getMetric(), mkInt(cost));
+              BoolExpr med = safeEq(vars.getMed(), mkInt(100));
+              BoolExpr len = safeEq(vars.getPrefixLength(), mkInt(prefixLength));
+              BoolExpr type = safeEqEnum(vars.getOspfType(), OspfType.O);
+              BoolExpr area = safeEqEnum(vars.getOspfArea(), iface.getOspfAreaName());
+              BoolExpr internal = safeEq(vars.getBgpInternal(), mkFalse());
+              BoolExpr igpMet = safeEq(vars.getIgpMetric(), mkInt(0));
+              BoolExpr comms = mkTrue();
+              for (Map.Entry<CommunityVar, BoolExpr> entry : vars.getCommunities().entrySet()) {
+                comms = mkAnd(comms, mkNot(entry.getValue()));
+              }
+              BoolExpr values =
+                  mkAnd(per, lp, ad, met, med, len, type, area, internal, igpMet, comms);
+
+              // Don't originate OSPF route when there is a better redistributed route
+              if (ospfRedistribVars != null) {
+                BoolExpr betterLen = mkGt(ospfRedistribVars.getPrefixLength(), mkInt(prefixLength));
+                BoolExpr equalLen = mkEq(ospfRedistribVars.getPrefixLength(), mkInt(prefixLength));
+                BoolExpr betterAd = mkLt(ospfRedistribVars.getAdminDist(), mkInt(110));
+                BoolExpr better = mkOr(betterLen, mkAnd(equalLen, betterAd));
+                BoolExpr betterRedistributed = mkAnd(ospfRedistribVars.getPermitted(), better);
+                relevant = mkAnd(relevant, mkNot(betterRedistributed));
+              }// else if (softospf != null) {
+              //  BoolExpr betterRedistributed = softospf.getPermitted();
+               // relevant = mkAnd(relevant, mkNot(betterRedistributed));              
+              //}
+
+              acc = mkIf(relevant, values, acc);
             }
-            _routerConsMap.put(router, mkAnd(_routerConsMap.get(router), mkNot(shouldAdd)));  
-            relevantPrefix = mkAnd(relevantPrefix, shouldAdd);
-            BoolExpr relevant = mkAnd(ifaceUp, relevantPrefix);
-
-            int adminDistance = defaultAdminDistance(conf, proto);
-            int prefixLength = p.getPrefixLength();
-
-            BoolExpr per = vars.getPermitted();
-            BoolExpr lp = safeEq(vars.getLocalPref(), mkInt(0));
-            BoolExpr ad = safeEq(vars.getAdminDist(), mkInt(adminDistance));
-            BoolExpr met = safeEq(vars.getMetric(), mkInt(cost));
-            BoolExpr med = safeEq(vars.getMed(), mkInt(100));
-            BoolExpr len = safeEq(vars.getPrefixLength(), mkInt(prefixLength));
-            BoolExpr type = safeEqEnum(vars.getOspfType(), OspfType.O);
-            BoolExpr area = safeEqEnum(vars.getOspfArea(), iface.getOspfAreaName());
-            BoolExpr internal = safeEq(vars.getBgpInternal(), mkFalse());
-            BoolExpr igpMet = safeEq(vars.getIgpMetric(), mkInt(0));
-            BoolExpr comms = mkTrue();
-            for (Map.Entry<CommunityVar, BoolExpr> entry : vars.getCommunities().entrySet()) {
-              comms = mkAnd(comms, mkNot(entry.getValue()));
-            }
-            BoolExpr values =
-                mkAnd(per, lp, ad, met, med, len, type, area, internal, igpMet, comms);
-
-            // Don't originate OSPF route when there is a better redistributed route
-            if (ospfRedistribVars != null) {
-              BoolExpr betterLen = mkGt(ospfRedistribVars.getPrefixLength(), mkInt(prefixLength));
-              BoolExpr equalLen = mkEq(ospfRedistribVars.getPrefixLength(), mkInt(prefixLength));
-              BoolExpr betterAd = mkLt(ospfRedistribVars.getAdminDist(), mkInt(110));
-              BoolExpr better = mkOr(betterLen, mkAnd(equalLen, betterAd));
-              BoolExpr betterRedistributed = mkAnd(ospfRedistribVars.getPermitted(), better);
-              relevant = mkAnd(relevant, mkNot(betterRedistributed));
-            }// else if (softospf != null) {
-            //  BoolExpr betterRedistributed = softospf.getPermitted();
-             // relevant = mkAnd(relevant, mkNot(betterRedistributed));              
-            //}
-
-            acc = mkIf(relevant, values, acc);
           }
         }//*/
 
