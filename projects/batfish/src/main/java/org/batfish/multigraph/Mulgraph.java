@@ -221,8 +221,21 @@ public class Mulgraph implements Runnable {
         System.out.println("Total community " + countComm());
         System.out.println("Total edgecost var: " + dg.getNumberOfEdges() * 7);
         System.out.println("Num ibgp: " + (dg.iBGPCorr.size() * 2 + dg.defCorr.size() * 2));
-        System.out.println("Num commseen: " + (dg.iBGPCorr.size() * 2 + dg.defCorr.size() * 2));
+        System.out.println("Num commseen: " + countIBGP());
 
+    }
+
+    public int countIBGP(){
+        int count = 0;
+
+        for (Node aNode : dg.getVertices()) {            
+            for ( Edge thisEdge : dg.getNeighbors(aNode)) {
+                if (thisEdge.getType() == protocol.IBGP || thisEdge.getType() == protocol.DEF)
+                    count = count + 1;
+            }
+        }
+
+        return count;
     }
 
     public int countComm(){
@@ -235,7 +248,6 @@ public class Mulgraph implements Runnable {
 
         return count;
     }
-
 
     public void initialize() {
 
