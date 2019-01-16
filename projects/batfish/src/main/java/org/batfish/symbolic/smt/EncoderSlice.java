@@ -2582,20 +2582,21 @@ private void addSymbolicPacketBoundConstraints() {
             BoolExpr shouldAdd;
 
             boolean noChange = router.endsWith("a") || router.endsWith("b");
-
-            if (!_isTCE && !noChange)
-            {
-              shouldAdd = getCtx().mkBoolConst(_encoder.getId() + "_" + router +
-               "-StaticRouteAddSoft-" + ge);
-              if (_encoder._repairObjective == 0) {
-                addSoft(mkNot(shouldAdd), staticWeight, "StaticAdd");
+            if (!noChange) {
+              if (!_isTCE)
+              {
+                shouldAdd = getCtx().mkBoolConst(_encoder.getId() + "_" + router +
+                 "-StaticRouteAddSoft-" + ge);
+                if (_encoder._repairObjective == 0) {
+                  addSoft(mkNot(shouldAdd), staticWeight, "StaticAdd");
+                }
+                _staticRouteAddSoft.put(ge, shouldAdd);
+                _routerConsMap.put(router, mkAnd(_routerConsMap.get(router), mkNot(shouldAdd)));
+              } else {
+                shouldAdd = _existsES.getStaticRouteAddSoft().get(ge);
               }
-              _staticRouteAddSoft.put(ge, shouldAdd);
-              _routerConsMap.put(router, mkAnd(_routerConsMap.get(router), mkNot(shouldAdd)));
-            } else {
-              shouldAdd = _existsES.getStaticRouteAddSoft().get(ge);
+              notBlocked = mkOr(notBlocked, shouldAdd);
             }
-            notBlocked = mkOr(notBlocked, shouldAdd);
             
           }
           add(mkEq(mkAnd(notBlocked, mkEq(getSymbolicFailures().getFailedVariable(ge), mkInt(0))), dForward));
