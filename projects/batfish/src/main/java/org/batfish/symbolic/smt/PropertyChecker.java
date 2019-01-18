@@ -886,6 +886,8 @@ public class PropertyChecker {
     Graph graph = new Graph(_batfish);
     if (!graph.getIbgpNeighbors().isEmpty())
       System.out.println("IBGP");
+    else
+      System.out.println("No");
     if (true)
       return new NullAnswer();
     setAllMPLS(graph);
