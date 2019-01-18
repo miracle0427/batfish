@@ -333,12 +333,13 @@ public class Mulgraph2 implements Runnable {
     public void run() {
         newBuildGraph();
         //System.out.println(srcNode + "\t" + dstNode+ "\n" + dg);
+        /*
         System.out.println("Number of nodes: " + dg.getVertices().size());
         System.out.println("Number of edges: " + dg.getNumberOfEdges());
         System.out.println("Total community " + countComm());
         System.out.println("Total edgecost var: " + dg.getNumberOfEdges() * 7);
         System.out.println("Num ibgp: " + (dg.iBGPCorr.size() * 2 + dg.defCorr.size() * 2));
-        System.out.println("Num ibgp: " + countIBGP());
+        System.out.println("Num ibgp: " + countIBGP());*/
 
     }
 

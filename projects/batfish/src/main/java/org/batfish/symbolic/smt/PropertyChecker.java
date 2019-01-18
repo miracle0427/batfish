@@ -884,6 +884,10 @@ public class PropertyChecker {
    */
   public AnswerElement checkGraphFail(HeaderLocationQuestion q){
     Graph graph = new Graph(_batfish);
+    if (!graph.getIbgpNeighbors().isEmpty())
+      System.out.println("IBGP");
+    if (true)
+      return new NullAnswer();
     setAllMPLS(graph);
     Map<String, policyName> policyMap = createPolMap();
     //System.out.println(q.getSrcIps() + "\t" + q.getDstIps());
