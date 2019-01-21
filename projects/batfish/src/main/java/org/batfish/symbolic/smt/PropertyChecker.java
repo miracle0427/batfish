@@ -950,13 +950,7 @@ public class PropertyChecker {
       System.out.println("Policy: " + policyType);
 
       Ips basicIp = ips.get(0);
-      long startGen = System.nanoTime();
       Mulgraph2 basicMulgraph = new Mulgraph2(graph, basicIp.ingressNodeRegex, basicIp.finalNodeRegex, basicIp.srcip, basicIp.dstip, digraphMap);
-      long endGen = System.nanoTime();      
-      long baseGenerationTime = endGen - startGen;
-      System.out.println("Generate time: " + baseGenerationTime/(double)1000000 + " ms");
-      if (true)
-        return new NullAnswer();
 
       int numThreads = Runtime.getRuntime().availableProcessors();
       ExecutorService pool = Executors.newFixedThreadPool(numThreads);
