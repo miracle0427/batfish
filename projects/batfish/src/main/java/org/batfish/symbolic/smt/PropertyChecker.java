@@ -751,6 +751,7 @@ public class PropertyChecker {
       result.put("black", policyName.BLACK);
       result.put("isolated", policyName.ISOLATED);
       result.put("multipath", policyName.MULTIPATH);
+      result.put("bf", policyName.BF);
 
       return Collections.unmodifiableMap(result);
   }

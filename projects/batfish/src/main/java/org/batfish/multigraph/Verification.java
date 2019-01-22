@@ -81,8 +81,17 @@ public class Verification implements Runnable {
         	prefPath();
         } else if (policy == policyName.WAY) {
         	alwaysWaypoint();
+        } else if (policy == policyName.BF) {
+        	getPath();
         }
     }
+
+	public boolean getPath() {		
+        BF bf = new BF(g);
+        bf.shortestPath(src, dst);
+        return true;
+	}
+
 
 	public boolean prefPath() {
 		
