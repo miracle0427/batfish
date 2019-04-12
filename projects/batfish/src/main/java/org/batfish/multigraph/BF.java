@@ -231,8 +231,8 @@ public class BF {
 
     // return shortest path
     public Path shortestPath(Node src, Node dst) { 
-
-
+        //g.removeEdge(g.getEdgeById("c-BGP", "b-BGP"));
+        g.setCorrelated();
         EdgeCost currWeight = new EdgeCost();
         Path path = new Path();
         Node s = g.getVertex(src.getId());
@@ -260,7 +260,13 @@ public class BF {
         // shortest path from src to any other Node can 
         // have at-most |V| - 1 edges 
         //System.out.println("Starting weight calc");
-        for(Node vertices : g.getVertices()) { 
+        boolean changed = true;
+        //for(Node vertices : g.getVertices()) {
+        while (true) {
+          if (changed == false) {
+            break;
+          }
+          changed = false;
           for(Node u : g.getVertices()) {
             for(Edge e1 : g.getNeighbors(u)) {
 
@@ -274,6 +280,10 @@ public class BF {
                     boolean canAllow = false;
                     if (nextHop.get(v) != null && nextHop.get(v) != v ) {
                         protocol edgeType = g.getEdge(v, nextHop.get(v)).getType();
+                        if (edgeType != protocol.OSPF) {
+                            canAllow = true;
+                            //System.out.println("ibgp " + e1);    
+                        }
                         if (edgeType == protocol.OSPF) {
                             Node next = nextHop.get(v);
                             if (nextHop.get(next) != null && nextHop.get(next) != next ) {
@@ -317,17 +327,18 @@ public class BF {
 
                 if ( (weight_v.valid == true) ) {
                     currWeight = update(weight_v, dist, e1.getType());
-                    /*
-                    if (u.getId().equals("b-OSPF")){
+                    
+                    /*if (u.getId().equals("c-BGP")){
                         System.out.println(u + "\t" + currWeight+ "\t" + weight_u);
                         System.out.println(e1 + "  " + weight_v);
                     }*/
 
                     if (compare(currWeight, weight_u)) {
+                        //System.out.println(u + "\t" + v + "\t" + currWeight);
                         weight.put(u, currWeight);
                         addToPrevHop(prevHop, v, u, nextHop.get(u));
                         nextHop.put(u, v);
-
+                        changed = true;
                         if (couldSee.containsKey(v)) {
                             for ( String comm : couldSee.get(v) ) {
                                 if ( !( u.removedCommunity.contains(comm) || u.addedCommunity.contains(comm)) ) {
@@ -351,6 +362,7 @@ public class BF {
         //System.out.println("Path finding");
         Node cur = s;
         path.add(s);
+        //System.out.println(s+ "\t" + d);
         //System.out.println(nextHop);
         //System.out.println("Path");
         //System.out.print(cur);
@@ -367,7 +379,7 @@ public class BF {
                 break;
             }
             if (visitedInPath.get(cur) == true) {
-                //System.out.println("cycle");
+                System.out.println("cycle");
                 break;
             }            
             path.add(nextHop.get(cur), g.getEdge(cur, nextHop.get(cur)));

@@ -1,2 +1,2 @@
 init-snapshot /users/anubhavnidhi/aceso/rebase/batfish/test_rigs/smt-examples/TESTCONF 
-get arcFail failNodeRegex="testcom", notFailNodeRegex="bf"
+get arcFail failNodeRegex="testcom", notFailNodeRegex="none"

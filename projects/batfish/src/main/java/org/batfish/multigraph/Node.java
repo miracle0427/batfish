@@ -10,7 +10,7 @@ public class Node {
     public Set<String> addedCommunity;
     public Set<String> removedCommunity;
     public Set<String> blockedCommunity;
-
+    public boolean taint = false;
 
     public Node(String x, protocol y){
         id = x; type = y;

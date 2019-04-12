@@ -864,6 +864,11 @@ public class Mulgraph implements Runnable {
             dg.add(src, dst, ec, proto);
             dg.getEdge(src, dst).setIsACL(acl);
             dg.addPhysicalMap(src, dst, countmap);
+            if (proto == protocol.IBGP) {
+                dg._ibgpPeers.get(src).add(dst);
+                dg._ibgpPeers.get(dst).add(src);
+            }
+
         } else if (srcVrfSize > 0 && dstVrfSize == 0) {
             Node dst = multigraphNode.get(dstname);
             for (String srcVRF : _vrfMap.get(srcRouter)) {
@@ -871,6 +876,10 @@ public class Mulgraph implements Runnable {
                 dg.add(src, dst, ec, proto);
                 dg.getEdge(src, dst).setIsACL(acl);
                 dg.addPhysicalMap(src, dst, countmap);
+                if (proto == protocol.IBGP) {
+                    dg._ibgpPeers.get(src).add(dst);
+                    dg._ibgpPeers.get(dst).add(src);
+                }                
             }
 
         } else if (srcVrfSize == 0 && dstVrfSize > 0) {
@@ -880,6 +889,10 @@ public class Mulgraph implements Runnable {
                 dg.add(src, dst, ec, proto);
                 dg.getEdge(src, dst).setIsACL(acl);
                 dg.addPhysicalMap(src, dst, countmap);
+                if (proto == protocol.IBGP) {
+                    dg._ibgpPeers.get(src).add(dst);
+                    dg._ibgpPeers.get(dst).add(src);
+                }                
             }
 
         } else if (srcVrfSize > 0 && dstVrfSize > 0) {
@@ -894,6 +907,10 @@ public class Mulgraph implements Runnable {
                         dg.add(src, dst, ec, proto);
                         dg.getEdge(src, dst).setIsACL(acl);
                         dg.addPhysicalMap(src, dst, countmap);
+                        if (proto == protocol.IBGP) {
+                            dg._ibgpPeers.get(src).add(dst);
+                            dg._ibgpPeers.get(dst).add(src);
+                        }                
                     }
                 }
             }
@@ -1100,6 +1117,7 @@ public class Mulgraph implements Runnable {
                             ec.setAS(0);
                             src = multigraphNode.get(srcnode);
                             dst = multigraphNode.get(dstnode);
+
                             setBGPCost(importRP, exportRP, ec, conf);
                             boolean acl = blockAcl(e.getEnd(), e.getStart());
                             //dg.add(dst, src, ec, protocol.IBGP);
@@ -1284,6 +1302,7 @@ public class Mulgraph implements Runnable {
                     multigraphNode.put(protName, protNode);
                     setAllCommunities(protNode, router);
                     phyNodeMap.get(router).add(protNode);
+                    dg._ibgpPeers.put(protNode, new HashSet<Node>());
 
                     for (String vrfName : _vrfMap.get(router)) {
                         String vrfNodeName = protName + "-" + vrfName;
@@ -1292,9 +1311,11 @@ public class Mulgraph implements Runnable {
                         multigraphNode.put(vrfNodeName, vrfNode);
                         setAllCommunities(vrfNode, router);
                         phyNodeMap.get(router).add(vrfNode);
+                        dg._ibgpPeers.put(vrfNode, new HashSet<Node>());
+
                     }
                 } else if (proto.isOspf()) {
-                    protocol thisProtocol = protocol.BGP;
+                    protocol thisProtocol = protocol.OSPF;
                     protName = router + "-OSPF";
                     protNode = new Node(protName, protocol.OSPF);
                     dg.add(protNode);

@@ -22,7 +22,7 @@ public class Edge {
         result.put(protocol.REDISOB, 20);
         result.put(protocol.REDISBO, 100);
         result.put(protocol.IBGP, 200);
-        result.put(protocol.DEF, 1000);
+        result.put(protocol.DEF, 100);
         result.put(protocol.NONE, 100000);
         result.put(protocol.REDISSB, 20);
         result.put(protocol.REDISSO, 100);
@@ -77,7 +77,7 @@ public class Edge {
         //return "[src=" + src + ", dst=" + vertex + ", cost=" + cost + "]";
         //return "Edge [src=" + src + ", dst=" + vertex + ", isACL=" + hasACL;// + ", cost=" + cost + "]";
         //return "Edge [src=" + src + ", dst=" + vertex + ", " + cost + "]";
-        return "Edge [src=" + src + ", dst=" + vertex + "]";
+        return "Edge [src=" + src + ", dst=" + vertex + " type: " + type  + "]";
     }
 
     public Edge copy() {

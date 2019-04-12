@@ -11,12 +11,13 @@ public class EdgeCost {
     Boolean valid;
 
     public EdgeCost() {
-        AD = Integer.MAX_VALUE; //
-        ospf_cost = Integer.MAX_VALUE;
-        as_length = Integer.MAX_VALUE;
+        // 2147483 = max value
+        AD = 2147483; //
+        ospf_cost = 0;
+        as_length = 0;
         lp = -1; //
         med = -1; //           
-        rediscost = Integer.MAX_VALUE;
+        rediscost = 0;
         valid = false;
     }
 

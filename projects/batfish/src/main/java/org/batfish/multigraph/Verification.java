@@ -70,6 +70,7 @@ public class Verification implements Runnable {
 
     public void run() {
         if (policy == policyName.BLOCK) {
+        	//System.out.println(src + "\t" + dst + "\t" + alwaysBlocked());
         	alwaysBlocked();
         } else if (policy == policyName.FAIL) {
         	fail();
@@ -83,12 +84,17 @@ public class Verification implements Runnable {
         	alwaysWaypoint();
         } else if (policy == policyName.BF) {
         	getPath();
-        }
+        } else if (policy == policyName.NONE) {
+        	UnreachableTaint unreach = new UnreachableTaint(g);
+        	//unreach.isUnreachable(src, dst);
+        	//System.out.println(src + "\t" + dst + "\t" + unreach.isUnreachable(src, dst));
+        	unreach.isUnreachable(src, dst);
+		} 
     }
 
 	public boolean getPath() {		
         BF bf = new BF(g);
-        bf.shortestPath(src, dst);
+        System.out.println(bf.shortestPath(src, dst));
         return true;
 	}
 

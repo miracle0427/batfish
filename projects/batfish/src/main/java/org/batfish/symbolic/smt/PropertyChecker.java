@@ -752,6 +752,7 @@ public class PropertyChecker {
       result.put("isolated", policyName.ISOLATED);
       result.put("multipath", policyName.MULTIPATH);
       result.put("bf", policyName.BF);
+      result.put("none", policyName.NONE);
 
       return Collections.unmodifiableMap(result);
   }
@@ -952,7 +953,7 @@ public class PropertyChecker {
 
       Ips basicIp = ips.get(0);
       Mulgraph2 basicMulgraph = new Mulgraph2(graph, basicIp.ingressNodeRegex, basicIp.finalNodeRegex, basicIp.srcip, basicIp.dstip, digraphMap);
-
+      //System.out.println(basicMulgraph.dg);
       int numThreads = Runtime.getRuntime().availableProcessors();
       ExecutorService pool = Executors.newFixedThreadPool(numThreads);
       System.out.println("Start generation");

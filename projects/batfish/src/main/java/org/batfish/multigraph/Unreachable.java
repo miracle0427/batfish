@@ -17,6 +17,7 @@ public class Unreachable {
     // check if src and dst are unreachable
     public Boolean isUnreachable(Node src, Node dst)  
     { 
+        //g.removeEdge(g.getEdgeById("c-BGP", "b-BGP"));
         // Initially mark all vertices as not visited 
         //boolean visited[] = new boolean[nr_vertices];
         HashMap<Node, Boolean> visited = new HashMap<>(); 

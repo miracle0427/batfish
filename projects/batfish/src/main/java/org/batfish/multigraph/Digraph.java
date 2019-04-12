@@ -51,6 +51,7 @@ public class Digraph {
 
     private Node dstTCNode = null;
 
+    public Map<Node, Set<Node>> _ibgpPeers = new HashMap<>();
     /**
      * String representation of graph.
      */
@@ -299,6 +300,21 @@ public class Digraph {
       neighbors = reverseNeighbors;
     }
 
+    public Map<Node, List<Edge>> getReverseNeighbors() {
+      Map<Node, List<Edge>> reverseNeighbors = new HashMap<>();
+      for (Node node: getVertices()) {
+        reverseNeighbors.put(node, new ArrayList<Edge>());
+      }
+
+      for (Node from : getVertices()) {
+        for (Edge e : neighbors.get(from)) {
+          Node to = e.getDst();
+          reverseNeighbors.get(to).add(new Edge(to, from, e.getCost(), e.getType()));
+        }
+      }
+      return reverseNeighbors;
+    }
+
     public List<Edge> inboundEdges(Node inboundVertex) {
         List<Edge> inList = new ArrayList<>();
         for (Node from : getVertices()) {
@@ -486,7 +502,7 @@ public class Digraph {
                       List<List<Node>> all = new ArrayList<>();
                       all.add(starttwo);
                       iBGPCorr.put(key, all);  
-                      System.out.println("iBGP set");
+                      //System.out.println("iBGP set");
                     }
                   }
 
@@ -504,7 +520,7 @@ public class Digraph {
                       List<List<Node>> all = new ArrayList<>();
                       all.add(starttwo);
                       defCorr.put(key, all);  
-                      System.out.println("DEF set");                      
+                      //System.out.println("DEF set");                      
                     }
                   }
 
@@ -542,7 +558,7 @@ public class Digraph {
                       List<List<Node>> all = new ArrayList<>();
                       all.add(starttwo);
                       iBGPCorr.put(key, all);  
-                      System.out.println("iBGP set");
+                      //System.out.println("iBGP set");
                     }
                   }
 
@@ -560,7 +576,7 @@ public class Digraph {
                       List<List<Node>> all = new ArrayList<>();
                       all.add(starttwo);
                       defCorr.put(key, all);  
-                      System.out.println("DEF set");
+                      //System.out.println("DEF set");
                     }
                   }
 

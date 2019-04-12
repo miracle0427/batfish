@@ -240,7 +240,6 @@ public class Mulgraph2 implements Runnable {
         importMap = basic.importMap;
         exportMap = basic.exportMap;
         policyConfMap = basic.policyConfMap;
-
     }
 
     public void setL2Map(Map<String, Map<String, Set<String>>> l2) {
@@ -446,7 +445,7 @@ public class Mulgraph2 implements Runnable {
                     for (Node dstprot : allnode) {
                         if (dstprot.getType() == protocol.BGP) {
                             //System.out.println("Mayadd "+ srcprot +"\t"+ dstprot);
-                            if (hasSameVrf(node, srcprot, dstprot))
+                            //if (hasSameVrf(node, srcprot, dstprot))
                                 dg.add(srcprot, dstprot, returnDefaultEC(), protocol.DEF);
                             //connectVRF(node, node, srcprot.getId(), dstprot.getId(), ec, false, protocol.IBGP);
                         }
@@ -942,6 +941,10 @@ public class Mulgraph2 implements Runnable {
             dg.add(src, dst, ec, proto);
             dg.getEdge(src, dst).setIsACL(acl);
             dg.addPhysicalMap(src, dst, countmap);
+            if (proto == protocol.IBGP) {
+                dg._ibgpPeers.get(src).add(dst);
+                dg._ibgpPeers.get(dst).add(src);
+            }            
         } else if (srcVrfSize > 0 && dstVrfSize == 0) {
             Node dst = multigraphNode.get(dstname);
             for (String srcVRF : _vrfMap.get(srcRouter)) {
@@ -949,6 +952,10 @@ public class Mulgraph2 implements Runnable {
                 dg.add(src, dst, ec, proto);
                 dg.getEdge(src, dst).setIsACL(acl);
                 dg.addPhysicalMap(src, dst, countmap);
+                if (proto == protocol.IBGP) {
+                    dg._ibgpPeers.get(src).add(dst);
+                    dg._ibgpPeers.get(dst).add(src);
+                }                
             }
 
         } else if (srcVrfSize == 0 && dstVrfSize > 0) {
@@ -958,6 +965,10 @@ public class Mulgraph2 implements Runnable {
                 dg.add(src, dst, ec, proto);
                 dg.getEdge(src, dst).setIsACL(acl);
                 dg.addPhysicalMap(src, dst, countmap);
+                if (proto == protocol.IBGP) {
+                    dg._ibgpPeers.get(src).add(dst);
+                    dg._ibgpPeers.get(dst).add(src);
+                }                
             }
 
         } else if (srcVrfSize > 0 && dstVrfSize > 0) {
@@ -972,6 +983,10 @@ public class Mulgraph2 implements Runnable {
                         dg.add(src, dst, ec, proto);
                         dg.getEdge(src, dst).setIsACL(acl);
                         dg.addPhysicalMap(src, dst, countmap);
+                        if (proto == protocol.IBGP) {
+                            dg._ibgpPeers.get(src).add(dst);
+                            dg._ibgpPeers.get(dst).add(src);
+                        }                
                     }
                 }
             }
@@ -1174,7 +1189,7 @@ public class Mulgraph2 implements Runnable {
                             if (g.getIbgpNeighbors().containsKey(e)) {
                                 _hasIBGP.add(router);
                                 //System.out.println("IBGP " + e.getRouter() + "\t" + e.getPeer());
-                                continue;
+                                //continue;
                             }
                             RoutingPolicy importRP = g.findImportRoutingPolicy(router, proto, e);
                             RoutingPolicy exportRP = g.findExportRoutingPolicy(router, proto, e);
@@ -1200,8 +1215,11 @@ public class Mulgraph2 implements Runnable {
                             // ARCHIE avoid acl
                             if (acl == true)
                                 continue;
-
-                            connectVRF(dstname, srcname, dstnode, srcnode, ec, acl, protocol.BGP, importRP, exportRP, e.getEnd(), e.getStart());
+                            if (g.getIbgpNeighbors().containsKey(e)) {
+                                //connectVRF(dstname, srcname, dstnode, srcnode, ec, acl, protocol.IBGP, importRP, exportRP, e.getEnd(), e.getStart());
+                            }
+                            else
+                                connectVRF(dstname, srcname, dstnode, srcnode, ec, acl, protocol.BGP, importRP, exportRP, e.getEnd(), e.getStart());
 
     					} else if (proto.isOspf()) {
     						srcnode = srcnode + "-OSPF";
@@ -1283,6 +1301,7 @@ public class Mulgraph2 implements Runnable {
     	}
 
         // add IBGP
+        /*
         for (Entry<String, List<GraphEdge>> entry : g.getEdgeMap().entrySet()) {
             String router = entry.getKey();
             List<GraphEdge> edges = entry.getValue();
@@ -1300,10 +1319,10 @@ public class Mulgraph2 implements Runnable {
                         if (ibgpcontains(srcnode, dstnode)) {
                             RoutingPolicy importRP = g.findImportRoutingPolicy(router, proto, e);
                             RoutingPolicy exportRP = g.findExportRoutingPolicy(router, proto, e);
-                            /*
-                            if(blockFilter(importRP, conf) || blockFilter(exportRP, conf)) {
-                                continue;
-                            }*/
+                            //
+                            //if(blockFilter(importRP, conf) || blockFilter(exportRP, conf)) {
+                            //    continue;
+                            //}
                             EdgeCost ec = new EdgeCost();
                             srcnode = srcnode + "-BGP";
                             dstnode = dstnode + "-BGP";
@@ -1322,11 +1341,12 @@ public class Mulgraph2 implements Runnable {
                     }
                 }
             }
-        }
+        }*/
 
         // add edge between ibgp and ospf
         for (String node : phyNodeMap.keySet()) {
             if (!_hasIBGP.contains(node)) {
+                //System.out.println(node + " not has" );
                 continue;
             }
             Set<Node> allnode = phyNodeMap.get(node);
@@ -1335,7 +1355,7 @@ public class Mulgraph2 implements Runnable {
                     for (Node dstprot : allnode) {
                         if (dstprot.getType() == protocol.OSPF) {
                             //System.out.println("Mayadd "+ srcprot +"\t"+ dstprot);
-                            if (hasSameVrf(node, srcprot, dstprot))
+                            //if (hasSameVrf(node, srcprot, dstprot))
                                 dg.add(srcprot, dstprot, returnDefaultEC(), protocol.IBGP);
                             //connectVRF(node, node, srcprot.getId(), dstprot.getId(), ec, false, protocol.IBGP);
                         }
@@ -1494,6 +1514,7 @@ public class Mulgraph2 implements Runnable {
                     multigraphNode.put(protName, protNode);
                     setAllCommunities(protNode, router);
                     phyNodeMap.get(router).add(protNode);
+                    dg._ibgpPeers.put(protNode, new HashSet<Node>());
 
                     for (String vrfName : _vrfMap.get(router)) {
                         String vrfNodeName = protName + "-" + vrfName;
@@ -1502,6 +1523,7 @@ public class Mulgraph2 implements Runnable {
                         multigraphNode.put(vrfNodeName, vrfNode);
                         setAllCommunities(vrfNode, router);
                         phyNodeMap.get(router).add(vrfNode);
+                        dg._ibgpPeers.put(vrfNode, new HashSet<Node>());
                     }
                 } else if (proto.isOspf()) {
                     protocol thisProtocol = protocol.BGP;
