@@ -3676,6 +3676,12 @@ public class Batfish extends PluginConsumer implements IBatfish {
 
 
   @Override
+  public AnswerElement arcRAG(HeaderLocationQuestion q) {
+    PropertyChecker p = new PropertyChecker(new BDDPacket(), this, _settings);
+    return p.checkRAG(q);
+  }
+
+  @Override
   public AnswerElement arcReach(HeaderLocationQuestion q) {
     PropertyChecker p = new PropertyChecker(new BDDPacket(), this, _settings);
     return p.checkGraphReachability(q);

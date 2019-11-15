@@ -81,7 +81,9 @@ import java.util.concurrent.TimeUnit;
 
 import org.batfish.mulgraph.Mulgraph;
 import org.batfish.mulgraph.Mulgraph2;
+import org.batfish.mulgraph.buildTpg;
 import org.batfish.mulgraph.Digraph;
+import org.batfish.mulgraph.Tpg;
 import org.batfish.mulgraph.Node;
 import org.batfish.mulgraph.Verification;
 import org.batfish.mulgraph.policyName;
@@ -880,6 +882,91 @@ public class PropertyChecker {
 
     return new NullAnswer();
   }
+
+
+  /*
+   * Check if things are reachable
+   */
+  public AnswerElement checkRAG(HeaderLocationQuestion q){
+    Graph graph = new Graph(_batfish);
+    Map<String, policyName> policyMap = createPolMap();
+    q.setBenchmark(false);
+
+    System.out.println("Layer1 Edges");
+    if (!(q.getFailNodeRegex() == null ||q.getFailNodeRegex() == "")) {      
+      ConcurrentHashMap<String, Tpg> tpgMap
+       = new ConcurrentHashMap<>();
+
+      String policyPath = q.getFailNodeRegex();
+      String policyType = q.getNotFailNodeRegex();
+      
+      if (policyType == null || policyType =="" || !policyMap.containsKey(policyType)) {
+        System.out.println("Error policy type");
+        return new NullAnswer();
+      }
+
+      policyName thisPolicy =  policyMap.get(policyType);
+
+      List<Ips> ips = getAllIps(policyPath);
+
+      int numThreads = Runtime.getRuntime().availableProcessors();
+      ExecutorService pool = Executors.newFixedThreadPool(numThreads);
+      System.out.println("Start generation");
+      long startTime = System.nanoTime();
+      for (Ips aIp : ips) {
+        Runnable makeGraph = new buildTpg(graph, aIp.ingressNodeRegex, aIp.finalNodeRegex, aIp.srcip, aIp.dstip, tpgMap);
+        pool.execute(makeGraph);
+      }
+      pool.shutdown();
+
+      try {
+          pool.awaitTermination(5000, TimeUnit.SECONDS);
+      } catch (InterruptedException e) {
+          System.out.println("Graph creation interrupted. EXIT");
+          System.exit(0);
+      }
+      long endTime = System.nanoTime();      
+      long graphGenerationTime = endTime - startTime;
+
+      System.out.println("End generation");
+
+      /*
+      System.out.println("Start Verification");
+      ExecutorService pool2 = Executors.newFixedThreadPool(numThreads);
+
+      startTime = System.nanoTime();
+      for (String ipKey : digraphMap.keySet()) {
+        Digraph currentGraph = digraphMap.get(ipKey);
+        Runnable veri = new Verification(currentGraph, thisPolicy);
+        if (currentGraph.getSrc() == null || currentGraph.getDst()== null)
+          continue;
+        ((Verification) veri).setSrcDstTC(currentGraph.getSrc(), currentGraph.getDst());
+        pool2.execute(veri);
+        //((Verification) veri).run();
+      }
+      
+      pool2.shutdown();
+
+      try {
+          pool2.awaitTermination(5000, TimeUnit.SECONDS);
+      } catch (InterruptedException e) {
+          System.out.println("Verifictaion interrupted. EXIT");
+          System.exit(0);
+      }
+      endTime = System.nanoTime();      
+      long verificationTime = endTime - startTime;
+      System.out.println("End Verification");
+      System.out.println("Generate time: " + graphGenerationTime/(double)1000000 + " ms" +
+        "\nVerification time: " + verificationTime/(double)1000000 + " ms");
+      */
+
+    }
+    
+    //System.out.println(_batfish.getLayer2Topology().getGraph().edges());
+
+    return new NullAnswer();
+  }
+
 
   /*
    * Check if things are reachable

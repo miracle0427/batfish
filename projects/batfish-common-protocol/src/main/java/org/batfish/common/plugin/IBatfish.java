@@ -207,6 +207,8 @@ public interface IBatfish extends IPluginConsumer {
 
   AnswerElement arcReach(HeaderLocationQuestion q);
 
+  AnswerElement arcRAG(HeaderLocationQuestion q);
+
   AnswerElement arcFail(HeaderLocationQuestion q);
 
   AnswerElement smtBlackhole(HeaderQuestion q);

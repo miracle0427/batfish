@@ -366,6 +366,11 @@ public class IBatfishTestAdapter implements IBatfish {
   }
 
   @Override
+  public AnswerElement arcRAG(HeaderLocationQuestion q) {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
   public AnswerElement arcFail(HeaderLocationQuestion q) {
     throw new UnsupportedOperationException();
   }
