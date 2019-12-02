@@ -18,7 +18,7 @@ public class EdgeCost {
         lp = -1; //
         med = -1; //           
         rediscost = 0;
-        valid = false;
+        valid = true;
     }
 
     public EdgeCost copy() {
@@ -95,6 +95,10 @@ public class EdgeCost {
 
     public int getWeight() {
         return weight;
+    }
+
+    public void setInvalid() {
+        valid = false;   
     }
 
     @Override

@@ -25,9 +25,7 @@ public class Tpg {
 
     private TpgNode dstTCNode = null;
 
-    public Map<TpgNode, Set<TpgNode>> _ibgpPeers = new HashMap<>();
-
-    private Map<TpgEdge, Integer> logicalPhysicalMap = new HashMap<>();
+    public Map<String, Set<TpgEdge>> logicalPhysicalMap = new HashMap<>();
 
     /**
      * String representation of graph.
@@ -102,23 +100,14 @@ public class Tpg {
      * Add an edge to the graph; if either vertex does not exist, it's added.
      * This implementation allows the creation of multi-edges and self-loops.
      */
-    public void add(TpgNode from, TpgNode to, EdgeCost cost, protocol type) {
+    public TpgEdge add(TpgNode from, TpgNode to, EdgeCost cost, protocol type) {
         //System.out.println(from + "\t" + to);
         this.add(from);
         this.add(to);
-        neighbors.get(from).add(new TpgEdge(from, to, cost, type));
+        TpgEdge thisEdge = new TpgEdge(from, to, cost, type);
+        neighbors.get(from).add(thisEdge);
         nr_edges = nr_edges + 1;
-    }
-
-    /**
-     * Add both side edges to the graph
-     */
-    public void diAdd(TpgNode from, TpgNode to, EdgeCost cost, protocol type) {
-        this.add(from);
-        this.add(to);
-        neighbors.get(from).add(new TpgEdge(from, to, cost, type));
-        neighbors.get(to).add(new TpgEdge(to, from, cost, type));
-        nr_edges = nr_edges + 2;
+        return thisEdge;
     }
 
     public int outDegree(int vertex) {
@@ -190,21 +179,12 @@ public class Tpg {
       return null;
     }
 
-    public void addPhysicalMap(TpgNode from, TpgNode to, int p) {
-      for(TpgEdge e :  neighbors.get(from)){
-          if(e.vertex.equals(to)) {
-            logicalPhysicalMap.put(e, p);
-            return;
-          }
-      }
+    public void setPhysicalMap(Map<String, Set<TpgEdge>> lmap) {
+      logicalPhysicalMap = lmap;
     }
 
-    public int getPhysicalMap(TpgNode from, TpgNode to) {
-      TpgEdge e = getEdge(from, to);
-      if ( e!=null && logicalPhysicalMap.containsKey(e) ) {
-        return logicalPhysicalMap.get(e);
-      }
-      return -1;
+    public Map<String, Set<TpgEdge>> getPhysicalMap() {
+      return logicalPhysicalMap;
     }
 
     public void printAllPhysicalMap() {

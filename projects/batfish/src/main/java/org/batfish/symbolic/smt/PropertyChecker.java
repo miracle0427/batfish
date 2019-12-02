@@ -86,6 +86,7 @@ import org.batfish.mulgraph.Digraph;
 import org.batfish.mulgraph.Tpg;
 import org.batfish.mulgraph.Node;
 import org.batfish.mulgraph.Verification;
+import org.batfish.mulgraph.VerificationTpg;
 import org.batfish.mulgraph.policyName;
 
 
@@ -892,10 +893,11 @@ public class PropertyChecker {
     Map<String, policyName> policyMap = createPolMap();
     q.setBenchmark(false);
 
-    System.out.println("Layer1 Edges");
+    //System.out.println("Layer1 Edges");
     if (!(q.getFailNodeRegex() == null ||q.getFailNodeRegex() == "")) {      
-      ConcurrentHashMap<String, Tpg> tpgMap
-       = new ConcurrentHashMap<>();
+
+      //ConcurrentHashMap<String, Tpg> tpgMap
+      // = new ConcurrentHashMap<>();
 
       String policyPath = q.getFailNodeRegex();
       String policyType = q.getNotFailNodeRegex();
@@ -906,7 +908,7 @@ public class PropertyChecker {
       }
 
       policyName thisPolicy =  policyMap.get(policyType);
-
+      /*
       List<Ips> ips = getAllIps(policyPath);
 
       int numThreads = Runtime.getRuntime().availableProcessors();
@@ -930,19 +932,17 @@ public class PropertyChecker {
 
       System.out.println("End generation");
 
-      /*
       System.out.println("Start Verification");
       ExecutorService pool2 = Executors.newFixedThreadPool(numThreads);
 
       startTime = System.nanoTime();
-      for (String ipKey : digraphMap.keySet()) {
-        Digraph currentGraph = digraphMap.get(ipKey);
-        Runnable veri = new Verification(currentGraph, thisPolicy);
+      for (String ipKey : tpgMap.keySet()) {
+        Tpg currentGraph = tpgMap.get(ipKey);
+        Runnable veri = new VerificationTpg(currentGraph, thisPolicy);
         if (currentGraph.getSrc() == null || currentGraph.getDst()== null)
           continue;
-        ((Verification) veri).setSrcDstTC(currentGraph.getSrc(), currentGraph.getDst());
+        ((VerificationTpg) veri).setSrcDstTC(currentGraph.getSrc(), currentGraph.getDst());
         pool2.execute(veri);
-        //((Verification) veri).run();
       }
       
       pool2.shutdown();
@@ -953,13 +953,29 @@ public class PropertyChecker {
           System.out.println("Verifictaion interrupted. EXIT");
           System.exit(0);
       }
+      */
+      System.out.println("Start generation");
+      Ips aIp = getAllIps(policyPath).get(0);
+      buildTpg makeGraph = new buildTpg(graph, aIp.ingressNodeRegex, aIp.finalNodeRegex, aIp.srcip, aIp.dstip, null);
+      long startTime = System.nanoTime();
+      makeGraph.run();
+      long endTime = System.nanoTime();      
+      long graphGenerationTime = endTime - startTime;
+
+      System.out.println("End generation");
+
+      System.out.println("Start Verification");
+      Tpg currentGraph = makeGraph.getTpg();
+      VerificationTpg veri = new VerificationTpg(currentGraph, thisPolicy);
+      veri.setSrcDstTC(currentGraph.getSrc(), currentGraph.getDst());
+      startTime = System.nanoTime();
+      veri.run();
       endTime = System.nanoTime();      
       long verificationTime = endTime - startTime;
       System.out.println("End Verification");
       System.out.println("Generate time: " + graphGenerationTime/(double)1000000 + " ms" +
         "\nVerification time: " + verificationTime/(double)1000000 + " ms");
-      */
-
+      
     }
     
     //System.out.println(_batfish.getLayer2Topology().getGraph().edges());

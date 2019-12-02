@@ -10,6 +10,7 @@ public class TpgEdge {
     EdgeCost cost;
     protocol type;
     boolean hasACL = false;
+    boolean canRemove = false;
 
     static final Map<protocol, Integer> protocol_map = createMap();
 
@@ -45,6 +46,12 @@ public class TpgEdge {
         cost.AD = protocol_map.get(type);
     }
 
+
+    public TpgEdge(TpgNode s, TpgNode v, EdgeCost c, protocol p, boolean acl, boolean removable){
+        src = s; vertex = v; cost = c; type = p; hasACL = acl; canRemove = removable;
+        cost.AD = protocol_map.get(type);
+    }
+
     public TpgNode getDst() {
         return vertex;
     }
@@ -69,17 +76,21 @@ public class TpgEdge {
         return hasACL;
     }
 
-    public void setIsACL(boolean b) {
-        hasACL = b;
+    public void setACL() {
+        hasACL = true;
+    }
+
+    public void setRemovable() {
+        canRemove = true;
     }
 
     @Override
     public String toString() {
-        return "Edge [src=" + src + ", dst=" + vertex/* + " type: " + type */ + "]";
+        return "Edge [src=" + src + ", dst=" + vertex + ", cost=" + cost/* + " type: " + type */ + "]";
     }
 
     public TpgEdge copy() {
-        return new TpgEdge(src, vertex, cost.copy(), type);
+        return new TpgEdge(src, vertex, cost.copy(), type, hasACL, canRemove);
     }
 
 }

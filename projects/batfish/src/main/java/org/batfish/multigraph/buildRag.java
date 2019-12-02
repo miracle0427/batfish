@@ -253,8 +253,6 @@ public class buildRag implements Runnable {
     				if (g.isEdgeUsed(conf, proto, e)) {
 						srcnode = e.getRouter();
 						dstnode = e.getPeer();
-                        srcname = e.getRouter();
-                        dstname = e.getPeer();
 
 						if (srcnode == null || dstnode == null)
 							continue;
@@ -288,7 +286,7 @@ public class buildRag implements Runnable {
 							src = multigraphNode.get(srcnode);
     						dst = multigraphNode.get(dstnode);
     						rpg.add(src, dst, protocol.OSPF);
-    					}
+                        }
     				}
     			}
     		}
