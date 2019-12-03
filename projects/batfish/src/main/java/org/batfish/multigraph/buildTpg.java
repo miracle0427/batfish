@@ -142,7 +142,7 @@ public class buildTpg implements Runnable {
 
     public void run() {
         buildGraph();
-        draw();
+        //draw();
         /*
         System.out.println("Number of nodes: " + tpg.getVertices().size());
         System.out.println("Number of edges: " + tpg.getNumberOfEdges());
@@ -187,21 +187,21 @@ public class buildTpg implements Runnable {
                 continue;
             }
             protName = createName(router, "RIB");
-            protNode = new TpgNode(protName, protocol.RIB);
+            protNode = new TpgNode(protName, protocol.RIB, router);
             tpg.add(protNode);
             multigraphNode.put(protName, protNode);
             phyNodeMap.get(router).add(protNode);
 
             if (_protocols.get(router).contains(Protocol.OSPF)) {
                 protName = createName(router, "OSPF");
-                protNode = new TpgNode(protName, protocol.OSPF);
+                protNode = new TpgNode(protName, protocol.OSPF, router);
                 tpg.add(protNode);
                 multigraphNode.put(protName, protNode);
                 phyNodeMap.get(router).add(protNode);
             }
             if (_protocols.get(router).contains(Protocol.BGP)) {
                 protName = createName(router, "BGP");
-                protNode = new TpgNode(protName, protocol.BGP);
+                protNode = new TpgNode(protName, protocol.BGP, router);
                 tpg.add(protNode);
                 multigraphNode.put(protName, protNode);
                 phyNodeMap.get(router).add(protNode);
@@ -219,7 +219,7 @@ public class buildTpg implements Runnable {
                 if (g.isEdgeUsed(conf, Protocol.BGP, e)) {
                     if (e.getStart()!=null && e.getEnd()!=null) {
                         protName = bgpName(e.getRouter(), e.getPeer());
-                        protNode = new TpgNode(protName, protocol.BGP);
+                        protNode = new TpgNode(protName, protocol.BGP, e.getRouter());
                         tpg.add(protNode);
                         multigraphNode.put(protName, protNode);
                         phyNodeMap.get(router).add(protNode);
@@ -231,7 +231,7 @@ public class buildTpg implements Runnable {
                 }
                 if (e.getEnd()!=null) {
                     protName = intfName(e.getPeer(), e.getEnd().getName());
-                    addInterface(e.getRouter(), protName);
+                    addInterface(e.getPeer(), protName);
                 }
             }
         }
@@ -346,7 +346,7 @@ public class buildTpg implements Runnable {
 
             if (_protocols.get(router).contains(Protocol.OSPF)) {
                 protName = prefix + '_' + createName(router, "OSPF");
-                protNode = new TpgNode(protName, protocol.OSPF);
+                protNode = new TpgNode(protName, protocol.OSPF, router);
                 //System.out.println(protName);
                 tpg.add(protNode);
                 multigraphNode.put(protName, protNode);
@@ -467,13 +467,13 @@ public class buildTpg implements Runnable {
 
         if (multigraphNode.containsKey(inName))
             return;
-        TpgNode protNode = new TpgNode(inName, protocol.INTF);
+        TpgNode protNode = new TpgNode(inName, protocol.INTF, router);
         tpg.add(protNode);
         multigraphNode.put(inName, protNode);
         phyNodeMap.get(router).add(protNode);                    
 
         String outName = protName+"_O";
-        protNode = new TpgNode(outName, protocol.INTF);
+        protNode = new TpgNode(outName, protocol.INTF, router);
         tpg.add(protNode);
         multigraphNode.put(outName, protNode);
         phyNodeMap.get(router).add(protNode);                    
@@ -524,7 +524,7 @@ public class buildTpg implements Runnable {
 
         if (srcNodeName != null && phyNodeMap.containsKey(srcNodeName)) {
             //System.out.println(srcNodeName);
-            srcTC = new TpgNode(srcNodeName, protocol.SRC);
+            srcTC = new TpgNode(srcNodeName, protocol.SRC, srcNodeName);
             tpg.add(srcTC);
             String ribSrc = createName(srcNodeName, "RIB");
             TpgNode ribSrcNode = tpg.getVertex(ribSrc);
@@ -549,7 +549,7 @@ public class buildTpg implements Runnable {
         }
         if (dstNodeName != null && phyNodeMap.containsKey(dstNodeName)) {
             //System.out.println(dstNodeName);
-            dstTC = new TpgNode(dstNodeName, protocol.DST);
+            dstTC = new TpgNode(dstNodeName, protocol.DST, dstNodeName);
             tpg.add(dstTC);
             String ribDst = createName(dstNodeName, "RIB");
             TpgNode ribDstNode = tpg.getVertex(ribDst);

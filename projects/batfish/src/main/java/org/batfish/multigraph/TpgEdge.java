@@ -11,6 +11,8 @@ public class TpgEdge {
     protocol type;
     boolean hasACL = false;
     boolean canRemove = false;
+    boolean failed = false;
+
 
     static final Map<protocol, Integer> protocol_map = createMap();
 
@@ -25,8 +27,8 @@ public class TpgEdge {
         result.put(protocol.IBGP, 200);
         result.put(protocol.DEF, 100);
         result.put(protocol.NONE, 100000);
-        result.put(protocol.INTF, 100000);
-        result.put(protocol.RIB, 100000);
+        result.put(protocol.INTF, 10000);
+        result.put(protocol.RIB, 1000);
         result.put(protocol.REDISSB, 20);
         result.put(protocol.REDISSO, 100);
         result.put(protocol.SWITCH, 10000);

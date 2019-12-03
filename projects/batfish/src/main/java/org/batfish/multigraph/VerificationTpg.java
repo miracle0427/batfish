@@ -76,13 +76,15 @@ public class VerificationTpg implements Runnable {
         	equalLength();
         } else if (policy == policyName.BOUND) {
         	boundLength();
-        }/* else if (policy == policyName.PREF) {
+        } else if (policy == policyName.BF) {
+        	getPath();
+        }  else if (policy == policyName.TPVP) {
+        	getTPVPPath();
+        } /* else if (policy == policyName.PREF) {
         	prefPath();
         } else if (policy == policyName.WAY) {
         	alwaysWaypoint();
-        } else if (policy == policyName.BF) {
-        	getPath();
-        } else if (policy == policyName.NONE) {
+        }else if (policy == policyName.NONE) {
         	UnreachableTaint unreach = new UnreachableTaint(g);
         	//unreach.isUnreachable(src, dst);
         	//System.out.println(src + "\t" + dst + "\t" + unreach.isUnreachable(src, dst));
@@ -91,8 +93,15 @@ public class VerificationTpg implements Runnable {
     }
 
 	public boolean getPath() {		
+        TPVP_BF tpvp = new TPVP_BF(tpg);
+        System.out.println(tpvp.shortestPath(src, dst));
+        return true;
+	}
+
+	public boolean getTPVPPath() {		
         TPVP tpvp = new TPVP(tpg);
-        //System.out.println(tpvp.shortestPath(src, dst));
+        System.out.println(tpvp.shortestPath(src, dst));
+        System.out.println(tpvp.getActualPath());
         return true;
 	}
 

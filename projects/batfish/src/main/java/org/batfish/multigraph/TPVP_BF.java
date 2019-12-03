@@ -8,30 +8,22 @@ import java.util.HashSet;
 import java.util.Iterator;
 
 
-public class TPVP {
+public class TPVP_BF {
 
 	Tpg g;
 
     Map<TpgNode, EdgeCost> weight;
     Map<TpgNode, TpgNode> nextHop;
     Map<TpgNode, TpgPath> bestPath;
-    Map<TpgNode, Map<TpgNode, EdgeCost>> nextPathCosts;
     HashSet<TpgEdge> failedSet;
 
-    EdgeCost curBestWeight;
-
-    TpgNode s, d;
-
-
-
-	public TPVP(Tpg graph) {	
+	public TPVP_BF(Tpg graph) {	
 		g = graph;
 
-        weight = new HashMap<>();
-        nextHop = new HashMap<>();
-        bestPath = new HashMap<>();
+        weight = new HashMap<TpgNode, EdgeCost>();
+        nextHop = new HashMap<TpgNode, TpgNode>();
+        bestPath = new HashMap<TpgNode, TpgPath>();
         failedSet = new HashSet<>();
-        nextPathCosts = new HashMap<>();
         initializeGraph();
 	}
 
@@ -43,13 +35,7 @@ public class TPVP {
             weight.put(v, new EdgeCost());
             weight.get(v).setInvalid();
             nextHop.put(v, null);
-            nextPathCosts.put(v, new HashMap<>());
             bestPath.put(v, new TpgPath());
-            for (TpgEdge e1 : g.getNeighbors(v)) {
-                TpgNode next = e1.getDst(); 
-                nextPathCosts.get(v).put(next, new EdgeCost());
-                nextPathCosts.get(v).get(next).setInvalid();
-            }
         }
     }
 
@@ -173,23 +159,10 @@ public class TPVP {
         return false;
     }
 
-    public TpgNode getBest(TpgNode curNode) {
-        TpgNode best = null;
-        for (TpgNode neighbor : nextPathCosts.get(curNode).keySet()) {
-            EdgeCost cur = nextPathCosts.get(curNode).get(neighbor);
-            if (cur.valid && compare(cur, curBestWeight)) {
-                curBestWeight = cur;
-                best = neighbor;
-            }
-        }
-        return best;
-
-    }
-
     // return shortest path
     public TpgPath shortestPath(TpgNode src, TpgNode dst) { 
-        s = g.getVertex(src.getId());
-        d = g.getVertex(dst.getId());
+        TpgNode s = g.getVertex(src.getId());
+        TpgNode d = g.getVertex(dst.getId());
         //System.out.println(((Node)src).getId());
         //System.out.println(currWeight);
 
@@ -208,46 +181,36 @@ public class TPVP {
         //for(Node vertices : g.getVertices()) {
         while (changed) {
           changed = false;
-
           for(TpgNode u : g.getVertices()) {
-
-            EdgeCost weight_u = weight.get(u);
             for(TpgEdge e1 : g.getNeighbors(u)) {
                 if (failedSet.contains(e1)) {
                     continue;
                 }
                 TpgNode v = e1.getDst(); 
                 EdgeCost dist = e1.getCost();
+                EdgeCost weight_u = weight.get(u);
                 EdgeCost weight_v = weight.get(v);
                 TpgPath path_v = bestPath.get(v);
 
-                if ( (weight_v.valid) && !path_v.contains(u) ) {
+                if (weight_v.valid) {
                     currWeight = update(weight_v, dist, e1.getType());
-                    nextPathCosts.get(u).put(v, currWeight);
-                    
+                    //System.out.println(u + "\t" + v + "\t" + currWeight);
                     /*if (u.getId().equals("c-BGP")){
                         System.out.println(u + "\t" + currWeight+ "\t" + weight_u);
                         System.out.println(e1 + "  " + weight_v);
                     }*/
-                } else {
-                    nextPathCosts.get(u).get(v).setInvalid();
+
+                    if (compare(currWeight, weight_u) && !path_v.contains(u)) {
+                        //System.out.println(u + "\t" + v + "\t" + currWeight);
+                        weight.put(u, currWeight);
+                        nextHop.put(u, v);
+                        TpgPath path_u = new TpgPath(path_v);
+                        path_u.add(u);
+                        bestPath.put(u, path_u);
+                        changed = true;
+                    }
                 }
             }
-
-            curBestWeight = new EdgeCost();
-            TpgNode best = getBest(u);
-            if (best!= null) {
-                if( (best!=nextHop.get(u)) && compare(curBestWeight, weight_u)) {
-                    weight.put(u, curBestWeight);
-                    nextHop.put(u, best);
-                    TpgPath path_u = new TpgPath(bestPath.get(best));
-                    path_u.add(u);
-                    bestPath.put(u, path_u);
-                    changed = true;
-                    //System.out.println(u + "\t" + best + "\t" + curBestWeight);
-                }
-            }
-
           } //break;
         }
 
@@ -258,33 +221,5 @@ public class TPVP {
         //*/
     } 
 
-    public String createName(String router, String prefix) {
-        return router+"-"+prefix;
-    }
-
-    public TpgPath getActualPath() {
-        TpgPath actualPath = new TpgPath();
-        Boolean done = false;
-        TpgNode entryNode = s;
-        while (!done) {
-            String name = createName(entryNode.getDevice(), "RIB");
-            TpgPath curPath = bestPath.get(g.getVertex(name));
-            TpgNode curNode = curPath.getVertex(0);
-            String curRouter = curNode.getDevice();
-            for (TpgNode n : curPath.getTpgNodes()) {
-                if (n.getId().equals(d.getId())) {
-                    actualPath.addEnd(n);
-                    done = true;
-                    break;
-                } else if (curRouter.equals(n.getDevice())) {
-                    actualPath.addEnd(n);
-                } else {
-                    entryNode = n;
-                    break;
-                }
-            }
-        }
-        return actualPath;
-    }
 
 }

@@ -755,6 +755,7 @@ public class PropertyChecker {
       result.put("isolated", policyName.ISOLATED);
       result.put("multipath", policyName.MULTIPATH);
       result.put("bf", policyName.BF);
+      result.put("tpvp", policyName.TPVP);
       result.put("none", policyName.NONE);
 
       return Collections.unmodifiableMap(result);

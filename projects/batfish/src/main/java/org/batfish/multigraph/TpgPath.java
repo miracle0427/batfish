@@ -18,23 +18,28 @@ public class TpgPath {
 
     public TpgPath(TpgPath prev) {  
         pathTpgNodes = new ArrayList<TpgNode>();
-
+        nodeNames = new HashSet<>();
         for (TpgNode vertex : prev.pathTpgNodes) {
-            TpgNode n = vertex.copy();
-            pathTpgNodes.add(n);
-            nodeNames.add(n.getId());
+            //TpgNode n = vertex.copy();
+            pathTpgNodes.add(vertex);
+            nodeNames.add(vertex.getId());
         }
         ec = prev.ec.copy();
     }
 
-    public boolean exists(TpgNode node) {
+    public boolean contains(TpgNode node) {
         return nodeNames.contains(node.getId());
     }
 
-	public void add(TpgNode n) {	
-		pathTpgNodes.add(n);
+    public void add(TpgNode n) {    
+        pathTpgNodes.add(0, n);
         nodeNames.add(n.getId());
-	}
+    }
+
+    public void addEnd(TpgNode n) {    
+        pathTpgNodes.add(n);
+        nodeNames.add(n.getId());
+    }
 
 
 	public void setTpgPath() {	

@@ -1,2 +1,2 @@
 init-snapshot /users/anubhavnidhi/aceso/rebase/batfish/test_rigs/smt-examples/ibgpospf 
-get arcRAG failNodeRegex="smallexm", notFailNodeRegex="bf"
+get arcRAG failNodeRegex="smallexm", notFailNodeRegex="tpvp"
