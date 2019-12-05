@@ -413,7 +413,7 @@ public class buildTpg implements Runnable {
         TpgNode in = multigraphNode.get(name1);
         TpgNode out = multigraphNode.get(name2);
         if(in==null || out==null) {
-            System.out.println("addTpgEdge Null val " + name1 + "\t" + name2 + "\t"  + in + "\t"  + out);
+            //System.out.println("addTpgEdge Null val " + name1 + "\t" + name2 + "\t"  + in + "\t"  + out);
             return;
         }
         tpg.add(in, out, new EdgeCost(), prot);
@@ -423,7 +423,7 @@ public class buildTpg implements Runnable {
         TpgNode in = multigraphNode.get(name1);
         TpgNode out = multigraphNode.get(name2);
         if(in==null || out==null) {
-            System.out.println("addTpgEdge Null val " + name1 + "\t" + name2 + "\t"  + in + "\t"  + out);
+            //System.out.println("addTpgEdge Null val " + name1 + "\t" + name2 + "\t"  + in + "\t"  + out);
             return;
         }
         tpg.add(in, out, ec, prot);
@@ -433,7 +433,7 @@ public class buildTpg implements Runnable {
         TpgNode in = multigraphNode.get(name+"_I");
         TpgNode out = multigraphNode.get(name+"_O");
         if(in==null || out==null) {
-            System.out.println("addIntraIntfEdge Null val");
+            //System.out.println("addIntraIntfEdge Null val");
             return;
         }
         tpg.add(in, out, new EdgeCost(), protocol.INTF);
@@ -443,7 +443,7 @@ public class buildTpg implements Runnable {
         TpgNode in = multigraphNode.get(name1+"_O");
         TpgNode out = multigraphNode.get(name2+"_I");
         if(in==null || out==null) {
-            System.out.println("addInterIntfEdge Null val");
+            //System.out.println("addInterIntfEdge Null val");
             return;
         }
         String key = srcRouter + "_" + dstRouter;
@@ -531,7 +531,7 @@ public class buildTpg implements Runnable {
             if ( ribSrcNode != null) {
                 tpg.add(srcTC, ribSrcNode, new EdgeCost(), protocol.SRC);
             } else {
-                System.out.println("Invalid Source");
+                //System.out.println("Invalid Source");
             }
 
             /*
@@ -556,7 +556,7 @@ public class buildTpg implements Runnable {
             if ( ribDstNode != null) {
                 tpg.add( ribDstNode, dstTC, new EdgeCost(), protocol.DST);
             } else {
-                System.out.println("Invalid Destination");
+                //System.out.println("Invalid Destination");
             }            
             /*
             String ospfRouter = createName(dstNodeName, "OSPF");
