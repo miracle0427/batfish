@@ -12,6 +12,5 @@ sudo apt-get -y install software-properties-common
 sudo apt-add-repository ppa:webupd8team/java
 sudo apt-get -y update
 sudo apt-get -y install maven
-sudo apt-get -y install oracle-java8-installer
-
+sudo apt-get -y install openjdk-8-jdk openjdk-8-jre
 batfish_build_all
