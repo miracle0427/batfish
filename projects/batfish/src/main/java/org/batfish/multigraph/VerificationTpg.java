@@ -4,6 +4,7 @@ import java.util.Map;
 import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class VerificationTpg implements Runnable {
 
@@ -35,18 +36,19 @@ public class VerificationTpg implements Runnable {
 	public void removeNode(TpgNode v) {
 		tpg.getNeighborMap().put(v, new ArrayList<TpgEdge>());
 	}
-	/*
+
 	public boolean alwaysWaypoint() {
 		//removeNode(waypoint);
-		if (alwaysBlocked(src, dst) == true)
+		if (alwaysBlocked() == true)
 			return true;
 		//change this to waypointnode
-		List<Node> way = g.outboundNeighbors(src);
+		List<TpgNode> way = tpg.outboundNeighbors(src);
 		if (way.size() > 0)
 		removeNode(way.get(0));
-		return alwaysBlocked(src, dst);		
+		return alwaysBlocked();		
 	}
 
+	/*
 	public double fail(Node srcNode, Node dstNode) {
 		src = srcNode;
 		dst = dstNode;
@@ -80,11 +82,11 @@ public class VerificationTpg implements Runnable {
         	getPath();
         }  else if (policy == policyName.TPVP) {
         	getTPVPPath();
-        } /* else if (policy == policyName.PREF) {
+        } else if (policy == policyName.PREF) {
         	prefPath();
-        } else if (policy == policyName.WAY) {
+        }  else if (policy == policyName.WAY) {
         	alwaysWaypoint();
-        }else if (policy == policyName.NONE) {
+        }/* else if (policy == policyName.NONE) {
         	UnreachableTaint unreach = new UnreachableTaint(g);
         	//unreach.isUnreachable(src, dst);
         	//System.out.println(src + "\t" + dst + "\t" + unreach.isUnreachable(src, dst));
@@ -94,46 +96,36 @@ public class VerificationTpg implements Runnable {
 
 	public boolean getPath() {		
         TPVP_BF tpvp = new TPVP_BF(tpg);
-        System.out.println(tpvp.shortestPath(src, dst));
+        //System.out.println(tpvp.shortestPath(src, dst));
+        tpvp.shortestPath(src, dst);
         return true;
 	}
 
 	public boolean getTPVPPath() {		
         TPVP tpvp = new TPVP(tpg);
-        System.out.println(tpvp.shortestPath(src, dst));
-        System.out.println(tpvp.getActualPath());
+        //System.out.println(tpvp.shortestPath(src, dst));
+        tpvp.shortestPath(src, dst);
+        //System.out.println(tpvp.getActualPath());
+        //System.out.println(tpvp.getAllEdges());
         return true;
 	}
-
-	/*
 
 
 	public boolean prefPath() {
-		*/	
-        /*
-        BF bf = new BF(g);
-        bf.shortestPath(src, dst);
-        bf.initializeGraph();
-        bf.shortestPath(src, dst);
-        bf.initializeGraph();
-        bf.shortestPath(src, dst);
-        bf.initializeGraph();
-        bf.shortestPath(src, dst);
-        bf.initializeGraph();
-        bf.shortestPath(src, dst);
-        bf.initializeGraph();
-        bf.shortestPath(src, dst);
-        bf.initializeGraph();*/
-        /*
-        //System.out.println("start");
-        //System.out.println(bf.shortestPath(src, dst));
-        //bf.initializeGraph();
-        RYen yen = new RYen(g);
-        //System.out.println(yen.ksp(src, dst, 4));
-        yen.ksp(src, dst, 4);
+        TPVP tpvp = new TPVP(tpg);
+        tpvp.shortestPath(src, dst);
+        int count = 2;
+        HashSet<TpgEdge> edgeSet = tpvp.getAllEdges();
+        //System.out.println(edgeSet);
+        for(TpgEdge e : edgeSet) {
+        	tpvp.addFailEdge(e);
+        	tpvp.initializeGraph();
+        	//System.out.println(tpvp.shortestPath(src, dst));
+        	tpvp.shortestPath(src, dst);
+        	tpvp.removeFailEdge(e);
+        }
         return true;
 	}
-	*/
 
 
 	public boolean boundLength() {
@@ -171,7 +163,7 @@ public class VerificationTpg implements Runnable {
 		UnreachableTpg unreach = new UnreachableTpg(tpg);
 		//boolean result = unreach.isUnreachableTpg(src, dst);
 		boolean result = unreach.isUnreachableTpg(src, dst);
-		System.out.println("Always Blocked: " + result);
+		//System.out.println("Always Blocked: " + result);
 		return result;
 	}
 

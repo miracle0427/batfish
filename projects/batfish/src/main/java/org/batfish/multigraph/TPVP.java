@@ -53,8 +53,12 @@ public class TPVP {
         }
     }
 
-    public void setFailSet(HashSet<TpgEdge> fails) {
-        failedSet = fails;
+    public void addFailEdge(TpgEdge fail) {
+        failedSet.add(fail);
+    }
+
+    public void removeFailEdge(TpgEdge fail) {
+        failedSet.remove(fail);
     }
 
     public EdgeCost update(EdgeCost weight_u, EdgeCost dist, protocol type) {
@@ -200,6 +204,8 @@ public class TPVP {
         nextHop.put(d, d);
         bestPath.get(d).add(d);
 
+        //System.out.println("FailSet " + failedSet);
+
         // Step 2: Relax all edges |V| - 1 times. A simple 
         // shortest path from src to any other Node can 
         // have at-most |V| - 1 edges 
@@ -285,6 +291,42 @@ public class TPVP {
             }
         }
         return actualPath;
+    }
+
+    public HashSet<TpgEdge> getRemovalEdges(TpgPath curPath) {
+        HashSet<TpgEdge> edgeSet = new HashSet<>();
+        ArrayList<TpgNode> nodes = curPath.getTpgNodes();
+        int size = nodes.size();
+        for (int i = 0; i + 1 < size; i++) {
+            TpgEdge edge = g.getEdge(nodes.get(i), nodes.get(i+1));
+            if (edge != null && edge.canRemove) {
+                edgeSet.add(edge);
+            }
+        }
+        return edgeSet;
+    }
+
+    public HashSet<TpgEdge> getAllEdges() {
+        Boolean done = false;
+        TpgNode entryNode = s;
+        HashSet<TpgEdge> edgeSet = new HashSet<>();
+        while (!done) {
+            String name = createName(entryNode.getDevice(), "RIB");
+            TpgPath curPath = bestPath.get(g.getVertex(name));
+            TpgNode curNode = curPath.getVertex(0);
+            String curRouter = curNode.getDevice();
+            edgeSet.addAll(getRemovalEdges(curPath));
+            for (TpgNode n : curPath.getTpgNodes()) {
+                if (n.getId().equals(d.getId())) {
+                    done = true;
+                    break;
+                } else if (!curRouter.equals(n.getDevice())) {
+                    entryNode = n;
+                    break;
+                }
+            }
+        }
+        return edgeSet;
     }
 
 }
