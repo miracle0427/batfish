@@ -135,7 +135,7 @@ public class VerificationTpg implements Runnable {
 		double time1 = pl.run();
 		double obj = pl.returnObj();
 		//System.out.println( (time1 + time2)+ " ms" );
-		//System.out.println( min + "\t" + max );
+		//System.out.println( "Length\t" + obj );
 		return (obj!=-1 && (obj == 5));
 		
 	}

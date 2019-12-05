@@ -967,9 +967,10 @@ public class PropertyChecker {
 
       System.out.println("Start Verification");
       Tpg currentGraph = makeGraph.getTpg();
+      //System.out.println("Nodes: " + currentGraph.getVertices());
       System.out.println("Number of nodes: " + currentGraph.getVertices().size());
       System.out.println("Number of edges: " + currentGraph.getNumberOfEdges());
-      
+
       VerificationTpg veri = new VerificationTpg(currentGraph, thisPolicy);
       veri.setSrcDstTC(currentGraph.getSrc(), currentGraph.getDst());
       startTime = System.nanoTime();

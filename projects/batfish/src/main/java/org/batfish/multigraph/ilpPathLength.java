@@ -57,7 +57,9 @@ public class ilpPathLength {
         for(TpgEdge to : g.getNeighbors(from)) {
           GRBVar flowVar = model.addVar(0.0, 1.0, 0.0, GRB.BINARY, ("flow"+from+"-"+to.getDst()) );
           flowTemp.put(to.getDst(), flowVar);
-          allFlows.add(flowVar);
+          if (to.canRemove) {
+            allFlows.add(flowVar);
+          }
         }
         flow.put(from, flowTemp);
       }
