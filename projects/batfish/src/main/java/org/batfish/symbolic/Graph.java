@@ -895,11 +895,12 @@ public class Graph {
    * in the network by walking over every configuration.
    */
   public Set<CommunityVar> findAllCommunities() {
+    /*
     Set<CommunityVar> comms = new HashSet<>();
     for (String router : getRouters()) {
       comms.addAll(findAllCommunities(router));
       setCommunityMap(router);
-    }
+    }*/
     /*
     for (String router : getRouters()) {
       setCommunity(router);
@@ -907,7 +908,7 @@ public class Graph {
     */
 
     // Add an other option that matches a regex but isn't from this network
-
+    /*
     List<CommunityVar> others = new ArrayList<>();
     for (CommunityVar c : comms) {
       if (c.getType() == CommunityVar.Type.REGEX) {
@@ -917,6 +918,8 @@ public class Graph {
     }
     comms.addAll(others);
     return comms;
+    */
+    return new HashSet<>();
   }
 
   public void setCommunityMap(String router) {
@@ -1049,6 +1052,7 @@ public class Graph {
 
 
   public Set<CommunityVar> findAllCommunities(String router) {
+    /*
     Set<CommunityVar> comms = new HashSet<>();
     Configuration conf = getConfigurations().get(router);
 
@@ -1085,6 +1089,9 @@ public class Graph {
     }
 
     return comms;
+    */
+    return new HashSet<>();
+
   }
 
   /*
