@@ -211,9 +211,9 @@ public class Graph {
     initIbgpNeighbors();
     initAreaIds();
     initDomains();
-    initAllCommunities();
-    initCommDependencies();
-    initNamedCommunities();
+    //initAllCommunities();
+    //initCommDependencies();
+    //initNamedCommunities();
   }
 
   /*
