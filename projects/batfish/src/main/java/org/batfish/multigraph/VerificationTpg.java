@@ -72,9 +72,9 @@ public class VerificationTpg implements Runnable {
         if (policy == policyName.BLOCK) {
         	//System.out.println(src + "\t" + dst + "\t" + alwaysBlocked());
         	alwaysBlocked();
-        }/* else if (policy == policyName.FAIL) {
+        } else if (policy == policyName.FAIL) {
         	fail();
-        }*/ else if (policy == policyName.EQUAL) {
+        } else if (policy == policyName.EQUAL) {
         	equalLength();
         } else if (policy == policyName.BOUND) {
         	boundLength();
@@ -94,6 +94,16 @@ public class VerificationTpg implements Runnable {
 		}*/
     }
 
+	public double fail() {
+		ilpMinCut pl = new ilpMinCut(tpg);
+		pl.formulate(src, dst);
+        TPVP tpvp = new TPVP(tpg);
+        tpvp.shortestPath(src, dst);
+        tpvp.shortestPath(src, dst);
+        return 0;
+        //TODO: Will update
+	}
+
 	public boolean getPath() {		
         TPVP_BF tpvp = new TPVP_BF(tpg);
         //System.out.println(tpvp.shortestPath(src, dst));
@@ -104,6 +114,7 @@ public class VerificationTpg implements Runnable {
 	public boolean getTPVPPath() {		
         TPVP tpvp = new TPVP(tpg);
         //System.out.println(tpvp.shortestPath(src, dst));
+        tpvp.shortestPath(src, dst);
         tpvp.shortestPath(src, dst);
         //System.out.println(tpvp.getActualPath());
         //System.out.println(tpvp.getAllEdges());
@@ -137,7 +148,6 @@ public class VerificationTpg implements Runnable {
 		//System.out.println( (time1 + time2)+ " ms" );
 		//System.out.println( "Length\t" + obj );
 		return (obj!=-1 && (obj == 5));
-		
 	}
 
 	public boolean equalLength() {
