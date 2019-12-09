@@ -6,6 +6,11 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.HashSet;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
+
+
 public class VerificationTpg implements Runnable {
 
 	Tpg tpg;
@@ -125,6 +130,28 @@ public class VerificationTpg implements Runnable {
 	public boolean prefPath() {
         TPVP tpvp = new TPVP(tpg);
         tpvp.shortestPath(src, dst);
+		int numThreads = Runtime.getRuntime().availableProcessors();
+		ExecutorService pool = Executors.newFixedThreadPool(numThreads);
+        int count = 2;
+        HashSet<TpgEdge> edgeSet = tpvp.getAllEdges();
+        //System.out.println(edgeSet);
+        for(TpgEdge e : edgeSet) {
+        	Runnable ntpvp = new TPVP(tpg, e, src, dst);
+        	pool.execute(ntpvp);
+        }
+		pool.shutdown();
+
+		try {
+		  pool.awaitTermination(5000, TimeUnit.SECONDS);
+		} catch (InterruptedException e) {
+		  System.out.println("Path preference interrupted. EXIT");
+		  System.exit(0);
+		}
+
+
+        /*
+        TPVP tpvp = new TPVP(tpg);
+        tpvp.shortestPath(src, dst);
         int count = 2;
         HashSet<TpgEdge> edgeSet = tpvp.getAllEdges();
         //System.out.println(edgeSet);
@@ -135,6 +162,8 @@ public class VerificationTpg implements Runnable {
         	tpvp.shortestPath(src, dst);
         	tpvp.removeFailEdge(e);
         }
+
+        */
         return true;
 	}
 

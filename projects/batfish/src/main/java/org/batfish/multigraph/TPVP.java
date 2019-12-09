@@ -8,7 +8,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 
 
-public class TPVP {
+public class TPVP implements Runnable {
 
 	Tpg g;
 
@@ -34,6 +34,19 @@ public class TPVP {
         nextPathCosts = new HashMap<>();
         initializeGraph();
 	}
+
+    public TPVP(Tpg graph, TpgEdge fail, TpgNode src, TpgNode dst) {    
+        g = graph;
+        weight = new HashMap<>();
+        nextHop = new HashMap<>();
+        bestPath = new HashMap<>();
+        failedSet = new HashSet<>();
+        nextPathCosts = new HashMap<>();
+        failedSet.add(fail);
+        s = g.getVertex(src.getId());
+        d = g.getVertex(dst.getId());        
+    }
+
 
     public void initializeGraph() {
 
@@ -328,5 +341,74 @@ public class TPVP {
         }
         return edgeSet;
     }
+
+
+
+    // return shortest path
+    public void run() { 
+        initializeGraph();
+
+        EdgeCost currWeight;
+        weight.put(d, new EdgeCost());
+        weight.get(d).AD = TpgEdge.protocol_map.get(protocol.DST);
+        weight.get(d).valid = true;
+        nextHop.put(d, d);
+        bestPath.get(d).add(d);
+
+        //System.out.println("FailSet " + failedSet);
+
+        // Step 2: Relax all edges |V| - 1 times. A simple 
+        // shortest path from src to any other Node can 
+        // have at-most |V| - 1 edges 
+        //System.out.println("Starting weight calc");
+        boolean changed = true;
+        //for(Node vertices : g.getVertices()) {
+        while (changed) {
+          changed = false;
+
+          for(TpgNode u : g.getVertices()) {
+
+            EdgeCost weight_u = weight.get(u);
+            for(TpgEdge e1 : g.getNeighbors(u)) {
+                if (failedSet.contains(e1)) {
+                    continue;
+                }
+                TpgNode v = e1.getDst(); 
+                EdgeCost dist = e1.getCost();
+                EdgeCost weight_v = weight.get(v);
+                TpgPath path_v = bestPath.get(v);
+
+                if ( (weight_v.valid) && !path_v.contains(u) ) {
+                    currWeight = update(weight_v, dist, e1.getType());
+                    nextPathCosts.get(u).put(v, currWeight);
+                    
+                    /*if (u.getId().equals("c-BGP")){
+                        System.out.println(u + "\t" + currWeight+ "\t" + weight_u);
+                        System.out.println(e1 + "  " + weight_v);
+                    }*/
+                } else {
+                    nextPathCosts.get(u).get(v).setInvalid();
+                }
+            }
+
+            curBestWeight = new EdgeCost();
+            TpgNode best = getBest(u);
+            if (best!= null) {
+                if( (best!=nextHop.get(u)) && compare(curBestWeight, weight_u)) {
+                    weight.put(u, curBestWeight);
+                    nextHop.put(u, best);
+                    TpgPath path_u = new TpgPath(bestPath.get(best));
+                    path_u.add(u);
+                    bestPath.put(u, path_u);
+                    changed = true;
+                    //System.out.println(u + "\t" + best + "\t" + curBestWeight);
+                }
+            }
+
+          } //break;
+        }
+
+    } 
+
 
 }
