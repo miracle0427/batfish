@@ -100,29 +100,11 @@ public class VerificationTpg implements Runnable {
     }
 
 	public double fail() {
-		//ilpMinCut pl = new ilpMinCut(tpg);
-		//pl.formulate(src, dst);
+		ilpMinCut pl = new ilpMinCut(tpg);
+		pl.formulate(src, dst);
         TPVP tpvp = new TPVP(tpg);
         tpvp.shortestPath(src, dst);
-        //tpvp.shortestPath(src, dst);
-		int numThreads = Runtime.getRuntime().availableProcessors();
-		ExecutorService pool = Executors.newFixedThreadPool(numThreads);
-        HashSet<TpgEdge> edgeSet = tpvp.getAllEdges();
-        //System.out.println(edgeSet);
-        for(TpgEdge e : edgeSet) {
-        	Runnable ntpvp = new TPVP(tpg, e, src, dst);
-        	pool.execute(ntpvp);
-        }
-		pool.shutdown();
-
-		try {
-		  pool.awaitTermination(5000, TimeUnit.SECONDS);
-		} catch (InterruptedException e) {
-		  System.out.println("Path preference interrupted. EXIT");
-		  System.exit(0);
-		}
-
-
+        tpvp.shortestPath(src, dst);
         return 0;
         //TODO: Will update
 	}
