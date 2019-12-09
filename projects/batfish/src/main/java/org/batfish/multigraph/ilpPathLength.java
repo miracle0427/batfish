@@ -135,8 +135,8 @@ public class ilpPathLength {
           //model.write("out.sol");
         }
         //
-        System.out.println("Number of variables: " + model.get(GRB.IntAttr.NumVars));
-        System.out.println("Number of constraints: " + model.get(GRB.IntAttr.NumConstrs));
+        //System.out.println("Number of variables: " + model.get(GRB.IntAttr.NumVars));
+        //System.out.println("Number of constraints: " + model.get(GRB.IntAttr.NumConstrs));
         model.dispose();
         env.dispose();
     } catch (GRBException e) {
