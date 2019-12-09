@@ -128,8 +128,12 @@ public class VerificationTpg implements Runnable {
 
 
 	public boolean prefPath() {
+        //TPVP tpvp = new TPVP(tpg);
+        //tpvp.shortestPath(src, dst);
         TPVP tpvp = new TPVP(tpg);
+        //System.out.println(tpvp.shortestPath(src, dst));
         tpvp.shortestPath(src, dst);
+
 		int numThreads = Runtime.getRuntime().availableProcessors();
 		ExecutorService pool = Executors.newFixedThreadPool(numThreads);
         int count = 2;
