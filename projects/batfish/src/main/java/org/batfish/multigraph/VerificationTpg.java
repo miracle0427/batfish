@@ -109,11 +109,53 @@ public class VerificationTpg implements Runnable {
         //TODO: Will update
 	}
 
+	public void removeUnreach(TpgNode src, TpgNode dst) {
+        HashMap<TpgNode, Boolean> visited = new HashMap<>(); 
+
+        for (TpgNode v : tpg.getVertices()) {
+            visited.put(v, false);
+        }
+        isReachableAny(src, dst, visited);
+        for (TpgNode v : tpg.getVertices()) {
+            if (visited.get(v) == false) {
+            	removeNode(v);
+            }
+        }
+	}
+
+    private Boolean isReachableAny(TpgNode u, TpgNode d, 
+        HashMap<TpgNode, Boolean> visited) { 
+          
+        // Mark the current TpgNode 
+        visited.put(u, true);
+        //System.out.println(u + " - " +d);
+
+        // Recur for all the vertices 
+        // adjacent to current TpgNode 
+        for(TpgEdge e: tpg.getNeighbors(u)) {
+            protocol current = e.getType(); 
+            TpgNode i = e.getDst();
+
+            if (visited.get(i) == false) {
+                isReachableAny(i, d, visited);
+            } 
+        } 
+        return false;          
+    }
+
 	public boolean getPath() {		
+        /*
         TPVP_BF tpvp = new TPVP_BF(tpg);
         //System.out.println(tpvp.shortestPath(src, dst));
         tpvp.shortestPath(src, dst);
+        return true;*/
+
+        removeUnreach(src, dst);
+        TPVP tpvp = new TPVP(tpg);
+        tpvp.shortestPath(src, dst);
+        tpvp.shortestPath(src, dst);
         return true;
+
 	}
 
 	public boolean getTPVPPath() {		
