@@ -100,6 +100,7 @@ public class VerificationTpg implements Runnable {
     }
 
 	public double fail() {
+        removeUnreach(src, dst);
 		ilpMinCut pl = new ilpMinCut(tpg);
 		pl.formulate(src, dst);
         TPVP tpvp = new TPVP(tpg);
@@ -159,6 +160,7 @@ public class VerificationTpg implements Runnable {
 	}
 
 	public boolean getTPVPPath() {		
+        removeUnreach(src, dst);
         TPVP tpvp = new TPVP(tpg);
         //System.out.println(tpvp.shortestPath(src, dst));
         tpvp.shortestPath(src, dst);
@@ -170,6 +172,7 @@ public class VerificationTpg implements Runnable {
 
 
 	public boolean prefPath() {
+        removeUnreach(src, dst);
         //TPVP tpvp = new TPVP(tpg);
         //tpvp.shortestPath(src, dst);
         TPVP tpvp = new TPVP(tpg);
@@ -216,6 +219,7 @@ public class VerificationTpg implements Runnable {
 
 	public boolean boundLength() {
 		
+        removeUnreach(src, dst);
 		ilpPathLength pl = new ilpPathLength(tpg);
 		pl.formulate(src, dst, 1);
 		double time1 = pl.run();
@@ -226,7 +230,7 @@ public class VerificationTpg implements Runnable {
 	}
 
 	public boolean equalLength() {
-		
+        removeUnreach(src, dst);		
 		ilpPathLength pl = new ilpPathLength (tpg);
 		pl.formulate(src, dst, 1);
 		double time1 = pl.run();
