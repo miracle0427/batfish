@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.HashSet;
-
+import java.util.Iterator;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
@@ -117,11 +117,26 @@ public class VerificationTpg implements Runnable {
             visited.put(v, false);
         }
         isReachableAny(src, dst, visited);
+        /*
         for (TpgNode v : tpg.getVertices()) {
             if (visited.get(v) == false) {
             	removeNode(v);
             }
         }
+        */
+
+		// let's use Iterator to remove a key from HashMap while iterating
+		Iterator<TpgNode> iterator = tpg.getNeighborMap().keySet().iterator();
+		//System.out.println( tpg.getNumberOfEdges() + "\t" + tpg.getVertices().size());
+		while(iterator.hasNext()){
+		  TpgNode v = iterator.next();
+		  if(visited.get(v) == false){
+		    iterator.remove();
+		  }
+		}
+		//System.out.println( tpg.getNumberOfEdges() + "\t" + tpg.getVertices().size());
+
+
 	}
 
     private Boolean isReachableAny(TpgNode u, TpgNode d, 
