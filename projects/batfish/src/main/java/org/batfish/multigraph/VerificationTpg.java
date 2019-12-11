@@ -91,21 +91,69 @@ public class VerificationTpg implements Runnable {
         	prefPath();
         }  else if (policy == policyName.WAY) {
         	alwaysWaypoint();
-        }/* else if (policy == policyName.NONE) {
+        } else if (policy == policyName.NONE) {
+        	/*
         	UnreachableTaint unreach = new UnreachableTaint(g);
         	//unreach.isUnreachable(src, dst);
         	//System.out.println(src + "\t" + dst + "\t" + unreach.isUnreachable(src, dst));
         	unreach.isUnreachable(src, dst);
-		}*/
+        	*/
+        	failsimple();
+		}
     }
+
+
+	public double failsimple() {
+        removeUnreach(src, dst);
+		ilpMinCut pl = new ilpMinCut(tpg);
+		pl.formulate(src, dst);
+        //TPVP_BF tpvp = new TPVP_BF(tpg);
+        //tpvp.shortestPath(src, dst);
+        //tpvp.shortestPath(src, dst);
+        
+        TPVP_BF tpvp = new TPVP_BF(tpg);
+        //System.out.println(tpvp.shortestPath(src, dst));
+        tpvp.shortestPath(src, dst);
+
+        tpvp.shortestPath(src, dst);
+        return 0;
+        //TODO: Will update
+	}
+
+
 
 	public double fail() {
         removeUnreach(src, dst);
 		ilpMinCut pl = new ilpMinCut(tpg);
 		pl.formulate(src, dst);
-        TPVP tpvp = new TPVP(tpg);
+        //TPVP_BF tpvp = new TPVP_BF(tpg);
+        //tpvp.shortestPath(src, dst);
+        //tpvp.shortestPath(src, dst);
+        
+        TPVP_BF tpvp = new TPVP_BF(tpg);
+        //System.out.println(tpvp.shortestPath(src, dst));
         tpvp.shortestPath(src, dst);
-        tpvp.shortestPath(src, dst);
+
+		int numThreads = Runtime.getRuntime().availableProcessors();
+		ExecutorService pool = Executors.newFixedThreadPool(numThreads);
+        int count = 2;
+        HashSet<TpgEdge> edgeSet = tpvp.getAllEdges();
+        //System.out.println(edgeSet);
+        for(TpgEdge e : edgeSet) {
+        	Runnable ntpvp = new TPVP_BF(tpg, e, src, dst);
+        	pool.execute(ntpvp);
+        }
+		pool.shutdown();
+
+		try {
+		  pool.awaitTermination(5000, TimeUnit.SECONDS);
+		} catch (InterruptedException e) {
+		  System.out.println("Path preference interrupted. EXIT");
+		  System.exit(0);
+		}
+
+
+
         return 0;
         //TODO: Will update
 	}
@@ -177,7 +225,7 @@ public class VerificationTpg implements Runnable {
 
 	public boolean getTPVPPath() {		
         removeUnreach(src, dst);
-        TPVP tpvp = new TPVP(tpg);
+        TPVP_BF tpvp = new TPVP_BF(tpg);
         //System.out.println(tpvp.shortestPath(src, dst));
         tpvp.shortestPath(src, dst);
         tpvp.shortestPath(src, dst);
@@ -191,7 +239,7 @@ public class VerificationTpg implements Runnable {
         removeUnreach(src, dst);
         //TPVP tpvp = new TPVP(tpg);
         //tpvp.shortestPath(src, dst);
-        TPVP tpvp = new TPVP(tpg);
+        TPVP_BF tpvp = new TPVP_BF(tpg);
         //System.out.println(tpvp.shortestPath(src, dst));
         tpvp.shortestPath(src, dst);
 
@@ -201,7 +249,7 @@ public class VerificationTpg implements Runnable {
         HashSet<TpgEdge> edgeSet = tpvp.getAllEdges();
         //System.out.println(edgeSet);
         for(TpgEdge e : edgeSet) {
-        	Runnable ntpvp = new TPVP(tpg, e, src, dst);
+        	Runnable ntpvp = new TPVP_BF(tpg, e, src, dst);
         	pool.execute(ntpvp);
         }
 		pool.shutdown();
