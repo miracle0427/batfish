@@ -16,6 +16,7 @@ public class TPVP_BF {
     Map<TpgNode, TpgNode> nextHop;
     Map<TpgNode, TpgPath> bestPath;
     HashSet<TpgEdge> failedSet;
+    Map<TpgNode, Boolean> hasChanged;
 
 	public TPVP_BF(Tpg graph) {	
 		g = graph;
@@ -23,6 +24,7 @@ public class TPVP_BF {
         weight = new HashMap<TpgNode, EdgeCost>();
         nextHop = new HashMap<TpgNode, TpgNode>();
         bestPath = new HashMap<TpgNode, TpgPath>();
+        hasChanged = new HashMap<TpgNode, Boolean>();
         failedSet = new HashSet<>();
         initializeGraph();
 	}
@@ -165,6 +167,9 @@ public class TPVP_BF {
         TpgNode d = g.getVertex(dst.getId());
         //System.out.println(((Node)src).getId());
         //System.out.println(currWeight);
+        for(TpgNode v : g.getVertices()) {
+            hasChanged.put(v, false);
+        }
 
         EdgeCost currWeight;
         weight.put(d, new EdgeCost());
@@ -172,21 +177,26 @@ public class TPVP_BF {
         weight.get(d).valid = true;
         nextHop.put(d, d);
         bestPath.get(d).add(d);
-
+        hasChanged.put(d, true);
         // Step 2: Relax all edges |V| - 1 times. A simple 
         // shortest path from src to any other Node can 
         // have at-most |V| - 1 edges 
         //System.out.println("Starting weight calc");
         boolean changed = true;
         //for(Node vertices : g.getVertices()) {
+        boolean firstIteration = true;
         while (changed) {
           changed = false;
           for(TpgNode u : g.getVertices()) {
+            boolean curChanged = false;
             for(TpgEdge e1 : g.getNeighbors(u)) {
                 if (failedSet.contains(e1)) {
                     continue;
                 }
                 TpgNode v = e1.getDst(); 
+                if (hasChanged.get(v) == false) {
+                    continue;
+                }
                 EdgeCost dist = e1.getCost();
                 EdgeCost weight_u = weight.get(u);
                 EdgeCost weight_v = weight.get(v);
@@ -208,11 +218,18 @@ public class TPVP_BF {
                         path_u.add(u);
                         bestPath.put(u, path_u);
                         changed = true;
+                        curChanged = true;
+                        hasChanged.put(u, true);
                     }
                 }
             }
+            if (!curChanged && !firstIteration) {
+                hasChanged.put(u, false);
+            }
           } //break;
+          firstIteration = false;
         }
+        //System.out.println(bestPath.get(s));
 
         if (weight.get(s).valid) {
             return bestPath.get(s);

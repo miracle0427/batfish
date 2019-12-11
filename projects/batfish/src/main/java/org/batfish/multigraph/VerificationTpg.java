@@ -167,7 +167,8 @@ public class VerificationTpg implements Runnable {
         return true;*/
 
         removeUnreach(src, dst);
-        TPVP tpvp = new TPVP(tpg);
+        TPVP_BF tpvp = new TPVP_BF(tpg);
+        //TPVP tpvp = new TPVP(tpg);
         tpvp.shortestPath(src, dst);
         //tpvp.shortestPath(src, dst);
         return true;
