@@ -178,7 +178,7 @@ public class VerificationTpg implements Runnable {
 		//System.out.println( tpg.getNumberOfEdges() + "\t" + tpg.getVertices().size());
 		while(iterator.hasNext()){
 		  TpgNode v = iterator.next();
-		  if(visited.get(v) == false){
+		  if(visited.get(v) == false && v!=dst){
 		    iterator.remove();
 		  }
 		}
