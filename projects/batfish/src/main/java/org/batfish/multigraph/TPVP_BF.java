@@ -223,7 +223,7 @@ public class TPVP_BF implements Runnable {
         Boolean done = false;
         TpgNode entryNode = s;
         HashSet<TpgEdge> edgeSet = new HashSet<>();
-        while (!done) {
+        while (!done && s!=null) {
             String name = createName(entryNode.getDevice(), "RIB");
             TpgPath curPath = bestPath.get(g.getVertex(name));
             TpgNode curNode = curPath.getVertex(0);
