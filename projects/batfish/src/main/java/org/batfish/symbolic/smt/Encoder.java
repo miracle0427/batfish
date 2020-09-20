@@ -289,6 +289,7 @@ public class Encoder {
 
     if (vars == null) {
       _modelAnd = mkTrue();
+      _allVariables = new HashMap<>();
       setWeights();
     } else {
       _allVariables = vars;
