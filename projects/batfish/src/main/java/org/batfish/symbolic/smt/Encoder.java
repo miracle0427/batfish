@@ -128,6 +128,8 @@ public class Encoder {
 
   public int _isBool = 0;
 
+  public Map<String, Map<String, Map<String, Map<String, Map<String, BoolExpr>>>>> _abstractTree;
+
   private List<Symbol> _allFailList;
   /**
    * @archie created this variable. optsolve will use same constraints as solver, but can support soft
@@ -136,6 +138,7 @@ public class Encoder {
   private Optimize _optsolve;
 
 
+  //public Map<String, Map<String, String>> _abstractTree;
   /**
    * Create an encoder object that will consider all packets in the provided headerspace.
    *
@@ -238,12 +241,14 @@ public class Encoder {
       _dataforward = new HashMap<>();
       _aclTemp = new HashMap<>(); 
       _bgpTemp = new HashMap<>(); 
+      _abstractTree = new HashMap<>();
     } else {
       _dstEncoders = enc._dstEncoders;
       _tcEncoders = enc._tcEncoders;
       _dataforward = enc._dataforward;
       _aclTemp = enc._aclTemp;
       _bgpTemp = enc._bgpTemp;
+      _abstractTree = enc._abstractTree;
     }
 
     _dstEncoderExists = _dstEncoders.containsKey(dst);
@@ -284,7 +289,6 @@ public class Encoder {
 
     if (vars == null) {
       _modelAnd = mkTrue();
-      _allVariables = new HashMap<>();
       setWeights();
     } else {
       _allVariables = vars;
@@ -293,6 +297,7 @@ public class Encoder {
       _modelAnd = enc.getModelAnd();
       _routerConsMap = enc._routerConsMap;
       _weightMap = enc._weightMap;
+      _abstractTree = enc._abstractTree;
       _routerConsMap = enc._routerConsMap;
       _repairObjective = enc._repairObjective;
       _isBool = enc._isBool;
@@ -354,12 +359,14 @@ public class Encoder {
       _dataforward = new HashMap<>();
       _aclTemp = new HashMap<>();
       _bgpTemp = new HashMap<>();
+      _abstractTree = new HashMap<>();
     } else {
       _dstEncoders = enc._dstEncoders;
       _tcEncoders = enc._tcEncoders;
       _dataforward = enc._dataforward;
       _aclTemp = enc._aclTemp;
       _bgpTemp = enc._bgpTemp;
+      _abstractTree = enc._abstractTree;
     }
 
     _dstEncoderExists = _dstEncoders.containsKey(_dstIp);
@@ -412,6 +419,7 @@ public class Encoder {
       _modelAnd = enc.getModelAnd();
       _routerConsMap = enc._routerConsMap;
       _weightMap = enc._weightMap;
+      _abstractTree = enc._abstractTree;
       _routerConsMap = enc._routerConsMap;
       _repairObjective = enc._repairObjective;
       _isBool = enc._isBool;

@@ -144,6 +144,9 @@ class EncoderSlice {
 
   public Map<String, BoolExpr> _routerConsMap;
 
+  public Map<String, Map<String, Map<String, Map<String, Map<String, BoolExpr>>>>> _Tree;
+
+
   public int aclWeight;
   public int bgpWeight;
   public int ospfWeight;
@@ -152,6 +155,7 @@ class EncoderSlice {
   public int importWeight;
   public int redisWeight;
   public int localprefWeight;
+  private int exportRuleNum;
 
   /**
    * Create a new encoding slice
@@ -163,6 +167,7 @@ class EncoderSlice {
    */
   EncoderSlice(Encoder enc, HeaderSpace h, Graph graph, String sliceName) {
     _encoder = enc;
+    _Tree = _encoder._abstractTree;
     _routerConsMap = _encoder._routerConsMap;
     _first = (enc.getId() == 0);
     _localPrefMap = new HashMap<>();
@@ -288,6 +293,7 @@ class EncoderSlice {
    */
   EncoderSlice(Encoder enc, HeaderSpace h, Graph graph, String sliceName, EncoderSlice existsES) {
     _encoder = enc;
+    _Tree = _encoder._abstractTree;
     _routerConsMap = _encoder._routerConsMap;
     _first = (enc.getId() == 0);
     _localPrefMap = new HashMap<>();
@@ -550,6 +556,7 @@ class EncoderSlice {
    * Initialize boolean expressions to represent ACLs on each interface.
    */
   private void initAclFunctions() {
+    int ruleNum = 0;
     for (Entry<String, List<GraphEdge>> entry : getGraph().getEdgeMap().entrySet()) {
       String router = entry.getKey();
       //System.out.println("Router" + router);
@@ -598,7 +605,12 @@ class EncoderSlice {
           //_outboundAcls.put(ge, outAcl);
           ///* ARCHIE REMOVE 
           _outboundAcls.put(ge, mkOr(outAcl,outAclRemove));
-
+          Map<String, Map<String, BoolExpr>> ruleRemove = new HashMap<>();
+          Map<String, BoolExpr> remove = new HashMap<>();
+          remove.put("remove", outAclRemove);
+          ruleRemove.put("match", remove);
+          _Tree.get(router).get("pfilter").put(Integer.toString(ruleNum), ruleRemove);
+          ruleNum += 1;
         } else {
           String outName =
               String.format(
@@ -617,6 +629,12 @@ class EncoderSlice {
           }
           _routerConsMap.put(router, mkAnd(_routerConsMap.get(router), outAcl));
           _outboundAcls.put(ge, outAcl);
+          Map<String, Map<String, BoolExpr>> ruleAdd = new HashMap<>();
+          Map<String, BoolExpr> add = new HashMap<>();
+          add.put("add", outAcl);
+          ruleAdd.put("match", add);
+          _Tree.get(router).get("pfilter").put(Integer.toString(ruleNum), ruleAdd);
+          ruleNum += 1;
           //*/
         }
 
@@ -646,6 +664,12 @@ class EncoderSlice {
           //_inboundAcls.put(ge, inAcl);
           ///* ARCHIE REMOVE 
           _inboundAcls.put(ge, mkOr(inAcl,inAclRemove));
+          Map<String, Map<String, BoolExpr>> ruleRemove = new HashMap<>();
+          Map<String, BoolExpr> remove = new HashMap<>();
+          remove.put("remove", inAclRemove);
+          ruleRemove.put("match", remove);
+          _Tree.get(router).get("pfilter").put(Integer.toString(ruleNum), ruleRemove);
+          ruleNum += 1;
 
         } else {
           String inName =
@@ -660,6 +684,12 @@ class EncoderSlice {
           }
           _routerConsMap.put(router, mkAnd(_routerConsMap.get(router), inAcl));
           _inboundAcls.put(ge, inAcl);
+          Map<String, Map<String, BoolExpr>> ruleAdd = new HashMap<>();
+          Map<String, BoolExpr> add = new HashMap<>();
+          add.put("add", inAcl);
+          ruleAdd.put("match", add);
+          _Tree.get(router).get("pfilter").put(Integer.toString(ruleNum), ruleAdd);
+          ruleNum += 1;
           //*/
         }
       }
@@ -836,6 +866,13 @@ class EncoderSlice {
         //System.out.println("Lower bits match: " + lowerBitsMatch);
         BoolExpr shouldRemove = getCtx().mkBoolConst(_encoder.getId() + "_"
          + p + routerName + "BGPRemoveFilterSoft");
+
+        Map<String, Map<String, BoolExpr>> ruleRemove = new HashMap<>();
+        Map<String, BoolExpr> remove = new HashMap<>();
+        remove.put("remove", shouldRemove);
+        ruleRemove.put("match", remove);
+        _Tree.get(routerName).get("rfilter").put(Integer.toString(exportRuleNum), ruleRemove);
+
         if (_encoder._repairObjective == 0) {
           addSoft(shouldRemove, importWeight, "BGPRemoveFilter");
         }
@@ -885,6 +922,13 @@ class EncoderSlice {
   private void buildEdgeMap() {
     for (Entry<String, List<Protocol>> entry : getProtocols().entrySet()) {
       String router = entry.getKey();
+      if(!_Tree.containsKey(router)) {
+        _Tree.put(router, new HashMap<>());
+        _Tree.get(router).put("rfilter", new HashMap<>());
+        _Tree.get(router).put("pfilter", new HashMap<>());
+        _Tree.get(router).put("process", new HashMap<>());
+
+      }
       for (Protocol p : entry.getValue()) {
         _logicalGraph.getLogicalEdges().put(router, p, new ArrayList<>());
       }
@@ -2200,6 +2244,7 @@ private void addSymbolicPacketBoundConstraints() {
     for (Entry<String, Configuration> entry : getGraph().getConfigurations().entrySet()) {
       String router = entry.getKey();
       Configuration conf = entry.getValue();
+      int ruleNum = 0;
       for (Protocol proto : getProtocols().get(router)) {
         SymbolicRoute bestVars = _symbolicDecisions.getBestVars(_optimizations, router, proto);
         assert (bestVars != null);
@@ -2227,7 +2272,13 @@ private void addSymbolicPacketBoundConstraints() {
               _routerConsMap.put(router, mkAnd(_routerConsMap.get(router), mkNot(shouldAllow)));
               _enableRoute.put(keyvalue, shouldAllow);
             }
-            
+
+            Map<String, Map<String, BoolExpr>> ruleAdd = new HashMap<>();
+            Map<String, BoolExpr> add = new HashMap<>();
+            add.put("add", shouldAllow);
+            ruleAdd.put("static"+Integer.toString(ruleNum), add);
+            _Tree.get(router).get("process").put("adjacency", ruleAdd);
+            ruleNum += 1;
             //BoolExpr shouldAllow = getCtx().mkBoolConst(_encoder.getId() + "_"
             //  + vars.getName() + "AllowChoice");
             //addSoft(mkNot(shouldAllow), 1, "AllowRoute");
@@ -2519,6 +2570,7 @@ private void addSymbolicPacketBoundConstraints() {
   private void addDataForwardingConstraints() {
     for (Entry<String, List<GraphEdge>> entry : getGraph().getEdgeMap().entrySet()) {
       String router = entry.getKey();
+      int statNum = 0;
       List<GraphEdge> edges = entry.getValue();
       for (GraphEdge ge : edges) {
 
@@ -2595,6 +2647,13 @@ private void addSymbolicPacketBoundConstraints() {
               } else {
                 shouldAdd = _existsES.getStaticRouteAddSoft().get(ge);
               }
+              Map<String, Map<String, BoolExpr>> ruleAdd = new HashMap<>();
+              Map<String, BoolExpr> add = new HashMap<>();
+              add.put("add", shouldAdd);
+              ruleAdd.put("static"+Integer.toString(statNum), add);
+              _Tree.get(router).get("process").put("origination", ruleAdd);
+              statNum += 1;
+
               notBlocked = mkOr(notBlocked, shouldAdd);
             }
             
@@ -2618,7 +2677,8 @@ private void addSymbolicPacketBoundConstraints() {
       Configuration conf,
       Protocol proto,
       GraphEdge ge,
-      String router) {
+      String router, 
+      int ruleNum) {
 
     SymbolicRoute vars = e.getSymbolicRecord();
 
@@ -2685,6 +2745,11 @@ private void addSymbolicPacketBoundConstraints() {
           if (_encoder._repairObjective == 0) {
             addSoft(shouldRemove, staticWeight, "StaticRemove");
           }
+          Map<String, Map<String, BoolExpr>> ruleRemove = new HashMap<>();
+          Map<String, BoolExpr> remove = new HashMap<>();
+          remove.put("add", shouldRemove);
+          ruleRemove.put("static"+Integer.toString(ruleNum), remove);
+          _Tree.get(router).get("process").put("origination", ruleRemove);
           _routerConsMap.put(router, mkAnd(_routerConsMap.get(router), shouldRemove));
           relevant =
               mkAnd(
@@ -2819,6 +2884,12 @@ private void addSymbolicPacketBoundConstraints() {
               _routerConsMap.put(router, mkAnd(_routerConsMap.get(router), mkNot(shouldAllow)));  
               _enableRoute.put(keyvalue, shouldAllow);
             }
+            Map<String, Map<String, BoolExpr>> ruleAdd = new HashMap<>();
+            Map<String, BoolExpr> add = new HashMap<>();
+            add.put("add", shouldAllow);
+            ruleAdd.put("static"+Integer.toString(ruleNum), add);
+            _Tree.get(router).get("process").put("adjacency", ruleAdd);
+            ruleNum += 1;
 
             
             //BoolExpr shouldAllow = getCtx().mkBoolConst(_encoder.getId() + "_"
@@ -2852,6 +2923,13 @@ private void addSymbolicPacketBoundConstraints() {
           //* ARCHIE REMOVE
           BoolExpr shouldAddFilter = getCtx().mkBoolConst(_encoder.getId() + "_" + router
            + "ImportFilterAddSoft" + vars.getName());
+
+          Map<String, Map<String, BoolExpr>> ruleAdd = new HashMap<>();
+          Map<String, BoolExpr> add = new HashMap<>();
+          add.put("add", shouldAddFilter);
+          ruleAdd.put("match", add);
+          _Tree.get(router).get("rfilter").put(Integer.toString(ruleNum), ruleAdd);
+
           if (_encoder._repairObjective == 0) {
             addSoft(shouldAddFilter, importWeight, "ImportFilterAdd");
           }
@@ -3013,6 +3091,12 @@ private void addSymbolicPacketBoundConstraints() {
             if (_encoder._repairObjective == 0) {
               addSoft(redisRemove, redisWeight, "RedisRemove");
             }
+            Map<String, Map<String, BoolExpr>> ruleRemove = new HashMap<>();
+            Map<String, BoolExpr> remove = new HashMap<>();
+            remove.put("remove", redisRemove);
+            ruleRemove.put("redis"+Integer.toString(exportRuleNum), remove);
+            _Tree.get(router).get("process").put("adjacency", ruleRemove);
+
             _routerConsMap.put(router, mkAnd(_routerConsMap.get(router), redisRemove));  
             _disableRedis.put(keyvalue, redisRemove);
           }
@@ -3100,9 +3184,17 @@ private void addSymbolicPacketBoundConstraints() {
                 if (_encoder._repairObjective == 0) {
                   addSoft(shouldRemove, ospfWeight, "OSPFExportRemove"); 
                 }
+
                 _routerConsMap.put(router, mkAnd(_routerConsMap.get(router), shouldRemove));  
                 _disableOSPF.put(keyvalue, shouldRemove);
               }
+
+              Map<String, Map<String, BoolExpr>> ruleRemove = new HashMap<>();
+              Map<String, BoolExpr> remove = new HashMap<>();
+              remove.put("remove", shouldRemove);
+              ruleRemove.put("ospf"+Integer.toString(exportRuleNum), remove);
+              _Tree.get(router).get("process").put("origination", ruleRemove);
+
               //BoolExpr shouldRemove = getCtx().mkBoolConst(_encoder.getId() + "_"
               // + router + "OSPFExportRemoveSoft" + p);
               //addSoft(shouldRemove, 3, "OSPFExportRemove");
@@ -3160,6 +3252,13 @@ private void addSymbolicPacketBoundConstraints() {
               if (_encoder._repairObjective == 0) {
                 addSoft(mkNot(shouldAdd), ospfWeight, "OSPFExportAdd");
               }
+
+              Map<String, Map<String, BoolExpr>> ruleAdd = new HashMap<>();
+              Map<String, BoolExpr> add = new HashMap<>();
+              add.put("add", shouldAdd);
+              ruleAdd.put("ospf"+Integer.toString(exportRuleNum), add);
+              _Tree.get(router).get("process").put("origination", ruleAdd);
+
               _routerConsMap.put(router, mkAnd(_routerConsMap.get(router), mkNot(shouldAdd)));  
               relevantPrefix = mkAnd(relevantPrefix, shouldAdd);
               BoolExpr relevant = mkAnd(ifaceUp, relevantPrefix);
@@ -3278,6 +3377,7 @@ private void addSymbolicPacketBoundConstraints() {
   private void addTransferFunction() {
     for (Entry<String, Configuration> entry : getGraph().getConfigurations().entrySet()) {
       String router = entry.getKey();
+      int ruleNum = 0;
       Configuration conf = entry.getValue();
       for (Protocol proto : getProtocols().get(router)) {
         Boolean usedExport = false;
@@ -3300,7 +3400,8 @@ private void addSymbolicPacketBoundConstraints() {
             switch (e.getEdgeType()) {
               case IMPORT:
                 varsOther = _logicalGraph.findOtherVars(e);
-                addImportConstraint(e, varsOther, conf, proto, ge, router);
+                addImportConstraint(e, varsOther, conf, proto, ge, router, ruleNum);
+                ruleNum += 1;
                 break;
 
               case EXPORT:
@@ -3338,6 +3439,8 @@ private void addSymbolicPacketBoundConstraints() {
                     usedExport,
                     originations,
                     allOriginations);
+                exportRuleNum = ruleNum;
+                ruleNum += 1;
 
                 usedExport = true;
                 break;
