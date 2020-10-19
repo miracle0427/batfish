@@ -1,7 +1,5 @@
 package org.batfish.symbolic.smt;
 
-import re;
-
 import com.microsoft.z3.ArithExpr;
 import com.microsoft.z3.BitVecExpr;
 import com.microsoft.z3.BoolExpr;
@@ -1338,7 +1336,7 @@ public class Encoder {
         if (obj.getType().equalsIgnoreCase("Router")) {
           for (String router : _abstractTree.keySet()) {
             if (router.matches(obj.getTypeName())) {
-              
+
             }
           }
         }
