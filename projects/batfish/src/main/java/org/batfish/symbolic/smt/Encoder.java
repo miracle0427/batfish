@@ -1312,11 +1312,12 @@ public class Encoder {
         e.printStackTrace();
     } finally {
        try {
-      br.close();
+        br.close();
        } catch (IOException e) {
       e.printStackTrace();
        }
     }
+    return obj;
   }
 
 
