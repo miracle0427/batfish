@@ -1338,18 +1338,23 @@ public class Encoder {
       numEdges += e.getValue().size();
     }
 
-    ArrayList<ManagementObjective> mgmt = getObjectives();
-
-    if (_repairObjective == 1) {
+    if (_repairObjective == 0) {
+      System.out.println("\nThe objective is minimize changes\n");      
+      // These constraints were created inline in encoderslice code
+    } else if (_repairObjective == 1) {
+      System.out.println("\nThe objective is minimize devices affected\n");      
       for (String keyRouter : _routerConsMap.keySet()) {
       	BoolExpr device = getCtx().mkBoolConst("@" + keyRouter);
       	add(mkEq(device, _routerConsMap.get(keyRouter)));
       	addSoft(device, 10000, "deviceAffected");
-              //addSoft(_routerConsMap.get(keyRouter), 10000, "deviceAffected");
+        //addSoft(_routerConsMap.get(keyRouter), 10000, "deviceAffected");
       }
+    } else {
+      System.out.println("\nThe user is specifying a custom objective\n");
+      ArrayList<ManagementObjective> mgmt = getObjectives();
     }
-    
-    if (_repairObjective == 2) {
+    /* Specifies a minimize data forwarding objective
+    else if (_repairObjective == 2) {
       Map<String, String> dfwd = new HashMap<>();
       String line;
       //System.out.println("Datafwd objective");
@@ -1384,8 +1389,8 @@ public class Encoder {
           }
         }
       }
-    }
-    
+    } 
+    */
 
     try {
       /*
