@@ -1224,6 +1224,101 @@ public class Encoder {
   }
 
 
+  public ArrayList<ManagementObjective> getObjectives() {  
+    BufferedReader br = null;
+    String line;
+    Set<String> validActions = new HashSet<String>();
+    validActions.add("EQUATE");
+    validActions.add("NOMODIFY");
+    validActions.add("ELIMINATE");
+    validActions.add("MINIMIZE");
+
+    ArrayList<ManagementObjective> obj = new ArrayList<>();
+    try {
+
+        br = new BufferedReader(new FileReader("grammar.txt"));
+        while ((line = br.readLine()) != null) {
+            System.out.println("Input " + line);
+            // use // as separator
+            String[] vals = line.split("//");
+            if (vals.length!=2) {
+                System.out.println("Invalid command w.r.t. //");
+                continue;
+            }
+            String action = vals[0].replaceAll("\\s+","");
+            if (!validActions.contains(action)) {
+                System.out.println("Invalid action " + action);
+                continue;
+            }
+            //System.out.println("action " + action + 
+            // "\tremaining line: " + vals[1]);
+            String[] command = vals[1].split("GROUPBY");
+            boolean hasGroup = false;
+            String groupName = "";
+            if (command.length == 2) {
+                hasGroup = true;
+                groupName = command[1];
+            } else if (command.length > 2) {
+                System.out.println("Invalid groupby command");
+                continue;                    
+            }
+            //System.out.println("groupName " + groupName + 
+            //"\tremaining line: " + command[0]);
+            boolean hasSubtype = false;
+            String subtype = "";
+            String[] types = command[0].split("/");
+            if (command[0].contains("/")) {
+                if (types.length == 2) {
+                    hasSubtype = true;
+                    subtype = types[1];
+                } else if (types.length > 2) {
+                    System.out.println("Invalid subtype
+                     command");
+                    continue;                    
+                }
+                //System.out.println("subtype " + subtype);
+            } else {
+                types[0] = command[0];
+            }
+            //System.out.println("# " + types[0]);
+            String type = "";
+            String typeName = "";
+            //ELIMINATE //RoutingProcess[type="static"]/Origination GROUPBY prefix
+            //NOMODIFY //Router GROUPBY name
+            if (types[0].contains("[") && types[0].contains("]")) {
+                //System.out.println("# " + types[0]);
+                String[] typeInfo = types[0].split("\\[");
+                type = typeInfo[0];
+                typeName = typeInfo[1].split("=")[1].replaceAll("
+                  \"+","").replaceAll("\\]+","");
+                //System.out.println("type " + type + "\ttypeName " + typeName);
+            
+            } else {
+                type = types[0];
+            }
+            
+            ManagementObjective curObj = new ManagementObjective(action, type, 
+              typeName, subtype, groupName, hasGroup, hasSubtype);
+            //System.out.println("Country [code= " + country[4] + "
+            // , name=" + country[5] + "]");
+            obj.add(curObj);
+            curObj.print();
+        }
+
+    } catch (FileNotFoundException e) {
+        e.printStackTrace();
+    } catch (IOException e) {
+        e.printStackTrace();
+    } finally {
+       try {
+      br.close();
+       } catch (IOException e) {
+      e.printStackTrace();
+       }
+    }
+  }
+
+
   /**
    * Checks that a property is always true by seeing if the encoding is unsatisfiable. mkIf the
    * model is satisfiable, then there is a counter example to the property.
@@ -1241,12 +1336,14 @@ public class Encoder {
       numEdges += e.getValue().size();
     }
 
+    ArrayList<ManagementObjective> mgmt = getObjectives();
+
     if (_repairObjective == 1) {
       for (String keyRouter : _routerConsMap.keySet()) {
-	BoolExpr device = getCtx().mkBoolConst("@" + keyRouter);
-	add(mkEq(device, _routerConsMap.get(keyRouter)));
-	addSoft(device, 10000, "deviceAffected");
-        //addSoft(_routerConsMap.get(keyRouter), 10000, "deviceAffected");
+      	BoolExpr device = getCtx().mkBoolConst("@" + keyRouter);
+      	add(mkEq(device, _routerConsMap.get(keyRouter)));
+      	addSoft(device, 10000, "deviceAffected");
+              //addSoft(_routerConsMap.get(keyRouter), 10000, "deviceAffected");
       }
     }
     
