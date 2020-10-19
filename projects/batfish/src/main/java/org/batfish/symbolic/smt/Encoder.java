@@ -1272,8 +1272,8 @@ public class Encoder {
                     hasSubtype = true;
                     subtype = types[1];
                 } else if (types.length > 2) {
-                    System.out.println("Invalid subtype
-                     command");
+                    System.out.println("Invalid subtype " + 
+                     "command");
                     continue;                    
                 }
                 //System.out.println("subtype " + subtype);
@@ -1289,8 +1289,8 @@ public class Encoder {
                 //System.out.println("# " + types[0]);
                 String[] typeInfo = types[0].split("\\[");
                 type = typeInfo[0];
-                typeName = typeInfo[1].split("=")[1].replaceAll("
-                  \"+","").replaceAll("\\]+","");
+                typeName = typeInfo[1].split("=")[1].replaceAll("\"+",
+                  "").replaceAll("\\]+","");
                 //System.out.println("type " + type + "\ttypeName " + typeName);
             
             } else {
@@ -1447,7 +1447,7 @@ public class Encoder {
           BufferedWriter writer = new BufferedWriter(new FileWriter("model.smt"));
           writer.write(m.toString());
           writer.close();
-	  System.out.println("\nrun in command line <z3 -smt2 model.smt>\n")
+          System.out.println("\nrun in command line <z3 -smt2 model.smt>\n");
         } catch (IOException e) {
           System.out.println("IO error");
         }
