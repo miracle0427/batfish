@@ -2747,7 +2747,7 @@ private void addSymbolicPacketBoundConstraints() {
           }
           Map<String, Map<String, BoolExpr>> ruleRemove = new HashMap<>();
           Map<String, BoolExpr> remove = new HashMap<>();
-          remove.put("add", shouldRemove);
+          remove.put("remove", shouldRemove);
           ruleRemove.put("static"+Integer.toString(ruleNum), remove);
           _Tree.get(router).get("process").put("origination", ruleRemove);
           _routerConsMap.put(router, mkAnd(_routerConsMap.get(router), shouldRemove));
@@ -2887,7 +2887,7 @@ private void addSymbolicPacketBoundConstraints() {
             Map<String, Map<String, BoolExpr>> ruleAdd = new HashMap<>();
             Map<String, BoolExpr> add = new HashMap<>();
             add.put("add", shouldAllow);
-            ruleAdd.put("static"+Integer.toString(ruleNum), add);
+            ruleAdd.put("bgp"+Integer.toString(ruleNum), add);
             _Tree.get(router).get("process").put("adjacency", ruleAdd);
             ruleNum += 1;
 

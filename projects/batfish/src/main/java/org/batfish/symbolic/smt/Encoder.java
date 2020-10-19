@@ -1,5 +1,7 @@
 package org.batfish.symbolic.smt;
 
+import re;
+
 import com.microsoft.z3.ArithExpr;
 import com.microsoft.z3.BitVecExpr;
 import com.microsoft.z3.BoolExpr;
@@ -1232,7 +1234,7 @@ public class Encoder {
     validActions.add("EQUATE");
     validActions.add("NOMODIFY");
     validActions.add("ELIMINATE");
-    validActions.add("MINIMIZE");
+    //validActions.add("MINIMIZE");
 
     ArrayList<ManagementObjective> obj = new ArrayList<>();
     try {
@@ -1320,6 +1322,30 @@ public class Encoder {
     return obj;
   }
 
+  /**
+   * Adds soft constraints for user-specified management objective (@obj)
+   *
+   */
+  public void addManagementObjectiveConstraints(ManagementObjective obj) {
+    if (obj.hasGroupBy() == True) {
+      if (obj.getAction().equals("NOMODIFY")) {
+        if (obj.getType().equalsIgnoreCase("Router")) {
+                
+        }
+      }
+    } else {
+      if (obj.getAction().equals("NOMODIFY")) {
+        if (obj.getType().equalsIgnoreCase("Router")) {
+          for (String router : _abstractTree.keySet()) {
+            if (router.matches(obj.getTypeName())) {
+              
+            }
+          }
+        }
+      }
+
+    }
+  }
 
   /**
    * Checks that a property is always true by seeing if the encoding is unsatisfiable. mkIf the
@@ -1352,6 +1378,9 @@ public class Encoder {
     } else {
       System.out.println("\nThe user is specifying a custom objective\n");
       ArrayList<ManagementObjective> mgmt = getObjectives();
+      for (ManagementObjective obj : mgmt) {
+
+      }
     }
     /* Specifies a minimize data forwarding objective
     else if (_repairObjective == 2) {
