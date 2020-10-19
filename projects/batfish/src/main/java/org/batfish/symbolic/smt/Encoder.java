@@ -1325,7 +1325,7 @@ public class Encoder {
    *
    */
   public void addManagementObjectiveConstraints(ManagementObjective obj) {
-    if (obj.hasGroupBy() == True) {
+    if (obj.hasGroupBy() == true) {
       if (obj.getAction().equals("NOMODIFY")) {
         if (obj.getType().equalsIgnoreCase("Router")) {
                 
