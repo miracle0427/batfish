@@ -1393,22 +1393,21 @@ public class Encoder {
       writer.write(_solver.toString());
       writer.close();
       */
-      System.out.println("\nNetwork encoded in MAXSMT.smt\n");
+      System.out.println("\nNetwork encoded in MAXSMT.smt\n");    
       BufferedWriter writer = new BufferedWriter(new FileWriter("MAXSMT.smt"));
       writer.write(_optsolve.toString());
       writer.close();
+      System.out.println("\nRun in command line: z3 -smt2 MAXSMT.smt\n");      
     } catch (IOException e) {
       System.out.println("IO error");
     }
 
     VerificationStats stats = null;
-    //*
-    if (true) {
-      VerificationResult res = new VerificationResult(true, null, null, null, null, null, stats);
-      System.out.println("\n\nUNSATISFIABLE\n\n");
-      return new Tuple<>(res, null);
-    }//*/
-
+    VerificationResult res = new VerificationResult(true, null, null, null, null, null, stats);
+    return new Tuple<>(res, null);
+    // currently solving smt happens in command line
+    // TODO: automate it below
+    /*
     long start = System.currentTimeMillis();
     Status status = _optsolve.Check();
     long time = System.currentTimeMillis() - start;
@@ -1449,7 +1448,6 @@ public class Encoder {
           BufferedWriter writer = new BufferedWriter(new FileWriter("model.smt"));
           writer.write(m.toString());
           writer.close();
-          System.out.println("\nrun in command line <z3 -smt2 model.smt>\n");
         } catch (IOException e) {
           System.out.println("IO error");
         }
@@ -1459,13 +1457,11 @@ public class Encoder {
         SortedSet<String> fwdModel = new TreeSet<>();
         SortedMap<String, SortedMap<String, String>> envModel = new TreeMap<>();
         SortedSet<String> failures = new TreeSet<>();
-        /*
-        buildCounterExample(this, m, model, packetModel, fwdModel, envModel, failures);
-        if (_previousEncoder != null) {
-          buildCounterExample(
-              _previousEncoder, m, model, packetModel, fwdModel, envModel, failures);
-        }
-        */
+        //buildCounterExample(this, m, model, packetModel, fwdModel, envModel, failures);
+        //if (_previousEncoder != null) {
+        //  buildCounterExample(
+        //      _previousEncoder, m, model, packetModel, fwdModel, envModel, failures);
+        //}
         result =
             new VerificationResult(false, model, packetModel, envModel, fwdModel, failures, stats);
 
@@ -1487,6 +1483,7 @@ public class Encoder {
 
       return new Tuple<>(result, m);
     }
+    */
   }
 
   /**
