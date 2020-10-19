@@ -1350,6 +1350,7 @@ public class Encoder {
           BufferedWriter writer = new BufferedWriter(new FileWriter("model.smt"));
           writer.write(m.toString());
           writer.close();
+	  System.out.println("\nrun in command line <z3 -smt2 model.smt>\n")
         } catch (IOException e) {
           System.out.println("IO error");
         }
