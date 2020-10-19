@@ -48,8 +48,8 @@ public class SmtMulQuestionPlugin extends QuestionPlugin {
 
     @Override
     public String prettyPrint() {
-        String retString =
-            String.format("smt-mul %s", super.prettyPrintParams());
+        String retString = "";
+        //String.format("smt-mul %s", super.prettyPrintParams());
         return retString;
     }
   }

@@ -25,6 +25,7 @@ public class SmtMulAnswerElement extends AnswerElement {
   @Override
   public String prettyPrint() {
     StringBuilder sb = new StringBuilder();
+    /*
     if (_result == null) {
       sb.append("\nNull Result");
       return sb + "";
@@ -32,6 +33,7 @@ public class SmtMulAnswerElement extends AnswerElement {
     if (_result.isVerified()) {
       sb.append("\nVerified");
     }
+    */
     return sb + "";
   }
 }

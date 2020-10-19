@@ -764,7 +764,7 @@ public class PropertyChecker {
                 long startVerify = System.currentTimeMillis();
                 Tuple<VerificationResult, Model> tup = enc.verify();
                 //if (question.getBenchmark()) {
-                System.out.println("  z3 time: " + (System.currentTimeMillis() - startVerify));
+                //System.out.println("  z3 time: " + (System.currentTimeMillis() - startVerify));
                 //}
 
                 VerificationResult res = tup.getFirst();
@@ -798,7 +798,7 @@ public class PropertyChecker {
             });
 
     //if (q.getBenchmark()) {
-    System.out.println("Total time: " + (System.currentTimeMillis() - totalTime));
+    //System.out.println("Total time: " + (System.currentTimeMillis() - totalTime));
     //}
     if (hasCounterExample) {
       return answerElement[0];
@@ -1493,9 +1493,9 @@ public class PropertyChecker {
 
               long startVerify = System.currentTimeMillis();
               Tuple<VerificationResult, Model> tup = enc.verify();
-              if (true) {
-                System.out.println("  z3 time: " + (System.currentTimeMillis() - startVerify));
-              }
+              //if (true) {
+              //  System.out.println("  z3 time: " + (System.currentTimeMillis() - startVerify));
+              //}
 
               VerificationResult res = tup.getFirst();
               Model model = tup.getSecond();
@@ -1525,9 +1525,9 @@ public class PropertyChecker {
               return false;
             });
     
-    if (true) {
-      System.out.println("Total time: " + (System.currentTimeMillis() - l));
-    }
+    //if (true) {
+    //  System.out.println("Total time: " + (System.currentTimeMillis() - l));
+    //}
     /*
     if (hasCounterExample) {
       return answerElement[0];
