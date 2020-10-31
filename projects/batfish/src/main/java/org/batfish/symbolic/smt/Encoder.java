@@ -1344,10 +1344,12 @@ public class Encoder {
       }
 
     }*/
-    for (Map.Entry router_entry : _abstractTree.entrySet()) {
-      String router = (String) router_entry.getKey();
+    for (String router : _abstractTree.keySet()) {
       System.out.println("Router " + router);
-      if (router_entry.getValue() != null) {
+      if (_abstractTree.containsKey("pfilter")) {
+        System.out.println("pfilter");
+      }
+      
         /*
         if (router_entry.getValue().containsKey("pfilter")) {
           System.out.println("pfilter");
@@ -1405,7 +1407,6 @@ public class Encoder {
 
           }
         }*/
-      }
     }
 
   }
