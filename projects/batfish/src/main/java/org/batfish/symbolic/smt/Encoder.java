@@ -1348,6 +1348,7 @@ public class Encoder {
       String router = (String) router_entry.getKey();
       System.out.println("Router " + router);
       if (router_entry.getValue() != null) {
+        /*
         if (router_entry.getValue().containsKey("pfilter")) {
           System.out.println("pfilter");
           for (Map.Entry pfilter_entry : router_entry.getValue().get("pfilter")) {
@@ -1404,7 +1405,7 @@ public class Encoder {
 
           }
         }
-      }
+      }*/
     }
 
   }
