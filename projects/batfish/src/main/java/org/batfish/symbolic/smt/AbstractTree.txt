@@ -27,3 +27,24 @@ AbstractTree
 				-ospf*
 					-add
 					-remove
+
+
+Pseudo-code
+for routers in networks:
+	for (pfilter) in routers['pfilter']:
+		for (rulenum, match) in pfilter.items():
+			match.get(remove)
+			match.get(add)
+	for (rfilter) in routers['rfilter']:
+		for (rulenum, match) in rfilter.items():
+			match.get(remove)
+			match.get(add)
+	for (process) in routers['process']:
+		for adjacency in process['adjacency']:
+			for (num, action) in adjacency.items():
+				action.get(remove)
+				action.get(add)
+		for origination in process['origination']:
+			for (num, action) in origination.items():
+				action.get(remove)
+				action.get(add)

@@ -1325,6 +1325,7 @@ public class Encoder {
    *
    */
   public void addManagementObjectiveConstraints(ManagementObjective obj) {
+    /*
     if (obj.hasGroupBy() == true) {
       if (obj.getAction().equals("NOMODIFY")) {
         if (obj.getType().equalsIgnoreCase("Router")) {
@@ -1342,7 +1343,70 @@ public class Encoder {
         }
       }
 
+    }*/
+    for (Map.Entry router_entry : _abstractTree.entrySet()) {
+      String router = (String) router_entry.getKey();
+      System.out.println("Router " + router);
+      if (router_entry.getValue() != null) {
+        if (router_entry.getValue().containsKey("pfilter")) {
+          System.out.println("pfilter");
+          for (Map.Entry pfilter_entry : router_entry.getValue().get("pfilter")) {
+            System.out.println("num# " + pfilter_entry.getKey());
+            if(pfilter_entry.getValue().containsKey("add")) {
+              System.out.println("add " + pfilter_entry.getValue().get("add"));
+            }
+            if(pfilter_entry.getValue().containsKey("remove")) {
+              System.out.println("remove " + pfilter_entry.getValue().get("remove"));
+            }
+          }
+        }
+        if (router_entry.getValue().containsKey("rfilter")) {
+          System.out.println("rfilter");
+          for (Map.Entry rfilter_entry : router_entry.getValue().get("rfilter")) {
+            System.out.println("num# " + rfilter_entry.getKey());
+            if(rfilter_entry.getValue().containsKey("add")) {
+              System.out.println("add " + rfilter_entry.getValue().get("add"));
+            }
+            if(rfilter_entry.getValue().containsKey("remove")) {
+              System.out.println("remove " + rfilter_entry.getValue().get("remove"));
+            }
+          }
+        }
+        if (router_entry.getValue().containsKey("process")) {
+          System.out.println("process");
+          for (Map.Entry process_entry : router_entry.getValue().get("process")) {
+            
+            if (process_entry.getKey().equals("origination")) {
+              System.out.println("Origination");
+              for (Map.Entry orig_entry : process_entry.getValue()) {
+                System.out.println("orig# " + orig_entry.getKey());
+                if (orig_entry.getValue().containsKey("add")) {
+                  System.out.println("add " + orig_entry.getValue().get("add"));
+                }
+                if (orig_entry.getValue().containsKey("remove")) {
+                  System.out.println("remove " + orig_entry.getValue().get("remove"));
+                }                
+              }
+            }
+
+            if (process_entry.getKey().equals("adjacency")) {
+              System.out.println("adjacency");
+              for (Map.Entry adjacency_entry : process_entry.getValue()) {
+                System.out.println("adj# " + adjacency_entry.getKey());
+                if (adjacency_entry.getValue().containsKey("add")) {
+                  System.out.println("add " + adjacency_entry.getValue().get("add"));
+                }
+                if (adjacency_entry.getValue().containsKey("remove")) {
+                  System.out.println("remove " + adjacency_entry.getValue().get("remove"));
+                }                
+              }
+            }
+
+          }
+        }
+      }
     }
+
   }
 
   /**
@@ -1361,7 +1425,7 @@ public class Encoder {
     for (Map.Entry<String, Set<String>> e : mainSlice.getGraph().getNeighbors().entrySet()) {
       numEdges += e.getValue().size();
     }
-
+    // we have some special management objectives that are specified using _repairObjective
     if (_repairObjective == 0) {
       System.out.println("\nThe objective is minimize changes\n");      
       // These constraints were created inline in encoderslice code
