@@ -1348,7 +1348,7 @@ public class Encoder {
       System.out.println("Router " + router);
       if (_abstractTree.get(router).containsKey("pfilter")) {
         System.out.println("pfilter");
-        for (String filter_num : _abstractTree.get(router).get("pfilter")) {
+        for (String filter_num : _abstractTree.get(router).get("pfilter").keySet()) {
           if (_abstractTree.get(router).get("pfilter").get(filter_num).containsKey("add")) {
             System.out.println("add " + _abstractTree.get(router).get("pfilter").get(filter_num).get("add"));
           }
