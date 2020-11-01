@@ -1347,6 +1347,7 @@ public class Encoder {
     System.out.println("Inside add mgmt obj");
     for (String router : _abstractTree.keySet()) {
       System.out.println("Router " + router);
+      // packet filter
       if (_abstractTree.get(router).containsKey("pfilter")) {
         System.out.println("pfilter");
         for (String filter_num : _abstractTree.get(
@@ -1362,6 +1363,23 @@ public class Encoder {
               router).get("pfilter").get(filter_num).get("match").get("remove"));
           }
         }
+      // route filter
+      if (_abstractTree.get(router).containsKey("rfilter")) {
+        System.out.println("rfilter");
+        for (String filter_num : _abstractTree.get(
+          router).get("rfilter").keySet()) {
+          if (_abstractTree.get(router).get("rfilter").get(
+            filter_num).get("match").containsKey("add")) {
+            System.out.println("add " + _abstractTree.get(
+              router).get("rfilter").get(filter_num).get("match").get("add"));
+          }
+          if (_abstractTree.get(router).get("rfilter").get(
+            filter_num).get("match").containsKey("remove")) {
+            System.out.println("add " + _abstractTree.get(
+              router).get("rfilter").get(filter_num).get("match").get("remove"));
+          }
+        }
+
       }
 
         /*
