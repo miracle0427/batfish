@@ -1246,7 +1246,7 @@ public class Encoder {
                 System.out.println("Invalid command w.r.t. //");
                 continue;
             }
-            String action = vals[0].replaceAll("\\s+","");
+            String action = vals[0];
             if (!validActions.contains(action)) {
                 System.out.println("Invalid action " + action);
                 continue;
@@ -1282,26 +1282,53 @@ public class Encoder {
                 types[0] = command[0];
             }
             //System.out.println("# " + types[0]);
+            String[] names = types[0].split(" ");
             String type = "";
             String typeName = "";
+            String routerName = "";
+            boolean hasRouterName = false;
+            for (String name : names) {
+              if (name.contains("[") && name.contains("]")) {
+                  //System.out.println("# " + types[0]);
+                  String[] temp = name[0].split("\\[");
+                  if (temp[0].equalsIgnoreCase("Router")) {
+                    routerName = temp[1].split("=")[1].replaceAll("\"+",
+                      "").replaceAll("\\]+","");
+                    hasRouterName = true;         
+                  } else {
+                    type = temp[0];
+                    typeName = temp[1].split("=")[1].replaceAll("\"+",
+                      "").replaceAll("\\]+","");
+                  }
+                  //System.out.println("type " + type + "\ttypeName " + typeName);
+              } else {
+                  if (name.equalsIgnoreCase("Router")) {
+                    routerName = "*";
+                    hasRouterName = true;
+                  } else {
+                    type = name;
+                    typeName = "*";
+                  }
+              }
+            }
             //ELIMINATE //RoutingProcess[type="static"]/Origination GROUPBY prefix
             //NOMODIFY //Router GROUPBY name
-            if (types[0].contains("[") && types[0].contains("]")) {
-                //System.out.println("# " + types[0]);
-                String[] typeInfo = types[0].split("\\[");
-                type = typeInfo[0];
-                typeName = typeInfo[1].split("=")[1].replaceAll("\"+",
-                  "").replaceAll("\\]+","");
-                //System.out.println("type " + type + "\ttypeName " + typeName);
             
-            } else {
-                type = types[0];
+            ManagementObjective curObj = new ManagementObjective();
+            curObj.setAction(action);
+            if (type.equals("")) {
+              curObj.setType(type);
+              curObj.setTypeName(typeName);
             }
-            
-            ManagementObjective curObj = new ManagementObjective(action, type, 
-              typeName, subtype, groupName, hasGroup, hasSubtype);
-            //System.out.println("Country [code= " + country[4] + "
-            // , name=" + country[5] + "]");
+            if (hasSubtype) {
+              curObj.setSubtype(subtype);
+            }
+            if (hasGroup) {
+              curObj.setGroupBy(groupName);
+            }
+            if (hasRouterName) {
+              curObj.setRouterName(routerName);
+            }
             obj.add(curObj);
             curObj.print();
         }
@@ -1344,8 +1371,6 @@ public class Encoder {
       }
 
     }*/
-    System.out.println("Inside add mgmt obj");
-
     for (String router : _abstractTree.keySet()) {
 
       System.out.println("Router " + router);
@@ -1456,9 +1481,11 @@ public class Encoder {
     } else {
       System.out.println("\nThe user is specifying a custom objective\n");
       ArrayList<ManagementObjective> mgmt = getObjectives();
+      /*
       for (ManagementObjective obj : mgmt) {
         addManagementObjectiveConstraints(obj);
       }
+      */
     }
     /* Specifies a minimize data forwarding objective
     else if (_repairObjective == 2) {

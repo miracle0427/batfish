@@ -9,22 +9,23 @@ class ManagementObjective {
   String action;
   String type;
   String typeName;
+  String routerName;
   String subtype;
   String groupByName;
   boolean hasGroup;
   boolean hasSubtype;
+  boolean hasRouter;
 
-  public ManagementObjective(String action, String type, String typeName, String subtype, 
-    String groupByName, boolean hasGroup, boolean hasSubtype ) {
-  	this.action = action;
-  	this.type = type;
-  	this.typeName = typeName;
-  	if (hasSubtype) {
-  		this.subtype = subtype;
-  	}
-  	if (hasGroup) {
-  		this.groupByName = groupByName;	
-  	}
+  public ManagementObjective() {
+    action = "";
+    type = "*";
+    typeName = "*";
+    routerName = "*";
+    subtype = "";
+    groupByName = "";
+    hasGroup = false;
+    hasSubtype = false;
+    hasRouter = false;
   }
 
   public void print() {
@@ -58,5 +59,40 @@ class ManagementObjective {
 
   public boolean hasSubType() {
     return hasSubtype;
+  }
+
+  public String getRouterName() {
+    return routerName;
+  }
+
+  public boolean getHasRouter() {
+    return hasRouter;
+  }
+
+  public void setAction(String action) {
+    this.action = action;
+  }
+
+  public void setType(String type) {
+    this.type = type;
+  }
+
+  public void setTypeName(String typeName) {
+    this.typeName = typeName;
+  }
+
+  public void setSubtype(String subtype) {
+    this.subtype = subtype;
+    hasSubtype = true;
+  }
+
+  public void setGroupBy(String groupByName) {
+    this.groupByName = groupByName;
+    hasGroup = true;
+  }
+
+ public void setRouterName(String name) {
+    this.routerName = name;
+    hasRouter = true;
   }
 }
