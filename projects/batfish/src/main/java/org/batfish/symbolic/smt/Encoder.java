@@ -1345,102 +1345,84 @@ public class Encoder {
 
     }*/
     System.out.println("Inside add mgmt obj");
+
     for (String router : _abstractTree.keySet()) {
+
       System.out.println("Router " + router);
+
       // packet filter
       if (_abstractTree.get(router).containsKey("pfilter")) {
         System.out.println("pfilter");
         for (String filter_num : _abstractTree.get(
           router).get("pfilter").keySet()) {
-          if (_abstractTree.get(router).get("pfilter").get(
-            filter_num).get("match").containsKey("add")) {
-            System.out.println("add " + _abstractTree.get(
-              router).get("pfilter").get(filter_num).get("match").get("add"));
-          }
-          if (_abstractTree.get(router).get("pfilter").get(
-            filter_num).get("match").containsKey("remove")) {
-            System.out.println("add " + _abstractTree.get(
-              router).get("pfilter").get(filter_num).get("match").get("remove"));
-          }
+            if (_abstractTree.get(router).get("pfilter").get(
+              filter_num).get("match").containsKey("add")) {
+                System.out.println("add " + _abstractTree.get(
+                  router).get("pfilter").get(filter_num).get("match").get("add"));
+            }
+            if (_abstractTree.get(router).get("pfilter").get(
+              filter_num).get("match").containsKey("remove")) {
+                System.out.println("add " + _abstractTree.get(
+                  router).get("pfilter").get(filter_num).get("match").get("remove"));
+            }
         }
+      }
+
       // route filter
       if (_abstractTree.get(router).containsKey("rfilter")) {
         System.out.println("rfilter");
         for (String filter_num : _abstractTree.get(
           router).get("rfilter").keySet()) {
-          if (_abstractTree.get(router).get("rfilter").get(
-            filter_num).get("match").containsKey("add")) {
-            System.out.println("add " + _abstractTree.get(
-              router).get("rfilter").get(filter_num).get("match").get("add"));
-          }
-          if (_abstractTree.get(router).get("rfilter").get(
-            filter_num).get("match").containsKey("remove")) {
-            System.out.println("add " + _abstractTree.get(
-              router).get("rfilter").get(filter_num).get("match").get("remove"));
-          }
+            if (_abstractTree.get(router).get("rfilter").get(
+              filter_num).get("match").containsKey("add")) {
+                System.out.println("add " + _abstractTree.get(
+                  router).get("rfilter").get(filter_num).get("match").get("add"));
+            }
+            if (_abstractTree.get(router).get("rfilter").get(
+              filter_num).get("match").containsKey("remove")) {
+                System.out.println("add " + _abstractTree.get(
+                  router).get("rfilter").get(filter_num).get("match").get("remove"));
+            }
         }
-
       }
 
-        /*
-        if (router_entry.getValue().containsKey("pfilter")) {
-          System.out.println("pfilter");
-          for (Map.Entry pfilter_entry : router_entry.getValue().get("pfilter")) {
-            System.out.println("num# " + pfilter_entry.getKey());
-            if(pfilter_entry.getValue().containsKey("add")) {
-              System.out.println("add " + pfilter_entry.getValue().get("add"));
-            }
-            if(pfilter_entry.getValue().containsKey("remove")) {
-              System.out.println("remove " + pfilter_entry.getValue().get("remove"));
-            }
-          }
-        }
-        if (router_entry.getValue().containsKey("rfilter")) {
-          System.out.println("rfilter");
-          for (Map.Entry rfilter_entry : router_entry.getValue().get("rfilter")) {
-            System.out.println("num# " + rfilter_entry.getKey());
-            if(rfilter_entry.getValue().containsKey("add")) {
-              System.out.println("add " + rfilter_entry.getValue().get("add"));
-            }
-            if(rfilter_entry.getValue().containsKey("remove")) {
-              System.out.println("remove " + rfilter_entry.getValue().get("remove"));
-            }
-          }
-        }
-        if (router_entry.getValue().containsKey("process")) {
-          System.out.println("process");
-          for (Map.Entry process_entry : router_entry.getValue().get("process")) {
-            
-            if (process_entry.getKey().equals("origination")) {
-              System.out.println("Origination");
-              for (Map.Entry orig_entry : process_entry.getValue()) {
-                System.out.println("orig# " + orig_entry.getKey());
-                if (orig_entry.getValue().containsKey("add")) {
-                  System.out.println("add " + orig_entry.getValue().get("add"));
-                }
-                if (orig_entry.getValue().containsKey("remove")) {
-                  System.out.println("remove " + orig_entry.getValue().get("remove"));
-                }                
-              }
-            }
+      // process
+      if (_abstractTree.get(router).containsKey("process")) {
+        System.out.println("process");
 
-            if (process_entry.getKey().equals("adjacency")) {
-              System.out.println("adjacency");
-              for (Map.Entry adjacency_entry : process_entry.getValue()) {
-                System.out.println("adj# " + adjacency_entry.getKey());
-                if (adjacency_entry.getValue().containsKey("add")) {
-                  System.out.println("add " + adjacency_entry.getValue().get("add"));
-                }
-                if (adjacency_entry.getValue().containsKey("remove")) {
-                  System.out.println("remove " + adjacency_entry.getValue().get("remove"));
-                }                
-              }
+        // origination
+        System.out.println("origination");        
+        for (String origination_num : _abstractTree.get(
+          router).get("process").get("origination").keySet()) {
+            if (_abstractTree.get(router).get("process").get(
+              "origination").get(origination_num).containsKey("add")) {
+                System.out.println("add " + _abstractTree.get(
+                  router).get("process").get("origination").get(origination_num).get("add"));
             }
+            if (_abstractTree.get(router).get("process").get(
+              "origination").get(origination_num).containsKey("remove")) {
+                System.out.println("remove " + _abstractTree.get(
+                  router).get("process").get("origination").get(origination_num).get("remove"));
+            }
+        }
 
-          }
-        }*/
+        // adjacency
+        System.out.println("adjacency");        
+        for (String adjacency_num : _abstractTree.get(
+          router).get("process").get("adjacency").keySet()) {
+            if (_abstractTree.get(router).get("process").get(
+              "adjacency").get(adjacency_num).containsKey("add")) {
+                System.out.println("add " + _abstractTree.get(
+                  router).get("process").get("adjacency").get(adjacency_num).get("add"));
+            }
+            if (_abstractTree.get(router).get("process").get(
+              "adjacency").get(adjacency_num).containsKey("remove")) {
+                System.out.println("remove " + _abstractTree.get(
+                  router).get("process").get("adjacency").get(adjacency_num).get("remove"));
+            }
+        }
+      }
     }
-
   }
 
   /**
