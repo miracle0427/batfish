@@ -1290,7 +1290,7 @@ public class Encoder {
             for (String name : names) {
               if (name.contains("[") && name.contains("]")) {
                   //System.out.println("# " + types[0]);
-                  String[] temp = name[0].split("\\[");
+                  String[] temp = name.split("\\[");
                   if (temp[0].equalsIgnoreCase("Router")) {
                     routerName = temp[1].split("=")[1].replaceAll("\"+",
                       "").replaceAll("\\]+","");
