@@ -1448,7 +1448,7 @@ public class Encoder {
       System.out.println("\nThe user is specifying a custom objective\n");
       ArrayList<ManagementObjective> mgmt = getObjectives();
       for (ManagementObjective obj : mgmt) {
-
+        addManagementObjectiveConstraints(obj);
       }
     }
     /* Specifies a minimize data forwarding objective
