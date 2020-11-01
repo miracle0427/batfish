@@ -606,7 +606,7 @@ class EncoderSlice {
           _outboundAcls.put(ge, mkOr(outAcl,outAclRemove));
           Map<String, Map<String, BoolExpr>> ruleRemove = new HashMap<>();
           Map<String, BoolExpr> remove = new HashMap<>();
-          remove.put("remove", outAclRemove);
+          remove.put("remove", mkNot(outAclRemove));
           ruleRemove.put("match", remove);
           _Tree.get(router).get("pfilter").put(Integer.toString(ruleNum), ruleRemove);
           ruleNum += 1;
@@ -665,7 +665,7 @@ class EncoderSlice {
           _inboundAcls.put(ge, mkOr(inAcl,inAclRemove));
           Map<String, Map<String, BoolExpr>> ruleRemove = new HashMap<>();
           Map<String, BoolExpr> remove = new HashMap<>();
-          remove.put("remove", inAclRemove);
+          remove.put("remove", mkNot(inAclRemove));
           ruleRemove.put("match", remove);
           _Tree.get(router).get("pfilter").put(Integer.toString(ruleNum), ruleRemove);
           ruleNum += 1;
@@ -2274,7 +2274,7 @@ private void addSymbolicPacketBoundConstraints() {
             }
 
             Map<String, BoolExpr> add = new HashMap<>();
-            add.put("add", shouldAllow);
+            add.put("add", mkNot(shouldAllow));
             _Tree.get(router).get("process").get("adjacency").put(
               "static"+Integer.toString(ruleNum), add);
             ruleNum += 1;
@@ -2647,7 +2647,7 @@ private void addSymbolicPacketBoundConstraints() {
                 shouldAdd = _existsES.getStaticRouteAddSoft().get(ge);
               }
               Map<String, BoolExpr> add = new HashMap<>();
-              add.put("add", shouldAdd);
+              add.put("add", mkNot(shouldAdd));
               _Tree.get(router).get("process").get("origination").put(
                 "static"+Integer.toString(statNum), add);
               statNum += 1;
@@ -2882,7 +2882,7 @@ private void addSymbolicPacketBoundConstraints() {
               _enableRoute.put(keyvalue, shouldAllow);
             }
             Map<String, BoolExpr> add = new HashMap<>();
-            add.put("add", shouldAllow);
+            add.put("add", mkNot(shouldAllow));
             _Tree.get(router).get("process").get("adjacency").put(
               "bgp"+Integer.toString(ruleNum), add);
             ruleNum += 1;
@@ -3250,7 +3250,7 @@ private void addSymbolicPacketBoundConstraints() {
               }
 
               Map<String, BoolExpr> add = new HashMap<>();
-              add.put("add", shouldAdd);
+              add.put("add", mkNot(shouldAdd));
               _Tree.get(router).get("process").get("origination").put(
                 "ospf"+Integer.toString(exportRuleNum), add);
               exportRuleNum = exportRuleNum + 1;
