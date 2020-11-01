@@ -1377,77 +1377,93 @@ public class Encoder {
     for (String router : _abstractTree.keySet()) {
 
       System.out.println("Router " + router);
-
-      // packet filter
-      if (_abstractTree.get(router).containsKey("pfilter")) {
-        System.out.println("pfilter");
-        for (String filter_num : _abstractTree.get(
-          router).get("pfilter").keySet()) {
-            if (_abstractTree.get(router).get("pfilter").get(
-              filter_num).get("match").containsKey("add")) {
-                System.out.println("add " + _abstractTree.get(
-                  router).get("pfilter").get(filter_num).get("match").get("add"));
-            }
-            if (_abstractTree.get(router).get("pfilter").get(
-              filter_num).get("match").containsKey("remove")) {
-                System.out.println("add " + _abstractTree.get(
-                  router).get("pfilter").get(filter_num).get("match").get("remove"));
-            }
-        }
+      if (!(obj.getRouterName().equals("*") || 
+        obj.getRouterName().equals(router))) {
+        continue;
       }
 
+      if (obj.getType().equals("*") || 
+        obj.getType().equalsIgnoreCase("PacketFilter")) {
+        if (_abstractTree.get(router).containsKey("pfilter")) {
+          System.out.println("pfilter");
+          for (String filter_num : _abstractTree.get(
+            router).get("pfilter").keySet()) {
+              if (_abstractTree.get(router).get("pfilter").get(
+                filter_num).get("match").containsKey("add")) {
+                  System.out.println("add " + _abstractTree.get(
+                    router).get("pfilter").get(filter_num).get("match").get("add"));
+              }
+              if (_abstractTree.get(router).get("pfilter").get(
+                filter_num).get("match").containsKey("remove")) {
+                  System.out.println("add " + _abstractTree.get(
+                    router).get("pfilter").get(filter_num).get("match").get("remove"));
+              }
+          }
+        }
+      }
       // route filter
-      if (_abstractTree.get(router).containsKey("rfilter")) {
-        System.out.println("rfilter");
-        for (String filter_num : _abstractTree.get(
-          router).get("rfilter").keySet()) {
-            if (_abstractTree.get(router).get("rfilter").get(
-              filter_num).get("match").containsKey("add")) {
-                System.out.println("add " + _abstractTree.get(
-                  router).get("rfilter").get(filter_num).get("match").get("add"));
-            }
-            if (_abstractTree.get(router).get("rfilter").get(
-              filter_num).get("match").containsKey("remove")) {
-                System.out.println("add " + _abstractTree.get(
-                  router).get("rfilter").get(filter_num).get("match").get("remove"));
-            }
+      if (obj.getType().equals("*") || 
+        obj.getType().equalsIgnoreCase("RouteFilter")) {
+        if (_abstractTree.get(router).containsKey("rfilter")) {
+          System.out.println("rfilter");
+          for (String filter_num : _abstractTree.get(
+            router).get("rfilter").keySet()) {
+              if (_abstractTree.get(router).get("rfilter").get(
+                filter_num).get("match").containsKey("add")) {
+                  System.out.println("add " + _abstractTree.get(
+                    router).get("rfilter").get(filter_num).get("match").get("add"));
+              }
+              if (_abstractTree.get(router).get("rfilter").get(
+                filter_num).get("match").containsKey("remove")) {
+                  System.out.println("add " + _abstractTree.get(
+                    router).get("rfilter").get(filter_num).get("match").get("remove"));
+              }
+          }
         }
       }
-
       // process
-      if (_abstractTree.get(router).containsKey("process")) {
-        System.out.println("process");
+      if (obj.getType().equals("*") || 
+        obj.getType().equalsIgnoreCase("RoutingProcess")) {
+        if (_abstractTree.get(router).containsKey("process")) {
+          System.out.println("process");
 
-        // origination
-        System.out.println("origination");        
-        for (String origination_num : _abstractTree.get(
-          router).get("process").get("origination").keySet()) {
-            if (_abstractTree.get(router).get("process").get(
-              "origination").get(origination_num).containsKey("add")) {
-                System.out.println("add " + _abstractTree.get(
-                  router).get("process").get("origination").get(origination_num).get("add"));
+          // origination
+          if (obj.getSubtype().equals("*") ||
+            obj.getSubtype().equalsIgnoreCase("Origination")) {
+            System.out.println("origination");        
+            for (String origination_num : _abstractTree.get(
+              router).get("process").get("origination").keySet()) {
+                if (_abstractTree.get(router).get("process").get(
+                  "origination").get(origination_num).containsKey("add")) {
+                    System.out.println("add " + _abstractTree.get(
+                      router).get("process").get("origination").get(origination_num).get("add"));
+                }
+                if (_abstractTree.get(router).get("process").get(
+                  "origination").get(origination_num).containsKey("remove")) {
+                    System.out.println("remove " + _abstractTree.get(
+                      router).get("process").get("origination").get(origination_num).get("remove"));
+                }
             }
-            if (_abstractTree.get(router).get("process").get(
-              "origination").get(origination_num).containsKey("remove")) {
-                System.out.println("remove " + _abstractTree.get(
-                  router).get("process").get("origination").get(origination_num).get("remove"));
-            }
-        }
+          }
 
-        // adjacency
-        System.out.println("adjacency");        
-        for (String adjacency_num : _abstractTree.get(
-          router).get("process").get("adjacency").keySet()) {
-            if (_abstractTree.get(router).get("process").get(
-              "adjacency").get(adjacency_num).containsKey("add")) {
-                System.out.println("add " + _abstractTree.get(
-                  router).get("process").get("adjacency").get(adjacency_num).get("add"));
+          // adjacency
+          if (obj.getSubtype().equals("*") ||
+            obj.getSubtype().equalsIgnoreCase("Adjacency")) {
+            System.out.println("adjacency");        
+            for (String adjacency_num : _abstractTree.get(
+              router).get("process").get("adjacency").keySet()) {
+                if (_abstractTree.get(router).get("process").get(
+                  "adjacency").get(adjacency_num).containsKey("add")) {
+                    System.out.println("add " + _abstractTree.get(
+                      router).get("process").get("adjacency").get(adjacency_num).get("add"));
+                }
+                if (_abstractTree.get(router).get("process").get(
+                  "adjacency").get(adjacency_num).containsKey("remove")) {
+                    System.out.println("remove " + _abstractTree.get(
+                      router).get("process").get("adjacency").get(adjacency_num).get("remove"));
+                }
             }
-            if (_abstractTree.get(router).get("process").get(
-              "adjacency").get(adjacency_num).containsKey("remove")) {
-                System.out.println("remove " + _abstractTree.get(
-                  router).get("process").get("adjacency").get(adjacency_num).get("remove"));
-            }
+          }
         }
       }
     }
@@ -1484,11 +1500,9 @@ public class Encoder {
     } else {
       System.out.println("\nThe user is specifying a custom objective\n");
       ArrayList<ManagementObjective> mgmt = getObjectives();
-      /*
       for (ManagementObjective obj : mgmt) {
         addManagementObjectiveConstraints(obj);
       }
-      */
     }
     /* Specifies a minimize data forwarding objective
     else if (_repairObjective == 2) {
