@@ -1239,7 +1239,7 @@ public class Encoder {
 
         br = new BufferedReader(new FileReader("grammar.txt"));
         while ((line = br.readLine()) != null) {
-            System.out.println("Input " + line);
+            //System.out.println("Input " + line);
             // use // as separator
             String[] vals = line.split("//");
             if (vals.length!=2) {
@@ -1333,7 +1333,6 @@ public class Encoder {
               curObj.setRouterName(routerName);
             }
             obj.add(curObj);
-            curObj.print();
         }
 
     } catch (FileNotFoundException e) {
@@ -1374,6 +1373,7 @@ public class Encoder {
       }
 
     }*/
+    obj.print();
     for (String router : _abstractTree.keySet()) {
 
       System.out.println("Router " + router);
