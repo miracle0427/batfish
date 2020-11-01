@@ -15,6 +15,7 @@ class ManagementObjective {
   boolean hasGroup;
   boolean hasSubtype;
   boolean hasRouter;
+  boolean hasType;
 
   public ManagementObjective() {
     action = "";
@@ -29,8 +30,16 @@ class ManagementObjective {
   }
 
   public void print() {
-    System.out.println(action + "\t" + type + "\t" + typeName + 
-        "\t" + subtype + "\t" + groupByName);
+    System.out.println("action: " + action + 
+      ", routerName: " + routerName +
+      ", hasRouter: " + hasRouter + 
+      ", type: " + type + 
+      ", typeName: " + typeName + 
+      ", hasType: " + hasType + 
+      ", subtype: " + subtype + 
+      ", hasSubtype: " + hasSubtype + 
+      ", groupByName: " + groupByName + 
+      ", hasGroup: " + hasGroup);
   }
 
   public String getAction() {
@@ -69,6 +78,10 @@ class ManagementObjective {
     return hasRouter;
   }
 
+  public boolean getHasType() {
+    return hasType;
+  }
+
   public void setAction(String action) {
     this.action = action;
   }
@@ -79,6 +92,7 @@ class ManagementObjective {
 
   public void setTypeName(String typeName) {
     this.typeName = typeName;
+    hasType = true;
   }
 
   public void setSubtype(String subtype) {
