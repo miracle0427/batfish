@@ -1451,8 +1451,6 @@ public class Encoder {
 
       }
     }
-    ManagementObjective obj;
-    addManagementObjectiveConstraints(obj);
     /* Specifies a minimize data forwarding objective
     else if (_repairObjective == 2) {
       Map<String, String> dfwd = new HashMap<>();
