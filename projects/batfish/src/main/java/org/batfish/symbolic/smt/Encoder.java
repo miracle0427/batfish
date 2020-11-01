@@ -1346,10 +1346,15 @@ public class Encoder {
     }*/
     for (String router : _abstractTree.keySet()) {
       System.out.println("Router " + router);
-      if (_abstractTree.containsKey("pfilter")) {
+      if (_abstractTree.get(router).containsKey("pfilter")) {
         System.out.println("pfilter");
+        for (String filter_num : _abstractTree.get(router).get("pfilter")) {
+          if (_abstractTree.get(router).get("pfilter").get(filter_num).containsKey("add")) {
+            System.out.println("add " + _abstractTree.get(router).get("pfilter").get(filter_num).get("add"));
+          }
+        }
       }
-      
+
         /*
         if (router_entry.getValue().containsKey("pfilter")) {
           System.out.println("pfilter");
@@ -1446,6 +1451,8 @@ public class Encoder {
 
       }
     }
+    ManagementObjective obj;
+    addManagementObjectiveConstraints(obj);
     /* Specifies a minimize data forwarding objective
     else if (_repairObjective == 2) {
       Map<String, String> dfwd = new HashMap<>();
