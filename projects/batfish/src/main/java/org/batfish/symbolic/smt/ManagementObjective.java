@@ -27,6 +27,7 @@ class ManagementObjective {
     hasGroup = false;
     hasSubtype = false;
     hasRouter = false;
+    hasType = false;
   }
 
   public void print() {
