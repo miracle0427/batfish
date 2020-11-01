@@ -1287,6 +1287,7 @@ public class Encoder {
             String typeName = "";
             String routerName = "";
             boolean hasRouterName = false;
+            boolean hasType = false;
             for (String name : names) {
               if (name.contains("[") && name.contains("]")) {
                   //System.out.println("# " + types[0]);
@@ -1299,6 +1300,7 @@ public class Encoder {
                     type = temp[0];
                     typeName = temp[1].split("=")[1].replaceAll("\"+",
                       "").replaceAll("\\]+","");
+                    hasType = true;
                   }
                   //System.out.println("type " + type + "\ttypeName " + typeName);
               } else {
@@ -1308,6 +1310,7 @@ public class Encoder {
                   } else {
                     type = name;
                     typeName = "*";
+                    hasType = true;
                   }
               }
             }
@@ -1316,7 +1319,7 @@ public class Encoder {
             
             ManagementObjective curObj = new ManagementObjective();
             curObj.setAction(action);
-            if (type.equals("")) {
+            if (hasType) {
               curObj.setType(type);
               curObj.setTypeName(typeName);
             }
