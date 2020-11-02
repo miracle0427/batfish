@@ -1505,7 +1505,7 @@ public class Encoder {
                       1,
                       "");                  
                     }  else if (action.equalsIgnoreCase("ELIMINATE")) {
-                      mkNot(addSoft(_abstractTree.get(
+                      addSoft(mkNot(_abstractTree.get(
                       router).get("process").get("origination").get(origination_num).get("remove")),
                       1,
                       "");                                        
@@ -1529,7 +1529,7 @@ public class Encoder {
                     if (action.equalsIgnoreCase("NOMODIFY") ||
                      action.equalsIgnoreCase("ELIMINATE")) {
                       addSoft(_abstractTree.get(
-                      router).get("process").get("adjacency").get(origination_num).get("add"),
+                      router).get("process").get("adjacency").get(adjacency_num).get("add"),
                       1,
                       "");                  
                     }
@@ -1542,12 +1542,12 @@ public class Encoder {
           
                     if (action.equalsIgnoreCase("NOMODIFY")) {
                       addSoft(_abstractTree.get(
-                      router).get("process").get("adjacency").get(origination_num).get("remove"),
+                      router).get("process").get("adjacency").get(adjacency_num).get("remove"),
                       1,
                       "");                  
                     }  else if (action.equalsIgnoreCase("ELIMINATE")) {
-                      mkNot(addSoft(_abstractTree.get(
-                      router).get("process").get("adjacency").get(origination_num).get("remove")),
+                      addSoft(mkNot(_abstractTree.get(
+                      router).get("process").get("adjacency").get(adjacency_num).get("remove")),
                       1,
                       "");                                        
                     }
