@@ -1566,7 +1566,7 @@ public class Encoder {
     }
 
     if (hasGroup) {
-      addSoft(_abstractTree.get(groupVariables, 1, "");
+      addSoft(groupVariables, 1, "");
     }
 
   }
