@@ -454,7 +454,7 @@ public class Encoder {
     _routerConsMap = new HashMap<> ();
     for (Entry<String, Set<String>> entry : _graph.getNeighbors().entrySet()) {
       String router = entry.getKey();
-      _routerConsMap.put(router, mkTrue());
+      _routerConsMap.put(router, mkFalse());
     }
 
     _weightMap = new HashMap<> ();
@@ -1402,7 +1402,7 @@ public class Encoder {
                    action.equalsIgnoreCase("ELIMINATE")) {
                     addSoft(pfilter_match_add, 1, "");
                     if (hasGroup) {
-                      groupVariables = mkAnd(groupVariables, pfilter_match_add);
+                      groupVariables = mkOr(groupVariables, pfilter_match_add);
                     }
                   }
 
@@ -1415,12 +1415,12 @@ public class Encoder {
                   if (action.equalsIgnoreCase("NOMODIFY")) {
                     addSoft(pfilter_match_remove, 1, "");
                     if (hasGroup) {
-                      groupVariables = mkAnd(groupVariables, pfilter_match_remove);
+                      groupVariables = mkOr(groupVariables, pfilter_match_remove);
                     }
                   } else if (action.equalsIgnoreCase("ELIMINATE")) {
                     addSoft(mkNot(pfilter_match_remove), 1, "");                  
                     if (hasGroup) {
-                      groupVariables = mkAnd(groupVariables, mkNot(pfilter_match_remove));
+                      groupVariables = mkOr(groupVariables, mkNot(pfilter_match_remove));
                     }
                   }
 
@@ -1445,7 +1445,7 @@ public class Encoder {
                    action.equalsIgnoreCase("ELIMINATE")) {
                     addSoft(rfilter_match_add, 1, "");
                     if (hasGroup) {
-                      groupVariables = mkAnd(groupVariables, rfilter_match_add);
+                      groupVariables = mkOr(groupVariables, rfilter_match_add);
                     }
                   }
           
@@ -1458,12 +1458,12 @@ public class Encoder {
                   if (action.equalsIgnoreCase("NOMODIFY")) {
                     addSoft(rfilter_match_remove, 1, "");
                     if (hasGroup) {
-                      groupVariables = mkAnd(groupVariables, rfilter_match_remove);
+                      groupVariables = mkOr(groupVariables, rfilter_match_remove);
                     }
                   } else if (action.equalsIgnoreCase("ELIMINATE")) {
                     addSoft(mkNot(rfilter_match_remove), 1, "");                  
                     if (hasGroup) {
-                      groupVariables = mkAnd(groupVariables, mkNot(rfilter_match_remove));
+                      groupVariables = mkOr(groupVariables, mkNot(rfilter_match_remove));
                     }
                   }
           
@@ -1493,7 +1493,7 @@ public class Encoder {
                      action.equalsIgnoreCase("ELIMINATE")) {
                       addSoft(origination_add, 1, "");                  
                       if (hasGroup) {
-                        groupVariables = mkAnd(groupVariables, origination_add);
+                        groupVariables = mkOr(groupVariables, origination_add);
                       }
                     }
           
@@ -1507,12 +1507,12 @@ public class Encoder {
                     if (action.equalsIgnoreCase("NOMODIFY")) {
                       addSoft(origination_remove, 1, "");                  
                       if (hasGroup) {
-                        groupVariables = mkAnd(groupVariables, origination_remove);
+                        groupVariables = mkOr(groupVariables, origination_remove);
                       }
                     }  else if (action.equalsIgnoreCase("ELIMINATE")) {
                       addSoft(mkNot(origination_remove), 1, "");                                        
                       if (hasGroup) {
-                        groupVariables = mkAnd(groupVariables, mkNot(origination_remove));
+                        groupVariables = mkOr(groupVariables, mkNot(origination_remove));
                       }
                     }
           
@@ -1536,7 +1536,7 @@ public class Encoder {
                      action.equalsIgnoreCase("ELIMINATE")) {
                       addSoft(adjacency_add, 1, "");                  
                       if (hasGroup) {
-                        groupVariables = mkAnd(groupVariables, adjacency_add);
+                        groupVariables = mkOr(groupVariables, adjacency_add);
                       }
                     }
           
@@ -1550,12 +1550,12 @@ public class Encoder {
                     if (action.equalsIgnoreCase("NOMODIFY")) {
                       addSoft(adjacency_remove, 1, "");                  
                       if (hasGroup) {
-                        groupVariables = mkAnd(groupVariables, adjacency_remove);
+                        groupVariables = mkOr(groupVariables, adjacency_remove);
                       }
                     }  else if (action.equalsIgnoreCase("ELIMINATE")) {
                       addSoft(mkNot(adjacency_remove), 1, "");                                        
                       if (hasGroup) {
-                        groupVariables = mkAnd(groupVariables, mkNot(adjacency_remove));
+                        groupVariables = mkOr(groupVariables, mkNot(adjacency_remove));
                       }
                     }
                 }

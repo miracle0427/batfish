@@ -596,7 +596,7 @@ class EncoderSlice {
           if (_encoder._repairObjective == 0) {
             addSoft(mkNot(outAclRemove), aclWeight, "SoftOutAclRemove");
           }
-          _routerConsMap.put(router, mkAnd(_routerConsMap.get(router), mkNot(outAclRemove)));
+          _routerConsMap.put(router, mkOr(_routerConsMap.get(router), mkNot(outAclRemove)));
           //*/
           // @archie outAclRemove is soft constraint to do out ACL remove
           add(mkEq(outAcl, outAclFunc));
@@ -626,7 +626,7 @@ class EncoderSlice {
           if (_encoder._repairObjective == 0) {
             addSoft(outAcl, aclWeight, "SoftOutAclAdd");
           }
-          _routerConsMap.put(router, mkAnd(_routerConsMap.get(router), outAcl));
+          _routerConsMap.put(router, mkOr(_routerConsMap.get(router), outAcl));
           _outboundAcls.put(ge, outAcl);
           Map<String, Map<String, BoolExpr>> ruleAdd = new HashMap<>();
           Map<String, BoolExpr> add = new HashMap<>();
@@ -655,7 +655,7 @@ class EncoderSlice {
           if (_encoder._repairObjective == 0) {
             addSoft(mkNot(inAclRemove), aclWeight, "SoftInAclRemove");
           }
-          _routerConsMap.put(router, mkAnd(_routerConsMap.get(router), mkNot(inAclRemove)));
+          _routerConsMap.put(router, mkOr(_routerConsMap.get(router), mkNot(inAclRemove)));
           // @archie inAclRemove is soft constraint to do in ACL remove
           //*/
           // ARCHIE ADD THIS BACK 
@@ -681,7 +681,7 @@ class EncoderSlice {
           if (_encoder._repairObjective == 0) {
             addSoft(inAcl, aclWeight, "SoftInAclAdd");
           }
-          _routerConsMap.put(router, mkAnd(_routerConsMap.get(router), inAcl));
+          _routerConsMap.put(router, mkOr(_routerConsMap.get(router), inAcl));
           _inboundAcls.put(ge, inAcl);
           Map<String, Map<String, BoolExpr>> ruleAdd = new HashMap<>();
           Map<String, BoolExpr> add = new HashMap<>();
@@ -875,7 +875,7 @@ class EncoderSlice {
         if (_encoder._repairObjective == 0) {
           addSoft(shouldRemove, importWeight, "BGPRemoveFilter");
         }
-        _routerConsMap.put(routerName, mkAnd(_routerConsMap.get(routerName), shouldRemove));
+        _routerConsMap.put(routerName, mkOr(_routerConsMap.get(routerName), shouldRemove));
         //BoolExpr shouldAdd = getCtx().mkBoolConst(_encoder.getId() + "_" + prefixLen + "BGPAddFilter");
         //addSoft(mkNot(shouldAdd), 1, "BGPAddFilter");
         //BoolExpr softconst = mkOr(mkAnd(lowerBitsMatch, shouldRemove), shouldAdd);
@@ -2269,7 +2269,7 @@ private void addSymbolicPacketBoundConstraints() {
               if (_encoder._repairObjective == 0) {
                 addSoft(mkNot(shouldAllow), enableAdjWeight, "AllowRoute");
               }
-              _routerConsMap.put(router, mkAnd(_routerConsMap.get(router), mkNot(shouldAllow)));
+              _routerConsMap.put(router, mkOr(_routerConsMap.get(router), mkNot(shouldAllow)));
               _enableRoute.put(keyvalue, shouldAllow);
             }
 
@@ -2642,7 +2642,7 @@ private void addSymbolicPacketBoundConstraints() {
                   addSoft(mkNot(shouldAdd), staticWeight, "StaticAdd");
                 }
                 _staticRouteAddSoft.put(ge, shouldAdd);
-                _routerConsMap.put(router, mkAnd(_routerConsMap.get(router), mkNot(shouldAdd)));
+                _routerConsMap.put(router, mkOr(_routerConsMap.get(router), mkNot(shouldAdd)));
               } else {
                 shouldAdd = _existsES.getStaticRouteAddSoft().get(ge);
               }
@@ -2720,7 +2720,7 @@ private void addSymbolicPacketBoundConstraints() {
               BoolExpr shouldRemove = getCtx().mkBoolConst(_encoder.getId() + "_"
                + router + "StaticRouteRemoveSoft" + p);
               addSoft(shouldRemove, staticWeight, "StaticRemove");
-              _routerConsMap.put(router, mkAnd(_routerConsMap.get(router), shouldRemove));  
+              _routerConsMap.put(router, mkOr(_routerConsMap.get(router), shouldRemove));  
               BoolExpr relevant =
                   mkAnd(
                       interfaceActive(iface, proto, e),
@@ -2747,7 +2747,7 @@ private void addSymbolicPacketBoundConstraints() {
           remove.put("remove", shouldRemove);
           _Tree.get(router).get("process").get("origination").put(
             "static"+Integer.toString(ruleNum), remove);
-          _routerConsMap.put(router, mkAnd(_routerConsMap.get(router), shouldRemove));
+          _routerConsMap.put(router, mkOr(_routerConsMap.get(router), shouldRemove));
           relevant =
               mkAnd(
                   interfaceActive(iface, proto, e),
@@ -2878,7 +2878,7 @@ private void addSymbolicPacketBoundConstraints() {
               if (_encoder._repairObjective == 0) {
                 addSoft(mkNot(shouldAllow), enableAdjWeight, "AllowRouteSoft");
               }
-              _routerConsMap.put(router, mkAnd(_routerConsMap.get(router), mkNot(shouldAllow)));  
+              _routerConsMap.put(router, mkOr(_routerConsMap.get(router), mkNot(shouldAllow)));  
               _enableRoute.put(keyvalue, shouldAllow);
             }
             Map<String, BoolExpr> add = new HashMap<>();
@@ -2929,7 +2929,7 @@ private void addSymbolicPacketBoundConstraints() {
           if (_encoder._repairObjective == 0) {
             addSoft(shouldAddFilter, importWeight, "ImportFilterAdd");
           }
-          _routerConsMap.put(router, mkAnd(_routerConsMap.get(router), shouldAddFilter));  
+          _routerConsMap.put(router, mkOr(_routerConsMap.get(router), shouldAddFilter));  
           //importFunction = mkOr(importFunction, shouldAddFilter);
           BoolExpr acc = mkIf(mkAnd(usable, shouldAddFilter), importFunction, val);
           //*/
@@ -3093,7 +3093,7 @@ private void addSymbolicPacketBoundConstraints() {
               "redis"+Integer.toString(exportRuleNum), remove);
             exportRuleNum = exportRuleNum + 1;
 
-            _routerConsMap.put(router, mkAnd(_routerConsMap.get(router), redisRemove));  
+            _routerConsMap.put(router, mkOr(_routerConsMap.get(router), redisRemove));  
             _disableRedis.put(keyvalue, redisRemove);
           }
           /*/
@@ -3181,7 +3181,7 @@ private void addSymbolicPacketBoundConstraints() {
                   addSoft(shouldRemove, ospfWeight, "OSPFExportRemove"); 
                 }
 
-                _routerConsMap.put(router, mkAnd(_routerConsMap.get(router), shouldRemove));  
+                _routerConsMap.put(router, mkOr(_routerConsMap.get(router), shouldRemove));  
                 _disableOSPF.put(keyvalue, shouldRemove);
               }
 
@@ -3255,7 +3255,7 @@ private void addSymbolicPacketBoundConstraints() {
                 "ospf"+Integer.toString(exportRuleNum), add);
               exportRuleNum = exportRuleNum + 1;
 
-              _routerConsMap.put(router, mkAnd(_routerConsMap.get(router), mkNot(shouldAdd)));  
+              _routerConsMap.put(router, mkOr(_routerConsMap.get(router), mkNot(shouldAdd)));  
               relevantPrefix = mkAnd(relevantPrefix, shouldAdd);
               BoolExpr relevant = mkAnd(ifaceUp, relevantPrefix);
 
