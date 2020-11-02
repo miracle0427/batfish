@@ -1374,7 +1374,10 @@ public class Encoder {
 
     }*/
     obj.print();
+    BoolExpr groupVariables = mkTrue();
     String action = obj.getAction();
+    boolean hasGroup = obj.hasGroupBy()
+
     for (String router : _abstractTree.keySet()) {
 
       System.out.println("Router " + router);
@@ -1392,33 +1395,33 @@ public class Encoder {
 
               if (_abstractTree.get(router).get("pfilter").get(
                 filter_num).get("match").containsKey("add")) {
-                  
-                  System.out.println("add " + _abstractTree.get(
-                    router).get("pfilter").get(filter_num).get("match").get("add"));
+                  BoolExpr pfilter_match_add = addSoft(_abstractTree.get(router).get("pfilter").get(
+                      filter_num).get("match").get("add");
+                  System.out.println("add " + pfilter_match_add);
                   if (action.equalsIgnoreCase("NOMODIFY") ||
                    action.equalsIgnoreCase("ELIMINATE")) {
-                    addSoft(_abstractTree.get(router).get("pfilter").get(
-                      filter_num).get("match").get("add"),
-                    1,
-                    "");
+                    addSoft(pfilter_match_add, 1, "");
+                    if (hasGroup) {
+                      groupVariables = mkAnd(groupVariables, pfilter_match_add);
+                    }
                   }
 
               }
               if (_abstractTree.get(router).get("pfilter").get(
                 filter_num).get("match").containsKey("remove")) {
-                  
-                  System.out.println("add " + _abstractTree.get(
-                    router).get("pfilter").get(filter_num).get("match").get("remove"));
+                  BoolExpr pfilter_match_remove = _abstractTree.get(
+                    router).get("pfilter").get(filter_num).get("match").get("remove");
+                  System.out.println("add " + pfilter_match_remove);
                   if (action.equalsIgnoreCase("NOMODIFY")) {
-                    addSoft(_abstractTree.get(router).get("pfilter").get(
-                      filter_num).get("match").get("remove"),
-                    1,
-                    "");
+                    addSoft(pfilter_match_remove, 1, "");
+                    if (hasGroup) {
+                      groupVariables = mkAnd(groupVariables, pfilter_match_remove);
+                    }
                   } else if (action.equalsIgnoreCase("ELIMINATE")) {
-                    addSoft(mkNot(_abstractTree.get(router).get("pfilter").get(
-                      filter_num).get("match").get("remove")),
-                    1,
-                    "");                  
+                    addSoft(mkNot(pfilter_match_remove), 1, "");                  
+                    if (hasGroup) {
+                      groupVariables = mkAnd(groupVariables, mkNot(pfilter_match_remove));
+                    }
                   }
 
               }
@@ -1435,33 +1438,33 @@ public class Encoder {
             router).get("rfilter").keySet()) {
               if (_abstractTree.get(router).get("rfilter").get(
                 filter_num).get("match").containsKey("add")) {
-          
-                  System.out.println("add " + _abstractTree.get(
-                    router).get("rfilter").get(filter_num).get("match").get("add"));
+                  BoolExpr rfilter_match_add = _abstractTree.get(
+                    router).get("rfilter").get(filter_num).get("match").get("add"); 
+                  System.out.println("add " + rfilter_match_add);
                   if (action.equalsIgnoreCase("NOMODIFY") ||
                    action.equalsIgnoreCase("ELIMINATE")) {
-                    addSoft(_abstractTree.get(router).get("rfilter").get(
-                      filter_num).get("match").get("add"),
-                    1,
-                    "");
+                    addSoft(rfilter_match_add, 1, "");
+                    if (hasGroup) {
+                      groupVariables = mkAnd(groupVariables, rfilter_match_add);
+                    }
                   }
           
               }
               if (_abstractTree.get(router).get("rfilter").get(
                 filter_num).get("match").containsKey("remove")) {
-          
-                  System.out.println("add " + _abstractTree.get(
-                    router).get("rfilter").get(filter_num).get("match").get("remove"));
+                  BoolExpr rfilter_match_remove = _abstractTree.get(
+                    router).get("rfilter").get(filter_num).get("match").get("remove");
+                  System.out.println("add " + rfilter_match_remove);
                   if (action.equalsIgnoreCase("NOMODIFY")) {
-                    addSoft(_abstractTree.get(router).get("rfilter").get(
-                      filter_num).get("match").get("remove"),
-                    1,
-                    "");
+                    addSoft(rfilter_match_remove, 1, "");
+                    if (hasGroup) {
+                      groupVariables = mkAnd(groupVariables, rfilter_match_remove);
+                    }
                   } else if (action.equalsIgnoreCase("ELIMINATE")) {
-                    addSoft(mkNot(_abstractTree.get(router).get("rfilter").get(
-                      filter_num).get("match").get("remove")),
-                    1,
-                    "");                  
+                    addSoft(mkNot(rfilter_match_remove), 1, "");                  
+                    if (hasGroup) {
+                      groupVariables = mkAnd(groupVariables, mkNot(rfilter_match_remove));
+                    }
                   }
           
               }
@@ -1482,33 +1485,35 @@ public class Encoder {
               router).get("process").get("origination").keySet()) {
                 if (_abstractTree.get(router).get("process").get(
                   "origination").get(origination_num).containsKey("add")) {
-                    System.out.println("add " + _abstractTree.get(
-                      router).get("process").get("origination").get(origination_num).get("add"));
+                    BoolExpr origination_add = _abstractTree.get(
+                      router).get("process").get("origination").get(origination_num).get("add");
+                    System.out.println("add " + origination_add);
           
                     if (action.equalsIgnoreCase("NOMODIFY") ||
                      action.equalsIgnoreCase("ELIMINATE")) {
-                      addSoft(_abstractTree.get(
-                      router).get("process").get("origination").get(origination_num).get("add"),
-                      1,
-                      "");                  
+                      addSoft(_abstractTree.get(origination_add, 1, "");                  
+                      if (hasGroup) {
+                        groupVariables = mkAnd(groupVariables, origination_add);
+                      }
                     }
           
                 }
                 if (_abstractTree.get(router).get("process").get(
                   "origination").get(origination_num).containsKey("remove")) {
-                    System.out.println("remove " + _abstractTree.get(
-                      router).get("process").get("origination").get(origination_num).get("remove"));
+                    BoolExpr origination_remove = _abstractTree.get(
+                      router).get("process").get("origination").get(origination_num).get("remove");
+                    System.out.println("remove " + origination_remove);
           
                     if (action.equalsIgnoreCase("NOMODIFY")) {
-                      addSoft(_abstractTree.get(
-                      router).get("process").get("origination").get(origination_num).get("remove"),
-                      1,
-                      "");                  
+                      addSoft(origination_remove, 1, "");                  
+                      if (hasGroup) {
+                        groupVariables = mkAnd(groupVariables, origination_remove);
+                      }
                     }  else if (action.equalsIgnoreCase("ELIMINATE")) {
-                      addSoft(mkNot(_abstractTree.get(
-                      router).get("process").get("origination").get(origination_num).get("remove")),
-                      1,
-                      "");                                        
+                      addSoft(mkNot(origination_remove), 1, "");                                        
+                      if (hasGroup) {
+                        groupVariables = mkAnd(groupVariables, mkNot(origination_remove));
+                      }
                     }
           
                 }
@@ -1523,41 +1528,47 @@ public class Encoder {
               router).get("process").get("adjacency").keySet()) {
                 if (_abstractTree.get(router).get("process").get(
                   "adjacency").get(adjacency_num).containsKey("add")) {
-                    System.out.println("add " + _abstractTree.get(
-                      router).get("process").get("adjacency").get(adjacency_num).get("add"));
+                    BoolExpr adjacency_add = _abstractTree.get(
+                      router).get("process").get("adjacency").get(adjacency_num).get("add");
+                    System.out.println("add " + adjacency_add);
           
                     if (action.equalsIgnoreCase("NOMODIFY") ||
                      action.equalsIgnoreCase("ELIMINATE")) {
-                      addSoft(_abstractTree.get(
-                      router).get("process").get("adjacency").get(adjacency_num).get("add"),
-                      1,
-                      "");                  
+                      addSoft(adjacency_add, 1, "");                  
+                      if (hasGroup) {
+                        groupVariables = mkAnd(groupVariables, adjacency_add);
+                      }
                     }
           
                 }
                 if (_abstractTree.get(router).get("process").get(
                   "adjacency").get(adjacency_num).containsKey("remove")) {
-                    System.out.println("remove " + _abstractTree.get(
-                      router).get("process").get("adjacency").get(adjacency_num).get("remove"));
+                    BoolExpr adjacency_remove = _abstractTree.get(
+                      router).get("process").get("adjacency").get(adjacency_num).get("remove");
+                    System.out.println("remove " + adjacency_remove);
           
                     if (action.equalsIgnoreCase("NOMODIFY")) {
-                      addSoft(_abstractTree.get(
-                      router).get("process").get("adjacency").get(adjacency_num).get("remove"),
-                      1,
-                      "");                  
+                      addSoft(_abstractTree.get(adjacency_remove, 1, "");                  
+                      if (hasGroup) {
+                        groupVariables = mkAnd(groupVariables, adjacency_remove);
+                      }
                     }  else if (action.equalsIgnoreCase("ELIMINATE")) {
-                      addSoft(mkNot(_abstractTree.get(
-                      router).get("process").get("adjacency").get(adjacency_num).get("remove")),
-                      1,
-                      "");                                        
+                      addSoft(mkNot(adjacency_remove), 1, "");                                        
+                      if (hasGroup) {
+                        groupVariables = mkAnd(groupVariables, mkNot(adjacency_remove));
+                      }
                     }
-          
                 }
             }
           }
         }
       }
     }
+    
+    if (hasGroup) {
+      addSoft(_abstractTree.get(adjacency_remove, 1, "");
+    }
+
   }
 
   /**
