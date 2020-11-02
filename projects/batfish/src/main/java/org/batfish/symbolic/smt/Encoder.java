@@ -1374,6 +1374,7 @@ public class Encoder {
 
     }*/
     obj.print();
+    String action = obj.getAction();
     for (String router : _abstractTree.keySet()) {
 
       System.out.println("Router " + router);
@@ -1388,15 +1389,38 @@ public class Encoder {
           System.out.println("pfilter");
           for (String filter_num : _abstractTree.get(
             router).get("pfilter").keySet()) {
+
               if (_abstractTree.get(router).get("pfilter").get(
                 filter_num).get("match").containsKey("add")) {
+                  
                   System.out.println("add " + _abstractTree.get(
                     router).get("pfilter").get(filter_num).get("match").get("add"));
+                  if (action.equalsIgnoreCase("NOMODIFY") ||
+                   action.equalsIgnoreCase("ELIMINATE")) {
+                    addSoft(_abstractTree.get(router).get("pfilter").get(
+                      filter_num).get("match").get("add"),
+                    1,
+                    "");
+                  }
+
               }
               if (_abstractTree.get(router).get("pfilter").get(
                 filter_num).get("match").containsKey("remove")) {
+                  
                   System.out.println("add " + _abstractTree.get(
                     router).get("pfilter").get(filter_num).get("match").get("remove"));
+                  if (action.equalsIgnoreCase("NOMODIFY")) {
+                    addSoft(_abstractTree.get(router).get("pfilter").get(
+                      filter_num).get("match").get("remove"),
+                    1,
+                    "");
+                  } else if (action.equalsIgnoreCase("ELIMINATE")) {
+                    addSoft(mkNot(_abstractTree.get(router).get("pfilter").get(
+                      filter_num).get("match").get("remove")),
+                    1,
+                    "");                  
+                  }
+
               }
           }
         }
@@ -1405,18 +1429,41 @@ public class Encoder {
       if (obj.getType().equals("*") || 
         obj.getType().equalsIgnoreCase("RouteFilter")) {
         if (_abstractTree.get(router).containsKey("rfilter")) {
+          
           System.out.println("rfilter");
           for (String filter_num : _abstractTree.get(
             router).get("rfilter").keySet()) {
               if (_abstractTree.get(router).get("rfilter").get(
                 filter_num).get("match").containsKey("add")) {
+          
                   System.out.println("add " + _abstractTree.get(
                     router).get("rfilter").get(filter_num).get("match").get("add"));
+                  if (action.equalsIgnoreCase("NOMODIFY") ||
+                   action.equalsIgnoreCase("ELIMINATE")) {
+                    addSoft(_abstractTree.get(router).get("rfilter").get(
+                      filter_num).get("match").get("add"),
+                    1,
+                    "");
+                  }
+          
               }
               if (_abstractTree.get(router).get("rfilter").get(
                 filter_num).get("match").containsKey("remove")) {
+          
                   System.out.println("add " + _abstractTree.get(
                     router).get("rfilter").get(filter_num).get("match").get("remove"));
+                  if (action.equalsIgnoreCase("NOMODIFY")) {
+                    addSoft(_abstractTree.get(router).get("rfilter").get(
+                      filter_num).get("match").get("remove"),
+                    1,
+                    "");
+                  } else if (action.equalsIgnoreCase("ELIMINATE")) {
+                    addSoft(mkNot(_abstractTree.get(router).get("rfilter").get(
+                      filter_num).get("match").get("remove")),
+                    1,
+                    "");                  
+                  }
+          
               }
           }
         }
@@ -1437,11 +1484,33 @@ public class Encoder {
                   "origination").get(origination_num).containsKey("add")) {
                     System.out.println("add " + _abstractTree.get(
                       router).get("process").get("origination").get(origination_num).get("add"));
+          
+                    if (action.equalsIgnoreCase("NOMODIFY") ||
+                     action.equalsIgnoreCase("ELIMINATE")) {
+                      addSoft(_abstractTree.get(
+                      router).get("process").get("origination").get(origination_num).get("add"),
+                      1,
+                      "");                  
+                    }
+          
                 }
                 if (_abstractTree.get(router).get("process").get(
                   "origination").get(origination_num).containsKey("remove")) {
                     System.out.println("remove " + _abstractTree.get(
                       router).get("process").get("origination").get(origination_num).get("remove"));
+          
+                    if (action.equalsIgnoreCase("NOMODIFY")) {
+                      addSoft(_abstractTree.get(
+                      router).get("process").get("origination").get(origination_num).get("remove"),
+                      1,
+                      "");                  
+                    }  else if (action.equalsIgnoreCase("ELIMINATE")) {
+                      mkNot(addSoft(_abstractTree.get(
+                      router).get("process").get("origination").get(origination_num).get("remove")),
+                      1,
+                      "");                                        
+                    }
+          
                 }
             }
           }
@@ -1456,11 +1525,33 @@ public class Encoder {
                   "adjacency").get(adjacency_num).containsKey("add")) {
                     System.out.println("add " + _abstractTree.get(
                       router).get("process").get("adjacency").get(adjacency_num).get("add"));
+          
+                    if (action.equalsIgnoreCase("NOMODIFY") ||
+                     action.equalsIgnoreCase("ELIMINATE")) {
+                      addSoft(_abstractTree.get(
+                      router).get("process").get("adjacency").get(origination_num).get("add"),
+                      1,
+                      "");                  
+                    }
+          
                 }
                 if (_abstractTree.get(router).get("process").get(
                   "adjacency").get(adjacency_num).containsKey("remove")) {
                     System.out.println("remove " + _abstractTree.get(
                       router).get("process").get("adjacency").get(adjacency_num).get("remove"));
+          
+                    if (action.equalsIgnoreCase("NOMODIFY")) {
+                      addSoft(_abstractTree.get(
+                      router).get("process").get("adjacency").get(origination_num).get("remove"),
+                      1,
+                      "");                  
+                    }  else if (action.equalsIgnoreCase("ELIMINATE")) {
+                      mkNot(addSoft(_abstractTree.get(
+                      router).get("process").get("adjacency").get(origination_num).get("remove")),
+                      1,
+                      "");                                        
+                    }
+          
                 }
             }
           }
