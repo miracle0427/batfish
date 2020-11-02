@@ -1376,7 +1376,7 @@ public class Encoder {
     obj.print();
     BoolExpr groupVariables = mkTrue();
     String action = obj.getAction();
-    boolean hasGroup = obj.hasGroupBy()
+    boolean hasGroup = obj.hasGroupBy();
 
     for (String router : _abstractTree.keySet()) {
 
@@ -1395,7 +1395,7 @@ public class Encoder {
 
               if (_abstractTree.get(router).get("pfilter").get(
                 filter_num).get("match").containsKey("add")) {
-                  BoolExpr pfilter_match_add = addSoft(_abstractTree.get(router).get("pfilter").get(
+                  BoolExpr pfilter_match_add = _abstractTree.get(router).get("pfilter").get(
                       filter_num).get("match").get("add");
                   System.out.println("add " + pfilter_match_add);
                   if (action.equalsIgnoreCase("NOMODIFY") ||
@@ -1491,7 +1491,7 @@ public class Encoder {
           
                     if (action.equalsIgnoreCase("NOMODIFY") ||
                      action.equalsIgnoreCase("ELIMINATE")) {
-                      addSoft(_abstractTree.get(origination_add, 1, "");                  
+                      addSoft(origination_add, 1, "");                  
                       if (hasGroup) {
                         groupVariables = mkAnd(groupVariables, origination_add);
                       }
@@ -1548,7 +1548,7 @@ public class Encoder {
                     System.out.println("remove " + adjacency_remove);
           
                     if (action.equalsIgnoreCase("NOMODIFY")) {
-                      addSoft(_abstractTree.get(adjacency_remove, 1, "");                  
+                      addSoft(adjacency_remove, 1, "");                  
                       if (hasGroup) {
                         groupVariables = mkAnd(groupVariables, adjacency_remove);
                       }
@@ -1564,9 +1564,9 @@ public class Encoder {
         }
       }
     }
-    
+
     if (hasGroup) {
-      addSoft(_abstractTree.get(adjacency_remove, 1, "");
+      addSoft(_abstractTree.get(groupVariables, 1, "");
     }
 
   }
