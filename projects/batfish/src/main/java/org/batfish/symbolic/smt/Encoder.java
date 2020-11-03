@@ -1619,7 +1619,12 @@ public class Encoder {
     }
 
     if (action.equalsIgnoreCase("EQUATE")) {
-      BoolExpr similarity = getCtx().mkBoolConst("@");
+      for (String expr : _equateMap.keySet()) {
+        BoolExpr similarity = getCtx().mkBoolConst(expr);
+        for (BoolExpr boolexp : _equateMap.get(expr)) {
+          
+        }
+      }
     }
 
   }
