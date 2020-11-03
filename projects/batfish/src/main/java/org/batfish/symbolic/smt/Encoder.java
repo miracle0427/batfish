@@ -1498,7 +1498,7 @@ public class Encoder {
           System.out.println("process");
 
           // origination
-          if (obj.matches("Origination")) {
+          if (obj.getSubtype().matches("Origination")) {
             System.out.println("origination");        
             for (String origination_num : _abstractTree.get(
               router).get("process").get("origination").keySet()) {
