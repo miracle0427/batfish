@@ -1519,7 +1519,13 @@ public class Encoder {
                       if (hasGroup) {
                         groupVariables = mkOr(groupVariables, origination_add);
                       }
-                    } else if (action.equalsIgnoreCase("EQUATE")) {}
+                    } else if (action.equalsIgnoreCase("EQUATE")) {
+                      String addString = origination_num + "_add_orig";
+                      if (!_equateMap.containsKey(addString)) {
+                        _equateMap.put(addString, new HashSet<>());
+                      }
+                      _equateMap.get(addString).add(origination_add);                                          
+                    }
           
                 }
                 if (_abstractTree.get(router).get("process").get(
@@ -1562,7 +1568,13 @@ public class Encoder {
                       if (hasGroup) {
                         groupVariables = mkOr(groupVariables, adjacency_add);
                       }
-                    } else if (action.equalsIgnoreCase("EQUATE")) {}
+                    } else if (action.equalsIgnoreCase("EQUATE")) {
+                      String addString = adjacency_num + "_add_adj";
+                      if (!_equateMap.containsKey(addString)) {
+                        _equateMap.put(addString, new HashSet<>());
+                      }
+                      _equateMap.get(addString).add(adjacency_add);                                                                
+                    }
           
                 }
                 if (_abstractTree.get(router).get("process").get(
