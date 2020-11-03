@@ -1621,9 +1621,11 @@ public class Encoder {
     if (action.equalsIgnoreCase("EQUATE")) {
       for (String expr : _equateMap.keySet()) {
         BoolExpr similarity = getCtx().mkBoolConst(expr);
+        BoolExpr ands = mkTrue();
         for (BoolExpr boolexp : _equateMap.get(expr)) {
-          
+          ands = mkAnd(ands, mkEq(similarity, boolexp));
         }
+        addSoft(ands, 1, "");
       }
     }
 
