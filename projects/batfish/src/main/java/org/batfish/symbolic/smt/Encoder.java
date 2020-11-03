@@ -1377,12 +1377,12 @@ public class Encoder {
     BoolExpr groupVariables = mkTrue();
     String action = obj.getAction();
     boolean hasGroup = obj.hasGroupBy();
-    public Map<String, BoolExpr> _equateMap = new HashMap<>();
+    Map<String, BoolExpr> _equateMap = new HashMap<>();
     for (String router : _abstractTree.keySet()) {
 
       System.out.println("Router " + router);
       if (!(obj.getRouterName().equals("*") || 
-        obj.getRouterName().equals(router))) {
+        obj.getRouterName().matches(router))) {
         continue;
       }
 
