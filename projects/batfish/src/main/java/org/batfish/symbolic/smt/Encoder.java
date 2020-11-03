@@ -1380,11 +1380,11 @@ public class Encoder {
     Map<String, BoolExpr> _equateMap = new HashMap<>();
     for (String router : _abstractTree.keySet()) {
 
-      System.out.println("Router " + router);
       if (!(obj.getRouterName().equals("*") || 
         obj.getRouterName().matches(router))) {
         continue;
       }
+      System.out.println("Router " + router);
 
       if (obj.getType().equals("*") || 
         obj.getType().equalsIgnoreCase("PacketFilter")) {
