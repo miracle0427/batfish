@@ -1381,7 +1381,7 @@ public class Encoder {
     for (String router : _abstractTree.keySet()) {
 
       if (!(obj.getRouterName().equals("*") || 
-        obj.getRouterName().matches(router))) {
+        obj.getRouterName().equalsIgnoreCase(router))) {
         continue;
       }
       System.out.println("Router " + router);
