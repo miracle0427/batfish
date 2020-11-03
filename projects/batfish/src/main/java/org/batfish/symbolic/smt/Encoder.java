@@ -1354,25 +1354,6 @@ public class Encoder {
    *
    */
   public void addManagementObjectiveConstraints(ManagementObjective obj) {
-    /*
-    if (obj.hasGroupBy() == true) {
-      if (obj.getAction().equals("NOMODIFY")) {
-        if (obj.getType().equalsIgnoreCase("Router")) {
-                
-        }
-      }
-    } else {
-      if (obj.getAction().equals("NOMODIFY")) {
-        if (obj.getType().equalsIgnoreCase("Router")) {
-          for (String router : _abstractTree.keySet()) {
-            if (router.matches(obj.getTypeName())) {
-
-            }
-          }
-        }
-      }
-
-    }*/
     obj.print();
     BoolExpr groupVariables = mkTrue();
     String action = obj.getAction();
