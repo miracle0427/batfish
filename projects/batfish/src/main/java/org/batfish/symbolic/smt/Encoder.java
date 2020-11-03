@@ -1377,7 +1377,7 @@ public class Encoder {
     BoolExpr groupVariables = mkTrue();
     String action = obj.getAction();
     boolean hasGroup = obj.hasGroupBy();
-    Map<String, BoolExpr> _equateMap = new HashMap<>();
+    Map<String, HashSet<BoolExpr>> _equateMap = new HashMap<>();
     for (String router : _abstractTree.keySet()) {
 
       if (!(obj.getRouterName().equals("*") || 
@@ -1404,7 +1404,13 @@ public class Encoder {
                     if (hasGroup) {
                       groupVariables = mkOr(groupVariables, pfilter_match_add);
                     }
-                  } else if (action.equalsIgnoreCase("EQUATE")) {}
+                  } else if (action.equalsIgnoreCase("EQUATE")) {
+                    String addString = filter_num + "_add";
+                    if (!_equateMap.containsKey(addString)) {
+                      _equateMap.put(addString, new HashSet<>());
+                    }
+                    _equateMap.get(addString).add(pfilter_match_add);
+                  }
 
               }
               if (_abstractTree.get(router).get("pfilter").get(
@@ -1570,7 +1576,7 @@ public class Encoder {
     }
 
     if (action.equalsIgnoreCase("EQUATE")) {
-
+      BoolExpr similarity = getCtx().mkBoolConst("@");
     }
 
   }
