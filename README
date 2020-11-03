@@ -8,3 +8,8 @@ Running the command for a property (like reachability) will create a MAXSMT.smt 
 - To run for multiple policies, enter your properties in "properties.txt" and use the command smt-mul <any src/dst IP>
 
 - weights.txt - has weights for repair
+
+- grammar.txt - this file is used to specify the management objective. Examples of management objectives are in example_obj.txt
+
+- obj.txt - this is used to specify two special objectives. If it has value 0, it means minimize changes. If it has value 1, it means minimize devices affected.
+

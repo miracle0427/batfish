@@ -1377,7 +1377,7 @@ public class Encoder {
     BoolExpr groupVariables = mkTrue();
     String action = obj.getAction();
     boolean hasGroup = obj.hasGroupBy();
-
+    public Map<String, BoolExpr> _equateMap = new HashMap<>();
     for (String router : _abstractTree.keySet()) {
 
       System.out.println("Router " + router);
@@ -1404,7 +1404,7 @@ public class Encoder {
                     if (hasGroup) {
                       groupVariables = mkOr(groupVariables, pfilter_match_add);
                     }
-                  }
+                  } else if (action.equalsIgnoreCase("EQUATE")) {}
 
               }
               if (_abstractTree.get(router).get("pfilter").get(
@@ -1422,7 +1422,7 @@ public class Encoder {
                     if (hasGroup) {
                       groupVariables = mkOr(groupVariables, mkNot(pfilter_match_remove));
                     }
-                  }
+                  } else if (action.equalsIgnoreCase("EQUATE")) {}
 
               }
           }
@@ -1447,7 +1447,7 @@ public class Encoder {
                     if (hasGroup) {
                       groupVariables = mkOr(groupVariables, rfilter_match_add);
                     }
-                  }
+                  } else if (action.equalsIgnoreCase("EQUATE")) {}
           
               }
               if (_abstractTree.get(router).get("rfilter").get(
@@ -1465,7 +1465,7 @@ public class Encoder {
                     if (hasGroup) {
                       groupVariables = mkOr(groupVariables, mkNot(rfilter_match_remove));
                     }
-                  }
+                  } else if (action.equalsIgnoreCase("EQUATE")) {}
           
               }
           }
@@ -1495,7 +1495,7 @@ public class Encoder {
                       if (hasGroup) {
                         groupVariables = mkOr(groupVariables, origination_add);
                       }
-                    }
+                    } else if (action.equalsIgnoreCase("EQUATE")) {}
           
                 }
                 if (_abstractTree.get(router).get("process").get(
@@ -1514,7 +1514,7 @@ public class Encoder {
                       if (hasGroup) {
                         groupVariables = mkOr(groupVariables, mkNot(origination_remove));
                       }
-                    }
+                    } else if (action.equalsIgnoreCase("EQUATE")) {}
           
                 }
             }
@@ -1538,7 +1538,7 @@ public class Encoder {
                       if (hasGroup) {
                         groupVariables = mkOr(groupVariables, adjacency_add);
                       }
-                    }
+                    } else if (action.equalsIgnoreCase("EQUATE")) {}
           
                 }
                 if (_abstractTree.get(router).get("process").get(
@@ -1557,7 +1557,7 @@ public class Encoder {
                       if (hasGroup) {
                         groupVariables = mkOr(groupVariables, mkNot(adjacency_remove));
                       }
-                    }
+                    } else if (action.equalsIgnoreCase("EQUATE")) {}
                 }
             }
           }
@@ -1567,6 +1567,10 @@ public class Encoder {
 
     if (hasGroup) {
       addSoft(groupVariables, 1, "");
+    }
+
+    if (action.equalsIgnoreCase("EQUATE")) {
+
     }
 
   }
@@ -1584,6 +1588,7 @@ public class Encoder {
     int numConstraints = _solver.getAssertions().length;
     int numNodes = mainSlice.getGraph().getConfigurations().size();
     int numEdges = 0;
+
     for (Map.Entry<String, Set<String>> e : mainSlice.getGraph().getNeighbors().entrySet()) {
       numEdges += e.getValue().size();
     }

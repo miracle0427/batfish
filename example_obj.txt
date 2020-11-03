@@ -1,0 +1,4 @@
+EQUATE//PacketFilter GROUPBY name
+NOMODIFY//Router GROUPBY name
+NOMODIFY//Router[name="B"]
+ELIMINATE//RoutingProcess[type="static"]/Origination GROUPBY prefix
