@@ -1305,11 +1305,11 @@ public class Encoder {
                   //System.out.println("type " + type + "\ttypeName " + typeName);
               } else {
                   if (name.equalsIgnoreCase("Router")) {
-                    routerName = ".*";
+                    routerName = "*";
                     hasRouterName = true;
                   } else {
                     type = name;
-                    typeName = ".*";
+                    typeName = "*";
                     hasType = true;
                   }
               }
@@ -1380,12 +1380,14 @@ public class Encoder {
     Map<String, HashSet<BoolExpr>> _equateMap = new HashMap<>();
     for (String router : _abstractTree.keySet()) {
 
-      if (!(obj.getRouterName().matches(router))) {
+      if (!(obj.getRouterName().equals("*") || 
+        obj.getRouterName().equalsIgnoreCase(router))) {
         continue;
       }
       System.out.println("Router " + router);
 
-      if (obj.getType().matches("PacketFilter")) {
+      if (obj.getType().equals("*") || 
+        obj.getType().equalsIgnoreCase("PacketFilter")) {
         if (_abstractTree.get(router).containsKey("pfilter")) {
           System.out.println("pfilter");
           for (String filter_num : _abstractTree.get(
@@ -1439,7 +1441,8 @@ public class Encoder {
         }
       }
       // route filter
-      if (obj.getType().matches("RouteFilter")) {
+      if (obj.getType().equals("*") || 
+        obj.getType().equalsIgnoreCase("RouteFilter")) {
         if (_abstractTree.get(router).containsKey("rfilter")) {
           
           System.out.println("rfilter");
@@ -1493,12 +1496,14 @@ public class Encoder {
         }
       }
       // process
-      if (obj.getType().matches("RoutingProcess")) {
+      if (obj.getType().equals("*") || 
+        obj.getType().equalsIgnoreCase("RoutingProcess")) {
         if (_abstractTree.get(router).containsKey("process")) {
           System.out.println("process");
 
           // origination
-          if (obj.getSubtype().matches("Origination")) {
+          if (obj.getSubtype().equals("*") ||
+            obj.getSubtype().equalsIgnoreCase("Origination")) {
             System.out.println("origination");        
             for (String origination_num : _abstractTree.get(
               router).get("process").get("origination").keySet()) {
@@ -1552,7 +1557,8 @@ public class Encoder {
           }
 
           // adjacency
-          if (obj.getSubtype().matches("Adjacency")) {
+          if (obj.getSubtype().equals("*") ||
+            obj.getSubtype().equalsIgnoreCase("Adjacency")) {
             System.out.println("adjacency");        
             for (String adjacency_num : _abstractTree.get(
               router).get("process").get("adjacency").keySet()) {
@@ -1616,7 +1622,7 @@ public class Encoder {
       for (String expr : _equateMap.keySet()) {
         BoolExpr similarity = getCtx().mkBoolConst(expr);
         for (BoolExpr boolexp : _equateMap.get(expr)) {
-
+          
         }
       }
     }

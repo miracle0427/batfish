@@ -19,9 +19,9 @@ class ManagementObjective {
 
   public ManagementObjective() {
     action = "";
-    type = ".*";
-    typeName = ".*";
-    routerName = ".*";
+    type = "*";
+    typeName = "*";
+    routerName = "*";
     subtype = "";
     groupByName = "";
     hasGroup = false;
