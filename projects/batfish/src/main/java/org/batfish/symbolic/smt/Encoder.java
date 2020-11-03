@@ -1405,7 +1405,7 @@ public class Encoder {
                       groupVariables = mkOr(groupVariables, pfilter_match_add);
                     }
                   } else if (action.equalsIgnoreCase("EQUATE")) {
-                    String addString = filter_num + "_add";
+                    String addString = filter_num + "_add_pfilter";
                     if (!_equateMap.containsKey(addString)) {
                       _equateMap.put(addString, new HashSet<>());
                     }
@@ -1417,7 +1417,7 @@ public class Encoder {
                 filter_num).get("match").containsKey("remove")) {
                   BoolExpr pfilter_match_remove = _abstractTree.get(
                     router).get("pfilter").get(filter_num).get("match").get("remove");
-                  System.out.println("add " + pfilter_match_remove);
+                  System.out.println("remove " + pfilter_match_remove);
                   if (action.equalsIgnoreCase("NOMODIFY")) {
                     addSoft(pfilter_match_remove, 1, "");
                     if (hasGroup) {
@@ -1428,7 +1428,13 @@ public class Encoder {
                     if (hasGroup) {
                       groupVariables = mkOr(groupVariables, mkNot(pfilter_match_remove));
                     }
-                  } else if (action.equalsIgnoreCase("EQUATE")) {}
+                  } else if (action.equalsIgnoreCase("EQUATE")) {
+                    String removeString = filter_num + "_remove_pfilter";
+                    if (!_equateMap.containsKey(removeString)) {
+                      _equateMap.put(removeString, new HashSet<>());
+                    }
+                    _equateMap.get(removeString).add(pfilter_match_remove);                    
+                  }
 
               }
           }
@@ -1453,14 +1459,20 @@ public class Encoder {
                     if (hasGroup) {
                       groupVariables = mkOr(groupVariables, rfilter_match_add);
                     }
-                  } else if (action.equalsIgnoreCase("EQUATE")) {}
+                  } else if (action.equalsIgnoreCase("EQUATE")) {
+                    String addString = filter_num + "_add_rfilter";
+                    if (!_equateMap.containsKey(addString)) {
+                      _equateMap.put(addString, new HashSet<>());
+                    }
+                    _equateMap.get(addString).add(rfilter_match_add);                    
+                  }
           
               }
               if (_abstractTree.get(router).get("rfilter").get(
                 filter_num).get("match").containsKey("remove")) {
                   BoolExpr rfilter_match_remove = _abstractTree.get(
                     router).get("rfilter").get(filter_num).get("match").get("remove");
-                  System.out.println("add " + rfilter_match_remove);
+                  System.out.println("remove " + rfilter_match_remove);
                   if (action.equalsIgnoreCase("NOMODIFY")) {
                     addSoft(rfilter_match_remove, 1, "");
                     if (hasGroup) {
@@ -1471,7 +1483,13 @@ public class Encoder {
                     if (hasGroup) {
                       groupVariables = mkOr(groupVariables, mkNot(rfilter_match_remove));
                     }
-                  } else if (action.equalsIgnoreCase("EQUATE")) {}
+                  } else if (action.equalsIgnoreCase("EQUATE")) {
+                    String removeString = filter_num + "_remove_rfilter";
+                    if (!_equateMap.containsKey(removeString)) {
+                      _equateMap.put(removeString, new HashSet<>());
+                    }
+                    _equateMap.get(removeString).add(rfilter_match_remove);                                        
+                  }
           
               }
           }
