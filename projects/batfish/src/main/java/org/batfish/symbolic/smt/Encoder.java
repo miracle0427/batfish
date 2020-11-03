@@ -1544,7 +1544,13 @@ public class Encoder {
                       if (hasGroup) {
                         groupVariables = mkOr(groupVariables, mkNot(origination_remove));
                       }
-                    } else if (action.equalsIgnoreCase("EQUATE")) {}
+                    } else if (action.equalsIgnoreCase("EQUATE")) {
+                      String removeString = origination_num + "_remove_orig";
+                      if (!_equateMap.containsKey(removeString)) {
+                        _equateMap.put(removeString, new HashSet<>());
+                      }
+                      _equateMap.get(removeString).add(origination_remove);                                                              
+                    }
           
                 }
             }
@@ -1593,7 +1599,14 @@ public class Encoder {
                       if (hasGroup) {
                         groupVariables = mkOr(groupVariables, mkNot(adjacency_remove));
                       }
-                    } else if (action.equalsIgnoreCase("EQUATE")) {}
+                    } else if (action.equalsIgnoreCase("EQUATE")) {
+                      String removeString = adjacency_num + "_remove_adj";
+                      if (!_equateMap.containsKey(removeString)) {
+                        _equateMap.put(removeString, new HashSet<>());
+                      }
+                      _equateMap.get(removeString).add(adjacency_remove);                                                              
+
+                    }
                 }
             }
           }
