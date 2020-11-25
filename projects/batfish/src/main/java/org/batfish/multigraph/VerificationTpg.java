@@ -44,13 +44,21 @@ public class VerificationTpg implements Runnable {
 
 	public boolean alwaysWaypoint() {
 		//removeNode(waypoint);
-		if (alwaysBlocked() == true)
+		if (alwaysBlocked() == true) {
+			System.out.println( "already unreachable.");
 			return true;
+		}
 		//change this to waypointnode
 		List<TpgNode> way = tpg.outboundNeighbors(src);
 		if (way.size() > 0)
 		removeNode(way.get(0));
-		return alwaysBlocked();		
+		if (alwaysBlocked()) {
+			System.out.println( "Always waypoint: True");
+			return true;		
+		} else {
+			System.out.println( "Always waypoint: False");
+			return false;				
+		}
 	}
 
 	/*
@@ -289,7 +297,7 @@ public class VerificationTpg implements Runnable {
 		double time1 = pl.run();
 		double obj = pl.returnObj();
 		//System.out.println( (time1 + time2)+ " ms" );
-		//System.out.println( "Length\t" + obj );
+		System.out.println( "Max Length\t" + obj );
 		return (obj!=-1 && (obj == 5));
 	}
 
@@ -304,7 +312,7 @@ public class VerificationTpg implements Runnable {
 		double time2 = pl.run();
 		double max = pl.returnObj();
 		//System.out.println( (time1 + time2)+ " ms" );
-		//System.out.println( min + "\t" + max );
+		System.out.println( "min length: " + min + "\tmax length: " + max );
 		return (max!=-1 && (max == min));
 		
 	}
@@ -316,7 +324,7 @@ public class VerificationTpg implements Runnable {
 		UnreachableTpg unreach = new UnreachableTpg(tpg);
 		//boolean result = unreach.isUnreachableTpg(src, dst);
 		boolean result = unreach.isUnreachableTpg(src, dst);
-		//System.out.println("Always Blocked: " + result);
+		System.out.println("Always Blocked: " + result);
 		return result;
 	}
 
