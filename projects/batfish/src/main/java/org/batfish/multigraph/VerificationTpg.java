@@ -115,6 +115,7 @@ public class VerificationTpg implements Runnable {
         removeUnreach(src, dst);
 		ilpMinCut pl = new ilpMinCut(tpg);
 		pl.formulate(src, dst);
+		System.out.println("Failures to disconnect the graph " + pl.returnObj());
         //TPVP_BF tpvp = new TPVP_BF(tpg);
         //tpvp.shortestPath(src, dst);
         //tpvp.shortestPath(src, dst);
@@ -134,6 +135,7 @@ public class VerificationTpg implements Runnable {
         removeUnreach(src, dst);
 		ilpMinCut pl = new ilpMinCut(tpg);
 		pl.formulate(src, dst);
+		System.out.println("Failures to disconnect the graph " + pl.returnObj());
         //TPVP_BF tpvp = new TPVP_BF(tpg);
         //tpvp.shortestPath(src, dst);
         //tpvp.shortestPath(src, dst);
