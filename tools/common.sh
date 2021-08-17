@@ -3,10 +3,13 @@
 export BATFISH_ROOT="$(dirname "$BATFISH_TOOLS_PATH")"
 export PROJECTS_PATH="$BATFISH_ROOT/projects"
 
-export GUROBI_HOME="/users/anubhavnidhi/Sandbox/gurobi701/linux64"
+if [ -z "$GUROBI_HOME" ]; then
+    echo "Please define the GUROBI_HOME environment variable"
+fi
 export PATH="${PATH}:${GUROBI_HOME}/bin"
 export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${GUROBI_HOME}/lib"
-export CLASSPATH="$CLASSPATH:/users/archie/gurobi701/linux64/lib/gurobi.jar"
+export GUROBI_JAR="${GUROBI_HOME}/lib/gurobi.jar"
+export CLASSPATH="$CLASSPATH:${GUROBI_JAR}"
 
 # Use Maven to print the current Batfish java version
 export BATFISH_VERSION="$(grep -1 batfish-parent "${PROJECTS_PATH}/pom.xml" | grep version | sed 's/[<>]/|/g' | cut -f3 -d\|)"
@@ -39,7 +42,6 @@ export ALLINONE="$ALLINONE_PATH/allinone"
 
 export COMMON_PATH="$PROJECTS_PATH/batfish-common-protocol"
 export COMMON_JAR="$COMMON_PATH/target/batfish-common-protocol-${BATFISH_VERSION}.jar"
-export GUROBI_JAR="$PROJECTS_PATH/lib/gurobi.jar"
 
 export QUESTION_PATH="$PROJECTS_PATH/question"
 export BATFISH_QUESTION_PLUGIN_DIR="$PROJECTS_PATH/question/target/"

@@ -1,3 +1,23 @@
+## Installation
+Install the [Gurobi optimizer version 9.1.2](https://gurobi.com). Academics
+can [obtain a free academic
+license](https://www.gurobi.com/academia/academic-program-and-licenses/).
+
+Set the `GUROBI_HOME` environment variable to the full path of the
+`gurobi912/linux64` directory.
+
+Add the Gurobi jar file to your local Maven repository:
+```
+mvn install:install-file -Dfile=$GUROBI_HOME/lib/gurobi.jar -DgroupId=gurobi \
+    -DartifactId=gurobi -Dversion=9.1.2 -Dpackaging=jar
+```
+
+Within your clone of this repository, run:
+```bash
+source tools/common.sh
+batfish_rebuild_all
+```
+
 ## Running Tiramisu
 
 First you need to create a cmdfile (lets call it testc) with the following format

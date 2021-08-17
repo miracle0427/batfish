@@ -155,9 +155,7 @@
     <dependency>
         <groupId>gurobi</groupId>
         <artifactId>gurobi</artifactId>
-        <version>7.0.1</version>
-        <scope>system</scope>
-        <systemPath>/users/anubhavnidhi/Sandbox/gurobi701/linux64/lib/gurobi.jar</systemPath>
+        <version>9.1.2</version>
     </dependency>
 
     <dependency>
