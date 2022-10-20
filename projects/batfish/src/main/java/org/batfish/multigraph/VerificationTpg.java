@@ -1,6 +1,15 @@
 package org.batfish.multigraph;
 
-import java.util.Map;
+import org.batfish.multigraph.policy.UnreachableTpg;
+import org.batfish.multigraph.policy.ilpPathLength;
+import org.batfish.multigraph.policy.policyName;
+import org.batfish.multigraph.tpg.Tpg;
+import org.batfish.multigraph.tpg.TpgEdge;
+import org.batfish.multigraph.tpg.TpgNode;
+import org.batfish.multigraph.util.TPVP_BF;
+import org.batfish.multigraph.util.ilpMinCut;
+import org.batfish.multigraph.graph.protocol;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
@@ -209,7 +218,7 @@ public class VerificationTpg implements Runnable {
         // Recur for all the vertices 
         // adjacent to current TpgNode 
         for(TpgEdge e: tpg.getNeighbors(u)) {
-            protocol current = e.getType(); 
+            protocol current = e.getType();
             TpgNode i = e.getDst();
 
             if (visited.get(i) == false) {

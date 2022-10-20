@@ -69,9 +69,6 @@ import org.batfish.common.topology.Layer2Edge;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
 import java.util.Arrays;
 
 import java.util.concurrent.ExecutorService;
@@ -79,15 +76,14 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
 
-import org.batfish.multigraph.Mulgraph;
-import org.batfish.multigraph.Mulgraph2;
-import org.batfish.multigraph.buildTpg;
-import org.batfish.multigraph.Digraph;
-import org.batfish.multigraph.Tpg;
-import org.batfish.multigraph.Node;
+import org.batfish.multigraph.graph.Mulgraph;
+import org.batfish.multigraph.graph.Mulgraph2;
+import org.batfish.multigraph.tpg.buildTpg;
+import org.batfish.multigraph.graph.Digraph;
+import org.batfish.multigraph.tpg.Tpg;
 import org.batfish.multigraph.Verification;
 import org.batfish.multigraph.VerificationTpg;
-import org.batfish.multigraph.policyName;
+import org.batfish.multigraph.policy.policyName;
 
 
 /**
