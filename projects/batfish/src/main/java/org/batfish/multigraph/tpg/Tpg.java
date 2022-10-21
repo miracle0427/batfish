@@ -1,5 +1,6 @@
 package org.batfish.multigraph.tpg;
 
+import lombok.Data;
 import org.batfish.multigraph.graph.EdgeCost;
 import org.batfish.multigraph.graph.protocol;
 
@@ -8,52 +9,21 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.List;
 import java.util.Set;
-//import java.lang.*;
 
+@Data
 public class Tpg {
-
-    /**
-     * A Map is used to map each vertex to its list of adjacent vertices.
-     */
 
     private Map<TpgNode, List<TpgEdge>> neighbors = new HashMap<>();
 
-    private int nr_edges = 0;
+    private int edgeNum = 0;
 
-    private int nr_vertices = 0;
+    private int vertexNum = 0;
 
     private TpgNode srcTCNode = null;
 
     private TpgNode dstTCNode = null;
 
     public Map<String, Set<TpgEdge>> logicalPhysicalMap = new HashMap<>();
-
-    /**
-     * String representation of graph.
-     */
-    public String toString() {
-        StringBuffer s = new StringBuffer();
-        for (TpgNode v : getVertices())
-            s.append("\n    " + v + " -> " + neighbors.get(v));
-        return s.toString();
-    }
-
-    public Map<TpgNode, List<TpgEdge>> getNeighborMap() {
-      return neighbors;
-    }
-
-    public void setSourceDest(TpgNode srctc, TpgNode dsttc) {
-      srcTCNode = srctc;
-      dstTCNode = dsttc;
-    }
-
-    public TpgNode getSrc() {
-      return srcTCNode;
-    }
-
-    public TpgNode getDst() {
-      return dstTCNode;
-    }
 
     public Map<TpgNode, List<TpgEdge>> returnCopyNeighborMap() {
       Map<TpgNode, List<TpgEdge>> copy = new HashMap<>();
@@ -67,19 +37,10 @@ public class Tpg {
       return copy;
     }
 
-    public void setNeighborMap(Map<TpgNode, List<TpgEdge>> neighborMap) {
-      neighbors = neighborMap;
-    }
-
-    /**
-     * Add a Node to the graph. Nothing happens if Node is already in graph.
-     */
-    public void add(TpgNode vertex) {
-        if (neighbors.containsKey(vertex))
-            return;
-        neighbors.put(vertex, new ArrayList<TpgEdge>());
-        nr_vertices = nr_vertices + 1;
-
+    public void addVertex(TpgNode vertex) {
+        if (neighbors.containsKey(vertex))  return;
+        neighbors.put(vertex, new ArrayList<>());
+        vertexNum++;
     }
 
     public int getNumberOfEdges(){
@@ -111,15 +72,7 @@ public class Tpg {
         return thisEdge;
     }
 
-    public int outDegree(int vertex) {
-        return neighbors.get(vertex).size();
-    }
-
-    public int inDegree(TpgNode vertex) {
-       return inboundNeighbors(vertex).size();
-    }
-
-    public Set<TpgNode> getVertices() {
+    public Set<TpgNode> getAllVertices() {
         return neighbors.keySet();
     }
 
@@ -150,46 +103,6 @@ public class Tpg {
         for(TpgEdge e: neighbors.get(vertex))
             list.add(e.vertex);
         return list;
-    }
-
-    public List<TpgNode> inboundNeighbors(TpgNode inboundNode) {
-        List<TpgNode> inList = new ArrayList<TpgNode>();
-        for (TpgNode from : getVertices()) {
-            for (TpgEdge e : neighbors.get(from))
-                if (e.vertex.equals(inboundNode))
-                    inList.add(from);
-        }
-        return inList;
-    }
-
-    public boolean isEdge(TpgNode from, TpgNode to) {
-      if (from == null || to ==null)
-        return false;
-      for(TpgEdge e :  neighbors.get(from)){
-          if(e.vertex.equals(to))
-              return true;
-      }
-      return false;
-    }
-
-    public TpgEdge getEdgeById(String from, String to) {
-      for(TpgEdge e :  neighbors.get(getVertex(from))){
-          if(e.vertex.getId().equals(to))
-              return e;
-      }
-      return null;
-    }
-
-    public void setPhysicalMap(Map<String, Set<TpgEdge>> lmap) {
-      logicalPhysicalMap = lmap;
-    }
-
-    public Map<String, Set<TpgEdge>> getPhysicalMap() {
-      return logicalPhysicalMap;
-    }
-
-    public void printAllPhysicalMap() {
-      System.out.println(logicalPhysicalMap);
     }
 
     public TpgEdge getEdge(TpgNode from, TpgNode to) {
