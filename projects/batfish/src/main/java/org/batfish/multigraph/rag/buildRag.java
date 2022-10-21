@@ -17,19 +17,19 @@ import org.batfish.symbolic.Protocol;
 import java.util.*;
 @Data
 public class buildRag implements Runnable {
-	Graph g;
-	Rag rag;
-	Map<String, List<Protocol>> protocols;
+	private Graph g;
+	private Rag rag;
+	private Map<String, List<Protocol>> protocols;
     private Map<String, RagNode> multigraphNode;
     private Map<String, Set<RagNode>> phyNodeMap;
-    IpWildcard srcIp;
-    IpWildcard dstIp;
-    public RagNode srcTC = null;
-    public RagNode dstTC = null;
-    String srcNodeName = null;
-    String dstNodeName = null;
-    long generateTime = 0;
-    boolean correctSrcDst = false;
+    private IpWildcard srcIp;
+    private IpWildcard dstIp;
+    private RagNode srcTC = null;
+    private RagNode dstTC = null;
+    private String srcNodeName = null;
+    private String dstNodeName = null;
+    private long generateTime = 0;
+    private boolean correctSrcDst = false;
 
     public buildRag(Graph g, IpWildcard src, IpWildcard dst) {
         this(g, null, null, src, dst);
@@ -47,7 +47,7 @@ public class buildRag implements Runnable {
         protocols = new HashMap<>();
     }
 
-    public void setNodes() {
+    private void setNodes() {
 
         //System.out.println(srcNodeName + "\t" + dstNodeName);
 
@@ -98,7 +98,7 @@ public class buildRag implements Runnable {
         }
     }
 
-    public boolean blockFilter(RoutingPolicy rp, Configuration conf) {
+    private boolean blockFilter(RoutingPolicy rp, Configuration conf) {
         if (rp == null)
             return false;
         for ( Statement st : rp.getStatements() ) {
@@ -122,7 +122,7 @@ public class buildRag implements Runnable {
         return false;
     }
 
-    public void buildRagEdges() {
+    private void buildRagEdges() {
 
     	RagNode src, dst;
     	String srcnode, dstnode, srcname, dstname;
@@ -222,7 +222,7 @@ public class buildRag implements Runnable {
     	}
     }
 
-    public void buildRagNodes() {
+    private void buildRagNodes() {
         Map<String, Configuration> allConf = g.getConfigurations();
         RagNode protNode = null;
         String protName = null;
@@ -250,14 +250,14 @@ public class buildRag implements Runnable {
         }
     }
 
-    public String bgpName(String router) {
+    private String bgpName(String router) {
         return router+"-BGP";
     }
 
-    public String ospfName(String router) {
+    private String ospfName(String router) {
         return router+"-OSPF";
     }
-    public void initialize() {
+    private void initialize() {
 
         // create physical router to logical router-process mapping
         //System.out.println("Original Routers");
@@ -267,7 +267,7 @@ public class buildRag implements Runnable {
         }
     }
 
-    public void buildRouterProtocol() {
+    private void buildRouterProtocol() {
     	// create physical router to protocols mapping
     	g.getConfigurations().forEach(
     		(router, conf) -> {
@@ -284,7 +284,7 @@ public class buildRag implements Runnable {
                 }
             });
     }
-    public void buildGraph() {
+    private void buildGraph() {
         long startTime = System.nanoTime();
         buildRouterProtocol();
         initialize();

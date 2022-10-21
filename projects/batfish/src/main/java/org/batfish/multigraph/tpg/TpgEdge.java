@@ -9,13 +9,13 @@ import java.util.Map;
 
 @Data
 public class TpgEdge {
-    TpgNode src;
-    TpgNode dst;
-    EdgeCost cost;
-    protocol type;
-    boolean hasACL = false;
-    public boolean canRemove = false;
-    boolean failed = false;
+    private TpgNode src;
+    private TpgNode dst;
+    private EdgeCost cost;
+    private protocol type;
+    private boolean hasACL = false;
+    private boolean canRemove = false;
+    private boolean failed = false;
 
     public static final Map<protocol, Integer> protocolMap = new HashMap<protocol, Integer>(){
         {

@@ -10,8 +10,8 @@ import java.util.Set;
 @Data
 public class TpgPath {
 
-	ArrayList<TpgNode> path = new ArrayList<>();
-    Set<String> nodes = new HashSet<>();
+	private ArrayList<TpgNode> path = new ArrayList<>();
+    private Set<String> nodes = new HashSet<>();
 
     public TpgPath(TpgPath prev) {
         if(prev != null){
