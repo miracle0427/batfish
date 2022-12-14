@@ -54,7 +54,7 @@ public class ilpPathLength {
       Map<TpgNode, Map<String, GRBVar>> community = new HashMap<>();
 
       int constraint = 0;
-      for (TpgNode from : g.getVertices()) {
+      for (TpgNode from : g.getAllVertices()) {
         Map<TpgNode, GRBVar> flowTemp = new HashMap<>();
         for(TpgEdge to : g.getNeighbors(from)) {
           GRBVar flowVar = model.addVar(0.0, 1.0, 0.0, GRB.BINARY, ("flow"+from+"-"+to.getDst()) );
@@ -66,7 +66,7 @@ public class ilpPathLength {
         flow.put(from, flowTemp);
       }
 
-      for (TpgNode v : g.getVertices()) {
+      for (TpgNode v : g.getAllVertices()) {
         outflow = new GRBLinExpr(); 
         inflow = new GRBLinExpr();
         inflow.addConstant(0.0);

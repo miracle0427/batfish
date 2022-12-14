@@ -22,7 +22,7 @@ public class UnreachableTpg {
         // Initially mark all vertices as not visited 
         HashMap<TpgNode, Boolean> visited = new HashMap<>(); 
 
-        for (TpgNode v : g.getVertices()) {
+        for (TpgNode v : g.getAllVertices()) {
             visited.put(v, false);
         }
         return !(isReachableAny(src, dst, visited)); 

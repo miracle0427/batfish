@@ -220,7 +220,7 @@ public class TPVP implements Runnable {
         weight.get(d).AD = TpgEdge.protocol_map.get(protocol.DST);
         weight.get(d).valid = true;
         nextHop.put(d, d);
-        bestPath.get(d).add(d);
+        bestPath.get(d).addHead(d);
 
         //System.out.println("FailSet " + failedSet);
 
@@ -265,7 +265,7 @@ public class TPVP implements Runnable {
                     weight.put(u, curBestWeight);
                     nextHop.put(u, best);
                     TpgPath path_u = new TpgPath(bestPath.get(best));
-                    path_u.add(u);
+                    path_u.addHead(u);
                     bestPath.put(u, path_u);
                     changed = true;
                     //System.out.println(u + "\t" + best + "\t" + curBestWeight);
@@ -358,7 +358,7 @@ public class TPVP implements Runnable {
         weight.get(d).AD = TpgEdge.protocol_map.get(protocol.DST);
         weight.get(d).valid = true;
         nextHop.put(d, d);
-        bestPath.get(d).add(d);
+        bestPath.get(d).addHead(d);
 
         //System.out.println("FailSet " + failedSet);
 
@@ -403,7 +403,7 @@ public class TPVP implements Runnable {
                     weight.put(u, curBestWeight);
                     nextHop.put(u, best);
                     TpgPath path_u = new TpgPath(bestPath.get(best));
-                    path_u.add(u);
+                    path_u.addHead(u);
                     bestPath.put(u, path_u);
                     changed = true;
                     //System.out.println(u + "\t" + best + "\t" + curBestWeight);

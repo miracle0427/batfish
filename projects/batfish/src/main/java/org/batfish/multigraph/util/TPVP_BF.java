@@ -262,7 +262,7 @@ public class TPVP_BF implements Runnable {
         weight.get(d).AD = TpgEdge.protocol_map.get(protocol.DST);
         weight.get(d).valid = true;
         nextHop.put(d, d);
-        bestPath.get(d).add(d);
+        bestPath.get(d).addHead(d);
         hasChanged.put(d, true);
         // Step 2: Relax all edges |V| - 1 times. A simple 
         // shortest path from src to any other Node can 
@@ -301,7 +301,7 @@ public class TPVP_BF implements Runnable {
                         weight.put(u, currWeight);
                         nextHop.put(u, v);
                         TpgPath path_u = new TpgPath(path_v);
-                        path_u.add(u);
+                        path_u.addHead(u);
                         bestPath.put(u, path_u);
                         changed = true;
                         curChanged = true;
@@ -337,7 +337,7 @@ public class TPVP_BF implements Runnable {
         weight.get(d).AD = TpgEdge.protocol_map.get(protocol.DST);
         weight.get(d).valid = true;
         nextHop.put(d, d);
-        bestPath.get(d).add(d);
+        bestPath.get(d).addHead(d);
         hasChanged.put(d, true);
         // Step 2: Relax all edges |V| - 1 times. A simple 
         // shortest path from src to any other Node can 
@@ -376,7 +376,7 @@ public class TPVP_BF implements Runnable {
                         weight.put(u, currWeight);
                         nextHop.put(u, v);
                         TpgPath path_u = new TpgPath(path_v);
-                        path_u.add(u);
+                        path_u.addHead(u);
                         bestPath.put(u, path_u);
                         changed = true;
                         curChanged = true;
